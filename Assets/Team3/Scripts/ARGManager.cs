@@ -18,6 +18,8 @@ namespace MatrixJam.Team3
         
         [SerializeField] private List<StageItem> StagesList;
         
+        [SerializeField] public List<GameObject> InitialObjects;
+        
         // Start is called before the first frame update
         void Start()
         {
