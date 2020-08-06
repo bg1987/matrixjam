@@ -9,12 +9,12 @@ namespace MatrixJam.Team2
         [SerializeField] private float movementSpeed = 10;
         [SerializeField] private float crouchSpeed = 5;
         [SerializeField] private float jumpForce = 2;
+        [SerializeField] private int maxJumps = 1;
 
         private Rigidbody2D rb;
 
-        private float horizontalInput = 0;
-        private bool jumpInput;
         private bool isGrounded = false;
+        private int currentJumpsCount = 0;
 
         void Awake()
         {
@@ -23,12 +23,8 @@ namespace MatrixJam.Team2
 
         void Update()
         {
-            horizontalInput = Input.GetAxis("Horizontal");
-            jumpInput = Input.GetButton("Jump");
-        }
-
-        void FixedUpdate()
-        {
+            float horizontalInput = Input.GetAxis("Horizontal");
+            bool jumpInput = Input.GetButtonDown("Jump");
             Move(horizontalInput);
             Jump(jumpInput);
         }
@@ -36,6 +32,7 @@ namespace MatrixJam.Team2
         void OnCollisionEnter2D(Collision2D other)
         {
             isGrounded = true;
+            currentJumpsCount = 0;
         }
         void OnCollisionExit2D(Collision2D other)
         {
@@ -49,9 +46,12 @@ namespace MatrixJam.Team2
 
         private void Jump(bool jumpInput)
         {
-            if (!jumpInput || !isGrounded) return;
-
+            if (!jumpInput || !CanJump) return;
+            Debug.Log("Jumping");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            currentJumpsCount++;
         }
+
+        private bool CanJump => isGrounded || currentJumpsCount < maxJumps;
     }
 }
