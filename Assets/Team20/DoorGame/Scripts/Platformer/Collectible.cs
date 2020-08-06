@@ -9,7 +9,7 @@ namespace MatrixJam.Team20
         private enum CollectibleType
         {
             Coin,
-            Type2,
+            Door1,
             Type3
         }
         [SerializeField] private CollectibleType _collectibleType;
@@ -19,11 +19,31 @@ namespace MatrixJam.Team20
             if (other.CompareTag("Player"))
             {
                 Player player = other.GetComponent<Player>();
-                if (_collectibleType == 0 && player != null)
+                if (_collectibleType == CollectibleType.Coin && player != null)
                 {
                     player.AddCoins(1);
+                    Destroy(gameObject);
                 }
-                Destroy(gameObject);
+
+            }
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            Player player = other.GetComponent<Player>();
+            if (_collectibleType == CollectibleType.Door1 && player != null)
+            {
+                if (Input.GetKey(KeyCode.E) && player.DoorKeyReady() && player.PlayerStands())
+                {
+                    Debug.Log("Door");
+                    if (player.GetDoors() == 0)
+                    {
+                        player.SetDoors(1);
+                        player.SetDoorsY(gameObject.transform.position.y);
+                        player.CollectDoor(gameObject);
+                        gameObject.SetActive(false);
+                    }
+                }
             }
         }
     }

@@ -13,23 +13,35 @@ namespace MatrixJam.Team20
         [SerializeField] private float _gravity = 1f;
         [SerializeField] private float _jumpHeight = 15f;
         [SerializeField] private bool _autoMove = false;
+        private bool _doorKeyReady = true;
         private bool _isDoubleJumping = false;
         private float _yVelocity;
         [SerializeField] private float _coinNumber = 0f;
+        [SerializeField] private int _doorNumber = 0;
+        [SerializeField] private float _doorYValue = 0;
         private Vector3 _velocity;
         private float _addedVelocity = 0f;
         private float _addedVelocityX = 0f;
         private float _addedVelocityY = 0f;
-        [SerializeField] private GameObject _pointA, _pointB;
+        [SerializeField] private GameObject _pointA, _pointB, _collectedDoor;
         private int _lives = 3;
         [SerializeField] private Vector3 _startingLocation;
 
+        [SerializeField] private float _doorOffset = 1f;
+        private float _doorYOffset = 0f;
+        private enum LookDirection
+        {
+            Right,
+            Left
+        }
 
+        [SerializeField] private LookDirection _lookDirection;
         // Start is called before the first frame update
         void Start()
         {
             _controller = GetComponent<CharacterController>();
             _startingLocation = transform.position;
+            _lookDirection = LookDirection.Right;
         }
 
         // Update is called once per frame
@@ -43,6 +55,11 @@ namespace MatrixJam.Team20
             Vector3 direction = new Vector3(horizontalInput + _sprintBonus + (_addedVelocityX /_speed), 0 + (_addedVelocityY / _speed), 0);
             _velocity = direction * _speed;
 
+            if (Input.GetKeyDown(KeyCode.D))
+                _lookDirection = LookDirection.Right;
+            if (Input.GetKeyDown(KeyCode.A))
+                _lookDirection = LookDirection.Left;
+
             if (_controller.isGrounded)
             {
                 _addedVelocity = 0f;
@@ -54,14 +71,30 @@ namespace MatrixJam.Team20
                 {
                     _yVelocity = _jumpHeight;
                 }
+                if (Input.GetKeyDown(KeyCode.E) && _doorNumber == 1 && PlayerStands())
+                {
+                    _doorKeyReady = false;
+                    SetDoors(0);
+                    _collectedDoor.SetActive(true);
+                    Vector3 playerLocation = gameObject.transform.position;
+                    if (_lookDirection == LookDirection.Right)
+                        _doorOffset = Mathf.Abs(_doorOffset);
+                    else
+                        _doorOffset = -Mathf.Abs(_doorOffset);
+                    playerLocation.x = playerLocation.x + _doorOffset;
+                    playerLocation.y = playerLocation.y + _doorYOffset;
+                    _collectedDoor.transform.position = playerLocation;
+                }
+                if (Input.GetKeyUp(KeyCode.E) & _doorNumber == 0)
+                    _doorKeyReady = true;
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.Space) && !_isDoubleJumping)
-                {
-                    _yVelocity = _jumpHeight + _gravity;
-                    _isDoubleJumping = true;
-                }
+                //if (Input.GetKeyDown(KeyCode.Space) && !_isDoubleJumping)
+                //{
+                //    _yVelocity = _jumpHeight + _gravity;
+                //    _isDoubleJumping = true;
+                //}
                 _yVelocity -= _gravity;
             }
             _velocity.y = _yVelocity;
@@ -128,6 +161,20 @@ namespace MatrixJam.Team20
         {
             return _lives;
         }
+        public int GetDoors()
+        {
+            return _doorNumber;
+        }
+
+        public bool DoorKeyReady()
+        {
+            return _doorKeyReady;
+        }
+
+        public void SetDoorsY(float yValue)
+        {
+            _doorYValue = yValue;
+        }
 
         public void StopRising()
         {
@@ -142,6 +189,17 @@ namespace MatrixJam.Team20
         public void AddCoins(int number)
         {
             _coinNumber += number;
+        }
+
+        public void SetDoors(int number)
+        {
+            _doorNumber = number;
+        }
+
+        public void CollectDoor(GameObject door)
+        {
+            _collectedDoor = door;
+            _doorYOffset = _doorYValue - gameObject.transform.position.y;
         }
 
         public bool PlayerGrounded()
