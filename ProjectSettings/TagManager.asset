@@ -20,6 +20,10 @@ TagManager:
   - Tag13
   - Tag14
   - Tag15
+  - Platform
+  - PlatformTrigger
+  - MovingPlatform
+  - Door
   layers:
   - Default
   - TransparentFX
