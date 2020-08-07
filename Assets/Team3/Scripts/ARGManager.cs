@@ -8,7 +8,7 @@ namespace MatrixJam.Team3
     public class ARGManager : MonoBehaviour
     {
         [SerializeField] private GameObject currentlEnabled;
-        [SerializeField] private Dictionary<string, GameObject> Stages;
+        [SerializeField] private Dictionary<string, GameObject> Stages;        
         
         [Serializable]
         public struct StageItem {
@@ -33,7 +33,11 @@ namespace MatrixJam.Team3
 
 
         public void ChangeItem(string item)
-        {            
+        {
+            foreach (GameObject go in InitialObjects)
+            {
+                go.SetActive(false);
+            }
             if (Stages.ContainsKey(item.ToLower())){
                 currentlEnabled.SetActive(false);
                 currentlEnabled = Stages[item.ToLower()];
