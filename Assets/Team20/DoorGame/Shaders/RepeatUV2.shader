@@ -9,6 +9,12 @@
 		_ScaleUVY("Scale UV y", Range(0.01,10.0)) = 1.0
 		_OffsetUVX("Offset UV x", Range(-1.0,1.0)) = 0.0
 		_OffsetUVY("Offset UV y", Range(-1.0,1.0)) = 0.0
+		_PrespectiveShift("PerspectiveShift", Range(-10.0,10.0)) = 0.0
+		_ShiftY("Shift Y", Int) = 0
+		_LeftZ("Left Z", Float) = 0
+		_RightZ("Right Z", Float) = 0
+		_TransparentZ("Transparent Z", Float) = 0
+		_UseShaderZ("Use Shader Z", Int) = 1
 	}
 
 		SubShader
@@ -24,7 +30,8 @@
 
 			Cull Off
 			Lighting Off
-			ZWrite Off
+			ZWrite On
+			ZTest On
 			Blend One OneMinusSrcAlpha
 
 			Pass
@@ -40,6 +47,7 @@
 					float4 vertex   : POSITION;
 					float4 color    : COLOR;
 					float2 texcoord : TEXCOORD0;
+					uint vertexId : SV_VertexID;
 				};
 
 				struct v2f
@@ -47,6 +55,7 @@
 					float4 vertex   : SV_POSITION;
 					fixed4 color : COLOR;
 					float2 texcoord  : TEXCOORD0;
+					float opacityDepth : TEXCOORD1;
 				};
 
 				fixed4 _Color;
@@ -54,22 +63,57 @@
 				float _ScaleUVY;
 				float _OffsetUVX;
 				float _OffsetUVY;
+				float _PrespectiveShift;
+				bool _ShiftY;
+				float _LeftZ;
+				float _RightZ;
+				int _UseShaderZ;
+				float _TransparentZ;
 
 				v2f vert(appdata_t IN)
 				{
 					v2f OUT;
-					OUT.vertex = UnityObjectToClipPos(IN.vertex);
-					OUT.texcoord = IN.texcoord;
-					OUT.color = IN.color * _Color;
-					#ifdef PIXELSNAP_ON
-					OUT.vertex = UnityPixelSnap(OUT.vertex);
-					#endif
 
 					float3 worldScale = float3(
 						length(float3(unity_ObjectToWorld[0].x, unity_ObjectToWorld[1].x, unity_ObjectToWorld[2].x)), // scale x axis
 						length(float3(unity_ObjectToWorld[0].y, unity_ObjectToWorld[1].y, unity_ObjectToWorld[2].y)), // scale y axis
 						length(float3(unity_ObjectToWorld[0].z, unity_ObjectToWorld[1].z, unity_ObjectToWorld[2].z))  // scale z axis
 						);
+
+					if (_ShiftY)
+					{
+						if (IN.vertexId == 0 || IN.vertexId == 2)
+						{
+							IN.vertex.y += _PrespectiveShift;
+							if (_UseShaderZ) IN.vertex.z = _LeftZ;
+						}
+						else
+						{
+							IN.vertex.y -= _PrespectiveShift;
+							if (_UseShaderZ) IN.vertex.z = _RightZ;
+						}
+					}
+					else 
+					{
+						if (IN.vertexId < 2)
+						{
+							IN.vertex.x += _PrespectiveShift;
+							if (_UseShaderZ) IN.vertex.z = _LeftZ;
+						}
+						else
+						{
+							IN.vertex.x -= _PrespectiveShift;
+							if (_UseShaderZ) IN.vertex.z = _RightZ;
+						}
+					}
+
+					OUT.opacityDepth = UnityObjectToClipPos(float4(IN.vertex.x, IN.vertex.y, _TransparentZ, 1.0)).z;
+					OUT.vertex = UnityObjectToClipPos(IN.vertex);
+					OUT.texcoord = IN.texcoord;
+					OUT.color = IN.color * _Color;
+					#ifdef PIXELSNAP_ON
+					OUT.vertex = UnityPixelSnap(OUT.vertex);
+					#endif
 
 					OUT.texcoord.x *= worldScale.x * _ScaleUVX;
 					OUT.texcoord.y *= -worldScale.y * _ScaleUVY;
@@ -95,11 +139,18 @@
 					return color;
 				}
 
-				fixed4 frag(v2f IN) : SV_Target
+				void frag(v2f IN, out half4 c : COLOR, out float depth : DEPTH)
 				{
-					fixed4 c = SampleSpriteTexture(IN.texcoord) * IN.color;
+					c = SampleSpriteTexture(IN.texcoord) * IN.color;
 					c.rgb *= c.a;
-					return c;
+					if (c.a < 0.01)
+					{
+						depth = IN.opacityDepth;
+					}
+					else 
+					{
+						depth = IN.vertex.z;
+					}
 				}
 			ENDCG
 			}

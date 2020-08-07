@@ -74,6 +74,13 @@ namespace MatrixJam.Team20
 
         private void FixedUpdate()
         {
+            grounded = velocity.y < float.Epsilon && IsGrounded();
+
+            if (grounded)
+            {
+                velocity.y = 0f;
+            }
+
             if (!grounded)
                 velocity.y -= gravity * 10f * Time.fixedDeltaTime;
             if (_onMovingPlatform)

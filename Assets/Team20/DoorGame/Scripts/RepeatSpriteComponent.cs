@@ -4,10 +4,5 @@ using UnityEngine;
 
 namespace MatrixJam.Team20
 {
-    public class RepeatSpriteComponent : MonoBehaviour
-    {
-        SpriteRenderer sprite;
 
-
-    }
 }

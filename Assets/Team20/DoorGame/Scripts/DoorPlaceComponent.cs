@@ -4,15 +4,27 @@ using UnityEngine;
 
 namespace MatrixJam.Team20
 {
+    public enum PlaceDirection
+    {
+        Left,
+        Right,
+        Bot,
+        Top
+    }
+
     public class DoorPlaceComponent : MonoBehaviour
     {
         public DoorComponent placedDoor = null;
         public Collider2D wallCollider = null;
+        public PlaceDirection placeDirection = PlaceDirection.Right;
+        public Material[] materials = new Material[(int)PlaceDirection.Top + 1];
+
         // Start is called before the first frame update
         void Start()
         {
             if(placedDoor)
             {
+                placedDoor.gameObject.GetComponent<SpriteRenderer>().material = materials[(int)placeDirection];
                 if (wallCollider != null)
                     wallCollider.enabled = false;
             }
@@ -21,6 +33,8 @@ namespace MatrixJam.Team20
         // Update is called once per frame
         void Update()
         {
+            //var material = placedDoor.GetComponent<SpriteRenderer>().material;
+            //var id = material.GetFloat("sc")
             if(placedDoor)
             {
                 placedDoor.transform.position = this.transform.position;
@@ -52,6 +66,7 @@ namespace MatrixJam.Team20
             door.transform.rotation = this.transform.rotation;
             door.gameObject.SetActive(true);
             placedDoor = door;
+            placedDoor.gameObject.GetComponent<SpriteRenderer>().material = materials[(int)placeDirection];
             if (wallCollider != null)
                 wallCollider.enabled = false;
         }
