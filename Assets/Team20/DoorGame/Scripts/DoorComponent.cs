@@ -33,9 +33,14 @@ namespace MatrixJam.Team20
 
         public void AddDoor(DoorComponent door)
         {
+            if (door == null)
+                return;
+
             if (firstDoor == door)
             {
                 firstDoor.ResetColor();
+                firstDoor = null;
+                return;
             }
 
             if (firstDoor == null)
