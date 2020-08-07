@@ -44,6 +44,12 @@ namespace MatrixJam.Team3
                 currentlEnabled.SetActive(true);
             }
         }
+
+
+        public void OpenWebsite(string URL)
+        {
+            Application.OpenURL(URL);
+        }
         // Update is called once per frame
         void Update()
         {
