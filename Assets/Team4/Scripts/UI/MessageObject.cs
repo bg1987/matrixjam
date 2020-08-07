@@ -4,10 +4,9 @@ using UnityEngine;
 
 namespace MatrixJam.Team4
 {
-    public class BoardManager : MonoBehaviour
+    public class MessageObject : MonoBehaviour
     {
-        private int sizeX;
-        private int sizeY;
-        
+        public string messageText;
+        public Texture messageImage;
     }
 }
