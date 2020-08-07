@@ -38,7 +38,7 @@ namespace MatrixJam.Team20
             
             transform.position = doorToWarp.transform.position + new Vector3(doorToSelf.x, doorToSelf.y);
             playerComponent.velocity = Quaternion.AngleAxis(angle, Vector3.forward) * playerComponent.velocity;
-            playerComponent.ignoreHorizontalFor = setIgnoreHorizontal;
+            //playerComponent.ignoreHorizontalFor = setIgnoreHorizontal;
             playerComponent.resetHorizontal = true;
             this.transform.Translate(Time.deltaTime * playerComponent.velocity);
             //transform.rotation = doorToWarp.transform.rotation * Quaternion.AngleAxis(angle, new Vector3(0, 0, 1));

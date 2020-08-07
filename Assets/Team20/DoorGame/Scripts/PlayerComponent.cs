@@ -11,11 +11,13 @@ namespace MatrixJam.Team20
         public float gravity = 10f;
         public float walkSpeed = 10f;
         public float jumpHeight = 10f;
-        public float ignoreHorizontalFor = 0.2f;
+        //public float ignoreHorizontalFor = 0.2f;
         public bool resetHorizontal = false;
         float lastHorizontal = 0f;
         public LayerMask groundLayer;
         public float distance = 0.1f;
+        [SerializeField] private bool _onMovingPlatform = false;
+        public float movingPlatformFix = 1;
 
         [SerializeField] private float _coinNumber = 0f;
 
@@ -75,7 +77,7 @@ namespace MatrixJam.Team20
                 ignoreHorizontalFor = 0f;
             }*/
 
-            ignoreHorizontalFor -= Time.deltaTime;
+            //ignoreHorizontalFor -= Time.deltaTime;
             grounded = velocity.y < float.Epsilon && IsGrounded();
 
             if (grounded)
@@ -94,8 +96,11 @@ namespace MatrixJam.Team20
         {
             if (!grounded)
                 velocity.y -= gravity*10f * Time.fixedDeltaTime;
-
-            this.transform.Translate(velocity * Time.fixedDeltaTime);
+            if (_onMovingPlatform)
+                movingPlatformFix = -1;
+            else
+                movingPlatformFix = 1;
+            this.transform.Translate(velocity * movingPlatformFix * Time.fixedDeltaTime);
         }
 
 
@@ -162,6 +167,11 @@ namespace MatrixJam.Team20
             return _doorKeyReady;
         }
 
+        public void OnMovingPlatform(bool onThePlatform)
+        {
+            _onMovingPlatform = onThePlatform;
+        }
+
         public void SetDoorsY(float yValue)
         {
             _doorYValue = yValue;
@@ -186,6 +196,19 @@ namespace MatrixJam.Team20
         {
             _collectedDoor = door;
             _doorYOffset = _doorYValue - gameObject.transform.position.y;
+        }
+
+        public void ExitPlatformVelocity(float velocity, float velocityX, float velocityY)
+        {
+            // //if (Input.GetAxis("Horizontal") == 0f)
+            // //{
+            // _addedVelocity = velocity;
+            // _addedVelocityX = velocityX;
+            // _addedVelocityY = velocityY;
+            // //Debug.Log(Input.GetAxis("Horizontal"));
+            // // }
+            // 
+            // Debug.Log(_addedVelocity);
         }
     }
 }
