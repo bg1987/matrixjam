@@ -31,7 +31,7 @@ namespace MatrixJam.Team20
             if (wallCollider != null)
                 wallCollider.enabled = true;
 
-            door.enabled = false;
+            door.gameObject.SetActive(false);
             return door;
         }
 
@@ -42,7 +42,7 @@ namespace MatrixJam.Team20
 
             door.transform.position = this.transform.position;
             door.transform.rotation = this.transform.rotation;
-            door.enabled = true;
+            door.gameObject.SetActive(true);
             placedDoor = door;
             if (wallCollider != null)
                 wallCollider.enabled = false;
