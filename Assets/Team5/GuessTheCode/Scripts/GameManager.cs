@@ -8,30 +8,65 @@ namespace MatrixJam.Team5
         public Text display;
         
         public CodeLetter[] letters;
-        public void Init(int num_ent)
-        {
-            // this is how the game starts
-            Debug.Log("start: " + num_ent);
+        public Button[] doors;
 
-            var abc = new string[]
+        private Data _data;
+
+        public void Init(Data data)
+        {
+            _data = data;
+            
+            var panel = _data.letters.ToCharArray();
+            for (int i = 0; i < letters.Length; i++)
             {
-                "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "T", "S",
-                "V", "W", "X", "Y", "Z"
-            };
-            foreach (var letter in letters)
-            {
-                letter.Init(this, abc[Random.Range(0, abc.Length)]);
+                letters[i].Init(this, panel[i].ToString());
             }
+            
+            Reset();
         }
 
         private string _guess; 
         
         public void Clicked(CodeLetter letter)
         {
+            letter.button.interactable = false;
             _guess += letter.label.text;
-            display.text = _guess;
+            if (_guess.Length == 5)
+            {
+                for (int i = 0; i < _data.codes.Length; i++)
+                {
+                    if (_guess == _data.codes[i])
+                    {
+                        doors[i].interactable = true;
+                    }
+                }
+            }
             if (_guess.Length > 5)
-                display.text = "";
+            {
+                Reset();
+            }
+            display.text = _guess;
         }
+
+        public void Reset()
+        {
+            _guess = "";
+            foreach (var letter in letters)
+            {
+                letter.button.interactable = true;
+            }
+            
+            foreach (var door in doors)
+            {
+                door.interactable = false;
+            }
+        }
+    }
+
+    [System.Serializable]
+    public struct Data
+    {
+        public string[] codes;
+        public string letters;
     }
 }
