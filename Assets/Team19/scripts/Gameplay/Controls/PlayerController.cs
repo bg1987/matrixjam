@@ -13,6 +13,9 @@ namespace MatrixJam.Team19.Gameplay.Controls
         [SerializeField]
         private float _stepTimeSeconds = 1f;
 
+        [SerializeField]
+        private LayerMask _stepDenyingLayerMask;
+
         private bool _isReadyToStep = true;
 
         private Team19.Input.PlayerInput _playerInput;
@@ -25,6 +28,8 @@ namespace MatrixJam.Team19.Gameplay.Controls
 
         private Dictionary<Team19.Input.EInputDirection, Vector3> _inputDirectionToVectorMap;
 
+        private Collider _collider;
+
         private void Awake()
         {
             _playerInput = new Team19.Input.PlayerInput();
@@ -36,11 +41,17 @@ namespace MatrixJam.Team19.Gameplay.Controls
                 { Team19.Input.EInputDirection.LEFT, Vector3.left },
                 { Team19.Input.EInputDirection.RIGHT, Vector3.right }
             };
+
+            _collider = GetComponent<Collider>();
         }
 
         private void Update()
         {
             _playerInput.UpdateInput();
+        }
+
+        private void FixedUpdate()
+        {
             UpdateMovement(Time.deltaTime);
         }
 
@@ -48,13 +59,13 @@ namespace MatrixJam.Team19.Gameplay.Controls
         {
             if (_playerInput.IsInputAvailable && _isReadyToStep)
             {
-                _activeStepDirectionVector = _inputDirectionToVectorMap[_playerInput.GetNextInput()];
+                Vector3 nextStepDirectionVector = _inputDirectionToVectorMap[_playerInput.GetNextInput()];
+                Vector3 nextStepDestination = transform.position + (nextStepDirectionVector * _stepDistance);
 
-                _activeStepOrigin = transform.position;
-                _activeStepDestination = _activeStepOrigin + ( _activeStepDirectionVector * _stepDistance );
-
-                _activeStepProgress = 0;
-                _isReadyToStep = false;
+                if (CanPerformNextStep(nextStepDestination))
+                {
+                    UpdateActiveStepData(nextStepDirectionVector);
+                }
             }
 
             if (_isReadyToStep == false && _activeStepDirectionVector != Vector3.zero)
@@ -65,11 +76,32 @@ namespace MatrixJam.Team19.Gameplay.Controls
             }
 
             if (_activeStepProgress > 0.98f) {
-                transform.position = _activeStepDestination;
-                _activeStepDirectionVector = Vector3.zero;
-
-                _isReadyToStep = true;
+                EndStep();
             }
+        }
+
+        private void UpdateActiveStepData(Vector3 directionVector)
+        {
+            _activeStepDirectionVector = directionVector;
+
+            _activeStepOrigin = transform.position;
+            _activeStepDestination = _activeStepOrigin + (directionVector * _stepDistance);
+
+            _activeStepProgress = 0;
+            _isReadyToStep = false;
+        }
+
+        private void EndStep()
+        {
+            transform.position = _activeStepDestination;
+            _activeStepDirectionVector = Vector3.zero;
+
+            _isReadyToStep = true;
+        }
+
+        private bool CanPerformNextStep(Vector3 _destination)
+        {
+            return ! (Physics.OverlapBox(_destination, _collider.bounds.extents, transform.rotation, _stepDenyingLayerMask.value).Length > 0);
         }
     }
 }
