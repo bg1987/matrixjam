@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 1117241635728749829}
   - component: {fileID: 1117241635728749824}
   - component: {fileID: 1117241635728749827}
+  - component: {fileID: 2092688864}
   m_Layer: 0
   m_Name: Player2
-  m_TagString: Untagged
+  m_TagString: Tag0
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,14 +137,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0}
-  gravity: 10
+  gravity: 10.5
   walkSpeed: 10
-  jumpSpeed: 10
-  ignoreHorizontalFor: 0
+  jumpHeight: 35
   resetHorizontal: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  distance: 0.1
+  _onMovingPlatform: 0
+  movingPlatformFix: 1
+  _coinNumber: 0
+  _collectedDoor: {fileID: 0}
+  _doorNumber: 0
+  _doorYValue: 0
+  _doorOffset: 1
+  _lookDirection: 0
 --- !u!114 &1117241635728749824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,3 +178,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a7a5510180aca4799befc313551078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2092688864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117241635728749834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17a47df665c05e41b0ef2a1f141ff0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDoorPlace: {fileID: 0}

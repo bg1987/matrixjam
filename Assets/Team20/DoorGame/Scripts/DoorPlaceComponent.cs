@@ -11,7 +11,11 @@ namespace MatrixJam.Team20
         // Start is called before the first frame update
         void Start()
         {
-            
+            if(placedDoor)
+            {
+                if (wallCollider != null)
+                    wallCollider.enabled = false;
+            }
         }
 
         // Update is called once per frame
