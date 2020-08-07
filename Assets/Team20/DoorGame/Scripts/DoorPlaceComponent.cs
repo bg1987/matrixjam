@@ -17,7 +17,11 @@ namespace MatrixJam.Team20
         // Update is called once per frame
         void Update()
         {
-            
+            if(placedDoor)
+            {
+                placedDoor.transform.position = this.transform.position;
+                placedDoor.transform.rotation = this.transform.rotation;
+            }
         }
 
         public DoorComponent PickDoor()
@@ -46,6 +50,26 @@ namespace MatrixJam.Team20
             placedDoor = door;
             if (wallCollider != null)
                 wallCollider.enabled = false;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            var component = other.GetComponent<CurrentDoorPlaceComponent>();
+            if (!component)
+                return;
+
+            component.currentDoorPlace = this;
+        }
+
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            var component = other.GetComponent<CurrentDoorPlaceComponent>();
+            if (!component)
+                return;
+
+            if(component.currentDoorPlace == this)
+                component.currentDoorPlace = null;
         }
     }
 }

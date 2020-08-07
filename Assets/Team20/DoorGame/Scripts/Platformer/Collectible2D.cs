@@ -12,6 +12,7 @@ namespace MatrixJam.Team20
             {
                 Coin,
                 Door1,
+                DoorPlace,
                 Type3
             }
             [SerializeField] private CollectibleType _collectibleType;
@@ -38,9 +39,8 @@ namespace MatrixJam.Team20
                 PlayerComponent player = other.GetComponent<PlayerComponent>();
                 if (_collectibleType == CollectibleType.Door1 && player != null)
                 {
-                    if (Input.GetKey(KeyCode.E) && player.DoorKeyReady() && player.PlayerStands())
+                    if (Input.GetKey(KeyCode.E) && player.PlayerStands())
                     {
-                        Debug.Log("Door Collected");
                         if (player.GetDoors() == 0)
                         {
                             player.SetDoors(1);

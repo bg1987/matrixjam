@@ -11,7 +11,6 @@ namespace MatrixJam.Team20
         public float gravity = 10f;
         public float walkSpeed = 10f;
         public float jumpHeight = 10f;
-        //public float ignoreHorizontalFor = 0.2f;
         public bool resetHorizontal = false;
         float lastHorizontal = 0f;
         public LayerMask groundLayer;
@@ -26,7 +25,6 @@ namespace MatrixJam.Team20
         [SerializeField] private float _doorYValue = 0;
         [SerializeField] private float _doorOffset = 1f;
         private float _doorYOffset = 0f;
-        private bool _doorKeyReady = true;
         private enum LookDirection
         {
             Right,
@@ -35,49 +33,32 @@ namespace MatrixJam.Team20
 
         [SerializeField] private LookDirection _lookDirection;
 
-
         void Start()
         {
             
         }
 
-
-
         // Update is called once per frame
         void Update()
         {
+            UpdateVelocity();
+            DoorCollection();
+        }
+
+        void UpdateVelocity()
+        {
             float horizontal = Input.GetAxis("Horizontal");
-            if(horizontal == 0f)
+            if (horizontal == 0f)
             {
                 resetHorizontal = false;
             }
 
-            if(resetHorizontal)
-            {
-                //horizontal = lastHorizontal;
-            }
-            else
+            if (!resetHorizontal)
             {
                 lastHorizontal = horizontal;
                 velocity.x = horizontal * walkSpeed;
             }
 
-            //if (ignoreHorizontalFor <= 0f)
-            /*{
-                ignoreHorizontalFor = 0f;
-                velocity.x = horizontal * walkSpeed;
-            }*/
-            /*if(resetHorizontal)
-            {
-                velocity.x = 0f;
-            }
-            else
-            {
-                velocity.x = horizontal * walkSpeed;
-                ignoreHorizontalFor = 0f;
-            }*/
-
-            //ignoreHorizontalFor -= Time.deltaTime;
             grounded = velocity.y < float.Epsilon && IsGrounded();
 
             if (grounded)
@@ -89,13 +70,12 @@ namespace MatrixJam.Team20
                     grounded = false;
                 }
             }
-            DoorCollection();
         }
 
         private void FixedUpdate()
         {
             if (!grounded)
-                velocity.y -= gravity*10f * Time.fixedDeltaTime;
+                velocity.y -= gravity * 10f * Time.fixedDeltaTime;
             if (_onMovingPlatform)
                 movingPlatformFix = -1;
             else
@@ -112,8 +92,6 @@ namespace MatrixJam.Team20
                 _lookDirection = LookDirection.Left;
             if (Input.GetKeyDown(KeyCode.E) && _doorNumber == 1 && PlayerStands())
             {
-                Debug.Log("Door Down");
-                _doorKeyReady = false;
                 SetDoors(0);
                 _collectedDoor.SetActive(true);
                 Vector3 playerLocation = gameObject.transform.position;
@@ -127,8 +105,6 @@ namespace MatrixJam.Team20
                 if (_onMovingPlatform)
                     _collectedDoor.transform.parent = gameObject.transform.parent;
             }
-            if (Input.GetKeyUp(KeyCode.E) & _doorNumber == 0)
-                _doorKeyReady = true;
         }
 
         bool IsGrounded()
@@ -148,25 +124,12 @@ namespace MatrixJam.Team20
 
         public bool PlayerStands()
         {
-            if (velocity.x == 0)
-            {
-                return true;
-            }
-            return false;
+            return velocity.x == 0;
         }
 
         public bool PlayerIsStill()
         {
-            if (PlayerStands() && IsGrounded())
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public bool DoorKeyReady()
-        {
-            return _doorKeyReady;
+            return PlayerStands() && IsGrounded();
         }
 
         public void OnMovingPlatform(bool onThePlatform)

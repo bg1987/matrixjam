@@ -13,6 +13,20 @@ namespace MatrixJam.Team20
             
         }
 
+        DoorPlaceComponent ClosestDoorPlace()
+        {
+            return this.GetComponent<CurrentDoorPlaceComponent>().currentDoorPlace;
+        }
+
+        DoorComponent ClosestDoor()
+        {
+            var doorPlace = ClosestDoorPlace();
+            if (!doorPlace)
+                return null;
+
+            return doorPlace.placedDoor;
+        }
+
         T FindClosest<T>() where T: UnityEngine.MonoBehaviour
         {
             var minDist = float.MaxValue;
@@ -34,7 +48,7 @@ namespace MatrixJam.Team20
 
         void ConnectDoor()
         {
-            var door = FindClosest<DoorComponent>();
+            var door = ClosestDoor();
             if (door != null)
             {
                 if (door.Connected())
@@ -50,7 +64,7 @@ namespace MatrixJam.Team20
 
         void FlipConnectionDirection()
         {
-            var door = FindClosest<DoorComponent>();
+            var door = ClosestDoor();
             if (door.Connected())
                 door.FlipDirection();
         }
@@ -59,7 +73,7 @@ namespace MatrixJam.Team20
 
         void PickPlaceDoor()
         {
-            var doorPlace = FindClosest<DoorPlaceComponent>();
+            var doorPlace = ClosestDoorPlace();
             if (!doorPlace)
                 return;
 

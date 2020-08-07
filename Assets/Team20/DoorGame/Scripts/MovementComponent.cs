@@ -6,6 +6,9 @@ namespace MatrixJam.Team20
 {
     public class MovementComponent : MonoBehaviour
     {
+        public Vector2 velocity = Vector2.zero;
+        bool grounded = false;
+        public float gravity = 10f;
 
         // Start is called before the first frame update
         void Start()
@@ -17,6 +20,13 @@ namespace MatrixJam.Team20
         void Update()
         {
             
+        }
+
+        private void FixedUpdate()
+        {
+            if (!grounded)
+                velocity.y -= gravity * 10f * Time.fixedDeltaTime;
+            this.transform.Translate(velocity * Time.fixedDeltaTime);
         }
     }
 }
