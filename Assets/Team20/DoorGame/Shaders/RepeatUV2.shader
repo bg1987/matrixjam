@@ -26,6 +26,7 @@
 				"RenderType" = "Transparent"
 				"PreviewType" = "Plane"
 				"CanUseSpriteAtlas" = "True"
+				"DisableBatching" = "True"
 			}
 
 			Cull Off
@@ -80,9 +81,10 @@
 						length(float3(unity_ObjectToWorld[0].z, unity_ObjectToWorld[1].z, unity_ObjectToWorld[2].z))  // scale z axis
 						);
 
+					uint vid = IN.vertexId % 4;
 					if (_ShiftY)
 					{
-						if (IN.vertexId == 0 || IN.vertexId == 2)
+						if (vid == 0 || vid == 2)
 						{
 							IN.vertex.y += _PrespectiveShift;
 							if (_UseShaderZ) IN.vertex.z = _LeftZ;
@@ -95,7 +97,7 @@
 					}
 					else 
 					{
-						if (IN.vertexId < 2)
+						if (vid < 2)
 						{
 							IN.vertex.x += _PrespectiveShift;
 							if (_UseShaderZ) IN.vertex.z = _LeftZ;

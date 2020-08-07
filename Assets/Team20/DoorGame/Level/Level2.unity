@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcabcd8b9900166489ce1e9c15afe896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextScene: Assets/Team20/DoorGame/Game
+  NextScene: Assets/Team20/DoorGame/Level/Level2
 --- !u!4 &80837510 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 241704539853054487, guid: 92bdc4c7d07e5414fb041b11f7bda9ee,
@@ -178,24 +178,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 42857113, guid: a26036c8798b2d747bb76a3ea34717fc, type: 3}
-      propertyPath: _player
-      value: 
-      objectReference: {fileID: 2092688856}
-    - target: {fileID: 42857113, guid: a26036c8798b2d747bb76a3ea34717fc, type: 3}
-      propertyPath: _smartCameraOn
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3583244937520514610, guid: a26036c8798b2d747bb76a3ea34717fc,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 3583244937520514610, guid: a26036c8798b2d747bb76a3ea34717fc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.35
-      objectReference: {fileID: 0}
     - target: {fileID: 3583244937520514612, guid: a26036c8798b2d747bb76a3ea34717fc,
         type: 3}
       propertyPath: orthographic
@@ -347,12 +329,12 @@ PrefabInstance:
     - target: {fileID: 5513980242686439857, guid: fa1a58635eac6db41b680ba2646fc51e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.08
+      value: 15.32
       objectReference: {fileID: 0}
     - target: {fileID: 5513980242686439857, guid: fa1a58635eac6db41b680ba2646fc51e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.73
+      value: -9.553
       objectReference: {fileID: 0}
     - target: {fileID: 5513980242686439857, guid: fa1a58635eac6db41b680ba2646fc51e,
         type: 3}
@@ -402,12 +384,12 @@ PrefabInstance:
     - target: {fileID: 5513980242686439857, guid: fa1a58635eac6db41b680ba2646fc51e,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 6.3054905
+      value: 6.699097
       objectReference: {fileID: 0}
     - target: {fileID: 5513980242686439857, guid: fa1a58635eac6db41b680ba2646fc51e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0388595
+      value: 0.8805253
       objectReference: {fileID: 0}
     - target: {fileID: 5513980242686439858, guid: fa1a58635eac6db41b680ba2646fc51e,
         type: 3}
@@ -649,7 +631,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb4714ecbd484c48b7b1e6c1d2abb53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
 --- !u!1 &689482244
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,8 +739,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723304808}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -30.04, y: 6.105, z: 20}
-  m_LocalScale: {x: 1.1202414, y: 1.0011756, z: 1}
+  m_LocalPosition: {x: -29.276, y: 6.043, z: 20}
+  m_LocalScale: {x: 1.1998463, y: 1.0127312, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
@@ -1054,7 +1035,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb4714ecbd484c48b7b1e6c1d2abb53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
 --- !u!1 &1135720636
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,9 +1988,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05771c31ccebec64eace940e53dbaa83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2092688856 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1117241635728749834, guid: 2979444957a6dc040a2f8ae1e7e69056,
-    type: 3}
-  m_PrefabInstance: {fileID: 1318988070}
-  m_PrefabAsset: {fileID: 0}

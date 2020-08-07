@@ -14,6 +14,7 @@ namespace MatrixJam.Team20
 
     public class DoorPlaceComponent : MonoBehaviour
     {
+        public bool canRemoveDoor = false; 
         public DoorComponent placedDoor = null;
         public Collider2D wallCollider = null;
         public PlaceDirection placeDirection = PlaceDirection.Right;
@@ -44,7 +45,7 @@ namespace MatrixJam.Team20
 
         public DoorComponent PickDoor()
         {
-            if (!placedDoor)
+            if (!placedDoor || !canRemoveDoor)
                 return null;
 
             var door = placedDoor;
