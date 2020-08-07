@@ -9,14 +9,14 @@ namespace MatrixJam.Team22
         public void Miss()
         {
             Destroy(gameObject);
-            // TODO: ADD FUCKUP TO MANAGER
+
+            GameManager.instance.UpdateStats(0, 1);
         }
 
         public void Slice()
         {
-            // TODO: GAMEFEEL
             Destroy(gameObject);
-            print("DESTROYED BAMBOO");
+            GameManager.instance.UpdateStats(1, 0);
         }
     }
 }
