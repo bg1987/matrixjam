@@ -47,7 +47,7 @@ namespace MatrixJam
             }
             else
             {
-                EnterDefault(GameJamSetup._teamNumber);
+                EnterDefault(GameJamData.TeamNumber);
             } 
         }
 
@@ -89,7 +89,6 @@ namespace MatrixJam
             OrganizeEnters();
             OrganizeExits();
             entries[num_ent].Enter();
-
         }
 
         public void EnterDefault(int lvl)
