@@ -8,10 +8,14 @@ namespace MatrixJam.Team14
     {
         public static TrainController Instance { get; private set; }
 
-        [Header("Debug")] [SerializeField] private bool debugStates;
+        [Header("States config")]
+        [SerializeField] private Animator anim;
+        [SerializeField] private float jumpTime = 0.4f;
+        
+        [Header("Debug")] 
+        [SerializeField] private bool debugStates;
         [SerializeField] private Color debugColor = Color.red;
         [SerializeField] private Vector2 debugSize = new Vector2(2, 2);
-        [SerializeField] private float jumpDist;
 
         private TrainState _currstate;
         private TrainState _prevState;
@@ -32,8 +36,13 @@ namespace MatrixJam.Team14
             }
 
             Instance = this;
-            Init();
+            CreateStates();
             _currstate = NullState;
+        }
+
+        private void OnValidate()
+        {
+            CreateStates();
         }
 
         private void OnDestroy()
@@ -74,17 +83,19 @@ namespace MatrixJam.Team14
             
             _currstate = newState;
             newState.OnEnter();
+
+            if (newState.AnimTrigger != null)
+                anim.SetTrigger(newState.AnimTrigger);
             
             _prevState = newState;
         }
 
 
-        private void Init()
+        private void CreateStates()
         {
             DriveState = new TrainDriveState();
-            JumpState = new TrainJumpState(jumpDist);
-            DuckState = new TrainDuckState();
-            DetourState = new TrainDetourState();
+            JumpState = new TrainJumpState(jumpTime);
+            DuckState = new TrainDuckState();    
             NullState = new TrainNullState();
         }
 
