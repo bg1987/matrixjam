@@ -3,7 +3,9 @@ Shader "Custom/Numbers Falling 2"
 {
 	Properties
 	{
-		_Grid("Grid", range(1, 50.)) = 30.
+		_GridX("Grid X", range(1, 50.)) = 30.
+		_GridY("Grid Y", range(1, 50.)) = 30.
+
 		_SpeedMax("Speed Max", range(0, 30.)) = 20.
 		_SpeedMin("Speed Min", range(0, 10.)) = 2.
 		_Density("Density", range(0, 30.)) = 5.
@@ -96,7 +98,8 @@ Shader "Custom/Numbers Falling 2"
 					return step(.1, 1. - tex) * borders.x * borders.y;
 			}
 
-			float _Grid;
+			float _GridX;
+			float _GridY;
 			float _SpeedMax;
 			float _SpeedMin;
 			float _BacklightStartValue;
@@ -109,8 +112,11 @@ Shader "Custom/Numbers Falling 2"
 
 			fixed4 frag(v2f_img i) : SV_Target
 			{
-				float2 ipos = floor(i.uv * _Grid);
-				float2 fpos = frac(i.uv * _Grid);
+
+				const float2 grid = float2(_GridX, _GridY);
+
+				float2 ipos = floor(i.uv * grid);
+				float2 fpos = frac(i.uv * grid);
 
 				ipos.y += floor(_Time.y * max(_SpeedMin, _SpeedMax * noise(ipos.x)));
 				float charNum = noise(ipos);
