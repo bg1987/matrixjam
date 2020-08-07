@@ -20,11 +20,6 @@ namespace MatrixJam.Team20
 
         [SerializeField] private float _coinNumber = 0f;
 
-        [SerializeField] private GameObject _collectedDoor;
-        [SerializeField] private int _doorNumber = 0;
-        [SerializeField] private float _doorYValue = 0;
-        [SerializeField] private float _doorOffset = 1f;
-        private float _doorYOffset = 0f;
         private enum LookDirection
         {
             Right,
@@ -97,21 +92,6 @@ namespace MatrixJam.Team20
                 _lookDirection = LookDirection.Right;
             if (Input.GetKeyDown(KeyCode.A))
                 _lookDirection = LookDirection.Left;
-            if (Input.GetKeyDown(KeyCode.E) && _doorNumber == 1 && PlayerStands())
-            {
-                SetDoors(0);
-                _collectedDoor.SetActive(true);
-                Vector3 playerLocation = gameObject.transform.position;
-                if (_lookDirection == LookDirection.Right)
-                    _doorOffset = Mathf.Abs(_doorOffset);
-                else
-                    _doorOffset = -Mathf.Abs(_doorOffset);
-                playerLocation.x = playerLocation.x + _doorOffset;
-                playerLocation.y = playerLocation.y + _doorYOffset;
-                _collectedDoor.transform.position = playerLocation;
-                if (_onMovingPlatform)
-                    _collectedDoor.transform.parent = gameObject.transform.parent;
-            }
         }
 
         bool IsGrounded()
@@ -144,30 +124,9 @@ namespace MatrixJam.Team20
             _onMovingPlatform = onThePlatform;
         }
 
-        public void SetDoorsY(float yValue)
-        {
-            _doorYValue = yValue;
-        }
-
-        public void SetDoors(int number)
-        {
-            _doorNumber = number;
-        }
-
         public void AddCoins(int number)
         {
             _coinNumber += number;
-        }
-
-        public int GetDoors()
-        {
-            return _doorNumber;
-        }
-
-        public void CollectDoor(GameObject door)
-        {
-            _collectedDoor = door;
-            _doorYOffset = _doorYValue - gameObject.transform.position.y;
         }
 
         public void ExitPlatformVelocity(float velocity, float velocityX, float velocityY)

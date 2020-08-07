@@ -10,10 +10,7 @@ namespace MatrixJam.Team20
         {
             private enum CollectibleType
             {
-                Coin,
-                Door1,
-                DoorPlace,
-                Type3
+                Coin
             }
             [SerializeField] private CollectibleType _collectibleType;
 
@@ -29,27 +26,13 @@ namespace MatrixJam.Team20
                         player.AddCoins(1);
                         Destroy(gameObject);
                     }
-
                 }
             }
 
 
             private void OnTriggerStay2D(Collider2D other)
             {
-                PlayerComponent player = other.GetComponent<PlayerComponent>();
-                if (_collectibleType == CollectibleType.Door1 && player != null)
-                {
-                    if (Input.GetKey(KeyCode.E) && player.PlayerStands())
-                    {
-                        if (player.GetDoors() == 0)
-                        {
-                            player.SetDoors(1);
-                            player.SetDoorsY(gameObject.transform.position.y);
-                            player.CollectDoor(gameObject);
-                            gameObject.SetActive(false);
-                        }
-                    }
-                }
+
             }
         }
     }

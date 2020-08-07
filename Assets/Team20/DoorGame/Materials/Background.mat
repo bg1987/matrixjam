@@ -68,8 +68,8 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OffsetUVX: 0
-    - _OffsetUVY: 0
+    - _OffsetUVX: -0.02
+    - _OffsetUVY: 0.04
     - _Parallax: 0.02
     - _PrespectiveShift: 0
     - _RightZ: 0
@@ -79,6 +79,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _TransparentZ: 0
     - _UVSec: 0
     - _UseShaderZ: 0
     - _ZWrite: 1

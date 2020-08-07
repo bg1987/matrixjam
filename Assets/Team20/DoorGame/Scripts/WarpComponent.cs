@@ -10,7 +10,7 @@ namespace MatrixJam.Team20
         bool isRightToDoor;
         Vector2 doorDirection;
         Vector2 enteringDirection;
-        public float setIgnoreHorizontal = 0.25f;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -31,17 +31,29 @@ namespace MatrixJam.Team20
 
         void Warp()
         {
-            var playerComponent = GetComponent<PlayerComponent>();
             var doorToSelf = DoorToSelf();
             var doorToWarp = currentDoor.ConnectedDoor();
             var angle = Vector2.Angle(currentDoor.Direction(), doorToWarp.Direction());
-            
-            transform.position = doorToWarp.transform.position + new Vector3(doorToSelf.x, doorToSelf.y);
-            playerComponent.velocity = Quaternion.AngleAxis(angle, Vector3.forward) * playerComponent.velocity;
-            //playerComponent.ignoreHorizontalFor = setIgnoreHorizontal;
-            playerComponent.resetHorizontal = true;
-            this.transform.Translate(Time.deltaTime * playerComponent.velocity);
-            //transform.rotation = doorToWarp.transform.rotation * Quaternion.AngleAxis(angle, new Vector3(0, 0, 1));
+
+            var playerComponent = GetComponent<PlayerComponent>();
+            var movementComponent = GetComponent<MovementComponent>();
+            if(playerComponent)
+            {
+                transform.position = doorToWarp.transform.position + new Vector3(doorToSelf.x, doorToSelf.y);
+                playerComponent.velocity = Quaternion.AngleAxis(angle, Vector3.forward) * playerComponent.velocity;
+
+                playerComponent.resetHorizontal = true;
+                this.transform.Translate(Time.deltaTime * playerComponent.velocity);
+            }
+            else if(movementComponent)
+            {
+                transform.position = doorToWarp.transform.position + new Vector3(doorToSelf.x, doorToSelf.y);
+                movementComponent.velocity = Quaternion.AngleAxis(angle, Vector3.forward) * movementComponent.velocity;
+                this.transform.Translate(Time.deltaTime * movementComponent.velocity);
+            }
+
+
+
             currentDoor = null;
         }
 
