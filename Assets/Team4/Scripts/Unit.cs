@@ -19,7 +19,7 @@ namespace MatrixJam.Team4
         public Position Position { get => position; set => position = value; }
     }
 
-    public enum Direction
+    public enum AttackDirection
     {
         row,
         colum,

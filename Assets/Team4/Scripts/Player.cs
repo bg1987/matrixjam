@@ -12,9 +12,9 @@ namespace MatrixJam.Team4
         public int Score { get => _score; set => _score = value; }
         public List<Unit> MyUnits { get => _myUnits; set => _myUnits = value; }
 
-        public virtual TurnObject yourTurn(TurnData turnData) { return null; }
+        public virtual TurnObject YourTurn(TurnData turnData) { return null; }
 
-        protected TurnObject validateTurnObject(TurnObject validationObject)
+        protected TurnObject ValidateTurnObject(TurnObject validationObject)
         {
             if (validationObject.ChosenPositionIndex == null)
             {
