@@ -7,18 +7,31 @@ namespace MatrixJam.Team4
     public class NumberButtonsManager
     {
         public static int BOARD_SIZE = 9;
+        private static float SMALL_PADDING = 1;
+        private static float LARGE_PADDING = 3;
         private static NumberButtonScript[][] _allButtons = new NumberButtonScript[BOARD_SIZE][];
+
         public static void GenerateBoard(NumberButtonScript numberPrefab)
         {
             var squareWidth = SquareWidth(numberPrefab);
             var originalPosition = numberPrefab.transform.localPosition;
             
+            float horizontalPad = 0;
             for (int i = 0; i < BOARD_SIZE; i++)
             {
+                if (i == 3 || i == 6)
+                {
+                    horizontalPad += LARGE_PADDING;
+                }
                 _allButtons[i] = new NumberButtonScript[BOARD_SIZE];
+                float verticalPad = 0;
                 for (int j = 0; j < BOARD_SIZE; j++)
                 {
-                    Vector3 position = originalPosition + new Vector3(i * squareWidth, -j * squareWidth, 0);
+                    if (j == 3 || j == 6)
+                    {
+                        verticalPad += LARGE_PADDING;
+                    }
+                    Vector3 position = originalPosition + new Vector3(i * squareWidth+horizontalPad, -(j * squareWidth+ verticalPad), 0);
                     var clone = GameObject.Instantiate(numberPrefab, numberPrefab.transform.parent);
                     clone.transform.localPosition = position;
                     clone.Index = new Vector2(i,j);
@@ -32,7 +45,7 @@ namespace MatrixJam.Team4
         public static float SquareWidth(NumberButtonScript numberPrefab)
         {
             var renderer = numberPrefab.GetComponent<RectTransform>();
-            var squareWidth = renderer.rect.width;
+            var squareWidth = renderer.rect.width + SMALL_PADDING;
             return squareWidth;
         }
 
