@@ -59,12 +59,13 @@ namespace MatrixJam.Team19.Gameplay.Controls
         {
             if (_playerInput.IsInputAvailable && _isReadyToStep)
             {
-                Vector3 nextStepDirectionVector = _inputDirectionToVectorMap[_playerInput.GetNextInput()];
-                Vector3 nextStepDestination = transform.position + (nextStepDirectionVector * _stepDistance);
+                Vector3 nextLocalDirectionVector = _inputDirectionToVectorMap[_playerInput.GetNextInput()];
+                Vector3 nextWorldDirectionVector = transform.TransformDirection(nextLocalDirectionVector);
+                Vector3 nextStepDestination = transform.position + (nextWorldDirectionVector * _stepDistance);
 
                 if (CanPerformNextStep(nextStepDestination))
                 {
-                    UpdateActiveStepData(nextStepDirectionVector);
+                    UpdateActiveStepData(nextWorldDirectionVector);
                 }
             }
 
