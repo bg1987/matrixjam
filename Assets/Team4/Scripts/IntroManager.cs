@@ -8,11 +8,11 @@ namespace MatrixJam.Team4
 {
     public class IntroManager
     {
-        private UIManager uiManager;
+
         private List<MessageObject> _introMessages;
         private int _msgIndex;
 
-        public IntroManager(List<UIMessage> introMessages)
+        public IntroManager(List<MessageObject> introMessages)
         {
             _introMessages = introMessages;
             _msgIndex = 0;
@@ -21,9 +21,9 @@ namespace MatrixJam.Team4
         public void nextMessage()
         {
             ++_msgIndex;
-            if(_msgIndex < _introMessages.Count())
+            if(_msgIndex < _introMessages.Count)
             {
-                uiManager.ShowIntroMessage(_introMessages.IndexOf(_msgIndex));
+                UIManager.ShowIntroMessage(_introMessages[_msgIndex]);
                 return;
             } 
 

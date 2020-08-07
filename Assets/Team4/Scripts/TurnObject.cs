@@ -12,10 +12,10 @@ namespace MatrixJam.Team4
         //out of the possible moves array (see class PositionOptions)
         private int? _chosenPositionIndex;
         //the direction of the attack
-        private Direction _direction;
+        private AttackDirection _attackDirection;
 
         public int? ChosenPositionIndex { get => _chosenPositionIndex; set => _chosenPositionIndex = value; }
-        public Direction Direction { get => _direction; set => _direction = value; }
+        public AttackDirection AttackDirection { get => _attackDirection; set => _attackDirection = value; }
         public Unit ChosenUnit { get => _chosenUnit; set => _chosenUnit = value; }
     }
 
