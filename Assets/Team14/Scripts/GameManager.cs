@@ -1,7 +1,7 @@
 ﻿using BezierSolution;
 using UnityEngine;
 
-namespace MitspeTrainRunner
+namespace MatrixJam.Team14
 {
     public class GameManager : MonoBehaviour
     {
@@ -14,6 +14,10 @@ namespace MitspeTrainRunner
         [SerializeField] private BezierSpline mainSpline;
         [SerializeField] private Transform character;
         [SerializeField] private AudioSource mainAudio;
+
+        [Header("Infra")]
+        [SerializeField] private Exit winExit;
+        [SerializeField] private Exit loseExit;
 
         private bool reachedEnd;
         private int _audioLoopCounter;

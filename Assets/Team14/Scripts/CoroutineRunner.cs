@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace MitspeTrainRunner
+namespace MatrixJam.Team14
 {
     public class CoroutineRunner : MonoBehaviour
     {

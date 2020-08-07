@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace MitspeTrainRunner
+namespace MatrixJam.Team14
 {
     [Serializable]
     public abstract class TrainState

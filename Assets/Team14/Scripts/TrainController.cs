@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace MitspeTrainRunner
+namespace MatrixJam.Team14
 {
     public class TrainController : MonoBehaviour
     {
