@@ -1155,6 +1155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1907177324}
   - component: {fileID: 1907177323}
+  - component: {fileID: 1907177325}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1195,6 +1196,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1907177325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907177322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1556fa4fb0354db48f70dba79ee4e119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1907177323}
+  cam: {fileID: 510153595}
+  beatColors:
+  - {r: 0, g: 1, b: 0.8065431, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  beatSizes:
+  - 6
+  - 4
+  - 4
+  - 4
 --- !u!1001 &2046681116
 PrefabInstance:
   m_ObjectHideFlags: 0
