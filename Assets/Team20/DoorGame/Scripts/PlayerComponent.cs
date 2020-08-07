@@ -124,6 +124,8 @@ namespace MatrixJam.Team20
                 playerLocation.x = playerLocation.x + _doorOffset;
                 playerLocation.y = playerLocation.y + _doorYOffset;
                 _collectedDoor.transform.position = playerLocation;
+                if (_onMovingPlatform)
+                    _collectedDoor.transform.parent = gameObject.transform.parent;
             }
             if (Input.GetKeyUp(KeyCode.E) & _doorNumber == 0)
                 _doorKeyReady = true;
