@@ -1,17 +1,35 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace MatrixJam.Team14
 {
+    public struct FutureAnimation
+    {
+        public readonly Animator Anim;
+        public readonly float Value;
+        public readonly string Trigger;
+
+        public FutureAnimation(Animator anim, float value, string trigger)
+        {
+            Anim = anim;
+            Value = value;
+            Trigger = trigger;
+        }
+    }
+    
     public class TrainController : MonoBehaviour
     {
         public static TrainController Instance { get; private set; }
 
         [Header("States config")]
-        [SerializeField] private Animator anim;
         [SerializeField] private float jumpTime = 0.4f;
         
+        [Header("Cars config")]
+        [SerializeField] private Animator masterCarAnim;
+        [SerializeField] private Animator[] slaveCarAnims;
+
         [Header("Debug")] 
         [SerializeField] private bool debugStates;
         [SerializeField] private Color debugColor = Color.red;
@@ -25,6 +43,8 @@ namespace MatrixJam.Team14
         public static TrainState DuckState { get; private set; }
         public static TrainState DetourState { get; private set; }
         public static TrainState NullState { get; private set; }
+        
+        private HashSet<FutureAnimation> _futureAnimations = new HashSet<FutureAnimation>();
 
         private void Awake()
         {
@@ -54,6 +74,7 @@ namespace MatrixJam.Team14
         private void Update()
         {
             _currstate?.OnUpdate();
+            HandlePendingAnimations();
         }
 
         private void Start()
@@ -85,7 +106,7 @@ namespace MatrixJam.Team14
             newState.OnEnter();
 
             if (newState.AnimTrigger != null)
-                anim.SetTrigger(newState.AnimTrigger);
+                Animate(newState.AnimTrigger);
             
             _prevState = newState;
         }
@@ -109,9 +130,29 @@ namespace MatrixJam.Team14
             TransitionState(DuckState);
         }
 
-        public void Detour()
+        private void HandlePendingAnimations()
         {
-            TransitionState(DetourState);
+            foreach (var futureAnim in _futureAnimations.Reverse())
+            {
+                var currValue = futureAnim.Anim.transform.position.z;
+                if (currValue >= futureAnim.Value)
+                {
+                    _futureAnimations.Remove(futureAnim);
+                    futureAnim.Anim.SetTrigger(futureAnim.Trigger);
+                }
+            }
+        }
+
+        private void Animate(string trigger)
+        {
+            masterCarAnim.SetTrigger(trigger);
+            
+            var value = masterCarAnim.transform.position.z;
+            foreach (var slaveCarAnim in slaveCarAnims)
+            {
+                var futureAnim = new FutureAnimation(slaveCarAnim, value, trigger);
+                _futureAnimations.Add(futureAnim);
+            }
         }
     }
 }
