@@ -9,7 +9,7 @@ namespace MatrixJam.Team2
     {
         // Floop / Flooper / Triple floop / FloopGun / FloopTron / FloopMizer
         [SerializeField] private Transform firePoint;
-        [SerializeField] private int changeableLayer;
+        [SerializeField] private int floopableLayer;
 
         private LineRenderer fireTrail;
         private float rayCastLength = 100;
@@ -23,7 +23,6 @@ namespace MatrixJam.Team2
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                Debug.Log("Shooting");
                 Shoot();
             }
         }
@@ -32,7 +31,7 @@ namespace MatrixJam.Team2
         {
             var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, mousePosition - firePoint.position, rayCastLength, 1 << changeableLayer);
+            RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, mousePosition - firePoint.position, rayCastLength, 1 << floopableLayer);
 
             // What? Why is RaycastHit2D acting as a bool ???
             if (hitInfo)

@@ -629,6 +629,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.34, y: 6.64}
   m_EdgeRadius: 0
+--- !u!1 &1298317176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1298317177}
+  m_Layer: 0
+  m_Name: Floopables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1298317177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298317176}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.379836, y: -1.0156132, z: -18.586428}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 299339792876741264}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1611735649
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,7 +972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1131356591}
-  changeableLayer: 0
+  floopableLayer: 8
 --- !u!120 &1823921486
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1343,6 +1374,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1967182985}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &299339792876741264 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8619740168416866651, guid: 362390aaa25e46a42abff42251ae5e4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8338432264399066059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4942338097149027027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1412,3 +1449,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 854df534696cc824e857bfeb1c3d2761, type: 3}
+--- !u!1001 &8338432264399066059
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1298317177}
+    m_Modifications:
+    - target: {fileID: 8619740168416866651, guid: 362390aaa25e46a42abff42251ae5e4f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619740168416866651, guid: 362390aaa25e46a42abff42251ae5e4f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619740168416866651, guid: 362390aaa25e46a42abff42251ae5e4f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 19.295412
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619740168416866651, guid: 362390aaa25e46a42abff42251ae5e4f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619740168416866651, guid: 362390aaa25e46a42abff42251ae5e4f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619740168416866651, guid: 362390aaa25e46a42abff42251ae5e4f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619740168416866651, guid: 362390aaa25e46a42abff42251ae5e4f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619740168416866651, guid: 362390aaa25e46a42abff42251ae5e4f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619740168416866651, guid: 362390aaa25e46a42abff42251ae5e4f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619740168416866651, guid: 362390aaa25e46a42abff42251ae5e4f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619740168416866651, guid: 362390aaa25e46a42abff42251ae5e4f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619740168416866660, guid: 362390aaa25e46a42abff42251ae5e4f,
+        type: 3}
+      propertyPath: m_Name
+      value: Floopablewall
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 362390aaa25e46a42abff42251ae5e4f, type: 3}
