@@ -73,6 +73,7 @@ namespace MatrixJam.Team20
                 }
                 if (Input.GetKeyDown(KeyCode.E) && _doorNumber == 1 && PlayerStands())
                 {
+                    Debug.Log("Door Down");
                     _doorKeyReady = false;
                     SetDoors(0);
                     _collectedDoor.SetActive(true);

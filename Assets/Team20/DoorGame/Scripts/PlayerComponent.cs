@@ -10,32 +10,36 @@ namespace MatrixJam.Team20
         bool grounded = false;
         public float gravity = 10f;
         public float walkSpeed = 10f;
-        public float jumpSpeed = 10f;
+        public float jumpHeight = 10f;
         public float ignoreHorizontalFor = 0.2f;
         public bool resetHorizontal = false;
         float lastHorizontal = 0f;
         public LayerMask groundLayer;
-        // Start is called before the first frame update
+        public float distance = 0.1f;
+
+        [SerializeField] private float _coinNumber = 0f;
+
+        [SerializeField] private GameObject _collectedDoor;
+        [SerializeField] private int _doorNumber = 0;
+        [SerializeField] private float _doorYValue = 0;
+        [SerializeField] private float _doorOffset = 1f;
+        private float _doorYOffset = 0f;
+        private bool _doorKeyReady = true;
+        private enum LookDirection
+        {
+            Right,
+            Left
+        }
+
+        [SerializeField] private LookDirection _lookDirection;
+
+
         void Start()
         {
             
         }
 
-        bool IsGrounded()
-        {
-            var bounds = this.GetComponent<CapsuleCollider2D>().bounds;
-            Vector2 position = new Vector2(bounds.center.x, bounds.min.y);
-            Vector2 direction = Vector2.down;
-            float distance = 1.0f;
 
-            RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer);
-            if (hit.collider != null)
-            {
-                return true;
-            }
-
-            return false;
-        }
 
         // Update is called once per frame
         void Update()
@@ -79,18 +83,109 @@ namespace MatrixJam.Team20
                 velocity.y = 0f;
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    velocity.y = jumpSpeed;
+                    velocity.y = jumpHeight;
                     grounded = false;
                 }
             }
+            DoorCollection();
         }
 
         private void FixedUpdate()
         {
             if (!grounded)
-                velocity.y -= gravity * Time.fixedDeltaTime;
+                velocity.y -= gravity*10f * Time.fixedDeltaTime;
 
             this.transform.Translate(velocity * Time.fixedDeltaTime);
+        }
+
+
+        public void DoorCollection()
+        {
+            if (Input.GetKeyDown(KeyCode.D))
+                _lookDirection = LookDirection.Right;
+            if (Input.GetKeyDown(KeyCode.A))
+                _lookDirection = LookDirection.Left;
+            if (Input.GetKeyDown(KeyCode.E) && _doorNumber == 1 && PlayerStands())
+            {
+                Debug.Log("Door Down");
+                _doorKeyReady = false;
+                SetDoors(0);
+                _collectedDoor.SetActive(true);
+                Vector3 playerLocation = gameObject.transform.position;
+                if (_lookDirection == LookDirection.Right)
+                    _doorOffset = Mathf.Abs(_doorOffset);
+                else
+                    _doorOffset = -Mathf.Abs(_doorOffset);
+                playerLocation.x = playerLocation.x + _doorOffset;
+                playerLocation.y = playerLocation.y + _doorYOffset;
+                _collectedDoor.transform.position = playerLocation;
+            }
+            if (Input.GetKeyUp(KeyCode.E) & _doorNumber == 0)
+                _doorKeyReady = true;
+        }
+
+        bool IsGrounded()
+        {
+            var bounds = this.GetComponent<CapsuleCollider2D>().bounds;
+            Vector2 position = new Vector2(bounds.center.x, bounds.min.y);
+            Vector2 direction = Vector2.down;
+
+            RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer);
+            if (hit.collider != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool PlayerStands()
+        {
+            if (velocity.x == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool PlayerIsStill()
+        {
+            if (PlayerStands() && IsGrounded())
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool DoorKeyReady()
+        {
+            return _doorKeyReady;
+        }
+
+        public void SetDoorsY(float yValue)
+        {
+            _doorYValue = yValue;
+        }
+
+        public void SetDoors(int number)
+        {
+            _doorNumber = number;
+        }
+
+        public void AddCoins(int number)
+        {
+            _coinNumber += number;
+        }
+
+        public int GetDoors()
+        {
+            return _doorNumber;
+        }
+
+        public void CollectDoor(GameObject door)
+        {
+            _collectedDoor = door;
+            _doorYOffset = _doorYValue - gameObject.transform.position.y;
         }
     }
 }

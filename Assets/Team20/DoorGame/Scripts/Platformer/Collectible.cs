@@ -35,7 +35,7 @@ namespace MatrixJam.Team20
             {
                 if (Input.GetKey(KeyCode.E) && player.DoorKeyReady() && player.PlayerStands())
                 {
-                    Debug.Log("Door");
+                    Debug.Log("Door Collected");
                     if (player.GetDoors() == 0)
                     {
                         player.SetDoors(1);
