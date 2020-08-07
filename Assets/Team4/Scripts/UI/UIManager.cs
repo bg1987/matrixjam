@@ -28,13 +28,12 @@ namespace MatrixJam.Team4
         //public static void ShowMessage()
         public static void ShowIntroMessage(MessageObject message)
         {
-            TooltipManager.ShowMessage(message.messageText, MessageLocation.AboveBoard);
+            ShowMessage(message.messageText, MessageLocation.AboveBoard);
         }
 
 
         public static void ShowMessage(string message, MessageLocation location)
         {
-            if 
             TooltipManager.ShowMessage(message, location);
         }
 

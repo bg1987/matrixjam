@@ -4,18 +4,28 @@ using UnityEngine;
 
 namespace MatrixJam.Team
 {
-    public class EventManager : MonoBehaviour
+    public class EventManager
     {
-        // Start is called before the first frame update
-        void Start()
+        public static EventManager Singleton;
+        public event EventBoardCreated BoardCreated;
+        public delegate void EventBoardCreated();
+
+        public event EventIntroDone IntroDone;
+        public delegate void EventIntroDone();
+
+        public void OnBoardCreated()
         {
-            
+            BoardCreated?.Invoke();
         }
 
-        // Update is called once per frame
-        void Update()
+        public void OnIntroDone()
         {
-            
+            IntroDone?.Invoke();
+        }
+
+        public void Awake()
+        {
+            Singleton = this;
         }
     }
 }
