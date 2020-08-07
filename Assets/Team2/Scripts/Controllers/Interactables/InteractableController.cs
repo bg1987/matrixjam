@@ -7,12 +7,10 @@ namespace MatrixJam.Team2
 {
     public abstract class InteractableController : MonoBehaviour, IInteractable
     {
-        [SerializeField] protected GameObject InteractionTextPrefab;
-        [SerializeField] protected string interactionText;
-        [SerializeField] protected Vector3 interactionTextOffset;
+        [SerializeField] protected GameObject interactionTextObject;
 
         protected bool isInteractable = true;
-        protected GameObject interactionTextObject;
+
 
         protected abstract void Interaction();
 
@@ -38,12 +36,7 @@ namespace MatrixJam.Team2
 
         protected void EnableInteractionDisplay()
         {
-            if (interactionTextObject == null)
-            {
-                interactionTextObject = Instantiate(InteractionTextPrefab, transform.position + interactionTextOffset, Quaternion.identity, this.transform);
-                interactionTextObject.GetComponentInChildren<TextMeshProUGUI>().text = interactionText;
-            }
-            else
+            if (interactionTextObject != null)
             {
                 interactionTextObject.SetActive(true);
             }
