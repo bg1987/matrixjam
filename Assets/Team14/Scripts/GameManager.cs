@@ -9,7 +9,7 @@ namespace MatrixJam.Team14
     {
         // If the audio is a loop - How many times do we expect it to repeat? (For spline pos)
         [SerializeField] private float bpm;
-        [SerializeField] private float xPerBeat;
+        [SerializeField] private float zPerBeat;
 
         [SerializeField] private Transform startAndDirection;
         // [SerializeField] private float splineEnd = 1.0f;
@@ -28,7 +28,7 @@ namespace MatrixJam.Team14
         private float _prevY;
 
         public float BeatPerSec => bpm / 60;
-        public float XPerSec => xPerBeat * BeatPerSec;
+        public float XPerSec => zPerBeat * BeatPerSec;
 
         public Vector3[] BeatPositions { get; private set; }
 
@@ -37,7 +37,12 @@ namespace MatrixJam.Team14
             // Can maybe get rid of this if it causes problems
             UpdateBeatPositions();    
         }
-        
+
+        private void OnValidate()
+        {
+            UpdateBeatPositions();
+        }
+
         private void Update()
         {
             if (reachedEnd) return;
@@ -54,11 +59,6 @@ namespace MatrixJam.Team14
             
             _prevY = pos.y;
             _prevAudioProgress = audioProgress;
-        }
-
-        private void OnValidate()
-        {
-            UpdateBeatPositions();
         }
 
         private void UpdateBeatPositions()
@@ -89,8 +89,8 @@ namespace MatrixJam.Team14
         
         private Vector3 GetPosition(float beat)
         {
-            var x = beat * xPerBeat;
-            return startAndDirection.position + startAndDirection.right * x;
+            var z = beat * zPerBeat;
+            return startAndDirection.position + startAndDirection.forward * z;
         }
 
         private float GetBeatNum(float secs) => secs * BeatPerSec;
