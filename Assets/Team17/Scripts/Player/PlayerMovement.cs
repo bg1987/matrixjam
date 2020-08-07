@@ -11,7 +11,7 @@ namespace TheFlyingDragons
 
 		public PlayerConfig PlayerConfig => player.playerConfig;
 		public PlayerInputData Input => player.Input;
-		public Rigidbody2D Body => player.Body;
+		public Rigidbody Body => player.Body;
 		
 		void Awake()
         {
@@ -20,11 +20,12 @@ namespace TheFlyingDragons
 
 		void FixedUpdate()
         {
-			if (player.IsGrounded || PlayerConfig.airControl)
+			if (true/*player.IsGrounded || PlayerConfig.airControl*/)
 			{
 				float horizontalMove = Input.move.x * PlayerConfig.moveSpeed.x * Time.fixedDeltaTime;
+				float verticalMove = Input.move.y * PlayerConfig.moveSpeed.y * Time.fixedDeltaTime;
 
-				if (player.IsCrouching)
+				/*if (player.IsCrouching)
 				{
 					horizontalMove *= PlayerConfig.crouchSpeed.x;
 					player.head.Collider.isTrigger = true;
@@ -32,18 +33,18 @@ namespace TheFlyingDragons
 				else // Not crouching
 				{
 					player.head.Collider.isTrigger = false;
-				}
+				}*/
 
 				if (PlayerConfig.moveEnabled)
 				{
-					Vector3 targetVelocity = new Vector2(horizontalMove, Body.velocity.y);
+					Vector3 targetVelocity = new Vector3(horizontalMove, PlayerConfig.flipMovement ? Body.velocity.y : verticalMove, PlayerConfig.flipMovement ? -verticalMove : Body.velocity.z);
 					Body.velocity = Vector3.SmoothDamp(Body.velocity, targetVelocity, ref velocity, PlayerConfig.movementSmoothing);
 				}
 			}
 
-			bool groundedFuzzy = player.IsGrounded || player.IsGroundedFuzzy;
+			//bool groundedFuzzy = player.IsGrounded || player.IsGroundedFuzzy;
 			bool isJumping = Input.jump || player.IsJumpingFuzzy;
-			if (PlayerConfig.jumpEnabled && isJumping && groundedFuzzy)
+			if (PlayerConfig.jumpEnabled && isJumping/* && groundedFuzzy*/)
 			{
 				if ((Time.time - lastJump) > PlayerConfig.jumpCooldown)
 				{

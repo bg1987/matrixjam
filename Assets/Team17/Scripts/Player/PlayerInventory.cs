@@ -5,12 +5,12 @@ namespace TheFlyingDragons
     [RequireComponent(typeof(Player))]
     public class PlayerInventory : MonoBehaviour
     {
-        public GrapplerConfig ropeGunConfig;
+        //public GrapplerConfig ropeGunConfig;
         public GunConfig[] gunConfigs;
         public Transform weaponAnchor;
 
         Player player;
-        Grappler ropeGun;
+        //Grappler ropeGun;
         IPlayerInventoryItem[] items;
         uint equippedItemIndex = 0;
 
@@ -21,8 +21,8 @@ namespace TheFlyingDragons
             player = GetComponent<Player>();
 
             // Create utility items
-            ropeGun = Instantiate(ropeGunConfig.grapplerPrefab, weaponAnchor);
-            ropeGun.Owner = player;
+            //ropeGun = Instantiate(ropeGunConfig.grapplerPrefab, weaponAnchor);
+            //ropeGun.Owner = player;
 
             // Create weapons. They're disabled unless equipped.
             items = new IPlayerInventoryItem[gunConfigs.Length];
@@ -40,7 +40,7 @@ namespace TheFlyingDragons
             // Equipped item input
             if (EquippedItem is ITrigger trigger)
             {
-                if (player.Input.fire)
+                if (player.Input.fire1)
                 {
                     trigger.TriggerDown();
                 }
@@ -51,11 +51,11 @@ namespace TheFlyingDragons
             }
 
             // TODO generic weapon calls for ChangeLength and RemoteTrigger
-
+            /*
             // Ninja rope input
             if (ropeGun != null)
             {
-                if (player.Input.rope)
+                if (player.Input.useItem)
                 {
                     ropeGun.TriggerDown();
                 }
@@ -64,20 +64,21 @@ namespace TheFlyingDragons
                     ropeGun.TriggerUp();
                 }
 
-                if (player.Input.ropeShorter)
+                if (player.Input.cyclePrev)
                 {
                     ropeGun.ChangeLength(1f);
                 }
-                else if (player.Input.ropeLonger && !player.IsGrounded)
+                else if (player.Input.cycleNext && !player.IsGrounded)
                 {
                     ropeGun.ChangeLength(-1f);
-                }
+                }}
 
                 if (player.Input.jump)
-                {
-                    ropeGun.Detach();
+                    {
+                        ropeGun.Detach();
+                
                 }
-            }
+            */
         }
     }
 }

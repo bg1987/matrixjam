@@ -6,45 +6,38 @@ namespace TheFlyingDragons
     {
         public PlayerInputData data;
 
-        /*public void OnMove(InputAction.CallbackContext context)
+        void Update()
         {
-            data.move = context.ReadValue<Vector2>();
-        }
+            // Move
+            data.move.x = Input.GetAxis("Horizontal");
+            data.move.y = Input.GetAxis("Vertical");
 
-        public void OnJump(InputAction.CallbackContext context)
-        {
-            data.jump = context.ReadValueAsButton();
+            // Jump
+            data.jump = Input.GetAxis("Jump") > 0f;
             if (data.jump)
             {
                 data.jumpReady = true;
                 data.jumpTime = Time.time;
             }
-        }
 
-        public void OnCrouch(InputAction.CallbackContext context)
-        {
-            data.crouch = context.ReadValueAsButton();
-        }
+            // Crouch
+            //data.crouch = Input.GetAxis("Crouch") > 0f;
 
-        public void OnFire(InputAction.CallbackContext context)
-        {
-            data.fire = context.ReadValueAsButton();
-        }
+            // Fire primary
+            data.fire1 = Input.GetAxis("Fire1") > 0f;
 
-        public void OnRope(InputAction.CallbackContext context)
-        {
-            data.rope = context.ReadValueAsButton();
-        }
+            // Fire alternate
+            data.fire2 = Input.GetAxis("Fire2") > 0f;
 
-        public void OnRopeShorter(InputAction.CallbackContext context)
-        {
-            data.ropeShorter = context.ReadValueAsButton();
-        }
+            // Use item
+            data.useItem = Input.GetAxis("Fire3") > 0f;
 
-        public void OnRopeLonger(InputAction.CallbackContext context)
-        {
-            data.ropeLonger = context.ReadValueAsButton();
+            // Cycle prev
+            //data.cyclePrev = Input.GetAxis("CyclePrev") > 0f;
+
+            // Cycle next
+            //data.cycleNext = Input.GetAxis("CycleNext") > 0f;
         }
-        */
+        
     }
 }

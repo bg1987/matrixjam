@@ -5,31 +5,33 @@ namespace TheFlyingDragons
     [CreateAssetMenu(menuName = "TheFlyingDragons/PlayerInputData")]
     public class PlayerInputData : ScriptableObject
     {
-        public Vector2 move = Vector2.zero;
+        public Vector3 move;
         public bool jump;
         public bool jumpReady;
         public float jumpTime;
-        public bool crouch;
+        //public bool crouch;
         [Space]
-        public bool fire;
+        public bool fire1;
+        public bool fire2;
         [Space]
-        public bool rope;
-        public bool ropeLonger;
-        public bool ropeShorter;
+        public bool useItem;
+        //public bool cycleNext;
+        //public bool cyclePrev;
 
         public void Reset()
         {
-            move = Vector2.zero;
+            move = Vector3.zero;
             jump = false;
             jumpReady = false;
             jumpTime = 0f;
-            crouch = false;
-            
-            fire = false;
+            //crouch = false;
 
-            rope = false;
-            ropeLonger = false;
-            ropeShorter = false;
+            fire1 = false;
+            fire2 = false;
+
+            useItem = false;
+            //cycleNext = false;
+            //cyclePrev = false;
         }
     }
 }

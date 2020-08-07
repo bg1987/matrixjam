@@ -57,15 +57,15 @@ namespace TheFlyingDragons
 
         IEnumerator IgnoreOwnerCollisionMomentarily()
         {
-            Collider2D ownerFeetCollider = owner.feet.Collider;
-            Collider2D ownerHeadCollider = owner.head.Collider;
-            Collider2D projCollider = GetComponent<Collider2D>();
+            Collider ownerFeetCollider = owner.feet.Collider;
+            Collider ownerHeadCollider = owner.head.Collider;
+            Collider projCollider = GetComponent<Collider>();
 
-            Physics2D.IgnoreCollision(ownerFeetCollider, projCollider);
-            Physics2D.IgnoreCollision(ownerHeadCollider, projCollider);
+            Physics.IgnoreCollision(ownerFeetCollider, projCollider);
+            Physics.IgnoreCollision(ownerHeadCollider, projCollider);
             yield return new WaitForSeconds(1f);
-            Physics2D.IgnoreCollision(ownerFeetCollider, projCollider, false);
-            Physics2D.IgnoreCollision(ownerHeadCollider, projCollider, false);
+            Physics.IgnoreCollision(ownerFeetCollider, projCollider, false);
+            Physics.IgnoreCollision(ownerHeadCollider, projCollider, false);
 
             yield return null;
         }

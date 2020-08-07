@@ -27,11 +27,11 @@ namespace TheFlyingDragons
 
         void LateUpdate()
         {
-            animator.SetFloat(animatorSpeedId, Math.Abs(Input.move.x));
-            animator.SetBool(animatorGroundedId, player.IsGrounded);
-            animator.SetBool(animatorCrouchingId, player.IsCrouching);
+            //animator.SetFloat(animatorSpeedId, Math.Abs(Input.move.x));
+            //animator.SetBool(animatorGroundedId, player.IsGrounded);
+            //animator.SetBool(animatorCrouchingId, player.IsCrouching);
 
-            if (Math.Abs(Input.move.x) > 0.001f)
+            /*if (Math.Abs(Input.move.x) > 0.001f)
             {
                 if (Input.move.x < 0f)
                 {
@@ -41,7 +41,7 @@ namespace TheFlyingDragons
                 {
                     LookRight();
                 }
-            }
+            }*/
         }
 
         public void LookLeft()
