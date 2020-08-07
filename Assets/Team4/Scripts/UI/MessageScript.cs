@@ -16,7 +16,7 @@ namespace MatrixJam.Team4
 
         public void Awake()
         {
-            UIManager.Register(Location, this);
+            TooltipManager.RegisterMessageBox(Location, this);
             gameObject.SetActive(false);
         }
 
@@ -47,11 +47,8 @@ namespace MatrixJam.Team4
             gameObject.SetActive(false);
     
         }
-        
-        
-        
+
     }
-    
     
 
     public enum MessageLocation
