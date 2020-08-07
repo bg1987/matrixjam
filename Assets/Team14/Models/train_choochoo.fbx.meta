@@ -3,7 +3,32 @@ guid: 78af5d7325d88d549b1fbede209f3816
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _train_center_line
+    second: {fileID: 2100000, guid: 97adc6549df606b43b9bcd18343c1853, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _train_purple
+    second: {fileID: 2100000, guid: 97adc6549df606b43b9bcd18343c1853, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _train_torq
+    second: {fileID: 2100000, guid: 97adc6549df606b43b9bcd18343c1853, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _train_wheels
+    second: {fileID: 2100000, guid: 97adc6549df606b43b9bcd18343c1853, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _train_wheels_center
+    second: {fileID: 2100000, guid: 97adc6549df606b43b9bcd18343c1853, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
