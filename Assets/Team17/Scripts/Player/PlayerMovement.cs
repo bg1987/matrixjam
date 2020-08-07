@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TheFlyingDragons
+namespace MatrixJam.Team17
 {
     [RequireComponent(typeof(Player))]
     public class PlayerMovement : MonoBehaviour
@@ -37,7 +37,12 @@ namespace TheFlyingDragons
 
 				if (PlayerConfig.moveEnabled)
 				{
-					Vector3 targetVelocity = new Vector3(horizontalMove, PlayerConfig.flipMovement ? Body.velocity.y : verticalMove, PlayerConfig.flipMovement ? -verticalMove : Body.velocity.z);
+					Vector3 targetVelocity;
+					if (PlayerConfig.flipMovement)
+						targetVelocity = new Vector3(-horizontalMove, Body.velocity.y, -verticalMove);
+					else
+						targetVelocity = new Vector3(horizontalMove, verticalMove, Body.velocity.z);
+
 					Body.velocity = Vector3.SmoothDamp(Body.velocity, targetVelocity, ref velocity, PlayerConfig.movementSmoothing);
 				}
 			}

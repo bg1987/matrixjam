@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace TheFlyingDragons
+namespace MatrixJam.Team17
 {
     public class Gun : MonoBehaviour, IPlayerInventoryItem, ITrigger
     {

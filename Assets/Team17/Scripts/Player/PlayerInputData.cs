@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TheFlyingDragons
+namespace MatrixJam.Team17
 {
     [CreateAssetMenu(menuName = "TheFlyingDragons/PlayerInputData")]
     public class PlayerInputData : ScriptableObject

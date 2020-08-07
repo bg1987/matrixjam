@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e96bc6e54a6b447b965e41711aecfd5, type: 3}
   m_Name: Climber
   m_EditorClassIdentifier: 
+  flipMovement: 0
   groundLayers:
     serializedVersion: 2
     m_Bits: 256
   groundedFuzzy: 0.2
   moveEnabled: 1
-  moveSpeed: {x: 111, y: 111}
+  moveSpeed: {x: 1111, y: 1111}
   movementSmoothing: 0.05
   airControl: 1
   crouchEnabled: 1

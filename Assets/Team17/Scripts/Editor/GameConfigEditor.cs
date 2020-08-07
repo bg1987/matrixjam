@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-namespace TheFlyingDragons
+namespace MatrixJam.Team17
 {
     [CustomEditor(typeof(GameConfig))]
     public class GameConfigEditor : Editor

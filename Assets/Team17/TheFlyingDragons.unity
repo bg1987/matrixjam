@@ -215,6 +215,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113815048}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &566806854 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1148892779484843485, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 906639517}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a17f5cb339b164a84713182ae1d7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &566806855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
@@ -560,6 +572,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 603340225}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1634457229 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1148892779484843485, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1034970846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a17f5cb339b164a84713182ae1d7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1634457230 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
@@ -597,6 +621,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 8c6e9e8f4d3f04fa18b950b1c96f442d, type: 2}
+  exits:
+  - {fileID: 566806854}
+  - {fileID: 1634457229}
 --- !u!4 &1823360486
 Transform:
   m_ObjectHideFlags: 0
@@ -916,7 +943,7 @@ PrefabInstance:
     - target: {fileID: 3121685032954622756, guid: 9dc85d29d192348958743e438a1af314,
         type: 3}
       propertyPath: m_Name
-      value: Meeting point 1
+      value: Meeting point
       objectReference: {fileID: 0}
     - target: {fileID: 3121685032954622760, guid: 9dc85d29d192348958743e438a1af314,
         type: 3}
@@ -982,6 +1009,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8464959116524984365, guid: c2d5cc82eb0154d85ac080e5473e1f46,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8464959118046393229, guid: c2d5cc82eb0154d85ac080e5473e1f46,
         type: 3}
       propertyPath: m_Name

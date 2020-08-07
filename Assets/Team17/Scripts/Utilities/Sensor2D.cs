@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TheFlyingDragons
+namespace MatrixJam.Team17
 {
     [RequireComponent(typeof(Collider2D))]
     public class Sensor2D : MonoBehaviour

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace TheFlyingDragons
+namespace MatrixJam.Team17
 {
     [RequireComponent(typeof(Player))]
     public class PlayerAnimation : MonoBehaviour

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TheFlyingDragons
+namespace MatrixJam.Team17
 {
     public static class Mouse
     {

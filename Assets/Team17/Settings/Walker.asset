@@ -18,7 +18,7 @@ MonoBehaviour:
     m_Bits: 256
   groundedFuzzy: 0.2
   moveEnabled: 1
-  moveSpeed: {x: 111, y: 111}
+  moveSpeed: {x: 1111, y: 1111}
   movementSmoothing: 0.05
   airControl: 1
   crouchEnabled: 1
@@ -26,4 +26,4 @@ MonoBehaviour:
   jumpEnabled: 1
   jumpFuzzy: 0.2
   jumpCooldown: 0.5
-  jumpForce: 15000
+  jumpForce: 950000
