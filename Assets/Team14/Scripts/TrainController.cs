@@ -71,7 +71,10 @@ namespace MatrixJam.Team14
 
             Debug.Log($"State Transition: {_prevState?.Name} -> {newState.Name}");
             _prevState?.OnExit();
+            
+            _currstate = newState;
             newState.OnEnter();
+            
             _prevState = newState;
         }
 
