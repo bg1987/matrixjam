@@ -226,6 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0b018fa72b2b3478be80c5075ad082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameoverLayerMask:
+  _levelLostLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  _levelPassedLayerMask:
+    serializedVersion: 2
+    m_Bits: 8388608

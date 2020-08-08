@@ -1,5 +1,5 @@
 ﻿/* Taken and Modified From http://www.shaderslab.com/demo-75---matrix-pattern.html */
-Shader "Custom/Numbers Falling 2"
+Shader "Custom/Team19/Numbers Falling 2"
 {
 	Properties
 	{
@@ -26,7 +26,9 @@ Shader "Custom/Numbers Falling 2"
 			CGPROGRAM
 			#pragma vertex vert_img
 			#pragma fragment frag
+
 			#include "UnityCG.cginc"
+
 
 			float noise(float x)
 			{
@@ -110,7 +112,14 @@ Shader "Custom/Numbers Falling 2"
 			float3 _BacklightColor;
 			sampler2D _SymbolsTexture;
 
-			fixed4 frag(v2f_img i) : SV_Target
+			struct v2f {
+				float4 pos: SV_POSITION;
+				float2 uv : TEXCOORD0;
+				float3 normal : NORMAL;
+				UNITY_VERTEX_INPUT_INSTANCE_ID
+			};
+
+			fixed4 frag(v2f i) : SV_Target
 			{
 
 				const float2 grid = float2(_GridX, _GridY);
@@ -123,15 +132,19 @@ Shader "Custom/Numbers Falling 2"
 				float unique_bias = char(fpos, 100.0 * charNum);
 				float val = char(fpos, (20.) * charNum);
 
+
 				float3 color = lerp(_BackgroundColor, _RegularColor, val);
+
 				color.rgb = lerp(color.rgb, _UniqueColor, unique_bias);
 				
 				color.rgb *= (1.0 - i.uv.y);
 
 				float backlight_value = clamp(_BacklightStartValue - i.uv.y, 0., 1.);
 				color.rgb += pow(backlight_value * _BacklightColor, _BacklightFalloff);
+
 				return fixed4(color.rgb , 1.0);
 			}
+
 			ENDCG
 		}
 	}

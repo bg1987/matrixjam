@@ -3,9 +3,15 @@ using UnityEngine;
 
 namespace MatrixJam.Team19.Gameplay.Managers
 {
+    public delegate void LevelEvent();
 
     public class LevelManager : MonoBehaviour
     {
+        public static LevelEvent LevelPassed;
+        public static LevelEvent LevelLost;
+
+        public static LevelManager Instance;
+
         [SerializeField]
         private int _winRequiredPassCount;
 
@@ -25,15 +31,8 @@ namespace MatrixJam.Team19.Gameplay.Managers
         private int _levelWinCount = 0;
         private int _levelLossCount = 0;
 
-        public delegate void LevelEvent();
-
-        public LevelEvent LevelPassed;
-        public LevelEvent LevelLost;
-
         private GameStarter _gameStarter;
         private int _startedEntranceNumber;
-
-        public static LevelManager Instance;
 
         private void Awake()
         {
@@ -67,7 +66,7 @@ namespace MatrixJam.Team19.Gameplay.Managers
             }
             else
             {
-                _gameStarter.StartHelp(_startedEntranceNumber);
+                RespawnPlayer();
             }
         }
 
@@ -78,6 +77,12 @@ namespace MatrixJam.Team19.Gameplay.Managers
             if (_levelWinCount == _winRequiredPassCount)
             {
                 ActOnLevelWin();
+            }
+            else
+            {
+                RespawnPlayer();
+
+                LevelPassed?.Invoke();
             }
         }
 
@@ -90,6 +95,11 @@ namespace MatrixJam.Team19.Gameplay.Managers
         private void ActOnLevelWin()
         {
             _levelWinExit.EndLevel();
+        }
+
+        private void RespawnPlayer()
+        {
+            _playerHandler.StartLevel(_gameStarter, _startedEntranceNumber);
         }
     }
 }
