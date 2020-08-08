@@ -26,21 +26,11 @@ namespace MatrixJam.Team19.Gameplay.Controls
 
         private float _activeStepProgress = 0;
 
-        private Dictionary<Team19.Input.EInputDirection, Vector3> _inputDirectionToVectorMap;
-
         private Collider _collider;
 
         private void Awake()
         {
             _playerInput = new Team19.Input.PlayerInput();
-
-            _inputDirectionToVectorMap = new Dictionary<Team19.Input.EInputDirection, Vector3>
-            {
-                { Team19.Input.EInputDirection.FORWARD, Vector3.forward },
-                { Team19.Input.EInputDirection.BACKWARD, Vector3.back },
-                { Team19.Input.EInputDirection.LEFT, Vector3.left },
-                { Team19.Input.EInputDirection.RIGHT, Vector3.right }
-            };
 
             _collider = GetComponent<Collider>();
         }
@@ -59,7 +49,7 @@ namespace MatrixJam.Team19.Gameplay.Controls
         {
             if (_playerInput.IsInputAvailable && _isReadyToStep)
             {
-                Vector3 nextLocalDirectionVector = _inputDirectionToVectorMap[_playerInput.GetNextInput()];
+                Vector3 nextLocalDirectionVector = _playerInput.GetNextDirection();
                 Vector3 nextWorldDirectionVector = transform.TransformDirection(nextLocalDirectionVector);
                 Vector3 nextStepDestination = transform.position + (nextWorldDirectionVector * _stepDistance);
 
