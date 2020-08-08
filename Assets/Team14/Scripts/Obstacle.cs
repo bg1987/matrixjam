@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MatrixJam.Team
 {
-    public class TrainMoveIndication : MonoBehaviour
+    public class Obstacle : MonoBehaviour
     {
         [SerializeField] private TrainMove trainMove;
   
