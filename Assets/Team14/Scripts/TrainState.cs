@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MatrixJam.Team14
 {
@@ -24,6 +25,16 @@ namespace MatrixJam.Team14
         }
 
         public override string ToString() => $"[TrainState] {Name}";
+
+        protected void TransitionWithMove(TrainMove move, TrainState state)
+        {
+            var obstacles = Obstacle.CurrObstacles[move];
+            Assert.IsTrue(obstacles.Count <= 1, "More than one obstacle should not overlap!");
+            
+            var obs = obstacles.FirstOrDefault();
+            if (obs) obs.OnPressedInZone();
+            TrainController.TransitionState(state, obs ? obs.MoveCue : null);
+        }
     }
 
     public class TrainDriveState : TrainState
@@ -34,9 +45,9 @@ namespace MatrixJam.Team14
         public override void OnUpdate()
         {
             base.OnUpdate();
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetKeyDown(TrainMoves.GetKey(TrainMove.Jump)))
             {
-                TrainController.TransitionState(TrainController.JumpState);
+                TransitionWithMove(TrainMove.Jump, TrainController.JumpState);
             }
         }
     }
@@ -66,7 +77,7 @@ namespace MatrixJam.Team14
             currTime += Time.deltaTime;
             // y in anim
             if (currTime >= _jumpTime)
-                TrainController.TransitionState(TrainController.DriveState);
+                TrainController.TransitionState(TrainController.DriveState, null);
         }
 
         public override string Name => "Jump";
@@ -77,6 +88,15 @@ namespace MatrixJam.Team14
     {
         public override string Name => "Duck";
         public override string AnimTrigger => "Duck";
+
+        public override void OnUpdate()
+        {
+            base.OnUpdate();
+            if (Input.GetKeyDown(TrainMoves.GetKey(TrainMove.Jump)))
+            {
+                TransitionWithMove(TrainMove.Jump, TrainController.JumpState);
+            }
+        }
     }
 
     public class TrainNullState : TrainState
