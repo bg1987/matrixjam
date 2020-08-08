@@ -7,11 +7,6 @@ namespace MatrixJam.Team4
     public class FirstOptionPlayer : Player
     {
 
-        public override bool IsHuman()
-        {
-            return false;
-        }
-
         public override void YourTurn(TurnData turnData)
         {
             base.YourTurn(turnData);

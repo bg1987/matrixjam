@@ -6,7 +6,7 @@ namespace MatrixJam.Team4
 {
     public abstract class Player : MonoBehaviour
     {
-        public Color Color;
+        public PlayerSide playerSide;
         public Text ScoreTextbox;
         public int Score { get => _score; set => _score = value; }
         private int _score;
@@ -41,7 +41,13 @@ namespace MatrixJam.Team4
 
             return validationObject;
         }
-
-        public abstract bool IsHuman();
+        
+    }
+    
+    public enum PlayerSide
+    {
+        Human,
+        AI,
+        Neutral
     }
 }

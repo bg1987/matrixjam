@@ -86,10 +86,10 @@ namespace MatrixJam.Team4
             }
         }
 
-        public static void SetNumberOnSquare(Vector2 index, int originalValue, int currentValue, Color playerColor)
+        public static void SetNumberOnSquare(Vector2 index, int currentValue, PlayerSide playerColor)
         {
             var numberButtonScript = _allButtons[(int) index.x][(int) index.y];
-            numberButtonScript.SetValue(originalValue, currentValue, playerColor);
+            numberButtonScript.SetValue(currentValue, playerColor);
         }
     }
 }

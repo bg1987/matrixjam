@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MatrixJam.Team;
@@ -12,6 +13,7 @@ namespace MatrixJam.Team4
         private TurnData _playerTurnData;
         private Unit _selectedUnit;
         private Position _selectedPosition;
+        private List<int> _numberChoices;
 
         public ChoiceManager(BoardManager boardManager)
         {
@@ -22,17 +24,12 @@ namespace MatrixJam.Team4
         {
             ClearData();
             _playerTurnData = turnData;
-            List<int> choices = new List<int>();
+            _numberChoices = new List<int>();
             foreach (var unit in _playerTurnData._positionOptions.Keys)
             {
-                choices.Add(unit.Value);
+                _numberChoices.Add(unit.Value);
             }
-            UIManager.SetPlayerAvailableNumbers(choices, player.IsHuman());
-
-            if (!player.IsHuman())
-            {
-                //TODO trigger AI
-            }
+            UIManager.SetPlayerAvailableNumbers(_numberChoices, player.playerSide);
 
         }
 
@@ -60,7 +57,7 @@ namespace MatrixJam.Team4
         private void UpdateSelectedUnit(Unit unit)
         {
             _selectedUnit = unit;
-            if (unit.Owner.IsHuman())
+            if (unit.Owner.playerSide == PlayerSide.Human)
             {
                 var positionOption = _playerTurnData._positionOptions[unit];
                 Vector2[] squares = GetSquarsFromAllowedPositions(positionOption);
@@ -81,8 +78,8 @@ namespace MatrixJam.Team4
             if (position != null)
             {
                 _selectedPosition = position;
-                UIManager.SetNumberOnSquare(index, _selectedUnit.Value, _selectedUnit.Value, _selectedUnit.Owner.Color);
-                UIManager.ShowDamageOptions(_selectedUnit.Owner.IsHuman());
+                UIManager.SetNumberOnSquare(index, _selectedUnit.Value, _selectedUnit.Owner.playerSide);
+                UIManager.ShowDamageOptions(_selectedUnit.Owner.playerSide == PlayerSide.Human);
             }
 
         }
@@ -93,15 +90,26 @@ namespace MatrixJam.Team4
             turnObject.ChosenUnit = _selectedUnit;
             turnObject.ChosenUnit.Position = _selectedPosition;
             turnObject.AttackDirection = attackType;
+            HideUsedNumber();
             _boardManager.ExecuteTurn(turnObject);
         }
 
-        public void HandleAiChoice(TurnObject turnObject)
+        private void HideUsedNumber()
         {
+            _numberChoices.Remove(_selectedUnit.Value);
+            UIManager.SetPlayerAvailableNumbers(_numberChoices, PlayerSide.Neutral);
+        }
+
+        public IEnumerator HandleAiChoice(TurnObject turnObject)
+        {
+            yield return new WaitForSeconds(1);
             PickNumber(turnObject.ChosenUnit.Value);
             var position = turnObject.ChosenUnit.Position;
             UIManager.ChoiceManager.PickSquare(new Vector2(position.GetX(), position.GetY()));
+            yield return new WaitForSeconds(1);
             UIManager.ChoiceManager.PickAttack(turnObject.AttackDirection);
+            yield return new WaitForSeconds(1);
+            
         }
     }
 }

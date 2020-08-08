@@ -34,13 +34,8 @@ namespace MatrixJam.Team4
                     break;
             }
 
-            UIManager.ChoiceManager.HandleAiChoice(ValidateTurnObject(turnObject));
+            StartCoroutine(UIManager.ChoiceManager.HandleAiChoice(ValidateTurnObject(turnObject)));
         }
-
-        public override bool IsHuman()
-        {
-            return false;
-
-        }
+        
     }
 }

@@ -68,20 +68,20 @@ namespace MatrixJam.Team4
             }
         }
 
-        public static void SetNumberOnSquare(Vector2 index, int originalValue, int currentValue, Color playerColor)
+        public static void SetNumberOnSquare(Vector2 index, int currentValue, PlayerSide playerColor)
         {
-            NumberButtonsManager.SetNumberOnSquare(index, originalValue, currentValue, playerColor);
+            NumberButtonsManager.SetNumberOnSquare(index, currentValue, playerColor);
         }
 
-        public static void SetPlayerAvailableNumbers(List<int> choices, bool humanPlayer)
+        public static void SetPlayerAvailableNumbers(List<int> choices, PlayerSide playerSide)
         {
-            if (humanPlayer)
+            if (playerSide == PlayerSide.Human)
             {
-                _instance.PlayerNumberPool.SetAvailableNumbers(choices);
+                _instance.PlayerNumberPool.SetAvailableNumbers(choices, true);
             }
             else
             {
-                _instance.AiNumberPool.SetAvailableNumbers(choices);
+                _instance.AiNumberPool.SetAvailableNumbers(choices, false);
             }
         }
 

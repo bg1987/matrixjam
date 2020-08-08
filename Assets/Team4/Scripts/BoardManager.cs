@@ -180,7 +180,7 @@ namespace MatrixJam.Team4
                     Position position = new Position(x, y);
                     if (PlaceUnit(unit, position))
                     {
-                        UIManager.SetNumberOnSquare(new Vector2(x, y), unit.Value, unit.Value, Color.black);
+                        UIManager.SetNumberOnSquare(new Vector2(x, y), unit.Value, PlayerSide.Neutral);
                         return;
                     }
                 }

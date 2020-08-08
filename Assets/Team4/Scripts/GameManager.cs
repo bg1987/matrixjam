@@ -19,6 +19,7 @@ namespace MatrixJam.Team4
 
         public int InitialUnitsCount = 35;
         public bool ShowTutorial;
+        private static bool _alreadyPlayedTheTutorial;//in case they end up in our game twice
 
         void Awake()
         {
@@ -35,7 +36,7 @@ namespace MatrixJam.Team4
         void Start()
         {
             _boardManager.AddRandomUnits(InitialUnitsCount);
-            if (ShowTutorial)
+            if (ShowTutorial && !_alreadyPlayedTheTutorial)
             {
                 SetState(GameState.intro);
             }

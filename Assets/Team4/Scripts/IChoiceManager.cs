@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Linq;
 using MatrixJam.Team4;
 using UnityEngine;
 
@@ -10,7 +12,7 @@ namespace MatrixJam.Team
         void PickNumber(int value);
         void PickSquare(Vector2 index);
         void PickAttack(AttackDirection attackType);
-        void HandleAiChoice(TurnObject validateTurnObject);
+        IEnumerator HandleAiChoice(TurnObject validateTurnObject);
     }
 
 }
