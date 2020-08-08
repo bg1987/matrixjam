@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -22,7 +23,7 @@ namespace MatrixJam.Team14
     public class TrainController : MonoBehaviour
     {
         public static TrainController Instance { get; private set; }
-
+        
         [Header("States config")]
         [SerializeField] private float jumpTime = 0.4f;
         
@@ -30,18 +31,30 @@ namespace MatrixJam.Team14
         [SerializeField] private Animator masterCarAnim;
         [SerializeField] private Animator[] slaveCarAnims;
 
-        [Header("Debug")] 
+        [Header("Debug")]
         [SerializeField] private bool debugStates;
-        [SerializeField] private Color debugColor = Color.red;
+        [SerializeField] private bool debugObstacles;
+        [SerializeField] private Color debugStatesColor = Color.red;
+        [SerializeField] private Color debugObstaclesColor = Color.green;
         [SerializeField] private Vector2 debugSize = new Vector2(2, 2);
 
+        private int _lives;
         private TrainState _currstate;
         private TrainState _prevState;
 
+        public int Lives
+        {
+            get => _lives;
+            set
+            {
+                _lives = value;
+                SetCarsNum(_lives);
+            }
+        }
+        
         public static TrainState DriveState { get; private set; }
         public static TrainState JumpState { get; private set; }
         public static TrainState DuckState { get; private set; }
-        public static TrainState DetourState { get; private set; }
         public static TrainState NullState { get; private set; }
         
         private HashSet<FutureAnimation> _futureAnimations = new HashSet<FutureAnimation>();
@@ -58,6 +71,9 @@ namespace MatrixJam.Team14
             Instance = this;
             CreateStates();
             _currstate = NullState;
+            
+            Obstacle.OnObstacleEvent += OnObstacleEvent;
+            GameManager.ResetEvent += OnGameReset;
         }
 
         private void OnValidate()
@@ -68,6 +84,8 @@ namespace MatrixJam.Team14
         private void OnDestroy()
         {
             if (Instance != this) return;
+            Obstacle.OnObstacleEvent -= OnObstacleEvent;
+            GameManager.ResetEvent -= OnGameReset;
             Instance = null;
         }
 
@@ -79,24 +97,47 @@ namespace MatrixJam.Team14
 
         private void Start()
         {
-            TransitionState(DriveState);
+            TransitionState(DriveState, null);
         }
 
         private void OnGUI()
         {
             GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(debugSize.x, debugSize.y, 1f));
-            GUI.color = debugColor;
             if (debugStates)
             {
+                GUI.color = debugStatesColor;
                 GUILayout.Label($"TrainState: {_currstate?.Name}");
                 GUILayout.Label($"PrevState: {_prevState?.Name}");
             }
+
+            var obstacleDict = Obstacle.CurrObstacles;
+            if (debugObstacles && obstacleDict != null)
+            {
+                GUI.color = debugObstaclesColor;
+                GUILayout.Label("Obstacles");
+                foreach (var trainMove in obstacleDict.Keys)
+                {
+                    var obstacles = obstacleDict[trainMove];
+                    GUILayout.Label($"[{trainMove}]: {obstacles.Count}");
+                }
+            }
         }
 
-        public static void TransitionState(TrainState newState) => Instance.TransitionStateInternal(newState);
-
-        private void TransitionStateInternal(TrainState newState)
+        private void OnGameReset()
         {
+            TransitionState(DriveState, null);
+        }
+
+        public static void TransitionState(TrainState newState, Transform moveCue) => Instance.TransitionStateInternal(newState, moveCue);
+
+        private void TransitionStateInternal(TrainState newState, Transform moveCue)
+        {
+            if (newState == _currstate)
+            {
+                Debug.LogWarning($"Same state transition ({newState}). Ignoring");
+                return;
+            }
+            
             Assert.IsNotNull(newState);
 
             Debug.Log($"State Transition: {_prevState?.Name} -> {newState.Name}");
@@ -106,7 +147,10 @@ namespace MatrixJam.Team14
             newState.OnEnter();
 
             if (newState.AnimTrigger != null)
-                Animate(newState.AnimTrigger);
+            {
+                CueFutureAnimations(newState.AnimTrigger, moveCue);
+                HandlePendingAnimations();
+            }
             
             _prevState = newState;
         }
@@ -120,14 +164,29 @@ namespace MatrixJam.Team14
             NullState = new TrainNullState();
         }
 
-        public void Jump()
+        private void OnObstacleEvent(ObstaclePayload payload)
         {
-            TransitionState(JumpState);
+            Debug.Log("Obstacle failed!");
+            // Handle failed only currently (success comes from TrainState)
+            if (!payload.Successful)
+            {
+                OnObstacleFailed();
+                return;
+            }
+            
+            // // TODO: ???
+            // var nextState = GetState(payload.Move);
+            // TransitionState(nextState, payload.MoveCue);
         }
 
-        public void Duck()
+        private void OnObstacleFailed()
         {
-            TransitionState(DuckState);
+            KillTrain();
+        }
+
+        private void KillTrain()
+        {
+            GameManager.Instance.OnDeath();
         }
 
         private void HandlePendingAnimations()
@@ -143,15 +202,55 @@ namespace MatrixJam.Team14
             }
         }
 
-        private void Animate(string trigger)
+        
+        /// <summary>
+        /// Add future animation cues for master + slave chars, using the transform given or master car
+        /// </summary>
+        /// <param name="trigger">The trigger to cue</param>
+        /// <param name="moveCue">The transform to use for position, if null will use masterCar postion</param>
+        private void CueFutureAnimations(string trigger, Transform moveCue)
         {
-            masterCarAnim.SetTrigger(trigger);
+            var value = moveCue
+                ? moveCue.position.z
+                : masterCarAnim.transform.position.z;
             
-            var value = masterCarAnim.transform.position.z;
+            // Master car
+            var masterFutureAnim = new FutureAnimation(masterCarAnim, value, trigger);
+            _futureAnimations.Add(masterFutureAnim);
+            
             foreach (var slaveCarAnim in slaveCarAnims)
             {
                 var futureAnim = new FutureAnimation(slaveCarAnim, value, trigger);
                 _futureAnimations.Add(futureAnim);
+            }
+        }
+        
+        private void SetCarsNum(int lives)
+        {
+            var activeCars = slaveCarAnims.Take(lives);
+            var inactiveCars = slaveCarAnims.Skip(lives);
+
+            foreach (var car in activeCars)
+                car.gameObject.SetActive(true);
+            
+            foreach (var car in inactiveCars)
+                car.gameObject.SetActive(false);
+        }
+
+
+        public TrainState GetState(TrainMove move)
+        {
+            switch (move)
+            {
+                case TrainMove.Jump:
+                    return JumpState;
+                    
+                case TrainMove.Duck:
+                    return DuckState;
+                case TrainMove.Honk:
+                    return _currstate;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(move), move, null);
             }
         }
     }

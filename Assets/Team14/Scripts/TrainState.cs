@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MatrixJam.Team14
 {
@@ -24,6 +25,29 @@ namespace MatrixJam.Team14
         }
 
         public override string ToString() => $"[TrainState] {Name}";
+
+        protected bool HandleJump() => HandleMove(TrainMove.Jump, TrainController.JumpState);
+        protected bool HandleDuck() => HandleMove(TrainMove.Duck, TrainController.DuckState);
+
+        private bool HandleMove(TrainMove move, TrainState state)
+        {
+            var key = TrainMoves.GetKey(move);
+            var playerPressed = Input.GetKeyDown(key);
+            if (playerPressed)
+                TransitionWithMove(move, state);
+
+            return playerPressed;
+        }
+
+        private void TransitionWithMove(TrainMove move, TrainState state)
+        {
+            var obstacles = Obstacle.CurrObstacles[move];
+            Assert.IsTrue(obstacles.Count <= 1, "More than one obstacle should not overlap!");
+            
+            var obs = obstacles.FirstOrDefault();
+            if (obs) obs.OnPressedInZone();
+            TrainController.TransitionState(state, obs ? obs.MoveCue : null);
+        }
     }
 
     public class TrainDriveState : TrainState
@@ -34,10 +58,8 @@ namespace MatrixJam.Team14
         public override void OnUpdate()
         {
             base.OnUpdate();
-            if (Input.GetButtonDown("Jump"))
-            {
-                TrainController.TransitionState(TrainController.JumpState);
-            }
+            if (HandleDuck()) return;
+            if (HandleJump()) return;
         }
     }
 
@@ -63,10 +85,14 @@ namespace MatrixJam.Team14
 
         public override void OnUpdate()
         {
+            if (HandleDuck()) return;
+            if (HandleJump()) return;
+         
             currTime += Time.deltaTime;
+            
             // y in anim
             if (currTime >= _jumpTime)
-                TrainController.TransitionState(TrainController.DriveState);
+                TrainController.TransitionState(TrainController.DriveState, null);
         }
 
         public override string Name => "Jump";
@@ -77,6 +103,12 @@ namespace MatrixJam.Team14
     {
         public override string Name => "Duck";
         public override string AnimTrigger => "Duck";
+
+        public override void OnUpdate()
+        {
+            base.OnUpdate();
+            if (HandleJump()) return;
+        }
     }
 
     public class TrainNullState : TrainState

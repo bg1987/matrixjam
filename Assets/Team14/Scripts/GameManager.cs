@@ -1,13 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace MatrixJam.Team14
 {
+#if UNITY_EDITOR
+    using UnityEditor;
+
+    [CustomEditor(typeof(GameManager))]
+    public class GameManagerEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+            var script = target as GameManager;
+            
+            GUILayout.Space(20);
+            if (GUILayout.Button("Update"))
+            {
+                script.OnValidate();
+            }
+        }
+    }
+#endif
     public class GameManager : MonoBehaviour
     {
+        public static event Action ResetEvent;
+
         // If the audio is a loop - How many times do we expect it to repeat? (For spline pos)
+        [SerializeField] private int startLives;
         [SerializeField] private float bpm;
         [SerializeField] private float zPerBeat;
 
@@ -17,6 +38,7 @@ namespace MatrixJam.Team14
         // [SerializeField] private BezierSpline mainSpline;
         [SerializeField] private Transform character;
         [SerializeField] private AudioSource mainAudio;
+        [SerializeField] private ThomasMoon thomasMoon;
 
         [Header("Infra")]
         [SerializeField] private Exit winExit;
@@ -27,18 +49,30 @@ namespace MatrixJam.Team14
         private float _prevAudioProgress;
         private float _prevY;
 
+        public static GameManager Instance { get; private set; }
         public float BeatPerSec => bpm / 60;
-        public float XPerSec => zPerBeat * BeatPerSec;
+        public float ZPerSec => zPerBeat * BeatPerSec;
 
         public Vector3[] BeatPositions { get; private set; }
 
         private void Awake()
         {
+            if (Instance != null)
+            {
+                Debug.LogError("There shouldnt be 2 trains!");
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+
+            TrainController.Instance.Lives = startLives;
+            
             // Can maybe get rid of this if it causes problems
             UpdateBeatPositions();    
         }
 
-        private void OnValidate()
+        public void OnValidate()
         {
             UpdateBeatPositions();
         }
@@ -71,6 +105,12 @@ namespace MatrixJam.Team14
                 .ToArray();
         }
 
+        private void OnDestroy()
+        {
+            if (Instance != this) return;
+            Instance = null;
+        }
+
         private void OnReachedEnd()
         {
             reachedEnd = true;
@@ -97,5 +137,27 @@ namespace MatrixJam.Team14
 
         private static float GetAudioProgress(AudioSource audioSource)
             => audioSource.time / audioSource.clip.length;
+
+        public void OnDeath()
+        {
+            var livesRemaining = --TrainController.Instance.Lives;
+            if (livesRemaining == 0) OnGameOver();
+            else Restart();
+
+        }
+
+        private void OnGameOver()
+        {
+            Debug.Log("GAME OVERRR");
+        }
+
+        private void Restart()
+        {
+            Debug.Log("RESTART!");
+            mainAudio.Stop();
+            mainAudio.Play();
+
+            ResetEvent?.Invoke();
+        }
     }
 }
