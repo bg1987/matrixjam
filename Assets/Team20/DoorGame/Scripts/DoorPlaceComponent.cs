@@ -14,7 +14,9 @@ namespace MatrixJam.Team20
 
     public class DoorPlaceComponent : MonoBehaviour
     {
-        public bool canRemoveDoor = false; 
+        public Transform nextLevelTransform;
+        public bool canBeConnected = true;
+        public bool canRemoveDoor = true; 
         public DoorComponent placedDoor = null;
         public Collider2D wallCollider = null;
         public PlaceDirection placeDirection = PlaceDirection.Right;
@@ -25,6 +27,7 @@ namespace MatrixJam.Team20
         {
             if(placedDoor)
             {
+                placedDoor.currentPlace = this;
                 placedDoor.gameObject.GetComponent<SpriteRenderer>().material = materials[(int)placeDirection];
                 if (wallCollider != null)
                     wallCollider.enabled = false;
@@ -55,6 +58,7 @@ namespace MatrixJam.Team20
                 wallCollider.enabled = true;
 
             door.gameObject.SetActive(false);
+            door.currentPlace = null;
             return door;
         }
 
@@ -63,11 +67,17 @@ namespace MatrixJam.Team20
             if (placedDoor != null)
                 return;
 
+            door.currentPlace = this;
             door.transform.position = this.transform.position;
             door.transform.rotation = this.transform.rotation;
             door.gameObject.SetActive(true);
+
             placedDoor = door;
             placedDoor.gameObject.GetComponent<SpriteRenderer>().material = materials[(int)placeDirection];
+
+            if (!canBeConnected && placedDoor.Connected())
+                placedDoor.Disconnect();
+
             if (wallCollider != null)
                 wallCollider.enabled = false;
         }

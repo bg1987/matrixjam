@@ -30,7 +30,6 @@ namespace MatrixJam.Team20
 
         void Start()
         {
-            
         }
 
         // Update is called once per frame

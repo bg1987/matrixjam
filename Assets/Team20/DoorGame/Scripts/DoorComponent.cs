@@ -19,6 +19,11 @@ namespace MatrixJam.Team20
         {
             colors.Add(color);
         }
+
+        public static void Reset()
+        {
+            colors = new List<Color>() { Color.red, Color.blue, Color.gray, Color.cyan, Color.yellow };
+        }
     }
 
     public class Connection
@@ -34,6 +39,9 @@ namespace MatrixJam.Team20
         public void AddDoor(DoorComponent door)
         {
             if (door == null)
+                return;
+
+            if (!door.currentPlace.canBeConnected)
                 return;
 
             if (firstDoor == door)
@@ -60,6 +68,7 @@ namespace MatrixJam.Team20
 
     public class DoorComponent : MonoBehaviour
     {
+        public DoorPlaceComponent currentPlace = null;
         DoorComponent connectedDoor;
         Color defaultColor = Color.white;
         bool flipDirection = false;

@@ -20,13 +20,32 @@ namespace MatrixJam.Team20
         // Update is called once per frame
         void Update()
         {
-            if (!currentDoor || !currentDoor.Connected())
+            if (!currentDoor)
                 return;
 
             if (IsRightToDoor() == isRightToDoor)
                 return;
 
-            Warp();
+            if (currentDoor.Connected())
+            {
+                Warp();
+            }
+            else
+            {
+                TryGoNextLevel();
+            }
+        }
+
+        void TryGoNextLevel()
+        {
+            var nextLevelTransform = currentDoor.currentPlace.nextLevelTransform;
+            if (!nextLevelTransform)
+                return;
+            var player = GetComponent<PlayerComponent>();
+            if (!player)
+                return;
+
+            SceneManagerComponent.instance.GoToNextLevel();
         }
 
         void Warp()
@@ -37,6 +56,7 @@ namespace MatrixJam.Team20
 
             var playerComponent = GetComponent<PlayerComponent>();
             var movementComponent = GetComponent<MovementComponent>();
+            var enemyComponent = GetComponent<EnemyControllerComponent>();
             if(playerComponent)
             {
                 transform.position = doorToWarp.transform.position + new Vector3(doorToSelf.x, doorToSelf.y);
@@ -50,6 +70,11 @@ namespace MatrixJam.Team20
                 transform.position = doorToWarp.transform.position + new Vector3(doorToSelf.x, doorToSelf.y);
                 movementComponent.velocity = Quaternion.AngleAxis(angle, Vector3.forward) * movementComponent.velocity;
                 this.transform.Translate(Time.deltaTime * movementComponent.velocity);
+
+                if(angle >= 170 && enemyComponent)
+                {
+                    enemyComponent.movementX *= -1f;
+                }
             }
 
 

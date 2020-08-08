@@ -111,7 +111,7 @@ namespace MatrixJam.Team20
             var player = collision.gameObject.GetComponent<PlayerComponent>();
             if (player)
             {
-                SceneManagerComponent.RestartScene();
+                SceneManagerComponent.instance.RestartScene();
             }
         }
     }
