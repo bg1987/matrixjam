@@ -18,7 +18,6 @@ namespace MatrixJam.TeamMeta
 !Assets/Team{0}.meta
 #MATRIX_JAM_END";
         private static string _teamNumberString = "";
-        public static int _teamNumber;
 
         private static string _teamNumberFilePath =
             Path.Combine(Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), "Assets"),"TeamMeta"), "teamNumber.txt");
@@ -37,7 +36,7 @@ namespace MatrixJam.TeamMeta
                 _teamNumberString = File.ReadAllText(_teamNumberFilePath);
                 if (_teamNumberString != "Meta")
                 {
-                    _teamNumber = Int32.Parse(_teamNumberString);
+                    GameJamData.TeamNumber = Int32.Parse(_teamNumberString);
                 }
             }
             else
@@ -113,8 +112,10 @@ namespace MatrixJam.TeamMeta
 
             if (GUILayout.Button("Select"))
             {
-                if (_teamNumberString == "Meta" || Int32.TryParse(_teamNumberString, out _teamNumber))
+                int teamNumber = 0;
+                if (_teamNumberString == "Meta" || Int32.TryParse(_teamNumberString, out teamNumber))
                 {
+                    GameJamData.TeamNumber = teamNumber;
                     var teamRootPath = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), "Assets"),
                         TeamName);
 
