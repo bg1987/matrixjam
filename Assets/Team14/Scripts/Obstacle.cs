@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MatrixJam.Team14
 {
@@ -52,16 +53,31 @@ namespace MatrixJam.Team14
             GameManager.ResetEvent -= OnGameReset;
         }
 
+        public void OnPressedInZone()
+        {
+            _succeeded = true;
+        }
+
+        /// <summary>
+        /// Returns true if was in an obstacle zone
+        /// </summary>
+        public static Obstacle HandleMovePressed(TrainMove move)
+        {
+            var obstacles = CurrObstacles[move];
+            var obs = obstacles.FirstOrDefault();
+
+            Assert.IsTrue(obstacles.Count <= 1, "More than one obstacle should not overlap!");
+            if (!obs) return null;
+            
+            obs.OnPressedInZone();
+            return obs;
+        }
+
         private void OnGameReset()
         {
             _succeeded = false;
         }
 
-        public void OnPressedInZone()
-        {
-            _succeeded = true;
-        }
-        
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag("Player")) return;

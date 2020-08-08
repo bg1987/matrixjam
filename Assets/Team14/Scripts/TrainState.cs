@@ -28,6 +28,18 @@ namespace MatrixJam.Team14
 
         protected bool HandleJump() => HandleMove(TrainMove.Jump, TrainController.JumpState);
         protected bool HandleDuck() => HandleMove(TrainMove.Duck, TrainController.DuckState);
+        
+        protected bool HandleHonk()
+        {
+            var keyCode = TrainMoves.GetKey(TrainMove.Honk);
+            if (!Input.GetKeyDown(keyCode)) return false;
+            
+            TrainController.Instance.CueFutureAnimations("Honk", null);
+
+            var obstacle = Obstacle.HandleMovePressed(TrainMove.Honk);
+            return obstacle != null;
+        }
+
 
         private bool HandleMove(TrainMove move, TrainState state)
         {
@@ -41,12 +53,8 @@ namespace MatrixJam.Team14
 
         private void TransitionWithMove(TrainMove move, TrainState state)
         {
-            var obstacles = Obstacle.CurrObstacles[move];
-            Assert.IsTrue(obstacles.Count <= 1, "More than one obstacle should not overlap!");
-            
-            var obs = obstacles.FirstOrDefault();
-            if (obs) obs.OnPressedInZone();
-            TrainController.TransitionState(state, obs ? obs.MoveCue : null);
+            var obstacle = Obstacle.HandleMovePressed(move);
+            TrainController.TransitionState(state, obstacle ? obstacle.MoveCue : null);
         }
     }
 
@@ -58,6 +66,8 @@ namespace MatrixJam.Team14
         public override void OnUpdate()
         {
             base.OnUpdate();
+            
+            HandleHonk();
             if (HandleDuck()) return;
             if (HandleJump()) return;
         }
@@ -86,9 +96,9 @@ namespace MatrixJam.Team14
 
         public override void OnUpdate()
         {
+            HandleHonk();
             if (HandleDuck()) return;
-            if (HandleJump()) return;
-         
+
             currTime += Time.deltaTime;
             
             // y in anim
@@ -108,6 +118,7 @@ namespace MatrixJam.Team14
         public override void OnUpdate()
         {
             base.OnUpdate();
+            HandleHonk();
             if (HandleJump()) return;
         }
     }

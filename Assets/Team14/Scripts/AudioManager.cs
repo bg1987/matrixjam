@@ -33,6 +33,8 @@ namespace MatrixJam.Team14
             var time = Mathf.Clamp(source.time, 0f, CurrTrack.TotalSeconds);
             var pos = trackList.GetBeatPosition(startAndDirection, _trackIdx, time);
             
+            // Debug.Log($"POS: {pos.z}\tFinal: {time:F3}\tTime: {source.time:f3}\tClip: {source.clip.length:f3}");
+            
             return pos;
         }
         
