@@ -10,7 +10,7 @@ namespace MatrixJam.Team19
 
         private void OnCollisionEnter(Collision collision)
         {
-            bool isCollidedLayerInGameOverMask = _gameoverLayerMask == (_gameoverLayerMask | (1 << collision.gameObject.layer));
+            bool isCollidedLayerInGameOverMask = _gameoverLayerMask.value == (_gameoverLayerMask.value | (1 << collision.gameObject.layer));
 
             if (isCollidedLayerInGameOverMask)
             {
