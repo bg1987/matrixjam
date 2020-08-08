@@ -50,7 +50,9 @@ namespace MatrixJam.Team14
             }
         }
 
-        public AudioClip GetTrack(int trackIdx) => tracks[trackIdx].Clip;
+        public MusicTrack this[int i] => tracks[i];
+
+        public AudioClip GetClip(int trackIdx) => tracks[trackIdx].Clip;
 
         // public float BeatsInTrack(int trackIdx) => tracks[trackIdx].TotalBeats;
 

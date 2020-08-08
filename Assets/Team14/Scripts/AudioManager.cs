@@ -10,9 +10,12 @@ namespace MatrixJam.Team14
         [SerializeField] private AudioSource source;
 
         private int _trackIdx;
+        
 
         public event Action<int> OnFinishTrack;
         public event Action OnFinishTracklist;
+        
+        private MusicTrack CurrTrack => trackList[_trackIdx];
 
         private void Awake()
         {
@@ -27,8 +30,8 @@ namespace MatrixJam.Team14
 
         public Vector3 GetCurrPosition(Transform startAndDirection)
         {
-            var currTrackProgress = source.time;
-            var pos = trackList.GetBeatPosition(startAndDirection, _trackIdx, currTrackProgress);
+            var time = Mathf.Clamp(source.time, 0f, CurrTrack.TotalSeconds);
+            var pos = trackList.GetBeatPosition(startAndDirection, _trackIdx, time);
             
             return pos;
         }
@@ -49,9 +52,10 @@ namespace MatrixJam.Team14
 
         private void NextTrack()
         {
+            Debug.Log($"NextTrack ({_trackIdx} -> {_trackIdx+1})");
             _trackIdx++;
             source.Stop();
-            source.clip = trackList.GetTrack(_trackIdx);
+            source.clip = trackList.GetClip(_trackIdx);
             source.Play();
         }
 

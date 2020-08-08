@@ -17,6 +17,7 @@ namespace MatrixJam.Team14
         private float BeatPerSec => bpm / 60;
 
         public float TotalBeats => BeatPerSec * clip.length;
+        public float TotalSeconds => TotalBeats * BeatPerSec;
 
         private void OnValidate()
         {
@@ -30,7 +31,7 @@ namespace MatrixJam.Team14
 
 
         public Vector3 GetLastPosition(Transform startAndDirection) 
-            => GetPosition(startAndDirection, TotalBeats - 1);
+            => GetPosition(startAndDirection, TotalBeats);
         
         public Vector3 GetPosition(Transform startAndDirection, float beatNum, Vector3 offset) 
             => offset + GetPosition(startAndDirection, beatNum);
