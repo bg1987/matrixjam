@@ -2441,8 +2441,9 @@ MonoBehaviour:
   _failRequireLossCount: 3
   _levelWinExit: {fileID: 500103681}
   _levelFailExit: {fileID: 500103681}
-  _playerPrefab: {fileID: 6358636239753144670, guid: b2598972ae4f27d4484d8522f83068c1,
-    type: 3}
+  _playerHandler:
+    _playerPrefab: {fileID: 6358636239753144670, guid: b2598972ae4f27d4484d8522f83068c1,
+      type: 3}
 --- !u!1 &1476658715
 GameObject:
   m_ObjectHideFlags: 0
