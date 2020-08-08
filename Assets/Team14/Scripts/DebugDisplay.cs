@@ -1,16 +1,25 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 
 namespace MatrixJam.Team14
 {
     public class DebugDisplay : MonoBehaviour
     {
+        public enum DebugTrackBorder
+        {
+            None,
+            Start,
+            End,
+        }
+        
         [SerializeField] private GameManager gameManager;
         [SerializeField] private Camera cam;
 
-        [Header("Track starts")]
-        [SerializeField] private Color trackStartColor = Color.white;
-        [SerializeField] private float trackStartSize = 10f;
+        [Header("Track borders")]
+        [SerializeField] private DebugTrackBorder debugTrackBorder;
+        [SerializeField] private Color trackBorderColor = Color.white;
+        [SerializeField] private float trackBorderSize = 10f;
         
         [Header("Colors")]
         [SerializeField] private Color[] beatColors = new Color[4];
@@ -31,13 +40,31 @@ namespace MatrixJam.Team14
                 DrawBeatLine(beatPos, i);
             }
 
-            foreach (var trackStartPosition in gameManager.TrackStartPositions)
-                DrawTrackStartLine(trackStartPosition);
+            DebugTrackBorders(debugTrackBorder);
+        }
+
+        private void DebugTrackBorders(DebugTrackBorder trackBorderMode)
+        {
+            switch (trackBorderMode)
+            {
+                case DebugTrackBorder.None:
+                    return;
+                case DebugTrackBorder.Start:
+                    foreach (var startPos in gameManager.TrackStartPositions)
+                        DrawTrackStartLine(startPos);
+                    break;
+                case DebugTrackBorder.End:
+                    foreach (var endPos in gameManager.TrackEndPositions)
+                        DrawTrackStartLine(endPos);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(trackBorderMode), trackBorderMode, null);
+            }
         }
 
         private void DrawTrackStartLine(Vector3 center)
         {
-            DrawLine(center, trackStartSize, trackStartColor);
+            DrawLine(center, trackBorderSize, trackBorderColor);
         }
         
         private void DrawBeatLine(Vector3 center, int beatIdx)
