@@ -14,7 +14,10 @@ namespace MatrixJam.Team4
         public delegate void EventNextMessage();
 
         public event EventBoardCreated BoardCreated;
-        public delegate void EventBoardCreated();
+        public delegate void EventBoardCreated();   
+
+        public event EventGameOver GameOver;
+        public delegate void EventGameOver();
 
         public event EventPlayerPlayed PlayerPlayed;
         public delegate void EventPlayerPlayed(TurnObject turnObject);
@@ -37,6 +40,11 @@ namespace MatrixJam.Team4
             IntroDone?.Invoke();
         }
         
+        public void OnGameOver()
+        {
+            GameOver?.Invoke();
+        }
+
         public void OnNextMessage()
         {
             NextMessage?.Invoke();

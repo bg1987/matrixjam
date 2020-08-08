@@ -45,9 +45,17 @@ namespace MatrixJam.Team4
         {
             EventManager.Singleton.IntroDone -= OnIntroDone;     
             EventManager.Singleton.NextMessage -= _introManager.NextMessage;
+            EventManager.Singleton.OnTurnOver += OnTurnOver;
             var choices = new List<int>() {1, 2, 3, 4, 5, 6, 7, 8, 9};//TODO take from boardManager
             
             UIManager.SetPlayerAvailableNumbers(choices, true);
+        }
+
+        private void OnTurnOver()
+        {
+            var nextPlayer = _turnManager.GetNextPlayer();
+            var nextTurnData = _boardManager.GetPlayerTurnData(nextPlayer);
+            _turnManager.PlayNextTurn(nextTurnData);
         }
 
         private void OnIntroDone()

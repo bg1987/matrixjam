@@ -40,7 +40,12 @@ namespace MatrixJam.Team4
                     break;
             }
 
-            //TODO PlaceUnit(unit, position);
+            player.Score += points;
+
+            if ( PlaceUnit(unit, unit.Position.GetX(), unit.Position.GetY()))
+            {
+                player.MyUnits.Remove(unit);
+;            }
 
             EventManager.Singleton.OnTurnOver();
         }
@@ -190,14 +195,14 @@ namespace MatrixJam.Team4
             }
         }
 
-        private Boolean PlaceUnit(Unit unit, Position position)
+        private bool PlaceUnit(Unit unit, Position position)
         {
             var x = position.GetX();
             var y = position.GetY();
             return PlaceUnit(unit, x, y);
         }
 
-        private Boolean PlaceUnit(Unit unit, int x, int y)
+        private bool PlaceUnit(Unit unit, int x, int y)
         {
             Debug.Log("BoardManager:PlaceUnit");
             var unitIndex = unit.Value - 1;

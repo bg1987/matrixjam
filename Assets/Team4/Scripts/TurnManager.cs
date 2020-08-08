@@ -15,9 +15,14 @@ namespace MatrixJam.Team4
             _playersList = players;
         }
 
-        public void NextTurn(TurnData turnData)
+        public Player GetNextPlayer()
         {
             AdvanceIndex();
+            return _playersList[_turnIndex];
+        }
+
+        public void PlayNextTurn(TurnData turnData)
+        {
             _playersList[1].YourTurn(turnData);
         }
 
