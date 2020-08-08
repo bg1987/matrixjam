@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MatrixJam.Team
+namespace MatrixJam.Team2
 {
     public class TurretStupid : MonoBehaviour
     {
+        public float correction = 0;
+
         private Vector3 object_pos;
         private Vector3 mousePosition;
 
         //public float moveSpeed = 0.1f;
         //public Transform target; //Assign to the object you want to rotate
-        [SerializeField] float correction = 0;
-        float angle;
 
         void Update()
         {
