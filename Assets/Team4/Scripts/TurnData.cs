@@ -8,9 +8,9 @@ namespace MatrixJam.Team4
     {
         public TurnObject turnObject;
         private BoardData _boardData;
-        private PositionOptions _positionOptions;
+        public Dictionary<Unit, List<Position>> _positionOptions;
 
-        public TurnData(BoardData boardData, PositionOptions positionOptions)
+        public TurnData(BoardData boardData, Dictionary<Unit, List<Position>> positionOptions)
         {
             _boardData = boardData;
             _positionOptions = positionOptions;

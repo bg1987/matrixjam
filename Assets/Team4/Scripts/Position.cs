@@ -9,7 +9,7 @@ namespace MatrixJam.Team4
         private int posX;
         private int posY;
 
-        public void SetPosition(int x, int y)
+        public Position(int x, int y)
         {
             posX = x;
             posY = y;
