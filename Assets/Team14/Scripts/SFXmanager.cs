@@ -10,9 +10,9 @@ namespace MatrixJam.Team
         [Header("Sound Effects")]
         [SerializeField] private AudioSource Jump;
         [SerializeField] private AudioSource Railway;
-        [SerializeField] private AudioSource TrainSteam;
         [SerializeField] private AudioSource Honk;
-        [SerializeField] private AudioSource Bells;
+        [SerializeField] private AudioSource AwakeBells;
+        [SerializeField] private AudioSource Duck;
         
         public void PlaySFX(TrainMove move)
         {
@@ -22,6 +22,7 @@ namespace MatrixJam.Team
                     Jump.Play();
                     break;
                 case TrainMove.Duck:
+                    
                     break;
                 case TrainMove.Honk:
                     break;

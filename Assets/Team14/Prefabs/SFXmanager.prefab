@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2932382825753848826
+--- !u!1 &1985427122324498822
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5418108404284161071}
-  - component: {fileID: 11635843243110712}
+  - component: {fileID: 4293812900991444507}
+  - component: {fileID: 2616697185260370303}
   m_Layer: 0
-  m_Name: Steam
+  m_Name: Short Bells
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5418108404284161071
+--- !u!4 &4293812900991444507
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2932382825753848826}
+  m_GameObject: {fileID: 1985427122324498822}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,17 +31,17 @@ Transform:
   m_Father: {fileID: 1697290204019304803}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &11635843243110712
+--- !u!82 &2616697185260370303
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2932382825753848826}
+  m_GameObject: {fileID: 1985427122324498822}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7d072c90b96597c4cabf7af6efcc0f22, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ee7839eeb01324340b10d6becd47c5bd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -50,8 +50,8 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
+  DopplerLevel: 5
+  MinDistance: 40.12
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -102,7 +102,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.6611111
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -168,7 +168,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1c30b4f17e0c58543b71f6d0c18f536e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8a729ce6f4bee3e4686c6e89fe840aee, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -295,7 +295,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7ed22820b7538784a9e852d3887af9ee, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9c7b0d55e0498b04da7aa77c9a77887e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -390,6 +390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1697290204019304803}
+  - component: {fileID: 1224306220897954571}
   m_Layer: 0
   m_Name: SFXmanager
   m_TagString: Untagged
@@ -411,10 +412,27 @@ Transform:
   - {fileID: 574870272613389914}
   - {fileID: 7531093667367468401}
   - {fileID: 1965110204357553220}
-  - {fileID: 5418108404284161071}
+  - {fileID: 4293812900991444507}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1224306220897954571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882194884583606761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e78142f953f744e8908f6131eef598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Jump: {fileID: 5730753867986249342}
+  Railway: {fileID: 1991965000193812980}
+  Honk: {fileID: 3537319932071937797}
+  AwakeBells: {fileID: 2616697185260370303}
+  Duck: {fileID: 0}
 --- !u!1 &7016855028029986120
 GameObject:
   m_ObjectHideFlags: 0
