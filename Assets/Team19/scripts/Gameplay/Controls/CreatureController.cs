@@ -100,7 +100,7 @@ namespace MatrixJam.Team19.Gameplay.Controls
             _isReadyToStep = false;
         }
 
-        private void EndStep()
+        protected virtual void EndStep()
         {
             transform.position = _activeStepDestination;
             _activeStepDirectionVector = Vector3.zero;
