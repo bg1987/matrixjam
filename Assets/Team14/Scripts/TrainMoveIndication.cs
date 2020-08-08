@@ -5,8 +5,10 @@ using UnityEngine;
 
 namespace MatrixJam.Team
 {
-    public class jumpIndication : MonoBehaviour
+    public class TrainMoveIndication : MonoBehaviour
     {
+        [SerializeField] private TrainMove trainMove;
+  
         private int point = 0;
         private bool isEnteredInsideTrigger = false;
         void OnTriggerEnter(Collider other)
@@ -14,35 +16,22 @@ namespace MatrixJam.Team
             Debug.Log("entered");
             point++;
             isEnteredInsideTrigger = true;
-            
         }
-
         private void OnTriggerExit(Collider other)
         {
-            
             Debug.Log("exit");
-            if (isEnteredInsideTrigger)
-            {
-                onFailed();
-            }
-           
             isEnteredInsideTrigger = false;
 
         }
-
         private void Update()
         {
             if (!isEnteredInsideTrigger) return;
+            var keyCode = TrainMoves.GetKey(trainMove);
             
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(keyCode))
             {
                 Debug.Log("Jump");
             }
-        }
-
-        void onFailed()
-        {
-            
         }
     }
 }
