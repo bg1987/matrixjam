@@ -11,6 +11,8 @@ namespace MatrixJam.Team13
 
 		private float _distance = 2.5f;
 		private float _rectHalfSize = 1.25f;
+		private int _newHeight;
+		private int _newWidth;
 
         void OnSceneGUI(){
 			maze = (Maze)target;
@@ -29,15 +31,33 @@ namespace MatrixJam.Team13
 			EditorGUILayout.BeginHorizontal();
 			EditorGUILayout.BeginVertical(GUILayout.Width(100));
 			EditorGUILayout.LabelField("Width", GUILayout.Width(100));
-			int newWidth = EditorGUILayout.IntField(maze.width, GUILayout.Width(100));
+			_newWidth = EditorGUILayout.IntField(_newWidth, GUILayout.Width(100));
 			EditorGUILayout.EndVertical();
 			EditorGUILayout.BeginVertical(GUILayout.Width(100));
 			EditorGUILayout.LabelField("Height", GUILayout.Width(100));
-			int newHeight = EditorGUILayout.IntField(maze.height, GUILayout.Width(100));
+			_newHeight = EditorGUILayout.IntField(_newHeight, GUILayout.Width(100));
 			EditorGUILayout.EndVertical();
 			EditorGUILayout.EndHorizontal();
+			EditorGUILayout.BeginHorizontal();
+			if(_newHeight != maze.height || _newWidth != maze.width){
+				if(GUILayout.Button("Apply", GUILayout.Width(100))){
+					Clear();
+					maze.width = _newWidth;
+					maze.height = _newHeight;
+					maze.horizontalEdges = new MultiGameObjectArray(maze.width, maze.height + 1);
+					maze.verticalEdges = new MultiGameObjectArray(maze.width + 1, maze.height);
+					maze.edgeIntersections = new MultiGameObjectArray(maze.width + 1, maze.height + 1);
+				}
+				if(GUILayout.Button("Reset", GUILayout.Width(100))){
+					Debug.Log("Canceling resize");
+					_newWidth = maze.width;
+					_newHeight = maze.height;
+				}
+			}
 			
-			#region new height check
+			EditorGUILayout.EndHorizontal();
+			
+			/*#region new height check
 			if(newHeight > maze.height){
 				MultiGameObjectArray newArr = new MultiGameObjectArray(maze.width + 1, newHeight);
 				//MultiGameObjectArray pointsArr = new MultiGameObjectArray(maze.width + 1, newHeight + 1);
@@ -93,7 +113,7 @@ namespace MatrixJam.Team13
 					maze.width = newWidth;
 				}
 			}
-			#endregion
+			#endregion*/
 
 			GUILayout.Space(25);
 			if(GUILayout.Button("Clear All", GUILayout.Width(100))){
@@ -163,28 +183,40 @@ namespace MatrixJam.Team13
 		private void Clear(){
 			for(int i = 0; i <= maze.height; i++){
 				for(int j = 0; j < maze.width; j++){
-					if(maze.horizontalEdges[j, i] != null){
-						DestroyImmediate(maze.horizontalEdges[j, i]);
-						maze.horizontalEdges[j, i] = null;
+					try{
+						if(maze.horizontalEdges[j, i] != null){
+							DestroyImmediate(maze.horizontalEdges[j, i]);
+							maze.horizontalEdges[j, i] = null;
+						}
+					}catch(System.IndexOutOfRangeException){
+						Debug.Log("Trying to access an out of range index when clearing horizontal edges");
 					}
 				}
 			}
 
 			for(int i = 0; i <= maze.width; i++){
 				for(int j = 0; j < maze.height; j++){
-					if(maze.verticalEdges[i, j] != null){
-						DestroyImmediate(maze.verticalEdges[i, j]);
-						maze.verticalEdges[i, j] = null;
+					try{
+						if(maze.verticalEdges[i, j] != null){
+							DestroyImmediate(maze.verticalEdges[i, j]);
+							maze.verticalEdges[i, j] = null;
+						}
+					}catch(System.IndexOutOfRangeException){
+						Debug.Log("Trying to access an out of range index when clearing vertical edges");
 					}
 				}
 			}
 
 			for(int i = 0; i <= maze.width; i++){
 				for(int j = 0; j <= maze.height; j++){
-					if(maze.edgeIntersections[i, j] != null){
-						DestroyImmediate(maze.edgeIntersections[i, j]);
-						maze.edgeIntersections[i, j] = null;
-					}
+					try{
+						if(maze.edgeIntersections[i, j] != null){
+							DestroyImmediate(maze.edgeIntersections[i, j]);
+							maze.edgeIntersections[i, j] = null;
+						}
+					}catch(System.IndexOutOfRangeException){
+						Debug.Log("Trying to access an out of range index when clearing edge intersections");
+					}	
 				}
 			}
 		}
