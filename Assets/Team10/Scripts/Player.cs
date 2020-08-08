@@ -17,24 +17,24 @@ namespace MatrixJam.Team10
         void Start()
         {
             t = new RandomDialogueTree(playerName);
-            //myRigidBody = GetComponent<Rigidbody2D>();
+            myRigidBody = GetComponent<Rigidbody2D>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            // change = Vector3.zero;
-            // change.x = Input.GetAxisRaw("Horizontal");
-            // change.y = Input.GetAxisRaw("Vertical");
-            // if(change != Vector3.zero){
-            //     moveCharacter();
-            // }   
+            change = Vector3.zero;
+            change.x = Input.GetAxisRaw("Horizontal");
+            change.y = Input.GetAxisRaw("Vertical");
+            if(change != Vector3.zero){
+                moveCharacter();
+            }   
         }
 
         void moveCharacter(){
-            // myRigidBody.MovePosition(
-            //     transform.position + change.normalized * speed * Time.deltaTime
-            // );
+            myRigidBody.MovePosition(
+                transform.position + change.normalized * speed * Time.deltaTime
+            );
         }
 
         void checkForRandomDialogue(string room){
