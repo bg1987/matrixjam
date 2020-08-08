@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6358636239753144665}
   - component: {fileID: 6024156154878989486}
   - component: {fileID: 3987863099478563584}
+  - component: {fileID: 7967023840525317913}
   m_Layer: 0
   m_Name: Default Player
   m_TagString: Player
@@ -110,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6358636239753144670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.1566408, y: 6.3683376, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 613493858}
@@ -194,7 +195,9 @@ MonoBehaviour:
   _stepDenyingLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  _inputHandler: {fileID: 11400000, guid: 6079274f532e47e4c88bdff1dbc4dbe8, type: 2}
+  _inputHandlerPrefab: {fileID: 11400000, guid: 6079274f532e47e4c88bdff1dbc4dbe8,
+    type: 2}
+  _shouldCloneInputHandler: 0
 --- !u!54 &3987863099478563584
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -211,3 +214,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &7967023840525317913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6358636239753144670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0b018fa72b2b3478be80c5075ad082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameoverLayerMask:
+    serializedVersion: 2
+    m_Bits: 512

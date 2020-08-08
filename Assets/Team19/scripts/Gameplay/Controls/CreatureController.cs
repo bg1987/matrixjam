@@ -17,6 +17,11 @@ namespace MatrixJam.Team19.Gameplay.Controls
         private LayerMask _stepDenyingLayerMask;
 
         [SerializeField]
+        private Team19.Input.Base.BaseInputHandler _inputHandlerPrefab;
+
+        [SerializeField]
+        private bool _shouldCloneInputHandler = false;
+
         private Team19.Input.Base.BaseInputHandler _inputHandler;
 
         private bool _isReadyToStep = true;
@@ -32,7 +37,20 @@ namespace MatrixJam.Team19.Gameplay.Controls
 
         private void Awake()
         {
-            _collider = GetComponentInChildren<Collider>();
+            if (_shouldCloneInputHandler)
+            {
+                _inputHandler = Instantiate(_inputHandlerPrefab);
+            }
+            else
+            {
+                _inputHandler = _inputHandlerPrefab;
+            }
+
+            _collider = GetComponent<Collider>();
+            if (_collider == null)
+            {
+                _collider = GetComponentInChildren<Collider>();
+            }
         }
 
         private void Update()

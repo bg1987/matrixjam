@@ -1,4 +1,5 @@
 ﻿/// Taken and modified from https://github.com/r3eckon/Unity-SimpleGrid-Shader
+/// Taken and modified from https://github.com/r3eckon/Unity-SimpleGrid-Shader
 
 Shader "Custom/GridUNLIT"
 {
