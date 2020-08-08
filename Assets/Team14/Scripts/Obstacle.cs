@@ -66,7 +66,6 @@ namespace MatrixJam.Team14
         {
             if (!other.CompareTag("Player")) return;
             
-            Debug.Log("entered");
             CurrObstacles[trainMove].Add(this);
         }
         
@@ -74,10 +73,8 @@ namespace MatrixJam.Team14
         {
             if (!other.CompareTag("Player")) return;
             
-            Debug.Log("exit");
             CurrObstacles[trainMove].Remove(this);
-            
-            
+
             if (!_succeeded) OnObstacleEvent?.Invoke(new ObstaclePayload(this, false, Move, moveCue));
         }
     }

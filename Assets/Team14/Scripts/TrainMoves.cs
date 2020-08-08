@@ -7,9 +7,9 @@ namespace MatrixJam.Team14
     {
         private static Dictionary<TrainMove, KeyCode> _moveDict = new Dictionary<TrainMove, KeyCode>
         {
-            {TrainMove.Jump, KeyCode.Space},
-            {TrainMove.Duck, KeyCode.UpArrow},
-            {TrainMove.Honk, KeyCode.DownArrow},
+            {TrainMove.Jump, KeyCode.UpArrow},
+            {TrainMove.Duck, KeyCode.DownArrow},
+            {TrainMove.Honk, KeyCode.Space},
         };
 
         public static KeyCode GetKey(TrainMove move)
