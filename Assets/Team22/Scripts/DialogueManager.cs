@@ -50,7 +50,8 @@ namespace MatrixJam.Team22
             {
                 NextDialogue();
             }
-            }
+
+         }
 
         private void NextDialogue()
         {
@@ -88,6 +89,11 @@ namespace MatrixJam.Team22
             canDialogue = true;
             dIndex = -1;
             NextDialogue();
+        }
+
+        public bool IsInDialogue()
+        {
+            return canDialogue;
         }
     }
 }
