@@ -1,41 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using MatrixJam.Team;
-
 
 namespace MatrixJam.Team4
 {
-    public class IntroManager
+    public class IntroManager : MonoBehaviour
     {
 
-        private List<MessageObject> _introMessages;
+        public MessageScript[] Messages;
         private int _msgIndex;
 
-        public IntroManager(List<MessageObject> introMessages)
+        private void Start()
         {
-            _introMessages = introMessages;
-            _msgIndex = 0;
+            Messages[_msgIndex].ShowMessage();
         }
 
-        public void nextMessage()
+        private void Update()
         {
-            ++_msgIndex;
-            if(_msgIndex < _introMessages.Count)
+            if (Input.GetMouseButtonDown(0))
             {
-                UIManager.ShowIntroMessage(_introMessages[_msgIndex]);
-                return;
-            } 
-
-            // TODO fire event
+                NextMessage();
+            }
         }
 
-        public void previousMessage()
+        public void NextMessage()
+        {
+            if (Messages[_msgIndex].HasNext())
+            {
+                Messages[_msgIndex].ShowNext();
+            }
+            else
+            {
+                MoveToTheNextTooltip();
+            }
+
+            
+        }
+
+        private void MoveToTheNextTooltip()
+        {
+            Messages[_msgIndex].HideMessage();
+            if (_msgIndex < Messages.Length - 1)
+            {
+                _msgIndex++;
+                Messages[_msgIndex].ShowMessage();
+            }
+        }
+
+        public void PreviousMessage()
         {
             if(0 < _msgIndex)
             {
                 --_msgIndex;
-                UIManager.ShowIntroMessage(_introMessages[_msgIndex]);
+                Messages[_msgIndex].ShowMessage();
             }
         }
 

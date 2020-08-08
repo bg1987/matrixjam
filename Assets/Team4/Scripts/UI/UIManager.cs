@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using MatrixJam.Team;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MatrixJam.Team4
 {
@@ -14,7 +15,7 @@ namespace MatrixJam.Team4
         public GameObject DarkScreen;
         public GameObject Tooltips;
 
-        public GameObject AttackPanel;
+        public Button[] AttackButtons;
         public NumberButtonScript NumberPrefab;
         
         private void Awake()
@@ -23,23 +24,7 @@ namespace MatrixJam.Team4
             DarkScreen.SetActive(false);
             Tooltips.SetActive(true);
             NumberButtonsManager.GenerateBoard(NumberPrefab);
-        }
-
-        //public static void ShowMessage()
-        public static void ShowIntroMessage(MessageObject message)
-        {
-            ShowMessage(message.messageText, MessageLocation.AboveBoard);
-        }
-
-
-        public static void ShowMessage(string message, MessageLocation location)
-        {
-            TooltipManager.ShowMessage(message, location);
-        }
-
-        public static void HideMessage()
-        {
-            TooltipManager.HideMessage();
+            ShowDamageOptions(false);
         }
 
         public static void ShowDarkScreen()
@@ -72,9 +57,13 @@ namespace MatrixJam.Team4
             NumberButtonsManager.SetSquaresForPuttingNumberOn(squares);
         }
 
-        public static void ShowDamageOptions()
+        public static void ShowDamageOptions(bool interactable)
         {
-            _instance.AttackPanel.SetActive(true);
+            foreach (var attackButton in _instance.AttackButtons)
+            {
+                attackButton.interactable = interactable;
+
+            }
         }
 
         public static void SetNumberOnSquare(Vector2 index, int originalValue, int currentValue, Color playerColor)
@@ -96,17 +85,17 @@ namespace MatrixJam.Team4
 
         public void PickAttackRow()
         {
-            AttackPanel.SetActive(false);
+            ShowDamageOptions(false);
             ChoiceManager.PickAttack(AttackType.Row);
         }
         public void PickAttackLine()
         {
-            AttackPanel.SetActive(false);
+            ShowDamageOptions(false);
             ChoiceManager.PickAttack(AttackType.Line);
         }
         public void PickAttackBox()
         {
-            AttackPanel.SetActive(false);
+            ShowDamageOptions(false);;
             ChoiceManager.PickAttack(AttackType.Box
             );
         }
