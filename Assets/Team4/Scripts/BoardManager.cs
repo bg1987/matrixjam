@@ -53,19 +53,44 @@ namespace MatrixJam.Team4
         private int GetSquarePoints(Player player, Unit unit)
         {
             var ans = 0;
-            //TODO get square units
-            //TODO sum square units
+            var square = new Square(unit.Position.GetX(), unit.Position.GetY());
+
+            for (int i = square.startX; i < square.startX + 3; i++)
+            {
+                for (int j = square.startY; j < square.startY + 3; j++)
+                {
+                    var unitToCheck = _boardData._boardData[i, j];
+
+                    if (unitToCheck == null || player == unitToCheck.Owner)
+                    {
+                        continue;
+                    }
+
+                    var gainedPoints = Mathf.Min(unitToCheck.Value, unit.Value);
+
+                    ans += gainedPoints;
+                }
+            }
+
             return ans;
         }
 
         private int GetRowPoints(Player player, Unit unit)
-        {            
-            //TODO Implement this
+        {
             int ans = 0;
             for (int i = 0; i < _size; i++)
             {
-                //var unitToCheck = _boardData._boardData[i, ] //I AM HERE
-            
+                var y = unit.Position.GetY();
+                var unitToCheck = _boardData._boardData[i, y];
+
+                if (unitToCheck == null || player == unitToCheck.Owner)
+                {
+                    continue;
+                }
+
+                var gainedPoints = Mathf.Min(unitToCheck.Value, unit.Value);
+
+                ans += gainedPoints;
             }
 
             return ans;
@@ -73,12 +98,20 @@ namespace MatrixJam.Team4
 
         private int GetColumPoints(Player player, Unit unit)
         {
-            //TODO Implement this
             int ans = 0;
             for (int i = 0; i < _size; i++)
             {
-                //var unitToCheck = _boardData._boardData[i, ] //I AM HERE
+                var x = unit.Position.GetX();
+                var unitToCheck = _boardData._boardData[x, i];
 
+                if (player == unitToCheck.Owner)
+                {
+                    continue;
+                }
+
+                var gainedPoints = Mathf.Min(unitToCheck.Value, unit.Value);
+
+                ans += gainedPoints;
             }
 
             return ans;
