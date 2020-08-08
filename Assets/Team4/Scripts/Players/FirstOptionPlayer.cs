@@ -23,12 +23,20 @@ namespace MatrixJam.Team4
             yield return new WaitForSeconds(3);
             var unit = turnData._positionOptions.Keys.First(x => turnData._positionOptions[x].Count > 0);
             
-            UIManager.ChoiceManager.PickNumber(unit.Value);
             var positions = turnData._positionOptions[unit];
             var position = positions[0];
-            UIManager.ChoiceManager.PickSquare(new Vector2(position.GetX(), position.GetY()));
-            UIManager.ChoiceManager.PickAttack(AttackDirection.square);
+            TurnObject(unit);
+
+
             
+        }
+
+        private void TurnObject(Unit unit)
+        {
+            var turnObject = new TurnObject();
+            turnObject.AttackDirection = AttackDirection.square;
+            turnObject.ChosenUnit = unit;
+            UIManager.ChoiceManager.HandleAiChoice(ValidateTurnObject(turnObject));
         }
     }
 }

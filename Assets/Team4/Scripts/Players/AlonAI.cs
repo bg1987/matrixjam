@@ -9,6 +9,7 @@ namespace MatrixJam.Team4
         // this is an AI which chooses a random unit and returns a random answer
         public override void YourTurn(TurnData turnData)
         {
+            base.YourTurn(turnData);
             var randomIndex = Random.Range(0, MyUnits.Count);
             var randomUnit = MyUnits[randomIndex];
             var unitOptions = turnData._positionOptions[randomUnit];
@@ -16,9 +17,8 @@ namespace MatrixJam.Team4
             var position = unitOptions[positionIndex];
 
             randomUnit.Position = position;
-            var turnObject = turnData.turnObject;
+            var turnObject = new TurnObject();
             turnObject.ChosenUnit = randomUnit;
-            turnObject.ChosenPositionIndex = positionIndex;
 
             randomIndex = Random.Range(0, 2);
             switch (randomIndex)
@@ -34,8 +34,13 @@ namespace MatrixJam.Team4
                     break;
             }
 
-            EventManager.Singleton.OnPlayerPlayed(ValidateTurnObject(turnObject));
+            UIManager.ChoiceManager.HandleAiChoice(ValidateTurnObject(turnObject));
         }
 
+        public override bool IsHuman()
+        {
+            return false;
+
+        }
     }
 }

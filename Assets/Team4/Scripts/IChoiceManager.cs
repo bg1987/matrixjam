@@ -10,6 +10,7 @@ namespace MatrixJam.Team
         void PickNumber(int value);
         void PickSquare(Vector2 index);
         void PickAttack(AttackDirection attackType);
+        void HandleAiChoice(TurnObject validateTurnObject);
     }
 
 }

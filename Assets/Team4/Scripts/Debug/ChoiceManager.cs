@@ -95,5 +95,13 @@ namespace MatrixJam.Team4
             turnObject.AttackDirection = attackType;
             _boardManager.ExecuteTurn(turnObject);
         }
+
+        public void HandleAiChoice(TurnObject turnObject)
+        {
+            PickNumber(turnObject.ChosenUnit.Value);
+            var position = turnObject.ChosenUnit.Position;
+            UIManager.ChoiceManager.PickSquare(new Vector2(position.GetX(), position.GetY()));
+            UIManager.ChoiceManager.PickAttack(turnObject.AttackDirection);
+        }
     }
 }
