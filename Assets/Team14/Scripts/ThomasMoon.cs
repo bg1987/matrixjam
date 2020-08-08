@@ -1,44 +1,64 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MatrixJam.Team14
 {
     public class ThomasMoon : MonoBehaviour
     {
-        [Header("DEBUG")]
-        [SerializeField] private Vector2 targetLeftEyeLocal;
-        [SerializeField] private Vector2 targetRightEyeLocal;
-        [Space]
-            
         [SerializeField] private Camera cam;
-        
-        [SerializeField] private RectTransform leftEyeParent;
-        [SerializeField] private RectTransform rightEyeParent;
-        
-        [SerializeField] private RectTransform leftEye;
-        [SerializeField] private RectTransform rightEye;
-        
-        [SerializeField] private RectTransform leftEyebrow;
-        [SerializeField] private RectTransform rightEyebrow;
-        
-         
+        [SerializeField] private float localEyeRadius;
+        [SerializeField] private float scalePerSec;
 
-        public Transform LookAt;
+        [SerializeField] private SpriteRenderer faceSprite;
+        [SerializeField] private SpriteRenderer leftEye;
+        [SerializeField] private SpriteRenderer rightEye;
+        [SerializeField] private SpriteRenderer leftEyebrow;
+        [SerializeField] private SpriteRenderer rightEyebrow;
+
+        public bool lookAtCursor;
+        public Transform LookAtTransform;
+
+        public float Z => faceSprite.transform.position.z;
+
+        private Vector3 LookAt
+        {
+            get
+            {
+                if (lookAtCursor)
+                {
+                    var screenPos = Input.mousePosition;
+                    screenPos.z = Z;
+                    return cam.ScreenToWorldPoint(screenPos);
+                }
+
+                return LookAtTransform.position;
+            }
+        }
+
+        private Vector3 startScale;
+
+        private void Start()
+        {
+            startScale = transform.localScale;
+        }
 
         private void Update()
         {
-            EyeLookAt(leftEyeParent, leftEye, LookAt.position, out targetLeftEyeLocal);
-            EyeLookAt(leftEyeParent, rightEye, LookAt.position, out targetRightEyeLocal);
+            transform.localScale += Vector3.one * Time.deltaTime * scalePerSec;
+            var lookAt = LookAt;
+            
+            EyeLookAt(leftEye, lookAt);
+            EyeLookAt(rightEye, lookAt);
         }
 
-        private void EyeLookAt(RectTransform parent, RectTransform eye, Vector3 worldPos, out Vector2 debugLocalPos)
+        public void RestartSize()
         {
-            // Get screen pos
-            var screenPos = cam.WorldToScreenPoint(worldPos);
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(eye, screenPos, cam, out var eyeLocalPos);
-            debugLocalPos = eyeLocalPos;
+            transform.localScale = startScale;
+        }
 
+        private void EyeLookAt(SpriteRenderer eyeSprite, Vector3 target)
+        {
+            var delta = transform.InverseTransformDirection(target - eyeSprite.transform.position);
+            eyeSprite.transform.localPosition = delta.normalized * localEyeRadius;
         }
     }
 }
