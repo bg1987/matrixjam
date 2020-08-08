@@ -11,6 +11,7 @@ namespace MatrixJam.Team
 
         //public float moveSpeed = 0.1f;
         //public Transform target; //Assign to the object you want to rotate
+        [SerializeField] float correction = 0;
         float angle;
 
         void Update()
@@ -22,9 +23,8 @@ namespace MatrixJam.Team
             Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
             mousePos.x = mousePos.x - objectPos.x;
             mousePos.y = mousePos.y - objectPos.y;
-            float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg - 90;
+            float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg - correction;
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-
         }
     }
 }
