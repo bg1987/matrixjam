@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -41,7 +42,6 @@ namespace MatrixJam.Team14
         public static TrainState DriveState { get; private set; }
         public static TrainState JumpState { get; private set; }
         public static TrainState DuckState { get; private set; }
-        public static TrainState DetourState { get; private set; }
         public static TrainState NullState { get; private set; }
         
         private HashSet<FutureAnimation> _futureAnimations = new HashSet<FutureAnimation>();
@@ -81,7 +81,7 @@ namespace MatrixJam.Team14
 
         private void Start()
         {
-            TransitionState(DriveState);
+            TransitionState(DriveState, null);
         }
 
         private void OnGUI()
@@ -95,10 +95,16 @@ namespace MatrixJam.Team14
             }
         }
 
-        public static void TransitionState(TrainState newState) => Instance.TransitionStateInternal(newState);
+        public static void TransitionState(TrainState newState, Transform moveCue) => Instance.TransitionStateInternal(newState, moveCue);
 
-        private void TransitionStateInternal(TrainState newState)
+        private void TransitionStateInternal(TrainState newState, Transform moveCue)
         {
+            if (newState == _currstate)
+            {
+                Debug.LogWarning($"Same state transition ({newState}). Ignoring");
+                return;
+            }
+            
             Assert.IsNotNull(newState);
 
             Debug.Log($"State Transition: {_prevState?.Name} -> {newState.Name}");
@@ -109,7 +115,7 @@ namespace MatrixJam.Team14
 
             if (newState.AnimTrigger != null)
             {
-                CueFutureAnimations(newState.AnimTrigger);
+                CueFutureAnimations(newState.AnimTrigger, moveCue);
                 HandlePendingAnimations();
             }
             
@@ -125,16 +131,6 @@ namespace MatrixJam.Team14
             NullState = new TrainNullState();
         }
 
-        public void Jump()
-        {
-            TransitionState(JumpState);
-        }
-
-        public void Duck()
-        {
-            TransitionState(DuckState);
-        }
-
         private void OnObstacleEvent(ObstaclePayload payload)
         {
             if (!payload.Successful)
@@ -143,6 +139,9 @@ namespace MatrixJam.Team14
                 return;
             }
             
+            // TODO: ???
+            var nextState = GetState(payload.Move);
+            TransitionState(nextState, payload.MoveCue);
         }
 
         private void OnObstacleFailed()
@@ -183,6 +182,22 @@ namespace MatrixJam.Team14
             {
                 var futureAnim = new FutureAnimation(slaveCarAnim, value, trigger);
                 _futureAnimations.Add(futureAnim);
+            }
+        }
+
+        public TrainState GetState(TrainMove move)
+        {
+            switch (move)
+            {
+                case TrainMove.Jump:
+                    return JumpState;
+                    
+                case TrainMove.Duck:
+                    return DuckState;
+                case TrainMove.Honk:
+                    return _currstate;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(move), move, null);
             }
         }
     }

@@ -11,7 +11,7 @@ namespace MatrixJam.Team14
             {TrainMove.Duck, KeyCode.UpArrow},
             {TrainMove.Honk, KeyCode.DownArrow},
         };
-        
+
         public static KeyCode GetKey(TrainMove move)
         {
             return _moveDict[move];

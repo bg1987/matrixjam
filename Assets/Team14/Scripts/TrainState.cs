@@ -65,7 +65,7 @@ namespace MatrixJam.Team14
             currTime += Time.deltaTime;
             // y in anim
             if (currTime >= _jumpTime)
-                TrainController.TransitionState(TrainController.DriveState);
+                TrainController.TransitionState(TrainController.DriveState, null);
         }
 
         public override string Name => "Jump";
