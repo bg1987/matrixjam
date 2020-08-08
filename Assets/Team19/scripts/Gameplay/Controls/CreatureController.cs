@@ -5,7 +5,7 @@ using DG.Tweening;
 namespace MatrixJam.Team19.Gameplay.Controls
 {
 
-    public class PlayerController : MonoBehaviour
+    public class CreatureController : MonoBehaviour
     {
         [SerializeField]
         private float _stepDistance = 1f;
@@ -16,9 +16,11 @@ namespace MatrixJam.Team19.Gameplay.Controls
         [SerializeField]
         private LayerMask _stepDenyingLayerMask;
 
+        [SerializeField]
+        private Team19.Input.Base.BaseInputHandler _inputHandler;
+
         private bool _isReadyToStep = true;
 
-        private Team19.Input.Base.IInputHandler _inputHandler;
 
         private Vector3 _activeStepDirectionVector = Vector3.zero;
         private Vector3 _activeStepOrigin = Vector3.zero;
@@ -30,9 +32,7 @@ namespace MatrixJam.Team19.Gameplay.Controls
 
         private void Awake()
         {
-            _inputHandler = new Team19.Input.PlayerInput();
-
-            _collider = GetComponent<Collider>();
+            _collider = GetComponentInChildren<Collider>();
         }
 
         private void Update()

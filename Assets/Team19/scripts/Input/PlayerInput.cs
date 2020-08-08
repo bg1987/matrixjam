@@ -9,11 +9,13 @@ namespace MatrixJam.Team19.Input
     /// Allows consumers to get delayed information.
     /// Handles cases where keys are pressed mid-movement, but still need to register.
     /// </summary>
-    public class PlayerInput : Base.IInputHandler
+
+    [CreateAssetMenu(fileName = "Player Input", menuName = "Input Handlers/Player Input")]
+    public class PlayerInput : Base.BaseInputHandler
     {
         private Team19.DataStructures.FixedSizedQueue<Vector3> _inputQueue;
         
-        public bool IsInputAvailable
+        public override bool IsInputAvailable
         {
             get
             {
@@ -26,12 +28,12 @@ namespace MatrixJam.Team19.Input
             _inputQueue = new Team19.DataStructures.FixedSizedQueue<Vector3>(5);
         }
 
-        public Vector3 GetNextDirection()
+        public override Vector3 GetNextDirection()
         {
             return _inputQueue.Dequeue();
         }
 
-        public void UpdateInput()
+        public override void UpdateInput()
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.W) || UnityEngine.Input.GetKeyDown(KeyCode.UpArrow)) {
                 _inputQueue.Enqueue(Vector3.forward);
