@@ -15,6 +15,7 @@ namespace MatrixJam.Team17
         [Tooltip("Crouch speed scalar")]
         public Vector2 crouchSpeed = new Vector2(0.36f, 0);
         public bool jumpEnabled = true;
+        public bool jumpForward = false;
         public float jumpFuzzy = 0.2f;
         public float jumpCooldown = 0.5f;
         public float jumpForce = 10f;

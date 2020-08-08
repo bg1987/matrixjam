@@ -50,7 +50,7 @@ namespace MatrixJam.Team17
 				if ((Time.time - lastJump) > PlayerConfig.jumpCooldown)
 				{
 					lastJump = Time.time;
-					Body.AddForce(new Vector2(0, PlayerConfig.jumpForce));
+					Body.AddForce((PlayerConfig.jumpForward ? transform.forward : transform.up) * PlayerConfig.jumpForce);
 				}
 				Input.jumpReady = false;
 				Input.jump = false;
