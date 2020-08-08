@@ -11,7 +11,7 @@ namespace MatrixJam.Team4
         private TurnManager _turnManager;
         private BoardManager _boardManager;
 
-        public List<MessageObject> IntroMessages;
+        public List<MessageScript> IntroMessages;
 
         public int InitialUnitsCount = 35;
 
@@ -30,7 +30,7 @@ namespace MatrixJam.Team4
 
         private void HandleIntro()
         {
-            _introManager.nextMessage();
+            _introManager.NextMessage();
         }
         
         private void HandleMainPlay()

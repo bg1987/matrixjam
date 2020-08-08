@@ -1,32 +1,28 @@
-using System;
-using UnityEngine;
+using System.Collections.Generic;
 
 namespace MatrixJam.Team4
 {
-    public class IntroManager : MonoBehaviour
+    public class IntroManager
     {
 
-        public MessageScript[] Messages;
+        private List<MessageScript> _messages;
         private int _msgIndex;
+
+        public IntroManager(List<MessageScript> introMessages)
+        {
+            _messages = introMessages;
+        }
 
         private void Start()
         {
-            Messages[_msgIndex].ShowMessage();
-        }
-
-        private void Update()
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                NextMessage();
-            }
+            _messages[_msgIndex].ShowMessage();
         }
 
         public void NextMessage()
         {
-            if (Messages[_msgIndex].HasNext())
+            if (_messages[_msgIndex].HasNext())
             {
-                Messages[_msgIndex].ShowNext();
+                _messages[_msgIndex].ShowNext();
             }
             else
             {
@@ -38,11 +34,11 @@ namespace MatrixJam.Team4
 
         private void MoveToTheNextTooltip()
         {
-            Messages[_msgIndex].HideMessage();
-            if (_msgIndex < Messages.Length - 1)
+            _messages[_msgIndex].HideMessage();
+            if (_msgIndex < _messages.Count - 1)
             {
                 _msgIndex++;
-                Messages[_msgIndex].ShowMessage();
+                _messages[_msgIndex].ShowMessage();
             }
         }
 
@@ -51,7 +47,7 @@ namespace MatrixJam.Team4
             if(0 < _msgIndex)
             {
                 --_msgIndex;
-                Messages[_msgIndex].ShowMessage();
+                _messages[_msgIndex].ShowMessage();
             }
         }
 
