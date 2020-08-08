@@ -23,7 +23,7 @@ namespace MatrixJam.Team14
     public class TrainController : MonoBehaviour
     {
         public static TrainController Instance { get; private set; }
-
+        
         [Header("States config")]
         [SerializeField] private float jumpTime = 0.4f;
         
@@ -38,9 +38,20 @@ namespace MatrixJam.Team14
         [SerializeField] private Color debugObstaclesColor = Color.green;
         [SerializeField] private Vector2 debugSize = new Vector2(2, 2);
 
+        private int _lives;
         private TrainState _currstate;
         private TrainState _prevState;
 
+        public int Lives
+        {
+            get => _lives;
+            set
+            {
+                _lives = value;
+                SetCarsNum(_lives);
+            }
+        }
+        
         public static TrainState DriveState { get; private set; }
         public static TrainState JumpState { get; private set; }
         public static TrainState DuckState { get; private set; }
@@ -147,20 +158,27 @@ namespace MatrixJam.Team14
 
         private void OnObstacleEvent(ObstaclePayload payload)
         {
+            Debug.Log("Obstacle failed!");
+            // Handle failed only currently (success comes from TrainState)
             if (!payload.Successful)
             {
                 OnObstacleFailed();
                 return;
             }
             
-            // TODO: ???
-            var nextState = GetState(payload.Move);
-            TransitionState(nextState, payload.MoveCue);
+            // // TODO: ???
+            // var nextState = GetState(payload.Move);
+            // TransitionState(nextState, payload.MoveCue);
         }
 
         private void OnObstacleFailed()
         {
-            throw new System.NotImplementedException();
+            KillTrain();
+        }
+
+        private void KillTrain()
+        {
+            GameManager.Instance.OnDeath();
         }
 
         private void HandlePendingAnimations()
@@ -198,6 +216,19 @@ namespace MatrixJam.Team14
                 _futureAnimations.Add(futureAnim);
             }
         }
+        
+        private void SetCarsNum(int lives)
+        {
+            var activeCars = slaveCarAnims.Take(lives);
+            var inactiveCars = slaveCarAnims.Skip(lives);
+
+            foreach (var car in activeCars)
+                car.gameObject.SetActive(true);
+            
+            foreach (var car in inactiveCars)
+                car.gameObject.SetActive(false);
+        }
+
 
         public TrainState GetState(TrainMove move)
         {

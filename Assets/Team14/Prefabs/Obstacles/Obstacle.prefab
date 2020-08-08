@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 461315106477337063}
-  - component: {fileID: 461315106477337060}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -33,20 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &461315106477337060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 461315106477337062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60749a1e63af804db9602faba4ebac8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trainMove: 0
-  moveCue: {fileID: 461315106599286771}
 --- !u!1 &461315106599286770
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,6 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 461315107231522439}
   - component: {fileID: 461315107231522436}
+  - component: {fileID: 583852755858344398}
   m_Layer: 0
   m_Name: TriggerZone
   m_TagString: Untagged
@@ -102,7 +88,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461315107231522438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.885}
+  m_LocalPosition: {x: 0, y: 0, z: -1.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 461315106477337063}
@@ -119,5 +105,19 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.515242, y: 2.7737787, z: 2.3034263}
+  m_Center: {x: 0, y: 0.3515998, z: -0.071357965}
+--- !u!114 &583852755858344398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461315107231522438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b60749a1e63af804db9602faba4ebac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trainMove: 0
+  moveCue: {fileID: 461315106599286771}

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 
 namespace MatrixJam.Team14
@@ -24,7 +25,10 @@ namespace MatrixJam.Team14
 #endif
     public class GameManager : MonoBehaviour
     {
+        public static GameManager Instance { get; private set; }
+        
         // If the audio is a loop - How many times do we expect it to repeat? (For spline pos)
+        [SerializeField] private int startLives;
         [SerializeField] private float bpm;
         [SerializeField] private float zPerBeat;
 
@@ -52,6 +56,17 @@ namespace MatrixJam.Team14
 
         private void Awake()
         {
+            if (Instance != null)
+            {
+                Debug.LogError("There shouldnt be 2 trains!");
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+
+            TrainController.Instance.Lives = startLives;
+            
             // Can maybe get rid of this if it causes problems
             UpdateBeatPositions();    
         }
@@ -89,6 +104,12 @@ namespace MatrixJam.Team14
                 .ToArray();
         }
 
+        private void OnDestroy()
+        {
+            if (Instance != this) return;
+            Instance = null;
+        }
+
         private void OnReachedEnd()
         {
             reachedEnd = true;
@@ -115,5 +136,17 @@ namespace MatrixJam.Team14
 
         private static float GetAudioProgress(AudioSource audioSource)
             => audioSource.time / audioSource.clip.length;
+
+        public void OnDeath()
+        {
+            var livesRemaining = --TrainController.Instance.Lives;
+            if (livesRemaining == 0) OnGameOver();
+
+        }
+
+        private void OnGameOver()
+        {
+            Debug.Log("GAME OVERRR");
+        }
     }
 }

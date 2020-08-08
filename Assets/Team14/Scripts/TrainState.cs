@@ -32,6 +32,7 @@ namespace MatrixJam.Team14
             Assert.IsTrue(obstacles.Count <= 1, "More than one obstacle should not overlap!");
             
             var obs = obstacles.FirstOrDefault();
+            if (obs) obs.OnPressedInZone();
             TrainController.TransitionState(state, obs ? obs.MoveCue : null);
         }
     }
