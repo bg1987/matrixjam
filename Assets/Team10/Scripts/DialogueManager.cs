@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 namespace MatrixJam.Team10
 {
     public class DialogueManager : MonoBehaviour
     {
         public GameObject dialoguePanel;
-        public TextMeshProUGUI nameDisplay;
-        public TextMeshProUGUI textDisplay;
+
+        public GameObject TextPanel;
         public GameObject continueButton;
+        public Text nameDisplay;
+        public Text textDisplay;
+
+        public GameObject OptionsPanel;
+        public GameObject cancelButton;
+        public Button[] Options;
         public Queue<Dialogue> dialogues;
         public float typingSpeed;
 
