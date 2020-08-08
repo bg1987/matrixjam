@@ -22,7 +22,7 @@ namespace MatrixJam.Team4
 
         protected TurnObject ValidateTurnObject(TurnObject validationObject)
         {
-            if (validationObject.ChosenPositionIndex == null)
+            if (validationObject.ChosenPosition == null)
             {
                 return null;
             }
@@ -34,5 +34,7 @@ namespace MatrixJam.Team4
 
             return validationObject;
         }
+
+        public abstract bool IsHuman();
     }
 }

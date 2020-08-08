@@ -1,47 +1,85 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using MatrixJam.Team;
 using UnityEngine;
 
 namespace MatrixJam.Team4
 {
-    public class FakeChoiceManager : MonoBehaviour, IChoiceManager
+    public class ChoiceManager : IChoiceManager
     {
-        public UIManager UiManagerToChange;
-        private int _currentNumberValue;
-        private List<int> _choices;
+        private BoardManager _boardManager;
+        private TurnData _playerTurnData;
+        private Unit _selectedUnit;
+        private Position _selectedPosition;
 
-        private void Awake()
+        public ChoiceManager(BoardManager boardManager)
         {
-            UiManagerToChange._choiceManager = this;
+            _boardManager = boardManager;
         }
 
-        private void Start()
+        
+
+        public void StartTurn(Player player)
         {
-            _choices = new List<int>() {1, 2, 3, 4, 5, 6, 7, 8, 9};
-            UIManager.SetPlayerAvailableNumbers(_choices, true);
+            _selectedUnit = null;
+            _selectedPosition = null;
+            _playerTurnData = _boardManager.GetPlayerTurnData(player);
+            List<int> choices = new List<int>();
+            foreach (var unit in _playerTurnData._positionOptions.Keys)
+            {
+                choices.Add(unit.Value);
+            }
+            UIManager.SetPlayerAvailableNumbers(choices, player.IsHuman());
+
+            if (!player.IsHuman())
+            {
+                //TODO trigger AI
+            }
+
         }
 
-        public void NumberChosen(int i)
+        public void NumberChosen(int value)
         {
-            Debug.Log("Player chose: " + i);
-            _currentNumberValue = i; 
-            var squares = new List<Vector2> {new Vector2(i-1, i-1) };
-            UIManager.ShowSelectablePositions(squares);
+            Debug.Log("Player chose: " + value);
+            foreach (var unit in _playerTurnData._positionOptions.Keys)
+            {
+                if (unit.Value == value)
+                {
+                    _selectedUnit = unit;
+                    var positionOption = _playerTurnData._positionOptions[unit];
+                    Vector2[] squares = GetSquarsFromAllowedPositions(positionOption);
+                    UIManager.ShowSelectablePositions(squares);
+                }
+            }
+        }
+
+        private Vector2[] GetSquarsFromAllowedPositions(List<Position> positionOption)
+        {
+            Vector2[] squares = positionOption.Select(x => new Vector2(x.GetX(), x.GetY())).ToArray();
+            return squares;
         }
 
         public void SquareChosen(Vector2 index)
         {
-            UIManager.SetNumberOnSquare(index, _currentNumberValue, _currentNumberValue, Color.blue);
-            UIManager.ShowDamageOptions(true);
+            var positionOption = _playerTurnData._positionOptions[_selectedUnit];
+            var position = positionOption.Find(p => p.GetX() == index.x && p.GetY() == index.y);
+            if (position != null)
+            {
+                _selectedPosition = position;
+                UIManager.SetNumberOnSquare(index, _selectedUnit.Value, _selectedUnit.Value, _selectedUnit.Owner.Color());
+                UIManager.ShowDamageOptions(true);
+            }
 
         }
 
-        public void PickAttack(AttackType attackType)
+        public void PickAttack(AttackDirection attackType)
         {
-            _choices.Remove(_currentNumberValue);
-            UIManager.SetPlayerAvailableNumbers(_choices, true);
-
+            var turnObject = new TurnObject();
+            turnObject.ChosenUnit = _selectedUnit;
+            turnObject.ChosenPosition = _selectedPosition;
+            turnObject.AttackDirection = attackType;
+            _boardManager.ExecuteTurn(turnObject);
         }
     }
 }

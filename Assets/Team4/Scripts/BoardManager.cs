@@ -5,19 +5,19 @@ using UnityEngine;
 
 namespace MatrixJam.Team4
 {
-    public class BoardManager : MonoBehaviour
+    public class BoardManager
     {
         private int _size;
         private BoardData _boardData;
         private bool[,,] _possibleUnitsPerCoordinate;
 
-        public BoardManager(int size, int initialRandomUnits = 30)
+        public BoardManager(int size)
         {
             _size = size;
 
             InitPossibleUnitsPerCoord(size);
             InitBoardData(size);
-            AddRandomUnits(initialRandomUnits);
+            
 
         }
         
@@ -39,8 +39,7 @@ namespace MatrixJam.Team4
                     points = GetSquarePoints(player, unit);
                     break;
             }
-
-            //TODO PlaceUnit(unit, position);
+            
 
             EventManager.Singleton.OnTurnOver();
         }
@@ -115,7 +114,7 @@ namespace MatrixJam.Team4
             return options;
         }
 
-        private void AddRandomUnits(int initialRandomUnits)
+        public void AddRandomUnits(int initialRandomUnits = 30)
         {
             for ( ; initialRandomUnits > 0; initialRandomUnits-- )
             {
@@ -148,6 +147,7 @@ namespace MatrixJam.Team4
             }
             while (true);      
         }
+        
 
         private List<int> GetUnitOptions(Unit unit)
         {
@@ -190,7 +190,7 @@ namespace MatrixJam.Team4
             }
         }
 
-        private Boolean PlaceUnit(Unit unit, Position position)
+        public Boolean PlaceUnit(Unit unit, Position position)
         {
             var x = position.GetX();
             var y = position.GetY();

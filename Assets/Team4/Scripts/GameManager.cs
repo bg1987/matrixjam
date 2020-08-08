@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MatrixJam.Team;
 using UnityEngine;
 
 namespace MatrixJam.Team4
@@ -10,6 +11,7 @@ namespace MatrixJam.Team4
         private IntroManager _introManager;
         private TurnManager _turnManager;
         private BoardManager _boardManager;
+        private IChoiceManager _choiceManager;
         
 
         public List<MessageScript> IntroMessages;
@@ -19,13 +21,16 @@ namespace MatrixJam.Team4
         void Awake()
         {
             _introManager = new IntroManager(IntroMessages);
-            _boardManager = new BoardManager(9, InitialUnitsCount);
+            _boardManager = new BoardManager(9);
+            _choiceManager = new ChoiceManager(_boardManager);
+            
         }
 
     
         // Start is called before the first frame update
         void Start()
         {
+            _boardManager.AddRandomUnits(InitialUnitsCount);
             SetState(GameState.intro);
         }
 

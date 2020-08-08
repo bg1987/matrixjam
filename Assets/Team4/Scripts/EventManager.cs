@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MatrixJam.Team4
 {
-    public class EventManager
+    public class EventManager : MonoBehaviour
     {
         public static EventManager Singleton;
         public event EventIntroDone IntroDone;

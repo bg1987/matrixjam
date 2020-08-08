@@ -1,19 +1,15 @@
+using MatrixJam.Team4;
 using UnityEngine;
 
 namespace MatrixJam.Team
 {
     public interface IChoiceManager
     {
-        void NumberChosen(int i);
+
+        void StartTurn(Player player);
+        void NumberChosen(int value);
         void SquareChosen(Vector2 index);
-        void PickAttack(AttackType attackType);
+        void PickAttack(AttackDirection attackType);
     }
 
-    public enum AttackType
-    {
-        Row,
-        Line,
-        Box
-        
-    }
 }

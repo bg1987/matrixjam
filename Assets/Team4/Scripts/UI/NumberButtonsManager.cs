@@ -49,7 +49,7 @@ namespace MatrixJam.Team4
             return squareWidth;
         }
 
-        public static void SetSquaresForPuttingNumberOn(List<Vector2> squares)
+        public static void SetSquaresForPuttingNumberOn(Vector2[] squares)
         {
             for (int i = 0; i < BOARD_SIZE; i++)
             {
@@ -61,7 +61,7 @@ namespace MatrixJam.Team4
                 
         }
 
-        private static bool IsInSelectableSquares(int i, int j, List<Vector2> squares)
+        private static bool IsInSelectableSquares(int i, int j, Vector2[] squares)
         {
             foreach (var square in squares)
             {
@@ -88,7 +88,8 @@ namespace MatrixJam.Team4
 
         public static void SetNumberOnSquare(Vector2 index, int originalValue, int currentValue, Color playerColor)
         {
-            _allButtons[(int) index.x][(int) index.y].SetValue(originalValue, currentValue, playerColor);
+            var numberButtonScript = _allButtons[(int) index.x][(int) index.y];
+            numberButtonScript.SetValue(originalValue, currentValue, playerColor);
         }
     }
 }
