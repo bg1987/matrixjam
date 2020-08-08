@@ -15,6 +15,7 @@ namespace MatrixJam.Team2
         private Rigidbody2D rb;
         private bool isGrounded = false;
         private int currentJumpsCount = 0;
+        private Checkpoint checkpoint;
 
         void Awake()
         {
@@ -27,10 +28,21 @@ namespace MatrixJam.Team2
             bool jumpInput = Input.GetButtonDown("Jump");
             Move(horizontalInput);
             Jump(jumpInput);
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                ReturnToCheckpoint();
+            }
         }
 
         void OnTriggerEnter2D(Collider2D other)
         {
+            if (other.TryGetComponent(out Checkpoint checkpoint))
+            {
+                checkpoint.GetComponent<Collider2D>().enabled = false;
+                this.checkpoint = checkpoint;
+            }
+
             GoThroughController goThroughController;
             if (other.TryGetComponent<GoThroughController>(out goThroughController))
             {
@@ -43,6 +55,18 @@ namespace MatrixJam.Team2
         void OnTriggerExit2D(Collider2D other)
         {
             isGrounded = false;
+        }
+
+        public void ReturnToCheckpoint()
+        {
+            if (checkpoint != null)
+            {
+                for (int i = 0; i < checkpoint.transform.childCount; i++)
+                {
+                    checkpoint.transform.GetChild(i).gameObject.SetActive(true);
+                }
+                transform.position = checkpoint.transform.position;
+            }
         }
 
         private void Move(float horizontalDir)
