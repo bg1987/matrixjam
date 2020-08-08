@@ -20,7 +20,7 @@ namespace MatrixJam.Team17
 
 		void FixedUpdate()
         {
-			if (true/*player.IsGrounded || PlayerConfig.airControl*/)
+			if (player.IsGrounded || PlayerConfig.airControl)
 			{
 				float horizontalMove = Input.move.x * PlayerConfig.moveSpeed.x * Time.fixedDeltaTime;
 				float verticalMove = Input.move.y * PlayerConfig.moveSpeed.y * Time.fixedDeltaTime;
@@ -37,19 +37,15 @@ namespace MatrixJam.Team17
 
 				if (PlayerConfig.moveEnabled)
 				{
-					Vector3 targetVelocity;
-					if (PlayerConfig.flipMovement)
-						targetVelocity = new Vector3(-horizontalMove, Body.velocity.y, -verticalMove);
-					else
-						targetVelocity = new Vector3(horizontalMove, verticalMove, Body.velocity.z);
-
+					Vector3 targetVelocity = transform.forward * verticalMove + transform.right * horizontalMove;
+					
 					Body.velocity = Vector3.SmoothDamp(Body.velocity, targetVelocity, ref velocity, PlayerConfig.movementSmoothing);
 				}
 			}
 
-			//bool groundedFuzzy = player.IsGrounded || player.IsGroundedFuzzy;
+			bool groundedFuzzy = player.IsGrounded || player.IsGroundedFuzzy;
 			bool isJumping = Input.jump || player.IsJumpingFuzzy;
-			if (PlayerConfig.jumpEnabled && isJumping/* && groundedFuzzy*/)
+			if (PlayerConfig.jumpEnabled && isJumping && groundedFuzzy)
 			{
 				if ((Time.time - lastJump) > PlayerConfig.jumpCooldown)
 				{

@@ -5,7 +5,6 @@ namespace MatrixJam.Team17
     [CreateAssetMenu(menuName = "TheFlyingDragons/PlayerConfig")]
     public class PlayerConfig : ScriptableObject
     {
-        public bool flipMovement;
         public LayerMask groundLayers;
         public float groundedFuzzy = 0.2f;
         public bool moveEnabled = true;

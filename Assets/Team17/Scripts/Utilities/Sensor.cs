@@ -1,22 +1,17 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace MatrixJam.Team17
 {
     [RequireComponent(typeof(Collider))]
     public class Sensor : MonoBehaviour
     {
-        //[ReadOnly]
-        [SerializeField]
-        private bool isDetected;
-        public bool IsDetected => isDetected;
+        public bool IsDetected => detected.Count > 0;
+
+        public List<Collider> detected = new List<Collider>();
 
         new Collider collider;
         public Collider Collider => collider;
-
-        public bool IsTouchingLayers(LayerMask touchLayers)
-        {
-            return false;//collider.IsTouchingLayers(touchLayers);
-        }
 
         void Awake()
         {
@@ -25,12 +20,27 @@ namespace MatrixJam.Team17
 
         void OnEnable()
         {
-            isDetected = false;
+            detected.Clear();
         }
 
-        void FixedUpdate()
+        void OnCollisionEnter(Collision collision)
         {
-            isDetected = false;//collider.IsTouchingLayers(layers);
+            detected.Add(collision.collider);
+        }
+
+        void OnCollisionExit(Collision collision)
+        {
+            detected.Remove(collision.collider);
+        }
+
+        void OnTriggerEnter(Collider other)
+        {
+            detected.Add(other);
+        }
+
+        void OnTriggerExit(Collider other)
+        {
+            detected.Remove(other);
         }
     }
 }

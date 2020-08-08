@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e96bc6e54a6b447b965e41711aecfd5, type: 3}
   m_Name: Walker
   m_EditorClassIdentifier: 
-  flipMovement: 1
   groundLayers:
     serializedVersion: 2
     m_Bits: 256
@@ -20,7 +19,7 @@ MonoBehaviour:
   moveEnabled: 1
   moveSpeed: {x: 1111, y: 1111}
   movementSmoothing: 0.05
-  airControl: 1
+  airControl: 0
   crouchEnabled: 1
   crouchSpeed: {x: 0.36, y: 0}
   jumpEnabled: 1
