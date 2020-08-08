@@ -12,11 +12,20 @@ namespace MatrixJam.Team13
 
 		public GameObject verticalWall;
 		public GameObject horizontalWall;
+		public GameObject edgePoint;
 
 		public MultiGameObjectArray horizontalEdges;
 		public MultiGameObjectArray verticalEdges;
 
-		/*private GameObject[,] _horizontalEdges;
+		public MultiGameObjectArray edgeIntersections;
+
+		/*[SerializeField]private MultiGameObjectArray _ei;
+		public MultiGameObjectArray edgeIntersections{
+			get{ return _ei;}
+			set{ _ei = value;}
+		}*/
+		/*
+		private GameObject[,] _horizontalEdges;
 		private GameObject[,] _verticalEdges;
 		public GameObject[,] horizontalEdges{
 			get{
@@ -35,7 +44,6 @@ namespace MatrixJam.Team13
 				_verticalEdges = value;
 			}
 		}*/
-		[HideInInspector] public GameObject[] edgeIntersections;
 
 		/*public void AddHorizontalEdge(int x, int y, GameObject go){
 			horizontalEdges[x, y] = go;
