@@ -4,13 +4,25 @@ using UnityEngine;
 
 namespace MatrixJam.Team2
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class BulletController : MonoBehaviour
     {
         [SerializeField] private float movementSpeed;
 
-        void Update()
+        private Rigidbody2D rb;
+
+        void Start()
         {
-            transform.position += transform.right * movementSpeed * Time.deltaTime;
+            rb = GetComponent<Rigidbody2D>();
+        }
+
+        void FixedUpdate()
+        {
+            // כוס אמא של rb.MovePosition
+            // שתקע אותי במשך שעה במקום שאני אהיה עז עם הגיון שתשתמש ב 
+            // rb.position
+            // תודה ביי
+            rb.position += (Vector2)(transform.right * movementSpeed * Time.deltaTime);
         }
 
         void OnCollisionEnter2D(Collision2D other)
