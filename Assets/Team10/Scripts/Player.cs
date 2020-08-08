@@ -8,15 +8,15 @@ namespace MatrixJam.Team10
     {
         public float speed;
 
-        private string playerName;
-        private RandomDialogTree t;
+        public string playerName;
+        private RandomDialogueTree t;
         private Rigidbody2D myRigidBody;
         private Vector3 change;
 
         // Start is called before the first frame update
         void Start()
         {
-            t = new RandomDialogTree();
+            t = new RandomDialogueTree(playerName);
             //myRigidBody = GetComponent<Rigidbody2D>();
         }
 

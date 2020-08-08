@@ -9,7 +9,7 @@ namespace MatrixJam.Team10
         public Dialogue dialogue;
 
         public void TriggerDialogue(){
-            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+            FindObjectOfType<DialogueManager>().StartActionChoice(dialogue);
         }
     }
 }
