@@ -19,6 +19,20 @@ namespace MatrixJam.Team14
             source.Stop();
         }
         
+        private void Update()
+        {
+            var donePlayingTrack = source.time >= source.clip.length;
+            if (donePlayingTrack) OnTrackFinishedInternal();
+        }
+
+        public Vector3 GetCurrPosition(Transform startAndDirection)
+        {
+            var currTrackProgress = source.time;
+            var pos = trackList.GetBeatPosition(startAndDirection, _trackIdx, currTrackProgress);
+            
+            return pos;
+        }
+        
         public void Restart()
         {
             _trackIdx = -1;
@@ -39,20 +53,6 @@ namespace MatrixJam.Team14
             source.Stop();
             source.clip = trackList.GetTrack(_trackIdx);
             source.Play();
-        }
-
-        private void Update()
-        {
-            var donePlayingTrack = source.time > source.clip.length;
-            if (donePlayingTrack) OnTrackFinishedInternal();
-        }
-
-        public Vector3 GetCurrPosition(Transform startAndDirection)
-        {
-            var currTrackProgress = source.time;
-            var pos = trackList.GetBeatPosition(startAndDirection, _trackIdx, currTrackProgress);
-            
-            return pos;
         }
 
         // TODO: GameManager: handle Events
