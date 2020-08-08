@@ -7,13 +7,15 @@ namespace MatrixJam.Team4
 
         private List<MessageScript> _messages;
         private int _msgIndex;
+        private static IntroManager _instance;
 
         public IntroManager(List<MessageScript> introMessages)
         {
             _messages = introMessages;
+            _instance = this;
         }
 
-        private void Start()
+        public void Start()
         {
             _messages[_msgIndex].ShowMessage();
         }
@@ -39,6 +41,10 @@ namespace MatrixJam.Team4
             {
                 _msgIndex++;
                 _messages[_msgIndex].ShowMessage();
+            }
+            else
+            {
+                EventManager.Singleton.OnIntroDone();
             }
         }
 

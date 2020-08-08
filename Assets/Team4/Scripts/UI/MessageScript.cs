@@ -26,6 +26,16 @@ namespace MatrixJam.Team4
             gameObject.SetActive(false);
         }
 
+        //TODO needs nice button or something
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                EventManager.Singleton.OnNextMessage();;
+            }
+            
+        }
+
         public void ShowMessage()
         {
             if (HighligtedObject != null)
