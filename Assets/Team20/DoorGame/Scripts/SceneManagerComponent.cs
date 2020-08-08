@@ -6,8 +6,9 @@ namespace MatrixJam.Team20
 {
     public class SceneManagerComponent : MonoBehaviour
     {
-        static int startLevel = 0;
+        public int startLevel = 0;
         public GameObject[] Levels = new GameObject[2];
+        GameObject currentLevel;
 
         public static SceneManagerComponent instance;
 
@@ -16,10 +17,8 @@ namespace MatrixJam.Team20
         {
             instance = this;
             var level = Levels[startLevel];
-            level.SetActive(true);
-            /*var playerTransform = Object.FindObjectOfType<PlayerComponent>().transform;
-            var startPos = level.GetComponent<StartLevelComponent>().playerStartPos.position;
-            playerTransform.position = new Vector3(startPos.x, startPos.y, playerTransform.position.z);*/
+            currentLevel = Object.Instantiate(level);
+            currentLevel.SetActive(true);
         }
 
         // Update is called once per frame
@@ -44,9 +43,11 @@ namespace MatrixJam.Team20
 
         public void RestartScene()
         {
-            ConnectionColorManager.Reset();
-            var loadedLevel = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
-            UnityEngine.SceneManagement.SceneManager.LoadScene(loadedLevel.buildIndex);
+            Object.Destroy(currentLevel);
+            currentLevel = null;
+            var level = Levels[startLevel];
+            currentLevel = Object.Instantiate(level);
+            currentLevel.SetActive(true);
         }
     }
 }
