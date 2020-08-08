@@ -25,7 +25,58 @@ namespace MatrixJam.Team4
         {
             var unit = turnObject.ChosenUnit;
             var player = unit.Owner;
+            var attackDirection = turnObject.AttackDirection;
+            int points = 0;
+            switch (attackDirection)
+            {
+                case AttackDirection.colum:
+                    points = GetColumPoints(player, unit);
+                    break;
+                case AttackDirection.row:
+                    points = GetRowPoints(player, unit);
+                    break;
+                case AttackDirection.square:
+                    points = GetSquarePoints(player, unit);
+                    break;
+            }
+
+            //TODO PlaceUnit(unit, position);
+
             EventManager.Singleton.OnTurnOver();
+        }
+
+        private int GetSquarePoints(Player player, Unit unit)
+        {
+            var ans = 0;
+            //TODO get square units
+            //TODO sum square units
+            return ans;
+        }
+
+        private int GetRowPoints(Player player, Unit unit)
+        {            
+            //TODO Implement this
+            int ans = 0;
+            for (int i = 0; i < _size; i++)
+            {
+                //var unitToCheck = _boardData._boardData[i, ] //I AM HERE
+            
+            }
+
+            return ans;
+        }
+
+        private int GetColumPoints(Player player, Unit unit)
+        {
+            //TODO Implement this
+            int ans = 0;
+            for (int i = 0; i < _size; i++)
+            {
+                //var unitToCheck = _boardData._boardData[i, ] //I AM HERE
+
+            }
+
+            return ans;
         }
 
         public TurnData GetPlayerTurnData(Player _player)

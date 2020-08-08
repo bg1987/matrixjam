@@ -10,13 +10,14 @@ namespace MatrixJam.Team4
         private IntroManager _introManager;
         private TurnManager _turnManager;
         private BoardManager _boardManager;
-
+        private EventManager _eventManager;
         public List<MessageObject> IntroMessages;
 
         public int InitialUnitsCount = 35;
 
         void Awake()
         {
+            _eventManager = new EventManager();
             _introManager = new IntroManager(IntroMessages);
             _boardManager = new BoardManager(9, InitialUnitsCount);
         }
@@ -30,12 +31,12 @@ namespace MatrixJam.Team4
 
         private void HandleIntro()
         {
-            _introManager.nextMessage();
+            EventManager.Singleton.IntroDone += OnIntroDone;
+            _introManager.StartMessages();
         }
         
         private void HandleMainPlay()
         {
-            EventManager.Singleton.IntroDone += OnIntroDone;     
         }
 
         private void OnIntroDone()

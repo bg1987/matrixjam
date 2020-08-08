@@ -8,7 +8,6 @@ namespace MatrixJam.Team4
 {
     public class IntroManager
     {
-
         private List<MessageObject> _introMessages;
         private int _msgIndex;
 
@@ -18,19 +17,24 @@ namespace MatrixJam.Team4
             _msgIndex = 0;
         }
 
-        public void nextMessage()
+        public void StartMessages()
+        {
+            UIManager.ShowIntroMessage(_introMessages[_msgIndex]);
+        }
+
+        public void NextMessage()
         {
             ++_msgIndex;
             if(_msgIndex < _introMessages.Count)
             {
                 UIManager.ShowIntroMessage(_introMessages[_msgIndex]);
                 return;
-            } 
+            }
 
-            // TODO fire event
+            EventManager.Singleton.OnIntroDone();
         }
 
-        public void previousMessage()
+        public void PreviousMessage()
         {
             if(0 < _msgIndex)
             {

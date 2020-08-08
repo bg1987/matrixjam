@@ -12,7 +12,12 @@ namespace MatrixJam.Team4
         public int Score { get => _score; set => _score = value; }
         public List<Unit> MyUnits { get => _myUnits; set => _myUnits = value; }
 
-        public virtual TurnObject YourTurn(TurnData turnData) { return null; }
+        public virtual void YourTurn(TurnData turnData) {}
+
+        public virtual void EndTurn(TurnObject turnObject)
+        {
+            EventManager.Singleton.OnPlayerPlayed(turnObject);
+        }
 
         protected TurnObject ValidateTurnObject(TurnObject validationObject)
         {

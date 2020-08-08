@@ -11,7 +11,10 @@ namespace MatrixJam.Team4
         public delegate void EventIntroDone();
 
         public event EventBoardCreated BoardCreated;
-        public delegate void EventBoardCreated();   
+        public delegate void EventBoardCreated();
+
+        public event EventPlayerPlayed PlayerPlayed;
+        public delegate void EventPlayerPlayed(TurnObject turnObject);
 
         public event EventTurnOver TurnOver;
         public delegate void EventTurnOver();       
@@ -29,6 +32,11 @@ namespace MatrixJam.Team4
         public void OnIntroDone()
         {
             IntroDone?.Invoke();
+        }
+
+        public void OnPlayerPlayed(TurnObject turnObject)
+        {
+            PlayerPlayed?.Invoke(turnObject);
         }
 
         public void Awake()
