@@ -9,7 +9,7 @@ namespace MatrixJam.Team4
         private Player _owner;
         private int _value;
         private Position position;
-
+       
         public Unit(Player player, int value)
         {
             _owner = player;
@@ -17,6 +17,7 @@ namespace MatrixJam.Team4
         }
 
         public Position Position { get => position; set => position = value; }
+        public int Value { get => _value; }
     }
 
     public enum AttackDirection
