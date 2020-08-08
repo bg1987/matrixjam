@@ -56,6 +56,7 @@ namespace MatrixJam.Team14
             }
 
             Instance = this;
+            Obstacle.OnObstacleEvent += OnObstacleEvent;
             CreateStates();
             _currstate = NullState;
         }
@@ -68,6 +69,7 @@ namespace MatrixJam.Team14
         private void OnDestroy()
         {
             if (Instance != this) return;
+            Obstacle.OnObstacleEvent -= OnObstacleEvent;
             Instance = null;
         }
 
@@ -131,6 +133,21 @@ namespace MatrixJam.Team14
         public void Duck()
         {
             TransitionState(DuckState);
+        }
+
+        private void OnObstacleEvent(ObstaclePayload payload)
+        {
+            if (!payload.Successful)
+            {
+                OnObstacleFailed();
+                return;
+            }
+            
+        }
+
+        private void OnObstacleFailed()
+        {
+            throw new System.NotImplementedException();
         }
 
         private void HandlePendingAnimations()

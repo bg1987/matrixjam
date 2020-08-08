@@ -1,6 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MatrixJam.Team14
@@ -26,30 +26,35 @@ namespace MatrixJam.Team14
         [SerializeField] private TrainMove trainMove;
         [SerializeField] private Transform moveCue; // Where should actually do the move. Null = do when triggers
 
+        public static Dictionary<TrainMove, List<Obstacle>> CurrObstacles;
+
+        public TrainMove Move => trainMove;
+        public Transform MoveCue => moveCue;
+        
         public static event Action<ObstaclePayload> OnObstacleEvent;
-  
-        private bool isEnteredInsideTrigger = false;
+        
+        private void Awake()
+        {
+            CurrObstacles = Enum
+                .GetValues(typeof(TrainMove))
+                .Cast<TrainMove>()
+                .ToDictionary(
+                    move => move, 
+                    move => new List<Obstacle>()
+                );
+        }
+        
         private void OnTriggerEnter(Collider other)
         {
             Debug.Log("entered");
-            isEnteredInsideTrigger = true;
+            CurrObstacles[trainMove].Add(this);
         }
         
         private void OnTriggerExit(Collider other)
         {
             Debug.Log("exit");
-            isEnteredInsideTrigger = false;
+            CurrObstacles[trainMove].Remove(this);
 
-        }
-        private void Update()
-        {
-            if (!isEnteredInsideTrigger) return;
-            var keyCode = TrainMoves.GetKey(trainMove);
-            
-            if (Input.GetKeyDown(keyCode))
-            {
-                Debug.Log("Jump");
-            }
         }
     }
 }
