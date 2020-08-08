@@ -17,7 +17,6 @@ namespace MatrixJam.Team20
 
             private void OnTriggerEnter2D(Collider2D other)
             {
-                Debug.Log("touched door");
                 if (other.CompareTag("Tag0"))
                 {
                     PlayerComponent player = other.GetComponent<PlayerComponent>();

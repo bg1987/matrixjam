@@ -7,7 +7,7 @@ namespace MatrixJam.Team20
     public class SceneManagerComponent : MonoBehaviour
     {
         public int startLevel = 0;
-        public GameObject[] Levels = new GameObject[2];
+        public GameObject[] Levels = new GameObject[3];
         GameObject currentLevel;
 
         public AudioSource introBGM, loopBGM;
@@ -18,6 +18,8 @@ namespace MatrixJam.Team20
         {
             instance = this;
             var level = Levels[startLevel];
+            if (level.activeSelf)
+                level.SetActive(false);
             currentLevel = Object.Instantiate(level);
             currentLevel.SetActive(true);
         }
@@ -54,6 +56,7 @@ namespace MatrixJam.Team20
             var level = Levels[startLevel];
             currentLevel = Object.Instantiate(level);
             currentLevel.SetActive(true);
+            ConnectionColorManager.Reset();
         }
     }
 }

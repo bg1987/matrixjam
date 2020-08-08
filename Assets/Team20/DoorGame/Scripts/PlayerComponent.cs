@@ -6,9 +6,8 @@ namespace MatrixJam.Team20
 {
     public class PlayerComponent : MonoBehaviour
     {
-        public Vector2 velocity = Vector2.zero;
-        bool grounded = false;
-        public float gravity = 10f;
+        MovementComponent movement;
+        ApplyGravityComponent applyGravity;
         public float walkSpeed = 10f;
         public float jumpHeight = 10f;
         public bool resetHorizontal = false;
@@ -30,6 +29,8 @@ namespace MatrixJam.Team20
 
         void Start()
         {
+            movement = GetComponent<MovementComponent>();
+            applyGravity = GetComponent<ApplyGravityComponent>();
         }
 
         // Update is called once per frame
@@ -50,38 +51,22 @@ namespace MatrixJam.Team20
             if (!resetHorizontal)
             {
                 lastHorizontal = horizontal;
-                velocity.x = horizontal * walkSpeed;
+                movement.velocity.x = horizontal * walkSpeed;
             }
 
-            grounded = velocity.y < float.Epsilon && IsGrounded();
-
-            if (grounded)
+            if (applyGravity.grounded)
             {
-                velocity.y = 0f;
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    velocity.y = jumpHeight;
-                    grounded = false;
+                    movement.velocity.y = jumpHeight;
                 }
+
             }
         }
 
         private void FixedUpdate()
         {
-            grounded = velocity.y < float.Epsilon && IsGrounded();
 
-            if (grounded)
-            {
-                velocity.y = 0f;
-            }
-
-            if (!grounded)
-                velocity.y -= gravity * 10f * Time.fixedDeltaTime;
-            if (_onMovingPlatform)
-                movingPlatformFix = -1;
-            else
-                movingPlatformFix = 1;
-            this.transform.Translate(velocity * movingPlatformFix * Time.fixedDeltaTime);
         }
 
 
@@ -110,7 +95,7 @@ namespace MatrixJam.Team20
 
         public bool PlayerStands()
         {
-            return velocity.x == 0;
+            return movement.velocity.x == 0;
         }
 
         public bool PlayerIsStill()

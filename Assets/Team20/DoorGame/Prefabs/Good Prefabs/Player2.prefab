@@ -16,7 +16,9 @@ GameObject:
   - component: {fileID: 1117241635728749824}
   - component: {fileID: 1117241635728749827}
   - component: {fileID: 2092688864}
-  m_Layer: 0
+  - component: {fileID: 2836868689106440677}
+  - component: {fileID: 1524200624403433657}
+  m_Layer: 12
   m_Name: Player2
   m_TagString: Tag0
   m_Icon: {fileID: 0}
@@ -118,11 +120,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1117241635728749829
 MonoBehaviour:
@@ -136,8 +138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5f462d61ae57c4c95e7212a2d97b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0}
-  gravity: 10.5
   walkSpeed: 10
   jumpHeight: 35
   resetHorizontal: 0
@@ -148,10 +148,6 @@ MonoBehaviour:
   _onMovingPlatform: 0
   movingPlatformFix: 1
   _coinNumber: 0
-  _collectedDoor: {fileID: 0}
-  _doorNumber: 0
-  _doorYValue: 0
-  _doorOffset: 1
   _lookDirection: 0
 --- !u!114 &1117241635728749824
 MonoBehaviour:
@@ -165,7 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acd7d074ad66ef48855a948a15fc958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setIgnoreHorizontal: 0.25
 --- !u!114 &1117241635728749827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,3 +186,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentDoorPlace: {fileID: 0}
+--- !u!114 &2836868689106440677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117241635728749834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70a0df17bbc5cb47b915e559316e8d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grounded: 0
+  gravity: 10.5
+  distance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &1524200624403433657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117241635728749834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0666b9cd133a48f41864d0bef001c407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0}
+  yAcceleration: 0

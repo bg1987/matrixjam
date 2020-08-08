@@ -14,7 +14,7 @@ namespace MatrixJam.Team20
 
     public class DoorPlaceComponent : MonoBehaviour
     {
-        public Transform nextLevelTransform;
+        public bool goToNextLevel = false;
         public bool canBeConnected = true;
         public bool canRemoveDoor = true; 
         public DoorComponent placedDoor = null;

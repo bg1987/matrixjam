@@ -8,8 +8,6 @@ namespace MatrixJam.Team20
     {
         DoorComponent currentDoor;
         bool isRightToDoor;
-        Vector2 doorDirection;
-        Vector2 enteringDirection;
 
         // Start is called before the first frame update
         void Start()
@@ -38,11 +36,10 @@ namespace MatrixJam.Team20
 
         void TryGoNextLevel()
         {
-            var nextLevelTransform = currentDoor.currentPlace.nextLevelTransform;
-            if (!nextLevelTransform)
+            if (!currentDoor.currentPlace.goToNextLevel)
                 return;
-            var player = GetComponent<PlayerComponent>();
-            if (!player)
+
+            if (!GetComponent<PlayerComponent>())
                 return;
 
             SceneManagerComponent.instance.GoToNextLevel();
@@ -50,6 +47,7 @@ namespace MatrixJam.Team20
 
         void Warp()
         {
+            Debug.Log("Warp");
             var doorToSelf = DoorToSelf();
             var doorToWarp = currentDoor.ConnectedDoor();
             var angle = Vector2.Angle(currentDoor.Direction(), doorToWarp.Direction());
@@ -57,27 +55,39 @@ namespace MatrixJam.Team20
             var playerComponent = GetComponent<PlayerComponent>();
             var movementComponent = GetComponent<MovementComponent>();
             var enemyComponent = GetComponent<EnemyControllerComponent>();
-            if(playerComponent)
-            {
-                transform.position = doorToWarp.transform.position + new Vector3(doorToSelf.x, doorToSelf.y);
-                playerComponent.velocity = Quaternion.AngleAxis(angle, Vector3.forward) * playerComponent.velocity;
 
-                playerComponent.resetHorizontal = true;
-                this.transform.Translate(Time.deltaTime * playerComponent.velocity);
-            }
-            else if(movementComponent)
+            if(movementComponent)
             {
                 transform.position = doorToWarp.transform.position + new Vector3(doorToSelf.x, doorToSelf.y);
+                var originalVelocity = new Vector2(movementComponent.velocity.x, movementComponent.velocity.y);
                 movementComponent.velocity = Quaternion.AngleAxis(angle, Vector3.forward) * movementComponent.velocity;
-                this.transform.Translate(Time.deltaTime * movementComponent.velocity);
+                //this.transform.Translate(Time.deltaTime * movementComponent.velocity);
+
+                var outDirection = doorToWarp.Direction();
+                if(isRightToDoor)
+                {
+                    outDirection = -outDirection;
+                }
+
+                if(Mathf.Abs(outDirection.y) > 0.9 && doorToWarp.Direction().y == -currentDoor.Direction().y)
+                {
+                    if(outDirection.y > 0.9)
+                    {
+                        movementComponent.velocity = new Vector2(0f, movementComponent.velocity.y) * 0.8f;
+                    }
+                    movementComponent.velocity.x = originalVelocity.x;
+                }
+
+                if(playerComponent)
+                {
+                    playerComponent.resetHorizontal = true;
+                }
 
                 if(angle >= 170 && enemyComponent)
                 {
                     enemyComponent.movementX *= -1f;
                 }
             }
-
-
 
             currentDoor = null;
         }
@@ -91,13 +101,12 @@ namespace MatrixJam.Team20
 
         bool IsRightToDoor()
         {
-            return Vector2.Dot(DoorToSelf(), doorDirection) > 0;
+            return Vector2.Dot(DoorToSelf(), currentDoor.Direction()) > 0;
         }
 
         public void OnEnterDoor(DoorComponent door)
         {
             currentDoor = door;
-            doorDirection = door.Direction();
             isRightToDoor = IsRightToDoor();
         }
 
