@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace MatrixJam.Team19.Gameplay.Managers
@@ -5,7 +6,7 @@ namespace MatrixJam.Team19.Gameplay.Managers
 
     public class LevelManager : MonoBehaviour
     {
-        [SerializeField] 
+        [SerializeField]
         private int _winRequiredPassCount;
 
         [SerializeField]
@@ -17,12 +18,15 @@ namespace MatrixJam.Team19.Gameplay.Managers
         [SerializeField]
         private Exit _levelFailExit;
 
+        [Header("Player Handler")]
+        [SerializeField]
+        private LevelPlayerHandler _playerHandler;
+
         private int _levelWinCount = 0;
         private int _levelLossCount = 0;
 
         public delegate void LevelEvent();
 
-        public LevelEvent LevelStarted;
         public LevelEvent LevelPassed;
         public LevelEvent LevelLost;
 
@@ -30,9 +34,6 @@ namespace MatrixJam.Team19.Gameplay.Managers
         private int _startedEntranceNumber;
 
         public static LevelManager Instance;
-
-        [SerializeField]
-        private GameObject _playerPrefab;
 
         private void Awake()
         {
@@ -51,8 +52,7 @@ namespace MatrixJam.Team19.Gameplay.Managers
             _gameStarter = starter;
             _startedEntranceNumber = entrance_number;
 
-            Instantiate(_playerPrefab, starter.transform.position, starter.transform.rotation);
-
+            _playerHandler.StartLevel(starter, entrance_number);
         }
 
         public void NotifyLevelLost()
