@@ -11,6 +11,7 @@ namespace MatrixJam.Team4
 
         public int Score { get => _score; set => _score = value; }
         public List<Unit> MyUnits { get => _myUnits; set => _myUnits = value; }
+        public abstract Color Color();
 
         public virtual void YourTurn(TurnData turnData) {}
 

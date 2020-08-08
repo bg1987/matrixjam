@@ -13,7 +13,7 @@ namespace MatrixJam.Team4
 
         private void Awake()
         {
-            UiManagerToChange.ChoiceManager = this;
+            UiManagerToChange._choiceManager = this;
         }
 
         private void Start()

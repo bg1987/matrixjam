@@ -210,6 +210,7 @@ namespace MatrixJam.Team4
 
             if (_boardData.PlaceUnit(x, y, unit))
             {
+                PlaceNumberInUI(unit, x, y);
                 SetUnitIllegal(x, y, unitIndex);
                 Debug.Log("PlaceUnit succeeded - position, value:" + x.ToString() + " / " + y.ToString() + ", " + unit.Value.ToString());
 
@@ -218,7 +219,18 @@ namespace MatrixJam.Team4
 
             return false;
         }
-
+        
+        private static void PlaceNumberInUI(Unit unit, int x, int y)
+        {
+            
+            var playerColor = Color.black;
+            if (unit.Owner != null)
+            {
+                playerColor =unit.Owner.Color(); 
+            }
+            UIManager.SetNumberOnSquare(new Vector2(x, y), unit.Value, unit.Value, playerColor);
+        }
+        
         private void SetUnitIllegal(int x, int y, int unitIndex)
         {
             IllegalizeLines(x, y, unitIndex);
