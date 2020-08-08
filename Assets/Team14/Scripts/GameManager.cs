@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using UnityEngine;
 
 namespace MatrixJam.Team14
@@ -23,21 +22,17 @@ namespace MatrixJam.Team14
         }
     }
 #endif
+
     public class GameManager : MonoBehaviour
     {
         public static event Action ResetEvent;
-
-        // If the audio is a loop - How many times do we expect it to repeat? (For spline pos)
+        
         [SerializeField] private int startLives;
-        [SerializeField] private float bpm;
-        [SerializeField] private float zPerBeat;
+        [SerializeField] private AudioManager audioManager;
 
         [SerializeField] private Transform startAndDirection;
-        // [SerializeField] private float splineEnd = 1.0f;
 
-        // [SerializeField] private BezierSpline mainSpline;
         [SerializeField] private Transform character;
-        [SerializeField] private AudioSource mainAudio;
         [SerializeField] private ThomasMoon thomasMoon;
 
         [Header("Infra")]
@@ -45,15 +40,13 @@ namespace MatrixJam.Team14
         [SerializeField] private Exit loseExit;
 
         private bool reachedEnd;
-        // private int _audioLoopCounter;
-        private float _prevAudioProgress;
-        private float _prevY;
-
+        
         public static GameManager Instance { get; private set; }
-        public float BeatPerSec => bpm / 60;
-        public float ZPerSec => zPerBeat * BeatPerSec;
 
         public Vector3[] BeatPositions { get; private set; }
+        public Vector3[] TrackStartPositions { get; set; }
+        public Vector3[] TrackEndPositions { get; private set; }
+
 
         private void Awake()
         {
@@ -67,9 +60,16 @@ namespace MatrixJam.Team14
             Instance = this;
 
             TrainController.Instance.Lives = startLives;
+            audioManager.OnFinishTrack += OnTrackFinished;
+            audioManager.OnFinishTracklist += OnTrackListFinished;
             
             // Can maybe get rid of this if it causes problems
             UpdateBeatPositions();    
+        }
+
+        private void Start()
+        {
+            audioManager.Restart();     
         }
 
         public void OnValidate()
@@ -80,61 +80,38 @@ namespace MatrixJam.Team14
         private void Update()
         {
             if (reachedEnd) return;
-
-            var audioProgress = GetAudioProgress(mainAudio);
-            // if (_prevAudioProgress > audioProgress) _audioLoopCounter++;
-
-            // var pos = GetPosition(_audioLoopCounter, mainAudio);
-            var pos = GetPosition(mainAudio);
+            
+            var pos = audioManager.GetCurrPosition(startAndDirection);
             character.position = pos;
-            
-            // if ((pos - FinalPoint).sqrMagnitude < 0.1f) OnReachedEnd();
-            
-            
-            _prevY = pos.y;
-            _prevAudioProgress = audioProgress;
-        }
-
-        private void UpdateBeatPositions()
-        {
-            var totalBeats = mainAudio.clip.length * BeatPerSec;
-
-            BeatPositions = Enumerable
-                .Range(0, Mathf.CeilToInt(totalBeats))
-                .Select(i => GetPosition(i))
-                .ToArray();
         }
 
         private void OnDestroy()
         {
+            audioManager.OnFinishTrack -= OnTrackFinished;
+            audioManager.OnFinishTracklist -= OnTrackListFinished;
+            
             if (Instance != this) return;
             Instance = null;
         }
 
-        private void OnReachedEnd()
+        private void OnTrackFinished(int i)
+        {
+            Debug.Log($"Track {i} finished!");
+        }
+
+        private void OnTrackListFinished()
         {
             reachedEnd = true;
-            Debug.Log("End!");
+            Debug.Log("Success! Last Track Finished!");
         }
 
-        private Vector3 GetPosition(AudioSource source)
+        private void UpdateBeatPositions()
         {
-            // var loopedSecs = currLoops * source.clip.length;
-            // var totalSeces = loopedSecs + source.time;
-            var totalSecs = source.time;
-            var beat = GetBeatNum(totalSecs);
-
-            return GetPosition(beat);
+            BeatPositions = audioManager.GetAllBeatPositions(startAndDirection);
+            TrackEndPositions = audioManager.GetTrackEndPositions(startAndDirection);
+            TrackStartPositions = audioManager.GetTrackStartPositions(startAndDirection);
         }
         
-        private Vector3 GetPosition(float beat)
-        {
-            var z = beat * zPerBeat;
-            return startAndDirection.position + startAndDirection.forward * z;
-        }
-
-        private float GetBeatNum(float secs) => secs * BeatPerSec;
-
         private static float GetAudioProgress(AudioSource audioSource)
             => audioSource.time / audioSource.clip.length;
 
@@ -154,8 +131,7 @@ namespace MatrixJam.Team14
         private void Restart()
         {
             Debug.Log("RESTART!");
-            mainAudio.Stop();
-            mainAudio.Play();
+            audioManager.Restart();
 
             ResetEvent?.Invoke();
         }
