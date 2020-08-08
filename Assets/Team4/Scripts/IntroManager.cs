@@ -17,6 +17,12 @@ namespace MatrixJam.Team4
 
         public void Start()
         {
+            if ( _messages.Count == 0)
+            {
+                EventManager.Singleton.OnIntroDone();
+                return;
+            }
+
             _messages[_msgIndex].ShowMessage();
         }
 
