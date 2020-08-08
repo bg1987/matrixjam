@@ -35,9 +35,7 @@ namespace MatrixJam.Team4
             else
             {
                 MoveToTheNextTooltip();
-            }
-
-            
+            }                 
         }
 
         private void MoveToTheNextTooltip()
