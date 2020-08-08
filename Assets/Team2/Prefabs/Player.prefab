@@ -1185,6 +1185,7 @@ GameObject:
   - component: {fileID: 7329114962124384635}
   - component: {fileID: 7329114962124384634}
   - component: {fileID: 7329114962124384629}
+  - component: {fileID: 1071010591}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1321,3 +1322,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 0.5
+--- !u!114 &1071010591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7329114962124384636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee7c925e34e32d468c970598911ff96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 7329114962124384638}
+  firePoint: {fileID: 2121005731}
+  shoulderB: {fileID: 6796665573567415553}
+  gunRotationController: {fileID: 6796665573567415559}
