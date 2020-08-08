@@ -31,9 +31,11 @@ namespace MatrixJam.Team14
         [SerializeField] private Animator masterCarAnim;
         [SerializeField] private Animator[] slaveCarAnims;
 
-        [Header("Debug")] 
+        [Header("Debug")]
         [SerializeField] private bool debugStates;
-        [SerializeField] private Color debugColor = Color.red;
+        [SerializeField] private bool debugObstacles;
+        [SerializeField] private Color debugStatesColor = Color.red;
+        [SerializeField] private Color debugObstaclesColor = Color.green;
         [SerializeField] private Vector2 debugSize = new Vector2(2, 2);
 
         private TrainState _currstate;
@@ -87,11 +89,23 @@ namespace MatrixJam.Team14
         private void OnGUI()
         {
             GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(debugSize.x, debugSize.y, 1f));
-            GUI.color = debugColor;
             if (debugStates)
             {
+                GUI.color = debugStatesColor;
                 GUILayout.Label($"TrainState: {_currstate?.Name}");
                 GUILayout.Label($"PrevState: {_prevState?.Name}");
+            }
+
+            var obstacleDict = Obstacle.CurrObstacles;
+            if (debugObstacles && obstacleDict != null)
+            {
+                GUI.color = debugObstaclesColor;
+                GUILayout.Label("Obstacles");
+                foreach (var trainMove in obstacleDict.Keys)
+                {
+                    var obstacles = obstacleDict[trainMove];
+                    GUILayout.Label($"[{trainMove}]: {obstacles.Count}");
+                }
             }
         }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MatrixJam.Team14
 {
-    public class BeatDebugDisplay : MonoBehaviour
+    public class DebugDisplay : MonoBehaviour
     {
         [SerializeField] private GameManager gameManager;
         [SerializeField] private Camera cam;
