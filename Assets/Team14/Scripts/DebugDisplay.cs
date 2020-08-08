@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace MatrixJam.Team14
@@ -19,6 +20,7 @@ namespace MatrixJam.Team14
         [Header("Track borders")]
         [SerializeField] private DebugTrackBorder debugTrackBorder;
         [SerializeField] private Color trackBorderColor = Color.white;
+        [SerializeField] private Color borderZColor = Color.red;
         [SerializeField] private float trackBorderSize = 10f;
         
         [Header("Colors")]
@@ -51,20 +53,26 @@ namespace MatrixJam.Team14
                     return;
                 case DebugTrackBorder.Start:
                     foreach (var startPos in gameManager.TrackStartPositions)
-                        DrawTrackStartLine(startPos);
+                        DrawTrackBorderLine(startPos);
                     break;
                 case DebugTrackBorder.End:
                     foreach (var endPos in gameManager.TrackEndPositions)
-                        DrawTrackStartLine(endPos);
+                        DrawTrackBorderLine(endPos);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(trackBorderMode), trackBorderMode, null);
             }
         }
 
-        private void DrawTrackStartLine(Vector3 center)
+        private void DrawTrackBorderLine(Vector3 center)
         {
             DrawLine(center, trackBorderSize, trackBorderColor);
+
+            var z = center.z;
+            var pos = new Vector3(0f, 0.5f * trackBorderSize, z);
+            Handles.color = borderZColor;
+            // Handles.RectangleHandleCap(-1, pos, Quaternion.identity, 3, EventType.Repaint);
+            Handles.Label(pos, z.ToString());
         }
         
         private void DrawBeatLine(Vector3 center, int beatIdx)

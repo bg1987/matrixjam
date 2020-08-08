@@ -25,7 +25,7 @@ namespace MatrixJam.Team14
 
         public IEnumerable<Vector3> GetAllBeatPositions(Transform startAndDirection)
             => Enumerable
-                .Range(0, Mathf.CeilToInt(TotalBeats))
+                .Range(0, Mathf.FloorToInt(TotalBeats))
                 .Select(beatNum => GetPosition(startAndDirection, beatNum));
 
 
