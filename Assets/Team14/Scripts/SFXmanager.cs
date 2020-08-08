@@ -2,29 +2,32 @@ using MatrixJam.Team14;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 namespace MatrixJam.Team
 {
     public class SFXmanager : MonoBehaviour
     {
         [Header("Sound Effects")]
-        [SerializeField] private AudioSource Jump;
-        [SerializeField] private AudioSource Railway;
-        [SerializeField] private AudioSource Honk;
-        [SerializeField] private AudioSource AwakeBells;
-        [SerializeField] private AudioSource Duck;
+        [SerializeField] private GenericRandomSFX Jump;
+        [SerializeField] private GenericRandomSFX Railways;
+        [SerializeField] private GenericRandomSFX Honk;
+        [SerializeField] private GenericRandomSFX AwakeBells;
+        [SerializeField] private GenericRandomSFX Duck;
+        [SerializeField] private GenericRandomSFX CatSqueals;
         
         public void PlaySFX(TrainMove move)
         {
             switch (move)
             {
                 case TrainMove.Jump:
-                    Jump.Play();
+                    Jump.PlayRandom();
                     break;
                 case TrainMove.Duck:
-                    
+                    Duck.PlayRandom();
                     break;
                 case TrainMove.Honk:
+                    Honk.PlayRandom();
                     break;
             }
         }
