@@ -73,5 +73,20 @@ namespace MatrixJam.Team14
 
             return offset + currTrackPos;
         }
+
+        public Vector3 GetPositionWithGlobalTime(Transform startAndDirection, float totalSeconds)
+        {
+            var trackIdx = 0;
+            var timeOffset = 0f;
+            foreach (var tttrack in tracks)
+            {
+                if (timeOffset + tttrack.TotalSeconds >= totalSeconds) break;
+                timeOffset += tttrack.TotalSeconds;
+                trackIdx++;
+            }
+
+            var trackTime = totalSeconds - timeOffset;
+            return GetBeatPosition(startAndDirection, trackIdx, trackTime);
+        }
     }
 }
