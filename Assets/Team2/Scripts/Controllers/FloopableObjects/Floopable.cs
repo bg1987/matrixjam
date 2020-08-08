@@ -9,7 +9,11 @@ namespace MatrixJam.Team2
     [RequireComponent(typeof(GoThroughController))]
     public class Floopable : MonoBehaviour
     {
+        [SerializeField] SpriteRenderer spriteRenderer;
         [SerializeField] FloopableMaterialTypes currentMaterial;
+        [SerializeField] Sprite reflectiveSprite;
+        [SerializeField] Sprite opaqueSprite;
+        [SerializeField] Sprite goThroughSprite;
 
         private BoxCollider2D boxCollider;
         private ReflectiveController reflectiveController;
@@ -51,19 +55,19 @@ namespace MatrixJam.Team2
                     boxCollider.isTrigger = false;
                     reflectiveController.enabled = true;
                     goThroughController.enabled = false;
-                    // TODO: Update sprite to reflective
+                    spriteRenderer.sprite = reflectiveSprite;
                     break;
                 case FloopableMaterialTypes.Opaque:
                     boxCollider.isTrigger = false;
                     reflectiveController.enabled = false;
                     goThroughController.enabled = false;
-                    // TODO: Update sprite to opaque
+                    spriteRenderer.sprite = opaqueSprite;
                     break;
                 case FloopableMaterialTypes.GoThrough:
                     boxCollider.isTrigger = true;
                     reflectiveController.enabled = false;
                     goThroughController.enabled = true;
-                    // TODO: Update sprite to goThrough
+                    spriteRenderer.sprite = goThroughSprite;
                     break;
             }
         }
