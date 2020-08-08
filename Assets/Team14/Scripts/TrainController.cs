@@ -106,7 +106,10 @@ namespace MatrixJam.Team14
             newState.OnEnter();
 
             if (newState.AnimTrigger != null)
-                Animate(newState.AnimTrigger);
+            {
+                CueFutureAnimations(newState.AnimTrigger);
+                HandlePendingAnimations();
+            }
             
             _prevState = newState;
         }
@@ -143,11 +146,22 @@ namespace MatrixJam.Team14
             }
         }
 
-        private void Animate(string trigger)
+        
+        /// <summary>
+        /// Add future animation cues for master + slave chars, using the transform given or master car
+        /// </summary>
+        /// <param name="trigger">The trigger to cue</param>
+        /// <param name="moveCue">The transform to use for position, if null will use masterCar postion</param>
+        private void CueFutureAnimations(string trigger, Transform moveCue)
         {
-            masterCarAnim.SetTrigger(trigger);
+            var value = moveCue
+                ? moveCue.position.z
+                : masterCarAnim.transform.position.z;
             
-            var value = masterCarAnim.transform.position.z;
+            // Master car
+            var masterFutureAnim = new FutureAnimation(masterCarAnim, value, trigger);
+            _futureAnimations.Add(masterFutureAnim);
+            
             foreach (var slaveCarAnim in slaveCarAnims)
             {
                 var futureAnim = new FutureAnimation(slaveCarAnim, value, trigger);
