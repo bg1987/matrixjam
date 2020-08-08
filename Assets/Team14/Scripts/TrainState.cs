@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 
 namespace MatrixJam.Team14
@@ -34,7 +33,7 @@ namespace MatrixJam.Team14
         public override void OnUpdate()
         {
             base.OnUpdate();
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetKeyDown(TrainMoves.GetKey(TrainMove.Jump)))
             {
                 TrainController.TransitionState(TrainController.JumpState);
             }

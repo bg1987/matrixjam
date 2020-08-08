@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MatrixJam.Team
+namespace MatrixJam.Team14
 {
     public static class TrainMoves
     {
