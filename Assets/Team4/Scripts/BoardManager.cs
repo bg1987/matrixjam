@@ -23,22 +23,45 @@ namespace MatrixJam.Team4
         
         public void ExecuteTurn(TurnObject turnObject)
         {
-
+            var unit = turnObject.ChosenUnit;
+            var player = unit.Owner;
             EventManager.Singleton.OnTurnOver();
         }
 
         public TurnData GetPlayerTurnData(Player _player)
         {
             var boardData = new BoardData(_boardData._boardData);
+            var possiblePositionByUnit = GetPlayersUnitsOptions(_player);
+
+            return new TurnData(boardData, possiblePositionByUnit);
+        }
+
+        private List<Position> GetUnitsLegalPositions(Unit unit)
+        {
+            var unitValueOptions = GetUnitOptions(unit);
+            var unitOptions = new List<Position>();
+            for (int i = 0; i < unitValueOptions.Count; i++)
+            {
+                var pos = new Position(unitValueOptions[i] / 10, unitValueOptions[i] % 10);
+                unitOptions.Add(pos);
+            }
+
+            return unitOptions;
+        }
+
+        private Dictionary<Unit, List<Position>> GetPlayersUnitsOptions(Player player)
+        {
             var options = new Dictionary<Unit, List<Position>>();
 
-            for ( int i = 0; i < _player.MyUnits.Count; i++ )
+            for (int i = 0; i < player.MyUnits.Count; i++)
             {
-                var unit = _player.MyUnits[i];
-                var unitOptions = GetUnitOptions(unit);
-                
+                var unit = player.MyUnits[i];
+                var unitOptions = GetUnitsLegalPositions(unit);
+
+                options.Add(unit, unitOptions);
             }
-            return null;
+
+            return options;
         }
 
         private void AddRandomUnits(int initialRandomUnits)

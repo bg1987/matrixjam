@@ -9,11 +9,16 @@ namespace MatrixJam.Team4
         public GameState gameState = GameState.init;
         private IntroManager _introManager;
         private TurnManager _turnManager;
+        private BoardManager _boardManager;
+
         public List<MessageObject> IntroMessages;
+
+        public int InitialUnitsCount = 35;
 
         void Awake()
         {
             _introManager = new IntroManager(IntroMessages);
+            _boardManager = new BoardManager(9, InitialUnitsCount);
         }
 
     

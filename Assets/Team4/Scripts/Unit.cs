@@ -18,6 +18,7 @@ namespace MatrixJam.Team4
 
         public Position Position { get => position; set => position = value; }
         public int Value { get => _value; }
+        public Player Owner { get => _owner; set => _owner = value; }
     }
 
     public enum AttackDirection
