@@ -34,7 +34,7 @@ namespace MatrixJam.Team2
             GoThroughController goThroughController;
             if (other.TryGetComponent<GoThroughController>(out goThroughController))
             {
-                if (goThroughController) return;
+                if (goThroughController.enabled) return;
             }
 
             isGrounded = true;
