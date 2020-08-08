@@ -41,12 +41,10 @@ namespace MatrixJam.Team14
 
         private void TransitionWithMove(TrainMove move, TrainState state)
         {
-            var obstacles = Obstacle.CurrObstacles[move];
-            Assert.IsTrue(obstacles.Count <= 1, "More than one obstacle should not overlap!");
+            var obstacle = Obstacle.HandleMovePressed(move);
+            if (!obstacle) return;
             
-            var obs = obstacles.FirstOrDefault();
-            if (obs) obs.OnPressedInZone();
-            TrainController.TransitionState(state, obs ? obs.MoveCue : null);
+            TrainController.TransitionState(state, obstacle ? obstacle.MoveCue : null);
         }
     }
 

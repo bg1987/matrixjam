@@ -98,6 +98,17 @@ namespace MatrixJam.Team14
         {
             _currstate?.OnUpdate();
             HandlePendingAnimations();
+
+            HandleHonk();
+        }
+
+        private bool HandleHonk()
+        {
+            var keyCode = TrainMoves.GetKey(TrainMove.Honk);
+            if (!Input.GetKeyDown(keyCode)) return false;
+
+            var obstacle = Obstacle.HandleMovePressed(TrainMove.Honk);
+            return obstacle != null;
         }
 
         private void Start()
@@ -112,7 +123,6 @@ namespace MatrixJam.Team14
             {
                 GUI.color = debugStatesColor;
                 GUILayout.Label($"TrainState: {_currstate?.Name}");
-                GUILayout.Label($"PrevState: {_prevState?.Name}");
             }
 
             var obstacleDict = Obstacle.CurrObstacles;
@@ -258,8 +268,10 @@ namespace MatrixJam.Team14
                     throw new ArgumentOutOfRangeException(nameof(move), move, null);
             }
         }
+        
         public void PlaySFX(TrainMove move)
         {
+            if (sfxManager == null) return;
             sfxManager.PlaySFX(move);
         }
     }
