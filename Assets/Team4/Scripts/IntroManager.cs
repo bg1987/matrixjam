@@ -35,7 +35,7 @@ namespace MatrixJam.Team4
             if(0 < _msgIndex)
             {
                 --_msgIndex;
-                uiManager.ShowIntroMessage(_introMessages.IndexOf(_msgIndex));
+                UIManager.ShowIntroMessage(_introMessages[_msgIndex]);
             }
         }
 

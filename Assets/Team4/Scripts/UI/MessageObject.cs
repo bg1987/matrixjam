@@ -8,5 +8,6 @@ namespace MatrixJam.Team4
     {
         public string messageText;
         public Texture messageImage;
+        
     }
 }
