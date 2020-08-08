@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MatrixJam.Team;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -37,6 +38,10 @@ namespace MatrixJam.Team14
         [SerializeField] private Color debugStatesColor = Color.red;
         [SerializeField] private Color debugObstaclesColor = Color.green;
         [SerializeField] private Vector2 debugSize = new Vector2(2, 2);
+
+        [SerializeField] private SFXmanager sfxManager;
+
+
 
         private int _lives;
         private TrainState _currstate;
@@ -252,6 +257,10 @@ namespace MatrixJam.Team14
                 default:
                     throw new ArgumentOutOfRangeException(nameof(move), move, null);
             }
+        }
+        public void PlaySFX(TrainMove move)
+        {
+            sfxManager.PlaySFX(move);
         }
     }
 }

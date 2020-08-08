@@ -80,6 +80,7 @@ namespace MatrixJam.Team14
         public override void OnEnter()
         {
             base.OnEnter();
+            TrainController.Instance.PlaySFX(TrainMove.Jump);
             currTime = 0f;
         }
 
