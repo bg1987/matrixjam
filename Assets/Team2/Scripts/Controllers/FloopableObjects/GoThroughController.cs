@@ -4,12 +4,7 @@ using UnityEngine;
 
 namespace MatrixJam.Team2
 {
-    public class GoThroughController : MonoBehaviour, IGoThrough
+    public class GoThroughController : MonoBehaviour
     {
-        public void PassLaserThrough()
-        {
-            // if(this.enabled)
-            throw new System.NotImplementedException();
-        }
     }
 }

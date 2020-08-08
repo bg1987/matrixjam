@@ -29,6 +29,19 @@ namespace MatrixJam.Team2
             UpdateMaterial();
         }
 
+        public void ChangeBulletTrajectory(Transform bullet, ContactPoint2D contactPoint)
+        {
+            switch (currentMaterial)
+            {
+                case FloopableMaterialTypes.Reflective:
+                    reflectiveController.ReflectLaser(bullet, contactPoint);
+                    break;
+                case FloopableMaterialTypes.Opaque:
+                    Destroy(bullet.gameObject);
+                    break;
+            }
+        }
+
         private void UpdateMaterial()
         {
             switch (currentMaterial)

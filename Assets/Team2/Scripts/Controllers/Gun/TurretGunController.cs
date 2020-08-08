@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace MatrixJam.Team2
 {
-    public interface IGoThrough
+    public class TurretGunController : MonoBehaviour
     {
-        void PassLaserThrough();
+        [SerializeField] private GameObject bulletPrefab;
+
     }
 }
