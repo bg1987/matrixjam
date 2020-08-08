@@ -14,16 +14,20 @@ namespace MatrixJam.Team4
         private IChoiceManager _choiceManager;
         
 
+        public List<Player> Players;
         public List<MessageScript> IntroMessages;
 
         public int InitialUnitsCount = 35;
+        public bool ShowTutorial;
 
         void Awake()
         {
             _introManager = new IntroManager(IntroMessages);
             _boardManager = new BoardManager(9);
             _choiceManager = new ChoiceManager(_boardManager);
-            
+            _turnManager = new TurnManager(Players);
+            UIManager.ChoiceManager = _choiceManager;
+
         }
 
     
@@ -31,7 +35,14 @@ namespace MatrixJam.Team4
         void Start()
         {
             _boardManager.AddRandomUnits(InitialUnitsCount);
-            SetState(GameState.intro);
+            if (ShowTutorial)
+            {
+                SetState(GameState.intro);
+            }
+            else
+            {
+                SetState(GameState.mainPlay);
+            }
         }
 
         private void HandleIntro()
@@ -48,12 +59,13 @@ namespace MatrixJam.Team4
         
         private void HandleMainPlay()
         {
-            EventManager.Singleton.IntroDone -= OnIntroDone;     
-            EventManager.Singleton.NextMessage -= _introManager.NextMessage;
+            if (ShowTutorial)
+            {
+                EventManager.Singleton.IntroDone -= OnIntroDone;     
+                EventManager.Singleton.NextMessage -= _introManager.NextMessage;
+            }
             EventManager.Singleton.TurnOver += OnTurnOver;
-            var choices = new List<int>() {1, 2, 3, 4, 5, 6, 7, 8, 9};//TODO take from boardManager
-            
-            UIManager.SetPlayerAvailableNumbers(choices, true);
+            OnTurnOver();
         }
 
         private void OnTurnOver()
@@ -63,9 +75,10 @@ namespace MatrixJam.Team4
                 EventManager.Singleton.OnGameOver();
                 return;
             }
+            
             var nextPlayer = _turnManager.GetNextPlayer();
             var nextTurnData = _boardManager.GetPlayerTurnData(nextPlayer);
-            _turnManager.PlayNextTurn(nextTurnData);
+            nextPlayer.YourTurn(nextTurnData);
         }
 
         private bool IsGameOver()
@@ -76,6 +89,7 @@ namespace MatrixJam.Team4
 
         private void OnIntroDone()
         {
+            ShowTutorial = false;
             SetState(GameState.mainPlay);
         }
 

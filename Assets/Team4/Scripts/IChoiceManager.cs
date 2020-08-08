@@ -6,9 +6,9 @@ namespace MatrixJam.Team
     public interface IChoiceManager
     {
 
-        void StartTurn(Player player);
-        void NumberChosen(int value);
-        void SquareChosen(Vector2 index);
+        void StartTurn(Player player, TurnData turnData);
+        void PickNumber(int value);
+        void PickSquare(Vector2 index);
         void PickAttack(AttackDirection attackType);
     }
 

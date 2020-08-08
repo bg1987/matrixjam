@@ -41,7 +41,7 @@ namespace MatrixJam.Team4
             }
 
             player.Score += points;
-
+            player.EndTurn(turnObject);
             if ( PlaceUnit(unit, unit.Position.GetX(), unit.Position.GetY()))
             {
                 player.MyUnits.Remove(unit);
@@ -104,7 +104,7 @@ namespace MatrixJam.Team4
                 var x = unit.Position.GetX();
                 var unitToCheck = _boardData._boardData[x, i];
 
-                if (player == unitToCheck.Owner)
+                if (unitToCheck == null || player == unitToCheck.Owner)
                 {
                     continue;
                 }
@@ -180,6 +180,7 @@ namespace MatrixJam.Team4
                     Position position = new Position(x, y);
                     if (PlaceUnit(unit, position))
                     {
+                        UIManager.SetNumberOnSquare(new Vector2(x, y), unit.Value, unit.Value, Color.black);
                         return;
                     }
                 }
@@ -250,7 +251,6 @@ namespace MatrixJam.Team4
 
             if (_boardData.PlaceUnit(x, y, unit))
             {
-                PlaceNumberInUI(unit, x, y);
                 SetUnitIllegal(x, y, unitIndex);
                 Debug.Log("PlaceUnit succeeded - position, value:" + x.ToString() + " / " + y.ToString() + ", " + unit.Value.ToString());
 
@@ -259,18 +259,7 @@ namespace MatrixJam.Team4
 
             return false;
         }
-        
-        private static void PlaceNumberInUI(Unit unit, int x, int y)
-        {
-            
-            var playerColor = Color.black;
-            if (unit.Owner != null)
-            {
-                playerColor =unit.Owner.Color(); 
-            }
-            UIManager.SetNumberOnSquare(new Vector2(x, y), unit.Value, unit.Value, playerColor);
-        }
-        
+
         private void SetUnitIllegal(int x, int y, int unitIndex)
         {
             IllegalizeLines(x, y, unitIndex);

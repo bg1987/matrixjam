@@ -1,33 +1,40 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MatrixJam.Team4
 {
     public abstract class Player : MonoBehaviour
     {
+        public Color Color;
+        public Text ScoreTextbox;
+        public int Score { get => _score; set => _score = value; }
         private int _score;
         private List<Unit> _myUnits;
 
-        public int Score { get => _score; set => _score = value; }
         public List<Unit> MyUnits { get => _myUnits; set => _myUnits = value; }
-        public abstract Color Color();
 
-        public virtual void YourTurn(TurnData turnData) {}
+        public virtual void YourTurn(TurnData turnData)
+        {
+            UIManager.ChoiceManager.StartTurn(this, turnData);
+        }
 
         public virtual void EndTurn(TurnObject turnObject)
         {
+            ScoreTextbox.text = Score.ToString();//TODO add to UIManager
             EventManager.Singleton.OnPlayerPlayed(turnObject);
         }
 
+        
         protected TurnObject ValidateTurnObject(TurnObject validationObject)
         {
-            if (validationObject.ChosenPosition == null)
+
+            if (validationObject.ChosenUnit == null)
             {
                 return null;
             }
-
-            if (validationObject.ChosenUnit == null)
+            
+            if (validationObject.ChosenUnit.Position == null)
             {
                 return null;
             }

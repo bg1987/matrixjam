@@ -17,10 +17,9 @@ namespace MatrixJam.Team4
 
         public Button[] AttackButtons;
         public NumberButtonScript NumberPrefab;
-
-
-        private IChoiceManager _choiceManager;
         
+        public static IChoiceManager ChoiceManager { get; set; }
+
         private void Awake()
         {
             _instance = this;
@@ -28,6 +27,7 @@ namespace MatrixJam.Team4
             Tooltips.SetActive(true);
             NumberButtonsManager.GenerateBoard(NumberPrefab);
             ShowDamageOptions(false);
+            
         }
 
         public static void ShowDarkScreen()
@@ -42,7 +42,7 @@ namespace MatrixJam.Team4
         
         public static void NumberChosen(int i)
         {
-            _instance._choiceManager.NumberChosen(i);
+            ChoiceManager.PickNumber(i);
         }
         
         
@@ -51,7 +51,7 @@ namespace MatrixJam.Team4
         {
             NumberButtonsManager.MakeAllUnselectable();
             _instance.PlayerNumberPool.MakeNoneSelectable();
-            _instance._choiceManager.SquareChosen(index);
+            ChoiceManager.PickSquare(index);
         }
 
         public static void ShowSelectablePositions(Vector2[] squares)
@@ -88,17 +88,17 @@ namespace MatrixJam.Team4
         public void PickAttackRow()
         {
             ShowDamageOptions(false);
-            _choiceManager.PickAttack(AttackDirection.row);
+            ChoiceManager.PickAttack(AttackDirection.row);
         }
         public void PickAttackLine()
         {
             ShowDamageOptions(false);
-            _choiceManager.PickAttack(AttackDirection.colum);
+            ChoiceManager.PickAttack(AttackDirection.colum);
         }
         public void PickAttackBox()
         {
             ShowDamageOptions(false);;
-            _choiceManager.PickAttack(AttackDirection.square
+            ChoiceManager.PickAttack(AttackDirection.square
             );
         }
     }

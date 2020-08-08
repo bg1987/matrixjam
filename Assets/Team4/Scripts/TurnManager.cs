@@ -11,19 +11,23 @@ namespace MatrixJam.Team4
 
         public TurnManager(List<Player> players)
         {
-            _turnIndex = 0;
+            _turnIndex = 1;//To start on 0 when we choose "next"
             _playersList = players;
+            foreach (var player in players)
+            {
+                player.MyUnits = new List<Unit>();
+                for (int i = 1; i <= 9; i++)
+                {
+                    player.MyUnits.Add(new Unit(player, i));
+                }
+
+            }
         }
 
         public Player GetNextPlayer()
         {
             AdvanceIndex();
             return _playersList[_turnIndex];
-        }
-
-        public void PlayNextTurn(TurnData turnData)
-        {
-            _playersList[1].YourTurn(turnData);
         }
 
         //advances the index keeping record of the players turn, reset if all
@@ -36,5 +40,7 @@ namespace MatrixJam.Team4
                 _turnIndex = 0;
             }
         }
+
+     
     }
 }

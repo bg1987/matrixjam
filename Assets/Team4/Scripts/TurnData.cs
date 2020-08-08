@@ -6,7 +6,6 @@ namespace MatrixJam.Team4
 {
     public class TurnData
     {
-        public TurnObject turnObject;
         private BoardData _boardData;
         public Dictionary<Unit, List<Position>> _positionOptions;
 
@@ -14,7 +13,6 @@ namespace MatrixJam.Team4
         {
             _boardData = boardData;
             _positionOptions = positionOptions;
-            turnObject = new TurnObject();
         }
     }
 }

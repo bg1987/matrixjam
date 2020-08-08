@@ -18,13 +18,10 @@ namespace MatrixJam.Team4
             _boardManager = boardManager;
         }
 
-        
-
-        public void StartTurn(Player player)
+        public void StartTurn(Player player, TurnData turnData)
         {
-            _selectedUnit = null;
-            _selectedPosition = null;
-            _playerTurnData = _boardManager.GetPlayerTurnData(player);
+            ClearData();
+            _playerTurnData = turnData;
             List<int> choices = new List<int>();
             foreach (var unit in _playerTurnData._positionOptions.Keys)
             {
@@ -39,18 +36,35 @@ namespace MatrixJam.Team4
 
         }
 
-        public void NumberChosen(int value)
+        private void ClearData()
+        {
+            UIManager.ShowSelectablePositions(new Vector2[0]); //clear
+            _selectedUnit = null;
+            _selectedPosition = null;
+        }
+
+        public void PickNumber(int value)
         {
             Debug.Log("Player chose: " + value);
             foreach (var unit in _playerTurnData._positionOptions.Keys)
             {
                 if (unit.Value == value)
                 {
-                    _selectedUnit = unit;
-                    var positionOption = _playerTurnData._positionOptions[unit];
-                    Vector2[] squares = GetSquarsFromAllowedPositions(positionOption);
-                    UIManager.ShowSelectablePositions(squares);
+                    UpdateSelectedUnit(unit);
+                    return;
                 }
+            }
+            throw new Exception("Could not find number");
+        }
+
+        private void UpdateSelectedUnit(Unit unit)
+        {
+            _selectedUnit = unit;
+            if (unit.Owner.IsHuman())
+            {
+                var positionOption = _playerTurnData._positionOptions[unit];
+                Vector2[] squares = GetSquarsFromAllowedPositions(positionOption);
+                UIManager.ShowSelectablePositions(squares);
             }
         }
 
@@ -60,15 +74,15 @@ namespace MatrixJam.Team4
             return squares;
         }
 
-        public void SquareChosen(Vector2 index)
+        public void PickSquare(Vector2 index)
         {
             var positionOption = _playerTurnData._positionOptions[_selectedUnit];
             var position = positionOption.Find(p => p.GetX() == index.x && p.GetY() == index.y);
             if (position != null)
             {
                 _selectedPosition = position;
-                UIManager.SetNumberOnSquare(index, _selectedUnit.Value, _selectedUnit.Value, _selectedUnit.Owner.Color());
-                UIManager.ShowDamageOptions(true);
+                UIManager.SetNumberOnSquare(index, _selectedUnit.Value, _selectedUnit.Value, _selectedUnit.Owner.Color);
+                UIManager.ShowDamageOptions(_selectedUnit.Owner.IsHuman());
             }
 
         }
@@ -77,7 +91,7 @@ namespace MatrixJam.Team4
         {
             var turnObject = new TurnObject();
             turnObject.ChosenUnit = _selectedUnit;
-            turnObject.ChosenPosition = _selectedPosition;
+            turnObject.ChosenUnit.Position = _selectedPosition;
             turnObject.AttackDirection = attackType;
             _boardManager.ExecuteTurn(turnObject);
         }
