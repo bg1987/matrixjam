@@ -3752,7 +3752,7 @@ Transform:
   m_Children:
   - {fileID: 1788431398}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &510153597
 MonoBehaviour:
@@ -4519,7 +4519,7 @@ Transform:
   m_Children:
   - {fileID: 666210759}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &665026126
 GameObject:
@@ -4648,7 +4648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842f474cb489ee34e907cd934516dee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpTime: 0.4
+  jumpTime: 0.75
   masterCarAnim: {fileID: 1427260681}
   slaveCarAnims:
   - {fileID: 1909029138}
@@ -6354,7 +6354,7 @@ Transform:
   - {fileID: 1795232603}
   - {fileID: 1438721300}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &985217069
 MonoBehaviour:
@@ -7012,7 +7012,7 @@ PrefabInstance:
     - target: {fileID: 7559569994394103242, guid: e4d2a181f0e7a93428f63764ff995033,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4d2a181f0e7a93428f63764ff995033, type: 3}
@@ -11015,7 +11015,7 @@ Transform:
   m_Children:
   - {fileID: 9900203}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1751603679
 MonoBehaviour:
@@ -12107,7 +12107,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1907177325
 MonoBehaviour:

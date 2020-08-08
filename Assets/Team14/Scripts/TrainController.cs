@@ -98,19 +98,8 @@ namespace MatrixJam.Team14
         {
             _currstate?.OnUpdate();
             HandlePendingAnimations();
-
-            HandleHonk();
         }
-
-        private bool HandleHonk()
-        {
-            var keyCode = TrainMoves.GetKey(TrainMove.Honk);
-            if (!Input.GetKeyDown(keyCode)) return false;
-
-            var obstacle = Obstacle.HandleMovePressed(TrainMove.Honk);
-            return obstacle != null;
-        }
-
+        
         private void Start()
         {
             TransitionState(DriveState, null);
@@ -135,6 +124,28 @@ namespace MatrixJam.Team14
                     var obstacles = obstacleDict[trainMove];
                     GUILayout.Label($"[{trainMove}]: {obstacles.Count}");
                 }
+            }
+        }
+
+        /// <summary>
+        /// Add future animation cues for master + slave chars, using the transform given or master car
+        /// </summary>
+        /// <param name="trigger">The trigger to cue</param>
+        /// <param name="moveCue">The transform to use for position, if null will use masterCar postion</param>
+        public void CueFutureAnimations(string trigger, Transform moveCue)
+        {
+            var value = moveCue
+                ? moveCue.position.z
+                : masterCarAnim.transform.position.z;
+            
+            // Master car
+            var masterFutureAnim = new FutureAnimation(masterCarAnim, value, trigger);
+            _futureAnimations.Add(masterFutureAnim);
+            
+            foreach (var slaveCarAnim in slaveCarAnims)
+            {
+                var futureAnim = new FutureAnimation(slaveCarAnim, value, trigger);
+                _futureAnimations.Add(futureAnim);
             }
         }
 
@@ -214,29 +225,6 @@ namespace MatrixJam.Team14
                     _futureAnimations.Remove(futureAnim);
                     futureAnim.Anim.SetTrigger(futureAnim.Trigger);
                 }
-            }
-        }
-
-        
-        /// <summary>
-        /// Add future animation cues for master + slave chars, using the transform given or master car
-        /// </summary>
-        /// <param name="trigger">The trigger to cue</param>
-        /// <param name="moveCue">The transform to use for position, if null will use masterCar postion</param>
-        private void CueFutureAnimations(string trigger, Transform moveCue)
-        {
-            var value = moveCue
-                ? moveCue.position.z
-                : masterCarAnim.transform.position.z;
-            
-            // Master car
-            var masterFutureAnim = new FutureAnimation(masterCarAnim, value, trigger);
-            _futureAnimations.Add(masterFutureAnim);
-            
-            foreach (var slaveCarAnim in slaveCarAnims)
-            {
-                var futureAnim = new FutureAnimation(slaveCarAnim, value, trigger);
-                _futureAnimations.Add(futureAnim);
             }
         }
         
