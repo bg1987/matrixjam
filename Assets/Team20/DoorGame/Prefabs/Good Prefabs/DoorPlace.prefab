@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde3f0c6bc3103a4fb75bf9015e96d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canRemoveDoor: 0
   placedDoor: {fileID: 0}
   wallCollider: {fileID: 241704539853054483}
   placeDirection: 1

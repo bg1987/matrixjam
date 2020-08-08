@@ -8,7 +8,8 @@ namespace MatrixJam.Team20
     {
         static int startLevel = 0;
         public GameObject[] Levels = new GameObject[2];
-
+        public AudioSource introBGM, loopBGM;
+        public bool introFinished = false;
         public static SceneManagerComponent instance;
 
         // Start is called before the first frame update
@@ -33,6 +34,11 @@ namespace MatrixJam.Team20
             if (Input.GetKeyDown(KeyCode.N))
             {
                 GoToNextLevel();
+            }
+            if (!introBGM.isPlaying && !introFinished)
+            {
+                introFinished = true;
+                loopBGM.Play();
             }
         }
 
