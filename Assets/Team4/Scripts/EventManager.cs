@@ -8,7 +8,10 @@ namespace MatrixJam.Team4
     {
         public static EventManager Singleton;
         public event EventIntroDone IntroDone;
+        public event EventNextMessage NextMessage;
         public delegate void EventIntroDone();
+        
+        public delegate void EventNextMessage();
 
         public event EventBoardCreated BoardCreated;
         public delegate void EventBoardCreated();
@@ -32,6 +35,11 @@ namespace MatrixJam.Team4
         public void OnIntroDone()
         {
             IntroDone?.Invoke();
+        }
+        
+        public void OnNextMessage()
+        {
+            NextMessage?.Invoke();
         }
 
         public void OnPlayerPlayed(TurnObject turnObject)

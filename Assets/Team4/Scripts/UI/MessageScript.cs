@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,19 +6,37 @@ namespace MatrixJam.Team4
 {
     public class MessageScript : MonoBehaviour
     {
-        public MessageLocation Location;
         public GameObject HighligtedObject;
         public Text Textbox;
-
+        public String[] LinesOfTexts;
         private Transform _originalParent;
+        private int _msgIndex = 0;
+
+
+        private void OnValidate()
+        {
+            if (LinesOfTexts != null && LinesOfTexts.Length > 0)
+            {
+                Textbox.text = LinesOfTexts[0];
+            }
+        }
 
         public void Awake()
         {
-            TooltipManager.RegisterMessageBox(Location, this);
             gameObject.SetActive(false);
         }
 
-        public void ShowMessage(string message)
+        //TODO needs nice button or something
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                EventManager.Singleton.OnNextMessage();;
+            }
+            
+        }
+
+        public void ShowMessage()
         {
             if (HighligtedObject != null)
             {
@@ -31,7 +47,6 @@ namespace MatrixJam.Team4
 
             }
             
-            Textbox.text = message;
             gameObject.SetActive(true);
             
 
@@ -48,18 +63,17 @@ namespace MatrixJam.Team4
     
         }
 
+        public bool HasNext()
+        {
+            return _msgIndex < LinesOfTexts.Length - 1;
+        }
+
+        public void ShowNext()
+        {
+            _msgIndex++;
+            Textbox.text = LinesOfTexts[_msgIndex];
+        }
     }
     
-
-    public enum MessageLocation
-    {
-        AboveBoard,
-        NextToScore,
-        PlayerPool,
-        PlayerWaitQueue,
-        EnemyPool,
-        AttackOptions
-
-
-    }
+    
 }

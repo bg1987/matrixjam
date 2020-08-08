@@ -1,37 +1,51 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using MatrixJam.Team;
-
 
 namespace MatrixJam.Team4
 {
     public class IntroManager
     {
-        private List<MessageObject> _introMessages;
-        private int _msgIndex;
 
-        public IntroManager(List<MessageObject> introMessages)
+        private List<MessageScript> _messages;
+        private int _msgIndex;
+        private static IntroManager _instance;
+
+        public IntroManager(List<MessageScript> introMessages)
         {
-            _introMessages = introMessages;
-            _msgIndex = 0;
+            _messages = introMessages;
+            _instance = this;
         }
 
-        public void StartMessages()
+        public void Start()
         {
-            UIManager.ShowIntroMessage(_introMessages[_msgIndex]);
+            _messages[_msgIndex].ShowMessage();
         }
 
         public void NextMessage()
         {
-            ++_msgIndex;
-            if(_msgIndex < _introMessages.Count)
+            if (_messages[_msgIndex].HasNext())
             {
-                UIManager.ShowIntroMessage(_introMessages[_msgIndex]);
-                return;
+                _messages[_msgIndex].ShowNext();
+            }
+            else
+            {
+                MoveToTheNextTooltip();
             }
 
-            EventManager.Singleton.OnIntroDone();
+            
+        }
+
+        private void MoveToTheNextTooltip()
+        {
+            _messages[_msgIndex].HideMessage();
+            if (_msgIndex < _messages.Count - 1)
+            {
+                _msgIndex++;
+                _messages[_msgIndex].ShowMessage();
+            }
+            else
+            {
+                EventManager.Singleton.OnIntroDone();
+            }
         }
 
         public void PreviousMessage()
@@ -39,7 +53,7 @@ namespace MatrixJam.Team4
             if(0 < _msgIndex)
             {
                 --_msgIndex;
-                UIManager.ShowIntroMessage(_introMessages[_msgIndex]);
+                _messages[_msgIndex].ShowMessage();
             }
         }
 

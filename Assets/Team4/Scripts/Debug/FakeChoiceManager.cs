@@ -33,7 +33,7 @@ namespace MatrixJam.Team4
         public void SquareChosen(Vector2 index)
         {
             UIManager.SetNumberOnSquare(index, _currentNumberValue, _currentNumberValue, Color.blue);
-            UIManager.ShowDamageOptions();
+            UIManager.ShowDamageOptions(true);
 
         }
 
