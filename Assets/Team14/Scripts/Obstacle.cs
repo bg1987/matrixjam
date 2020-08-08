@@ -37,6 +37,7 @@ namespace MatrixJam.Team14
         
         private void Awake()
         {
+            GameManager.ResetEvent += OnGameReset;
             CurrObstacles = Enum
                 .GetValues(typeof(TrainMove))
                 .Cast<TrainMove>()
@@ -44,6 +45,16 @@ namespace MatrixJam.Team14
                     move => move, 
                     move => new List<Obstacle>()
                 );
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.ResetEvent -= OnGameReset;
+        }
+
+        private void OnGameReset()
+        {
+            _succeeded = false;
         }
 
         public void OnPressedInZone()

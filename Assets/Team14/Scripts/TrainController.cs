@@ -69,9 +69,11 @@ namespace MatrixJam.Team14
             }
 
             Instance = this;
-            Obstacle.OnObstacleEvent += OnObstacleEvent;
             CreateStates();
             _currstate = NullState;
+            
+            Obstacle.OnObstacleEvent += OnObstacleEvent;
+            GameManager.ResetEvent += OnGameReset;
         }
 
         private void OnValidate()
@@ -83,6 +85,7 @@ namespace MatrixJam.Team14
         {
             if (Instance != this) return;
             Obstacle.OnObstacleEvent -= OnObstacleEvent;
+            GameManager.ResetEvent -= OnGameReset;
             Instance = null;
         }
 
@@ -118,6 +121,11 @@ namespace MatrixJam.Team14
                     GUILayout.Label($"[{trainMove}]: {obstacles.Count}");
                 }
             }
+        }
+
+        private void OnGameReset()
+        {
+            TransitionState(DriveState, null);
         }
 
         public static void TransitionState(TrainState newState, Transform moveCue) => Instance.TransitionStateInternal(newState, moveCue);
