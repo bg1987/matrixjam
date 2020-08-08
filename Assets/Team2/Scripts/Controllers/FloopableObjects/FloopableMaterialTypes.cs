@@ -7,7 +7,7 @@ namespace MatrixJam.Team2
     public enum FloopableMaterialTypes
     {
         Reflective,
-        GoThrough,
-        Refractive
+        Opaque,
+        GoThrough
     }
 }

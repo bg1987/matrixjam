@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace MatrixJam.Team2
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float movementSpeed = 10;
@@ -12,7 +13,6 @@ namespace MatrixJam.Team2
         [SerializeField] private int maxJumps = 1;
 
         private Rigidbody2D rb;
-
         private bool isGrounded = false;
         private int currentJumpsCount = 0;
 
@@ -29,12 +29,18 @@ namespace MatrixJam.Team2
             Jump(jumpInput);
         }
 
-        void OnCollisionEnter2D(Collision2D other)
+        void OnTriggerEnter2D(Collider2D other)
         {
+            GoThroughController goThroughController;
+            if (other.TryGetComponent<GoThroughController>(out goThroughController))
+            {
+                if (goThroughController) return;
+            }
+
             isGrounded = true;
             currentJumpsCount = 0;
         }
-        void OnCollisionExit2D(Collision2D other)
+        void OnTriggerExit2D(Collider2D other)
         {
             isGrounded = false;
         }

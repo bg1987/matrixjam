@@ -11,6 +11,7 @@ namespace MatrixJam.Team2
         [SerializeField] private Transform firePoint;
         [SerializeField] private int floopableLayer;
 
+        private FloopableMaterialTypes currentMaterial = FloopableMaterialTypes.Reflective;
         private LineRenderer fireTrail;
         private float rayCastLength = 100;
 
@@ -21,6 +22,18 @@ namespace MatrixJam.Team2
 
         void Update()
         {
+            if (Input.GetButtonDown("Material1"))
+            {
+                currentMaterial = FloopableMaterialTypes.Reflective;
+            }
+            if (Input.GetButtonDown("Material2"))
+            {
+                currentMaterial = FloopableMaterialTypes.Opaque;
+            }
+            if (Input.GetButtonDown("Material3"))
+            {
+                currentMaterial = FloopableMaterialTypes.GoThrough;
+            }
             if (Input.GetButtonDown("Fire1"))
             {
                 Shoot();
@@ -37,6 +50,8 @@ namespace MatrixJam.Team2
             if (hitInfo)
             {
                 StartCoroutine(DrawRay(hitInfo.point));
+                var floopable = hitInfo.transform.GetComponent<Floopable>();
+                floopable.ChangeMaterial(currentMaterial);
             }
         }
 

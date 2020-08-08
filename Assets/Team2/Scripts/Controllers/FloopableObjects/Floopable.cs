@@ -4,17 +4,20 @@ using UnityEngine;
 
 namespace MatrixJam.Team2
 {
+    [RequireComponent(typeof(BoxCollider2D))]
     [RequireComponent(typeof(ReflectiveController))]
     [RequireComponent(typeof(GoThroughController))]
     public class Floopable : MonoBehaviour
     {
         [SerializeField] FloopableMaterialTypes currentMaterial;
 
+        private BoxCollider2D boxCollider;
         private ReflectiveController reflectiveController;
         private GoThroughController goThroughController;
 
         void Start()
         {
+            boxCollider = GetComponent<BoxCollider2D>();
             reflectiveController = GetComponent<ReflectiveController>();
             goThroughController = GetComponent<GoThroughController>();
             UpdateMaterial();
@@ -30,25 +33,26 @@ namespace MatrixJam.Team2
         {
             switch (currentMaterial)
             {
+                // Using boxCollider.isTrigger so we can still detect it via raycast
                 case FloopableMaterialTypes.Reflective:
-                    goThroughController.enabled = false;
+                    boxCollider.isTrigger = false;
                     reflectiveController.enabled = true;
+                    goThroughController.enabled = false;
                     // TODO: Update sprite to reflective
                     break;
+                case FloopableMaterialTypes.Opaque:
+                    boxCollider.isTrigger = false;
+                    reflectiveController.enabled = false;
+                    goThroughController.enabled = false;
+                    // TODO: Update sprite to opaque
+                    break;
                 case FloopableMaterialTypes.GoThrough:
+                    boxCollider.isTrigger = true;
                     reflectiveController.enabled = false;
                     goThroughController.enabled = true;
                     // TODO: Update sprite to goThrough
                     break;
-                case FloopableMaterialTypes.Refractive:
-                    reflectiveController.enabled = true;
-                    goThroughController.enabled = true;
-                    // TODO: Update sprite to refractive
-                    break;
             }
-
-            Debug.Log($"Reflective enabled = {reflectiveController.enabled}");
-            Debug.Log($"GoThrough enabled = {goThroughController.enabled}");
         }
     }
 }
