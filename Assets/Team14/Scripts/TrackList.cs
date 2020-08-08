@@ -69,9 +69,17 @@ namespace MatrixJam.Team14
             }
         }
 
-        public IEnumerable<Vector3> GetTrackEndPositions(Transform startAndDirection) 
-            => tracks.Select(track => track.GetLastPosition(startAndDirection));
-
+        public IEnumerable<Vector3> GetTrackEndPositions(Transform startAndDirection)
+        {
+            var offset = Vector3.zero;
+            foreach (var track in tracks)
+            {
+                var lastPos = track.GetLastPosition(startAndDirection);
+                yield return offset + lastPos;
+                offset += lastPos;
+            }
+        }
+    
         public IEnumerable<Vector3> GetTrackStarts(Transform startAndDirection)
         {
             var offset = Vector3.zero;
