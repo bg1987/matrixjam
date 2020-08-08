@@ -25,6 +25,12 @@ namespace MatrixJam.Team17
 				float horizontalMove = Input.move.x * PlayerConfig.moveSpeed.x * Time.fixedDeltaTime;
 				float verticalMove = Input.move.y * PlayerConfig.moveSpeed.y * Time.fixedDeltaTime;
 
+				if(!player.IsGrounded) // The player is in the air and airControl is enabled
+				{
+					horizontalMove *= PlayerConfig.airSpeed.x;
+					verticalMove *= PlayerConfig.airSpeed.y;
+				}
+
 				/*if (player.IsCrouching)
 				{
 					horizontalMove *= PlayerConfig.crouchSpeed.x;

@@ -19,7 +19,8 @@ MonoBehaviour:
   moveEnabled: 1
   moveSpeed: {x: 1111, y: 1111}
   movementSmoothing: 0.05
-  airControl: 0
+  airControl: 1
+  airSpeed: {x: 0.01, y: 0.01}
   crouchEnabled: 1
   crouchSpeed: {x: 0.36, y: 0}
   jumpEnabled: 1
