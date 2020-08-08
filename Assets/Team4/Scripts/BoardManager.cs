@@ -192,10 +192,15 @@ namespace MatrixJam.Team4
 
         private Boolean PlaceUnit(Unit unit, Position position)
         {
-            Debug.Log("BoardManager:PlaceUnit");
-            var unitIndex = unit.Value - 1;
             var x = position.GetX();
             var y = position.GetY();
+            return PlaceUnit(unit, x, y);
+        }
+
+        private Boolean PlaceUnit(Unit unit, int x, int y)
+        {
+            Debug.Log("BoardManager:PlaceUnit");
+            var unitIndex = unit.Value - 1;
             Debug.Log("Attempting PlaceUnit position, value:" + x.ToString() + " / " + y.ToString() + ", " + unit.Value.ToString());
             if (!_possibleUnitsPerCoordinate[x, y, unitIndex])
             {
@@ -213,7 +218,6 @@ namespace MatrixJam.Team4
 
             return false;
         }
-
 
         private void SetUnitIllegal(int x, int y, int unitIndex)
         {
@@ -252,20 +256,13 @@ namespace MatrixJam.Team4
 
         public Square(int x, int y)
         {
-            startX = x;
-            startY = y;
-        }
-
-        public static Square GetSquare(int x, int y)
-        {
             int _startX = x / 3;
             _startX *= 3;
 
             int _startY = y / 3;
             _startY *= 3;
-
-            return new Square(_startX, _startY);
         }
+
     }
 
 }
