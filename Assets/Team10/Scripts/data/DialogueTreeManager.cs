@@ -14,6 +14,10 @@ namespace MatrixJam.Team10
         private DialogueTree FriendCall;
 
         public RandomDialogueTree(string playerName){
+            n1 = new Character("Mika");
+            n2 = new Character("Maya");
+            n3 = new Character("Raul");
+
             randomDialogues = new Dictionary<string, List<DialogueTree>>();
             randomDialogues.Add("Kitchen", getKitchenDialogues(playerName));
             randomDialogues.Add("Bath", getBathDialogues(playerName));
@@ -21,9 +25,6 @@ namespace MatrixJam.Team10
 
             dialogues = contDialogues(playerName);
 
-            n1 = new Character("Mika");
-            n2 = new Character("Maya");
-            n3 = new Character("Raul");
             switch(playerName){
                 case "Batman":
                     FriendCall = getCallAlfredDialogue();
@@ -144,7 +145,7 @@ namespace MatrixJam.Team10
             hd.Add(t1);
             // dialog 2
             DialogueTree t2 = new DialogueTree(n2);
-            t2.addDialogue(new Dialogue(n2.name, "i'm singing in the rain~ /n   just singing in the rain~~ /n*shower sfx*"));
+            t2.addDialogue(new Dialogue(n2.name, "i'm singing in the rain~ \n   just singing in the rain~~"));
             //1, "when will you finish" - kill + cont7
             //2, "stop singing, you are out of tune" - kill + cont7
             //3, "leave"
@@ -213,7 +214,7 @@ namespace MatrixJam.Team10
         }
         public DialogueTree getCallAlfredDialogue(){
             Character n4 = new Character("alfred");
-            string[] sentences = new string[] {"Batman, i have the keys to you bat cave \ni know where you are",
+            string[] sentences = new string[] {"Batman, i have the keys to you bat cave \nyou can't hide from me",
             "the world is in danger - it's the corona virus \nget off the couch and come save the world"};
             DialogueTree f = multipleSentences(n4.name, sentences);
             // - save the world - death, 

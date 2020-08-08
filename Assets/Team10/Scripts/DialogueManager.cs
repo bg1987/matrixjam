@@ -45,7 +45,6 @@ namespace MatrixJam.Team10
         }
 
         IEnumerator Type(string sentence){
-            textDisplay.text = "";
             foreach (char letter in sentence.ToCharArray())
             {
                 textDisplay.text += letter;
@@ -55,16 +54,24 @@ namespace MatrixJam.Team10
 
         public void DisplayNextDialogue(){
             continueButton.SetActive(false);
+            cancelButton.SetActive(false);
+            OptionsPanel.SetActive(false);
+            TextPanel.SetActive(false);
+            textDisplay.text = "";
+
             if(dialogues.Count == 0){
                 EndDialogue();
                 return;
             }
             Dialogue curr = dialogues.Dequeue();
             nameDisplay.text = curr.name;
-            if(curr.choices.Length > 0){
+            if(curr.choices != null){
+                OptionsPanel.SetActive(true);
+                cancelButton.SetActive(true);
                 Debug.Log("implement buttons");
             }
             else{
+                TextPanel.SetActive(true);
                 currSentence = curr.sentences;
                 StartCoroutine(Type(curr.sentences));
             }
