@@ -42,9 +42,7 @@ namespace MatrixJam.Team2
 
         void Shoot()
         {
-            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, mousePosition - firePoint.position, rayCastLength, 1 << floopableLayer);
+            RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right, rayCastLength, 1 << floopableLayer);
 
             // What? Why is RaycastHit2D acting as a bool ???
             if (hitInfo)
