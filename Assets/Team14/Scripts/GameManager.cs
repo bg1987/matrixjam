@@ -25,8 +25,8 @@ namespace MatrixJam.Team14
 #endif
     public class GameManager : MonoBehaviour
     {
-        public static GameManager Instance { get; private set; }
-        
+        public static event Action ResetEvent;
+
         // If the audio is a loop - How many times do we expect it to repeat? (For spline pos)
         [SerializeField] private int startLives;
         [SerializeField] private float bpm;
@@ -49,8 +49,9 @@ namespace MatrixJam.Team14
         private float _prevAudioProgress;
         private float _prevY;
 
+        public static GameManager Instance { get; private set; }
         public float BeatPerSec => bpm / 60;
-        public float XPerSec => zPerBeat * BeatPerSec;
+        public float ZPerSec => zPerBeat * BeatPerSec;
 
         public Vector3[] BeatPositions { get; private set; }
 
@@ -141,12 +142,22 @@ namespace MatrixJam.Team14
         {
             var livesRemaining = --TrainController.Instance.Lives;
             if (livesRemaining == 0) OnGameOver();
+            else Restart();
 
         }
 
         private void OnGameOver()
         {
             Debug.Log("GAME OVERRR");
+        }
+
+        private void Restart()
+        {
+            Debug.Log("RESTART!");
+            mainAudio.Stop();
+            mainAudio.Play();
+
+            ResetEvent?.Invoke();
         }
     }
 }
