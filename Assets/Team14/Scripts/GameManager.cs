@@ -5,6 +5,25 @@ using UnityEngine;
 
 namespace MatrixJam.Team14
 {
+#if UNITY_EDITOR
+    using UnityEditor;
+
+    [CustomEditor(typeof(GameManager))]
+    public class GameManagerEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+            var script = target as GameManager;
+            
+            GUILayout.Space(20);
+            if (GUILayout.Button("Update"))
+            {
+                script.OnValidate();
+            }
+        }
+    }
+#endif
     public class GameManager : MonoBehaviour
     {
         // If the audio is a loop - How many times do we expect it to repeat? (For spline pos)
@@ -17,6 +36,7 @@ namespace MatrixJam.Team14
         // [SerializeField] private BezierSpline mainSpline;
         [SerializeField] private Transform character;
         [SerializeField] private AudioSource mainAudio;
+        [SerializeField] private ThomasMoon thomasMoon;
 
         [Header("Infra")]
         [SerializeField] private Exit winExit;
@@ -38,7 +58,7 @@ namespace MatrixJam.Team14
             UpdateBeatPositions();    
         }
 
-        private void OnValidate()
+        public void OnValidate()
         {
             UpdateBeatPositions();
         }
