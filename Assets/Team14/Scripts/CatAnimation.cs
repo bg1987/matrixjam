@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace MatrixJam.Team
 {
-    public class catAnimation : MonoBehaviour
+    public class CatAnimation : MonoBehaviour
     {
         // Start is called before the first frame update
         GameObject cat;
