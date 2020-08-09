@@ -15,6 +15,8 @@ namespace MatrixJam.Team4
 
         public GameObject AttackButtons;
         public NumberButtonScript NumberPrefab;
+        public MessageScript LoseMessage;
+        public MessageScript WinMessage;
         
         public static IChoiceManager ChoiceManager { get; set; }
 

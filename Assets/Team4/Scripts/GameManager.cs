@@ -1,6 +1,5 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using MatrixJam.Team;
 using UnityEngine;
 
@@ -17,10 +16,13 @@ namespace MatrixJam.Team4
 
         public List<Player> Players;
         public List<MessageScript> IntroMessages;
+        public MessageScript LoseMessage;
+        public MessageScript WinMessage;
 
         public int InitialUnitsCount = 35;
         public bool ShowTutorial;
         private static bool _alreadyPlayedTheTutorial;//in case they end up in our game twice
+        private ExitReason _exitReason;
 
         void Awake()
         {
@@ -69,6 +71,7 @@ namespace MatrixJam.Team4
             
             EventManager.Singleton.TurnOver += OnTurnOver;
             EventManager.Singleton.GameOver += OnGameOver;
+            _exitReason = ExitReason.GaveUp;
             OnTurnOver();
         }
         
@@ -97,10 +100,29 @@ namespace MatrixJam.Team4
             if (winner.playerSide == PlayerSide.Human)
             {
                 SoundManager.Instance.PlayVictory();
+                _exitReason = ExitReason.Won;
+                WinMessage.gameObject.SetActive(true);
             }
             else
             {
                 SoundManager.Instance.PlayDefeat();
+                _exitReason = ExitReason.Lost;
+                LoseMessage.gameObject.SetActive(true);
+            }
+        }
+
+        public void QuitThisGame()
+        {
+            //TODO
+            switch (_exitReason)
+            {
+                case ExitReason.Won:
+                    break;
+                case ExitReason.Lost:
+                    break;
+                default:
+                case ExitReason.GaveUp:
+                    break;
             }
         }
 
@@ -156,5 +178,12 @@ namespace MatrixJam.Team4
         intro,
         mainPlay,
         gameover
+    }
+    
+    public enum ExitReason
+    {
+        Won,
+        Lost,
+        GaveUp
     }
 }
