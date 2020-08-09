@@ -35,6 +35,7 @@ namespace MatrixJam.Team14
             if (!Input.GetKeyDown(keyCode)) return false;
             
             TrainController.Instance.HonkAnim();
+            TrainController.Instance.PlaySFX(TrainMove.Honk);
             var obstacle = Obstacle.HandleMovePressed(TrainMove.Honk);
             return obstacle != null;
         }
@@ -67,7 +68,11 @@ namespace MatrixJam.Team14
             base.OnUpdate();
             
             HandleHonk();
-            if (HandleDuck()) return;
+            if (HandleDuck())
+            {
+                TrainController.Instance.PlaySFX(TrainMove.Duck);
+                return;
+            }
             if (HandleJump()) return;
         }
     }

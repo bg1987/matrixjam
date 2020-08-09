@@ -10,12 +10,21 @@ namespace MatrixJam.Team
     {
         [Header("Sound Effects")]
         [SerializeField] private GenericRandomSFX Jump;
-        [SerializeField] private GenericRandomSFX Railways;
-        [SerializeField] private GenericRandomSFX Honk;
-        [SerializeField] private GenericRandomSFX AwakeBells;
         [SerializeField] private GenericRandomSFX Duck;
+        [SerializeField] private GenericRandomSFX Honk;
+
         [SerializeField] private GenericRandomSFX CatSqueals;
-        
+
+        [SerializeField] private GenericRandomSFX Railways;
+        [SerializeField] private GenericRandomSFX AwakeBells;
+        [SerializeField] private GenericRandomSFX TunnelBump;
+
+        private void Update()
+        {
+
+        }
+
+
         public void PlaySFX(TrainMove move)
         {
             switch (move)
@@ -32,4 +41,6 @@ namespace MatrixJam.Team
             }
         }
     }
+
+    //Reference to game BPM --> Activating Railway clips according to BPM/BPM change //// Trigger points on map to change railway clip
 }
