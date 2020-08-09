@@ -1630,26 +1630,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7329114962124384628, guid: b546f99b6d96d1f4196a2f0bc3248f6f,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 7329114962124384635, guid: b546f99b6d96d1f4196a2f0bc3248f6f,
-        type: 3}
-      propertyPath: movementSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7329114962124384635, guid: b546f99b6d96d1f4196a2f0bc3248f6f,
-        type: 3}
-      propertyPath: jumpForce
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7329114962124384635, guid: b546f99b6d96d1f4196a2f0bc3248f6f,
-        type: 3}
-      propertyPath: walkAnimSpeedThresh
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 7329114962124384636, guid: b546f99b6d96d1f4196a2f0bc3248f6f,
         type: 3}
       propertyPath: m_Name

@@ -75,7 +75,7 @@ namespace MatrixJam.Team2
 
         private void Move(float horizontalDir)
         {
-            rb.velocity = new Vector2(horizontalDir * movementSpeed, rb.velocity.y);
+            rb.AddForce(Vector2.right * horizontalDir * movementSpeed, ForceMode2D.Force);
         }
 
         private void Jump(bool jumpInput)
