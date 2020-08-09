@@ -124,7 +124,7 @@ namespace MatrixJam
         {
             //enter the game from the defult entry.
             //if the defult is not vaild, choose a random entry.
-            if (def_ent <= 0 || def_ent > entries.Length - 1)
+            if (def_ent < 0 || def_ent > entries.Length - 1)
             {
                 EnterRandom(lvl);
             }
