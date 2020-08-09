@@ -21,6 +21,8 @@ namespace MatrixJam.Team3
         [SerializeField] private Dictionary<string, string> Descriptions;
         [SerializeField] private Dictionary<string, bool> forceTexts;
 
+        [SerializeField] private Sprite loginScreenImage;
+        
         [SerializeField] private InputField _inputField; 
         
         [SerializeField] private UnityEvent [] exitEvent;
@@ -141,6 +143,7 @@ namespace MatrixJam.Team3
 
         public void OpenWebsite(string URL)
         {
+            currentlEnabled.GetComponent<Image>().sprite = loginScreenImage;
             Application.OpenURL(URL);
         }
         // Update is called once per frame
