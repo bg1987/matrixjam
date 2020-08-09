@@ -49,8 +49,7 @@ MonoBehaviour:
   trigger: {fileID: 461315107231522436}
   obstacleHolder: {fileID: 140150154071098894}
   triggerWidthInBeats: {x: 0, y: 0}
-  zPerBeat: 7.5
-  obstacleBeatOffset: 0.8
+  obstacleSecsOffset: 0.4821605
 --- !u!1 &461315106599286770
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,7 +63,10 @@ namespace MatrixJam.Team14
                 go.transform.position = pos;
 
                 var obstacleGen = go.GetComponent<SetObstacleParams>();
-                obstacleGen.SetParams();
+
+                var trackIdx = trackList.GetTrackIdxByGlobalBeat(obstacleData.Beat);
+                var track = trackList[trackIdx];
+                obstacleGen.SetParams(track);
             }
         }
         
