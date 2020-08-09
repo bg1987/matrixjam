@@ -19,6 +19,7 @@ namespace MatrixJam.Team3
         [SerializeField] private string currentlEnabledString;
         [SerializeField] private Dictionary<string, GameObject> Stages;
         [SerializeField] private Dictionary<string, string> Descriptions;
+        [SerializeField] private Dictionary<string, bool> forceTexts;
 
         [SerializeField] private InputField _inputField; 
         
@@ -30,6 +31,7 @@ namespace MatrixJam.Team3
             public string name;
             public GameObject theObject;
             public string description;
+            public bool forceText;
         }
         
         [SerializeField] private List<StageItem> StagesList;
@@ -70,11 +72,13 @@ namespace MatrixJam.Team3
         {
             Stages = new Dictionary<string, GameObject>();
             Descriptions = new Dictionary<string, string>();
+            forceTexts = new Dictionary<string, bool>();
             foreach ( StageItem item in StagesList)
             {
                 
                 Stages[item.name.ToLower()] = item.theObject;
                 Descriptions[item.name.ToLower()] = item.description;
+                forceTexts[item.name.ToLower()] = item.forceText;
             }
             
             
@@ -98,11 +102,11 @@ namespace MatrixJam.Team3
                 currentlEnabledString = item.ToLower();
                 _inputField.text = "";
 
-                if (TextEnabled)
+                if (TextEnabled || forceTexts[item.ToLower()])
                 {
                     textToDisplay.text = Descriptions[item.ToLower()];
                 }
-                else
+                if (!TextEnabled)
                 {
                     currentlEnabled.SetActive(true);
                 }
