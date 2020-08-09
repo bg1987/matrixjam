@@ -6,6 +6,7 @@ namespace MatrixJam.Team10
 {
     public class RandomDialogueTree
     {
+        private int NUM_OF_ACTIONS = 14;
         private Dictionary<string, List<DialogueTree>> randomDialogues;
         private List<DialogueTree> dialogues;
         private Character n1; // Mika
@@ -61,23 +62,19 @@ namespace MatrixJam.Team10
         }
 
         public DialogueTree getDialogueById(int dialogueId){
-            return dialogues[dialogueId];
+            return dialogues[dialogueId - 1];
         }
 
         public List<DialogueTree> contDialogues(string playerName){
             List<DialogueTree> cd = new List<DialogueTree>();
             DialogueTree t1 = new DialogueTree(n1);
             t1.addDialogue(new Dialogue(n1.name, "i don't! anyways, i was here first, so leave or wait outside!"));
-            //1, "go away!", kill
-            //2, "give up", time-15
-            t1.addDialogue(new Dialogue(playerName, new int[] {}));
+            t1.addDialogue(new Dialogue(playerName, new int[] {14+NUM_OF_ACTIONS, 15+NUM_OF_ACTIONS}));
             cd.Add(t1);
             
             DialogueTree t2 = new DialogueTree(n1);
             t2.addDialogue(new Dialogue(n1.name, "good, since you ate then you do the dishes \nAdios"));
-            //1, "ok"
-            //2, "no way", kill + clean
-            t2.addDialogue(new Dialogue(playerName, new int[] {}));
+            t2.addDialogue(new Dialogue(playerName, new int[] {16+NUM_OF_ACTIONS, 17+NUM_OF_ACTIONS}));
             cd.Add(t2);
 
             DialogueTree t3 = new DialogueTree(n2);
@@ -86,9 +83,7 @@ namespace MatrixJam.Team10
 
             DialogueTree t4 = new DialogueTree(n2);
             t4.addDialogue(new Dialogue(n2.name, "shh... i'm thinking about life..."));
-            //1, "leave"
-            //2, "wait" - time-60, cont5
-            t4.addDialogue(new Dialogue(playerName, new int[] {}));
+            t4.addDialogue(new Dialogue(playerName, new int[] {18+NUM_OF_ACTIONS, 19+NUM_OF_ACTIONS}));
             cd.Add(t4);
 
             DialogueTree t5 = new DialogueTree(n2);
@@ -98,17 +93,12 @@ namespace MatrixJam.Team10
 
             DialogueTree t6 = new DialogueTree(n1);
             t6.addDialogue(new Dialogue(n1.name, "so go and buy"));
-            //1, "go to the supermarket" - death
-            //2, "buy online" - time-30
-            //3, no - kill
-            t6.addDialogue(new Dialogue(playerName, new int[] {}));
+            t6.addDialogue(new Dialogue(playerName, new int[] {20+NUM_OF_ACTIONS, 21+NUM_OF_ACTIONS, 22+NUM_OF_ACTIONS}));
             cd.Add(t6);
 
             DialogueTree t7 = new DialogueTree(n1);
             t7.addDialogue(new Dialogue(n1.name, "lalala, can't hear you"));
-            //1, "wait" - time-30
-            //2, "leave"
-            t7.addDialogue(new Dialogue(playerName, new int[] {}));
+            t7.addDialogue(new Dialogue(playerName, new int[] {23+NUM_OF_ACTIONS, 24+NUM_OF_ACTIONS}));
             cd.Add(t7);
             return cd;
         }
@@ -119,17 +109,13 @@ namespace MatrixJam.Team10
             /// dialog 1
             DialogueTree t1 = new DialogueTree(n1);
             t1.addDialogue(new Dialogue(n1.name, "i'm making some pasta. \ndo you want some?"));
-            //1, "yes" - cont2
-            //2, "no" - nothing
-            t1.addDialogue(new Dialogue(playerName, new int[] {}));
+            t1.addDialogue(new Dialogue(playerName, new int[] {0, 1}));
             hd.Add(t1);
             // end dialog 1
             /// dialog 2
             DialogueTree t2 = new DialogueTree(n1);
             t2.addDialogue(new Dialogue(n1.name, "we have no food.... \nwe need to buy groceries"));
-            //1, "then you should go" - kill
-            //2, "and?" - cont5
-            t2.addDialogue(new Dialogue(playerName, new int[] {}));
+            t2.addDialogue(new Dialogue(playerName, new int[] {2, 3}));
             hd.Add(t2);
             // end dialog 2
             return hd;
@@ -139,17 +125,12 @@ namespace MatrixJam.Team10
             /// dialog 1
             DialogueTree t1 = new DialogueTree(n1);
             t1.addDialogue(new Dialogue(n1.name, "i was here first!"));
-            //1, "you do this every morning" - kill + cont1
-            //2, "fine" - time-30
-            t1.addDialogue(new Dialogue(playerName, new int[] {}));
+            t1.addDialogue(new Dialogue(playerName, new int[] {4+NUM_OF_ACTIONS, 5+NUM_OF_ACTIONS}));
             hd.Add(t1);
             // dialog 2
             DialogueTree t2 = new DialogueTree(n2);
             t2.addDialogue(new Dialogue(n2.name, "i'm singing in the rain~ \n   just singing in the rain~~"));
-            //1, "when will you finish" - kill + cont7
-            //2, "stop singing, you are out of tune" - kill + cont7
-            //3, "leave"
-            t2.addDialogue(new Dialogue(playerName, new int[] {}));
+            t2.addDialogue(new Dialogue(playerName, new int[] {6+NUM_OF_ACTIONS, 7+NUM_OF_ACTIONS, 8+NUM_OF_ACTIONS}));
             hd.Add(t2);
             return hd;
         }
@@ -158,18 +139,13 @@ namespace MatrixJam.Team10
             /// dialog 1
             DialogueTree t1 = new DialogueTree(n1);
             t1.addDialogue(new Dialogue(n1.name, "hey, did you clean the house? \nit's your turn"));
-            //1, "clean the house" - time-30
-            //2, "it's Maya's turn, not mine" - cont3
-            //3, "clean? i don't clean" - kill
-            t1.addDialogue(new Dialogue(playerName, new int[] {}));
+            t1.addDialogue(new Dialogue(playerName, new int[] {9, 10, 11}));
             hd.Add(t1);
             // end dialog 1
             /// dialog 2
             DialogueTree t2 = new DialogueTree(n1);
             t2.addDialogue(new Dialogue(n2.name, "..."));
-            //1, "ignore, watch tv" - cont4
-            //2, "whatcha doin?" - cont4
-            t2.addDialogue(new Dialogue(playerName, new int[] {}));
+            t2.addDialogue(new Dialogue(playerName, new int[] {12, 13}));
             hd.Add(t2);
             // end dialog 2
             return hd;
@@ -217,9 +193,7 @@ namespace MatrixJam.Team10
             string[] sentences = new string[] {"Batman, i have the keys to you bat cave \nyou can't hide from me",
             "the world is in danger - it's the corona virus \nget off the couch and come save the world"};
             DialogueTree f = multipleSentences(n4.name, sentences);
-            // - save the world - death, 
-            // sing - im not batman im spider pig spider pig~ call ended
-            f.addDialogue(new Dialogue("Batman", new int[] {1,2,3}));
+            f.addDialogue(new Dialogue("Batman", new int[] {25, 26}));
             return f;
         }
 
@@ -228,8 +202,7 @@ namespace MatrixJam.Team10
             string[] sentences = new string[] {"Superman, i thought batman killed you",
             "t why are you hiding in a shared appartment \ncome back home!!"};
             DialogueTree f = multipleSentences(n4.name, sentences);
-            // player options - go back - death
-            f.addDialogue(new Dialogue("Superman", new int[] {}));
+            f.addDialogue(new Dialogue("Superman", new int[] {27}));
             return f;
         }
 

@@ -19,6 +19,7 @@ namespace MatrixJam.Team10
 
         void OnTriggerEnter2D(Collider2D c){
             isInRoom = !isInRoom;
+            TriggerRandomDialogue();
             if(isInRoom){
                 bgSound.UnPause();
                 TriggerRandomDialogue();

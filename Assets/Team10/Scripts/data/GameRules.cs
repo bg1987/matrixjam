@@ -46,9 +46,10 @@ namespace MatrixJam.Team10
         }
 
         public void declareChoices(){
-            choices = generalActions();
-            choices.AddRange(RoomActions());
-            choices.AddRange(BathRoomActions());
+            choices = generalActions(); //6
+            choices.AddRange(RoomActions()); //7
+            choices.AddRange(BathRoomActions()); //1
+            choices.AddRange(DialogueChoiceActions());//28
         }
 
         //called by all actions with action id - check if action repeated
@@ -188,16 +189,145 @@ namespace MatrixJam.Team10
             }));
             return actions;
         }
+        private void DialogueMenu(Dialogue dialogue){
+            FindObjectOfType<DialogueManager>().StartActionChoice(dialogue);
+        }
+        private void DialogueMenu(DialogueTree dialogue){
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        }
 
-        private List<Choice> DialogChoiceActions(){
+        private List<Choice> DialogueChoiceActions(){
             List<Choice> actions = new List<Choice>();
             //kitchen
-            actions.Add(new Choice("number 2", () => {
+            //t1
+            actions.Add(new Choice("yes", () => {
+                DialogueMenu(t.getDialogueById(2));
                 lastActionID = "Talk";
             }));
+            actions.Add(new Choice("no", () => {
+                lastActionID = "Talk";
+            }));
+            //t2
+            actions.Add(new Choice("then you should go", () => {
+                killFactor += 1;
+                lastActionID = "Talk";
+            }));
+            actions.Add(new Choice("and?", () => {
+                DialogueMenu(t.getDialogueById(5));
+                lastActionID = "Talk";
+            }));
+            //bath - 4+
+            //t1
+            actions.Add(new Choice("you do this every morning", () => {
+                killFactor += 1;
+                DialogueMenu(t.getDialogueById(1));
+                lastActionID = "Talk";
+            }));
+            actions.Add(new Choice("fine", () => {
+                time = time.AddMinutes(30);
+                lastActionID = "Talk";
+            }));
+            //t2 
+            actions.Add(new Choice("when will you finish?", () => {
+                killFactor += 1;
+                DialogueMenu(t.getDialogueById(7));
+                lastActionID = "Talk";
+            }));
+            actions.Add(new Choice("stop! you're out of tune", () => {
+                killFactor += 1;
+                DialogueMenu(t.getDialogueById(7));
+                lastActionID = "Talk";
+            }));
+            actions.Add(new Choice("leave", () => {
+                lastActionID = "Talk";
+            }));
+            //living 9+
+            //t1
+            actions.Add(new Choice("clean the house", () => {
+                time = time.AddMinutes(30);
+                lastActionID = "Talk";
+            }));
+            actions.Add(new Choice("it's Maya's turn, not mine", () => {
+                DialogueMenu(t.getDialogueById(3));
+                lastActionID = "Talk";
+            }));
+            actions.Add(new Choice("clean? i don't clean", () => {
+                killFactor += 1;
+                lastActionID = "Talk";
+            }));
+            //t2
+            actions.Add(new Choice("ignore, watch tv", () => {
+                DialogueMenu(t.getDialogueById(4));
+                lastActionID = "Talk";
+            }));
+            actions.Add(new Choice("whatcha doin?", () => {
+                DialogueMenu(t.getDialogueById(4));
+                lastActionID = "Talk";
+            }));
+            //contDialogs 14+
+            //t1
+            actions.Add(new Choice("go away!", () => {
+                killFactor += 1;
+                lastActionID = "Talk";
+            }));
+            actions.Add(new Choice("give up", () => {
+                time = time.AddMinutes(15);
+                lastActionID = "Talk";
+            }));
+            //t2
+            actions.Add(new Choice("ok", () => {
+                cleanFactor += 1;
+                lastActionID = "Talk";
+            }));
+            actions.Add(new Choice("no way", () => {
+                killFactor += 1;
+                lastActionID = "Talk";
+            }));
+            //t3 -18+
+            actions.Add(new Choice("leave", () => {
+                lastActionID = "Talk";
+            }));
+            actions.Add(new Choice("wait", () => {
+                time = time.AddMinutes(60);
+                DialogueMenu(t.getDialogueById(5));
+                lastActionID = "Talk";
+            }));
+            //t4
+            actions.Add(new Choice("goto supermarket", () => {
+                Debug.Log("Death - death");
+            }));
+            actions.Add(new Choice("buy online", () => {
+                time = time.AddMinutes(30);
+                lastActionID = "Talk";
+            }));
+            actions.Add(new Choice("no", () => {
+                killFactor += 1;
+                lastActionID = "Talk";
+            }));
+            //t5
+            actions.Add(new Choice("wait", () => {
+                time = time.AddMinutes(30);
+                lastActionID = "Talk";
+            }));
+            actions.Add(new Choice("leave", () => {
+                lastActionID = "Talk";
+            }));
+            //calling friend choices - 25+
+            //batman
+            actions.Add(new Choice("save the world", () => {
+                Debug.Log("Death - death");
+            }));
+            actions.Add(new Choice("sing i'm not batman im spider-pigX3", () => {
+                lastActionID = "Talk";
+            }));
+            //superman
+            actions.Add(new Choice("go back", () => {
+                Debug.Log("Death - death");
+            }));
+            // more - 28+
             return actions;
         }
-        
+
         //can be acsessed from computer -> 2nd menu for work
         //modifies last action and time and points
         public void Work(int points){
