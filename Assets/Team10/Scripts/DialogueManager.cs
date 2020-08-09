@@ -107,6 +107,9 @@ namespace MatrixJam.Team10
             if(textDisplay.text == currSentence){
                 continueButton.SetActive(true);
             }
+            if(FindObjectOfType<GameRules>().isDead){
+                dialoguePanel.SetActive(false);
+            }
         }
 
 

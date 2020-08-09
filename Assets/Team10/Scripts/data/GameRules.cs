@@ -23,12 +23,12 @@ namespace MatrixJam.Team10
         public Text Timer;
 
         public GameObject Panel;
-        public Text PanelTitle;
         public Text PanelMessage;
         public Button PanelButton;
-
+        
         public RandomDialogueTree t;
         public string playerName;
+        public bool isDead;
         public float typingSpeed;
         #endregion
         
@@ -37,7 +37,6 @@ namespace MatrixJam.Team10
             declareChoices();
             deathList = DeathListGen();
             Panel.SetActive(false);
-            PanelTitle.text = "Closet";
             PanelMessage.gameObject.SetActive(false);
             PanelButton.gameObject.SetActive(false);
         }
@@ -145,10 +144,9 @@ namespace MatrixJam.Team10
         }
 
         public void DeathScreen(int id){
-            FindObjectOfType<DialogueManager>().EndDialogue();
+            isDead = true;
             PanelMessage.gameObject.SetActive(true);
             PanelButton.gameObject.SetActive(true);
-            PanelTitle.text = "A Day In Life - 2020 edition";
             PanelMessage.text = "";
             Panel.SetActive(true);
             StartCoroutine(TypeMessegeAffect(deathList[id]));
@@ -250,12 +248,12 @@ namespace MatrixJam.Team10
             actions.Add(new Choice("hide", () => {
                 time = time.AddMinutes(30);
                 Panel.SetActive(true);
-                Dialogue a = new Dialogue("", new int[] {13, 14});
+                Dialogue a = new Dialogue("<inside the Closet>", new int[] {13, 14});
                 DialogueMenu(a);
                 lastActionID = "hide";
             }));
             //hide-followup
-            actions.Add(new Choice("go out", () => {
+            actions.Add(new Choice("come out of the closet", () => {
                 Panel.SetActive(false);
                 killFactor -= 1;
                 lastActionID = "LGBT";
@@ -263,7 +261,7 @@ namespace MatrixJam.Team10
             actions.Add(new Choice("stay", () => {
                 CheckRepeat("hide");
                 time = time.AddMinutes(30);
-                Dialogue a = new Dialogue("", new int[] {13, 14});
+                Dialogue a = new Dialogue("<inside the Closet>", new int[] {13, 14});
                 DialogueMenu(a);
                 lastActionID = "hide";
             }));
