@@ -31,6 +31,11 @@ namespace MatrixJam
 
         private void Start()
         {
+            StartGame();
+        }
+        void StartGame()
+        {
+            Organize();
             if (SceneManager.SceneMang != null)
             {
                 if (SceneManager.SceneMang.Numentrence >= 0)
@@ -38,7 +43,6 @@ namespace MatrixJam
                     EnterLevel(PlayerData.Data.current_level, SceneManager.SceneMang.Numentrence);
                     return;
                 }
-
             }
 
             if (PlayerData.Data != null)
@@ -47,8 +51,8 @@ namespace MatrixJam
             }
             else
             {
-                EnterDefault(GameJamSetup._teamNumber);
-            } 
+                EnterDefault(GameJamData.TeamNumber);
+            }
         }
 
 
@@ -70,8 +74,14 @@ namespace MatrixJam
         {
             if (SceneManager.SceneMang != null)
             {
-                PlayerData.Data.AddLevel(num_lvel, ent_num, exit_to.Num);
-                SceneManager.SceneMang.LoadSceneFromExit(num_lvel, exit_to.Num);
+                if (PlayerData.Data.AddLevel(num_lvel, ent_num, exit_to.Num))
+                {
+                    SceneManager.SceneMang.MatrixOver();
+                }
+                else
+                {
+                    SceneManager.SceneMang.LoadSceneFromExit(num_lvel, exit_to.Num);
+                }
             }
             else
             {
@@ -79,22 +89,36 @@ namespace MatrixJam
 
             }
         }
+        public void Organize()
+        {
+            OrganizeEnters();
+            OrganizeExits();
+        }
 
         public void EnterLevel(int lvl_num, int num_ent)
         {
-
-            //run this to start the level
             num_lvel = lvl_num;
             ent_num = num_ent;
-            OrganizeEnters();
-            OrganizeExits();
+            Debug.Log(num_ent);
             entries[num_ent].Enter();
-
         }
 
         public void EnterDefault(int lvl)
         {
-            EnterLevel(lvl, def_ent);
+            if (def_ent <= 0 || def_ent > entries.Length - 1)
+            {
+                EnterRandom(lvl);
+            }
+            else
+            {
+                EnterLevel(lvl, def_ent);
+            }
+        }
+        public void EnterRandom(int lvl)
+        {
+            System.Random rand = new System.Random();
+            EnterLevel(lvl, rand.Next(0, entries.Length));
+                
         }
         void OrganizeEnters()
         {
@@ -116,10 +140,17 @@ namespace MatrixJam
         }
         public void Restart()
         {
-            if (SceneManager.SceneMang != null)
+                UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+                entries[ent_num].Enter();
+        }
+
+        public int PastPlayed()
+        {
+            if (PlayerData.Data == null)
             {
-                SceneManager.SceneMang.LoadScene(num_lvel, ent_num);
+                return 0;
             }
+            return PlayerData.Data.PastBeen(num_lvel);
         }
     }
 }
