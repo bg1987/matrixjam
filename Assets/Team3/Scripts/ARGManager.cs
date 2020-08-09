@@ -21,10 +21,13 @@ namespace MatrixJam.Team3
         [SerializeField] private Dictionary<string, string> Descriptions;
         [SerializeField] private Dictionary<string, bool> forceTexts;
         [SerializeField] private Dictionary<string, bool> forceImages;
+        [SerializeField] private Dictionary<string, Sprite> BGImages;
 
         [SerializeField] private Sprite loginScreenImage;
         
         [SerializeField] private InputField _inputField; 
+        [SerializeField] private Image backgroundImage;
+        [SerializeField] private Sprite BlankImage;
         
         [SerializeField] private UnityEvent [] exitEvent;
 
@@ -36,6 +39,7 @@ namespace MatrixJam.Team3
             public string description;
             public bool forceText;
             public bool forceImage;
+            public Sprite BGImage;
         }
         
         [SerializeField] private List<StageItem> StagesList;
@@ -78,6 +82,7 @@ namespace MatrixJam.Team3
             Descriptions = new Dictionary<string, string>();
             forceTexts = new Dictionary<string, bool>();
             forceImages = new Dictionary<string, bool>();
+            BGImages = new Dictionary<string, Sprite>();
             foreach ( StageItem item in StagesList)
             {
                 
@@ -85,6 +90,7 @@ namespace MatrixJam.Team3
                 Descriptions[item.name.ToLower()] = item.description;
                 forceTexts[item.name.ToLower()] = item.forceText;
                 forceImages[item.name.ToLower()] = item.forceImage;
+                BGImages[item.name.ToLower()] = item.BGImage;
             }
             
             
@@ -108,14 +114,23 @@ namespace MatrixJam.Team3
                 currentlEnabledString = item.ToLower();
                 _inputField.text = "";
 
+                backgroundImage.sprite = BlankImage;
+                textToDisplay.text = "";
+                
                 if (TextEnabled || forceTexts[item.ToLower()])
                 {
                     textToDisplay.text = Descriptions[item.ToLower()];
+                    if (BGImages[item.ToLower()] != null)
+                    {
+                        backgroundImage.sprite = BGImages[item.ToLower()];
+                    }
                 }
                 if (!TextEnabled || forceImages[item.ToLower()])
                 {
                     currentlEnabled.SetActive(true);
                 }
+                
+                
                 
             }
         }
