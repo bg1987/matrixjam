@@ -1630,6 +1630,98 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: floopableHit.key0.r
+      value: 0.25943398
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: floopableHit.key0.g
+      value: 0.5553225
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: floopableHit.key1.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: floopableHit.ctime0
+      value: 38743
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: floopableHit.atime0
+      value: 38165
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: nonFloopableHit.key0.r
+      value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: nonFloopableHit.key0.g
+      value: 0.22694907
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: nonFloopableHit.key1.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: nonFloopableHit.ctime0
+      value: 38743
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: nonFloopableHit.atime0
+      value: 38165
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: nonFloopableHit.key0.b
+      value: 0.2469668
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: floopableLaserColor.key0.r
+      value: 0.25943398
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: floopableLaserColor.key0.g
+      value: 0.5553225
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: floopableLaserColor.key1.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: floopableLaserColor.ctime0
+      value: 38743
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: floopableLaserColor.atime0
+      value: 38165
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: nonFloopableLaserColor.key0.r
+      value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: nonFloopableLaserColor.key0.g
+      value: 0.22694907
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: nonFloopableLaserColor.key0.b
+      value: 0.2469668
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: nonFloopableLaserColor.key1.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: nonFloopableLaserColor.ctime0
+      value: 38743
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: nonFloopableLaserColor.atime0
+      value: 38165
+      objectReference: {fileID: 0}
+    - target: {fileID: 718248162, guid: b546f99b6d96d1f4196a2f0bc3248f6f, type: 3}
+      propertyPath: broniLayer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7329114962124384628, guid: b546f99b6d96d1f4196a2f0bc3248f6f,
         type: 3}
       propertyPath: m_Size.x

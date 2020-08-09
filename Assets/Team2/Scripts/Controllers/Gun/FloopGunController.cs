@@ -9,7 +9,9 @@ namespace MatrixJam.Team2
     {
         // Floop / Flooper / Triple floop / FloopGun / FloopTron / FloopMizer
         [SerializeField] private Transform firePoint;
-        [SerializeField] private int floopableLayer;
+        [SerializeField] private Gradient floopableLaserColor;
+        [SerializeField] private Gradient nonFloopableLaserColor;
+        [SerializeField] private int broniLayer;
 
 
         // TODO: Ideally currentMaterial should be private and we should create event when switching material
@@ -45,19 +47,30 @@ namespace MatrixJam.Team2
 
         void Shoot()
         {
-            RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right, rayCastLength, 1 << floopableLayer);
+            // ~(1 << layer) means "All but layer"
+            RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right, rayCastLength, ~(1 << broniLayer));
 
             // What? Why is RaycastHit2D acting as a bool ???
             if (hitInfo)
             {
-                StartCoroutine(DrawRay(hitInfo.point));
                 var floopable = hitInfo.transform.GetComponent<Floopable>();
-                floopable.ChangeMaterial(currentMaterial);
+                Gradient rayColor;
+                if (floopable != null)
+                {
+                    floopable.ChangeMaterial(currentMaterial);
+                    rayColor = floopableLaserColor;
+                }
+                else
+                {
+                    rayColor = nonFloopableLaserColor;
+                }
+                StartCoroutine(DrawRay(hitInfo.point, rayColor));
             }
         }
 
-        IEnumerator DrawRay(Vector2 hitPoint)
+        IEnumerator DrawRay(Vector2 hitPoint, Gradient color)
         {
+            fireTrail.colorGradient = color;
             fireTrail.SetPosition(0, firePoint.position);
             fireTrail.SetPosition(1, hitPoint);
             fireTrail.enabled = true;
