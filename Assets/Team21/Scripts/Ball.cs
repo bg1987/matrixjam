@@ -53,6 +53,12 @@ namespace MatrixJam.Team21 {
 			}
 		}
 
+		void OnCollisionEnter(Collision collision) {
+			if (collision.collider.tag == "Tag3") {
+				inWindZone = false;
+			}
+		}
+
 		IEnumerator DelayStartRoutine() {
 			yield return new WaitForSeconds(delayStart);
 			rb.useGravity = true;

@@ -15,7 +15,8 @@ namespace MatrixJam.Team21 {
         // Update is called once per frame
         void Update() {
 			if (isMove && GameState.state == State.PLAY) {
-				// TODO: sink
+				// float translation = Input.GetAxis("Horizontal") * moveSpeed;
+				// transform.Translate(translation, 0, 0);
 				mousePosition = Input.mousePosition;
 				mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 				transform.position = Vector2.Lerp(transform.position, new Vector3(mousePosition.x, transform.position.y, transform.position.z), moveSpeed);
