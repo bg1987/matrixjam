@@ -157,13 +157,9 @@ namespace MatrixJam.Team14
 
         public override void OnUpdate()
         {
-            Debug.Log("DuckState 1");
             base.OnUpdate();
-            Debug.Log("DuckState 2");
             if (HandleJump()) return;
-            Debug.Log("DuckState 3");
             if (HandleHonk()) return;
-            Debug.Log("DuckState 4");
             HandleDuckHold();
         }
     }

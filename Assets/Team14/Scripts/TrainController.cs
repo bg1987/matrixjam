@@ -140,13 +140,6 @@ namespace MatrixJam.Team14
             }
         }
 
-        public void Honk()
-        {
-            Honking = true;
-            PlaySFX(TrainMove.Honk); // TODO:
-            CueFutureAnimations("Honk", null);
-        }
-
         /// <summary>
         /// Add future animation cues for master + slave chars, using the transform given or master car
         /// </summary>
@@ -157,6 +150,8 @@ namespace MatrixJam.Team14
             var value = moveCue
                 ? moveCue.position.z
                 : masterCarAnim.transform.position.z;
+            
+            Debug.Log($"CueAnim: {trigger} ({moveCue?.position.z:F1})");
             
             // Master car
             var masterFutureAnim = new FutureAnimation(masterCarAnim, value, trigger);
@@ -173,7 +168,7 @@ namespace MatrixJam.Team14
         {
             TransitionState(DriveState, null);
         }
-
+        
         public static void TransitionState(TrainState newState, Transform moveCue) => Instance.TransitionStateInternal(newState, moveCue);
 
         private void TransitionStateInternal(TrainState newState, Transform moveCue)
@@ -269,18 +264,18 @@ namespace MatrixJam.Team14
             {
                 case TrainMove.Jump:
                     return JumpState;
-                    
                 case TrainMove.Duck:
                     return DuckState;
                 case TrainMove.Honk:
-                    return _currstate;
+                    return HonkState;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(move), move, null);
             }
         }
 
-        private void SetOnlyTrigger(Animator anim, string trigger)
+        private static void SetOnlyTrigger(Animator anim, string trigger)
         {
+            Debug.Log($"({anim.name}) Setting Trigger + Resetting rest - {trigger}");
             foreach (var trig in AllTriggers)
             {
                 anim.ResetTrigger(trig);
