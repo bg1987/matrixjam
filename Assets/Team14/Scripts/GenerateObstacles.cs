@@ -27,12 +27,12 @@ namespace MatrixJam.Team14
     public class ObstacleData
     {
         public readonly TrainMove Move;
-        public readonly float Time;
+        public readonly int Beat;
 
-        public ObstacleData(TrainMove move, float time)
+        public ObstacleData(TrainMove move, int beat)
         {
             this.Move = move;
-            this.Time = time;
+            this.Beat = beat;
         }
     }
     
@@ -57,7 +57,7 @@ namespace MatrixJam.Team14
             foreach (var obstacleData in obstacleDatas)
             {
                 var prefab = GetObstaclePrefab(obstacleData.Move);
-                var pos = trackList.GetPositionWithGlobalTime(startAndDirection, obstacleData.Time);
+                var pos = trackList.GetBeatPositionWithGlobalBeat(startAndDirection, obstacleData.Beat);
 
                 var go = (GameObject)PrefabUtility.InstantiatePrefab(prefab, transform);
                 go.transform.position = pos;
@@ -103,14 +103,14 @@ namespace MatrixJam.Team14
             }
 
             var timeStr = parts[1];
-            success = float.TryParse(timeStr, out var time);
+            success = int.TryParse(timeStr, out var beat);
             if (!success)
             {
                 Debug.LogError($"Could not parse time! ({timeStr})");
                 return null;
             }
             
-            return new ObstacleData(move, time);
+            return new ObstacleData(move, beat);
         }
     }
 }
