@@ -27,19 +27,19 @@ namespace MatrixJam.Team2
         void Update()
         {
             // TODO: Ideally should work with dictionary<int,matType> - GetButton(Material{int})->currentMat=dict[int]
-            if (Input.GetButtonDown("Material1"))
+            if (Input.GetKeyDown("1"))
             {
                 currentMaterial = FloopableMaterialTypes.Reflective;
             }
-            if (Input.GetButtonDown("Material2"))
+            if (Input.GetKeyDown("2"))
             {
                 currentMaterial = FloopableMaterialTypes.Opaque;
             }
-            if (Input.GetButtonDown("Material3"))
+            if (Input.GetKeyDown("3"))
             {
                 currentMaterial = FloopableMaterialTypes.GoThrough;
             }
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetMouseButtonDown(0))
             {
                 Shoot();
             }

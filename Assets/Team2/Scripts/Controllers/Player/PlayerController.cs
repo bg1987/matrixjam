@@ -28,7 +28,7 @@ namespace MatrixJam.Team2
         void Update()
         {
             float horizontalInput = Input.GetAxis("Horizontal");
-            bool jumpInput = Input.GetButtonDown("Jump");
+            bool jumpInput = Input.GetKeyDown(KeyCode.Space);
             Move(horizontalInput);
             Jump(jumpInput);
 

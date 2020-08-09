@@ -15,7 +15,7 @@ namespace MatrixJam.Team2
 
         void Update()
         {
-            if (Input.GetButtonDown("Interact") && interactables.Count > 0)
+            if (Input.GetKeyDown(KeyCode.E) && interactables.Count > 0)
             {
                 interactables[interactables.Count - 1].Interact();
             }
