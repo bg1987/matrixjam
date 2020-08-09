@@ -16,7 +16,7 @@ namespace MatrixJam.Team14
         public float BPM => bpm;
         public float BeatPerSec => bpm / 60;
 
-        public float ZPerBeat => ZPerBeat;
+        public float ZPerBeat => zPerBeat;
         public float TotalBeats => BeatPerSec * clip.length;
         public float TotalSeconds => TotalBeats * BeatPerSec;
 

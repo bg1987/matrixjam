@@ -12,22 +12,20 @@ namespace MatrixJam.Team14
 
         public MusicTrack[] Tracks => tracks;
 
-        private void OnValidate()
-        {
-            if (GameManager.Instance) GameManager.Instance.OnValidate();
-        }
-        
         public int TrackCount => tracks.Length;
 
         private IEnumerable<MusicTrack> TracksExceptLast
         {
             get
             {
-                for (var i = 0; i < tracks.Length-1; i++)
-                {
+                for (var i = 0; i < tracks.Length - 1; i++)
                     yield return tracks[i];
-                }
             }
+        }
+
+        private void OnValidate()
+        {
+            if (GameManager.Instance) GameManager.Instance.OnValidate();
         }
 
         public IEnumerable<Vector3> GetAllBeatPositions(Transform startAndDirection)

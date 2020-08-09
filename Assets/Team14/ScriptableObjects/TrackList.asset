@@ -21,4 +21,4 @@ MonoBehaviour:
     bpm: 125
   - clip: {fileID: 8300000, guid: ec57f373e2c4abf4db36bb217d56f843, type: 3}
     zPerBeat: 6.5
-    bpm: 125
+    bpm: 140

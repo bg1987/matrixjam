@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 461315107231522436, guid: d608cf76c33759847b2ee6953541668c,
         type: 3}
       propertyPath: m_Size.z
-      value: 5.25
+      value: 6.83
       objectReference: {fileID: 0}
     - target: {fileID: 583852755858344398, guid: d608cf76c33759847b2ee6953541668c,
         type: 3}
@@ -112,6 +112,11 @@ PrefabInstance:
         type: 3}
       propertyPath: obstacleBeatOffset
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280645601191201580, guid: d608cf76c33759847b2ee6953541668c,
+        type: 3}
+      propertyPath: obstacleSecsOffset
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d608cf76c33759847b2ee6953541668c, type: 3}
