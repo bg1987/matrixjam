@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using MatrixJam.Team;
 using UnityEngine;
 
@@ -65,33 +66,71 @@ namespace MatrixJam.Team4
                 EventManager.Singleton.IntroDone -= OnIntroDone;     
                 EventManager.Singleton.NextMessage -= _introManager.NextMessage;
             }
+            
             EventManager.Singleton.TurnOver += OnTurnOver;
+            EventManager.Singleton.GameOver += OnGameOver;
             OnTurnOver();
+        }
+        
+        private void HandleGameover()
+        {
+            var winner = FindWinner();
+            HandleWinner(winner);
+        }
+
+        private Player FindWinner()
+        {
+            Player winner = Players[0];
+            foreach (var player in Players)
+            {
+                if (player.Score > winner.Score)
+                {
+                    winner = player;
+                }
+            }
+
+            return winner;
+        }
+
+        private void HandleWinner(Player winner)
+        {
+            if (winner.playerSide == PlayerSide.Human)
+            {
+                SoundManager.Instance.PlayVictory();
+            }
+            else
+            {
+                SoundManager.Instance.PlayDefeat();
+            }
         }
 
         private void OnTurnOver()
         {
-            if (IsGameOver())
+            
+            var nextPlayer = _turnManager.GetNextPlayer();
+            var nextTurnData = _boardManager.GetPlayerTurnData(nextPlayer);
+            if (IsGameOver(nextTurnData))
             {
                 EventManager.Singleton.OnGameOver();
                 return;
             }
-            
-            var nextPlayer = _turnManager.GetNextPlayer();
-            var nextTurnData = _boardManager.GetPlayerTurnData(nextPlayer);
             nextPlayer.YourTurn(nextTurnData);
         }
 
-        private bool IsGameOver()
+        private bool IsGameOver(TurnData nextTurnData)
         {
-            //TODO implement check
-            return false;
+            return nextTurnData._positionOptions.Count == 0;
         }
 
         private void OnIntroDone()
         {
             ShowTutorial = false;
             SetState(GameState.mainPlay);
+        }
+        
+        private void OnGameOver()
+        {
+            SetState(GameState.gameover);
         }
 
         public void SetState(GameState gameState)
@@ -104,13 +143,10 @@ namespace MatrixJam.Team4
                 case GameState.mainPlay:
                     HandleMainPlay();
                     break;
+                case GameState.gameover:
+                    HandleGameover();
+                    break;
             }
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            
         }
     }
 
@@ -118,6 +154,7 @@ namespace MatrixJam.Team4
     {
         init,
         intro,
-        mainPlay
+        mainPlay,
+        gameover
     }
 }

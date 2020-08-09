@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using MatrixJam.Team;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace MatrixJam.Team4
 {
@@ -49,6 +47,7 @@ namespace MatrixJam.Team4
 
         public static void SquareChosen(Vector2 index)
         {
+            
             NumberButtonsManager.MakeAllUnselectable();
             _instance.PlayerNumberPool.MakeNoneSelectable();
             ChoiceManager.PickSquare(index);
@@ -83,19 +82,26 @@ namespace MatrixJam.Team4
 
         public void PickAttackRow()
         {
-            ShowDamageOptions(false);
+            HandleAttack();
             ChoiceManager.PickAttack(AttackDirection.row);
         }
+
         public void PickAttackLine()
         {
-            ShowDamageOptions(false);
+            HandleAttack();
             ChoiceManager.PickAttack(AttackDirection.colum);
         }
         public void PickAttackBox()
         {
-            ShowDamageOptions(false);;
+            HandleAttack();
             ChoiceManager.PickAttack(AttackDirection.square
             );
+        }
+
+        private static void HandleAttack()
+        {
+            ShowDamageOptions(false);
+            
         }
     }
 }

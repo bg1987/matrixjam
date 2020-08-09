@@ -46,6 +46,7 @@ namespace MatrixJam.Team4
         public void PickNumber(int value)
         {
             Debug.Log("Player chose: " + value);
+            SoundManager.Instance.PlayPickNumber();
             foreach (var unit in _playerTurnData._positionOptions.Keys)
             {
                 if (unit.Value == value)
@@ -81,6 +82,7 @@ namespace MatrixJam.Team4
             if (position != null)
             {
                 _selectedPosition = position;
+                SoundManager.Instance.PlayPickSquare();
                 UIManager.SetNumberOnSquare(index, _selectedUnit.Value, _selectedUnit.Owner.playerSide);
                 UIManager.ShowDamageOptions(_selectedUnit.Owner.playerSide == PlayerSide.Human);
             }
@@ -94,6 +96,7 @@ namespace MatrixJam.Team4
             turnObject.ChosenUnit.Position = _selectedPosition;
             turnObject.AttackDirection = attackType;
             HideUsedNumber();
+            SoundManager.Instance.PlayAttack();
             _boardManager.ExecuteTurn(turnObject);
         }
 
@@ -111,9 +114,9 @@ namespace MatrixJam.Team4
             UIManager.ChoiceManager.PickSquare(new Vector2(position.GetX(), position.GetY()));
             yield return new WaitForSeconds(1);
             UIManager.ChoiceManager.PickAttack(turnObject.AttackDirection);
-            yield return new WaitForSeconds(1);
-            
-            
+
+
         }
+        
     }
 }
