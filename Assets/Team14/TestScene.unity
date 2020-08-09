@@ -26408,6 +26408,40 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1950181103}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1954418866
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8048477020497241116, guid: 82cf2d8e601d1fe48897ca129a66d108,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048477020497241116, guid: 82cf2d8e601d1fe48897ca129a66d108,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048477020497241116, guid: 82cf2d8e601d1fe48897ca129a66d108,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048477020497241116, guid: 82cf2d8e601d1fe48897ca129a66d108,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048477020497241117, guid: 82cf2d8e601d1fe48897ca129a66d108,
+        type: 3}
+      propertyPath: m_Name
+      value: StartStation
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 82cf2d8e601d1fe48897ca129a66d108, type: 3}
 --- !u!1001 &1958094821
 PrefabInstance:
   m_ObjectHideFlags: 0
