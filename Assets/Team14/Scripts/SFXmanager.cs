@@ -9,6 +9,7 @@ namespace MatrixJam.Team
         [SerializeField] private GenericRandomSFX Jump;
         [SerializeField] private GenericRandomSFX Duck;
         [SerializeField] private GenericRandomSFX Honk;
+        [SerializeField] private GenericRandomSFX DuckEnd;
 
         [SerializeField] private GenericRandomSFX CatSqueals;
 
@@ -34,6 +35,9 @@ namespace MatrixJam.Team
                     break;
                 case TrainMove.Honk:
                     Honk.PlayRandom();
+                    break;
+                case TrainMove.DuckEnd:
+                    DuckEnd.PlayRandom();
                     break;
             }
         }

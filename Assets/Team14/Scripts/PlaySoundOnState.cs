@@ -12,12 +12,13 @@ namespace MatrixJam.Team14
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo,
             int layerIndex)
         {
-            TrainController.Instance.PlaySFX(TrainMove.DuckEnd);
+            TrainController.Instance.PlaySFX(onStateEnter);
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo,
             int layerIndex)
         {
+            TrainController.Instance.PlaySFX(onStateExit);
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo,
