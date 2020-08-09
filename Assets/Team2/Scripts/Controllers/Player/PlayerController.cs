@@ -34,7 +34,7 @@ namespace MatrixJam.Team2
 
             if (Input.GetKeyDown(KeyCode.G))
             {
-                ReturnToCheckpoint();
+                ActivateCheckpoint();
             }
             AnimWalk();
         }
@@ -71,15 +71,11 @@ namespace MatrixJam.Team2
             isGrounded = false;
         }
 
-        public void ReturnToCheckpoint()
+        public void ActivateCheckpoint()
         {
             if (checkpoint != null)
             {
-                for (int i = 0; i < checkpoint.transform.childCount; i++)
-                {
-                    checkpoint.transform.GetChild(i).gameObject.SetActive(true);
-                }
-                transform.position = checkpoint.transform.position;
+                checkpoint.Activate(this);
             }
         }
 

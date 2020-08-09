@@ -13,10 +13,13 @@ namespace MatrixJam.Team2
 
             void Update()
             {
-                var aimDir = target.position - transform.position;
+                if (target != null)
+                {
+                    var aimDir = target.position - transform.position;
 
-                float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg - correction;
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                    float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg - correction;
+                    transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                }
             }
         }
     }

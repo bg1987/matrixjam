@@ -34,12 +34,17 @@ namespace MatrixJam.Team2
             }
             if (other.gameObject.TryGetComponent(out PlayerController playerController))
             {
-                // playerController.Kill();
+                playerController.ActivateCheckpoint();
                 return;
             }
             if (other.gameObject.TryGetComponent(out Floopable floopable))
             {
                 floopable.ChangeBulletTrajectory(this.transform, other.contacts[0]);
+                return;
+            }
+            if (other.gameObject.TryGetComponent(out Turret turret))
+            {
+                turret.gameObject.SetActive(false);
                 return;
             }
 

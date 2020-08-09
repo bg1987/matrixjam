@@ -12,12 +12,22 @@ namespace MatrixJam.Team2
 
         void Start()
         {
-            InvokeRepeating("SpawnBullet", 0f, shootingInterval);
+            OnEnable();
         }
 
         private void SpawnBullet()
         {
             Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+        }
+
+        private void OnDisable()
+        {
+            CancelInvoke();
+        }
+
+        private void OnEnable()
+        {
+            InvokeRepeating("SpawnBullet", 0f, shootingInterval);
         }
     }
 }

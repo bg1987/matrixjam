@@ -7,5 +7,13 @@ namespace MatrixJam.Team2
     [RequireComponent(typeof(Collider2D))]
     public class Checkpoint : MonoBehaviour
     {
+        public void Activate(PlayerController playerController)
+        {
+            for (int i = 0; i < transform.parent.childCount; i++)
+            {
+                transform.parent.GetChild(i).gameObject.SetActive(true);
+            }
+            playerController.transform.position = transform.position;
+        }
     }
 }
