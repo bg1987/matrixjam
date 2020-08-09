@@ -11,21 +11,9 @@ namespace MatrixJam.Team10
         private RandomDialogueTree t = new RandomDialogueTree("player1");
         private bool isMouseOnMe = false;
 
-        // void OnMouseOver(){
-        //     isMouseOnMe = true;
-        // }
-
-        // void OnMouseExit(){
-        //     isMouseOnMe = false;
-        // }
-
         void OnMouseDown(){
             Debug.Log("click");
-                TriggerDialogue();
-            // if(!DialoguePanel.activeSelf && isMouseOnMe){
-            //     Debug.Log("click");
-            //     TriggerDialogue();
-            // }
+            TriggerDialogue();
         }
 
         public void TriggerDialogue(){

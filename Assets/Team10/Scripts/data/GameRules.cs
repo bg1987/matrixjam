@@ -7,6 +7,7 @@ namespace MatrixJam.Team10
 {
     public class GameRules : MonoBehaviour
     {
+        private int deathCheck;
         private int repeat;
         private string lastActionID;
         
@@ -30,8 +31,17 @@ namespace MatrixJam.Team10
             Timer.text = "c - " + cleanFactor + ", h - " + hungerFactor 
                 + ", w - " + workFactor + ", k - " + killFactor + ", r - " 
                 + repeat + ", lastAction - " + lastActionID + "\ntime-" + time.ToString();
-            //update time in real
             //update time display
+            if((time.Hour > 12 && deathCheck < 1) || (time.Hour > 6 && deathCheck < 2)) //12-start noon, 18-start evening
+            {
+                Debug.Log(deathCheck);
+                checkDeath();
+                deathCheck += 1;
+            }
+            else if((time.Hour > 23 || time.Hour < 4) && deathCheck == 2){ //passed to the next day
+                Debug.Log("end");
+                endOfDay();
+            }
         }
 
         public void declareChoices(){
