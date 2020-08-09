@@ -72,7 +72,7 @@ Material:
     - _OffsetUVX: 0.34
     - _OffsetUVY: -0.08
     - _Parallax: 0.02
-    - _PrespectiveShift: -1.5
+    - _PrespectiveShift: -1.15
     - _RightZ: -10
     - _ScaleUV: 3.58
     - _ScaleUVX: 1.91

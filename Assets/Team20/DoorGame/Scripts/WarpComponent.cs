@@ -47,7 +47,6 @@ namespace MatrixJam.Team20
 
         void Warp()
         {
-            Debug.Log("Warp");
             var doorToSelf = DoorToSelf();
             var doorToWarp = currentDoor.ConnectedDoor();
             var angle = Vector2.Angle(currentDoor.Direction(), doorToWarp.Direction());
@@ -69,18 +68,20 @@ namespace MatrixJam.Team20
                     outDirection = -outDirection;
                 }
 
-                if(Mathf.Abs(outDirection.y) > 0.9 && doorToWarp.Direction().y == -currentDoor.Direction().y)
+                if (doorToWarp.Direction().y * currentDoor.Direction().y < -0.9)
                 {
                     if(outDirection.y > 0.9)
                     {
-                        movementComponent.velocity = new Vector2(0f, movementComponent.velocity.y) * 0.8f;
+                        movementComponent.velocity = new Vector2(0f, movementComponent.velocity.y);
                     }
                     movementComponent.velocity.x = originalVelocity.x;
+                    movementComponent.transform.Translate(outDirection * 0.25f);
                 }
 
                 if(playerComponent)
                 {
-                    playerComponent.resetHorizontal = true;
+                    if (doorToWarp.Direction().x * currentDoor.Direction().x < -0.9)
+                        playerComponent.resetHorizontal = true;
                 }
 
                 if(angle >= 170 && enemyComponent)

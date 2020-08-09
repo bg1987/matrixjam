@@ -86,12 +86,12 @@
 					{
 						if (vid == 0 || vid == 2)
 						{
-							IN.vertex.y += _PrespectiveShift;
+							IN.vertex.y += _PrespectiveShift / worldScale.y;
 							if (_UseShaderZ) IN.vertex.z = _LeftZ;
 						}
 						else
 						{
-							IN.vertex.y -= _PrespectiveShift;
+							IN.vertex.y -= _PrespectiveShift / worldScale.y;
 							if (_UseShaderZ) IN.vertex.z = _RightZ;
 						}
 					}
@@ -99,12 +99,12 @@
 					{
 						if (vid < 2)
 						{
-							IN.vertex.x += _PrespectiveShift;
+							IN.vertex.x += _PrespectiveShift / worldScale.x;
 							if (_UseShaderZ) IN.vertex.z = _LeftZ;
 						}
 						else
 						{
-							IN.vertex.x -= _PrespectiveShift;
+							IN.vertex.x -= _PrespectiveShift / worldScale.x;
 							if (_UseShaderZ) IN.vertex.z = _RightZ;
 						}
 					}

@@ -12,8 +12,6 @@ namespace MatrixJam.Team20
         public float jumpHeight = 10f;
         public bool resetHorizontal = false;
         float lastHorizontal = 0f;
-        public LayerMask groundLayer;
-        public float distance = 0.1f;
         [SerializeField] private bool _onMovingPlatform = false;
         public float movingPlatformFix = 1;
 
@@ -78,21 +76,6 @@ namespace MatrixJam.Team20
                 _lookDirection = LookDirection.Left;
         }
 
-        bool IsGrounded()
-        {
-            var bounds = this.GetComponent<CapsuleCollider2D>().bounds;
-            Vector2 position = new Vector2(bounds.center.x, bounds.min.y);
-            Vector2 direction = Vector2.down;
-
-            RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer);
-            if (hit.collider != null)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
         public bool PlayerStands()
         {
             return movement.velocity.x == 0;
@@ -100,7 +83,7 @@ namespace MatrixJam.Team20
 
         public bool PlayerIsStill()
         {
-            return PlayerStands() && IsGrounded();
+            return PlayerStands() && applyGravity.grounded;
         }
 
         public void OnMovingPlatform(bool onThePlatform)

@@ -25,7 +25,7 @@ namespace MatrixJam.Team20
         {
             velocity.y += yAcceleration * Time.fixedDeltaTime;
 
-            velocity.y = Mathf.Max(velocity.y, -100f);
+            velocity.y = Mathf.Max(velocity.y, -90f);
 
             this.transform.Translate(velocity * Time.fixedDeltaTime);
         }
