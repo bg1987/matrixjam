@@ -78,23 +78,23 @@ namespace MatrixJam.Team10
             }
         }
 
-        // actions that can be accessed from more then one room
+        // actions that can be accessed from more then one room - 6
         public List<Choice> generalActions(){
             List<Choice> actions = new List<Choice>();
             // bed + couch
             actions.Add(new Choice("sleep", () => {
                 CheckRepeat("sleep");
-                time.AddMinutes(60);
+                time = time.AddMinutes(60);
                 lastActionID = "sleep";
             }));
             actions.Add(new Choice("nap", () => {
                 CheckRepeat("nap");
-                time.AddMinutes(30);
+                time = time.AddMinutes(30);
                 lastActionID = "nap";
             }));
             actions.Add(new Choice("jump", () => {
                 CheckRepeat("jump");
-                time.AddMinutes(30);
+                time = time.AddMinutes(30);
                 lastActionID = "jump";
             }));
 
@@ -106,13 +106,13 @@ namespace MatrixJam.Team10
             }));
             actions.Add(new Choice("netflix&chill", () => {
                 CheckRepeat("watch");
-                time.AddMinutes(60);
+                time = time.AddMinutes(60);
                 lastActionID = "watch";
             }));
             // bathroom + kitchen
             actions.Add(new Choice("wash hands", () => {
                 CheckRepeat("washHands");
-                time.AddMinutes(5);
+                time = time.AddMinutes(5);
                 if(lastActionID == "number2")
                 {
                     cleanFactor = cleanFactor +1;
@@ -127,19 +127,19 @@ namespace MatrixJam.Team10
             //bed
             actions.Add(new Choice("profess love", () => {
                 CheckRepeat("loveBed");
-                time.AddMinutes(60);
+                time = time.AddMinutes(60);
                 lastActionID = "loveBed";
             }));
             //closet
             //black screen - options to hide(repeat) or leave
             actions.Add(new Choice("change clothes", () => {
                 CheckRepeat("clothes");
-                time.AddMinutes(10);
+                time = time.AddMinutes(10);
                 lastActionID = "clothes";
             }));
             actions.Add(new Choice("hide", () => {
                 Panel.SetActive(true);
-                time.AddMinutes(30);
+                time = time.AddMinutes(30);
                 lastActionID = "hide";
             }));
             actions.Add(new Choice("go out", () => {
@@ -149,7 +149,7 @@ namespace MatrixJam.Team10
             }));
             actions.Add(new Choice("stay", () => {
                 CheckRepeat("hide");
-                time.AddMinutes(30);
+                time = time.AddMinutes(30);
                 lastActionID = "hide";
             }));
             //pc
