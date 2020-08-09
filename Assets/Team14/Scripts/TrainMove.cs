@@ -4,6 +4,8 @@
     {
         Jump, 
         Duck,
-        Honk
+        Honk,
+        DuckEnd,
+        None,
     }
 }

@@ -11,6 +11,7 @@ namespace MatrixJam.Team
         [SerializeField] private GenericRandomSFX Honk;
         [SerializeField] private GenericRandomSFX AwakeBells;
         [SerializeField] private GenericRandomSFX Duck;
+        [SerializeField] private GenericRandomSFX DuckEnd;
         [SerializeField] private GenericRandomSFX CatSqueals;
         
         public void PlaySFX(TrainMove move)
