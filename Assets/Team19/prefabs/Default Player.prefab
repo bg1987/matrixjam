@@ -232,3 +232,6 @@ MonoBehaviour:
   _levelPassedLayerMask:
     serializedVersion: 2
     m_Bits: 8388608
+  _collectibleMask:
+    serializedVersion: 2
+    m_Bits: 65536

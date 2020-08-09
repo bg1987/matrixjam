@@ -3,12 +3,9 @@ using UnityEngine;
 
 namespace MatrixJam.Team19.Gameplay.Managers
 {
-    public delegate void LevelEvent();
 
     public class LevelManager : MonoBehaviour
     {
-        public static LevelEvent LevelPassed;
-        public static LevelEvent LevelLost;
 
         public static LevelManager Instance;
 
@@ -29,6 +26,12 @@ namespace MatrixJam.Team19.Gameplay.Managers
 
         [SerializeField]
         private ModifiedContentManager _modifiedContentManager;
+
+        [SerializeField]
+        private BeaconManager _beaconManager;
+
+        [SerializeField]
+        private UIManager _uiManager;
 
         private int _levelWinCount = 0;
         private int _levelLossCount = 0;
@@ -53,17 +56,22 @@ namespace MatrixJam.Team19.Gameplay.Managers
             _gameStarter = starter;
             _startedEntranceNumber = entrance_number;
 
+            _uiManager.Initialize();
+            _beaconManager.Initialize();
             _modifiedContentManager.InitializeByEntrance(entrance_number, _winRequiredPassCount);
             _modifiedContentManager.ModifyContentByProgress(_levelWinCount);
 
             _playerHandler.StartLevel(starter, entrance_number);
         }
 
+        public void NotifyKeyPicked()
+        {
+
+        }
+
         public void NotifyLevelLost()
         {
             _levelLossCount ++;
-
-            LevelLost?.Invoke();
 
             if (_levelLossCount == _failRequireLossCount)
             {
@@ -93,23 +101,27 @@ namespace MatrixJam.Team19.Gameplay.Managers
         {
             RespawnPlayer();
 
+            _beaconManager.LightBeaconByProgress(_levelWinCount);
             _modifiedContentManager.ModifyContentByProgress(_levelWinCount);
-            LevelPassed?.Invoke();
         }
 
         private void ActOnLevelLost()
         {
             RespawnPlayer();
+
+            _uiManager.UpdateHealth(_levelLossCount);
         }
 
         private void ActOnLevelFail()
         {
+            Debug.Log("[Team19] Level Failed");
             _levelFailExit.EndLevel();
 
         }
 
         private void ActOnLevelWin()
         {
+            Debug.Log("[Team19] Level Won");
             _levelWinExit.EndLevel();
         }
 

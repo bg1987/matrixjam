@@ -4,28 +4,25 @@ using UnityEngine;
 
 namespace MatrixJam.Team19.Gameplay.Managers
 {
-    public class BeaconManager : MonoBehaviour
+    [System.Serializable]
+    public class BeaconManager
     {
         [SerializeField]
         private GameObject[] _beacons;
 
-        private int _nextBeaconIndex = 0;
-
-        [SerializeField]
-        private void Awake()
+        public void Initialize()
         {
             foreach (GameObject beacon in _beacons)
             {
                 beacon.SetActive(false);
             }
-
-            LevelManager.LevelPassed += OnLevelPassed;
         }
 
-        private void OnLevelPassed()
+        public void LightBeaconByProgress(int progress)
         {
-            _beacons[_nextBeaconIndex].SetActive(true);
-            _nextBeaconIndex ++;
+            int progressIndex = progress - 1;
+
+            _beacons[progressIndex].SetActive(true);
         }
     }
 }
