@@ -10,9 +10,11 @@ namespace MatrixJam.Team21 {
 		public float delayStart = 5f;
 		public float strengthBoost = 5f;
 		public float restartDelay = 2f;
+		public float delaySeagullEffect = 2f;
 
 		private Rigidbody rb;
 		private WindArea windArea;
+		private bool isHitBySeagull = false;
 
         // Start is called before the first frame update
         void Start() {
@@ -25,7 +27,7 @@ namespace MatrixJam.Team21 {
 			if (GameState.state == State.PLAY && !rb.useGravity) {
 				rb.useGravity = true;
 			}
-			if (inWindZone) {
+			if (inWindZone && !isHitBySeagull) {
 				float strength = windArea.strength;
 				if (Input.GetMouseButtonDown(0)) {
 					strength += strengthBoost;
@@ -35,28 +37,38 @@ namespace MatrixJam.Team21 {
 		}
 
         void OnTriggerEnter(Collider col) {
-			if (col.gameObject.tag == "Tag0") {
+			if (col.gameObject.tag == "Tag0") {// windarea
 				// windZone = col.gameObject;
 				windArea = col.gameObject.GetComponent<WindArea>();
 				inWindZone = true;
 			}
 
-			if (col.gameObject.tag == "Tag2") {
+			if (col.gameObject.tag == "Tag2") {// killzone
 				print("killed!");
 				StartCoroutine(RestartLevel());
 			}
 		}
 
 		void OnTriggerExit(Collider col) {
-			if (col.gameObject.tag == "Tag0") {
+			if (col.gameObject.tag == "Tag0") {// windarea
 				inWindZone = false;
 			}
 		}
 
 		void OnCollisionEnter(Collision collision) {
-			if (collision.collider.tag == "Tag3") {
+			if (collision.collider.tag == "Tag3") {// obstacle
 				inWindZone = false;
 			}
+			if (collision.collider.tag == "Tag6") {// seagull
+				isHitBySeagull = true;
+				StartCoroutine(DisableSeagullEffectRoutine());
+			}
+		}
+
+		IEnumerator DisableSeagullEffectRoutine() {
+			yield return new WaitForSeconds(delaySeagullEffect);
+			isHitBySeagull = true;
+			yield return null;
 		}
 
 		IEnumerator DelayStartRoutine() {
@@ -67,6 +79,7 @@ namespace MatrixJam.Team21 {
 
 		IEnumerator RestartLevel() {
 			yield return new WaitForSeconds(restartDelay);
+			GameState.state = State.PAUSE;
 			LevelHolder.Level.Restart();
 			yield return null;
 		}
