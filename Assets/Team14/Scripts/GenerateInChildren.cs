@@ -42,7 +42,8 @@ namespace MatrixJam.Team14
             for (var i = 0; i < amount; i++)
             {
                 var pos = initOffset + transform.position + (i * delta);
-                Instantiate(prefab, pos, Quaternion.identity, transform);
+                var instance = (GameObject) PrefabUtility.InstantiatePrefab(prefab, transform);
+                instance.transform.position = pos;
             }
         }
     }
