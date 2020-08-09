@@ -7,13 +7,14 @@ namespace MatrixJam.Team10
     public class ActionDialogueTrigger : MonoBehaviour
     {
         public int[] choices;
-        public GameObject DialoguePanel;
+        public GameObject BlockPanel;
         private RandomDialogueTree t = new RandomDialogueTree("player1");
         private bool isMouseOnMe = false;
 
         void OnMouseDown(){
-            Debug.Log("click");
-            TriggerDialogue();
+            if(!BlockPanel.activeSelf){
+                TriggerDialogue();
+            }
         }
 
         public void TriggerDialogue(){

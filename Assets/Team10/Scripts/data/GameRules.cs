@@ -7,6 +7,7 @@ namespace MatrixJam.Team10
 {
     public class GameRules : MonoBehaviour
     {
+        #region params
         private int deathCheck;
         private int repeat;
         private string lastActionID;
@@ -15,6 +16,7 @@ namespace MatrixJam.Team10
         private int hungerFactor;
         private double workFactor;
         private int killFactor;
+        private List<string[]> deathList;
 
         public List<Choice> choices;
         public System.DateTime time = System.DateTime.Parse("9:00 AM");
@@ -28,10 +30,12 @@ namespace MatrixJam.Team10
         public RandomDialogueTree t;
         public string playerName;
         public float typingSpeed;
-
+        #endregion
+        
         void Start(){
             t = new RandomDialogueTree("player1");
             declareChoices();
+            deathList = DeathListGen();
             Panel.SetActive(false);
             PanelTitle.text = "Closet";
             PanelMessage.gameObject.SetActive(false);
@@ -56,6 +60,38 @@ namespace MatrixJam.Team10
         }
 
         #region Game Death
+
+        public List<string[]> DeathListGen(){
+            List<string[]> a = new List<string[]>();
+            //clean - did not get cleaned as needed
+            a.Add(new string[] { "you dirty maggot! don't you know it's 2020!!!", "you should, at the very least, wash your hands.",
+                "now look, you got the corona virus. are you happy?","well, too bad, we dont care.","anyways, you died..."});
+            //hunger - not eating
+            a.Add(new string[] { "just because it's a game,", "it does not mean you can starve your character.",
+                "poor <name>, it died of starvation...." , "and so young..." , "btw", "that's also means you died" });
+            //work - getting fired
+            a.Add(new string[] { "you do realize you need to work in order to pay rent, rright???", "cause you got fired, couldn't pay your bills",
+                "and now you are homeless... with corona... and dead...", "obviously, since we gave up on you",
+                "cause you don't work and we don't like that...", "welph, at least it didnt happen in real life, rightt?" });
+            //killOrder - rommate dont like the way you talk
+            a.Add(new string[] {"your roommates got annoyed with you", "and decieded to throw you out of the apartment...",
+                "welll.... you know the drill...", "you met a corona zombie, got infected and died.", "now go away...", "i'm trying to take a nap here....."});
+            //paranoia - reapeting similar actions 6 times
+            a.Add(new string[] { "you are seriously paranoid and should get that checked...",
+                "anyways, this paranoia of yours didn't help and you still got the corona virus.", "you died!" });
+            //win
+            a.Add(new string[] { "congratulations!", "you made it till the end", "but just to make sure, you didn't cheat right?",
+                "i mean, we made it extremely difficult, you see...", "anyways, you won - you, your roommate, and ect.",
+                "we have other ending, you should check it out" });
+
+            // special ends - repeat
+
+            // special ends - 6+
+            a.Add(new string[] {});
+            a.Add(new string[] {});
+            return a;
+        }
+
         //called by all actions with action id - check if action repeated
         //and do reapeat stuff if true -  modifies the repeted varibles and calls to end if > num?
         public void CheckRepeat(string id){
@@ -66,9 +102,14 @@ namespace MatrixJam.Team10
             }
             repeat += 1;
             if(repeat > 3){
-                //death
-                //if (lastActionID == 1)//sleep
-                //paranoia death
+                switch (lastActionID)
+                {
+                    case "sleep":
+                    case "hide":
+                    default:
+                        DeathScreen(4);
+                        break;
+                }
             }
         }
 
@@ -101,16 +142,18 @@ namespace MatrixJam.Team10
                     PanelMessage.text += letter;
                     yield return new WaitForSeconds(typingSpeed);
                 }
+                PanelMessage.text += "\n";
             }
         }
 
-        public void DeathScreen(string[] text){
+        public void DeathScreen(int id){
+            FindObjectOfType<DialogueManager>().EndDialogue();
             PanelMessage.gameObject.SetActive(true);
             PanelButton.gameObject.SetActive(true);
             PanelTitle.text = "A Day In Life - 2020 edition";
             PanelMessage.text = "";
             Panel.SetActive(true);
-            StartCoroutine(TypeMessegeAffect(text));
+            StartCoroutine(TypeMessegeAffect(deathList[id]));
         }
         #endregion
 
