@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MatrixJam.Team
+namespace MatrixJam.Team10
 {
     public class SetPlayer : MonoBehaviour
     {
@@ -12,7 +12,6 @@ namespace MatrixJam.Team
         public GameObject BatmanPlayer; // batman player
         public GameObject SupermanPlayer; // Superman player
         public GameObject Panel;
-        private string Name;
         public Text textBox;
 
         // Start is called before the first frame update
@@ -27,29 +26,26 @@ namespace MatrixJam.Team
         // Update is called once per frame
         public void OnSubmit()
         {
-            Name =textBox.text.ToUpper();
+            string Name = textBox.text.ToUpper();
             switch (Name)
             {
-                case "MATRIX": 
-                    Debug.Log(1);
+                case "MATRIX":
                     MatrixPlayer.SetActive(true);
                     break;
                 case "BATMAN":
-                    Debug.Log(2); 
                     BatmanPlayer.SetActive(true);
                     break;
-                case "SUPERMAN": 
-                    Debug.Log(3);
+                case "SUPERMAN":
                     SupermanPlayer.SetActive(true);
                     break;
                 default: 
-                    Player.SetActive(true); 
-                    Debug.Log(Name);
+                    Player.SetActive(true);
                     break;
             }      
             Panel.SetActive(false);
-            //read textbox and activate player acordinly
-            //switchCase name 
+            
+            //pass name to dialogue manager in game manager
+            FindObjectOfType<GameRules>().t = new RandomDialogueTree(Name);
         }
     }
 }

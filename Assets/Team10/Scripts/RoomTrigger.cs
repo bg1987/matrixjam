@@ -4,35 +4,33 @@ using UnityEngine;
 
 namespace MatrixJam.Team10
 {
+    // will be placed on doors
     public class RoomTrigger : MonoBehaviour
     {
         public AudioSource bgSound;
         public string RoomName;
+        public bool isInRoom = false;
 
-        private RandomDialogueTree t;
-
-        void Start()
-        {
+        void Start(){
             bgSound.loop = true;
             bgSound.Play(0);
             bgSound.Pause();
-            startDialogueTree("player1");
-        }
-        void OnTriggerEnter2D(Collider2D c){
-            bgSound.UnPause();
-            TriggerRandomDialogue();
-        }
-        void OnTriggerExit2D(Collider2D c){
-            bgSound.Pause();
         }
 
-        public void startDialogueTree(string playerName){
-            t = new RandomDialogueTree(playerName);
+        void OnTriggerEnter2D(Collider2D c){
+            isInRoom = !isInRoom;
+            if(isInRoom){
+                // bgSound.UnPause();
+                TriggerRandomDialogue();
+            }
+            else{
+                bgSound.Pause();
+            }
         }
 
         public void TriggerRandomDialogue(){
             DialogueTree a;
-            bool dialog = t.getRandomDialog(RoomName, out a);
+            bool dialog = FindObjectOfType<GameRules>().t.getRandomDialog(RoomName, out a);
             if(dialog){
                 FindObjectOfType<DialogueManager>().StartDialogue(a);
             }

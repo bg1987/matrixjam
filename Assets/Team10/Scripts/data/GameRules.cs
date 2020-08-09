@@ -20,6 +20,7 @@ namespace MatrixJam.Team10
         public System.DateTime time = System.DateTime.Parse("9:00 AM");
         public Text Timer;
         public GameObject Panel;
+        public RandomDialogueTree t;
 
         void Start()
         {

@@ -10,19 +10,16 @@ namespace MatrixJam.Team10
         public override void StartHelp(int num_ent)
         {
             // this is how the game starts
-
+            Debug.Log("game start... please enter name");
         }
         
         // Start is called before the first frame update
         void Start()
         {
-            
         }
 
-        // Update is called once per frame
-        void Update()
+        public void OnSubmit()
         {
-            
         }
     }
 }
