@@ -164,13 +164,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: dba662296ed73a84aaffd473a4305f95, type: 3}
   - {fileID: 21300000, guid: 5b048ed2d3ccdb843ab48bbaad2b2f11, type: 3}
   NeutralNumberSprites:
-  - {fileID: 21300000, guid: 9c9517dd0883cd64a9575c7780cd70f3, type: 3}
-  - {fileID: 21300000, guid: b6f6b77f514e1a6499686a2aaf47d71c, type: 3}
-  - {fileID: 21300000, guid: 5bb436733e7d9bc418bca0aa5e9d199e, type: 3}
-  - {fileID: 21300000, guid: 920a9a055cb7c3b4cbe647187059230f, type: 3}
-  - {fileID: 21300000, guid: 3ffceb115f632f94a9741ba2bb72a1fc, type: 3}
-  - {fileID: 21300000, guid: 8f0acfd235823ac448a3fc60f18ae0ed, type: 3}
-  - {fileID: 21300000, guid: 18b3af155c7928d4d93eec37929a08e5, type: 3}
-  - {fileID: 21300000, guid: dba662296ed73a84aaffd473a4305f95, type: 3}
-  - {fileID: 21300000, guid: 5b048ed2d3ccdb843ab48bbaad2b2f11, type: 3}
-  Empty: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300000, guid: 6a2896427539df641b633dc82c143f76, type: 3}
+  - {fileID: 21300000, guid: 323c35ca5f69f1d43a1c3c595f63f98a, type: 3}
+  - {fileID: 21300000, guid: 534cace4cc680bd4da43a920687d4ea0, type: 3}
+  - {fileID: 21300000, guid: fedff0668780d60459f1ea9f9cc9b582, type: 3}
+  - {fileID: 21300000, guid: ad4a393421f00254ca77e38c81e35792, type: 3}
+  - {fileID: 21300000, guid: 359d1ccf9fcf57f4aaf153183025f7f0, type: 3}
+  - {fileID: 21300000, guid: 16140829773ee884db0522c7bc45fc99, type: 3}
+  - {fileID: 21300000, guid: c1c6c1ca3d0d71345811300f242ddba5, type: 3}
+  - {fileID: 21300000, guid: 69e39fba45720084b8465c5f669b9b41, type: 3}
+  Empty: {fileID: 21300000, guid: 4ba2b15cce16aef44a09b96f1e547e06, type: 3}
