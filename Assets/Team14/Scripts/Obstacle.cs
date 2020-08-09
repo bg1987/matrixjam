@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 
 namespace MatrixJam.Team14
 {
@@ -62,7 +63,10 @@ namespace MatrixJam.Team14
 
         public void OnPressedInZone()
         {
+            if (_succeeded) return;
+            
             _succeeded = true;
+            SendEventUsingFields();
         }
 
         /// <summary>
@@ -77,6 +81,7 @@ namespace MatrixJam.Team14
             if (!obs) return null;
             
             obs.OnPressedInZone();
+
             return obs;
         }
 
@@ -98,7 +103,13 @@ namespace MatrixJam.Team14
             
             CurrObstacles[trainMove].Remove(this);
 
-            if (!_succeeded) OnObstacleEvent?.Invoke(new ObstaclePayload(this, false, Move, moveCue));
+            if (!_succeeded) SendEventUsingFields();
+        }
+
+        private void SendEventUsingFields()
+        {
+            Debug.Log($"Sending Obs Event ({Move}, {_succeeded})");
+            OnObstacleEvent?.Invoke(new ObstaclePayload(this, _succeeded, Move, moveCue));
         }
     }
 }

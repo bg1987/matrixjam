@@ -1,5 +1,6 @@
 ﻿using MatrixJam.Team;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -24,18 +25,24 @@ namespace MatrixJam.Team14
     public class TrainController : MonoBehaviour
     {
         public static TrainController Instance { get; private set; }
-        
+
+        [SerializeField] private float startHonkDelay;
+
         [Header("States config")]
         [SerializeField] private float jumpTime = 0.4f;
         [SerializeField] private float honkTime = 2.28f;
-        
+
+
         [Header("Cars config")]
         [SerializeField] private Animator masterCarAnim;
         [SerializeField] private Animator[] slaveCarAnims;
 
+
         [Header("Debug")]
+        [SerializeField] private bool debugTrackTime = true;
         [SerializeField] private bool debugStates;
         [SerializeField] private bool debugObstacles;
+        [SerializeField] private Color  debugTrackColor = new Color(1f, 0.5f, 0f, 1f);
         [SerializeField] private Color debugStatesColor = Color.red;
         [SerializeField] private Color debugObstaclesColor = Color.green;
         [SerializeField] private Vector2 debugSize = new Vector2(2, 2);
@@ -45,6 +52,7 @@ namespace MatrixJam.Team14
         private int _lives;
         private TrainState _currstate;
         private TrainState _prevState;
+
 
         public int Lives
         {
@@ -57,6 +65,7 @@ namespace MatrixJam.Team14
         }
 
         private static IEnumerable<string> AllTriggers => AllStates.Select(state => state.AnimTrigger);
+
         private static IEnumerable<TrainState> AllStates
         {
             get
@@ -74,7 +83,7 @@ namespace MatrixJam.Team14
         public static TrainState JumpState { get; private set; }
         public static TrainState DuckState { get; private set; }
         public static TrainState NullState { get; private set; }
-        
+
         private HashSet<FutureAnimation> _futureAnimations = new HashSet<FutureAnimation>();
 
         private void Awake()
@@ -94,8 +103,9 @@ namespace MatrixJam.Team14
             GameManager.ResetEvent += OnGameReset;
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
+            yield return new WaitForSeconds(startHonkDelay);
             TransitionState(HonkState, null);
         }
 
@@ -120,7 +130,15 @@ namespace MatrixJam.Team14
 
         private void OnGUI()
         {
-            GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(debugSize.x, debugSize.y, 1f));
+            GUI.matrix = Matrix4x4.TRS(new Vector3(20f, 0f ,0f), Quaternion.identity, new Vector3(debugSize.x, debugSize.y, 1f));
+            GUILayout.Space(10);
+            if (debugTrackTime)
+            {
+                GUI.color = debugTrackColor;
+                
+                var trackTimeStr = FormatSecs(GameManager.GetTimeinTracklist());
+                GUILayout.Label($"Total Time: {trackTimeStr}");
+            }
             if (debugStates)
             {
                 GUI.color = debugStatesColor;
@@ -168,7 +186,7 @@ namespace MatrixJam.Team14
         {
             TransitionState(DriveState, null);
         }
-        
+
         public static void TransitionState(TrainState newState, Transform moveCue) => Instance.TransitionStateInternal(newState, moveCue);
 
         private void TransitionStateInternal(TrainState newState, Transform moveCue)
@@ -196,6 +214,12 @@ namespace MatrixJam.Team14
             _prevState = newState;
         }
 
+
+        public void PlaySFX(TrainMove move)
+        {
+            if (sfxManager == null) return;
+            sfxManager.PlaySFX(move);
+        }
 
         private void CreateStates()
         {
@@ -244,7 +268,7 @@ namespace MatrixJam.Team14
                 }
             }
         }
-        
+
         private void SetCarsNum(int lives)
         {
             var activeCars = slaveCarAnims.Take(lives);
@@ -275,7 +299,7 @@ namespace MatrixJam.Team14
 
         private static void SetOnlyTrigger(Animator anim, string trigger)
         {
-            Debug.Log($"({anim.name}) Setting Trigger + Resetting rest - {trigger}");
+            // Debug.Log($"({anim.name}) Setting Trigger + Resetting rest - {trigger}");
             foreach (var trig in AllTriggers)
             {
                 anim.ResetTrigger(trig);
@@ -283,11 +307,11 @@ namespace MatrixJam.Team14
             
             anim.SetTrigger(trigger);
         }
-        
-        public void PlaySFX(TrainMove move)
+
+        private static string FormatSecs(float seconds)
         {
-            if (sfxManager == null) return;
-            sfxManager.PlaySFX(move);
+            var time = TimeSpan.FromSeconds(seconds);
+            return time.ToString(@"mm\:ss\.fff");
         }
     }
 }

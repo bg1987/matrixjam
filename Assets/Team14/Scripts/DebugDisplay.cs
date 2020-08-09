@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Linq;
-using UnityEditor;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace MatrixJam.Team14
 {
@@ -70,9 +71,12 @@ namespace MatrixJam.Team14
 
             var z = center.z;
             var pos = new Vector3(0f, 0.5f * trackBorderSize, z);
+            
+            #if UNITY_EDITOR
             Handles.color = borderZColor;
             // Handles.RectangleHandleCap(-1, pos, Quaternion.identity, 3, EventType.Repaint);
             Handles.Label(pos, z.ToString());
+            #endif
         }
         
         private void DrawBeatLine(Vector3 center, int beatIdx)

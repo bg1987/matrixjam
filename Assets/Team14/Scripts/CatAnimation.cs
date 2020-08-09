@@ -1,45 +1,90 @@
+using System.Collections;
 using System.Linq;
+using MatrixJam.Team14;
 using UnityEngine;
 
 namespace MatrixJam.Team
 {
     public class CatAnimation : MonoBehaviour
     {
-        // Start is called before the first frame update
-        GameObject cat;
-        public GameObject[] cats;
-        int index;
-        public int SPEED;
-        public UnityEngine.Events.UnityEvent jump;
+        [SerializeField] private float animTime;
 
-        void Start()
+        [SerializeField] private bool testOnStart;
+        
+        private float _startTime;
+        private GameObject[] _cats;
+        private Obstacle _parentObstacle;
+
+        private int FrameCount => _cats.Length;
+        private float FramesPerSec => FrameCount / animTime;
+
+        private void Start()
         {
-            cats = transform
+            _cats = transform
                 .Cast<Transform>()
                 .Select(trans => trans.gameObject)
                 .ToArray();
-            index = 0;
+
+            _parentObstacle = GetComponentInParent<ObstacleHolder>().Obstacle;
+            if (_parentObstacle == null) Debug.LogError($"No obstacle found above {name}", this);
+
+            Obstacle.OnObstacleEvent += OnObstacleEvent;
+            GameManager.ResetEvent += OnGameReset;
             
+            SetFrameActive(0);
+            if (testOnStart) Animate();
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnGameReset() => SetFrameActive(0);
+
+        private void OnDestroy()
         {
-            Jump();
+            Obstacle.OnObstacleEvent -= OnObstacleEvent;
+            GameManager.ResetEvent -= OnGameReset;
         }
-        //[ContextMenu("Jump")]
-        public void Jump()
+
+        private void OnObstacleEvent(ObstaclePayload payload)
         {
-            if (index < (cats.Length - 1) * SPEED)
+            // Debug.Log($"ObsEvent 1");
+            if (payload.Obstacle != _parentObstacle) return;
+            Debug.Log($"ObsEvent 2");
+            if (payload.Successful)
             {
-                cats[index / SPEED].SetActive(false);
-                cats[(index + 1) / SPEED].SetActive(true);
-                index++;
+                Animate();
             }
-            else if (index == (cats.Length - 1) * SPEED)
+        }
+
+        private void Animate()
+        {
+            Debug.Log("ANIMATE!");
+            _startTime = Time.time;
+            StopAllCoroutines();
+            StartCoroutine(AnimateRoutine());
+        }
+
+        private IEnumerator AnimateRoutine()
+        {
+            var frameIdx = 0;
+            while (frameIdx < _cats.Length)
             {
-                cats[index / SPEED].SetActive(false);
-                index++;
+                var secsSinceStart = Time.time - _startTime;
+                var frame = secsSinceStart * FramesPerSec;
+                frameIdx = Mathf.RoundToInt(frame);
+                
+                SetFrameActive(frameIdx);
+                yield return null;
+            }
+        }
+
+        private void SetFrameActive(int frameIdx)
+        {
+            Debug.Log($"SetFrameActive({frameIdx})");
+            if (frameIdx >= FrameCount) frameIdx = FrameCount - 1;
+            for (var i = 0; i < FrameCount; i++)
+            {
+                var catGO = _cats[i];
+                var active = i == frameIdx;
+                catGO.SetActive(active);
             }
         }
     }
