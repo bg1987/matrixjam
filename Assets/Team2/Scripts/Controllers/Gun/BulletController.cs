@@ -35,6 +35,7 @@ namespace MatrixJam.Team2
             if (other.gameObject.TryGetComponent(out PlayerController playerController))
             {
                 playerController.ActivateCheckpoint();
+                Destroy(gameObject);
                 return;
             }
             if (other.gameObject.TryGetComponent(out Floopable floopable))
