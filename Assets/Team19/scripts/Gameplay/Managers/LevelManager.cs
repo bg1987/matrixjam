@@ -24,9 +24,11 @@ namespace MatrixJam.Team19.Gameplay.Managers
         [SerializeField]
         private Exit _levelFailExit;
 
-        [Header("Player Handler")]
         [SerializeField]
         private LevelPlayerHandler _playerHandler;
+
+        [SerializeField]
+        private ModifiedContentManager _modifiedContentManager;
 
         private int _levelWinCount = 0;
         private int _levelLossCount = 0;
@@ -51,6 +53,9 @@ namespace MatrixJam.Team19.Gameplay.Managers
             _gameStarter = starter;
             _startedEntranceNumber = entrance_number;
 
+            _modifiedContentManager.InitializeByEntrance(entrance_number, _winRequiredPassCount);
+            _modifiedContentManager.ModifyContentByProgress(_winRequiredPassCount);
+
             _playerHandler.StartLevel(starter, entrance_number);
         }
 
@@ -66,7 +71,7 @@ namespace MatrixJam.Team19.Gameplay.Managers
             }
             else
             {
-                RespawnPlayer();
+                ActOnLevelLost();
             }
         }
 
@@ -80,10 +85,21 @@ namespace MatrixJam.Team19.Gameplay.Managers
             }
             else
             {
-                RespawnPlayer();
-
-                LevelPassed?.Invoke();
+                ActOnLevelPassed();
             }
+        }
+
+        private void ActOnLevelPassed()
+        {
+            RespawnPlayer();
+
+            _modifiedContentManager.ModifyContentByProgress(_levelWinCount);
+            LevelPassed?.Invoke();
+        }
+
+        private void ActOnLevelLost()
+        {
+            RespawnPlayer();
         }
 
         private void ActOnLevelFail()

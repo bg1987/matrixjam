@@ -10,11 +10,20 @@ namespace MatrixJam.Team19.Gameplay.Authoring
         [SerializeField]
         private float _spawnIntervalSeconds;
 
+        [SerializeField]
+        private bool _shouldSpawnOnStart;
+
         private float _lastSpawnTime;
 
         private void Start()
         {
-            _lastSpawnTime = Time.time;
+            if (_shouldSpawnOnStart)
+            {
+                _lastSpawnTime = Time.time - _lastSpawnTime;
+            }
+
+            ResetSpawnTime();
+
         }
 
         private void Update()
@@ -22,8 +31,14 @@ namespace MatrixJam.Team19.Gameplay.Authoring
             if (Time.time - _lastSpawnTime > _spawnIntervalSeconds)
             {
                 Instantiate(_spawnedPrefab, transform.position, transform.rotation);
-                _lastSpawnTime = Time.time;
+
+                ResetSpawnTime();
             }
+        }
+
+        private void ResetSpawnTime()
+        {
+            _lastSpawnTime = Time.time;
         }
     }
 }

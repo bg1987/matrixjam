@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Falling Numbers Material
+  m_Name: Falling Numbers Cyan Factory Base
   m_Shader: {fileID: 4800000, guid: b0934a6babc38154c89c1a6209849d01, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -83,7 +83,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Grid: 14
-    - _GridX: 7
+    - _GridX: 32.4
     - _GridY: 31
     - _MainTex1_YScrollSpeed: 64.88
     - _MainTex2_YScrollSpeed: 64.12
@@ -103,10 +103,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
-    - _BacklightColor: {r: 0.1033731, g: 0.9528302, b: 0.1033731, a: 1}
+    - _BacklightColor: {r: 0, g: 0.96078444, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Grid2: {r: 4, g: 48.34, b: 2, a: 2}
     - _ProgressionHue: {r: 0.05493901, g: 0.9339623, b: 0, a: 1}
-    - _RegularColor: {r: 0.04043125, g: 0.2830189, b: 0, a: 1}
-    - _UniqueColor: {r: 0.2814424, g: 1, b: 0, a: 1}
+    - _RegularColor: {r: 0, g: 0.28235295, b: 0.2823529, a: 1}
+    - _UniqueColor: {r: 0, g: 1, b: 0.9270866, a: 1}
