@@ -51,7 +51,6 @@ namespace MatrixJam.Team2
 
         void Activate()
         {
-            Debug.Log("Activated");
             spriteRenderer.color = activatedColor;
             isActive = true;
             onActived.Invoke();
@@ -59,7 +58,6 @@ namespace MatrixJam.Team2
 
         void Deactivate()
         {
-            Debug.Log("Deactivated");
             spriteRenderer.color = deactivatedColor;
             isActive = false;
             onDeactived.Invoke();

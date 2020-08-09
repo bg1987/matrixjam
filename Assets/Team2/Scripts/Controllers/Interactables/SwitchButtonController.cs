@@ -13,7 +13,6 @@ namespace MatrixJam.Team2
         {
             DisableInteraction();
             onInteracted.Invoke();
-            Debug.Log("Interacted");
         }
     }
 }

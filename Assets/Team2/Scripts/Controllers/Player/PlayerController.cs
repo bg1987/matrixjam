@@ -13,6 +13,8 @@ namespace MatrixJam.Team2
         [SerializeField] private float walkAnimSpeedThresh = 0.1f;
         [SerializeField] private int maxJumps = 1;
 
+        float horizontalInput;
+        bool jumpInput;
         private Animator playerAnimator;
         private Rigidbody2D rb;
         private bool isGrounded = false;
@@ -27,16 +29,20 @@ namespace MatrixJam.Team2
 
         void Update()
         {
-            float horizontalInput = Input.GetAxis("Horizontal");
-            bool jumpInput = Input.GetKeyDown(KeyCode.Space);
-            Move(horizontalInput);
-            Jump(jumpInput);
+            horizontalInput = Input.GetAxis("Horizontal");
+            jumpInput = Input.GetKey(KeyCode.Space);
 
             if (Input.GetKeyDown(KeyCode.G))
             {
                 ReturnToCheckpoint();
             }
             AnimWalk();
+        }
+
+        void FixedUpdate()
+        {
+            Move(horizontalInput);
+            Jump(jumpInput);
         }
 
         void OnTriggerEnter2D(Collider2D other)
@@ -47,10 +53,14 @@ namespace MatrixJam.Team2
                 this.checkpoint = checkpoint;
             }
 
-            GoThroughController goThroughController;
-            if (other.TryGetComponent<GoThroughController>(out goThroughController))
+            if (other.TryGetComponent(out GoThroughController goThroughController))
             {
                 if (goThroughController.enabled) return;
+            }
+
+            if (other.TryGetComponent(out BroniReceiverController broniReceiverController))
+            {
+                return;
             }
 
             isGrounded = true;
