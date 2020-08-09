@@ -13,7 +13,7 @@ namespace MatrixJam.Team10
         
         private int cleanFactor;
         private int hungerFactor;
-        private int workFactor;
+        private double workFactor;
         private int killFactor;
 
         public List<Choice> choices;
@@ -21,6 +21,7 @@ namespace MatrixJam.Team10
         public Text Timer;
         public GameObject Panel;
         public RandomDialogueTree t;
+        public string playerName;
 
         void Start()
         {
@@ -28,8 +29,7 @@ namespace MatrixJam.Team10
             declareChoices();
         }
 
-        void Update()
-        {
+        void Update(){
             Timer.text = "c - " + cleanFactor + ", h - " + hungerFactor 
                 + ", w - " + workFactor + ", k - " + killFactor + ", r - " 
                 + repeat + ", lastAction - " + lastActionID + "\ntime-" + time.ToString();
@@ -47,8 +47,8 @@ namespace MatrixJam.Team10
         }
 
         public void declareChoices(){
-            choices = generalActions(); //6
-            choices.AddRange(RoomActions()); //7
+            choices = generalActions(); //10
+            choices.AddRange(RoomActions()); //11
             choices.AddRange(BathRoomActions()); //1
             choices.AddRange(DialogueChoiceActions());//28
         }
@@ -91,7 +91,14 @@ namespace MatrixJam.Team10
             }
         }
 
-        // actions that can be accessed from more then one room - 6
+        public void DialogueMenu(Dialogue dialogue){
+            FindObjectOfType<DialogueManager>().StartActionChoice(dialogue);
+        }
+        public void DialogueMenu(DialogueTree dialogue){
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        }
+
+        // actions that can be accessed from more then one room - 10
         public List<Choice> generalActions(){
             List<Choice> actions = new List<Choice>();
             // bed + couch
@@ -114,7 +121,8 @@ namespace MatrixJam.Team10
             // tv + pc
             actions.Add(new Choice("play games", () => {
                 CheckRepeat("play");
-                //open menu - day in life 2020 edition / metrix game / ... / ... 
+                Dialogue a = new Dialogue("I should play...", new int[] {6, 7, 8});
+                DialogueMenu(a);
                 lastActionID = "play";
             }));
             actions.Add(new Choice("netflix&chill", () => {
@@ -132,9 +140,23 @@ namespace MatrixJam.Team10
                 }
                 lastActionID = "washHands";
             }));
+            //game-followup
+            actions.Add(new Choice("MatrixJam", () => {
+                time = time.AddMinutes(45);
+            }));
+            actions.Add(new Choice("A day in life 2020", () => {
+                // insta death DEath
+            }));
+            actions.Add(new Choice("3", () => {
+                time = time.AddMinutes(30);
+            }));
+            actions.Add(new Choice("4", () => {
+                time = time.AddMinutes(15);
+            }));
             return actions;
         }
 
+        // total: 11
         private List<Choice> RoomActions(){
             List<Choice> actions = new List<Choice>();
             //bed
@@ -151,25 +173,30 @@ namespace MatrixJam.Team10
                 lastActionID = "clothes";
             }));
             actions.Add(new Choice("hide", () => {
-                Panel.SetActive(true);
                 time = time.AddMinutes(30);
+                Panel.SetActive(true);
+                Dialogue a = new Dialogue("", new int[] {13, 14});
+                DialogueMenu(a);
                 lastActionID = "hide";
             }));
+            //hide-followup
             actions.Add(new Choice("go out", () => {
                 Panel.SetActive(false);
-                killFactor = killFactor -1;
+                killFactor -= 1;
                 lastActionID = "LGBT";
             }));
             actions.Add(new Choice("stay", () => {
                 CheckRepeat("hide");
                 time = time.AddMinutes(30);
+                Dialogue a = new Dialogue("", new int[] {13, 14});
+                DialogueMenu(a);
                 lastActionID = "hide";
             }));
             //pc
             actions.Add(new Choice("work", () => {
                 CheckRepeat("work");
-                //asks how long - 0.5, 1, 2, 4 - those are the points
-                //open menu - 0.5, 1, 2, 4  choices
+                Dialogue a = new Dialogue("work for...", new int[] {17, 18, 19, 20});
+                DialogueMenu(a);
                 lastActionID = "work";
             }));
             actions.Add(new Choice("call friend", () => {
@@ -177,9 +204,27 @@ namespace MatrixJam.Team10
                 //open talk interaction
                 lastActionID = "call";
             }));
+            //work-followup
+            actions.Add(new Choice("30 Min", () => {
+                time = time.AddMinutes(30);
+                workFactor += 0.5;
+            }));
+            actions.Add(new Choice("1 Hour", () => {
+                time = time.AddMinutes(60);
+                workFactor += 1;
+            }));
+            actions.Add(new Choice("2 Hours", () => {
+                time = time.AddMinutes(30*4);
+                workFactor += 2;
+            }));
+            actions.Add(new Choice("4 Hours", () => {
+                time = time.AddMinutes(30*8);
+                workFactor += 4;
+            }));
             return actions;
         }
 
+        // total: 4
         private List<Choice> BathRoomActions(){
             List<Choice> actions = new List<Choice>();
             //toilet
@@ -188,14 +233,97 @@ namespace MatrixJam.Team10
                 time.AddMinutes(30);
                 lastActionID = "number2";
             }));
+            //shower + sink
+            actions.Add(new Choice("shower", () => {
+                CheckRepeat("shower");
+                time.AddMinutes(30);
+                lastActionID = "shower";
+            }));
+            actions.Add(new Choice("bubble bath", () => {
+                CheckRepeat("shower");
+                time.AddMinutes(120);
+                lastActionID = "shower";
+            }));
+            actions.Add(new Choice("swim", () => {
+                CheckRepeat("swim");
+                Dialogue a = new Dialogue("playerName", "ouch! this is no place to swim...");
+                DialogueMenu(a);
+                cleanFactor += 1;
+                time.AddMinutes(30);
+                lastActionID = "swim";
+            }));
             return actions;
         }
-        public void DialogueMenu(Dialogue dialogue){
-            FindObjectOfType<DialogueManager>().StartActionChoice(dialogue);
-        }
-        public void DialogueMenu(DialogueTree dialogue){
-            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        }
+
+        // total: 5
+        private List<Choice> KitchenActions(){
+            List<Choice> actions = new List<Choice>();
+            //ref
+            actions.Add(new Choice("eat something", () => {
+                CheckRepeat("eat");
+                time.AddMinutes(30);
+                hungerFactor += 1;
+                if(playerName == "MATRIX"){
+                    Dialogue a = new Dialogue("", new int[] {});
+                    DialogueMenu(a);
+                }
+                //check for more data;
+                lastActionID = "eat";
+            }));
+            actions.Add(new Choice("drink something", () => {
+                CheckRepeat("drink");
+                time.AddMinutes(5);
+                lastActionID = "drink";
+            }));
+            //sink
+            actions.Add(new Choice("do the dishes", () => {
+                CheckRepeat("dishes");
+                time.AddMinutes(10);
+                lastActionID = "dishes";
+            }));
+            //ref-followup
+            actions.Add(new Choice("blue pill", () => {
+                lastActionID = "blue";
+            }));
+            actions.Add(new Choice("red pill", () => {
+                lastActionID = "red";
+            }));
+            return actions;
+        } 
+
+        // total: 5
+        private List<Choice> LivingRoomActions(){
+            List<Choice> actions = new List<Choice>();
+            //tv
+            actions.Add(new Choice("watch news", () => {
+                CheckRepeat("news");
+                time.AddMinutes(30);
+                //maybe play video?
+                lastActionID = "news";
+            }));
+            //couch
+            actions.Add(new Choice("sit", () => {
+                CheckRepeat("sit");
+                time.AddMinutes(10);
+                lastActionID = "sit";
+            }));
+            //magazine
+            actions.Add(new Choice("read articles", () => {
+                CheckRepeat("read");
+                time.AddMinutes(15);
+                lastActionID = "read";
+            }));
+            actions.Add(new Choice("read news", () => {
+                CheckRepeat("read");
+                time.AddMinutes(20);
+                lastActionID = "read";
+            }));
+            actions.Add(new Choice("solve puzzles", () => {
+                time.AddMinutes(40);
+                lastActionID = "puzzle";
+            }));
+            return actions;
+        } 
 
         private List<Choice> DialogueChoiceActions(){
             List<Choice> actions = new List<Choice>();
@@ -328,69 +456,6 @@ namespace MatrixJam.Team10
             // more - 28+
             return actions;
         }
-
-        //can be acsessed from computer -> 2nd menu for work
-        //modifies last action and time and points
-        public void Work(int points){
-            time.AddMinutes(points*30);
-            workFactor = workFactor + points;
-            // lastActionID = 5;  
-        }
-
-        //can be acsessed from computer or TV -> 2nd menu for Game
-        //modifies last action and time and death acordinly
-        public void Play(string gameName)
-        {
-            //update time;
-            // lastActionID = 6; 
-            if( gameName == "2020" ) 
-            {
-                //world collapses
-            }
-        }
-
-        //can be acsessed from TV 
-        //options - netflix/news/game
-        public void openTV(){
-            //open menu -  netflix/news/game
-        }
-
-        //can be acsessed from TV - > 2nd menu
-        //modifies last action and time
-        // public void WatchNews(){
-        //     CheckRepeat(9);
-        //     time.AddMinutes(60);
-        //     lastActionID = 9; 
-        // }
-
-        ///can be acsessed from  
-        //modifies last action and time
-        // public void ReadMagazins(){
-        //     CheckRepeat(10);
-        //     time.AddMinutes(20);
-        //     lastActionID = 10; 
-        // }
-
-        ///can be acsessed from kitchen
-        //modifies last action and time
-        // public void Eat(){
-        //     CheckRepeat(13);
-        //     time.AddMinutes(30);
-        //     if (lastActionID == 11)
-        //     {
-        //         cleanFactor = cleanFactor +1;
-        //     }
-        //     lastActionID = 13; 
-        // }
-
-        ///can be acsessed from kitchen
-        //modifies last action and time
-        // public void Drink(){
-        //     CheckRepeat(14);
-        //     time.AddMinutes(5);
-        //     lastActionID = 14; 
-        // }
-
     }
 }
 

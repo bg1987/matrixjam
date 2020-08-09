@@ -6,7 +6,7 @@ namespace MatrixJam.Team10
 {
     public class RandomDialogueTree
     {
-        private int NUM_OF_ACTIONS = 14;
+        private int NUM_OF_ACTIONS = 22;
         private Dictionary<string, List<DialogueTree>> randomDialogues;
         private List<DialogueTree> dialogues;
         private Character n1; // Mika

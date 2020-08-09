@@ -49,6 +49,7 @@ namespace MatrixJam.Team10
             RandomDialogueTree tr = new RandomDialogueTree(Name);
             GameRules g = FindObjectOfType<GameRules>();
             g.t = tr;
+            g.playerName = Name;
             //and activate startDialogue
             g.DialogueMenu(tr.getStarterDialogue(Name));
         }
