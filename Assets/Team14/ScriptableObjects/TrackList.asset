@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tracks:
   - clip: {fileID: 8300000, guid: 81efae026735a624cba31280847e47e8, type: 3}
-    zPerBeat: 7.5
+    zPerBeat: 6.5
     bpm: 115
   - clip: {fileID: 8300000, guid: 01f9dad032db6e84ca16aed8cc7b0147, type: 3}
-    zPerBeat: 7.5
+    zPerBeat: 6.5
     bpm: 125

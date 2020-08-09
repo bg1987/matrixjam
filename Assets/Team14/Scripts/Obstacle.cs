@@ -26,6 +26,7 @@ namespace MatrixJam.Team14
     {
         [SerializeField] private TrainMove trainMove;
         [SerializeField] private Transform moveCue; // Where should actually do the move. Null = do when triggers
+        [SerializeField] private BoxCollider trigger; // For Gizmos
 
         public static Dictionary<TrainMove, List<Obstacle>> CurrObstacles;
 
@@ -46,6 +47,12 @@ namespace MatrixJam.Team14
                     move => move, 
                     move => new List<Obstacle>()
                 );
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = new Color(0.0f, 1.0f, 0.25f, 0.3f);
+            Gizmos.DrawCube(trigger.transform.position + trigger.center, trigger.size);
         }
 
         private void OnDestroy()
