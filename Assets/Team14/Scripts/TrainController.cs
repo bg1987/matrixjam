@@ -34,8 +34,10 @@ namespace MatrixJam.Team14
         [SerializeField] private Animator[] slaveCarAnims;
 
         [Header("Debug")]
+        [SerializeField] private bool debugTrackTime = true;
         [SerializeField] private bool debugStates;
         [SerializeField] private bool debugObstacles;
+        [SerializeField] private Color  debugTrackColor = new Color(1f, 0.5f, 0f, 1f);
         [SerializeField] private Color debugStatesColor = Color.red;
         [SerializeField] private Color debugObstaclesColor = Color.green;
         [SerializeField] private Vector2 debugSize = new Vector2(2, 2);
@@ -120,7 +122,15 @@ namespace MatrixJam.Team14
 
         private void OnGUI()
         {
-            GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(debugSize.x, debugSize.y, 1f));
+            GUI.matrix = Matrix4x4.TRS(new Vector3(20f, 0f ,0f), Quaternion.identity, new Vector3(debugSize.x, debugSize.y, 1f));
+            GUILayout.Space(10);
+            if (debugTrackTime)
+            {
+                GUI.color = debugTrackColor;
+                
+                var trackTimeStr = FormatSecs(GameManager.GetTimeinTracklist());
+                GUILayout.Label($"Total Time: {trackTimeStr}");
+            }
             if (debugStates)
             {
                 GUI.color = debugStatesColor;
@@ -138,6 +148,12 @@ namespace MatrixJam.Team14
                     GUILayout.Label($"[{trainMove}]: {obstacles.Count}");
                 }
             }
+        }
+
+        private static string FormatSecs(float seconds)
+        {
+            var time = TimeSpan.FromSeconds(seconds);
+            return time.ToString(@"mm\:ss\.fff");
         }
 
         /// <summary>
@@ -275,7 +291,7 @@ namespace MatrixJam.Team14
 
         private static void SetOnlyTrigger(Animator anim, string trigger)
         {
-            Debug.Log($"({anim.name}) Setting Trigger + Resetting rest - {trigger}");
+            // Debug.Log($"({anim.name}) Setting Trigger + Resetting rest - {trigger}");
             foreach (var trig in AllTriggers)
             {
                 anim.ResetTrigger(trig);

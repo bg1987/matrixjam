@@ -73,5 +73,16 @@ namespace MatrixJam.Team14
         {
             OnFinishTracklist?.Invoke();
         }
+
+        public float GetCurrGlobalSecs()
+        {
+            var timeOffset = 0f;
+            foreach (var track in trackList.Tracks.Take(_trackIdx-1))
+            {
+                timeOffset += track.TotalSeconds;
+            }
+
+            return timeOffset + source.time;
+        }
     }
 }

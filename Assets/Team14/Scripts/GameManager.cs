@@ -94,6 +94,8 @@ namespace MatrixJam.Team14
             Instance = null;
         }
 
+        public static float GetTimeinTracklist() => Instance.audioManager.GetCurrGlobalSecs();
+
         private void OnTrackFinished(int i)
         {
             Debug.Log($"Track {i} finished!");
@@ -111,9 +113,6 @@ namespace MatrixJam.Team14
             TrackEndPositions = audioManager.GetTrackEndPositions(startAndDirection);
             TrackStartPositions = audioManager.GetTrackStartPositions(startAndDirection);
         }
-        
-        private static float GetAudioProgress(AudioSource audioSource)
-            => audioSource.time / audioSource.clip.length;
 
         public void OnDeath()
         {
