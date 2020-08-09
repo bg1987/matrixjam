@@ -24,7 +24,7 @@ namespace MatrixJam.Team10
 
         void Start()
         {
-            t = RandomDialogueTree("player1");
+            t = new RandomDialogueTree("player1");
             declareChoices();
         }
 
