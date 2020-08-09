@@ -14,6 +14,7 @@ namespace MatrixJam.Team3
         public struct StageItem {
             public string name;
             public GameObject theObject;
+            public string description;
         }
         
         [SerializeField] private List<StageItem> StagesList;
@@ -22,6 +23,16 @@ namespace MatrixJam.Team3
         
         // Start is called before the first frame update
         void Start()
+        {
+            if (Stages == null)
+            {
+                CreateStages();
+            }
+            
+           
+        }
+
+        private void CreateStages()
         {
             Stages = new Dictionary<string, GameObject>();
             foreach ( StageItem item in StagesList)
@@ -37,6 +48,11 @@ namespace MatrixJam.Team3
             foreach (GameObject go in InitialObjects)
             {
                 go.SetActive(false);
+            }
+
+            if (Stages == null)
+            {
+                CreateStages();
             }
             if (Stages.ContainsKey(item.ToLower())){
                 currentlEnabled.SetActive(false);

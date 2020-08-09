@@ -276,6 +276,16 @@ MonoBehaviour:
     theObject: {fileID: 1685610549}
   - name: 9500
     theObject: {fileID: 1690089193}
+  - name: 0000
+    theObject: {fileID: 174285234}
+  - name: 0001
+    theObject: {fileID: 2008582385}
+  - name: 0002
+    theObject: {fileID: 698438075}
+  - name: 0003
+    theObject: {fileID: 1202287612}
+  - name: 0004
+    theObject: {fileID: 679065912}
   InitialObjects:
   - {fileID: 174285234}
   - {fileID: 2008582385}
@@ -1294,7 +1304,7 @@ PrefabInstance:
     - target: {fileID: 4939990308935971524, guid: e0814737b15b5884db5f3cb41668a50c,
         type: 3}
       propertyPath: def_ent
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4939990308935971525, guid: e0814737b15b5884db5f3cb41668a50c,
         type: 3}

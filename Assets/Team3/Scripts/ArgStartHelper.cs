@@ -11,7 +11,9 @@ namespace MatrixJam.Team3
         {
             // this is how the game starts
             Debug.Log("Player Entered ARGG through entrance number:" + num_ent);
-            manager.InitialObjects[num_ent].SetActive(true);
+            //manager.InitialObjects[num_ent].SetActive(true);
+            manager.ChangeItem("000" + num_ent);
+            
         }
         
         // Start is called before the first frame update
