@@ -262,21 +262,20 @@ namespace MatrixJam.Team4
 
         private void SetUnitIllegal(int x, int y, int unitIndex)
         {
+            IllegalizePosition(x, y);
             IllegalizeLines(x, y, unitIndex);
             IllegalizeSquare(x, y, unitIndex);
         }
 
-        public void IllegalizeSquare(int x, int y, int unitIndex)
+        private void IllegalizePosition(int x, int y)
         {
-            for (int i = 0; i < _size; i++)
+            for(int i = 1; i < 9; i++)
             {
-                _possibleUnitsPerCoordinate[i, y, unitIndex] = false;
-                _possibleUnitsPerCoordinate[x, i, unitIndex] = false;
+                _possibleUnitsPerCoordinate[x, y, i] = false;
             }
-
         }
 
-        public void IllegalizeLines(int x, int y, int unitIndex)
+        public void IllegalizeSquare(int x, int y, int unitIndex)
         {
             var square = new Square(x, y);
 
@@ -288,6 +287,16 @@ namespace MatrixJam.Team4
                 }
             }
         }
+
+        public void IllegalizeLines(int x, int y, int unitIndex)
+        {
+            for (int i = 0; i < _size; i++)
+            {
+                _possibleUnitsPerCoordinate[i, y, unitIndex] = false;
+                _possibleUnitsPerCoordinate[x, i, unitIndex] = false;
+            }
+
+        }
     }
 
     public class Square
@@ -297,11 +306,11 @@ namespace MatrixJam.Team4
 
         public Square(int x, int y)
         {
-            int _startX = x / 3;
-            _startX *= 3;
+            startX = x / 3;
+            startX *= 3;
 
-            int _startY = y / 3;
-            _startY *= 3;
+            startY = y / 3;
+            startY *= 3;
         }
 
     }
