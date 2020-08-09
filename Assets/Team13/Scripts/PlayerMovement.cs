@@ -17,6 +17,10 @@ namespace MatrixJam.Team13
 		[SerializeField] private float _runSpeed = 15f;
 		[SerializeField] private float _sneakSpeed = 5f;
 		private float _speed;
+
+		void Start(){
+			_speed = _walkSpeed;
+		}
         
         void Update(){
             _x = Input.GetAxis("Horizontal");
@@ -48,7 +52,7 @@ namespace MatrixJam.Team13
 			_move = transform.right * _x + transform.forward * _z;
 
 			_controller.Move(_move * _speed * Time.deltaTime);
-			Debug.Log(_moveState);
+			//Debug.Log(_moveState);
         }
     }
 }
