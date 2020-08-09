@@ -188,6 +188,15 @@ namespace MatrixJam.Team10
             }));
             return actions;
         }
+
+        private List<Choice> DialogChoiceActions(){
+            List<Choice> actions = new List<Choice>();
+            //kitchen
+            actions.Add(new Choice("number 2", () => {
+                lastActionID = "Talk";
+            }));
+            return actions;
+        }
         
         //can be acsessed from computer -> 2nd menu for work
         //modifies last action and time and points

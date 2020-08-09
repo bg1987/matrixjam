@@ -20,7 +20,7 @@ namespace MatrixJam.Team10
         void OnTriggerEnter2D(Collider2D c){
             isInRoom = !isInRoom;
             if(isInRoom){
-                // bgSound.UnPause();
+                bgSound.UnPause();
                 TriggerRandomDialogue();
             }
             else{
@@ -28,10 +28,12 @@ namespace MatrixJam.Team10
             }
         }
 
-        public void TriggerRandomDialogue(){
+        public void TriggerRandomDialogue()
+        {
             DialogueTree a;
             bool dialog = FindObjectOfType<GameRules>().t.getRandomDialog(RoomName, out a);
-            if(dialog){
+            if(dialog)
+            {
                 FindObjectOfType<DialogueManager>().StartDialogue(a);
             }
         }
