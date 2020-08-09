@@ -43,9 +43,7 @@ namespace MatrixJam.Team10
         }
 
         void Update(){
-            Timer.text = "c - " + cleanFactor + ", h - " + hungerFactor 
-                + ", w - " + workFactor + ", k - " + killFactor + ", r - " 
-                + repeat + ", lastAction - " + lastActionID + "\ntime-" + time.ToString();
+            Timer.text = time.ToString("hh:mm tt");
             //update time display
             if((time.Hour > 12 && deathCheck < 1) || (time.Hour > 6 && deathCheck < 2)) //12-start noon, 18-start evening
             {
