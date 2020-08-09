@@ -26,11 +26,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381077302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0, z: 4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6378052832229847593}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &381077305
 MeshFilter:
@@ -148,25 +148,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 461315107231522436, guid: d608cf76c33759847b2ee6953541668c,
         type: 3}
-      propertyPath: m_Size.x
-      value: 3.5152423
-      objectReference: {fileID: 0}
-    - target: {fileID: 461315107231522436, guid: d608cf76c33759847b2ee6953541668c,
-        type: 3}
       propertyPath: m_Size.z
-      value: 2.9265819
+      value: 4.9500003
       objectReference: {fileID: 0}
-    - target: {fileID: 461315107231522436, guid: d608cf76c33759847b2ee6953541668c,
+    - target: {fileID: 3280645601191201580, guid: d608cf76c33759847b2ee6953541668c,
         type: 3}
-      propertyPath: m_Center.z
-      value: -0.6627481
-      objectReference: {fileID: 0}
-    - target: {fileID: 461315107231522439, guid: d608cf76c33759847b2ee6953541668c,
+      propertyPath: obstacleObj
+      value: 
+      objectReference: {fileID: 381077302}
+    - target: {fileID: 4318348453872503575, guid: d608cf76c33759847b2ee6953541668c,
         type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.92
+      propertyPath: obstacleObj
+      value: 
+      objectReference: {fileID: 381077302}
+    - target: {fileID: 4318348453872503575, guid: d608cf76c33759847b2ee6953541668c,
+        type: 3}
+      propertyPath: beatsAfter
+      value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4318348453872503575, guid: d608cf76c33759847b2ee6953541668c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d608cf76c33759847b2ee6953541668c, type: 3}
 --- !u!4 &6378052832229847593 stripped
 Transform:

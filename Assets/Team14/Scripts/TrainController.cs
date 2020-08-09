@@ -130,6 +130,7 @@ namespace MatrixJam.Team14
 
         public void HonkAnim()
         {
+            PlaySFX(TrainMove.Honk);
             CueFutureAnimations("Honk", null);
         }
 
