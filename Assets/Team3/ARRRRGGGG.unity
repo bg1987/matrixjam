@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b5e3be53df61840a6d739a948654d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextCharacter: 0
+  NextCharacter: 1
   YoutubeEnabled: 1
   TextEnabled: 1
   textToDisplay: {fileID: 1086523659}
@@ -572,7 +572,7 @@ MonoBehaviour:
       I''m this close to turning this ship around and going back to London, and not
       even..."<br><br>Before you can complete your sentence, a cannon ball hits the 
       the bow of the ship, and rips a hole in it.<br><br>The ships sinks, and the
-      pirates have one.<br><br>Enter code : GAME OVER<br>'
+      pirates have one.<br><br>GAME OVER<br><br>Enter code : 6961<br>'
     forceText: 0
     forceImage: 0
   - name: 9116
@@ -603,8 +603,8 @@ MonoBehaviour:
       crew of 4 incapable people, might not have been the right idea.<br><br>You
       realize that and about to give the order to flee, but before you can complete
       your sentence, a cannon ball hits the  the bow of the ship, and rips a hole
-      in it.<br><br>The ships sinks, and the pirates have won.<br><br>Enter code
-      : GAME OVER'
+      in it.<br><br>The ships sinks, and the pirates have won.<br><br>GAME OVER<br><br>Enter
+      code : 6961'
     forceText: 0
     forceImage: 0
   - name: 5678
@@ -618,7 +618,8 @@ MonoBehaviour:
       and see he is hanging by his leg, upside down from one of the ropes.<br><br>You''re
       about to give the order to flee, but before you can complete your sentence,
       a cannon ball hits the the bow of the ship, and rips a hole in it.<br><br>The
-      ships sinks, and the pirates have won.<br><br>Enter code : GAME OVER'
+      ships sinks, and the pirates have won.<br><br>GAME OVER <br> <br>Enter code
+      : 6961'
     forceText: 0
     forceImage: 0
   - name: AA4966
@@ -758,27 +759,27 @@ MonoBehaviour:
     theObject: {fileID: 676379522}
     description: 'You head toward the rope that hold the main sail, when you hear
       the cook screams: "MY POTATOES!" as he drops the rope and runs down towards
-      the kitchen.  <br> <br>You catch the rope and hold it, and as you do a heavy
+      the kitchen. <br><br>You catch the rope and hold it, and as you do a heavy
       gust of wind blows through the sail, you''re still holding on to the rope,
-      and suddenly it pulls you up towards the main mast.  <br>You assume that this
+      and suddenly it pulls you up towards the main mast. <br>You assume that this
       has to be due to you tiny weight. You do put an effort to remain fit and not
-      gain weight.  <br>But, as you are thrusted upwards you notice Timmy, the deckhand
+      gain weight. <br>But, as you are thrusted upwards you notice Timmy, the deckhand
       hanging upside down on the other end of this rope, from the main mast, foolishly
-      waving to on his way down as you are flying high. <br> <br>Such an incompetent
-      crew... <br> <br>Soon after a cannon ball hits the ship, it sinks and the pirates
-      have won... <br> <br>Enter code: GAME OVER.'
+      waving to on his way down as you are flying high.<br><br>Such an incompetent
+      crew...<br><br>Soon after a cannon ball hits the ship, it sinks and the pirates
+      have won...<br><br>GAME OVER.<br><br>Enter code:  6965'
     forceText: 0
     forceImage: 0
   - name: 6666
     theObject: {fileID: 1497380775}
     description: 'Holding the secret map and code to the treasure chest your father
       has been after his whole life, it is obvious that his journal is your most
-      precious possession and you cannot let Orange Beard get his hand on it.  <br>You
-      run to your cabin, pick it up, and try to find a hide it.  <br>Where would
-      be the best hiding place?  <br>Under the bed? In your clothes bag? Somewhere
-      else? You can''t figure it out. <br> <br>While you are standing there indecisive
-      a cannon ball this the ship and it start sinking. <br> <br>The pirates and
-      won.  <br> <br>Enter Code: GAME OVER.'
+      precious possession and you cannot let Orange Beard get his hand on it. <br>You
+      run to your cabin, pick it up, and try to find a hide it. <br>Where would be
+      the best hiding place? <br>Under the bed? In your clothes bag? Somewhere else?
+      You can''t figure it out.<br><br>While you are standing there indecisive a
+      cannon ball this the ship and it start sinking.<br><br>The pirates and won.
+      <br><br>GAME OVER. <br> <br>Enter code:  6965'
     forceText: 0
     forceImage: 0
   - name: 1199
@@ -811,7 +812,8 @@ MonoBehaviour:
       out of this!"<br><br>You suspect there''s something beneath the surface with
       this two.<br><br>The Captain continues his argument when a nother cannon ball
       hits the ship, this time in the lower bow, and rips a big hole in it.<br><br>The
-      ships sinks, and the pirates have one.<br><br>Enter code : GAME OVER'
+      ships sinks, and the pirates have won.<br><br>GAME OVER<br><br>Enter code :
+      6962'
     forceText: 0
     forceImage: 0
   - name: 1617
@@ -828,22 +830,21 @@ MonoBehaviour:
   - name: 1716
     theObject: {fileID: 1922929276}
     description: '"Battle Stations" orders the captain, who comes back from his ready
-      room, fully clothed this time! <br> <br>You look at Jean Pierre: "You take
-      the port cannon I take starborn", he nods back at you and goes towards the
-      lower, then stops and comes back. <br> <br>"Starboard", he says. <br>"What?"
-      <br>"You meant to say starboard, but you said starborn." <br>"Did you?" <br>"Yes"
-      <br>"Huh! funny." <br>"It''s weird. I know it''s called Starboard, why would
-      I say starborn?" <br>"I know right?" <br>"Yeah, It totally doesn''t make any
-      sense". <br>"exactly, that''s what I said.." <br>"Well, anyways, go to the
-      right side of the ship and man the cannon" <br>"Hold on, is port the right
-      side of the ship, or is starborn the right side of the ship?" <br>"starBOARD"
-      <br>"right." <br>"yes, right" <br>"not the left side?" <br>"what?" <br>"starboard"
-      <br>"right" <br>"that''s what i''m asking." <br>"what?" <br>"Starboard is left
-      side of the ship?" <br>"Right" <br>"Now i''m confused. is the the right side
-      or the left side?" <br> <br>At this point, a cannon ball hits the ship, this
-      time in the lower bow, on the starboard side of the ship, and rips a big hole
-      in it. <br> <br>The ships sinks, and the pirates have won. <br> <br>Enter code
-      : GAME OVER'
+      room, fully clothed this time!<br><br>You look at Jean Pierre: "You take the
+      port cannon I take starborn", he nods back at you and goes towards the lower,
+      then stops and comes back.<br><br>"Starboard", he says.<br>"What?"<br>"You
+      meant to say starboard, but you said starborn."<br>"Did you?"<br>"Yes"<br>"Huh!
+      funny."<br>"It''s weird. I know it''s called Starboard, why would I say starborn?"<br>"I
+      know right?"<br>"Yeah, It totally doesn''t make any sense".<br>"exactly, that''s
+      what I said.."<br>"Well, anyways, go to the right side of the ship and man
+      the cannon"<br>"Hold on, is port the right side of the ship, or is starborn
+      the right side of the ship?"<br>"starBOARD"<br>"right."<br>"yes, right"<br>"not
+      the left side?"<br>"what?"<br>"starboard"<br>"right"<br>"that''s what i''m
+      asking."<br>"what?"<br>"Starboard is left side of the ship?"<br>"Right"<br>"Now
+      i''m confused. is the the right side or the left side?"<br><br>At this point,
+      a cannon ball hits the ship, this time in the lower bow, on the starboard side
+      of the ship, and rips a big hole in it.<br><br>The ships sinks, and the pirates
+      have won.<br><br> <br>GAME OVER <br> <br>Enter code : 6962'
     forceText: 0
     forceImage: 0
   - name: 3344
@@ -864,8 +865,8 @@ MonoBehaviour:
       here you are to tell this tale! You were left all alone? How did you survive?"
       you are now very intrigued but this story. <br><br>"Oh, this is the best part!"
       He continues, when a cannon ball hits the ship, this time in the lower bow,
-      and rips a big hole in it.<br><br>The ships sinks, and the pirates have one.<br><br>Enter
-      code : GAME OVER'
+      and rips a big hole in it.<br><br>The ships sinks, and the pirates have one.<br><br>
+      <br>GAME OVER <br> <br>Enter code : 6962'
     forceText: 0
     forceImage: 0
   - name: 9001
@@ -1037,19 +1038,19 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
   - name: 9400
-    theObject: {fileID: 1685610549}
-    description: 'OH , why am I so clumsy... <br>I''m slipped on the rope ladder
-      and now literally hanging upside down from the main mast rope and can''t move. 
-      <br>The pirates are firing on the ship. Oh no. They hit it.  <br>That''s a
-      shame. Well, it''s been a fun trip.  Bye! <br> <br>Enter Code: GAME OVER.'
+    theObject: {fileID: 334371277}
+    description: 'OH , why am I so clumsy...<br>I''ve slipped on the rope ladder
+      and now literally hanging upside down from the main mast rope and can''t move.
+      <br>The pirates are firing on the ship. Oh no. They hit it. <br>That''s a shame.
+      Well, it''s been a fun trip.  Bye!<br><br>GAME OVER.<br><br>Enter Code:  6964'
     forceText: 0
     forceImage: 0
   - name: 9500
     theObject: {fileID: 1690089193}
-    description: 'I''ll just stat here for a little bit. I''m too useless down there
+    description: 'I''ll just stay here for a little bit. I''m too useless down there
       to actually do anything. What''s that?  The pirates are firing on the ship!
-      Oh no. They hit it!  <br>That''s a shame. Well.. it''s been a fun trip.  But
-      now it''s over. Bye! <br> <br>Enter Code: GAME OVER."'
+      Oh no. They hit it! <br>That''s a shame. Well.. it''s been a fun trip.  But
+      now it''s over. Bye!<br><br><br>GAME OVER.<br><br>Enter Code:  6964'
     forceText: 0
     forceImage: 0
   - name: 0000
@@ -1084,7 +1085,9 @@ MonoBehaviour:
     forceImage: 0
   - name: 0002
     theObject: {fileID: 698438075}
-    description: 
+    description: 'Ah, the view crow''s nest. Water as far as eyes can see. I like
+      the quite from up here, while my other crew mates are down below. <br>Where
+      should look next? <br>West: 9001 East: 9002: North: 9003. South 9004.'
     forceText: 0
     forceImage: 0
   - name: 0003
@@ -1162,8 +1165,94 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &125252712
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843485, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: num_portal
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843490, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_Name
+      value: Exit 6 - Fart
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4b81ffe1afa894f419d9876fa8ed57b8, type: 3}
+--- !u!114 &125252713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1148892779484843485, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 125252712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a17f5cb339b164a84713182ae1d7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &174285234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,7 +1341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &187323596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1575,13 +1664,15 @@ RectTransform:
   - {fileID: 621265389}
   - {fileID: 467661023}
   - {fileID: 1208058518}
+  - {fileID: 2079319470}
+  - {fileID: 279489585}
   m_Father: {fileID: 187323598}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28.8, y: 10.5}
-  m_SizeDelta: {x: 1037.4796, y: 635.5067}
+  m_AnchoredPosition: {x: 22.8, y: 30.6}
+  m_SizeDelta: {x: 1025.41, y: 675.7388}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &258475136
 MonoBehaviour:
@@ -1769,6 +1860,162 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264415046}
   m_CullTransparentMesh: 0
+--- !u!1 &279489584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 279489585}
+  - component: {fileID: 279489587}
+  - component: {fileID: 279489586}
+  m_Layer: 5
+  m_Name: Text (TMP) (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &279489585
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279489584}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 258475135}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 148.00006, y: -9.27}
+  m_SizeDelta: {x: 246.73706, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &279489586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279489584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: FART.EXE
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_textAlignment: 514
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 279489586}
+    characterCount: 8
+    spriteCount: 0
+    spaceCount: 0
+    wordCount: 2
+    linkCount: 0
+    lineCount: 1
+    pageCount: 1
+    materialCount: 1
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &279489587
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279489584}
+  m_CullTransparentMesh: 0
 --- !u!1 &287428752
 GameObject:
   m_ObjectHideFlags: 0
@@ -1868,7 +2115,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &324220892
 GameObject:
@@ -2584,7 +2831,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &435695435
 GameObject:
@@ -4615,7 +4862,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &756321480
 GameObject:
@@ -4741,7 +4988,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &810570003
 GameObject:
@@ -5170,7 +5417,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &875319767
 GameObject:
@@ -5320,6 +5567,163 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886475768}
+  m_CullTransparentMesh: 0
+--- !u!1 &889245724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 889245725}
+  - component: {fileID: 889245729}
+  - component: {fileID: 889245728}
+  - component: {fileID: 889245727}
+  - component: {fileID: 889245726}
+  m_Layer: 5
+  m_Name: Fart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &889245725
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889245724}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1567853621}
+  m_Father: {fileID: 1200879495}
+  m_RootOrder: 48
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &889245726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889245724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2734c660b7ea6d408dffe9880ec552a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 125252713}
+        m_MethodName: EndLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &889245727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889245724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.9811321, g: 0.85617656, b: 0.85617656, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 889245728}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 106065707}
+        m_MethodName: OpenWebsite
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: https://youtu.be/7OoNZh9iodA
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &889245728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889245724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &889245729
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889245724}
   m_CullTransparentMesh: 0
 --- !u!1001 &906639517
 PrefabInstance:
@@ -5489,7 +5893,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &941028673
 PrefabInstance:
@@ -5907,9 +6311,9 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 42
   m_fontStyle: 0
   m_textAlignment: 257
   m_characterSpacing: 0
@@ -6620,10 +7024,11 @@ RectTransform:
   - {fileID: 1146909143}
   - {fileID: 749636476}
   - {fileID: 389277964}
+  - {fileID: 889245725}
   - {fileID: 1516244575}
   - {fileID: 754979246}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7411,7 +7816,7 @@ RectTransform:
   - {fileID: 2121689702}
   - {fileID: 27723915}
   m_Father: {fileID: 1200879495}
-  m_RootOrder: 48
+  m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7500,6 +7905,84 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548652921}
+  m_CullTransparentMesh: 0
+--- !u!1 &1567853620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1567853621}
+  - component: {fileID: 1567853623}
+  - component: {fileID: 1567853622}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1567853621
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567853620}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 889245725}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1567853622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567853620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1567853623
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567853620}
   m_CullTransparentMesh: 0
 --- !u!1 &1571007731
 GameObject:
@@ -8301,7 +8784,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825569024}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -9115,6 +9598,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055173338}
   m_CullTransparentMesh: 0
+--- !u!1 &2079319469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2079319470}
+  - component: {fileID: 2079319472}
+  - component: {fileID: 2079319471}
+  m_Layer: 5
+  m_Name: Image (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2079319470
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079319469}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 258475135}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 148, y: 109.62}
+  m_SizeDelta: {x: 188, y: 188}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2079319471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079319469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: da023117097951b43aceda6290765025, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2079319472
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079319469}
+  m_CullTransparentMesh: 0
 --- !u!1 &2121689701
 GameObject:
   m_ObjectHideFlags: 0
@@ -9286,7 +9843,7 @@ PrefabInstance:
     - target: {fileID: 2048945306042880964, guid: d51d1b9a3191cb44088ac1491eb1cb99,
         type: 3}
       propertyPath: m_RootOrder
-      value: 49
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2048945306042880964, guid: d51d1b9a3191cb44088ac1491eb1cb99,
         type: 3}
