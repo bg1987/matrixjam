@@ -5,18 +5,23 @@ using UnityEngine.Events;
 
 namespace MatrixJam.Team2
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class BroniReceiverController : MonoBehaviour
     {
         [SerializeField] private float deactivationTime;
         [SerializeField] private UnityEvent onActived;
         [SerializeField] private UnityEvent onDeactived;
+        [SerializeField] private Color deactivatedColor;
+        [SerializeField] private Color activatedColor;
 
+        private SpriteRenderer spriteRenderer;
         private bool isActive = false;
         private float deactivationTimer;
 
         void Start()
         {
             deactivationTimer = deactivationTime;
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         void Update()
@@ -47,6 +52,7 @@ namespace MatrixJam.Team2
         void Activate()
         {
             Debug.Log("Activated");
+            spriteRenderer.color = activatedColor;
             isActive = true;
             onActived.Invoke();
         }
@@ -54,6 +60,7 @@ namespace MatrixJam.Team2
         void Deactivate()
         {
             Debug.Log("Deactivated");
+            spriteRenderer.color = deactivatedColor;
             isActive = false;
             onDeactived.Invoke();
         }

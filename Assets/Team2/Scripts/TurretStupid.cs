@@ -24,6 +24,7 @@ namespace MatrixJam.Team2
             mousePos.x = mousePos.x - objectPos.x;
             mousePos.y = mousePos.y - objectPos.y;
             float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg - correction;
+            // TODO: keep the original rotation on y, and fix the flip script
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
     }
