@@ -32,6 +32,7 @@ namespace MatrixJam
         public bool AddLevel(int finish_level, int ent, int exit)
         {
             //return true if total matrix game is over
+            //add the level and the parh to memory
             if (!HaveLevel(finish_level))
             {
                 complete_levels++;
@@ -49,6 +50,7 @@ namespace MatrixJam
         }
         public bool HaveLevel(int have_this)
         {
+            //return true if the given level was completed before
             foreach (Connection con in been_connections)
             {
                 if (con.scene_from == have_this)
@@ -76,6 +78,7 @@ namespace MatrixJam
         }
         public int PastBeen(int lvl)
         {
+            //return the number of times this level have been completed before
             int ans = 0;
             foreach(Connection con in been_connections)
             {
