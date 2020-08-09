@@ -1,5 +1,6 @@
 ﻿using MatrixJam.Team;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -24,14 +25,18 @@ namespace MatrixJam.Team14
     public class TrainController : MonoBehaviour
     {
         public static TrainController Instance { get; private set; }
-        
+
+        [SerializeField] private float startHonkDelay;
+
         [Header("States config")]
         [SerializeField] private float jumpTime = 0.4f;
         [SerializeField] private float honkTime = 2.28f;
-        
+
+
         [Header("Cars config")]
         [SerializeField] private Animator masterCarAnim;
         [SerializeField] private Animator[] slaveCarAnims;
+
 
         [Header("Debug")]
         [SerializeField] private bool debugTrackTime = true;
@@ -48,6 +53,7 @@ namespace MatrixJam.Team14
         private TrainState _currstate;
         private TrainState _prevState;
 
+
         public int Lives
         {
             get => _lives;
@@ -59,6 +65,7 @@ namespace MatrixJam.Team14
         }
 
         private static IEnumerable<string> AllTriggers => AllStates.Select(state => state.AnimTrigger);
+
         private static IEnumerable<TrainState> AllStates
         {
             get
@@ -76,7 +83,7 @@ namespace MatrixJam.Team14
         public static TrainState JumpState { get; private set; }
         public static TrainState DuckState { get; private set; }
         public static TrainState NullState { get; private set; }
-        
+
         private HashSet<FutureAnimation> _futureAnimations = new HashSet<FutureAnimation>();
 
         private void Awake()
@@ -96,8 +103,9 @@ namespace MatrixJam.Team14
             GameManager.ResetEvent += OnGameReset;
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
+            yield return new WaitForSeconds(startHonkDelay);
             TransitionState(HonkState, null);
         }
 
@@ -150,12 +158,6 @@ namespace MatrixJam.Team14
             }
         }
 
-        private static string FormatSecs(float seconds)
-        {
-            var time = TimeSpan.FromSeconds(seconds);
-            return time.ToString(@"mm\:ss\.fff");
-        }
-
         /// <summary>
         /// Add future animation cues for master + slave chars, using the transform given or master car
         /// </summary>
@@ -184,7 +186,7 @@ namespace MatrixJam.Team14
         {
             TransitionState(DriveState, null);
         }
-        
+
         public static void TransitionState(TrainState newState, Transform moveCue) => Instance.TransitionStateInternal(newState, moveCue);
 
         private void TransitionStateInternal(TrainState newState, Transform moveCue)
@@ -212,6 +214,12 @@ namespace MatrixJam.Team14
             _prevState = newState;
         }
 
+
+        public void PlaySFX(TrainMove move)
+        {
+            if (sfxManager == null) return;
+            sfxManager.PlaySFX(move);
+        }
 
         private void CreateStates()
         {
@@ -260,7 +268,7 @@ namespace MatrixJam.Team14
                 }
             }
         }
-        
+
         private void SetCarsNum(int lives)
         {
             var activeCars = slaveCarAnims.Take(lives);
@@ -299,11 +307,11 @@ namespace MatrixJam.Team14
             
             anim.SetTrigger(trigger);
         }
-        
-        public void PlaySFX(TrainMove move)
+
+        private static string FormatSecs(float seconds)
         {
-            if (sfxManager == null) return;
-            sfxManager.PlaySFX(move);
+            var time = TimeSpan.FromSeconds(seconds);
+            return time.ToString(@"mm\:ss\.fff");
         }
     }
 }
