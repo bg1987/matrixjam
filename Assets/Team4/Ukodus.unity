@@ -2768,7 +2768,7 @@ MonoBehaviour:
   - {fileID: 207181600}
   - {fileID: 1226061174}
   InitialUnitsCount: 15
-  ShowTutorial: 0
+  ShowTutorial: 1
 --- !u!4 &1868372834
 Transform:
   m_ObjectHideFlags: 0
@@ -3262,7 +3262,7 @@ PrefabInstance:
     - target: {fileID: 713302350634537849, guid: 48d4a47b91a48274e82b024a26608395,
         type: 3}
       propertyPath: m_Interactable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5920643229497115202, guid: 48d4a47b91a48274e82b024a26608395,
         type: 3}

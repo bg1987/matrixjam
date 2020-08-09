@@ -27,7 +27,10 @@ namespace MatrixJam.Team4
             _numberChoices = new List<int>();
             foreach (var unit in _playerTurnData._positionOptions.Keys)
             {
-                _numberChoices.Add(unit.Value);
+                if (_playerTurnData._positionOptions[unit].Count > 0)
+                {
+                    _numberChoices.Add(unit.Value);
+                }
             }
             UIManager.SetPlayerAvailableNumbers(_numberChoices, player.playerSide);
 
@@ -109,6 +112,7 @@ namespace MatrixJam.Team4
             yield return new WaitForSeconds(1);
             UIManager.ChoiceManager.PickAttack(turnObject.AttackDirection);
             yield return new WaitForSeconds(1);
+            
             
         }
     }
