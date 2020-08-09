@@ -1,8 +1,5 @@
 using MatrixJam.Team14;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 namespace MatrixJam.Team
 {

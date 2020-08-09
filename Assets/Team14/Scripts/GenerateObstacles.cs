@@ -47,8 +47,6 @@ namespace MatrixJam.Team14
         [SerializeField] private GameObject duckObstaclePrefab;
         [SerializeField] private GameObject honkObstaclePrefab;
 
-        [SerializeField] private ObstacleData[] datas;
-        
         public void Generate()
         {
             var obstacleDatas = Parse(inputStr);
@@ -61,7 +59,11 @@ namespace MatrixJam.Team14
                 var prefab = GetObstaclePrefab(obstacleData.Move);
                 var pos = trackList.GetPositionWithGlobalTime(startAndDirection, obstacleData.Time);
 
-                Instantiate(prefab, pos, Quaternion.identity, transform);
+                var go = (GameObject)PrefabUtility.InstantiatePrefab(prefab, transform);
+                go.transform.position = pos;
+
+                var obstacleGen = go.GetComponent<SetObstacleParams>();
+                obstacleGen.SetParams();
             }
         }
         

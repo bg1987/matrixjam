@@ -9,6 +9,8 @@ namespace MatrixJam.Team14
     {
         [SerializeField] private MusicTrack[] tracks;
 
+        public MusicTrack[] Tracks => tracks;
+
         private void OnValidate()
         {
             if (GameManager.Instance) GameManager.Instance.OnValidate();
