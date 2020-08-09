@@ -38,6 +38,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2013581495379768968}
     m_Modifications:
+    - target: {fileID: 8244879668721453160, guid: bb986d969f7c25e4db8bf4f4a8538741,
+        type: 3}
+      propertyPath: animTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244879668721453160, guid: bb986d969f7c25e4db8bf4f4a8538741,
+        type: 3}
+      propertyPath: testOnStart
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8244879668721453163, guid: bb986d969f7c25e4db8bf4f4a8538741,
         type: 3}
       propertyPath: m_LocalPosition.x

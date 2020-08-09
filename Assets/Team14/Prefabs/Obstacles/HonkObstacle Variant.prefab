@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 140150154071098894, guid: d608cf76c33759847b2ee6953541668c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.5
+      objectReference: {fileID: 0}
     - target: {fileID: 461315106477337062, guid: d608cf76c33759847b2ee6953541668c,
         type: 3}
       propertyPath: m_Name
@@ -75,12 +80,7 @@ PrefabInstance:
     - target: {fileID: 461315107231522436, guid: d608cf76c33759847b2ee6953541668c,
         type: 3}
       propertyPath: m_Size.z
-      value: 4.9500003
-      objectReference: {fileID: 0}
-    - target: {fileID: 461315107231522439, guid: d608cf76c33759847b2ee6953541668c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.92
+      value: 5.25
       objectReference: {fileID: 0}
     - target: {fileID: 583852755858344398, guid: d608cf76c33759847b2ee6953541668c,
         type: 3}
@@ -103,5 +103,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2748997639335327359, guid: 3581ea58898ae69479c4af7e9ab3f10a,
         type: 3}
+    - target: {fileID: 3280645601191201580, guid: d608cf76c33759847b2ee6953541668c,
+        type: 3}
+      propertyPath: triggerBeatWidth
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d608cf76c33759847b2ee6953541668c, type: 3}
