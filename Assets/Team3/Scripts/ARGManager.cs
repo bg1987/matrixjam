@@ -3,16 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Events;
 
 namespace MatrixJam.Team3
 {
     public class ARGManager : MonoBehaviour
     {
         [SerializeField] private GameObject currentlEnabled;
+        [SerializeField] private string currentlEnabledString;
         [SerializeField] private Dictionary<string, GameObject> Stages;
 
         [SerializeField] private InputField _inputField; 
+        
+        [SerializeField] private UnityEvent [] exitEvent;
+
         
         [Serializable]
         public struct StageItem {
@@ -49,10 +53,10 @@ namespace MatrixJam.Team3
 
         public void ChangeItem(string item)
         {
-            foreach (GameObject go in InitialObjects)
+            /*foreach (GameObject go in InitialObjects)
             {
                 go.SetActive(false);
-            }
+            }*/
 
             if (Stages == null)
             {
@@ -61,11 +65,17 @@ namespace MatrixJam.Team3
             if (Stages.ContainsKey(item.ToLower())){
                 currentlEnabled.SetActive(false);
                 currentlEnabled = Stages[item.ToLower()];
+                currentlEnabledString = item.ToLower();
                 currentlEnabled.SetActive(true);
                 _inputField.text = "";
             }
         }
 
+
+        public void handleExit(int exit_num)
+        {
+            exitEvent[exit_num].Invoke();
+        }
 
         public void OpenWebsite(string URL)
         {
