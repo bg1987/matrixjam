@@ -10,8 +10,10 @@ namespace MatrixJam.Team2
         [SerializeField] private float movementSpeed = 10;
         [SerializeField] private float crouchSpeed = 5;
         [SerializeField] private float jumpForce = 2;
+        [SerializeField] private float walkAnimSpeedThresh = 0.1f;
         [SerializeField] private int maxJumps = 1;
 
+        private Animator playerAnimator;
         private Rigidbody2D rb;
         private bool isGrounded = false;
         private int currentJumpsCount = 0;
@@ -19,6 +21,7 @@ namespace MatrixJam.Team2
 
         void Awake()
         {
+            playerAnimator = gameObject.GetComponentInChildren<Animator>();
             rb = GetComponent<Rigidbody2D>();
         }
 
@@ -33,6 +36,7 @@ namespace MatrixJam.Team2
             {
                 ReturnToCheckpoint();
             }
+            AnimWalk();
         }
 
         void OnTriggerEnter2D(Collider2D other)
@@ -82,5 +86,20 @@ namespace MatrixJam.Team2
         }
 
         private bool CanJump => isGrounded || currentJumpsCount < maxJumps;
+
+        private void AnimWalk()
+        {
+            if (Mathf.Abs(rb.velocity.x) > walkAnimSpeedThresh
+                && !playerAnimator.GetBool("walk"))
+            {
+                playerAnimator.SetBool("walk", true);
+            }
+
+            else if (Mathf.Abs(rb.velocity.x) < walkAnimSpeedThresh
+                     && playerAnimator.GetBool("walk"))
+            {
+                playerAnimator.SetBool("walk", false);
+            }
+        }
     }
 }

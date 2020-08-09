@@ -11,7 +11,9 @@ namespace MatrixJam.Team2
         [SerializeField] private Transform firePoint;
         [SerializeField] private int floopableLayer;
 
-        private FloopableMaterialTypes currentMaterial = FloopableMaterialTypes.Reflective;
+
+        // TODO: Ideally currentMaterial should be private and we should create event when switching material
+        public FloopableMaterialTypes currentMaterial = FloopableMaterialTypes.Reflective;
         private LineRenderer fireTrail;
         private float rayCastLength = 100;
 
@@ -22,6 +24,7 @@ namespace MatrixJam.Team2
 
         void Update()
         {
+            // TODO: Ideally should work with dictionary<int,matType> - GetButton(Material{int})->currentMat=dict[int]
             if (Input.GetButtonDown("Material1"))
             {
                 currentMaterial = FloopableMaterialTypes.Reflective;
