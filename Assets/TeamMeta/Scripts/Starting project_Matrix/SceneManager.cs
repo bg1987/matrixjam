@@ -87,12 +87,15 @@ namespace MatrixJam
         }
         public void ResetLevelScene()
         {
-            // check scene is not on start or end and actually a level scene
-            var sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-            if (sceneName != "StartScene" && sceneName != "EndScene" && LevelHolder.Level != null)
+            if (LevelHolder.Level != null)
             {
                 LevelHolder.Level.Restart();
             }
+        }
+        public void MatrixOver()
+        {
+            Debug.Log("MatrixOver!");
+            LoadScene(-2, 0);
         }
     }
 }
