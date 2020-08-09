@@ -54,7 +54,7 @@ namespace MatrixJam.Team19.Gameplay.Managers
             _startedEntranceNumber = entrance_number;
 
             _modifiedContentManager.InitializeByEntrance(entrance_number, _winRequiredPassCount);
-            _modifiedContentManager.ModifyContentByProgress(_winRequiredPassCount);
+            _modifiedContentManager.ModifyContentByProgress(_levelWinCount);
 
             _playerHandler.StartLevel(starter, entrance_number);
         }

@@ -11,19 +11,18 @@ namespace MatrixJam.Team19.Gameplay.Managers
     [System.Serializable]
     public class ModifiedContentManager
     {
-        private static Vector3 SPAWN_POINT = Vector3.zero;
-
         [SerializeField]
         private Transform _modifiableRoot;
 
         [SerializeField]
-        private GameObject[] _modifiedContentPrefabs;
+        private GameObject[] _darkestTimelinePrefabs;
+
+        [SerializeField]
+        private GameObject[] _brightestTimelinePrefabs;
         
         private GameObject _activeContent;
 
         private ETimeline _activeTimeline = ETimeline.DARKEST_TIMELINE;
-
-        private int _activeLevelIndex;
 
         public void InitializeByEntrance(int entrance_num, int max_progress)
         {
@@ -32,12 +31,10 @@ namespace MatrixJam.Team19.Gameplay.Managers
             {
                 case 0:
                     _activeTimeline = ETimeline.DARKEST_TIMELINE;
-                    _activeLevelIndex = 0;
                     break;
 
                 case 1:
                     _activeTimeline = ETimeline.BRIGHTEST_TIMELINE;
-                    _activeLevelIndex = max_progress;
                     break;
             }
         }
@@ -46,23 +43,21 @@ namespace MatrixJam.Team19.Gameplay.Managers
         {
             GameObject.Destroy(_activeContent);
 
-            AdvanceActiveTimeline(progress);
-
-            GameObject activeContentPrefab = _modifiedContentPrefabs[_activeLevelIndex];
+            GameObject activeContentPrefab = GetNextPrefabForTimeline(progress);
             _activeContent = GameObject.Instantiate(activeContentPrefab, _modifiableRoot);
         }
 
-        private void AdvanceActiveTimeline(int progress)
+        private GameObject GetNextPrefabForTimeline(int progress)
         {
             switch (_activeTimeline)
             {
                 case ETimeline.DARKEST_TIMELINE:
-                    _activeLevelIndex ++;
-                    break;
+                    return _darkestTimelinePrefabs[progress];
 
                 case ETimeline.BRIGHTEST_TIMELINE:
-                    _activeLevelIndex --;
-                    break;
+                    return _brightestTimelinePrefabs[progress];
+                default:
+                    throw new System.Exception("[MOD_CONTENT] No Timeline was Selected");
             }
         }
     }

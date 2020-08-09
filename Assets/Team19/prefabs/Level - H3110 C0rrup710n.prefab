@@ -233,6 +233,7 @@ MonoBehaviour:
   _spawnedPrefab: {fileID: 1237668257878504757, guid: f3cc9ed2f3c9d8f418a987a43d3e5b23,
     type: 3}
   _spawnIntervalSeconds: 5
+  _shouldSpawnOnStart: 0
 --- !u!1 &2631390509543492825
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,6 +927,7 @@ MonoBehaviour:
   _spawnedPrefab: {fileID: 1237668257878504757, guid: ea667352587640747b3aab4d38b93546,
     type: 3}
   _spawnIntervalSeconds: 2
+  _shouldSpawnOnStart: 0
 --- !u!1 &2631390509944232763
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,7 +1643,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 79bd2cabfe7a4bb408efc02dbff9c0f4, type: 2}
+  - {fileID: 2100000, guid: 78fef989a3d6af24da69b2c6e1351d57, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1872,7 +1874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2631390510825784020}
   m_Layer: 0
-  m_Name: Level2
+  m_Name: Level - H3110 C0rrup710n
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

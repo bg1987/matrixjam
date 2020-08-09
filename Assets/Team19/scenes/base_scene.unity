@@ -236,7 +236,7 @@ PrefabInstance:
     - target: {fileID: 4939990308935971524, guid: e0814737b15b5884db5f3cb41668a50c,
         type: 3}
       propertyPath: def_ent
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4939990308935971525, guid: e0814737b15b5884db5f3cb41668a50c,
         type: 3}
@@ -1130,13 +1130,20 @@ MonoBehaviour:
       type: 3}
   _modifiedContentManager:
     _modifiableRoot: {fileID: 418633472}
-    _modifiedContentPrefabs:
+    _darkestTimelinePrefabs:
     - {fileID: 2631390510825784021, guid: f2c5ce68d371a6f4882d4a392cff7875, type: 3}
     - {fileID: 2631390510825784021, guid: 9f54b68cb04c4b040a551c414b35f96d, type: 3}
     - {fileID: 2631390510825784021, guid: 4d71868bcdfd3f6499b1cd6174d81836, type: 3}
     - {fileID: 2631390510825784021, guid: ce32fb8a04da7ed408bb46972b467411, type: 3}
     - {fileID: 2631390510825784021, guid: 9bdca7270f6ab5c48b166bbc59ec223f, type: 3}
     - {fileID: 2631390510825784021, guid: d7e16715c7c648d4e961c20f2d4e3867, type: 3}
+    _brightestTimelinePrefabs:
+    - {fileID: 2631390510825784021, guid: d7e16715c7c648d4e961c20f2d4e3867, type: 3}
+    - {fileID: 2631390510825784021, guid: 9bdca7270f6ab5c48b166bbc59ec223f, type: 3}
+    - {fileID: 2631390510825784021, guid: ce32fb8a04da7ed408bb46972b467411, type: 3}
+    - {fileID: 2631390510825784021, guid: 4d71868bcdfd3f6499b1cd6174d81836, type: 3}
+    - {fileID: 2631390510825784021, guid: 9f54b68cb04c4b040a551c414b35f96d, type: 3}
+    - {fileID: 2631390510825784021, guid: f2c5ce68d371a6f4882d4a392cff7875, type: 3}
 --- !u!114 &1471164434
 MonoBehaviour:
   m_ObjectHideFlags: 0
