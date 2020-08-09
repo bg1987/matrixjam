@@ -177,22 +177,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Jump:
     source: {fileID: 7559569994977954538}
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: bfd4265b7044b2047b94fd0d4d2c2d78, type: 3}
   Railways:
     source: {fileID: 7559569995090260553}
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: f20d6f3be8ed30f45a6b9bea0f82dff2, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
   Honk:
     source: {fileID: 7559569995162161784}
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 9c7b0d55e0498b04da7aa77c9a77887e, type: 3}
   AwakeBells:
     source: {fileID: 7559569995395189071}
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: ee7839eeb01324340b10d6becd47c5bd, type: 3}
   Duck:
     source: {fileID: 0}
-    clips: []
+    clips:
+    - {fileID: 0}
   CatSqueals:
     source: {fileID: 2225761795455608974}
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: c343a262a40665a45824141364eff243, type: 3}
+    - {fileID: 8300000, guid: 1240df3f58a7af443ae878a9999d544d, type: 3}
+    - {fileID: 8300000, guid: 640c6697cc6318d43ba45c3c1e4c24ee, type: 3}
+    - {fileID: 8300000, guid: 72331e1fc7701c449bc403dc87f4f451, type: 3}
+    - {fileID: 8300000, guid: 97b5f891a45914b428b07a40b7b4f780, type: 3}
+    - {fileID: 8300000, guid: 9ec4352a28647464896e7f4f7cd4ab91, type: 3}
+    - {fileID: 8300000, guid: 06b6007052de39545a646c8c53e5786b, type: 3}
+    - {fileID: 8300000, guid: fc877fc93eb20dd44be12de1b767755c, type: 3}
+    - {fileID: 8300000, guid: c804234ecd31a1a49bbfac10cbb9a2a9, type: 3}
 --- !u!1 &7559569994977954540
 GameObject:
   m_ObjectHideFlags: 0
