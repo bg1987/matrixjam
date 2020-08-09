@@ -22,6 +22,7 @@ namespace MatrixJam.Team22
         // game
         [Header("Game")]
         public GameObject gameTimeline;
+        public Text gameTotalHits;
         // ui
         [Header("Dev")]
         public Text devText;
@@ -42,6 +43,7 @@ namespace MatrixJam.Team22
         {
             tutorialTimeline.SetActive(false);
             gameTimeline.SetActive(false);
+            gameTotalHits.text = "";
             tutorialUI.SetActive(false);
         }
 
@@ -70,6 +72,11 @@ namespace MatrixJam.Team22
         {
             hits += addHits;
             misses += addMiss;
+
+            if (gameTotalHits != null && !tutorial)
+            {
+                gameTotalHits.text = hits.ToString("D2");
+            }
         }
 
         public void StartTutorial()
