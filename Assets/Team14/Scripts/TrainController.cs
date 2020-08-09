@@ -81,6 +81,12 @@ namespace MatrixJam.Team14
             GameManager.ResetEvent += OnGameReset;
         }
 
+        private void Start()
+        {
+            TransitionState(DriveState, null);
+            HonkAnim();
+        }
+
         private void OnValidate()
         {
             CreateStates();
@@ -98,11 +104,6 @@ namespace MatrixJam.Team14
         {
             _currstate?.OnUpdate();
             HandlePendingAnimations();
-        }
-        
-        private void Start()
-        {
-            TransitionState(DriveState, null);
         }
 
         private void OnGUI()
@@ -125,6 +126,11 @@ namespace MatrixJam.Team14
                     GUILayout.Label($"[{trainMove}]: {obstacles.Count}");
                 }
             }
+        }
+
+        public void HonkAnim()
+        {
+            CueFutureAnimations("Honk", null);
         }
 
         /// <summary>
