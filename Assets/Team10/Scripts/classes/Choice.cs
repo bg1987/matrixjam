@@ -4,9 +4,16 @@ using UnityEngine;
 
 namespace MatrixJam.Team10
 {
+    public delegate void Action();
     public class Choice
     {
         public string info;
-        public delegate void Action();
+        public Action action;
+
+        public Choice(){}
+        public Choice(string i, Action a){
+            info = i;
+            action = a;
+        }
     }
 }

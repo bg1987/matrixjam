@@ -12,12 +12,14 @@ namespace MatrixJam.Team10
         private RandomDialogueTree t;
         private Rigidbody2D myRigidBody;
         private Vector3 change;
+        private GameObject[] Rooms;
 
         // Start is called before the first frame update
         void Start()
         {
             t = new RandomDialogueTree(playerName);
             myRigidBody = GetComponent<Rigidbody2D>();
+            
         }
 
         // Update is called once per frame

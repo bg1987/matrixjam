@@ -219,7 +219,7 @@ namespace MatrixJam.Team10
             DialogueTree f = multipleSentences(n4.name, sentences);
             // - save the world - death, 
             // sing - im not batman im spider pig spider pig~ call ended
-            f.addDialogue(new Dialogue("Batman", new int[] {}));
+            f.addDialogue(new Dialogue("Batman", new int[] {1,2,3}));
             return f;
         }
 

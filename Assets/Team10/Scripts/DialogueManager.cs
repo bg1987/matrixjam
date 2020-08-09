@@ -52,6 +52,25 @@ namespace MatrixJam.Team10
             }
         }
 
+        public void UpdateChoices(Dialogue curr){
+                foreach(Button b in Options){
+                    b.gameObject.SetActive(false);
+                }
+                List<Choice> choices = FindObjectOfType<GameRules>().choices;
+                for(int i=0; i < curr.choices.Length; i++)
+                {
+                    int c = curr.choices[i];
+                    Options[i].GetComponentInChildren<Text>().text = choices[c].info;
+                    Options[i].onClick = new Button.ButtonClickedEvent();
+                    Options[i].onClick.AddListener(delegate { 
+                        Debug.Log("click " + choices[c].info);
+                        EndDialogue();
+                        choices[c].action();
+                    });
+                    Options[i].gameObject.SetActive(true);
+                }
+        }
+
         public void DisplayNextDialogue(){
             continueButton.SetActive(false);
             cancelButton.SetActive(false);
@@ -68,7 +87,7 @@ namespace MatrixJam.Team10
             if(curr.choices != null){
                 OptionsPanel.SetActive(true);
                 cancelButton.SetActive(true);
-                Debug.Log("implement buttons");
+                UpdateChoices(curr);
             }
             else{
                 TextPanel.SetActive(true);

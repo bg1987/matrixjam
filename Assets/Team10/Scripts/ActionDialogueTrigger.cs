@@ -6,9 +6,30 @@ namespace MatrixJam.Team10
 {
     public class ActionDialogueTrigger : MonoBehaviour
     {
-        public Dialogue dialogue;
+        public int[] choices;
+        public GameObject DialoguePanel;
         private RandomDialogueTree t = new RandomDialogueTree("player1");
+        private bool isMouseOnMe = false;
+
+        // void OnMouseOver(){
+        //     isMouseOnMe = true;
+        // }
+
+        // void OnMouseExit(){
+        //     isMouseOnMe = false;
+        // }
+
+        void OnMouseDown(){
+            Debug.Log("click");
+                TriggerDialogue();
+            // if(!DialoguePanel.activeSelf && isMouseOnMe){
+            //     Debug.Log("click");
+            //     TriggerDialogue();
+            // }
+        }
+
         public void TriggerDialogue(){
+            Dialogue dialogue = new Dialogue("", choices);
             FindObjectOfType<DialogueManager>().StartActionChoice(dialogue);
         }
 
