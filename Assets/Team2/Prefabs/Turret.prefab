@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 319da500c558e9245a30e915793d5c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingInterval: 0.3
+  shootingInterval: 0.2
   firePoint: {fileID: 860810455561706773}
   bulletPrefab: {fileID: 395159410001512377, guid: 348b20e05d8708f4b9a5678db6f260b3,
     type: 3}
