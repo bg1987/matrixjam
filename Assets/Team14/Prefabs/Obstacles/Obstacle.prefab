@@ -48,8 +48,8 @@ MonoBehaviour:
   obstacleTypes: []
   trigger: {fileID: 461315107231522436}
   obstacleHolder: {fileID: 140150154071098894}
+  triggerWidthInBeats: {x: 0, y: 0}
   zPerBeat: 7.5
-  triggerBeatWidth: 0.66
   obstacleBeatOffset: 0.6
 --- !u!1 &461315106599286770
 GameObject:
@@ -125,7 +125,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 4, z: 3.75}
+  m_Size: {x: 1, y: 4, z: 3.41}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &583852755858344398
 MonoBehaviour:

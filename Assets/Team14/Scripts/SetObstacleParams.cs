@@ -29,8 +29,8 @@ namespace MatrixJam.Team14
         [SerializeField] private Transform obstacleHolder;
         
         [Header("Sizes")]
+        [SerializeField] private Vector2 triggerWidthInBeats;
         [SerializeField] private float zPerBeat;
-        [SerializeField] private float triggerBeatWidth;
         [SerializeField] private float obstacleBeatOffset;
 
         public void SetParams()
@@ -66,9 +66,19 @@ namespace MatrixJam.Team14
 
         public void AdjustTrigger()
         {
-            var oldSize = trigger.size;
-            var triggerWidth = zPerBeat * triggerBeatWidth;
-            trigger.size = new Vector3(oldSize.x, oldSize.y, triggerWidth);
+            // Not working
+
+            //var oldSize = trigger.size;
+            //var triggerWidth = zPerBeat * triggerWidthInBeats;
+            
+            //var trigMax = triggerWidth[1];
+            //var trigMin = triggerWidth[0];
+
+            //var delta = trigMax - triggerWidth[0];
+            //var center = trigMax - delta * 0.5f;
+            
+            //trigger.center = new Vector3(0f, 0f, center);
+            //trigger.size = new Vector3(oldSize.x, oldSize.y, delta);
         }
 
         private void CreateRandomObstacle()

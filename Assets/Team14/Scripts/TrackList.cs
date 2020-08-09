@@ -76,19 +76,23 @@ namespace MatrixJam.Team14
             return offset + currTrackPos;
         }
 
-        public Vector3 GetBeatPositionWithGlobalBeat(Transform startAndDirection, float totalBeats)
+        public Vector3 GetBeatPositionWithGlobalBeat(Transform startAndDirection, float beatNum)
         {
             var trackIdx = 0;
-            var beatOffset= 0f;
+            var beatOffset = 0f;
+            var posOffset = Vector3.zero;
+            
             foreach (var track in tracks.Reverse().Skip(1).Reverse())
             {
-                if (beatOffset + track.TotalBeats >= totalBeats) break;
+                if (beatOffset + track.TotalBeats >= beatNum) break;
                 beatOffset += track.TotalBeats;
+                posOffset += track.GetLastPosition(startAndDirection);
                 trackIdx++;
             }
 
-            var trackBeat = totalBeats - beatOffset;
-            return GetBeatPosition(startAndDirection, trackIdx, trackBeat);
+            var trackBeat = beatNum - beatOffset;
+
+            return tracks[trackIdx].GetPosition(startAndDirection, trackBeat, posOffset);
         }
 
         public Vector3 GetPositionWithGlobalTime(Transform startAndDirection, float totalSeconds)
