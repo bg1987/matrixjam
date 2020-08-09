@@ -34,8 +34,7 @@ namespace MatrixJam.Team14
             var keyCode = TrainMoves.GetKey(TrainMove.Honk);
             if (!Input.GetKeyDown(keyCode)) return false;
             
-            TrainController.Instance.CueFutureAnimations("Honk", null);
-
+            TrainController.Instance.HonkAnim();
             var obstacle = Obstacle.HandleMovePressed(TrainMove.Honk);
             return obstacle != null;
         }

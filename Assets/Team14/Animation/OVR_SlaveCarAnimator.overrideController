@@ -9,15 +9,23 @@ AnimatorOverrideController:
   m_Name: OVR_SlaveCarAnimator
   m_Controller: {fileID: 9100000, guid: cb35e6441c16675468b28606d9421f63, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: -2646877686078930818, guid: 78af5d7325d88d549b1fbede209f3816,
+  - m_OriginalClip: {fileID: -5823718319541213146, guid: 78af5d7325d88d549b1fbede209f3816,
       type: 3}
     m_OverrideClip: {fileID: -5127313630637784313, guid: 482fa62e1ff78f64bb78465795f13400,
       type: 3}
-  - m_OriginalClip: {fileID: 7238280004761517075, guid: 78af5d7325d88d549b1fbede209f3816,
+  - m_OriginalClip: {fileID: -3882520949593734417, guid: 78af5d7325d88d549b1fbede209f3816,
       type: 3}
     m_OverrideClip: {fileID: -9008147681474954689, guid: 482fa62e1ff78f64bb78465795f13400,
       type: 3}
-  - m_OriginalClip: {fileID: 5933775756367650741, guid: 78af5d7325d88d549b1fbede209f3816,
+  - m_OriginalClip: {fileID: 2711728761598570583, guid: 78af5d7325d88d549b1fbede209f3816,
       type: 3}
-    m_OverrideClip: {fileID: 5933775756367650741, guid: 78af5d7325d88d549b1fbede209f3816,
+    m_OverrideClip: {fileID: 2711728761598570583, guid: 78af5d7325d88d549b1fbede209f3816,
+      type: 3}
+  - m_OriginalClip: {fileID: -5907000826165643825, guid: 78af5d7325d88d549b1fbede209f3816,
+      type: 3}
+    m_OverrideClip: {fileID: -5907000826165643825, guid: 78af5d7325d88d549b1fbede209f3816,
+      type: 3}
+  - m_OriginalClip: {fileID: 5553090402674037805, guid: 78af5d7325d88d549b1fbede209f3816,
+      type: 3}
+    m_OverrideClip: {fileID: -5127313630637784313, guid: 482fa62e1ff78f64bb78465795f13400,
       type: 3}
