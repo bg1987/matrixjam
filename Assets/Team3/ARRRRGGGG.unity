@@ -296,6 +296,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b5e3be53df61840a6d739a948654d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NextCharacter: 1
+  YoutubeEnabled: 1
+  TextEnabled: 0
+  textToDisplay: {fileID: 1086523659}
   currentlEnabled: {fileID: 875319767}
   currentlEnabledString: 
   _inputField: {fileID: 1783511670}
@@ -368,22 +372,88 @@ MonoBehaviour:
   StagesList:
   - name: 7459
     theObject: {fileID: 324220892}
-    description: 
+    description: You leave your cabin and head to the upper deck trying to figure
+      out all of the commotion that's been going on.   Far on the horizon, you see
+      another ship in the distance, rapidly closing in.. You can hear Timmy Oliver,
+      the deckhand screaming loudly from the crow's nest, but you can't hear anything. 
+      Before you realize anything you see they are firing yet another cannons at
+      your ship.  Oh, no! Pirates!  WHOOSH, they missed again! A cannon ball hits
+      the water near the ship.  Before you can say anything, Lady Victoria Hawkins,
+      the owner of this ship, who hired you to set off on a journey to find her lost
+      father's ship, starts yelling at you about your lack of pants.  Do you tell
+      Lady Hawkins off and continue with trying to save the ship from these Pirates?
+      Choose 6119  Do you do as she says and "just go back to your ready room and
+      put on some pants, for god's sake!"  Choose 9116
   - name: 3965
     theObject: {fileID: 875319767}
-    description: 
+    description: 'You put on your pants and leave your cabin and head to the upper
+      deck trying to figure out all of the commotion that''s been going on.   Far
+      on the horizon, you see another ship in the distance, rapidly closing in..
+      You can hear Timmy Oliver, the deckhand screaming loudly from the crow''s nest,
+      but you can''t hear anything.  Before you realize anything you see they are
+      firing yet another cannons at your ship.  Oh, no! Pirates!  WHOOSH, they missed
+      again! A cannon ball hits the water near the ship.  Lady Victoria Hawkins,
+      the owner of this ship, who hired you to set off on a journey to find her lost
+      father''s ship, comes running to the upper deck.   "We cannot let these pirates
+      get away with this! We need to attack them back!" she says.  Jean Pierre Clot,
+      The ship''s cook, runs out of the kitchen, and yells "I know these pirates,
+      It''s Captain Orange Beard''s crew. We cannot take them. we should run away!" 
+      Jenkins looks at you and asks: "Your Orders Captain?"   "Let''s fight back" 
+      Choose 8765  "Let''s try to out run the the pirate ship and flee" Choose 5678'
   - name: 6119
     theObject: {fileID: 854810608}
-    description: 
+    description: 'You decide to take a stand and fight for what''s the most important
+      to you. The freedom to not wear pants.  You confront Lady Hawkins. "This is
+      my ship, and I will wear what ever I want in here!"  "Your ship wouldn''t have
+      been able to leave the dock if it wasn''t for me paying for the repairs! I
+      paid for it, I paid for you and your crew, and i''m paying for you to put on
+      pants!" she replies, "You put on pants right now, or I''m not splitting my
+      father''s fortune when we find it!"  "I will not bow down to your idle threats,
+      lady". you continue with your no pants position, "I''m the captain here, and
+      I have the final say on what''s going on. I don''t even believe this whole
+      story about your lost father and his ship with all the treasures on it. I''m
+      this close to turning this ship around and going back to London, and not even..." 
+      Before you can complete your sentence, a cannon ball hits the  the bow of the
+      ship, and rips a hole in it.  The ships sinks, and the pirates have one.  GAME
+      OVER  : 6961'
   - name: 9116
     theObject: {fileID: 1772356371}
-    description: 
+    description: 'Knowing there''s no way to win an argument with Lady Hawkins, you
+      go back to your ready room, and put on your pants and come back from to the
+      upper deck trying to figure out all of the commotion that''s been going on.  
+      You see the pirate ship, rapidly closing in.. They are firing yet another cannons
+      at your ship. luckily, they missed again!  "We cannot let these pirates get
+      away with this! We need to attack them back!" says Lady Hawkins  Jean Pierre
+      Clot, The ship''s cook, runs out of the kitchen, and yells "I know these pirates,
+      It''s Captain Orange Beard''s crew. We cannot take them. we should run away!" 
+      Jenkins looks at you and asks: "Your Orders Captain?"  "Let''s fight back" 
+      Choose 8765  "Let''s try to out run the the pirate ship and flee" Choose 5678'
   - name: 8765
     theObject: {fileID: 190051549}
-    description: 
+    description: '"Battle Station" you yell at the crew, "Load the cannons, get into
+      firing positions."   Jenkins and Jean Pierre looks very puzzled to you.  Both
+      of them are running around, from one side of the ship to the other, not really
+      doing any of the things you are ordering them to do. Jenkins is looking for
+      cannon balls, and can''t find them. Jean Pierre, goes to the kitchen and gets
+      a sack of potatoes and puts it next to the cannon for some reason unbeknownst
+      to you.  You also look up at Timmy, and see he is hanging by his leg, upside
+      down from one of the ropes.  Attacking a pirate ship, with this tiny crew of
+      4 incapable people, might not have been the right idea.  You realize that and
+      about to give the order to flee, but before you can complete your sentence,
+      a cannon ball hits the  the bow of the ship, and rips a hole in it.  The ships
+      sinks, and the pirates have won.  GAME OVER Enter code : 6961'
   - name: 5678
     theObject: {fileID: 287428752}
-    description: 
+    description: 'Good choice!  Attacking a pirate ship, with this tiny crew of 4
+      incapable people, would not have been the right idea.  Jenkins and Jean Pierre
+      are both running around, in panic from one side of the ship to the other, Jenkins
+      is looking for cannon balls, and can''t find them. Jean Pierre, goes to the
+      kitchen and gets a sack of potatoes and puts it next to the cannon for some
+      reason unbeknownst to you. You also look up at Timmy, and see he is hanging
+      by his leg, upside down from one of the ropes.  You''re about to give the order
+      to flee, but before you can complete your sentence, a cannon ball hits the
+      the bow of the ship, and rips a hole in it.  The ships sinks, and the pirates
+      have won.  GAME OVER: 6961'
   - name: 4966
     theObject: {fileID: 875319767}
     description: 
@@ -509,10 +579,29 @@ MonoBehaviour:
     description: 
   - name: 0000
     theObject: {fileID: 174285234}
-    description: 
+    description: 'Boom! Bang!  You hear the sound of cannons being fire. ""Captain
+      Harper!"" you hear the voice of your your first mate, John Jenkins Jr as he
+      runs into your room and yells, ""We''re under attack by pirates!""  Choose
+      your next move: To leave your room and go to the upper deck, Choose 7459 To
+      put on your pants first and go to the upper deck, choose 3965.'
   - name: 0001
     theObject: {fileID: 2008582385}
-    description: 
+    description: It has been a slow but stressful day on the ship. Lady Victoria
+      Hawkins, who hired your crew to set sail and find clues about her father's
+      disappearance is getting restless after weeks of sailing with no results, as
+      the first mate of this ship, you don't have any real power, but you notice
+      how Captain Philip Harper isn't really doing his job that well. You're afraid
+      things might go south, but today, a something is about shake everything up. 
+      During your shift on the upper deck you hear Timmy Oliver the deckhand who
+      is in the crow's nest, yelling something. From the horizon, you see another
+      ship in the distance.  Before you realize anything you see they are firing
+      their cannons at your ship. Oh, no! Pirates!  WHOOSH, MISS!  A cannon ball
+      hits the water near the ship.  The captain runs out of his ready room, not
+      wearing any pants. Lady Hawkins makes a rude comment but he ignores her. They
+      start arguing about ship etiquiette and code of conduct.  Do you try and stop
+      them from arguing about pants and focus on the attacking pirate ship? Choose
+      code 1199  Or, Do you just let them argue about it hoping that this will make
+      the Lady fire the captain so you can take his place? Choose code 9911
   - name: 0002
     theObject: {fileID: 698438075}
     description: 
@@ -521,7 +610,14 @@ MonoBehaviour:
     description: 
   - name: 0004
     theObject: {fileID: 679065912}
-    description: 
+    description: "It's been weeks since you left shore setting sail from London.
+      The trip isn't going as expected. You were hoping you'd find clues of the father's
+      lost ships or his fleet by now. Sitting in your cabin you're going over his
+      journals as you hear a loud noise from outside and you go out to check it out.
+      You see Captain Philip Harper leaving his ready room in a hurry, not wearing
+      any pant. Do you make a comment about his pants?\_ If you do\_, choose 4966
+      If you decide to let this one slide and just head to the upper deck to see
+      what is the whole commotion choose 6944"
   - name: 6961
     theObject: {fileID: 1130659749}
     description: 
@@ -543,6 +639,10 @@ MonoBehaviour:
   - {fileID: 1202287612}
   - {fileID: 698438075}
   - {fileID: 679065912}
+  levels: 
+  currentLevel: 0
+  numLevels: 0
+  MaxLevels: 5
 --- !u!4 &106065708
 Transform:
   m_ObjectHideFlags: 0
@@ -555,7 +655,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &174285234
 GameObject:
@@ -1107,7 +1207,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &324220892
 GameObject:
@@ -1420,6 +1520,7 @@ GameObject:
   - component: {fileID: 358743461}
   - component: {fileID: 358743460}
   - component: {fileID: 358743459}
+  - component: {fileID: 358743462}
   m_Layer: 5
   m_Name: Game Over
   m_TagString: Untagged
@@ -1538,6 +1639,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358743457}
   m_CullTransparentMesh: 0
+--- !u!114 &358743462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358743457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05aed29834ae9cf48bdc0fe7c5b510ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitNum: 5
+  manager: {fileID: 106065707}
 --- !u!1 &435695435
 GameObject:
   m_ObjectHideFlags: 0
@@ -2792,7 +2907,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &756321480
 GameObject:
@@ -2918,7 +3033,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &810570003
 GameObject:
@@ -3273,7 +3388,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &875319767
 GameObject:
@@ -3592,7 +3707,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &941028673
 PrefabInstance:
@@ -4722,7 +4837,7 @@ RectTransform:
   - {fileID: 1146909143}
   - {fileID: 749636476}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5581,6 +5696,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690089193}
   m_CullTransparentMesh: 0
+--- !u!1001 &1694063362
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843485, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: num_portal
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843490, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_Name
+      value: Exit 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4b81ffe1afa894f419d9876fa8ed57b8, type: 3}
 --- !u!1 &1772356371
 GameObject:
   m_ObjectHideFlags: 0
