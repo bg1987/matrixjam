@@ -10,6 +10,7 @@ namespace MatrixJam.Team
     {
         [SerializeField] private AudioSource source;
         [SerializeField] private AudioClip[] clips;
+        
         private AudioClip GetRandom()
         {
             if(clips.Length == 0)
@@ -29,5 +30,15 @@ namespace MatrixJam.Team
             source.Stop();
             source.Play();
         }
+        public void PlayRandomPitch(float pitchRandom = 1)
+        {
+            var Randomclip = GetRandom();
+            if (!Randomclip) return;
+            source.clip = Randomclip;
+            source.Stop();
+            source.Play();
+            source.pitch = UnityEngine.Random.Range(0.7f, 1.5f);
+        }
+
     }
 }

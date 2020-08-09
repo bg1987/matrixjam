@@ -23,7 +23,10 @@ namespace MatrixJam.Team14
         [SerializeField] private Color trackBorderColor = Color.white;
         [SerializeField] private Color borderZColor = Color.red;
         [SerializeField] private float trackBorderSize = 10f;
-        
+
+        [Header("ShowTimes")]
+        [SerializeField] private bool[] showBeatNums = new bool[4];
+
         [Header("Colors")]
         [SerializeField] private Color[] beatColors = new Color[4];
 
@@ -68,34 +71,59 @@ namespace MatrixJam.Team14
         private void DrawTrackBorderLine(Vector3 center)
         {
             DrawLine(center, trackBorderSize, trackBorderColor);
-
-            var z = center.z;
-            var pos = new Vector3(0f, 0.5f * trackBorderSize, z);
-            
-            #if UNITY_EDITOR
-            Handles.color = borderZColor;
-            // Handles.RectangleHandleCap(-1, pos, Quaternion.identity, 3, EventType.Repaint);
-            Handles.Label(pos, z.ToString());
-            #endif
+            DrawPosLabel(center, trackBorderSize, borderZColor);
         }
-        
+
         private void DrawBeatLine(Vector3 center, int beatIdx)
         {
             var i = beatIdx % beatsPerBar; // The  beats index in the bar
-            
+
             Gizmos.color = beatColors[i];
-            DrawLine(center, beatSizes[i], beatColors[i]);
+            var size = beatSizes[i];
+            var color = beatColors[i];
+
+            DrawLine(center, size, color);
+
+            if (showBeatNums[i])
+            {
+                DrawBeatNumLabel(beatIdx, center, size, color);
+            }
         }
 
         private void DrawLine(Vector3 center, float size, Color color)
         {
             Gizmos.color = color;
             var halfSize = size * 0.5f;
-            
+
             Gizmos.DrawLine(
-                center + Vector3.up * halfSize, 
+                center + Vector3.up * halfSize,
                 center - Vector3.up * halfSize
             );
+        }
+
+        private void DrawPosLabel(Vector3 center, float size, Color color)
+        {
+            var z = center.z;
+            var pos = new Vector3(0f, 0.5f * size, z);
+
+            DrawLabel(z.ToString(), pos, color);
+        }
+
+        private void DrawBeatNumLabel(int beatNum, Vector3 center, float size, Color color)
+        {
+            var z = center.z;
+            var pos = new Vector3(0f, 0.5f * size, z);
+
+            DrawLabel(beatNum.ToString(), pos, color);
+        }
+
+        private void DrawLabel(string text, Vector3 pos, Color color)
+        {
+#if UNITY_EDITOR
+            Handles.color = color;
+            // Handles.RectangleHandleCap(-1, pos, Quaternion.identity, 3, EventType.Repaint);
+            Handles.Label(pos, text);
+#endif
         }
     }
 }
