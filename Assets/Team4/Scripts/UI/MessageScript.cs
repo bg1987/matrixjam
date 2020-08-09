@@ -11,6 +11,7 @@ namespace MatrixJam.Team4
         public String[] LinesOfTexts;
         private Transform _originalParent;
         private int _msgIndex = 0;
+        private bool _originalActive;
 
 
         private void OnValidate()
@@ -25,15 +26,10 @@ namespace MatrixJam.Team4
         {
             gameObject.SetActive(false);
         }
-
-        //TODO needs nice button or something
-        private void Update()
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                EventManager.Singleton.OnNextMessage();;
-            }
-            
+        
+        public void NextMessage()
+        { 
+            EventManager.Singleton.OnNextMessage();;
         }
 
         public void ShowMessage()
@@ -42,8 +38,11 @@ namespace MatrixJam.Team4
             {
                 UIManager.ShowDarkScreen();
                 _originalParent = HighligtedObject.transform.parent;
+                _originalActive = HighligtedObject.activeInHierarchy;
                 HighligtedObject.transform.SetParent(transform.parent);
+                HighligtedObject.SetActive(true);
                 transform.SetParent(HighligtedObject.transform);
+                
 
             }
             
@@ -57,6 +56,7 @@ namespace MatrixJam.Team4
             {
                 transform.SetParent(HighligtedObject.transform.parent);
                 HighligtedObject.transform.SetParent(_originalParent);
+                HighligtedObject.SetActive(_originalActive);
                 UIManager.HideDarkScreen();
             }
             gameObject.SetActive(false);
@@ -68,7 +68,7 @@ namespace MatrixJam.Team4
             return _msgIndex < LinesOfTexts.Length - 1;
         }
 
-        public void ShowNext()
+        public void ShowNextLine()
         {
             _msgIndex++;
             Textbox.text = LinesOfTexts[_msgIndex];

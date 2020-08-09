@@ -15,7 +15,7 @@ namespace MatrixJam.Team4
         public GameObject DarkScreen;
         public GameObject Tooltips;
 
-        public Button[] AttackButtons;
+        public GameObject AttackButtons;
         public NumberButtonScript NumberPrefab;
         
         public static IChoiceManager ChoiceManager { get; set; }
@@ -61,11 +61,7 @@ namespace MatrixJam.Team4
 
         public static void ShowDamageOptions(bool interactable)
         {
-            foreach (var attackButton in _instance.AttackButtons)
-            {
-                attackButton.interactable = interactable;
-
-            }
+            _instance.AttackButtons.SetActive(interactable);
         }
 
         public static void SetNumberOnSquare(Vector2 index, int currentValue, PlayerSide playerColor)
@@ -73,11 +69,11 @@ namespace MatrixJam.Team4
             NumberButtonsManager.SetNumberOnSquare(index, currentValue, playerColor);
         }
 
-        public static void SetPlayerAvailableNumbers(List<int> choices, PlayerSide playerSide)
+        public static void SetPlayerAvailableNumbers(List<int> choices, PlayerSide playerSide, bool selectable)
         {
             if (playerSide == PlayerSide.Human)
             {
-                _instance.PlayerNumberPool.SetAvailableNumbers(choices, true);
+                _instance.PlayerNumberPool.SetAvailableNumbers(choices, selectable);
             }
             else
             {

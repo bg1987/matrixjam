@@ -32,7 +32,7 @@ namespace MatrixJam.Team4
                     _numberChoices.Add(unit.Value);
                 }
             }
-            UIManager.SetPlayerAvailableNumbers(_numberChoices, player.playerSide);
+            UIManager.SetPlayerAvailableNumbers(_numberChoices, player.playerSide, true);
 
         }
 
@@ -100,7 +100,7 @@ namespace MatrixJam.Team4
         private void HideUsedNumber()
         {
             _numberChoices.Remove(_selectedUnit.Value);
-            UIManager.SetPlayerAvailableNumbers(_numberChoices, PlayerSide.Neutral);
+            UIManager.SetPlayerAvailableNumbers(_numberChoices, _selectedUnit.Owner.playerSide, false);
         }
 
         public IEnumerator HandleAiChoice(TurnObject turnObject)

@@ -30,7 +30,7 @@ namespace MatrixJam.Team4
         {
             if (_messages[_msgIndex].HasNext())
             {
-                _messages[_msgIndex].ShowNext();
+                _messages[_msgIndex].ShowNextLine();
             }
             else
             {

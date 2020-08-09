@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4516387796506525930}
   - component: {fileID: 4127385516831532192}
   - component: {fileID: 1520836667182695684}
-  - component: {fileID: 638736016}
+  - component: {fileID: 997963808}
   m_Layer: 5
   m_Name: Pool
   m_TagString: Untagged
@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 75, y: 0}
-  m_SizeDelta: {x: 400, y: 1000}
+  m_SizeDelta: {x: 300, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4516387796506525930
 CanvasRenderer:
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 32dec75f5f4c2b442af48f173a965014, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a1c31a07764a1148b42ce5fb9081592, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -89,9 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c7cbeefc0a0daa4989cb2344ea28cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerSide: 0
   NumberButtonPrefab: {fileID: 2482541810477363346}
---- !u!114 &638736016
+--- !u!114 &997963808
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +99,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7261263291241591368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76a085441548b944d837741750a6d167, type: 3}
+  m_Script: {fileID: 11500000, guid: 95f68a4e0a4749b19ec5b9a30f972f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerSide: 0
@@ -220,22 +219,22 @@ PrefabInstance:
     - target: {fileID: 5920643229497115202, guid: 48d4a47b91a48274e82b024a26608395,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 118.3
+      value: 94
       objectReference: {fileID: 0}
     - target: {fileID: 5920643229497115202, guid: 48d4a47b91a48274e82b024a26608395,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -390
+      value: -191
       objectReference: {fileID: 0}
     - target: {fileID: 5920643229497115202, guid: 48d4a47b91a48274e82b024a26608395,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 88
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5920643229497115202, guid: 48d4a47b91a48274e82b024a26608395,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 88
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5920643229497115202, guid: 48d4a47b91a48274e82b024a26608395,
         type: 3}
