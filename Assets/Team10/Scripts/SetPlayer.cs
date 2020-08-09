@@ -21,6 +21,7 @@ namespace MatrixJam.Team10
             MatrixPlayer.SetActive(false);
             BatmanPlayer.SetActive(false);
             SupermanPlayer.SetActive(false);
+            Panel.SetActive(true);
         }
 
         // Update is called once per frame

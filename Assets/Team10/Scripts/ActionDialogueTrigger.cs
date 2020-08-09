@@ -22,12 +22,12 @@ namespace MatrixJam.Team10
         }
 
         public void TriggerRandomDialogue(){
-            // DialogueTree a;
-            // bool dialog = t.getRandomDialog("Bath", out a);
-            // if(dialog){
-                // FindObjectOfType<DialogueManager>().StartDialogue(a);
-            // }
-            FindObjectOfType<DialogueManager>().StartDialogue(t.getCallAlfredDialogue());
+            DialogueTree a;
+            bool dialog = t.getRandomDialog("Bath", out a);
+            if(dialog){
+                FindObjectOfType<DialogueManager>().StartDialogue(a);
+            }
+            // FindObjectOfType<DialogueManager>().StartDialogue(t.getCallAlfredDialogue());
         }
     }
 }

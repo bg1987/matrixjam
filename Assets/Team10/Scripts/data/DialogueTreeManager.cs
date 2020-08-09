@@ -96,8 +96,8 @@ namespace MatrixJam.Team10
             t6.addDialogue(new Dialogue(playerName, new int[] {20+NUM_OF_ACTIONS, 21+NUM_OF_ACTIONS, 22+NUM_OF_ACTIONS}));
             cd.Add(t6);
 
-            DialogueTree t7 = new DialogueTree(n1);
-            t7.addDialogue(new Dialogue(n1.name, "lalala, can't hear you"));
+            DialogueTree t7 = new DialogueTree(n2);
+            t7.addDialogue(new Dialogue(n2.name, "lalala, can't hear you"));
             t7.addDialogue(new Dialogue(playerName, new int[] {23+NUM_OF_ACTIONS, 24+NUM_OF_ACTIONS}));
             cd.Add(t7);
             return cd;
