@@ -55,7 +55,19 @@ namespace MatrixJam.Team14
                 SetCarsNum(_lives);
             }
         }
-        
+
+        private static IEnumerable<string> AllTriggers => AllStates.Select(state => state.AnimTrigger);
+        private static IEnumerable<TrainState> AllStates
+        {
+            get
+            {
+                yield return DriveState;
+                yield return HonkState;
+                yield return JumpState;
+                yield return DuckState;
+            }
+        }
+
         public bool Honking { get; private set; }
         public static TrainState DriveState { get; private set; }
         public static TrainState HonkState { get; private set; }
@@ -233,7 +245,7 @@ namespace MatrixJam.Team14
                 if (currValue >= futureAnim.Value)
                 {
                     _futureAnimations.Remove(futureAnim);
-                    futureAnim.Anim.SetTrigger(futureAnim.Trigger);
+                    SetOnlyTrigger(futureAnim.Anim, futureAnim.Trigger);
                 }
             }
         }
@@ -265,6 +277,16 @@ namespace MatrixJam.Team14
                 default:
                     throw new ArgumentOutOfRangeException(nameof(move), move, null);
             }
+        }
+
+        private void SetOnlyTrigger(Animator anim, string trigger)
+        {
+            foreach (var trig in AllTriggers)
+            {
+                anim.ResetTrigger(trig);
+            }
+            
+            anim.SetTrigger(trigger);
         }
         
         public void PlaySFX(TrainMove move)

@@ -28,7 +28,7 @@ namespace MatrixJam.Team14
         public static bool GetKeyRelease(TrainMove move)
         {
             var keys = _keyDict[move];
-            return keys.Any(Input.GetKeyUp);
+            return keys.All(key => !Input.GetKey(key));
         }
     }
 }
