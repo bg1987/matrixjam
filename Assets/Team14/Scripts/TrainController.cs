@@ -27,6 +27,7 @@ namespace MatrixJam.Team14
         
         [Header("States config")]
         [SerializeField] private float jumpTime = 0.4f;
+        [SerializeField] private float honkTime = 2.28f;
         
         [Header("Cars config")]
         [SerializeField] private Animator masterCarAnim;
@@ -40,8 +41,6 @@ namespace MatrixJam.Team14
         [SerializeField] private Vector2 debugSize = new Vector2(2, 2);
 
         [SerializeField] private SFXmanager sfxManager;
-
-
 
         private int _lives;
         private TrainState _currstate;
@@ -57,7 +56,9 @@ namespace MatrixJam.Team14
             }
         }
         
+        public bool Honking { get; private set; }
         public static TrainState DriveState { get; private set; }
+        public static TrainState HonkState { get; private set; }
         public static TrainState JumpState { get; private set; }
         public static TrainState DuckState { get; private set; }
         public static TrainState NullState { get; private set; }
@@ -83,8 +84,7 @@ namespace MatrixJam.Team14
 
         private void Start()
         {
-            TransitionState(DriveState, null);
-            HonkAnim();
+            TransitionState(HonkState, null);
         }
 
         private void OnValidate()
@@ -128,9 +128,10 @@ namespace MatrixJam.Team14
             }
         }
 
-        public void HonkAnim()
+        public void Honk()
         {
-            PlaySFX(TrainMove.Honk);
+            Honking = true;
+            PlaySFX(TrainMove.Honk); // TODO:
             CueFutureAnimations("Honk", null);
         }
 
@@ -192,7 +193,9 @@ namespace MatrixJam.Team14
         private void CreateStates()
         {
             DriveState = new TrainDriveState();
-            JumpState = new TrainJumpState(jumpTime);
+            
+            HonkState = new TrainHonkState(honkTime, DriveState);
+            JumpState = new TrainJumpState(jumpTime, DriveState);
             DuckState = new TrainDuckState();    
             NullState = new TrainNullState();
         }
