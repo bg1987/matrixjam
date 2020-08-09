@@ -15,10 +15,20 @@ namespace MatrixJam.Team22
         [TextArea]
         public string[] postTutorialDialogues;
 
+        [TextArea]
+        public string[] epicFailDialogues;
+
+        [TextArea]
+        public string[] failDialogues;
+
+        [TextArea]
+        public string[] winDialogues;
+
         public Animator messageBoxAnimator;
         public Text messageBoxText;
         public AudioSource source;
         public AudioClip confirmSound;
+        public AudioClip scaryConfirmSound;
 
         private string[] currentDialogue;
         private int dIndex = 0;
@@ -67,24 +77,54 @@ namespace MatrixJam.Team22
                     GameManager.instance.StartTutorial();
                 }
 
-                if (currentDialogue == postTutorialDialogues)
+                else if (currentDialogue == postTutorialDialogues)
                 {
                     GameManager.instance.StartGame();
+                }
+
+                else if (currentDialogue == epicFailDialogues)
+                {
+                    GameManager.instance.GetExit(1).Invoke();
+                }
+
+                else if (currentDialogue == failDialogues)
+                {
+                    GameManager.instance.GetExit(2).Invoke();
+                }
+
+                else if (currentDialogue == winDialogues)
+                {
+                    GameManager.instance.GetExit(3).Invoke();
                 }
             }
             else
             {
                 dIndex++;
                 messageBoxAnimator.SetTrigger("In");
-                source.PlayOneShot(confirmSound);
-                messageBoxText.text = currentDialogue[dIndex];
+
+                if(currentDialogue == epicFailDialogues)
+                    source.PlayOneShot(scaryConfirmSound);
+                else
+                    source.PlayOneShot(confirmSound);
+
+                messageBoxText.text = currentDialogue[dIndex].Replace("$MISS", GameManager.instance.GetMisses().ToString()); ;
             }
         }
 
         public void EnableDialogues(int i)
         {
+            // inb4 yanderedev yes I know this is inefficent but fuck it this is a game jam
             if (i == 0)
                 currentDialogue = postTutorialDialogues;
+
+            else if (i == 1)
+                currentDialogue = epicFailDialogues;
+
+            else if (i == 2)
+                currentDialogue = failDialogues;
+
+            else if (i == 3)
+                currentDialogue = winDialogues;
 
             canDialogue = true;
             dIndex = -1;

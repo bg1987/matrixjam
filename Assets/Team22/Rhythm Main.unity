@@ -198,7 +198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13799698}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.19, y: 0.67, z: 0}
+  m_LocalPosition: {x: -3.19, y: 0.61, z: 0}
   m_LocalScale: {x: 30, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 420405674}
@@ -228,7 +228,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.125}
+  m_Size: {x: 0.16, y: 0.15}
   m_EdgeRadius: 0
 --- !u!114 &13799702
 MonoBehaviour:
@@ -252,6 +252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 149698842}
   - component: {fileID: 149698843}
+  - component: {fileID: 149698844}
   m_Layer: 0
   m_Name: Panda_Bamboo_01 (1)
   m_TagString: Untagged
@@ -323,6 +324,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &149698844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149698841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a18ff1e0b78858a4dadfb9edf5bdc0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeOnStart: 1
+  frameRate: 2
+  positionAmplitude: 0.05
+  rotationAmplitude: 1
 --- !u!1 &155819324
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerController: {fileID: 13799702}
   playerAnimator: {fileID: 1531354724}
-  swordSwing: {fileID: 8300000, guid: 11fc305d04e9c3b4faffc0f34b52a626, type: 3}
+  swordSwing: {fileID: 8300000, guid: 84144fd9e30a40c4c8b7b6e196dbc1b1, type: 3}
   swordHit: {fileID: 8300000, guid: 63e98abf8668be54ca903d866e7934c3, type: 3}
   missDelay: 1
   swingDelay: 0.1
@@ -579,7 +596,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -687,7 +704,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459633132}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.08, z: 0}
+  m_LocalPosition: {x: 0, y: 1.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1361842739}
@@ -1187,7 +1204,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1356,10 +1373,22 @@ PrefabInstance:
     - target: {fileID: 1148892779484843490, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
         type: 3}
       propertyPath: m_Name
-      value: Exit 1 - Win
+      value: Exit 1 - Joke Fail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b81ffe1afa894f419d9876fa8ed57b8, type: 3}
+--- !u!114 &906639518 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1148892779484843485, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 906639517}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a17f5cb339b164a84713182ae1d7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &957410446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,7 +1449,7 @@ SpriteRenderer:
   m_SortingLayerID: 1127706171
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8132821389448211295, guid: 83beea111354cc84299a9c4d7a207652,
+  m_Sprite: {fileID: -8767655909735495135, guid: 83beea111354cc84299a9c4d7a207652,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1510,13 +1539,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1668,6 +1697,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b81ffe1afa894f419d9876fa8ed57b8, type: 3}
+--- !u!114 &1034970847 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1148892779484843485, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1034970846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a17f5cb339b164a84713182ae1d7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1096318700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,7 +1735,7 @@ Transform:
   m_GameObject: {fileID: 1096318700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.65, y: 3.11, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.61221147}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.61221147}
   m_Children: []
   m_Father: {fileID: 1163266105}
   m_RootOrder: 1
@@ -1912,6 +1953,7 @@ GameObject:
   - component: {fileID: 1196053718}
   - component: {fileID: 1196053720}
   - component: {fileID: 1196053719}
+  - component: {fileID: 1196053721}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -1945,7 +1987,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2065,10 +2107,68 @@ MonoBehaviour:
   - <color=red>Any key</color> would do! Even those on a <color=red>controller</color>!
   - Okay, okay, I'm going! I wanted to have some build-up...
   - <color=red><b>HIT IT!</b></color>
+  epicFailDialogues:
+  - Ha ha, very funny.
+  - '"Look at the poor panda asking for help.'
+  - I know what I'll do, just let him die!"
+  - '*sigh*'
+  - You like magic tricks, Ninja?
+  - You know why people love them, right?
+  - It transports them to another world,
+  - where nothing is the way it seems.
+  - It's channeling a natural sense of discovery...
+  - As pure entertainment.
+  - Now.
+  - Magicians aren't supposed to reveal their tricks.
+  - I am no magician.
+  - I am just not the way I seem.
+  - Pandas are killers, Ninjas.
+  - We might be miscast,
+  - <color=red>but we are killers.</color>
+  - We are bears like any other.
+  - Teeth. Running. The works.
+  - You come here again.
+  - You end up like goddamn bamboo.
+  - <color=red>Sliced open. And consumed.</color>
+  - This is the last we will speak.
+  - <b>OUT!</b>
+  failDialogues:
+  - Oh! Just what I needed!
+  - Wonderful music, wouldn't you say?
+  - <i>Um...</i>
+  - Thank you for your effort!
+  - <i>I don't like saying this, but...</i>
+  - You did a good job, overall!
+  - Lots of slicing.
+  - But you did leave me hanging a bit.
+  - You did miss $MISS bamboo...
+  - Your timing was, um, off, sometimes...
+  - But hey, that was fun!
+  - And you know, good intentions!
+  - Should we meet again, we can both improve on that score!
+  - Goodbye!
+  winDialogues:
+  - Oh! Just what I needed!
+  - Wonderful music, wonderful performance!
+  - You missed just $MISS bamboos?!
+  - That's <color=red>really impressive</color>!
+  - You really got into it!
+  - I guess Ninja School pays off after all.
+  - Maybe I'll send my friends there too!
+  - We'll just be able to...
+  - <color=red>cut to the chase</color> with these bamboos!
+  - '*snicker*'
+  - What? You want to do it again?
+  - That'll be awesome!
+  - We have lots of stock that needs sorting.
+  - But time went by so quickly...
+  - That... I have to get going.
+  - See ya!
   messageBoxAnimator: {fileID: 1101162623}
   messageBoxText: {fileID: 692808510}
   source: {fileID: 1196053718}
   confirmSound: {fileID: 8300000, guid: e4729743ad6e0b84fa1251e0ee2259a8, type: 3}
+  scaryConfirmSound: {fileID: 8300000, guid: fad11fa701c9d644486a5f09c60a24fd, type: 3}
 --- !u!114 &1196053720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2084,12 +2184,84 @@ MonoBehaviour:
   tutorial: 1
   tutorialUI: {fileID: 1658928661}
   tutorialHitsLeft: {fileID: 489600881}
-  requiredTutorialHits: 0
+  requiredTutorialHits: 4
   tutorialTimeline: {fileID: 1924826416}
   tutorialComplete: {fileID: 8300000, guid: e6ef0eecb79eaf34aaf653f8b07724fe, type: 3}
   gameTimeline: {fileID: 1628427566}
   gameTotalHits: {fileID: 1242199435}
+  allowedFails: 6
+  epicFailExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 906639518}
+        m_MethodName: EndLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  failExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1034970847}
+        m_MethodName: EndLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  winExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1558677844}
+        m_MethodName: EndLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   devText: {fileID: 1995169499}
+--- !u!114 &1196053721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196053716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 1c794323351a45142b6d4021fbdeb98e, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1196053720}
+          m_MethodName: EndGame
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1242199433
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,8 +2296,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -345.9, y: 131.34}
-  m_SizeDelta: {x: 351.60748, y: 351.88974}
+  m_AnchoredPosition: {x: -349, y: 157}
+  m_SizeDelta: {x: 366.54022, y: 273.15445}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1242199435
 MonoBehaviour:
@@ -2148,18 +2320,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: aa84d3a0275aff34fb2ad7be76ca300e, type: 3}
-    m_FontSize: 250
+    m_FontSize: 225
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 300
+    m_MaxSize: 250
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 00
+  m_Text: 05
 --- !u!222 &1242199436
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2417,6 +2589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1399862534}
   - component: {fileID: 1399862535}
+  - component: {fileID: 1399862536}
   m_Layer: 0
   m_Name: Panda_Bamboo_01 (2)
   m_TagString: Untagged
@@ -2488,6 +2661,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1399862536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399862533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a18ff1e0b78858a4dadfb9edf5bdc0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeOnStart: 1
+  frameRate: 2
+  positionAmplitude: 0.05
+  rotationAmplitude: 1
 --- !u!1 &1531354721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2764,10 +2953,22 @@ PrefabInstance:
     - target: {fileID: 1148892779484843490, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
         type: 3}
       propertyPath: m_Name
-      value: Exit 3 - Joke Fail
+      value: Exit 3 - Win
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b81ffe1afa894f419d9876fa8ed57b8, type: 3}
+--- !u!114 &1558677844 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1148892779484843485, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1558677843}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a17f5cb339b164a84713182ae1d7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1565405511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2904,6 +3105,8 @@ PlayableDirector:
     value: {fileID: 957410450}
   - key: {fileID: 2940400743660642309, guid: a5aac535f56b6ad428661cc0369e8c76, type: 2}
     value: {fileID: 2037146788}
+  - key: {fileID: 2780227796257917797, guid: a5aac535f56b6ad428661cc0369e8c76, type: 2}
+    value: {fileID: 1196053721}
   m_ExposedReferences:
     m_References:
     - de8a0a31eb9323a4fac3d789ae0de90b: {fileID: 957410446}
@@ -2990,6 +3193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1740218265}
   - component: {fileID: 1740218266}
+  - component: {fileID: 1740218267}
   m_Layer: 0
   m_Name: Panda_Bamboo_02
   m_TagString: Untagged
@@ -3061,6 +3265,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1740218267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740218264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a18ff1e0b78858a4dadfb9edf5bdc0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeOnStart: 1
+  frameRate: 2
+  positionAmplitude: 0.05
+  rotationAmplitude: 1
 --- !u!1 &1767099925
 GameObject:
   m_ObjectHideFlags: 0
@@ -3071,6 +3291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1767099926}
   - component: {fileID: 1767099927}
+  - component: {fileID: 1767099928}
   m_Layer: 0
   m_Name: Panda_Bamboo_01
   m_TagString: Untagged
@@ -3142,6 +3363,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1767099928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767099925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a18ff1e0b78858a4dadfb9edf5bdc0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeOnStart: 1
+  frameRate: 2
+  positionAmplitude: 0.05
+  rotationAmplitude: 1
 --- !u!1 &1792108900
 GameObject:
   m_ObjectHideFlags: 0
@@ -3373,7 +3610,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 195, y: -307}
+  m_AnchoredPosition: {x: 912, y: -454}
   m_SizeDelta: {x: 326.23193, y: 94.69562}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1995169499

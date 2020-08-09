@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: aedfd2302bff9404e8924d1054e2ad09, type: 2}
+    - target: {fileID: 97345302680000666, guid: 1fdeb58cd6be059418f702154486a1c2,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 97345302680000668, guid: 1fdeb58cd6be059418f702154486a1c2,
         type: 3}
       propertyPath: m_Name
@@ -20,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 97345302680000670, guid: 1fdeb58cd6be059418f702154486a1c2,
         type: 3}
       propertyPath: m_Size.y
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 97345302680000671, guid: 1fdeb58cd6be059418f702154486a1c2,
         type: 3}

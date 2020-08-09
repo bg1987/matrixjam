@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace MatrixJam.Team22
@@ -23,6 +24,13 @@ namespace MatrixJam.Team22
         [Header("Game")]
         public GameObject gameTimeline;
         public Text gameTotalHits;
+        public int allowedFails = 5;
+        // exits
+        // exits are triggered in DialogueManager, depending on the result parsed in EndGame() here
+        [Header("Exits")]
+        public UnityEvent epicFailExit;
+        public UnityEvent failExit;
+        public UnityEvent winExit;
         // ui
         [Header("Dev")]
         public Text devText;
@@ -92,10 +100,40 @@ namespace MatrixJam.Team22
             misses = 0;
         }
 
+        public void EndGame()
+        {
+            // 1 or less hits
+            if(hits <= 1)
+                DialogueManager.instance.EnableDialogues(1);
+
+            // not enough hits
+            else if (misses > allowedFails)
+                DialogueManager.instance.EnableDialogues(2);
+
+            // okay you win
+            else
+                DialogueManager.instance.EnableDialogues(3);
+        }
+
         void PostTutorialDialogue()
         {
             tutorialUI.SetActive(false);
             DialogueManager.instance.EnableDialogues(0);
+        }
+
+        public UnityEvent GetExit(int id)
+        {
+            if (id == 1)
+                return epicFailExit;
+            else if (id == 2)
+                return failExit;
+            else
+                return winExit;
+        }
+
+        public int GetMisses()
+        {
+            return misses;
         }
     }
 }
