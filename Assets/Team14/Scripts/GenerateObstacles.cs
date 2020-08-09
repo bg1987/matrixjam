@@ -58,12 +58,14 @@ namespace MatrixJam.Team14
             {
                 var prefab = GetObstaclePrefab(obstacleData.Move);
                 var pos = trackList.GetBeatPositionWithGlobalBeat(startAndDirection, obstacleData.Beat);
-
                 var go = (GameObject)PrefabUtility.InstantiatePrefab(prefab, transform);
                 go.transform.position = pos;
 
                 var obstacleGen = go.GetComponent<SetObstacleParams>();
-                obstacleGen.SetParams();
+
+                var trackIdx = trackList.GetTrackIdxByGlobalBeat(obstacleData.Beat);
+                var track = trackList[trackIdx];
+                obstacleGen.SetParams(track);
             }
         }
         

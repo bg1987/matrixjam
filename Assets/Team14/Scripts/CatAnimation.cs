@@ -74,6 +74,9 @@ namespace MatrixJam.Team
                 SetFrameActive(frameIdx);
                 yield return null;
             }
+
+            foreach (var cat in _cats)
+                cat.SetActive(false);
         }
 
         private void SetFrameActive(int frameIdx)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -11,12 +12,21 @@ namespace MatrixJam.Team14
 
         public MusicTrack[] Tracks => tracks;
 
+        public int TrackCount => tracks.Length;
+
+        private IEnumerable<MusicTrack> TracksExceptLast
+        {
+            get
+            {
+                for (var i = 0; i < tracks.Length - 1; i++)
+                    yield return tracks[i];
+            }
+        }
+
         private void OnValidate()
         {
             if (GameManager.Instance) GameManager.Instance.OnValidate();
         }
-        
-        public int TrackCount => tracks.Length;
 
         public IEnumerable<Vector3> GetAllBeatPositions(Transform startAndDirection)
         {
@@ -27,7 +37,7 @@ namespace MatrixJam.Team14
                 for (var beatNum = 0; beatNum < Mathf.FloorToInt(track.TotalBeats); beatNum++)
                     yield return track.GetPosition(startAndDirection, beatNum, offset);
 
-                offset = track.GetLastPosition(startAndDirection);
+                offset += track.GetLastPosition(startAndDirection);
             }
         }
 
@@ -76,13 +86,29 @@ namespace MatrixJam.Team14
             return offset + currTrackPos;
         }
 
+        public int GetTrackIdxByGlobalBeat(float beatNum)
+        {
+            var beatOffset = 0f;
+            var trackIdx = 0;
+
+            foreach (var track in TracksExceptLast)
+            {
+                if (beatOffset + track.TotalBeats >= beatNum) break;
+                beatOffset += track.TotalBeats;
+                trackIdx++;
+            }
+
+            //var trackBeat = beatNum - beatOffset;
+            return trackIdx;
+        }
+
         public Vector3 GetBeatPositionWithGlobalBeat(Transform startAndDirection, float beatNum)
         {
             var trackIdx = 0;
             var beatOffset = 0f;
             var posOffset = Vector3.zero;
-            
-            foreach (var track in tracks.Reverse().Skip(1).Reverse())
+
+            foreach (var track in TracksExceptLast)
             {
                 if (beatOffset + track.TotalBeats >= beatNum) break;
                 beatOffset += track.TotalBeats;

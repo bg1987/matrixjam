@@ -49,8 +49,7 @@ MonoBehaviour:
   trigger: {fileID: 461315107231522436}
   obstacleHolder: {fileID: 140150154071098894}
   triggerWidthInBeats: {x: 0, y: 0}
-  zPerBeat: 7.5
-  obstacleBeatOffset: 0.6
+  obstacleSecsOffset: 0.4821605
 --- !u!1 &461315106599286770
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7730306174199117093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.6230193}
+  m_LocalPosition: {x: 0, y: 0, z: 6.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 461315106477337063}

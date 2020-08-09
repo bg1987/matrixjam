@@ -14,8 +14,9 @@ namespace MatrixJam.Team14
 
         public AudioClip Clip => clip;
         public float BPM => bpm;
-        private float BeatPerSec => bpm / 60;
+        public float BeatPerSec => bpm / 60;
 
+        public float ZPerBeat => zPerBeat;
         public float TotalBeats => BeatPerSec * clip.length;
         public float TotalSeconds => TotalBeats * BeatPerSec;
 

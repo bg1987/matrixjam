@@ -10,15 +10,15 @@ namespace MatrixJam.Team14
     [CustomEditor(typeof(SetObstacleParams))]
     public class SetTriggerOffsetEditor : Editor
     {
-        public override void OnInspectorGUI()
-        {
-            base.OnInspectorGUI();
-            var script = target as SetObstacleParams;
-            if (GUILayout.Button("DO IT"))
-            {
-                script.SetParams();
-            }
-        }
+        //public override void OnInspectorGUI()
+        //{
+        //    base.OnInspectorGUI();
+        //    var script = target as SetObstacleParams;
+        //    if (GUILayout.Button("DO IT"))
+        //    {
+        //        script.SetParams();
+        //    }
+        //}
     }
 #endif
     
@@ -30,14 +30,13 @@ namespace MatrixJam.Team14
         
         [Header("Sizes")]
         [SerializeField] private Vector2 triggerWidthInBeats;
-        [SerializeField] private float zPerBeat;
-        [SerializeField] private float obstacleBeatOffset;
+        [SerializeField] private float obstacleSecsOffset;
 
-        public void SetParams()
+        public void SetParams(MusicTrack track)
         {
             AdjustTrigger();
             
-            AdjustObstacleHolder();
+            AdjustObstacleHolder(track);
             
             // Doesn't work (Delete in prefab instance)
             // DestroyHolderChildren();
@@ -54,12 +53,13 @@ namespace MatrixJam.Team14
             }
         }
 
-        public void AdjustObstacleHolder()
+        public void AdjustObstacleHolder(MusicTrack track)
         {
             if (!obstacleHolder) return;
-            var delta = zPerBeat * obstacleBeatOffset;
+            
+            var z = obstacleSecsOffset * track.BeatPerSec * track.ZPerBeat;
             var oldPos = obstacleHolder.transform.localPosition;
-            var pos = new Vector3(oldPos.x, oldPos.y, delta);
+            var pos = new Vector3(oldPos.x, oldPos.y, z);
 
             obstacleHolder.transform.localPosition = pos;
         }

@@ -7,11 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 140150154071098894, guid: d608cf76c33759847b2ee6953541668c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.5
-      objectReference: {fileID: 0}
     - target: {fileID: 461315106477337062, guid: d608cf76c33759847b2ee6953541668c,
         type: 3}
       propertyPath: m_Name
@@ -80,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 3280645601191201580, guid: d608cf76c33759847b2ee6953541668c,
         type: 3}
       propertyPath: obstacleTypes.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3280645601191201580, guid: d608cf76c33759847b2ee6953541668c,
         type: 3}
@@ -117,6 +112,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 919132149155446097, guid: 2bd85b377f9fd304f83cff8ee49ebdf9,
         type: 3}
+    - target: {fileID: 3280645601191201580, guid: d608cf76c33759847b2ee6953541668c,
+        type: 3}
+      propertyPath: obstacleSecsOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4318348453872503575, guid: d608cf76c33759847b2ee6953541668c,
         type: 3}
       propertyPath: obstacleObj
