@@ -207,6 +207,156 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a17f5cb339b164a84713182ae1d7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &27723914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 27723915}
+  - component: {fileID: 27723917}
+  - component: {fileID: 27723916}
+  m_Layer: 5
+  m_Name: Image (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &27723915
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27723914}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 480452422}
+  - {fileID: 1605649087}
+  m_Father: {fileID: 1516244575}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -175.36}
+  m_SizeDelta: {x: 617.3668, y: 350.7187}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &27723916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27723914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 47cac6c0933c31e4e8b3fb3e56c51783, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &27723917
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27723914}
+  m_CullTransparentMesh: 0
+--- !u!1 &75202913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 75202914}
+  - component: {fileID: 75202916}
+  - component: {fileID: 75202915}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &75202914
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75202913}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 258475135}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -325.8, y: 109.73}
+  m_SizeDelta: {x: 188, y: 188}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &75202915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75202913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 2defe396549396a46aeb1d3b02f28d04, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &75202916
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75202913}
+  m_CullTransparentMesh: 0
 --- !u!1 &82792994
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextCharacter: 0
   YoutubeEnabled: 1
-  TextEnabled: 0
+  TextEnabled: 1
   textToDisplay: {fileID: 1086523659}
   currentlEnabled: {fileID: 875319767}
   currentlEnabledString: 
@@ -374,333 +524,622 @@ MonoBehaviour:
   - name: 7459
     theObject: {fileID: 324220892}
     description: You leave your cabin and head to the upper deck trying to figure
-      out all of the commotion that's been going on.   Far on the horizon, you see
-      another ship in the distance, rapidly closing in.. You can hear Timmy Oliver,
-      the deckhand screaming loudly from the crow's nest, but you can't hear anything. 
-      Before you realize anything you see they are firing yet another cannons at
-      your ship.  Oh, no! Pirates!  WHOOSH, they missed again! A cannon ball hits
-      the water near the ship.  Before you can say anything, Lady Victoria Hawkins,
-      the owner of this ship, who hired you to set off on a journey to find her lost
-      father's ship, starts yelling at you about your lack of pants.  Do you tell
-      Lady Hawkins off and continue with trying to save the ship from these Pirates?
-      Choose 6119  Do you do as she says and "just go back to your ready room and
-      put on some pants, for god's sake!"  Choose 9116
+      out all of the commotion that's been going on. <br><br>Far on the horizon,
+      you see another ship in the distance, rapidly closing in.. You can hear Timmy
+      Oliver, the deckhand screaming loudly from the crow's nest, but you can't hear
+      anything.<br><br>Before you realize anything you see they are firing yet another
+      cannons at your ship.<br><br>Oh, no! Pirates!<br><br>WHOOSH, they missed again!<br>A
+      cannon ball hits the water near the ship.<br><br>Before you can say anything,
+      Lady Victoria Hawkins, the owner of this ship, who hired you to set off on
+      a journey to find her lost father's ship, starts yelling at you about your
+      lack of pants.<br><br>Do you tell Lady Hawkins off and continue with trying
+      to save the ship from these Pirates?<br>Choose 6119<br><br>Do you do as she
+      says and "just go back to your ready room and put on some pants, for god's
+      sake!" <br>Choose 9116
     forceText: 0
+    forceImage: 0
   - name: 3965
     theObject: {fileID: 875319767}
     description: 'You put on your pants and leave your cabin and head to the upper
-      deck trying to figure out all of the commotion that''s been going on.   Far
+      deck trying to figure out all of the commotion that''s been going on. <br><br>Far
       on the horizon, you see another ship in the distance, rapidly closing in..
       You can hear Timmy Oliver, the deckhand screaming loudly from the crow''s nest,
-      but you can''t hear anything.  Before you realize anything you see they are
-      firing yet another cannons at your ship.  Oh, no! Pirates!  WHOOSH, they missed
-      again! A cannon ball hits the water near the ship.  Lady Victoria Hawkins,
-      the owner of this ship, who hired you to set off on a journey to find her lost
-      father''s ship, comes running to the upper deck.   "We cannot let these pirates
-      get away with this! We need to attack them back!" she says.  Jean Pierre Clot,
-      The ship''s cook, runs out of the kitchen, and yells "I know these pirates,
-      It''s Captain Orange Beard''s crew. We cannot take them. we should run away!" 
-      Jenkins looks at you and asks: "Your Orders Captain?"   "Let''s fight back" 
-      Choose 8765  "Let''s try to out run the the pirate ship and flee" Choose 5678'
+      but you can''t hear anything.<br><br>Before you realize anything you see they
+      are firing yet another cannons at your ship.<br><br>Oh, no! Pirates!<br><br>WHOOSH,
+      they missed again!<br>A cannon ball hits the water near the ship.<br><br>Lady
+      Victoria Hawkins, the owner of this ship, who hired you to set off on a journey
+      to find her lost father''s ship, comes running to the upper deck. <br><br>"We
+      cannot let these pirates get away with this! We need to attack them back!"
+      she says.<br><br>Jean Pierre Clot, The ship''s cook, runs out of the kitchen,
+      and yells "I know these pirates, It''s Captain Orange Beard''s crew. We cannot
+      take them. we should run away!"<br><br>Jenkins looks at you and asks: "Your
+      Orders Captain?" <br><br>"Let''s fight back" <br>Choose 8765<br><br>"Let''s
+      try to out run the the pirate ship and flee"<br>Choose 5678'
     forceText: 0
+    forceImage: 0
   - name: 6119
     theObject: {fileID: 854810608}
     description: 'You decide to take a stand and fight for what''s the most important
-      to you. The freedom to not wear pants.  You confront Lady Hawkins. "This is
-      my ship, and I will wear what ever I want in here!"  "Your ship wouldn''t have
-      been able to leave the dock if it wasn''t for me paying for the repairs! I
-      paid for it, I paid for you and your crew, and i''m paying for you to put on
-      pants!" she replies, "You put on pants right now, or I''m not splitting my
-      father''s fortune when we find it!"  "I will not bow down to your idle threats,
-      lady". you continue with your no pants position, "I''m the captain here, and
-      I have the final say on what''s going on. I don''t even believe this whole
-      story about your lost father and his ship with all the treasures on it. I''m
-      this close to turning this ship around and going back to London, and not even..." 
-      Before you can complete your sentence, a cannon ball hits the  the bow of the
-      ship, and rips a hole in it.  The ships sinks, and the pirates have one.  GAME
-      OVER  : 6961'
+      to you. The freedom to not wear pants.<br><br>You confront Lady Hawkins.<br>"This
+      is my ship, and I will wear what ever I want in here!"<br><br>"Your ship wouldn''t
+      have been able to leave the dock if it wasn''t for me paying for the repairs!
+      I paid for it, I paid for you and your crew, and i''m paying for you to put
+      on pants!" she replies, "You put on pants right now, or I''m not splitting
+      my father''s fortune when we find it!"<br><br>"I will not bow down to your
+      idle threats, lady". you continue with your no pants position, "I''m the captain
+      here, and I have the final say on what''s going on. I don''t even believe this
+      whole story about your lost father and his ship with all the treasures on it.
+      I''m this close to turning this ship around and going back to London, and not
+      even..."<br><br>Before you can complete your sentence, a cannon ball hits the 
+      the bow of the ship, and rips a hole in it.<br><br>The ships sinks, and the
+      pirates have one.<br><br>Enter code : GAME OVER<br>'
     forceText: 0
+    forceImage: 0
   - name: 9116
     theObject: {fileID: 1772356371}
     description: 'Knowing there''s no way to win an argument with Lady Hawkins, you
       go back to your ready room, and put on your pants and come back from to the
-      upper deck trying to figure out all of the commotion that''s been going on.  
-      You see the pirate ship, rapidly closing in.. They are firing yet another cannons
-      at your ship. luckily, they missed again!  "We cannot let these pirates get
-      away with this! We need to attack them back!" says Lady Hawkins  Jean Pierre
-      Clot, The ship''s cook, runs out of the kitchen, and yells "I know these pirates,
-      It''s Captain Orange Beard''s crew. We cannot take them. we should run away!" 
-      Jenkins looks at you and asks: "Your Orders Captain?"  "Let''s fight back" 
-      Choose 8765  "Let''s try to out run the the pirate ship and flee" Choose 5678'
+      upper deck trying to figure out all of the commotion that''s been going on.
+      <br><br>You see the pirate ship, rapidly closing in.. They are firing yet another
+      cannons at your ship. luckily, they missed again!<br><br>"We cannot let these
+      pirates get away with this! We need to attack them back!" says Lady Hawkins<br><br>Jean
+      Pierre Clot, The ship''s cook, runs out of the kitchen, and yells "I know these
+      pirates, It''s Captain Orange Beard''s crew. We cannot take them. we should
+      run away!"<br><br>Jenkins looks at you and asks: "Your Orders Captain?"<br><br>"Let''s
+      fight back" <br>Choose 8765<br><br>"Let''s try to out run the the pirate ship
+      and flee"<br>Choose 5678"'
     forceText: 0
+    forceImage: 0
   - name: 8765
     theObject: {fileID: 190051549}
     description: '"Battle Station" you yell at the crew, "Load the cannons, get into
-      firing positions."   Jenkins and Jean Pierre looks very puzzled to you.  Both
-      of them are running around, from one side of the ship to the other, not really
-      doing any of the things you are ordering them to do. Jenkins is looking for
-      cannon balls, and can''t find them. Jean Pierre, goes to the kitchen and gets
-      a sack of potatoes and puts it next to the cannon for some reason unbeknownst
-      to you.  You also look up at Timmy, and see he is hanging by his leg, upside
-      down from one of the ropes.  Attacking a pirate ship, with this tiny crew of
-      4 incapable people, might not have been the right idea.  You realize that and
-      about to give the order to flee, but before you can complete your sentence,
-      a cannon ball hits the  the bow of the ship, and rips a hole in it.  The ships
-      sinks, and the pirates have won.  GAME OVER Enter code : 6961'
+      firing positions." <br><br>Jenkins and Jean Pierre looks very puzzled to you. 
+      Both of them are running around, from one side of the ship to the other, not
+      really doing any of the things you are ordering them to do. Jenkins is looking
+      for cannon balls, and can''t find them. Jean Pierre, goes to the kitchen and
+      gets a sack of potatoes and puts it next to the cannon for some reason unbeknownst
+      to you. <br>You also look up at Timmy, and see he is hanging by his leg, upside
+      down from one of the ropes.<br><br>Attacking a pirate ship, with this tiny
+      crew of 4 incapable people, might not have been the right idea.<br><br>You
+      realize that and about to give the order to flee, but before you can complete
+      your sentence, a cannon ball hits the  the bow of the ship, and rips a hole
+      in it.<br><br>The ships sinks, and the pirates have won.<br><br>Enter code
+      : GAME OVER'
     forceText: 0
+    forceImage: 0
   - name: 5678
     theObject: {fileID: 287428752}
-    description: 'Good choice!  Attacking a pirate ship, with this tiny crew of 4
-      incapable people, would not have been the right idea.  Jenkins and Jean Pierre
-      are both running around, in panic from one side of the ship to the other, Jenkins
-      is looking for cannon balls, and can''t find them. Jean Pierre, goes to the
-      kitchen and gets a sack of potatoes and puts it next to the cannon for some
-      reason unbeknownst to you. You also look up at Timmy, and see he is hanging
-      by his leg, upside down from one of the ropes.  You''re about to give the order
-      to flee, but before you can complete your sentence, a cannon ball hits the
-      the bow of the ship, and rips a hole in it.  The ships sinks, and the pirates
-      have won.  GAME OVER: 6961'
+    description: 'Good choice!<br><br>Attacking a pirate ship, with this tiny crew
+      of 4 incapable people, would not have been the right idea.<br><br>Jenkins and
+      Jean Pierre are both running around, in panic from one side of the ship to
+      the other, Jenkins is looking for cannon balls, and can''t find them. Jean
+      Pierre, goes to the kitchen and gets a sack of potatoes and puts it next to
+      the cannon for some reason unbeknownst to you.<br>You also look up at Timmy,
+      and see he is hanging by his leg, upside down from one of the ropes.<br><br>You''re
+      about to give the order to flee, but before you can complete your sentence,
+      a cannon ball hits the the bow of the ship, and rips a hole in it.<br><br>The
+      ships sinks, and the pirates have won.<br><br>Enter code : GAME OVER'
     forceText: 0
-  - name: 4966
+    forceImage: 0
+  - name: AA4966
     theObject: {fileID: 875319767}
-    description: 
+    description: '"Where the hell are your pants?" you try to ask politely, but when
+      it comes to decency you just aren''t able to hold back. <br> <br>"This is my
+      ship and I will wear what even I want here!" the captain replies angrily. <br>
+      <br>First mate John Jenkins Jr approached the Captain interrupts your conversation
+      makes his own point about the pants: <br>"With all due respect captain, you
+      are being rude to the lady, It''s a matter of basic courtesy, sir, just put
+      on some pants, please." <br> <br>"Fine" the captain says, and goes to his ready
+      room. <br> <br>You wait until the captain returns to the upper deck.  <br>Choose
+      6944 '
     forceText: 0
-  - name: 6944
+    forceImage: 0
+  - name: AA^($$
     theObject: {fileID: 875319767}
-    description: 
+    description: From the upper deck of the ship you can see another ship on the
+      horizon, slowly coming towards your ship. <br>First mate Jenkins picks up the
+      spyglass and look at the ship. <br>"Pirates, we're under attack by Pirates"
+      says Jenkins , "The came out of nowhere!" <br> <br>"Pirates? Damn it!" says
+      the captain "We can't take a battle with pirates! We have to flee!" <br> <br>They
+      both look at you, being the one who hired this crew, you have a say in what
+      you happens next. <br> <br>Do you trust the captain's opinion and have the
+      crew attempt to flee this battle? <br>Choose 1235 <br> <br>Do you want to order
+      the captain to battle these pirates? <br>Choose 1236 <br> <br>
     forceText: 0
+    forceImage: 0
   - name: Game Over
     theObject: {fileID: 358743457}
     description: 
     forceText: 0
+    forceImage: 1
   - name: 121394
     theObject: {fileID: 187323594}
     description: 
     forceText: 0
+    forceImage: 1
   - name: 18.333,-64.918
     theObject: {fileID: 389277963}
     description: 'Congrats! You beat the game! '
     forceText: 1
+    forceImage: 1
   - name: LaRatte
     theObject: {fileID: 810570003}
     description: What is the Lat/Long location of the Pirates Treasure Museum in
       the Virgin Islands? (XX.XXX,-XX.XXX)
     forceText: 1
+    forceImage: 1
   - name: 4966
     theObject: {fileID: 746870996}
-    description: 
+    description: '"Where the hell are your pants?" you try to ask politely, but when
+      it comes to decency you just aren''t able to hold back. <br> <br>"This is my
+      ship and I will wear what even I want here!" the captain replies angrily. <br>
+      <br>First mate John Jenkins Jr approached the Captain interrupts your conversation
+      makes his own point about the pants: <br>"With all due respect captain, you
+      are being rude to the lady, It''s a matter of basic courtesy, sir, just put
+      on some pants, please." <br> <br>"Fine" the captain says, and goes to his ready
+      room. <br> <br>You wait until the captain returns to the upper deck.  <br>Choose
+      6944 '
     forceText: 0
+    forceImage: 0
   - name: 6944
     theObject: {fileID: 2055173338}
-    description: 
+    description: From the upper deck of the ship you can see another ship on the
+      horizon, slowly coming towards your ship. <br>First mate Jenkins picks up the
+      spyglass and look at the ship. <br>"Pirates, we're under attack by Pirates"
+      says Jenkins , "The came out of nowhere!" <br> <br>"Pirates? Damn it!" says
+      the captain "We can't take a battle with pirates! We have to flee!" <br> <br>They
+      both look at you, being the one who hired this crew, you have a say in what
+      you happens next. <br> <br>Do you trust the captain's opinion and have the
+      crew attempt to flee this battle? <br>Choose 1235 <br> <br>Do you want to order
+      the captain to battle these pirates? <br>Choose 1236 <br> <br>
     forceText: 0
+    forceImage: 0
   - name: 1235
     theObject: {fileID: 1590108241}
-    description: 
+    description: You agree with the captain's choice who now gives the order to flee.
+      <br> <br>Jean Pierre Clot, The ship's cook comes running from the kitchen.
+      "Orange Beard!" he says as he is trying to catch his breath after climbing
+      all the stairs from the lower deck, "it's the infamous pirate Orange Beard!
+      We don't stand a chance". <br> <br>"How do you know that?" asks Jenkins. <br>
+      <br>"I was once part of his crew. actually, it's a long story, i was a young
+      boy just out of cooking school and.." <br> <br>"Jean Pierre! We don't have
+      time for your stories." says the captain "We need all the help we could use
+      getting those sails up!" go and tighten the ropes!" <br> <br>Realizing that
+      this might be tough situation you need to carefully choose your next steps.
+      <br>On one hand this is a small crew and they could use all the help they could
+      get. <br>On the other hand you do not want your father's journal to fall into
+      the hand of pirates, as it contains all the information about his ship and
+      it's treasure. It is very likely that this is why they are attacking your ship,
+      to gain access to the secrets it holds. <br> <br>Do you go and assist the cook
+      with the sails?  <br>Choose 5555 <br> <br>Do you go to your cabin and hide
+      your precious father's journal? <br>Choose 6666  <br> <br>
     forceText: 0
+    forceImage: 0
   - name: 1236
     theObject: {fileID: 688835917}
-    description: 
+    description: 'You are about to disagree with the captain''s choice and order
+      him to attack the pirates ship. <br> <br>Jean Pierre Clot, The ship''s cook
+      comes running from the kitchen. "Orange Beard!" he says as he is trying to
+      catch his breath after climbing all the stairs from the lower deck, "it''s
+      the infamous pirate Orange Beard! We don''t stand a chance". <br> <br>"How
+      do you know that?" asks Jenkins. <br> <br>"I was once part of his crew. actually,
+      it''s a quite a story, I was a young boy just out of cooking school and.."
+      <br> <br>"Jean Pierre! We don''t have time for your stories." says the captain 
+      <br> <br>"Orange beard? why does that sound familiar" you think to yourself,
+      realizing that you might know why they are attacking. <br>Your father''s journal
+      contains all the information about his ship and it''s treasure. It is very
+      likely that this is why they are attacking your ship, to gain access to the
+      secrets it holds. <br> <br>This is a tough situation you need to carefully
+      choose your next steps. <br>On one hand this is a small crew and they could
+      use all the help they could get. <br>On the other hand you do not want  father''s
+      journal to fall into the hand of pirates. <br> <br>Do you tell the crew the
+      secret about your father''s journal and its realtion to Orange Beard? <br>Choose
+      4444 <br> <br>OR <br> <br>Do you go to your cabin and hide your precious father''s
+      journal? <br>Choose 6666  <br> '
     forceText: 0
+    forceImage: 0
   - name: 4444
     theObject: {fileID: 1447330892}
-    description: 
+    description: '"Yellow beard is after my father''s journal" you announce. <br>
+      <br>Captain Harper looks at you. Worried. And mutters: <br>"Bloody hell! Now
+      that''s just swell, ain''t it? we need to flee as quickly as we can! Let''s
+      get those sails up! Jenkins, tighten the port ropes, Jean Pierre - starboard."
+      <br> <br>"Aye aye captain!" they reply simultaneously, but both are also going
+      to the wrong sided of the ship. <br> <br>You were certain your announcement
+      would have raised more questions but it is apparent that the situation is dire
+      and expect to be interrogated about this later. <br> <br>in the meantime you
+      have to take action yourself. <br> <br>It seems like Jenkins is getting the
+      hang of the rope work while the cook struggles with it.. <br> <br>Do you go
+      and assist the cook with the sails?  <br>Choose 5555 <br> <br>Do you go to
+      your cabin and hide your precious father''s journal? <br>Choose 6666  <br> '
     forceText: 0
+    forceImage: 0
   - name: 5555
     theObject: {fileID: 676379522}
-    description: 
+    description: 'You head toward the rope that hold the main sail, when you hear
+      the cook screams: "MY POTATOES!" as he drops the rope and runs down towards
+      the kitchen.  <br> <br>You catch the rope and hold it, and as you do a heavy
+      gust of wind blows through the sail, you''re still holding on to the rope,
+      and suddenly it pulls you up towards the main mast.  <br>You assume that this
+      has to be due to you tiny weight. You do put an effort to remain fit and not
+      gain weight.  <br>But, as you are thrusted upwards you notice Timmy, the deckhand
+      hanging upside down on the other end of this rope, from the main mast, foolishly
+      waving to on his way down as you are flying high. <br> <br>Such an incompetent
+      crew... <br> <br>Soon after a cannon ball hits the ship, it sinks and the pirates
+      have won... <br> <br>Enter code: GAME OVER.'
     forceText: 0
+    forceImage: 0
   - name: 6666
     theObject: {fileID: 1497380775}
-    description: 
+    description: 'Holding the secret map and code to the treasure chest your father
+      has been after his whole life, it is obvious that his journal is your most
+      precious possession and you cannot let Orange Beard get his hand on it.  <br>You
+      run to your cabin, pick it up, and try to find a hide it.  <br>Where would
+      be the best hiding place?  <br>Under the bed? In your clothes bag? Somewhere
+      else? You can''t figure it out. <br> <br>While you are standing there indecisive
+      a cannon ball this the ship and it start sinking. <br> <br>The pirates and
+      won.  <br> <br>Enter Code: GAME OVER.'
     forceText: 0
+    forceImage: 0
   - name: 1199
     theObject: {fileID: 907139144}
-    description: 
+    description: '"Where the hell are your pants, Captain?" Lady Hawkins yells angrily.<br><br>"This
+      is my ship, and I will wear what ever I want in here!" replies the Captain.
+      <br><br>"Just go back to your ready room and put on some pants, for god''s
+      sake!"  She continues.<br><br>You butt in, and interject, supporting Lady Hawkin''s
+      suggestion : "Captain, this isn''t really a big deal, It''s a matter of courtesy
+      to the Lady. "<br><br>"Fine.." He says and goes back to the ready room. <br><br>Jean
+      Pierre Clot, the ship''s cook comes running from the kitchen: "What''s going
+      on?", he asks.<br><br>Do you start explaining to him the whole deal about the
+      pirates attacking the ship? <br>Choose 1617<br>or<br>Do you just tell him to
+      go man a cannon, expecting the captain to order everyone to their battle stations?
+      <br>Choose 1716'
     forceText: 0
+    forceImage: 0
   - name: 9911
     theObject: {fileID: 1061339452}
-    description: 
+    description: 'You selfishly decide to use this argument about pants to be your
+      ticket to captainhood, at first, you stay out of it, while Captain Harper and
+      Lady Hawkins yell at each other.<br><br>The captain yell, "This is my ship,
+      and I will wear what ever I want in here!"<br><br>"Your ship wouldn''t have
+      been able to leave the dock if it wasn''t for me paying for the repairs! I
+      paid for it, I paid for you and your crew, and i''m paying for you to put on
+      pants!" she replies, "You put on pants right now, or I''m not splitting my
+      father''s fortune when we find it!"<br><br>You think it might be a good time
+      to take a side in this argument.<br><br>"But captain", you say "It''s a matter
+      of courtesy to the Lady. "<br><br>The Lady look angrily at you, and says "Keep
+      out of this!"<br><br>You suspect there''s something beneath the surface with
+      this two.<br><br>The Captain continues his argument when a nother cannon ball
+      hits the ship, this time in the lower bow, and rips a big hole in it.<br><br>The
+      ships sinks, and the pirates have one.<br><br>Enter code : GAME OVER'
     forceText: 0
+    forceImage: 0
   - name: 1617
     theObject: {fileID: 1548652921}
-    description: 
+    description: You recall Jean Pierre always tells tales where about he keeps on
+      talking about pirates, so you decide to share with him that you're all under
+      attack by pirates. <br>He picks up the spy glass and looks at the incoming
+      pirate's ship.  "That's Captain Yellow beard's ship! I used to be part of his
+      crew before... well... that's a long story." <br> <br>Do you want to hear this
+      story?  <br>Choose 3344 <br>Do you want to order Jean Pierre to man the cannon?
+      <br>Choose 1716 <br>
     forceText: 0
+    forceImage: 0
   - name: 1716
     theObject: {fileID: 1922929276}
-    description: 
+    description: '"Battle Stations" orders the captain, who comes back from his ready
+      room, fully clothed this time! <br> <br>You look at Jean Pierre: "You take
+      the port cannon I take starborn", he nods back at you and goes towards the
+      lower, then stops and comes back. <br> <br>"Starboard", he says. <br>"What?"
+      <br>"You meant to say starboard, but you said starborn." <br>"Did you?" <br>"Yes"
+      <br>"Huh! funny." <br>"It''s weird. I know it''s called Starboard, why would
+      I say starborn?" <br>"I know right?" <br>"Yeah, It totally doesn''t make any
+      sense". <br>"exactly, that''s what I said.." <br>"Well, anyways, go to the
+      right side of the ship and man the cannon" <br>"Hold on, is port the right
+      side of the ship, or is starborn the right side of the ship?" <br>"starBOARD"
+      <br>"right." <br>"yes, right" <br>"not the left side?" <br>"what?" <br>"starboard"
+      <br>"right" <br>"that''s what i''m asking." <br>"what?" <br>"Starboard is left
+      side of the ship?" <br>"Right" <br>"Now i''m confused. is the the right side
+      or the left side?" <br> <br>At this point, a cannon ball hits the ship, this
+      time in the lower bow, on the starboard side of the ship, and rips a big hole
+      in it. <br> <br>The ships sinks, and the pirates have won. <br> <br>Enter code
+      : GAME OVER'
     forceText: 0
+    forceImage: 0
   - name: 3344
     theObject: {fileID: 264415046}
-    description: 
+    description: 'Jean Pierre "15 years ago I was just a lad," Jean Pierre starts
+      telling you this story, "I just finished chef school and was give the opportunity
+      to work as a cook for this new captain, little did I know this was Captain
+      Orange Beard, who was a pirate. Only after I boarded the ship and we set sail,
+      I saw they changed their flags to a pirates flag. <br>At first I was worried,
+      but then I started to get used to the idea of being on a pirate ship. Life
+      wasn''t very hard, the crew, despite being pirates were actually pretty nice,
+      and they loved what i was cooking for them. I could experiment with different
+      foods and try new recipes, and everyone seemed to like it.<br>But then there
+      was a problem. In one of our journeys, I found a new kind of Swiss potatoes
+      that originated in the Swiss alps, and I made this really tasty dish with it.
+      The captain started throwing up after eating it. I was a disaster. I was then
+      made to walk and plank and cast overboard. And left at sea"<br><br>"Woah! And
+      here you are to tell this tale! You were left all alone? How did you survive?"
+      you are now very intrigued but this story. <br><br>"Oh, this is the best part!"
+      He continues, when a cannon ball hits the ship, this time in the lower bow,
+      and rips a big hole in it.<br><br>The ships sinks, and the pirates have one.<br><br>Enter
+      code : GAME OVER'
     forceText: 0
+    forceImage: 0
   - name: 9001
     theObject: {fileID: 328751117}
-    description: 
+    description: 'Nothing but water in this direction.<br>This is a rather strange
+      journey, commissioned by Lady Victoria Hawkins to find her father''s journal
+      or something. I don''t know.<br>Where should look next? <br>West: 9131 East:
+      9132: North: 9133. South 9134.'
     forceText: 0
+    forceImage: 0
   - name: 9002
     theObject: {fileID: 328751117}
-    description: 
+    description: 'Nothing but water in this direction.<br>This is a rather strange
+      journey, commissioned by Lady Victoria Hawkins to find her father''s journal
+      or something. I don''t know.<br>Where should look next? <br>West: 9131 East:
+      9132: North: 9133. South 9134.'
     forceText: 0
+    forceImage: 0
   - name: 9003
     theObject: {fileID: 328751117}
-    description: 
+    description: 'Nothing but water in this direction.<br>This is a rather strange
+      journey, commissioned by Lady Victoria Hawkins to find her father''s journal
+      or something. I don''t know.<br>Where should look next? <br>West: 9131 East:
+      9132: North: 9133. South 9134.'
     forceText: 0
+    forceImage: 0
   - name: 9004
     theObject: {fileID: 328751117}
-    description: 
+    description: 'Nothing but water in this direction.<br>This is a rather strange
+      journey, commissioned by Lady Victoria Hawkins to find her father''s journal
+      or something. I don''t know.<br>Where should look next? <br>West: 9131 East:
+      9132: North: 9133. South 9134.'
     forceText: 0
+    forceImage: 0
   - name: 9131
     theObject: {fileID: 1106714547}
-    description: 
+    description: 'More water. <br>I really like First Mate John Jenkins jr. What
+      a fitting name for a funny character. He took me under his wing and got me
+      this job on this ship.<br>Where am I looking now?<br>South: 9016 East: 9017
+      North: 9018: West: 9019'
     forceText: 0
+    forceImage: 0
   - name: 9132
     theObject: {fileID: 1106714547}
-    description: 
+    description: 'More water. <br>I really like First Mate John Jenkins jr. What
+      a fitting name for a funny character. He took me under his wing and got me
+      this job on this ship.<br>Where am I looking now?<br>South: 9016 East: 9017
+      North: 9018: West: 9019'
     forceText: 0
+    forceImage: 0
   - name: 9133
     theObject: {fileID: 1106714547}
-    description: 
+    description: 'More water. <br>I really like First Mate John Jenkins jr. What
+      a fitting name for a funny character. He took me under his wing and got me
+      this job on this ship.<br>Where am I looking now?<br>South: 9016 East: 9017
+      North: 9018: West: 9019'
     forceText: 0
+    forceImage: 0
   - name: 9134
     theObject: {fileID: 1106714547}
-    description: 
+    description: 'More water. <br>I really like First Mate John Jenkins jr. What
+      a fitting name for a funny character. He took me under his wing and got me
+      this job on this ship.<br>Where am I looking now?<br>South: 9016 East: 9017
+      North: 9018: West: 9019'
     forceText: 0
+    forceImage: 0
   - name: 9016
     theObject: {fileID: 1273824718}
-    description: 
+    description: 'Water. So much water. <br>Captain Harper is a bit odd. On one hand,
+      He doesn''t like wearing pants for some reason. I keep hearing him and the
+      Lady argue. But I think, not sure, I saw them kiss one night. interesting,
+      huh? <br><br>So... Where now?<br>East: 9225 West:9224 South:9223:North:9221'
     forceText: 0
+    forceImage: 0
   - name: 9017
     theObject: {fileID: 1273824718}
-    description: 
+    description: 'Water. So much water. <br>Captain Harper is a bit odd. On one hand,
+      He doesn''t like wearing pants for some reason. I keep hearing him and the
+      Lady argue. But I think, not sure, I saw them kiss one night. interesting,
+      huh? <br><br>So... Where now?<br>East: 9225 West:9224 South:9223:North:9221'
     forceText: 0
+    forceImage: 0
   - name: 9018
     theObject: {fileID: 1273824718}
-    description: 
+    description: 'Water. So much water. <br>Captain Harper is a bit odd. On one hand,
+      He doesn''t like wearing pants for some reason. I keep hearing him and the
+      Lady argue. But I think, not sure, I saw them kiss one night. interesting,
+      huh? <br><br>So... Where now?<br>East: 9225 West:9224 South:9223:North:9221'
     forceText: 0
+    forceImage: 0
   - name: 9019
     theObject: {fileID: 1273824718}
-    description: 
+    description: 'Water. So much water. <br>Captain Harper is a bit odd. On one hand,
+      He doesn''t like wearing pants for some reason. I keep hearing him and the
+      Lady argue. But I think, not sure, I saw them kiss one night. interesting,
+      huh? <br><br>So... Where now?<br>East: 9225 West:9224 South:9223:North:9221'
     forceText: 0
-  - name: 9021
+    forceImage: 0
+  - name: 9221
     theObject: {fileID: 853401281}
-    description: 
+    description: Wait? What's that! Oh. no. it's just water.<br>I'm getting hungry.
+      I'm hoping our cook Jean Pierre Clot, makes potatoes again. I love his potatoes.
+      oh I'm getting hungry.  Oh the captain is pants less again and the lady is
+      yelling. Can't hear what.<br>So..<br>w:9050 E:9021 S:9052 N:9033<br>
     forceText: 0
-  - name: 9023
+    forceImage: 0
+  - name: 9223
     theObject: {fileID: 853401281}
-    description: 
+    description: Wait? What's that! Oh. no. it's just water.<br>I'm getting hungry.
+      I'm hoping our cook Jean Pierre Clot, makes potatoes again. I love his potatoes.
+      oh I'm getting hungry.  Oh the captain is pants less again and the lady is
+      yelling. Can't hear what.<br>So..<br>w:9050 E:9021 S:9052 N:9033<br>
     forceText: 0
-  - name: 9024
+    forceImage: 0
+  - name: 9224
     theObject: {fileID: 853401281}
-    description: 
+    description: Wait? What's that! Oh. no. it's just water.<br>I'm getting hungry.
+      I'm hoping our cook Jean Pierre Clot, makes potatoes again. I love his potatoes.
+      oh I'm getting hungry.  Oh the captain is pants less again and the lady is
+      yelling. Can't hear what.<br>So..<br>w:9050 E:9021 S:9052 N:9033<br>
     forceText: 0
-  - name: 9025
+    forceImage: 0
+  - name: 9225
     theObject: {fileID: 853401281}
-    description: 
+    description: Wait? What's that! Oh. no. it's just water.<br>I'm getting hungry.
+      I'm hoping our cook Jean Pierre Clot, makes potatoes again. I love his potatoes.
+      oh I'm getting hungry.  Oh the captain is pants less again and the lady is
+      yelling. Can't hear what.<br>So..<br>w:9050 E:9021 S:9052 N:9033<br>
     forceText: 0
+    forceImage: 0
   - name: 9050
     theObject: {fileID: 1685610549}
-    description: 
+    description: Jenkins and the cook are all there on the upper deck. I think he
+      is trying to tell me something. <br>High Rates? what does that mean..<br>oh
+      , shit, PIRATES?!<br><br>Should I reach for my spyglass (9300) or try to head
+      down (9400) ?<br>
     forceText: 0
+    forceImage: 0
   - name: 9021
     theObject: {fileID: 1685610549}
-    description: 
+    description: Jenkins and the cook are all there on the upper deck. I think he
+      is trying to tell me something. <br>High Rates? what does that mean..<br>oh
+      , shit, PIRATES?!<br><br>Should I reach for my spyglass (9300) or try to head
+      down (9400) ?<br>
     forceText: 0
+    forceImage: 0
   - name: 9052
     theObject: {fileID: 1685610549}
-    description: 
+    description: Jenkins and the cook are all there on the upper deck. I think he
+      is trying to tell me something. <br>High Rates? what does that mean..<br>oh
+      , shit, PIRATES?!<br><br>Should I reach for my spyglass (9300) or try to head
+      down (9400) ?<br>
     forceText: 0
+    forceImage: 0
   - name: 9033
     theObject: {fileID: 1685610549}
-    description: 
+    description: Jenkins and the cook are all there on the upper deck. I think he
+      is trying to tell me something. <br>High Rates? what does that mean..<br>oh
+      , shit, PIRATES?!<br><br>Should I reach for my spyglass (9300) or try to head
+      down (9400) ?<br>
     forceText: 0
+    forceImage: 0
   - name: 9300
     theObject: {fileID: 1343934904}
-    description: 
+    description: 'Oh shit! It''s a pirate ship! how didn''t I notice that.  Jenkins
+      will be mad.  <br>What do I do now?  <br> <br>Try to climb down and help the
+      rest of the crew?  (9400) <br>or  <br>Stay in my post in the crows nest until
+      I get new orders. (9500) <br> '
     forceText: 0
+    forceImage: 0
   - name: 9400
     theObject: {fileID: 1685610549}
-    description: 
+    description: 'OH , why am I so clumsy... <br>I''m slipped on the rope ladder
+      and now literally hanging upside down from the main mast rope and can''t move. 
+      <br>The pirates are firing on the ship. Oh no. They hit it.  <br>That''s a
+      shame. Well, it''s been a fun trip.  Bye! <br> <br>Enter Code: GAME OVER.'
     forceText: 0
+    forceImage: 0
   - name: 9500
     theObject: {fileID: 1690089193}
-    description: 
+    description: 'I''ll just stat here for a little bit. I''m too useless down there
+      to actually do anything. What''s that?  The pirates are firing on the ship!
+      Oh no. They hit it!  <br>That''s a shame. Well.. it''s been a fun trip.  But
+      now it''s over. Bye! <br> <br>Enter Code: GAME OVER."'
     forceText: 0
+    forceImage: 0
   - name: 0000
     theObject: {fileID: 174285234}
-    description: 'Boom! Bang!  You hear the sound of cannons being fire. "Captain
+    description: Boom! Bang!<br><br>You hear the sound of cannons being fire.<br>"Captain
       Harper!" you hear the voice of your your first mate, John Jenkins Jr as he
-      runs into your room and yells, "We''re under attack by pirates!"  Choose your
-      next move: To leave your room and go to the upper deck, Choose 7459 To put
-      on your pants first and go to the upper deck, choose 3965.'
+      runs into your room and yells, "We're under attack by pirates!"<br><br>Choose
+      your next move:<br>To leave your room and go to the upper deck, Choose 7459<br>To
+      put on your pants first and go to the upper deck, choose 3965.
     forceText: 0
+    forceImage: 0
   - name: 0001
     theObject: {fileID: 2008582385}
-    description: It has been a slow but stressful day on the ship.<br> Lady Victoria
+    description: It has been a slow but stressful day on the ship. Lady Victoria
       Hawkins, who hired your crew to set sail and find clues about her father's
       disappearance is getting restless after weeks of sailing with no results, as
       the first mate of this ship, you don't have any real power, but you notice
       how Captain Philip Harper isn't really doing his job that well. You're afraid
-      things might go south, but today, a something is about shake everything up. 
-      During your shift on the upper deck you hear Timmy Oliver the deckhand who
-      is in the crow's nest, yelling something. From the horizon, you see another
-      ship in the distance.  Before you realize anything you see they are firing
-      their cannons at your ship. Oh, no! Pirates!  WHOOSH, MISS!  A cannon ball
-      hits the water near the ship.  The captain runs out of his ready room, not
-      wearing any pants. Lady Hawkins makes a rude comment but he ignores her. They
-      start arguing about ship etiquiette and code of conduct.  Do you try and stop
-      them from arguing about pants and focus on the attacking pirate ship? Choose
-      code 1199  Or, Do you just let them argue about it hoping that this will make
-      the Lady fire the captain so you can take his place? Choose code 9911
+      things might go south, but today, a something is about shake everything up.<br><br>During
+      your shift on the upper deck you hear Timmy Oliver the deckhand who is in the
+      crow's nest, yelling something. From the horizon, you see another ship in the
+      distance.<br><br>Before you realize anything you see they are firing their
+      cannons at your ship.<br>Oh, no! Pirates!<br><br>WHOOSH, MISS!<br><br>A cannon
+      ball hits the water near the ship.<br><br>The captain runs out of his ready
+      room, not wearing any pants. Lady Hawkins makes a rude comment but he ignores
+      her. They start arguing about ship etiquiette and code of conduct.<br><br>Do
+      you try and stop them from arguing about pants and focus on the attacking pirate
+      ship? Choose code 1199<br><br>Or,<br>Do you just let them argue about it hoping
+      that this will make the Lady fire the captain so you can take his place? Choose
+      code 9911
     forceText: 0
+    forceImage: 0
   - name: 0002
     theObject: {fileID: 698438075}
     description: 
     forceText: 0
+    forceImage: 0
   - name: 0003
     theObject: {fileID: 1202287612}
     description: 
     forceText: 0
+    forceImage: 0
   - name: 0004
     theObject: {fileID: 679065912}
     description: "It's been weeks since you left shore setting sail from London.
       The trip isn't going as expected. You were hoping you'd find clues of the father's
       lost ships or his fleet by now. Sitting in your cabin you're going over his
-      journals as you hear a loud noise from outside and you go out to check it out.
-      You see Captain Philip Harper leaving his ready room in a hurry, not wearing
-      any pant. Do you make a comment about his pants?\_ If you do\_, choose 4966
-      If you decide to let this one slide and just head to the upper deck to see
-      what is the whole commotion choose 6944"
+      journals as you hear a loud noise from outside and you go out to check it out.<br>You
+      see Captain Philip Harper leaving his ready room in a hurry, not wearing any
+      pant.<br>Do you make a comment about his pants?\_<br>If you do\_, choose 4966<br>If
+      you decide to let this one slide and just head to the upper deck to see what
+      is the whole commotion choose 6944"
     forceText: 0
+    forceImage: 0
   - name: 6961
     theObject: {fileID: 1130659749}
     description: 
     forceText: 0
+    forceImage: 1
   - name: 6962
     theObject: {fileID: 1985273418}
     description: 
     forceText: 0
+    forceImage: 1
   - name: 6963
     theObject: {fileID: 1106761432}
     description: 
     forceText: 0
+    forceImage: 1
   - name: 6964
     theObject: {fileID: 1146909139}
     description: 
     forceText: 0
+    forceImage: 1
   - name: 6965
     theObject: {fileID: 749636475}
     description: 
     forceText: 0
+    forceImage: 1
   - name: ppp.exe
-    theObject: {fileID: 174285234}
+    theObject: {fileID: 1516244572}
     description: 
     forceText: 0
+    forceImage: 1
   - name: pppdlc.exe
     theObject: {fileID: 192549966}
-    description: What is the name of the potato discovered by Jean Pierre Clot in
-      the Swiss Alps?
+    description: The wrecked ship was named after the captain's favorite potato.<br>What
+      is the name of this potato discovered by Jean Pierre Clot in the Swiss Alps?
     forceText: 1
+    forceImage: 1
   InitialObjects:
   - {fileID: 174285234}
   - {fileID: 2008582385}
@@ -1132,6 +1571,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1871778702}
+  - {fileID: 75202914}
+  - {fileID: 621265389}
   - {fileID: 467661023}
   - {fileID: 1208058518}
   m_Father: {fileID: 187323598}
@@ -1908,10 +2349,10 @@ RectTransform:
   m_Father: {fileID: 1200879495}
   m_RootOrder: 47
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 104}
-  m_SizeDelta: {x: 934.74, y: 650}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &389277965
 MonoBehaviour:
@@ -2034,7 +2475,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &412119237
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2346,11 +2787,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 258475135}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -322, y: 58}
+  m_AnchoredPosition: {x: -325.8, y: -9.27}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &467661024
@@ -2472,6 +2913,320 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467661022}
   m_CullTransparentMesh: 0
+--- !u!1 &471808274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 471808275}
+  - component: {fileID: 471808277}
+  - component: {fileID: 471808276}
+  m_Layer: 5
+  m_Name: Text (TMP) (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &471808275
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471808274}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2121689702}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -101, y: -9.27}
+  m_SizeDelta: {x: 246.73706, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &471808276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471808274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: PPPDLC.EXE
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_textAlignment: 514
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 471808276}
+    characterCount: 10
+    spriteCount: 0
+    spaceCount: 0
+    wordCount: 2
+    linkCount: 0
+    lineCount: 1
+    pageCount: 1
+    materialCount: 1
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &471808277
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471808274}
+  m_CullTransparentMesh: 0
+--- !u!1 &480452421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 480452422}
+  - component: {fileID: 480452424}
+  - component: {fileID: 480452423}
+  m_Layer: 5
+  m_Name: Text (TMP) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &480452422
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480452421}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1847728494}
+  m_Father: {fileID: 27723915}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 358, y: -87.11}
+  m_SizeDelta: {x: 432.65186, y: 54.05359}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &480452423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480452421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: ERROR!
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 632954a142f24314b969c769035b0f4e, type: 2}
+  m_sharedMaterial: {fileID: -918780878143066327, guid: 632954a142f24314b969c769035b0f4e,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 32
+  m_fontSizeBase: 32
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_textAlignment: 513
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: -1.4224854, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 480452423}
+    characterCount: 6
+    spriteCount: 0
+    spaceCount: 0
+    wordCount: 1
+    linkCount: 0
+    lineCount: 1
+    pageCount: 1
+    materialCount: 1
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 1847728495}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &480452424
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480452421}
+  m_CullTransparentMesh: 0
 --- !u!1 &569005552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2550,6 +3305,164 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569005552}
   m_CullTransparentMesh: 0
+--- !u!1 &578793754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 578793755}
+  - component: {fileID: 578793757}
+  - component: {fileID: 578793756}
+  m_Layer: 5
+  m_Name: Text (TMP) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &578793755
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578793754}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 726015840}
+  m_Father: {fileID: 2121689702}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 358, y: -87.11}
+  m_SizeDelta: {x: 432.65186, y: 54.05359}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &578793756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578793754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Fumes  - Ashley's Games
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 632954a142f24314b969c769035b0f4e, type: 2}
+  m_sharedMaterial: {fileID: -918780878143066327, guid: 632954a142f24314b969c769035b0f4e,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 32
+  m_fontSizeBase: 32
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_textAlignment: 513
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: -1.4224854, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 578793756}
+    characterCount: 23
+    spriteCount: 0
+    spaceCount: 4
+    wordCount: 4
+    linkCount: 0
+    lineCount: 1
+    pageCount: 1
+    materialCount: 1
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 726015841}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &578793757
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578793754}
+  m_CullTransparentMesh: 0
 --- !u!1001 &603340225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2560,7 +3473,7 @@ PrefabInstance:
     - target: {fileID: 4939990308935971524, guid: e0814737b15b5884db5f3cb41668a50c,
         type: 3}
       propertyPath: def_ent
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4939990308935971525, guid: e0814737b15b5884db5f3cb41668a50c,
         type: 3}
@@ -2701,6 +3614,80 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614914563}
+  m_CullTransparentMesh: 0
+--- !u!1 &621265388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 621265389}
+  - component: {fileID: 621265391}
+  - component: {fileID: 621265390}
+  m_Layer: 5
+  m_Name: Image (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &621265389
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621265388}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 258475135}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -101, y: 109.62}
+  m_SizeDelta: {x: 188, y: 188}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &621265390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621265388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 933bcfb88752eb44088a332ca0ed913a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &621265391
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621265388}
   m_CullTransparentMesh: 0
 --- !u!1001 &632056638
 PrefabInstance:
@@ -3243,6 +4230,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698438075}
   m_CullTransparentMesh: 0
+--- !u!1 &726015839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 726015840}
+  - component: {fileID: 726015842}
+  - component: {fileID: 726015841}
+  m_Layer: 5
+  m_Name: TMP SubMeshUI [LiberationSans SDF Material + LiberationSans SDF Atlas]
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &726015840
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726015839}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 578793755}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &726015841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726015839}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_spriteAsset: {fileID: 0}
+  m_material: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
+  m_isDefaultMaterial: 0
+  m_padding: 0
+  m_canvasRenderer: {fileID: 726015842}
+  m_TextComponent: {fileID: 578793756}
+  m_materialReferenceIndex: 1
+--- !u!222 &726015842
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726015839}
+  m_CullTransparentMesh: 0
 --- !u!1 &746870996
 GameObject:
   m_ObjectHideFlags: 0
@@ -3349,10 +4409,10 @@ RectTransform:
   m_Father: {fileID: 1200879495}
   m_RootOrder: 46
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 104}
-  m_SizeDelta: {x: 934.74, y: 650}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &749636477
 MonoBehaviour:
@@ -3427,7 +4487,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b129a9f342c0394409ae128ab4006a26, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc3b8e7145a4dc14eb56f4256749e184, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3812,6 +4872,80 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 810570003}
+  m_CullTransparentMesh: 0
+--- !u!1 &833373123
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 833373124}
+  - component: {fileID: 833373126}
+  - component: {fileID: 833373125}
+  m_Layer: 5
+  m_Name: Image (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &833373124
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833373123}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2121689702}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -101, y: 109.62}
+  m_SizeDelta: {x: 188, y: 188}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &833373125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833373123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 933bcfb88752eb44088a332ca0ed913a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &833373126
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833373123}
   m_CullTransparentMesh: 0
 --- !u!1 &853401281
 GameObject:
@@ -5006,7 +6140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b129a9f342c0394409ae128ab4006a26, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc3b8e7145a4dc14eb56f4256749e184, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5039,10 +6173,10 @@ RectTransform:
   m_Father: {fileID: 1200879495}
   m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 104}
-  m_SizeDelta: {x: 934.74, y: 650}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1106761437
 MonoBehaviour:
@@ -5151,7 +6285,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b129a9f342c0394409ae128ab4006a26, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc3b8e7145a4dc14eb56f4256749e184, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5184,10 +6318,10 @@ RectTransform:
   m_Father: {fileID: 1200879495}
   m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 104}
-  m_SizeDelta: {x: 934.74, y: 650}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1130659754
 MonoBehaviour:
@@ -5296,7 +6430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b129a9f342c0394409ae128ab4006a26, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc3b8e7145a4dc14eb56f4256749e184, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5329,10 +6463,10 @@ RectTransform:
   m_Father: {fileID: 1200879495}
   m_RootOrder: 45
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 104}
-  m_SizeDelta: {x: 934.74, y: 650}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1146909144
 MonoBehaviour:
@@ -5486,6 +6620,7 @@ RectTransform:
   - {fileID: 1146909143}
   - {fileID: 749636476}
   - {fileID: 389277964}
+  - {fileID: 1516244575}
   - {fileID: 754979246}
   m_Father: {fileID: 0}
   m_RootOrder: 18
@@ -5596,11 +6731,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 258475135}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -26.6, y: 58}
+  m_AnchoredPosition: {x: -101, y: -9.27}
   m_SizeDelta: {x: 246.73706, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1208058519
@@ -6207,6 +7342,82 @@ Transform:
   m_Father: {fileID: 1200879495}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1516244572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1516244575}
+  - component: {fileID: 1516244574}
+  - component: {fileID: 1516244573}
+  m_Layer: 5
+  m_Name: Error
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1516244573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516244572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 533606c405a7ff743ac7a8a4fb3693dd, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1516244574
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516244572}
+  m_CullTransparentMesh: 0
+--- !u!224 &1516244575
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516244572}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2121689702}
+  - {fileID: 27723915}
+  m_Father: {fileID: 1200879495}
+  m_RootOrder: 48
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1540445558 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1148892779484843485, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
@@ -6290,6 +7501,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548652921}
   m_CullTransparentMesh: 0
+--- !u!1 &1571007731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1571007732}
+  - component: {fileID: 1571007734}
+  - component: {fileID: 1571007733}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1571007732
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571007731}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2121689702}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -325.8, y: 109.73}
+  m_SizeDelta: {x: 188, y: 188}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1571007733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571007731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 2defe396549396a46aeb1d3b02f28d04, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1571007734
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571007731}
+  m_CullTransparentMesh: 0
 --- !u!1 &1590108241
 GameObject:
   m_ObjectHideFlags: 0
@@ -6360,6 +7645,318 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590108241}
+  m_CullTransparentMesh: 0
+--- !u!1 &1593133513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1593133514}
+  - component: {fileID: 1593133516}
+  - component: {fileID: 1593133515}
+  m_Layer: 5
+  m_Name: Text (TMP) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1593133514
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593133513}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2121689702}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -325.8, y: -9.27}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1593133515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593133513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: PPP.EXE
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_textAlignment: 514
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 1593133515}
+    characterCount: 7
+    spriteCount: 0
+    spaceCount: 0
+    wordCount: 2
+    linkCount: 0
+    lineCount: 1
+    pageCount: 1
+    materialCount: 1
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1593133516
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593133513}
+  m_CullTransparentMesh: 0
+--- !u!1 &1605649086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1605649087}
+  - component: {fileID: 1605649089}
+  - component: {fileID: 1605649088}
+  m_Layer: 5
+  m_Name: Text (TMP) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1605649087
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605649086}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 27723915}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.4, y: -8.1}
+  m_SizeDelta: {x: 484.78796, y: 66.15817}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1605649088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605649086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: PPP.EXE Already Completed.
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_textAlignment: 513
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 1605649088}
+    characterCount: 26
+    spriteCount: 0
+    spaceCount: 2
+    wordCount: 4
+    linkCount: 0
+    lineCount: 1
+    pageCount: 1
+    materialCount: 1
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1605649089
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605649086}
   m_CullTransparentMesh: 0
 --- !u!1 &1685610549
 GameObject:
@@ -6721,7 +8318,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.25
+  m_padding: 0
   m_canvasRenderer: {fileID: 1825569027}
   m_TextComponent: {fileID: 1871778703}
   m_materialReferenceIndex: 1
@@ -6732,6 +8329,79 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825569024}
+  m_CullTransparentMesh: 0
+--- !u!1 &1847728493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1847728494}
+  - component: {fileID: 1847728496}
+  - component: {fileID: 1847728495}
+  m_Layer: 5
+  m_Name: TMP SubMeshUI [LiberationSans SDF Material + LiberationSans SDF Atlas]
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1847728494
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847728493}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 480452422}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1847728495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847728493}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_spriteAsset: {fileID: 0}
+  m_material: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
+  m_isDefaultMaterial: 0
+  m_padding: 0
+  m_canvasRenderer: {fileID: 1847728496}
+  m_TextComponent: {fileID: 480452423}
+  m_materialReferenceIndex: 1
+--- !u!222 &1847728496
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847728493}
   m_CullTransparentMesh: 0
 --- !u!1 &1871778701
 GameObject:
@@ -7163,7 +8833,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b129a9f342c0394409ae128ab4006a26, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc3b8e7145a4dc14eb56f4256749e184, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7196,10 +8866,10 @@ RectTransform:
   m_Father: {fileID: 1200879495}
   m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 104}
-  m_SizeDelta: {x: 934.74, y: 650}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1985273423
 MonoBehaviour:
@@ -7445,6 +9115,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055173338}
   m_CullTransparentMesh: 0
+--- !u!1 &2121689701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2121689702}
+  - component: {fileID: 2121689704}
+  - component: {fileID: 2121689703}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2121689702
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121689701}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 578793755}
+  - {fileID: 1571007732}
+  - {fileID: 833373124}
+  - {fileID: 1593133514}
+  - {fileID: 471808275}
+  m_Father: {fileID: 1516244575}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 28.8, y: 10.5}
+  m_SizeDelta: {x: 1037.4796, y: 635.5067}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2121689703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121689701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 47cac6c0933c31e4e8b3fb3e56c51783, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2121689704
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121689701}
+  m_CullTransparentMesh: 0
 --- !u!1001 &2048945305455673962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7537,7 +9286,7 @@ PrefabInstance:
     - target: {fileID: 2048945306042880964, guid: d51d1b9a3191cb44088ac1491eb1cb99,
         type: 3}
       propertyPath: m_RootOrder
-      value: 48
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 2048945306042880964, guid: d51d1b9a3191cb44088ac1491eb1cb99,
         type: 3}
