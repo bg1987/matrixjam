@@ -190,10 +190,10 @@ namespace MatrixJam.Team10
             }));
             return actions;
         }
-        private void DialogueMenu(Dialogue dialogue){
+        public void DialogueMenu(Dialogue dialogue){
             FindObjectOfType<DialogueManager>().StartActionChoice(dialogue);
         }
-        private void DialogueMenu(DialogueTree dialogue){
+        public void DialogueMenu(DialogueTree dialogue){
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
         }
 

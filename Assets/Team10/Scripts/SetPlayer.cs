@@ -46,7 +46,11 @@ namespace MatrixJam.Team10
             Panel.SetActive(false);
             
             //pass name to dialogue manager in game manager
-            FindObjectOfType<GameRules>().t = new RandomDialogueTree(Name);
+            RandomDialogueTree tr = new RandomDialogueTree(Name);
+            GameRules g = FindObjectOfType<GameRules>();
+            g.t = tr;
+            //and activate startDialogue
+            g.DialogueMenu(tr.getStarterDialogue(Name));
         }
     }
 }
