@@ -27,7 +27,7 @@ namespace MatrixJam.Team14
                 for (var beatNum = 0; beatNum < Mathf.FloorToInt(track.TotalBeats); beatNum++)
                     yield return track.GetPosition(startAndDirection, beatNum, offset);
 
-                offset = track.GetLastPosition(startAndDirection);
+                offset += track.GetLastPosition(startAndDirection);
             }
         }
 

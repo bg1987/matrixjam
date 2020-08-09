@@ -26,6 +26,7 @@ namespace MatrixJam.Team14
     {
         public static TrainController Instance { get; private set; }
 
+        [SerializeField] private SFXmanager sfxManager;
         [SerializeField] private float startHonkDelay;
 
         [Header("States config")]
@@ -46,8 +47,6 @@ namespace MatrixJam.Team14
         [SerializeField] private Color debugStatesColor = Color.red;
         [SerializeField] private Color debugObstaclesColor = Color.green;
         [SerializeField] private Vector2 debugSize = new Vector2(2, 2);
-
-        [SerializeField] private SFXmanager sfxManager;
 
         private int _lives;
         private TrainState _currstate;
