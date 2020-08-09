@@ -19,14 +19,23 @@ namespace MatrixJam.Team10
         public List<Choice> choices;
         public System.DateTime time = System.DateTime.Parse("9:00 AM");
         public Text Timer;
+
         public GameObject Panel;
+        public Text PanelTitle;
+        public Text PanelMessage;
+        public Button PanelButton;
+
         public RandomDialogueTree t;
         public string playerName;
+        public float typingSpeed;
 
-        void Start()
-        {
+        void Start(){
             t = new RandomDialogueTree("player1");
             declareChoices();
+            Panel.SetActive(false);
+            PanelTitle.text = "Closet";
+            PanelMessage.gameObject.SetActive(false);
+            PanelButton.gameObject.SetActive(false);
         }
 
         void Update(){
@@ -46,13 +55,7 @@ namespace MatrixJam.Team10
             }
         }
 
-        public void declareChoices(){
-            choices = generalActions(); //10
-            choices.AddRange(RoomActions()); //11
-            choices.AddRange(BathRoomActions()); //1
-            choices.AddRange(DialogueChoiceActions());//28
-        }
-
+        #region Game Death
         //called by all actions with action id - check if action repeated
         //and do reapeat stuff if true -  modifies the repeted varibles and calls to end if > num?
         public void CheckRepeat(string id){
@@ -91,11 +94,42 @@ namespace MatrixJam.Team10
             }
         }
 
+        IEnumerator TypeMessegeAffect(string[] sentences){
+            foreach(string sentence in sentences){
+                foreach (char letter in sentence.ToCharArray())
+                {
+                    PanelMessage.text += letter;
+                    yield return new WaitForSeconds(typingSpeed);
+                }
+            }
+        }
+
+        public void DeathScreen(string[] text){
+            PanelMessage.gameObject.SetActive(true);
+            PanelButton.gameObject.SetActive(true);
+            PanelTitle.text = "A Day In Life - 2020 edition";
+            PanelMessage.text = "";
+            Panel.SetActive(true);
+            StartCoroutine(TypeMessegeAffect(text));
+        }
+        #endregion
+
         public void DialogueMenu(Dialogue dialogue){
             FindObjectOfType<DialogueManager>().StartActionChoice(dialogue);
         }
         public void DialogueMenu(DialogueTree dialogue){
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        }
+        
+        #region Choices Defenitions
+
+        public void declareChoices(){
+            choices = generalActions(); //10
+            choices.AddRange(RoomActions()); //11
+            choices.AddRange(BathRoomActions()); //4
+            choices.AddRange(KitchenActions());//5
+            choices.AddRange(LivingRoomActions());//5
+            choices.AddRange(DialogueChoiceActions());//28
         }
 
         // actions that can be accessed from more then one room - 10
@@ -456,6 +490,7 @@ namespace MatrixJam.Team10
             // more - 28+
             return actions;
         }
+        #endregion
     }
 }
 
