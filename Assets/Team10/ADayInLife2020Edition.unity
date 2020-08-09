@@ -2147,9 +2147,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 2041543064}
-  Matrix: {fileID: 2041543064}
-  Batman: {fileID: 2041543064}
-  Superman: {fileID: 2041543064}
+  MatrixPlayer: {fileID: 2041543064}
+  BatmanPlayer: {fileID: 2041543064}
+  SupermanPlayer: {fileID: 2041543064}
   Panel: {fileID: 477276766}
   textBox: {fileID: 1273285782}
 --- !u!114 &726427460

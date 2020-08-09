@@ -27,24 +27,25 @@ namespace MatrixJam.Team
         // Update is called once per frame
         public void OnSubmit()
         {
-            Name =textBox.text;
+            Name =textBox.text.ToUpper();
             switch (Name)
             {
-                case "Matrix": 
-                Debug.Log(Name);
-                MatrixPlayer.SetActive(true);
-                break;
-                case "Batman":
-                Debug.Log(Name); 
-                BatmanPlayer.SetActive(true);
-                break;
-                case "Superman": 
-                Debug.Log(Name);
-                SupermanPlayer.SetActive(true);
-                break;
+                case "MATRIX": 
+                    Debug.Log(1);
+                    MatrixPlayer.SetActive(true);
+                    break;
+                case "BATMAN":
+                    Debug.Log(2); 
+                    BatmanPlayer.SetActive(true);
+                    break;
+                case "SUPERMAN": 
+                    Debug.Log(3);
+                    SupermanPlayer.SetActive(true);
+                    break;
                 default: 
-                Player.SetActive(true); 
-                break;
+                    Player.SetActive(true); 
+                    Debug.Log(Name);
+                    break;
             }      
             Panel.SetActive(false);
             //read textbox and activate player acordinly
