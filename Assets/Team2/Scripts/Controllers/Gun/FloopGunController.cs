@@ -11,7 +11,11 @@ namespace MatrixJam.Team2
         [SerializeField] private Transform firePoint;
         [SerializeField] private int floopableLayer;
 
-        private FloopableMaterialTypes currentMaterial = FloopableMaterialTypes.Reflective;
+        // Changed to public so panel can access it!!!
+        // IS BAD!!
+        //
+        // TODO: Create event when switching material
+        public FloopableMaterialTypes currentMaterial = FloopableMaterialTypes.Reflective;
         private LineRenderer fireTrail;
         private float rayCastLength = 100;
 
