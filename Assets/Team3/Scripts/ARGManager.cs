@@ -2,13 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 namespace MatrixJam.Team3
 {
     public class ARGManager : MonoBehaviour
     {
         [SerializeField] private GameObject currentlEnabled;
-        [SerializeField] private Dictionary<string, GameObject> Stages;        
+        [SerializeField] private Dictionary<string, GameObject> Stages;
+
+        [SerializeField] private InputField _inputField; 
         
         [Serializable]
         public struct StageItem {
@@ -58,6 +62,7 @@ namespace MatrixJam.Team3
                 currentlEnabled.SetActive(false);
                 currentlEnabled = Stages[item.ToLower()];
                 currentlEnabled.SetActive(true);
+                _inputField.text = "";
             }
         }
 
