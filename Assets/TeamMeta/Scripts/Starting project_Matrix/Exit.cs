@@ -4,8 +4,7 @@ using UnityEngine;
 
 namespace MatrixJam
 {
-    public class 
-        Exit : Portal
+    public class Exit : Portal
     {
         public void EndLevel()
         {
