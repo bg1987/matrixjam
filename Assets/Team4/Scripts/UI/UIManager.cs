@@ -84,26 +84,17 @@ namespace MatrixJam.Team4
 
         public void PickAttackRow()
         {
-            HandleAttack();
             ChoiceManager.PickAttack(AttackDirection.row);
         }
 
         public void PickAttackLine()
         {
-            HandleAttack();
             ChoiceManager.PickAttack(AttackDirection.colum);
         }
         public void PickAttackBox()
         {
-            HandleAttack();
-            ChoiceManager.PickAttack(AttackDirection.square
-            );
+            ChoiceManager.PickAttack(AttackDirection.square);
         }
-
-        private static void HandleAttack()
-        {
-            ShowDamageOptions(false);
-            
-        }
+        
     }
 }

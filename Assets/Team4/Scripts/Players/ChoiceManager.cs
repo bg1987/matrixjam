@@ -91,11 +91,16 @@ namespace MatrixJam.Team4
 
         public void PickAttack(AttackDirection attackType)
         {
+            if (_selectedUnit == null || _selectedPosition == null)
+            {
+                return;
+            }
             var turnObject = new TurnObject();
             turnObject.ChosenUnit = _selectedUnit;
             turnObject.ChosenUnit.Position = _selectedPosition;
             turnObject.AttackDirection = attackType;
             HideUsedNumber();
+            UIManager.ShowDamageOptions(false);
             SoundManager.Instance.PlayAttack();
             _boardManager.ExecuteTurn(turnObject);
         }
