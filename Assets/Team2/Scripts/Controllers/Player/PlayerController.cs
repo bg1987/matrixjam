@@ -106,7 +106,6 @@ namespace MatrixJam.Team2
         private void Jump(bool jumpInput)
         {
             if (!jumpInput || !CanJump) return;
-            Debug.Log("CanJump = " + CanJump);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             currentJumpsCount++;
         }
