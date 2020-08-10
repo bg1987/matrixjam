@@ -415,7 +415,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1200879495}
-  m_RootOrder: 44
+  m_RootOrder: 45
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &106065706
 GameObject:
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextCharacter: 1
   YoutubeEnabled: 1
-  TextEnabled: 0
+  TextEnabled: 1
   textToDisplay: {fileID: 1086523659}
   currentlEnabled: {fileID: 875319767}
   currentlEnabledString: 
@@ -1157,8 +1157,17 @@ MonoBehaviour:
     BGImage: {fileID: 0}
   - name: 0003
     theObject: {fileID: 1202287612}
-    description: 'Potatoes! <br> Code: 6963'
-    forceText: 1
+    description: Potatoes! I love potatoes. There are so many things you can do with
+      potatoes. You can cook them in water. You can bake them on fire-top. You can
+      fry them in oil. You can combine them with other things. <br>Ever since I joined
+      this journey on this ship, I made sure to have some kind of potato dish in
+      every meal.  <br>You can serve them hot, and you can serve them cold.  <br>I'm
+      very happy I found a captain that loves eating potatoes as much as i love making
+      them. Captain Harper is really great! <br> <br>Hold on, what are those loud
+      noises coming from outside? <br> <br>Should I check them out?  <br>Choose 7543
+      <br>or  <br>Should I just stay in the kitchen and cook.  <br>Choose 7123 <br>
+      <br> <br>
+    forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
   - name: 0004
@@ -1229,6 +1238,212 @@ MonoBehaviour:
     forceText: 1
     forceImage: 1
     BGImage: {fileID: 0}
+  - name: 7123
+    theObject: {fileID: 149628997}
+    description: 'Yes, i''ll be here in the kitchen with my potatoes. <br>I guess
+      I''m gonna cook while the others deal with whatever''s going on outside on
+      the desk. <br>I''m sure if it was important, First Make Jenkins would have
+      called me by now.  <br>Or I would have heard Timmy Oliver shouting out from
+      the crow''s nest by now if there was something really bad going on, like pirates
+      attacking the ship or something. <br> <br>Back to cooking. <br> <br>Now, I
+      need to figure our what am I making for dinner tonight.  <br>Want to help me
+      choose? <br> <br>Potato Salad  - Choose 7223 <br>Mashed Potatoes - Choose 7224
+      <br>Potato Soup - Choose 7225 <br>Fried Potato wedges - 7226 <br> <br> '
+    forceText: 1
+    forceImage: 0
+    BGImage: {fileID: 0}
+  - name: 7223
+    theObject: {fileID: 149628997}
+    description: Ah! Potato Salad sounds great!<br><br>Let's see.. What do I need
+      to make that.<br><br>Basically I'd cook potatoes or use leftovers from a previous
+      meal where I already served cooked potatoes. <br>They need to be cold.<br>Then
+      I mix them with chopped pickles, some peas and carrot, which I'll also have
+      to cook. Then add some fresh dill, mayonnaise, and season with some salt and
+      ground black pepper.<br><br>Although this is a ship, I have a small garden
+      on the window here where I grow fresh dill and some other herbs. I'm out of
+      mayonnaise, but the eggs we brought from  shore last month are still good,
+      so I might have to make a new batch of mayonnaise.<br><br>Might be plenty of
+      work, but I have some time before dinner.<br><br>Great. I got everything I
+      need! <br>Let's start cooking.<br>Choose code 7599<br><br>There's some shouting
+      on the upper deck. <br>Should I go check it out ? <br>Choose 7543<br><br>
+    forceText: 1
+    forceImage: 0
+    BGImage: {fileID: 0}
+  - name: 7224
+    theObject: {fileID: 149628997}
+    description: Mashed Potatoes. A great side dish for almost everything I make
+      here, and also very simple. Just one main ingredient, My favorite ingredient,
+      potatoes!<br>Wonderful. Let's make some mashed potatoes.<br>I use some bay
+      leaves in the water when I boil them for some extra flavor. When I was on land
+      I could also use butter then I mashed them. But it's been weeks since we saw
+      land and there's no more butter here on the ship. I'll just have to make do
+      without it.  It won't be as good but it will still be great cause it's potatoes!
+      Oh, how I love potatoes.<br><br>So, Let's start cooking.<br>Choose code 7599<br><br>There's
+      some shouting on the upper deck. <br>Should I go check it out ? <br>Choose
+      7543
+    forceText: 1
+    forceImage: 0
+    BGImage: {fileID: 0}
+  - name: 7225
+    theObject: {fileID: 149628997}
+    description: Potato Soup! Now that's something I haven't made in a while.<br>It's
+      mostly chopping and dropping things to the same pot and then just letting it
+      boil and simmer until it's ready.<br>Now how do I make potato soup you're asking?
+      Great question.<br>I put in some onions, celery, leek, and potatoes in the
+      pot and let them fry a bit in oil. I add some flour.  I season with salt and
+      pepper. If we had milk here on the ship, i would make it a chowder, but i'll
+      have to settle for a non dairy version here. <br>I also add some fresh chopped
+      dill near the end of cooking time. I have them because I grow them here on
+      the ship myself. It's so nice of the captain to let me grow some herbs to be
+      used for cooking.<br><br>ok. Let's start cooking!<br>Choose code 7599<br><br>There's
+      some shouting on the upper deck. <br>Should I go check it out ? <br>Choose
+      7543
+    forceText: 1
+    forceImage: 0
+    BGImage: {fileID: 0}
+  - name: 7226
+    theObject: {fileID: 149628997}
+    description: Fried Potato Wedges are one of the simplest things I can make. 
+      <br>I can either use fresh potatoes, potatoes that were just cooked, or leftovers
+      potatoes from previous meals if by chance they were not all eaten by the rest
+      of the crew.  <br>Timmy tends to devour these potatoes, Lady Hawkins, not as
+      much. <br> <br>Now, those potatoes won't peel themselves.. Let's start cooking!
+      <br>Choose code 7599 <br> <br>But now I'm hearing, there's some shouting on
+      the upper deck.  <br>Should I go check it out ?  <br>Choose 7543
+    forceText: 1
+    forceImage: 0
+    BGImage: {fileID: 0}
+  - name: 7559
+    theObject: {fileID: 149628997}
+    description: I'll need to peel a whole bunch, boil some water, and cook them.
+      <br>Let's start peeling.  <br>There are plenty of sacks of potatoes to choose
+      from.  <br>Captain Harper was nice enough to let me buy a few kinds before
+      we went on our trip.  <br>There's Russet that are great for fried and mashes.
+      <br>There's Russian Banana potatoes. There's french fingerling. <br>There's
+      Red Gold Potatoes, Norland Red, Yukon Gold. <br> <br>OH ! And there's my favorite
+      kind of potatoes. These ones I found in the Swiss Alps! <br> <br>So let's start
+      peeling, yeah? <br>Choose 7598 <br>or <br>Should I pay attention to all the
+      shouting and noises coming from the upper deck after all?  <br>Choose 7543
+      <br>
+    forceText: 1
+    forceImage: 0
+    BGImage: {fileID: 0}
+  - name: 7598
+    theObject: {fileID: 149628997}
+    description: Ok. Yeah, sorry I got distracted. <br>Let's start peeling. <br>I
+      have lots of potatoes. <br>Should I peel 5? 10?  20, and have leftovers for
+      tomorrow? <br>I am not sure how hungry the crew will be today.  <br>It's always
+      a balance because on this ship you don't want to make too much food so it doesn't
+      get thrown away on one hand but also you do not want to make too little and
+      have people hungry and angry. <br> <br>Anyways , I'm rambling on and on about
+      potatoes.  <br>I should start with peeling and cooking. <br> <br>Oh no, A cannon
+      ball just punched through the wall here, Water are slowly pouring in. The ship
+      is sinking. I guess I should have gone outside to see what the commosion was
+      all about and maybe I could have helped. <br> <br>GAME OVER <br>Choose 6963
+    forceText: 1
+    forceImage: 0
+    BGImage: {fileID: 0}
+  - name: 7543
+    theObject: {fileID: 149628997}
+    description: OK. ok.. I'm leaving my kitchen and going outside. But only because
+      you insisted on it. <br>Captain Harper is here with Lady Hawkins and the first
+      mate John Jenkins.  <br>She's yelling at him about him not wearing pants. Again.
+      It keeps happening over and over again. This is not the first time this is
+      happening. I sometimes feel like I'm stuck in this loop.  <br> <br>I've said
+      it in the past and I'll say it again, our captain is really nice. He loves
+      potatoes as much as I do. I don't really care if he's wearing pants or not.
+      It's not a big deal. But, I guess he should be  going to his ready room to
+      wear his pants.  <br> <br>Maybe I'll go ask Jenkins what's going on. <br>Choose
+      7554 <br>or <br>I can go back to my kitchen and cook those potatoes.  <br>Choose
+      7123 <br>
+    forceText: 1
+    forceImage: 0
+    BGImage: {fileID: 0}
+  - name: 7554
+    theObject: {fileID: 149628997}
+    description: 'I ask Jenkins "Jenkins, what''s going on ?" <br>and he tell''s
+      me "We''re under attack by pirates!" so he tells me.  <br>Pirates! Ho no. I''m
+      hoping it''s not Orange Beard. <br>Let me grab that spyglass and look. Oh no.
+      I was right. It Orange Beard''s ship. I used to be part of their crew. I got
+      kicked out.. well , quite literally, keelhauled, because I made potatoes there.
+      I learned, the hard way,  Orange Beard is super allergic to sweet potatoes! 
+      He can maybe even die if one touches him.  <br>I have some sweet potatoes here
+      in the kitchen, this brings me an idea! <br> <br>The captain just came back
+      from his ready room wearing pants and tells everyone to man the battle stations.
+      <br> <br>Jenkins is pointing at me: "You too Jean Pierre!" <br> <br>Do I go
+      and tell him about my plan to shoot sweet potatoes at the pirate ship? <br>Choose
+      7676 <br>or  <br>Do I just do the kitchen and get potatoes. <br>Choose 7878
+      <br>'
+    forceText: 1
+    forceImage: 0
+    BGImage: {fileID: 0}
+  - name: 7676
+    theObject: {fileID: 149628997}
+    description: '"I have a plan that can help us win against Orange Beard" I explain
+      to Jenkins. <br> <br>"Orange beard?" Jenkins asks. <br>"Yeah, that''s the pirate
+      in the ship over there, I was part of his crew once". I reply. <br>"Really?"
+      Jenkins inquires. "Tell me more." <br> <br>I tell Jenkins my entire story.
+      I tell him how just got out of culinary school in France.  I tell him about
+      how he picked me up. I tell him about the allergies and the sweet potatoes,
+      and I tell him about my plan to shoot them. <br> <br>I usually have a hard
+      time telling my stories. I keep babbling and getting into irrelevant details..
+      Luckily , I managed to keep it short, and finish the entire story without any
+      cannon balls hitting the ship. They sure were flying all over our heads all
+      the time. <br> <br>"That actually sounds like a great plan!" he says "Go man
+      the starborn cannons." <br> <br>Maybe it''s because i''m French, and English
+      isn''t my first language,  I notice when people use the wrong words. Do I correct
+      Jenkins about it?  <br>Choose 7474. <br>or  <br>Do I go and get those sweet
+      potatoes for the cannons. <br>Choose 7878 '
+    forceText: 1
+    forceImage: 0
+    BGImage: {fileID: 0}
+  - name: 7474
+    theObject: {fileID: 149628997}
+    description: I  don't know if it's some sort of personality disorder, but it's
+      hard to stand by when someone is using a word incorrectly or just saying something
+      wrong.  <br>I correct Jenkins about saying 'Starborn' instead of 'Starboard'
+      This leads to a whole discussion that sounds like a very famous sketch I once
+      heard. <br>We spent too long on this and while we did, a cannon ball hits the
+      ship and it started sinking. <br> <br>Game Over <br>Choose 6963
+    forceText: 1
+    forceImage: 0
+    BGImage: {fileID: 0}
+  - name: 7878
+    theObject: {fileID: 149628997}
+    description: 'On paper, this plans sounds really good. I''ll go grab some sweet
+      potatoes and shoot them at the pirate ship. <br>Well. technically it''s just
+      in my head, I didn''t put that on paper, but that''s like a figure of speech,
+      you know? <br> <br>Anyways, for my plan to work I need to to be successful
+      in so many things, and the longer I take to do it, the less chance it will
+      be to win. <br>I need to find the sweet potatoes.There are so many sacks of
+      potatoes. <br>I need to drag the sack of potatoes up to the upper deck. <br>I
+      need to load a cannon with potatoes. <br>I need to actually fire the cannon
+      and hit the pirate ship. <br>They are already so hard to aim, and I''m now
+      realizing, I don''t even know if I can aim and hit their ship, let alone hit
+      the captain. Even if I hit the captain, and know about his deadly allergies
+      to sweet potatoes, there''s no guarantees it will actually hurt him  let alone,
+      kill him. <br>This is a stupid plan. What am I thinking. <br> <br>Maybe If
+      i would have actually done that instead of standing here in the kitchen thinking
+      of what would go wrong, i might have had a chance at it. But I was so worried
+      i''d fail i never ended up executing this plan at all. <br> <br>A cannon ball
+      just hit the ship and went through my kitchen. Water everywhere. The ship is
+      sinking.  <br> <br>I guess now, I would never know if my plan would have actually
+      worked.  <br> <br>GAME OVER  <br> <br>Enter code: 6763 '
+    forceText: 1
+    forceImage: 0
+    BGImage: {fileID: 0}
+  - name: UUDDLRLBA
+    theObject: {fileID: 1224105687}
+    description: 
+    forceText: 0
+    forceImage: 0
+    BGImage: {fileID: 0}
+  - name: wwssadadba
+    theObject: {fileID: 1224105687}
+    description: 
+    forceText: 0
+    forceImage: 0
+    BGImage: {fileID: 0}
   InitialObjects:
   - {fileID: 174285234}
   - {fileID: 2008582385}
@@ -1251,7 +1466,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &125252712
 PrefabInstance:
@@ -1339,6 +1554,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a17f5cb339b164a84713182ae1d7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &149628997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 149629000}
+  - component: {fileID: 149628999}
+  - component: {fileID: 149628998}
+  m_Layer: 5
+  m_Name: 7123 Cook
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &149628998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149628997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 799016e2451c27346b67e4b94960d626, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &149628999
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149628997}
+  m_CullTransparentMesh: 0
+--- !u!224 &149629000
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149628997}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1200879495}
+  m_RootOrder: 44
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 104}
+  m_SizeDelta: {x: 650, y: 650}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &174285234
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,7 +2489,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &324220892
 GameObject:
@@ -2682,7 +2968,7 @@ RectTransform:
   m_Children:
   - {fileID: 1956389359}
   m_Father: {fileID: 1200879495}
-  m_RootOrder: 50
+  m_RootOrder: 51
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2919,7 +3205,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &435695435
 GameObject:
@@ -4828,7 +5114,7 @@ RectTransform:
   m_Children:
   - {fileID: 614914564}
   m_Father: {fileID: 1200879495}
-  m_RootOrder: 49
+  m_RootOrder: 50
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5036,7 +5322,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &756321480
 GameObject:
@@ -5162,7 +5448,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &810570003
 GameObject:
@@ -5591,7 +5877,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &875319767
 GameObject:
@@ -5849,7 +6135,7 @@ RectTransform:
   m_Children:
   - {fileID: 1567853621}
   m_Father: {fileID: 1200879495}
-  m_RootOrder: 51
+  m_RootOrder: 52
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6141,7 +6427,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &941028673
 PrefabInstance:
@@ -6979,7 +7265,7 @@ RectTransform:
   m_Children:
   - {fileID: 1076236591}
   m_Father: {fileID: 1200879495}
-  m_RootOrder: 47
+  m_RootOrder: 48
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7124,7 +7410,7 @@ RectTransform:
   m_Children:
   - {fileID: 258663121}
   m_Father: {fileID: 1200879495}
-  m_RootOrder: 45
+  m_RootOrder: 46
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7269,7 +7555,7 @@ RectTransform:
   m_Children:
   - {fileID: 1301760187}
   m_Father: {fileID: 1200879495}
-  m_RootOrder: 48
+  m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7424,6 +7710,7 @@ RectTransform:
   - {fileID: 334371278}
   - {fileID: 1690089194}
   - {fileID: 1571168499}
+  - {fileID: 149629000}
   - {fileID: 94381789}
   - {fileID: 1130659753}
   - {fileID: 1985273422}
@@ -7433,9 +7720,10 @@ RectTransform:
   - {fileID: 389277964}
   - {fileID: 889245725}
   - {fileID: 1487455545}
+  - {fileID: 1224105692}
   - {fileID: 754979246}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7669,6 +7957,151 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208058517}
   m_CullTransparentMesh: 0
+--- !u!1 &1224105687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1224105692}
+  - component: {fileID: 1224105691}
+  - component: {fileID: 1224105690}
+  - component: {fileID: 1224105689}
+  - component: {fileID: 1224105688}
+  m_Layer: 5
+  m_Name: KonamiCode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1224105688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224105687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05aed29834ae9cf48bdc0fe7c5b510ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitNum: 8
+  manager: {fileID: 106065707}
+--- !u!114 &1224105689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224105687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.9811321, g: 0.85617656, b: 0.85617656, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1224105690}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 106065707}
+        m_MethodName: OpenWebsite
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: https://www.youtube.com/watch?v=MkSYX0N07CQ
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1224105690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224105687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: bc3b8e7145a4dc14eb56f4256749e184, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1224105691
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224105687}
+  m_CullTransparentMesh: 0
+--- !u!224 &1224105692
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224105687}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1613511462}
+  m_Father: {fileID: 1200879495}
+  m_RootOrder: 54
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1273824718
 GameObject:
   m_ObjectHideFlags: 0
@@ -8238,7 +8671,7 @@ RectTransform:
   m_Children:
   - {fileID: 1359415034}
   m_Father: {fileID: 1200879495}
-  m_RootOrder: 52
+  m_RootOrder: 53
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9199,6 +9632,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a17f5cb339b164a84713182ae1d7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1613511461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1613511462}
+  - component: {fileID: 1613511464}
+  - component: {fileID: 1613511463}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1613511462
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613511461}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1224105692}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1613511463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613511461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1613511464
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613511461}
+  m_CullTransparentMesh: 0
 --- !u!1 &1685610549
 GameObject:
   m_ObjectHideFlags: 0
@@ -9498,6 +10009,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1807645142
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843484, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843485, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: num_portal
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843490, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: m_Name
+      value: Exit 8 - KONAMI CODE
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4b81ffe1afa894f419d9876fa8ed57b8, type: 3}
 --- !u!1 &1825569024
 GameObject:
   m_ObjectHideFlags: 0
@@ -10105,7 +10690,7 @@ RectTransform:
   m_Children:
   - {fileID: 569005553}
   m_Father: {fileID: 1200879495}
-  m_RootOrder: 46
+  m_RootOrder: 47
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -10601,7 +11186,7 @@ PrefabInstance:
     - target: {fileID: 2048945306042880964, guid: d51d1b9a3191cb44088ac1491eb1cb99,
         type: 3}
       propertyPath: m_RootOrder
-      value: 53
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 2048945306042880964, guid: d51d1b9a3191cb44088ac1491eb1cb99,
         type: 3}
