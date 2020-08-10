@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MatrixJam;
 
 namespace MatrixJam.Team9
 {
@@ -60,6 +61,7 @@ namespace MatrixJam.Team9
             _currentSpeed = 0;
             anim = GetComponent<Animator>();
             AudioSourceEgg = GetComponent<AudioSource>();
+
         }
 
         // Update is called once per frame
@@ -95,6 +97,7 @@ namespace MatrixJam.Team9
         }
 
 
+
         IEnumerator ChangeSprite()
         {
             while (!_flagEnded)
@@ -107,6 +110,7 @@ namespace MatrixJam.Team9
                 EggSprite.SetActive(false);                
                 SplashSprite.SetActive(true);
             }
+
 
         }
 

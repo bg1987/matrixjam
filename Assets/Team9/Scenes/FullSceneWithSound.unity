@@ -8833,8 +8833,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _birdPrefab: {fileID: 6332326256563360272, guid: 2a6842d8c2e346640962ccd34e337059,
     type: 3}
-  numberOfBirds: 3
-  spawnDelayStart: 1.4
+  numberOfBirds: 40
+  spawnDelayStart: 1.3
   startingPointLeft: {fileID: 1947137058}
   startingPointRight: {fileID: 699701777}
   waysIn:
@@ -10376,7 +10376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e88624c688f19b4693c80b539de85db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitNum: 0
+  exitNum: 1
   exitEvent:
     m_PersistentCalls:
       m_Calls:

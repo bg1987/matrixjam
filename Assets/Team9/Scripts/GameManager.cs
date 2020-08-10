@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
+using MatrixJam;
 
 
 namespace MatrixJam.Team9
@@ -148,6 +149,7 @@ namespace MatrixJam.Team9
                 }
             }
 
+
         }
 
         IEnumerator CheckGame()
@@ -181,7 +183,12 @@ namespace MatrixJam.Team9
             EggRef.stopMoveanim = true;
             BirdGeneratorRef._gamesStarted = false;
             BirdRef.GetComponent<BirdScript>().abort = true;
-            EggRef.PlayendGame();           
+            EggRef.PlayendGame();
+            yield return new WaitForSeconds(6);
+            if (EggRef._flagEnded && !EggRef._win)
+            {
+                LevelHolder.Level.Restart();
+            }
 
         }
 
