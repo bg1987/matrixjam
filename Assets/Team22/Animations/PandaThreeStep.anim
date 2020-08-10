@@ -826,7 +826,7 @@ AnimationClip:
   - time: 0.5
     functionName: PlayCue
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: fad11fa701c9d644486a5f09c60a24fd,
+    objectReferenceParameter: {fileID: 8300000, guid: affeb0dfd9eb0c142803c10b5aa9ac6c,
       type: 3}
     floatParameter: 0
     intParameter: 0

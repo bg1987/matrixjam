@@ -908,17 +908,17 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1
-    functionName: PlayCue
+    functionName: SpawnBamboo
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: e4729743ad6e0b84fa1251e0ee2259a8,
-      type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1
-    functionName: SpawnBamboo
+    functionName: PlayCue
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 8300000, guid: f52abe9ff0cb9204f97e8848bb887b0e,
+      type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

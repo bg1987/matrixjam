@@ -9,9 +9,10 @@ namespace MatrixJam.Team22
     {
         public TriggerController triggerController;
         public Animator playerAnimator;
-        public AudioClip swordSwing, swordHit;
         public float missDelay = 1f;
         public float swingDelay = 0.1f;
+        [Header("Audio")]
+        public AudioClip[] swordSwings, swordHits;
 
         private bool canShoot = true;
         private float missTimer = 0;
@@ -43,14 +44,14 @@ namespace MatrixJam.Team22
         {
             bool inTrigger = triggerController.GetTriggerStatus();
             playerAnimator.SetTrigger("Slice");
-            source.PlayOneShot(swordSwing);
+            source.PlayOneShot(GetRandomClip(swordSwings));
 
             if (inTrigger)
             {
                 // bamboo is inside trigger
                 // Debug.LogWarning("HIT!");
                 triggerController.DestroyInside();
-                source.PlayOneShot(swordHit);
+                source.PlayOneShot(GetRandomClip(swordHits));
                 ShakeCam.instance.Shake(0.15f, 0.1f);
                 missTimer = swingDelay;
             }
@@ -61,6 +62,11 @@ namespace MatrixJam.Team22
                 canShoot = false;
                 missTimer = missDelay;
             }
+        }
+
+        private AudioClip GetRandomClip(AudioClip[] clips)
+        {
+            return clips[UnityEngine.Random.Range(0,clips.Length)];
         }
     }
 }
