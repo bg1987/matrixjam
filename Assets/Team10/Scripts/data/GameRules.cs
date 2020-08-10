@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.Video;
 
 namespace MatrixJam.Team10
 {
@@ -31,6 +32,9 @@ namespace MatrixJam.Team10
         public GameObject Panel;
         public Text PanelMessage;
         public Button PanelButton;
+
+        public GameObject vidPanel;
+        public VideoPlayer[] vids;
         
         public RandomDialogueTree t;
         public string playerName;
@@ -45,6 +49,12 @@ namespace MatrixJam.Team10
             Panel.SetActive(false);
             PanelMessage.gameObject.SetActive(false);
             PanelButton.gameObject.SetActive(false);
+
+            foreach(VideoPlayer vd in vids){
+                vd.loopPointReached += (VideoPlayer v) => {
+                    vidPanel.SetActive(false);
+                };
+            }
         }
 
         void Update(){
@@ -63,7 +73,7 @@ namespace MatrixJam.Team10
                 endOfDay();
             }
         }
-        
+
         public void OnExit(){
             Debug.Log(exitNum);
             exitEvent[exitNum].Invoke();
@@ -307,15 +317,21 @@ namespace MatrixJam.Team10
             //game-followup
             actions.Add(new Choice("MatrixJam", () => {
                 time = time.AddMinutes(45);
+                vids[0].Play();
+                vidPanel.SetActive(true);
             }));
             actions.Add(new Choice("A day in life 2020", () => {
                 DeathScreen(9);
             }));
             actions.Add(new Choice("fart in a jar", () => {
                 time = time.AddMinutes(30);
+                vids[1].Play();
+                vidPanel.SetActive(true);
             }));
             actions.Add(new Choice("4", () => {
                 time = time.AddMinutes(15);
+                vids[2].Play();
+                vidPanel.SetActive(true);
             }));
             return actions;
         }

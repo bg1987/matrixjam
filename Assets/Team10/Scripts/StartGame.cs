@@ -11,6 +11,7 @@ namespace MatrixJam.Team10
         {
             // this is how the game starts
             Debug.Log("game start... please enter name");
+            base.StartHelp(num_ent);
         }
         
         // Start is called before the first frame update
