@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/TeamMeta/Scenes/MainMenu.unity
-    guid: cc4e329e877635244b275c90f8227e4f
+    path: Assets/Team2/Scenes/MainGame.unity
+    guid: ed877f568758d024e8bc619af3761043
   m_configObjects: {}
