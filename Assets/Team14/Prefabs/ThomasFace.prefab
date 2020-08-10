@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8934581274952456949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5199957, y: -0.46000075, z: 0.00000015143834}
+  m_LocalPosition: {x: -4.5, y: -0.6, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8934581275170108583}
@@ -254,6 +254,7 @@ GameObject:
   - component: {fileID: 8934581275170108583}
   - component: {fileID: 8934581275170108582}
   - component: {fileID: 8934581275170108585}
+  - component: {fileID: 5858507754474127941}
   m_Layer: 0
   m_Name: ThomasFace
   m_TagString: Untagged
@@ -353,6 +354,25 @@ MonoBehaviour:
   rightEyebrow: {fileID: 8934581275620946788}
   lookAtCursor: 1
   LookAtTransform: {fileID: 0}
+--- !u!95 &5858507754474127941
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8934581275170108580}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f2476e5e6a0923445a774f22703d956d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8934581275620946786
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +398,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8934581275620946786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.31999618, y: -0.46000075, z: 0.00000015143834}
+  m_LocalPosition: {x: -0.3, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8934581275170108583}

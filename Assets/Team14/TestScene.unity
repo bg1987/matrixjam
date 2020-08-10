@@ -6383,6 +6383,34 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1605608495}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &385636651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7559569995090260555, guid: e4d2a181f0e7a93428f63764ff995033,
+    type: 3}
+  m_PrefabInstance: {fileID: 421545692}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &385636652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385636651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792bf8b7039f47047bbc0d2c031c2937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Railway: {fileID: 385636653}
+  First: {fileID: 8300000, guid: 8f23436d74e91aa498b632b490716387, type: 3}
+  Second: {fileID: 8300000, guid: f20d6f3be8ed30f45a6b9bea0f82dff2, type: 3}
+  Third: {fileID: 8300000, guid: 7babf6830fbd5324688cbcd378e5f6c1, type: 3}
+--- !u!82 &385636653 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7559569995090260553, guid: e4d2a181f0e7a93428f63764ff995033,
+    type: 3}
+  m_PrefabInstance: {fileID: 421545692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &400420333 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7954470083774927496, guid: f0f53eeaeb2807a47a471d8bbdb96279,
@@ -6617,6 +6645,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SFXmanager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559569995090260553, guid: e4d2a181f0e7a93428f63764ff995033,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8f23436d74e91aa498b632b490716387, type: 3}
+    - target: {fileID: 7559569995090260553, guid: e4d2a181f0e7a93428f63764ff995033,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559569995395189071, guid: e4d2a181f0e7a93428f63764ff995033,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7559569995434450639, guid: e4d2a181f0e7a93428f63764ff995033,
         type: 3}
