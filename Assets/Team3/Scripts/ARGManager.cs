@@ -156,6 +156,7 @@ namespace MatrixJam.Team3
                 if (numLevels++ < MaxLevels -1)
                 {
                     currentLevel = (currentLevel + 1 ) % MaxLevels;
+                    TextEnabled = true;
                     ChangeItem("000" + currentLevel);
                     return;
                 }
