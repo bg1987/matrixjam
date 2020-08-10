@@ -122,7 +122,15 @@ namespace MatrixJam.Team14
         public void OnDeath()
         {
             GameOverExplosive.Explode();
-            Invoke(nameof(DoDeath), 5f);
+            var livesRemaining = --TrainController.Instance.Lives;
+            if (livesRemaining == 0)
+            {
+                Invoke(nameof(DoDeath), 5f);
+            }
+            else
+            {
+                Invoke(nameof(DoDeath), 2f);
+            }
             sfxManager.TunnelBump.PlayRandomPitch();
 
         }
@@ -130,8 +138,7 @@ namespace MatrixJam.Team14
         private void DoDeath()
         {
             GameOverExplosive.StopExplosion();
-            var livesRemaining = --TrainController.Instance.Lives;
-            if (livesRemaining == 0) OnGameOver();
+            if (TrainController.Instance.Lives == 0) OnGameOver();
             else Restart();
         }
 
