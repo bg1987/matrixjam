@@ -143,6 +143,7 @@ namespace MatrixJam.Team3
                 {
                     if (audioClips[item.ToLower()] != null)
                     {
+                        Debug.Log("Playing Clip " + audioClips[item.ToLower()] + " on " + Stages[item.ToLower()]);
                         musicPlayer.clip = audioClips[item.ToLower()];
                         musicPlayer.Play();
                     }
@@ -180,6 +181,7 @@ namespace MatrixJam.Team3
 
         public void OpenWebsite(string URL)
         {
+            musicPlayer.Stop();
             currentlEnabled.GetComponent<Image>().sprite = loginScreenImage;
             Application.OpenURL(URL);
         }
