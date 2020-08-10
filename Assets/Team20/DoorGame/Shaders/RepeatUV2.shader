@@ -17,6 +17,7 @@
 		_UseTransparentZ("Use Transparent Z", int) = 0
 		_UseShaderZ("Use Shader Z", Int) = 1
 		_FlipDirection("Flip Direction", Int) = 0
+		_RepeatBoth("_Repeat Both", Int) = 0
 	}
 
 		SubShader
@@ -74,6 +75,7 @@
 				float _TransparentZ;
 				bool _FlipDirection;
 				bool _UseTransparentZ;
+				bool _RepeatBoth;
 
 				v2f vert(appdata_t IN)
 				{
@@ -133,7 +135,15 @@
 					#endif
 
 					OUT.texcoord.x *= worldScale.x * _ScaleUVX;
-					OUT.texcoord.y *= _ScaleUVY;
+					if (_RepeatBoth)
+					{
+						OUT.texcoord.y *= worldScale.y * _ScaleUVY;
+					}
+					else
+					{
+						OUT.texcoord.y *= _ScaleUVY;
+					}
+					
 					OUT.texcoord.x += _OffsetUVX;
 					OUT.texcoord.y += _OffsetUVY;
 
