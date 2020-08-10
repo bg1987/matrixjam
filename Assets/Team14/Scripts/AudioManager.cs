@@ -72,7 +72,7 @@ namespace MatrixJam.Team14
             source.clip = trackList.GetClip(_trackIdx);
             source.Play();
             railwaySource.Stop();
-            railwaySource.clip = trackList.GetClip(_trackIdx);
+            railwaySource.clip = trackList.GetRailway(_trackIdx);
             railwaySource.Play();
         }
         
