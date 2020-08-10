@@ -10,6 +10,7 @@ namespace MatrixJam.Team14
         public abstract string Name { get; }
         public abstract string AnimTrigger { get; }
         public abstract TrainMove? Move { get; }
+        public abstract bool AllowSelfTransition { get; }
 
         public virtual void OnEnter()
         {
@@ -101,6 +102,7 @@ namespace MatrixJam.Team14
         public override string Name => "Drive";
         public override string AnimTrigger => "Idle";
         public override TrainMove? Move => null;
+        public override bool AllowSelfTransition => false;
 
         public override void OnUpdate()
         {
@@ -117,6 +119,7 @@ namespace MatrixJam.Team14
         public override string Name => "Honk";
         public override string AnimTrigger => "Honk";
         public override TrainMove? Move => TrainMove.Honk;
+        public override bool AllowSelfTransition => true;
 
         public TrainHonkState(float timeToExit, TrainState autoExitState) : base(timeToExit, autoExitState)
         {
@@ -125,6 +128,7 @@ namespace MatrixJam.Team14
         public override void OnUpdate()
         {
             base.OnUpdate();
+            if (HandleHonk()) return;
             // Don't allow transition to jump/honk during    
             // if (HandleJump()) return;
             // if (HandleDuck()) return;
@@ -136,6 +140,7 @@ namespace MatrixJam.Team14
         public override string Name => "Jump";
         public override string AnimTrigger => "Jump";
         public override TrainMove? Move => TrainMove.Jump;
+        public override bool AllowSelfTransition => false;
         
         public TrainJumpState(float timeToExit, TrainState autoExitState) : base(timeToExit, autoExitState)
         {
@@ -154,6 +159,7 @@ namespace MatrixJam.Team14
         public override string Name => "Duck";
         public override string AnimTrigger => "Duck";
         public override TrainMove? Move => TrainMove.Duck;
+        public override bool AllowSelfTransition => false;
 
         public override void OnUpdate()
         {
@@ -169,5 +175,6 @@ namespace MatrixJam.Team14
         public override string Name => "NONE";
         public override string AnimTrigger => null;
         public override TrainMove? Move => null;
+        public override bool AllowSelfTransition => false;
     }
 }
