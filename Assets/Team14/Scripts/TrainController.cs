@@ -190,9 +190,9 @@ namespace MatrixJam.Team14
 
         private void TransitionStateInternal(TrainState newState, Transform moveCue)
         {
-            if (newState == _currstate)
+            if (newState == _currstate && !_currstate.AllowSelfTransition)
             {
-                Debug.LogWarning($"Same state transition ({newState}). Ignoring");
+                Debug.LogWarning($"Same state transition not allowed for state ({newState}). Ignoring.");
                 return;
             }
             

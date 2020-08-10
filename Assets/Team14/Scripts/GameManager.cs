@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace MatrixJam.Team14
 {
+    using MatrixJam.Team;
 #if UNITY_EDITOR
     using UnityEditor;
 
@@ -12,7 +13,7 @@ namespace MatrixJam.Team14
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            var script = target as GameManager;
+            var script = targ>et as GameManager;
             
             GUILayout.Space(20);
             if (GUILayout.Button("Update"))
@@ -29,6 +30,7 @@ namespace MatrixJam.Team14
         
         [SerializeField] private int startLives;
         [SerializeField] private AudioManager audioManager;
+        [SerializeField] public SFXmanager sfxManager;
 
         [SerializeField] private Transform startAndDirection;
 
@@ -50,6 +52,7 @@ namespace MatrixJam.Team14
 
         private void Awake()
         {
+            sfxManager = FindObjectOfType<SFXmanager>();
             if (Instance != null)
             {
                 Debug.LogError("There shouldnt be 2 trains!");
@@ -118,6 +121,7 @@ namespace MatrixJam.Team14
         {
             GameOverExplosive.Explode();
             Invoke(nameof(DoDeath), 5f);
+            sfxManager.TunnelBump.PlayRandomPitch();
 
         }
 
@@ -132,6 +136,7 @@ namespace MatrixJam.Team14
         private void OnGameOver()
         {
             Debug.Log("GAME OVERRR");
+            sfxManager.Lose.PlayRandom();
         }
 
         private void Restart()

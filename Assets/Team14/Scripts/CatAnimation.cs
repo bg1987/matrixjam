@@ -14,12 +14,13 @@ namespace MatrixJam.Team
         private float _startTime;
         private GameObject[] _cats;
         private Obstacle _parentObstacle;
-
+        private SFXmanager SFXmanager;
         private int FrameCount => _cats.Length;
         private float FramesPerSec => FrameCount / animTime;
 
         private void Start()
         {
+            SFXmanager = FindObjectOfType<SFXmanager>();
             _cats = transform
                 .Cast<Transform>()
                 .Select(trans => trans.gameObject)
@@ -51,6 +52,7 @@ namespace MatrixJam.Team
             if (payload.Successful)
             {
                 Animate();
+                SFXmanager.CatSqueals.PlayRandom();
             }
         }
 
