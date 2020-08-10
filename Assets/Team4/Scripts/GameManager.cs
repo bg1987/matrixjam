@@ -12,6 +12,8 @@ namespace MatrixJam.Team4
         private TurnManager _turnManager;
         private BoardManager _boardManager;
         private IChoiceManager _choiceManager;
+        public AiBrain[] AllBrains;
+        public static AiBrain Brain;
         
 
         public List<Player> Players;
@@ -29,6 +31,7 @@ namespace MatrixJam.Team4
             _boardManager = new BoardManager(9);
             _choiceManager = new ChoiceManager(_boardManager);
             _turnManager = new TurnManager(Players);
+            Brain = AllBrains[0];
             UIManager.ChoiceManager = _choiceManager;
 
         }
@@ -50,8 +53,10 @@ namespace MatrixJam.Team4
 
         public override void StartHelp(int num_ent)
         {
-            base.StartHelp(num_ent);
-            PlayRandom = num_ent == 0;
+            if (num_ent <= AllBrains.Length)
+            {
+                Brain = AllBrains[num_ent];
+            }
         }
 
         private void HandleIntro()

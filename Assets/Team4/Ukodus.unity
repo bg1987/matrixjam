@@ -3157,6 +3157,8 @@ GameObject:
   - component: {fileID: 1868372840}
   - component: {fileID: 1868372839}
   - component: {fileID: 1868372838}
+  - component: {fileID: 1868372842}
+  - component: {fileID: 1868372841}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3177,6 +3179,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
+  AllBrains:
+  - {fileID: 1868372842}
+  - {fileID: 1868372841}
   Players:
   - {fileID: 997963808}
   - {fileID: 1093261524}
@@ -3372,6 +3377,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   def_ent: 0
+--- !u!114 &1868372841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868372832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4756f1d8710d453cb010b19f07f0cb98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1868372842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868372832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f0ee994ef67bd4088109e3daa3aada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1918257803
 GameObject:
   m_ObjectHideFlags: 0

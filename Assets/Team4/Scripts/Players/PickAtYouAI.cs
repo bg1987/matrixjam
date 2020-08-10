@@ -5,22 +5,22 @@ using UnityEngine;
 
 namespace MatrixJam.Team4
 {
-    public class PickAtYouAI : Player
+    public class PickAtYouAI : AiBrain
     {
         // this is an AI which chooses a random unit and returns a random answer
-        public override void YourTurn(TurnData turnData)
+
+        public override TurnObject MakeDecision(TurnData turnData, Player player)
         {
-            base.YourTurn(turnData);
-            var randomIndex = UnityEngine.Random.Range(0, MyUnits.Count);
-            var randomUnit = MyUnits[randomIndex];
+            
+            var randomIndex = UnityEngine.Random.Range(0, player.MyUnits.Count);
+            var randomUnit = player.MyUnits[randomIndex];
             var unitOptions = turnData._positionOptions[randomUnit];
 
             var turnObject = new TurnObject();
             turnObject.ChosenUnit = randomUnit;
 
             SetHighestPointAttack(turnObject, unitOptions, turnData);
-
-            StartCoroutine(UIManager.ChoiceManager.HandleAiChoice(ValidateTurnObject(turnObject)));
+            return turnObject;
         }
 
         private void SetHighestPointAttack(TurnObject turnObject, List<Position> unitOptions, TurnData turnData)
@@ -127,5 +127,6 @@ namespace MatrixJam.Team4
 
             return ans;
         }
+
     }
 }
