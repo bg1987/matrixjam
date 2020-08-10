@@ -318,7 +318,6 @@ namespace MatrixJam.Team10
             //game-followup
             actions.Add(new Choice("MatrixJam", () => {
                 time = time.AddMinutes(45);
-                vids[0].Play();
                 vidPanel.SetActive(true);
             }));
             actions.Add(new Choice("A day in life 2020", () => {
@@ -331,7 +330,6 @@ namespace MatrixJam.Team10
             }));
             actions.Add(new Choice("4", () => {
                 time = time.AddMinutes(15);
-                vids[2].Play();
                 vidPanel.SetActive(true);
             }));
             return actions;
