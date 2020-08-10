@@ -28,6 +28,7 @@ namespace MatrixJam.Team14
 
         [SerializeField] private SFXmanager sfxManager;
         [SerializeField] private float startHonkDelay;
+        [SerializeField] private new Collider collider;
 
         [Header("States config")]
         [SerializeField] private float jumpTime = 0.4f;
@@ -37,7 +38,6 @@ namespace MatrixJam.Team14
         [Header("Cars config")]
         [SerializeField] private Animator masterCarAnim;
         [SerializeField] private Animator[] slaveCarAnims;
-
 
         [Header("Debug")]
         [SerializeField] private bool debugTrackTime = true;
@@ -183,6 +183,7 @@ namespace MatrixJam.Team14
 
         private void OnGameReset()
         {
+            collider.gameObject.SetActive(true);
             TransitionState(DriveState, null);
         }
 
@@ -255,6 +256,7 @@ namespace MatrixJam.Team14
 
         private void KillTrain()
         {
+            collider.gameObject.SetActive(false);
             GameManager.Instance.OnDeath();
         }
 
