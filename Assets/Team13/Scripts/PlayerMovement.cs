@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace MatrixJam.Team13
 {
@@ -84,5 +85,13 @@ namespace MatrixJam.Team13
 
 			_prevVelocity = _controller.velocity;
         }
+
+		public void ShowUiActive(Image img){
+			img.color = Color.red;
+		}
+
+		public void ShowUiInactive(Image img){
+			img.color = Color.gray;
+		}
     }
 }
