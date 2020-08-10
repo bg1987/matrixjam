@@ -168,13 +168,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6661331}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 0000000001000000020000000a000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &6661334
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -324,13 +323,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6895061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 0000000001000000020000000a000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &6895065
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -562,13 +560,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 21615927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 0b0000000c000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &21615931
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -944,13 +941,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 86871667}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 0500000016000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &86871671
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1279,13 +1275,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 144858860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 23000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &144858864
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1409,13 +1404,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 199770922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 190000001a000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &199770926
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1759,13 +1753,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 247296760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 03000000040000000f00000010000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &247296764
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2746,13 +2739,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 331684325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 15000000
   BlockPanel: {fileID: 1857069522}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &331684329
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2876,13 +2868,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 371540273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 03000000040000000f00000010000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &371540277
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3362,13 +3353,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 402417226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 0000000001000000020000001f000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &402417230
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4467,13 +4457,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 671832795}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 05000000160000001b000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &671832799
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5113,13 +5102,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 747532059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 0000000001000000020000001f000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &747532063
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5243,13 +5231,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 771854834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 200000002100000022000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &771854838
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6535,13 +6522,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1030638223}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 0000000001000000020000000a000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &1030638227
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7753,13 +7739,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1307781917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 03000000040000001e000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &1307781921
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8425,13 +8410,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1430835983}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 0000000001000000020000000a000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &1430835987
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9799,13 +9783,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1752857145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc10f3f4224a7344867474ddfaa3bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: f60cf38cc23aa7343987de1c1d44bd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choices: 05000000160000001700000018000000
   BlockPanel: {fileID: 282731079}
   DialoguePanelBlock: {fileID: 1857069522}
-  isMouseOnMe: 0
 --- !u!212 &1752857149
 SpriteRenderer:
   m_ObjectHideFlags: 0
