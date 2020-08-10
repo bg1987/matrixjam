@@ -36,6 +36,7 @@ namespace MatrixJam.Team2
             {
                 ActivateCheckpoint();
             }
+
             AnimWalk();
         }
 
@@ -108,6 +109,7 @@ namespace MatrixJam.Team2
             if (!jumpInput || !CanJump) return;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             currentJumpsCount++;
+            playerAnimator.SetBool("jump", true);
         }
 
         private bool CanJump => isGrounded || (1 < currentJumpsCount && currentJumpsCount < maxJumps);

@@ -15,6 +15,7 @@ namespace MatrixJam.Team2
 
 
         // TODO: Ideally currentMaterial should be private and we should create event when switching material
+        public ShootState shootState = ShootState.not_shooting;
         public FloopableMaterialTypes currentMaterial = FloopableMaterialTypes.Reflective;
         private LineRenderer fireTrail;
         private float rayCastLength = 100;
@@ -26,6 +27,11 @@ namespace MatrixJam.Team2
 
         void Update()
         {
+            if (shootState != ShootState.not_shooting)
+            {
+                shootState = ShootState.not_shooting;
+            }
+
             // TODO: Ideally should work with dictionary<int,matType> - GetButton(Material{int})->currentMat=dict[int]
             if (Input.GetKeyDown("1"))
             {
@@ -59,10 +65,12 @@ namespace MatrixJam.Team2
                 {
                     floopable.ChangeMaterial(currentMaterial);
                     rayColor = floopableLaserColor;
+                    shootState = ShootState.valid;
                 }
                 else
                 {
                     rayColor = nonFloopableLaserColor;
+                    shootState = ShootState.invalid;
                 }
                 StartCoroutine(DrawRay(hitInfo.point, rayColor));
             }
@@ -76,6 +84,14 @@ namespace MatrixJam.Team2
             fireTrail.enabled = true;
             yield return new WaitForSeconds(0.02f);
             fireTrail.enabled = false;
+        }
+
+
+        public enum ShootState
+        {
+            not_shooting,
+            invalid,
+            valid
         }
     }
 }
