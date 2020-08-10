@@ -10,6 +10,10 @@ namespace MatrixJam.Team5
         public CodeLetter[] letters;
         public Door[] doors;
         public Sprite defaultIcon;
+        public AudioSource effect;
+        public AudioClip click;
+        public AudioClip win;
+        public AudioClip lose;
 
         private Data _data;
 
@@ -35,6 +39,8 @@ namespace MatrixJam.Team5
             
             if(letter.display || _guess.Length > 5)
             {
+                effect.clip = lose;
+                effect.Play();
                 Reset();
                 return;
             }
@@ -43,6 +49,7 @@ namespace MatrixJam.Team5
             audio.volume = 1;
             
             display[_guess.Length-1].label.text = text;
+            effect.clip = click;
             if (_guess.Length < 5)
             {
                 for (int i = 0; i < _data.codes.Length; i++)
@@ -61,16 +68,24 @@ namespace MatrixJam.Team5
             }
             else if (_guess.Length == 5)
             {
+                bool found = false;
                 for (int i = 0; i < _data.codes.Length; i++)
                 {
                     if (_guess == _data.codes[i])
                     {
+                        found = true;
                         audio.volume = 0;
                         doors[i].Open();
                         display[_guess.Length-1].button.image.sprite = doors[i].icon;
+                        break;
                     }
                 }
+                if (found)
+                {
+                    effect.clip = win;
+                }
             }
+            effect.Play();
         }
 
         public void Reset()
