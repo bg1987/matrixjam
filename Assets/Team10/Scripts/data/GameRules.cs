@@ -128,6 +128,14 @@ namespace MatrixJam.Team10
             }
             repeat += 1;
             if(repeat > 2){
+                if(playerName == "BATMAN" || playerName == "CORONA"){
+                    DeathScreen(12);
+                    return;
+                }
+                else if(isRoommate()){
+                    DeathScreen(13);
+                    return;
+                }
                 switch (lastActionID)
                 {
                     case "sleep":
