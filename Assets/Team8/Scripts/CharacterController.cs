@@ -97,7 +97,7 @@ namespace MatrixJam.Team8
                 animator.SetBool("Falling", true);
             }
 
-            if(CurrentlyHeldIngridients.Count <= 0)
+            if(CurrentlyHeldIngridients.Count <= 0 && !gotProduct)
             {
                 animator.SetBool("HaveIngridients", false);
             }
@@ -292,12 +292,12 @@ namespace MatrixJam.Team8
                 }
                 else if (other.GetComponent<Cooker>().FinishedCooking && CurrentlyHeldIngridients.Count == 0)
                 {
-                    animator.SetBool("HaveIngridients", true);
                     gotProduct = true;
                         GameManager.Instance.soundManager.PlaySound(pickUp, 0.5f);
                         product = other.GetComponent<Cooker>().GiveProduct();
 
-                        product.GetComponent<Rigidbody>().isKinematic = true;
+                    animator.SetBool("HaveIngridients", true);
+                    product.GetComponent<Rigidbody>().isKinematic = true;
                         product.transform.position = firstIngridientPosition.position;
                         product.transform.parent = firstIngridientPosition;
                         movementMultiplierWithIngridients = 0.90f;
