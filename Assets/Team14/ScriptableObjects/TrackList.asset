@@ -15,7 +15,7 @@ MonoBehaviour:
   tracks:
   - clip: {fileID: 8300000, guid: 65fd99cdbc254a942b5e1218c9cd9b9e, type: 3}
     railwaySFX: {fileID: 8300000, guid: 8f23436d74e91aa498b632b490716387, type: 3}
-    checkpointAfterFinish: 0
+    checkpointAfterFinish: 1
     zPerBeat: 6.5
     bpm: 115
   - clip: {fileID: 8300000, guid: e7ab63752b3f77746ac9af6650f115cd, type: 3}
