@@ -134,7 +134,8 @@ namespace MatrixJam.Team10
             a.Add(new string[] {"Boss corona", "we concoured the world", "everyone is infected and zombiefied",
                 "good luck in your next mission" });
             // roomate - special end
-            a.Add(new string[] {"THIS IS A FARCE. you died but you got a clone in another rppm so in the end you did survive. minus one clone though"});
+            a.Add(new string[] {"THIS IS A FARCE.",
+            "you died but you got a clone in another room so in the end you did survive.", "minus one clone though"});
             return a;
         }
 
