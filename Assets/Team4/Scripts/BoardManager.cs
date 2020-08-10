@@ -269,7 +269,7 @@ namespace MatrixJam.Team4
 
         private void IllegalizePosition(int x, int y)
         {
-            for(int i = 1; i < 9; i++)
+            for(int i = 0; i < 9; i++)
             {
                 _possibleUnitsPerCoordinate[x, y, i] = false;
             }
