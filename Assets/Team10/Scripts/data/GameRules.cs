@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace MatrixJam.Team10
 {
     public class GameRules : MonoBehaviour
     {
         #region params
+        [SerializeField] private int exitNum;
+
+        [SerializeField] private UnityEvent[] exitEvent;
+
         private int deathCheck;
         private int repeat;
         private string lastActionID;
@@ -58,7 +63,9 @@ namespace MatrixJam.Team10
                 endOfDay();
             }
         }
-
+        void OnExit(){
+            exitEvent[exitNum].Invoke();
+        }
         #region Game Death
 
         public List<string[]> DeathListGen(){
@@ -226,6 +233,7 @@ namespace MatrixJam.Team10
         }
 
         public void DeathScreen(int id){
+            exitNum = id;
             isDead = true;
             PanelMessage.gameObject.SetActive(true);
             PanelButton.gameObject.SetActive(true);

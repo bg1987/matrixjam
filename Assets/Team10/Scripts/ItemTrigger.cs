@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MatrixJam.Team10
+    {
+        namespace MatrixJam.Team10
 {
     public class ItemTrigger : MonoBehaviour
-    {
-        // Start is called before the first frame update
-        void Start()
         {
-            
-        }
+            public int[] choices;
+            public GameObject BlockPanel;
+            public GameObject DialoguePanelBlock;
 
-        // Update is called once per frame
-        void Update()
-        {
-            
+            void OnMouseDown(){
+                if(!BlockPanel.activeSelf && !DialoguePanelBlock.activeSelf){
+                    TriggerDialogue();
+                }
+            }
+
+            public void TriggerDialogue(){
+                Dialogue dialogue = new Dialogue("", choices);
+                FindObjectOfType<DialogueManager>().StartActionChoice(dialogue);
+            }
         }
     }
 }
