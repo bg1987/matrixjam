@@ -117,7 +117,7 @@ namespace MatrixJam.Team14
         public void OnDeath()
         {
             GameOverExplosive.Explode();
-            Invoke(nameof(DoDeath), 1f);
+            Invoke(nameof(DoDeath), 5f);
 
         }
 
