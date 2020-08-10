@@ -41,10 +41,10 @@ namespace MatrixJam.Team2
             if (other.TryGetComponent(out BulletController bulletController))
             {
                 // TODO: Activate unity particle and/or change sprite.
-                if (!isActive)
-                {
+                //if (!isActive)
+                //{
                     Activate();
-                }
+                //}
                 Destroy(bulletController.gameObject);
             }
         }

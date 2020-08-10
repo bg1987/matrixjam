@@ -27,7 +27,7 @@ namespace MatrixJam.Team2
 
         private void OnEnable()
         {
-            InvokeRepeating("SpawnBullet", 0f, shootingInterval);
+            InvokeRepeating("SpawnBullet", 1f, shootingInterval);
         }
     }
 }
