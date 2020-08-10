@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MatrixJam.Team14
@@ -109,6 +111,9 @@ namespace MatrixJam.Team14
         private void OnTrackListFinished()
         {
             reachedEnd = true;
+            youWin.SetActive(true);
+            
+            MatrixExit(true, 8);
             Debug.Log("Success! Last Track Finished!");
         }
 
@@ -117,6 +122,17 @@ namespace MatrixJam.Team14
             BeatPositions = audioManager.GetAllBeatPositions(startAndDirection);
             TrackEndPositions = audioManager.GetTrackEndPositions(startAndDirection);
             TrackStartPositions = audioManager.GetTrackStartPositions(startAndDirection);
+        }
+
+        private void MatrixExit(bool win, float delay)
+        {
+            StartCoroutine(Routine());
+            IEnumerator Routine()
+            {
+                yield return new WaitForSeconds(delay);
+                var exit = win ? winExit : loseExit;
+                exit.EndLevel();
+            }
         }
 
         public void OnDeath()
@@ -148,6 +164,7 @@ namespace MatrixJam.Team14
             Debug.Log("GAME OVERRR");
             sfxManager.Lose.PlayRandom();
             gameOver.SetActive(true);
+            MatrixExit(false, 8f);
         }
 
         private void Restart()
