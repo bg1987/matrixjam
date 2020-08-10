@@ -15,7 +15,7 @@ namespace MatrixJam
             else
             {
                 Debug.Log("No StartHelper found on entrance!");
-
+               
             }
         }
 
