@@ -10,7 +10,7 @@ namespace MatrixJam.Team25.Scripts.Jar
         public float maxRotations;
         public float yPositionReductionRatio;
         public float yPosOffset;
-        public GameObject arrows;
+        public GameObject arrows, lidTwistTutorial;
         private float maxRotationsAngle;
         private bool holding;
         private float totalYRotation;
@@ -20,16 +20,19 @@ namespace MatrixJam.Team25.Scripts.Jar
         private bool rotationsReached;
         private Vector3 pos;
         private DataManager dataManager;
+        private GameManager gameManager;
 
         private void Awake()
         {
             dataManager = FindObjectOfType<DataManager>();
+            gameManager = FindObjectOfType<GameManager>();
         }
 
         private void OnEnable()
         {
             if (dataManager.round == 0)
             {
+                lidTwistTutorial.SetActive(true);
                 arrows.SetActive(true);
             }
             maxRotationsAngle = maxRotations * 360;
@@ -83,8 +86,9 @@ namespace MatrixJam.Team25.Scripts.Jar
             {
                 transform.rotation = Quaternion.Euler(Quaternion.identity.eulerAngles.x, maxRotationsAngle,
                     Quaternion.identity.eulerAngles.z);
-                if (arrows.activeSelf)
+                if (dataManager.round == 0)
                 {
+                    lidTwistTutorial.SetActive(false);
                     arrows.SetActive(false);
                 }
                 jarClosed = true;

@@ -4,6 +4,7 @@ namespace MatrixJam.Team25.Scripts.Managers
 {
     public class DataManager : MonoBehaviour
     {
+        public Exit exit1, exit2, exit3, exit4, exit5;
         [HideInInspector] public float fartForce, stink;
         [HideInInspector] public GameObject gamePrefab;
         public int round;
@@ -18,6 +19,36 @@ namespace MatrixJam.Team25.Scripts.Managers
             Destroy(currentGame);
             var newGame = Instantiate(gamePrefab);
             newGame.SetActive(true);
+        }
+
+        public void ExitGame()
+        {
+            if (totalScore == 0f)
+            {
+                if (pooped == 3)
+                {
+                    exit1.EndLevel();
+                }
+                else
+                {
+                    exit2.EndLevel();
+                }
+            }
+            else
+            {
+                if (totalScore > 0 && totalScore <= 500)
+                {
+                    exit3.EndLevel();
+                }
+                else if (totalScore > 501 && totalScore <= 1000)
+                {
+                    exit4.EndLevel();
+                }
+                else if (totalScore > 1001)
+                {
+                    exit5.EndLevel();
+                }
+            }
         }
     }
 }

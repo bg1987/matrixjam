@@ -118,6 +118,10 @@ namespace MatrixJam.Team25.Scripts.Managers
             uiManager.DisplayGameOver();
         }
 
+        public void ExitGame()
+        {
+            dataManager.ExitGame();
+        }
         public void PauseGame()
         {
             Time.timeScale = 0;
