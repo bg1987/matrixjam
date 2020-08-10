@@ -43,6 +43,7 @@ namespace MatrixJam.Team10
         }
 
         void Update(){
+            time = time.AddSeconds((int)(Time.deltaTime*50));
             Timer.text = time.ToString("hh:mm tt");
             //update time display
             if((time.Hour > 12 && deathCheck < 1) || (time.Hour > 6 && deathCheck < 2)) //12-start noon, 18-start evening
