@@ -77,7 +77,6 @@ namespace MatrixJam.Team2
                     // Make sure not to enable jump through "GoThrough" floopables
                     if (goThroughController.enabled) return;
                 }
-                Debug.Log($"IsGround=True; Object = {other.gameObject.name}");
                 isGrounded = true;
                 currentJumpsCount = 0;
             }
@@ -87,7 +86,6 @@ namespace MatrixJam.Team2
         {
             if (other.TryGetComponent(out Ground ground))
             {
-                Debug.Log("IsGround=False");
                 isGrounded = false;
             }
         }
