@@ -14,8 +14,9 @@ namespace MatrixJam.Team20
         float lastHorizontal = 0f;
         [SerializeField] private bool _onMovingPlatform = false;
         public float movingPlatformFix = 1;
-
         [SerializeField] private float _coinNumber = 0f;
+        public AudioClip jumpSound, landingSound, footstep1, footstep2, footstep3, attachDoor, flipDoor;
+        AudioSource _audio;
 
         private enum LookDirection
         {
@@ -27,6 +28,7 @@ namespace MatrixJam.Team20
 
         void Start()
         {
+            _audio = gameObject.GetComponent<AudioSource>();
             movement = GetComponent<MovementComponent>();
             applyGravity = GetComponent<ApplyGravityComponent>();
         }
@@ -57,6 +59,8 @@ namespace MatrixJam.Team20
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     movement.velocity.y = jumpHeight;
+                    //_audio.clip = jumpSound;
+                    _audio.PlayOneShot(jumpSound);
                 }
 
             }
@@ -67,6 +71,15 @@ namespace MatrixJam.Team20
 
         }
 
+        public void PlayDetach()
+        {
+            _audio.PlayOneShot(attachDoor);
+        }
+
+        public void PlayFlip()
+        {
+            _audio.PlayOneShot(flipDoor);
+        }
 
         public void DoorCollection()
         {

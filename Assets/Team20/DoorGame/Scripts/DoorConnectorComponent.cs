@@ -6,11 +6,12 @@ namespace MatrixJam.Team20
 {
     public class DoorConnectorComponent : MonoBehaviour
     {
+        PlayerComponent _playerComponent;
         Connection connection = new Connection();
         // Start is called before the first frame update
         void Start()
         {
-            
+            _playerComponent = gameObject.GetComponent<PlayerComponent>();
         }
 
         DoorPlaceComponent ClosestDoorPlace()
@@ -94,16 +95,19 @@ namespace MatrixJam.Team20
             if (Input.GetKeyUp(KeyCode.J))
             {
                 PickPlaceDoor();
+                _playerComponent.PlayDetach();
             }
 
             if (Input.GetKeyUp(KeyCode.K))
             {
                 ConnectDoor();
+                _playerComponent.PlayDetach();
             }
 
             if (Input.GetKeyUp(KeyCode.L))
             {
                 FlipConnectionDirection();
+                _playerComponent.PlayFlip();
             }
         }
     }
