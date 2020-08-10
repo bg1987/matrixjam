@@ -52,15 +52,16 @@ namespace MatrixJam.Team14
 
         private void OnDrawGizmos()
         {
-            var pos = trigger.transform.position + trigger.center;
+            var regPos = trigger.transform.position;
+            var trigPos = regPos + trigger.center;
             var size = trigger.size;
             var color = new Color(0.0f, 1.0f, 0.25f, 0.3f);
 
             Gizmos.color = color;
-            Gizmos.DrawCube(pos, trigger.size);
+            Gizmos.DrawCube(trigPos, trigger.size);
 
             Gizmos.color = new Color(1f, 0f, 0f,0.5f);
-            Gizmos.DrawCube(pos, new Vector3(size.x, size.y, 0.2f));
+            Gizmos.DrawCube(regPos, new Vector3(size.x, size.y, 0.2f));
         }
 
         private void OnDestroy()
