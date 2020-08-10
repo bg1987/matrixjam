@@ -286,13 +286,13 @@ namespace MatrixJam.Team10
             }));
             // bathroom + kitchen
             actions.Add(new Choice("wash hands", () => {
-                CheckRepeat("washHands");
+                CheckRepeat("wash");
                 time = time.AddMinutes(5);
                 if(lastActionID == "number2")
                 {
                     cleanFactor = cleanFactor +1;
                 }
-                lastActionID = "washHands";
+                lastActionID = "wash";
             }));
             //game-followup
             actions.Add(new Choice("MatrixJam", () => {
