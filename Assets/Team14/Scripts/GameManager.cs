@@ -116,10 +116,17 @@ namespace MatrixJam.Team14
 
         public void OnDeath()
         {
+            GameOverExplosive.Explode();
+            Invoke(nameof(DoDeath), 1f);
+
+        }
+
+        private void DoDeath()
+        {
+            GameOverExplosive.StopExplosion();
             var livesRemaining = --TrainController.Instance.Lives;
             if (livesRemaining == 0) OnGameOver();
             else Restart();
-
         }
 
         private void OnGameOver()

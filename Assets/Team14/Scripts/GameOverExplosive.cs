@@ -10,17 +10,30 @@ namespace MatrixJam.Team14
     {
         public static void Explode()
         {
+            stopExplosion = false;
             Array.ForEach(FindObjectsOfType<GameOverExplosive>(),
                     x => x.ExplodeSelf());
         }
+
+        public static void StopExplosion()
+        {
+            stopExplosion = true;
+        }
+
+        private static bool stopExplosion = false;
 
         private bool exploded = false;
         private Vector3 direction;
         private Vector3 rotation;
         public float force = 8;
+
+        private Vector3 oldposition;
+        private Vector3 oldrotation;
         
         private void ExplodeSelf()
         {
+            oldposition = transform.localPosition;
+            oldrotation = transform.localEulerAngles;
             exploded = true;
             rotation = Random.insideUnitSphere;
             direction = rotation;
@@ -28,10 +41,18 @@ namespace MatrixJam.Team14
 
         void Update()
         {
+            if (stopExplosion && exploded)
+            {
+                transform.localPosition = oldposition;
+                transform.localEulerAngles = oldrotation;
+                exploded = false;
+            }
+            
             if (!exploded)
             {
                 return;
             }
+
 
             transform.localPosition += direction;
             transform.Rotate(rotation);
