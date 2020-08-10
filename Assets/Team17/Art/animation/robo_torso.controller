@@ -6,7 +6,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: robo_torso
+  m_Name: Robo_torso
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
