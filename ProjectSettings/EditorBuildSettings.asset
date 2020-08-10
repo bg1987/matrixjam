@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Jammers/ExampleGame/ExampleGameScene.unity
     guid: 7405e46bc710a0a45b96220bec85e862
+  - enabled: 1
+    path: Assets/Team10/ADayInLife2020Edition.unity
+    guid: 885f7aba03d0b5e4fb18cc4e37a47464
   m_configObjects: {}

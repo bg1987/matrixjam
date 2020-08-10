@@ -111,6 +111,7 @@ namespace MatrixJam.Team10
             // matrix - 2 pills
             a.Add(new string[] {"you died from pill overdose","just because it's still there",
                 "does not mean you should take it"});
+                //netflix (repeat)
             // special ends - characters
             // corona
             a.Add(new string[] {"Boss corona", "we concoured the world", "everyone is infected and zombiefied",
