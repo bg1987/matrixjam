@@ -75,7 +75,11 @@ namespace MatrixJam.Team3
                 }
             }
 
-            currentLevel = level;
+            //if (LevelHolder.PlayPlayed() > 0) {
+            // TextEnabled = true;
+            // }
+
+        currentLevel = level;
             ChangeItem("000" + currentLevel);
         }
         

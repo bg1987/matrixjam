@@ -595,7 +595,7 @@ MonoBehaviour:
       pirates have one.<br><br>GAME OVER<br><br>Enter code : 6961<br>'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 21300000, guid: d2a32bc72711de147af10d02fea49558, type: 3}
+    BGImage: {fileID: 21300000, guid: 5b1f2a2dc8a601d4797d83695080a6c4, type: 3}
     BGmusic: {fileID: 0}
   - name: 9116
     theObject: {fileID: 1772356371}
@@ -631,7 +631,7 @@ MonoBehaviour:
       code : 6961'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 21300000, guid: bbc69e2f695c3794d86102901a86f6fb, type: 3}
+    BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
     BGmusic: {fileID: 0}
   - name: 5678
     theObject: {fileID: 287428752}
@@ -648,7 +648,7 @@ MonoBehaviour:
       : 6961'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 21300000, guid: 938512fdb2d6aac4986602d732c34e04, type: 3}
+    BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
     BGmusic: {fileID: 0}
   - name: AA4966
     theObject: {fileID: 875319767}
@@ -707,7 +707,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 1
     BGImage: {fileID: 0}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
   - name: 4966
     theObject: {fileID: 746870996}
     description: '"Where the hell are your pants?" you try to ask politely, but when
@@ -819,7 +819,7 @@ MonoBehaviour:
       have won...<br><br>GAME OVER.<br><br>Enter code:  6965'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 21300000, guid: 938512fdb2d6aac4986602d732c34e04, type: 3}
+    BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
     BGmusic: {fileID: 0}
   - name: 6666
     theObject: {fileID: 1497380775}
@@ -833,7 +833,7 @@ MonoBehaviour:
       <br><br>GAME OVER. <br> <br>Enter code:  6965'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 21300000, guid: 938512fdb2d6aac4986602d732c34e04, type: 3}
+    BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
     BGmusic: {fileID: 0}
   - name: 1199
     theObject: {fileID: 907139144}
@@ -871,7 +871,7 @@ MonoBehaviour:
       6962'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 21300000, guid: 73b14e2f740054041bdf0dc40fcf5bde, type: 3}
+    BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
     BGmusic: {fileID: 0}
   - name: 1617
     theObject: {fileID: 1548652921}
@@ -906,7 +906,7 @@ MonoBehaviour:
       have won.<br><br> <br>GAME OVER <br> <br>Enter code : 6962'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 21300000, guid: bbc69e2f695c3794d86102901a86f6fb, type: 3}
+    BGImage: {fileID: 21300000, guid: 5b1f2a2dc8a601d4797d83695080a6c4, type: 3}
     BGmusic: {fileID: 0}
   - name: 3344
     theObject: {fileID: 264415046}
@@ -930,7 +930,7 @@ MonoBehaviour:
       <br>GAME OVER <br> <br>Enter code : 6962'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 21300000, guid: 4d046d6c4b254bd4c9d9eb31b5ced9c3, type: 3}
+    BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
     BGmusic: {fileID: 0}
   - name: 9001
     theObject: {fileID: 328751117}
@@ -1408,7 +1408,7 @@ MonoBehaviour:
       all about and maybe I could have helped. <br> <br>GAME OVER <br>Choose 6963
     forceText: 1
     forceImage: 0
-    BGImage: {fileID: 21300000, guid: 96fac2f3813e14d4eb04ea3c2ed82fe4, type: 3}
+    BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
     BGmusic: {fileID: 0}
   - name: 7543
     theObject: {fileID: 149628997}
@@ -1477,7 +1477,7 @@ MonoBehaviour:
       ship and it started sinking. <br> <br>Game Over <br>Choose 6963
     forceText: 1
     forceImage: 0
-    BGImage: {fileID: 21300000, guid: bbc69e2f695c3794d86102901a86f6fb, type: 3}
+    BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
     BGmusic: {fileID: 0}
   - name: 7878
     theObject: {fileID: 149628997}
@@ -1502,7 +1502,7 @@ MonoBehaviour:
       worked.  <br> <br>GAME OVER  <br> <br>Enter code: 6963 '
     forceText: 1
     forceImage: 0
-    BGImage: {fileID: 21300000, guid: bbc69e2f695c3794d86102901a86f6fb, type: 3}
+    BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
     BGmusic: {fileID: 0}
   - name: UUDDLRLBA
     theObject: {fileID: 1224105687}
@@ -1516,6 +1516,13 @@ MonoBehaviour:
     description: 
     forceText: 0
     forceImage: 0
+    BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
+  - name: TOMASH.exe
+    theObject: {fileID: 1624561238}
+    description: 
+    forceText: 1
+    forceImage: 1
     BGImage: {fileID: 0}
     BGmusic: {fileID: 0}
   InitialObjects:
@@ -12710,7 +12717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: KongFood.EXE
+  m_text: TOMASH.EXE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
