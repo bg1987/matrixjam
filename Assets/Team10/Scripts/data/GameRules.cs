@@ -63,7 +63,9 @@ namespace MatrixJam.Team10
                 endOfDay();
             }
         }
-        void OnExit(){
+        
+        public void OnExit(){
+            Debug.Log(exitNum);
             exitEvent[exitNum].Invoke();
         }
         #region Game Death
