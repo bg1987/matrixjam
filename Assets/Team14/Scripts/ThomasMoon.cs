@@ -6,6 +6,28 @@ using Random = UnityEngine.Random;
 
 namespace MatrixJam.Team14
 {
+    [Serializable]
+    public class AnimateThomasAfter
+    {
+        public bool resetEveryRestart;
+        public float secsDelay;
+
+        private float _currSecs;
+
+        public void OnUpdate()
+        {
+            _currSecs += Time.deltaTime;
+        }
+
+
+        public void OnRestart()
+        {
+            if (resetEveryRestart) _currSecs = 0f;
+        }
+
+        public bool ShouldAnimate => _currSecs >= secsDelay;
+    }
+    
     public class ThomasMoon : MonoBehaviour
     {
         public enum LookAt
@@ -13,7 +35,9 @@ namespace MatrixJam.Team14
             Cursor,
             Target
         }
-        
+
+        [SerializeField] private AnimateThomasAfter animationDelay; // Hold off animations so player isnt distracted
+        [SerializeField] private Vector2 eyebrowsRandomDelta;
         [SerializeField] private Camera cam;
         [SerializeField] private float localEyeRadius;
         [SerializeField] private float scalePerSec;
@@ -33,6 +57,8 @@ namespace MatrixJam.Team14
         private const string TrigWeird = "weird";
         private const string TrigEyebrows = "eyebrows";
         private const string TrigHappy = "happy";
+        private const string TrigReset = "reset";
+        private float _timeSinceRestart = 0f;
 
         public LookAt LookMode
         {
@@ -71,30 +97,28 @@ namespace MatrixJam.Team14
         private IEnumerator Start()
         {
             startScale = transform.localScale;
-            StartCoroutine(RandomEyebrows(3f, 3f));
+            StartCoroutine(RandomEyebrows(eyebrowsRandomDelta[0], eyebrowsRandomDelta[1]));
             yield return new WaitForSeconds(1);
+            GameManager.ResetEvent += OnRestart;
             // HappyAnim(3f);
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.ResetEvent -= OnRestart;
         }
 
         private void Update()
         {
+            animationDelay.OnUpdate();
             transform.localScale += Vector3.one * Time.deltaTime * scalePerSec;
             HandleEyesLookAt();
         }
 
-        private IEnumerator RandomEyebrows(float minTime, float maxTime, bool startImmediate = false)
-        {
-            if (startImmediate) EyebrowsAnim();
-            while (true)
-            {
-                var randTime = Random.Range(minTime, maxTime); 
-                yield return new WaitForSeconds(randTime);
-                EyebrowsAnim();
-            }
-        }
-
         public void WeirdAnim(float time)
         {
+            if (!animationDelay.ShouldAnimate) return;
+
             StartCoroutine(WierdRoutine());
             IEnumerator WierdRoutine()
             {
@@ -103,9 +127,11 @@ namespace MatrixJam.Team14
                 EndAnim(TrigWeird);
             }
         }
-        
+
         public void HappyAnim(float time)
         {
+            if (!animationDelay.ShouldAnimate) return;
+
             StartCoroutine(HappyRoutine());
             IEnumerator HappyRoutine()
             {
@@ -117,6 +143,8 @@ namespace MatrixJam.Team14
 
         public void EyebrowsAnim()
         {
+            if (!animationDelay.ShouldAnimate) return;
+
             const float dur1 = 0.4f;
             const float delay = 1f;
             const float dur2 = 0.6f;
@@ -144,6 +172,13 @@ namespace MatrixJam.Team14
             seq.Play();
         }
 
+        private void OnRestart()
+        {
+            animationDelay.OnRestart();
+            StopAllCoroutines();
+            anim.SetTrigger(TrigReset);
+        }
+
         private void StartAnim(string trig, bool ignoreEyes)
         {
             _ignoreEyes = ignoreEyes;
@@ -155,6 +190,17 @@ namespace MatrixJam.Team14
             _ignoreEyes = false;
             anim.SetBool(trig, false);
         }
+
+        private IEnumerator RandomEyebrows(float minTime, float maxTime, bool startImmediate = false)
+         {
+             if (startImmediate) EyebrowsAnim();
+             while (true)
+             {
+                 var randTime = Random.Range(minTime, maxTime); 
+                 yield return new WaitForSeconds(randTime);
+                 EyebrowsAnim();
+             }
+         }
 
         private bool HandleEyesLookAt()
         {

@@ -9649,6 +9649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842f474cb489ee34e907cd934516dee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thomas: {fileID: 1788431400}
   sfxManager: {fileID: 421545693}
   startHonkDelay: 0.8
   collider: {fileID: 666210762}
@@ -29886,6 +29887,21 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1957739884}
+    - target: {fileID: 8934581275170108585, guid: 4606ec012deabcf48b4ba12ea2e7374d,
+        type: 3}
+      propertyPath: eyebrowsRandomDelta.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934581275170108585, guid: 4606ec012deabcf48b4ba12ea2e7374d,
+        type: 3}
+      propertyPath: eyebrowsRandomDelta.y
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934581275170108585, guid: 4606ec012deabcf48b4ba12ea2e7374d,
+        type: 3}
+      propertyPath: animationDelay.secsDelay
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 8934581275620946786, guid: 4606ec012deabcf48b4ba12ea2e7374d,
         type: 3}
       propertyPath: m_IsActive

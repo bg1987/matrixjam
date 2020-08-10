@@ -124,7 +124,13 @@ namespace MatrixJam.Team14
         public TrainHonkState(float timeToExit, TrainState autoExitState) : base(timeToExit, autoExitState)
         {
         }
-        
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            TrainController.Instance.Thomas.WeirdAnim(3f);
+        }
+
         public override void OnUpdate()
         {
             base.OnUpdate();
@@ -145,6 +151,13 @@ namespace MatrixJam.Team14
         public TrainJumpState(float timeToExit, TrainState autoExitState) : base(timeToExit, autoExitState)
         {
         }
+        
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            TrainController.Instance.Thomas.HappyAnim(1.8f);
+        }
+        
         public override void OnUpdate()
         {
             base.OnUpdate();

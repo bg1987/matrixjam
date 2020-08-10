@@ -26,6 +26,7 @@ namespace MatrixJam.Team14
     {
         public static TrainController Instance { get; private set; }
 
+        [SerializeField] private ThomasMoon thomas;
         [SerializeField] private SFXmanager sfxManager;
         [SerializeField] private float startHonkDelay;
         [SerializeField] private new Collider collider;
@@ -52,6 +53,7 @@ namespace MatrixJam.Team14
         private TrainState _currstate;
         private TrainState _prevState;
 
+        public ThomasMoon Thomas => thomas;
 
         public int Lives
         {
