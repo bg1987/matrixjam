@@ -9,11 +9,15 @@ namespace MatrixJam.Team14
     public class MusicTrack
     {
         [SerializeField] private AudioClip clip;
+        [SerializeField] private AudioClip railwaySFX;
         [SerializeField] private bool checkpointAfterFinish;
         [SerializeField] private float zPerBeat = 7.5f;
         [SerializeField] private float bpm;
 
         public AudioClip Clip => clip;
+
+        public AudioClip RailwaySFX => railwaySFX;
+
         public float BPM => bpm;
         public float BeatPerSec => bpm / 60;
 

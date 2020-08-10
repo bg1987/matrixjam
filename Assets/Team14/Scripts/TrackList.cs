@@ -10,6 +10,7 @@ namespace MatrixJam.Team14
     {
         [SerializeField] private MusicTrack[] tracks;
 
+
         public MusicTrack[] Tracks => tracks;
 
         public int TrackCount => tracks.Length;
@@ -69,6 +70,7 @@ namespace MatrixJam.Team14
         // public float BeatsInTrack(int trackIdx) => tracks[trackIdx].TotalBeats;
 
         // public float GetBeatNum(int trackIdx, float secsInTrack) => tracks[trackIdx].GetBeatNum(secsInTrack);
+        public AudioClip GetRailway(int trackIdx) => tracks[trackIdx].RailwaySFX;
 
 
         public Vector3 GetBeatPosition(Transform startAndDirection, int trackIdx, float trackSecs)
