@@ -73,6 +73,7 @@ namespace MatrixJam.Team20
         DoorComponent connectedDoor;
         Color defaultColor = Color.white;
         bool flipDirection = false;
+      //  public AudioSource doorAudio;
 
         public float Width()
         {
@@ -134,12 +135,21 @@ namespace MatrixJam.Team20
         void Start()
         {
             SetColor(defaultColor);
+           // doorAudio = GameObject.Find("SFX_Manager").GetComponent<AudioSource>();
         }
 
         // Update is called once per frame
         void Update()
         {
             
+        }
+
+        public void PlayDoorSound()
+        {
+            if (currentPlace)
+            {
+                currentPlace.PlayCurrentDoorSound();
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

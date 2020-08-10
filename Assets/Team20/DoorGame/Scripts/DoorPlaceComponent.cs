@@ -21,11 +21,14 @@ namespace MatrixJam.Team20
         public DoorComponent placedDoor = null;
         public Collider2D wallCollider = null;
         public SpriteRenderer spriteRenderer;
+        public AudioSource doorAudio;
+        public bool openedByPlayer;
 
         // Start is called before the first frame update
         void Start()
         {
-            if(placedDoor)
+            doorAudio = GameObject.Find("SFX_Manager").GetComponent<AudioSource>();
+            if (placedDoor)
             {
                 spriteRenderer.enabled = false;
                 placedDoor.currentPlace = this;
@@ -94,6 +97,11 @@ namespace MatrixJam.Team20
                 var animator = placedDoor.gameObject.GetComponent<Animator>();
                 if (animator)
                 {
+                    if (other.CompareTag("Tag0"))
+                        openedByPlayer = true;
+                    else
+                        openedByPlayer = false;
+                    PlayCurrentDoorSound();
                     animator.SetBool("IsOpen", true);
                 }
             }
@@ -113,6 +121,11 @@ namespace MatrixJam.Team20
                 var animator = placedDoor.gameObject.GetComponent<Animator>();
                 if (animator)
                 {
+                    if (other.CompareTag("Tag0"))
+                        openedByPlayer = true;
+                    else
+                        openedByPlayer = false;
+                    PlayCurrentDoorSound();
                     animator.SetBool("IsOpen", false);
                 }
             }
@@ -125,6 +138,12 @@ namespace MatrixJam.Team20
                 return;
 
             component.currentDoorPlace = null;
+        }
+
+        public void PlayCurrentDoorSound()
+        {
+            if(openedByPlayer)
+                doorAudio.Play();
         }
     }
 }
