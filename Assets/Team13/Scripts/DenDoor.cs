@@ -18,6 +18,9 @@ namespace MatrixJam.Team13
 
 		[SerializeField] private DoorLock[] _lock;
 
+		[SerializeField] private GameObject _endScreen;
+		[SerializeField] private Exit _exit;
+
 		private KeyCode[] _keyPresses = new KeyCode[10];
 
 		private bool _isRecording = false;
@@ -88,7 +91,14 @@ namespace MatrixJam.Team13
 			_keyPresses[9] = key;
 			if(IsCodeGood()){
 				GetComponent<Animation>().Play();
+				StartCoroutine(CountTo10());
 			}
+		}
+
+		private IEnumerator CountTo10(){
+			_endScreen.SetActive(true);
+			yield return new WaitForSeconds(5);
+			_exit.EndLevel();
 		}
     }
 }

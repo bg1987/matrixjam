@@ -29,6 +29,9 @@ namespace MatrixJam.Team13{
 		[SerializeField] private UnityEvent _onMove;
 		[SerializeField] private UnityEvent _onMoveEnd;
 
+		[SerializeField] private GameObject _caughtScreen;
+		[SerializeField] private Exit _exit;
+
 		void Awake(){
 			_animator = GetComponent<Animator>();
 			_agent = GetComponent<NavMeshAgent>();
@@ -82,9 +85,21 @@ namespace MatrixJam.Team13{
 			_agent.isStopped = false;
 		}
 
+		void OnTriggerEnter(Collider collider){
+			if(collider.gameObject.tag == "Player"){
+				_caughtScreen.SetActive(true);
+				StartCoroutine(CountTo5());
+			}
+		}
+
+		private IEnumerator CountTo5(){
+			yield return new WaitForSeconds(5);
+			_exit.EndLevel();
+		}
+
 		void Update(){
 			if(!_agent.pathPending && _agent.remainingDistance < 0.1f){
-				GoToNextPoi();
+				//GoToNextPoi();
 			}
 
 			/*_moveDir.x = Input.GetAxis("Horizontal");
