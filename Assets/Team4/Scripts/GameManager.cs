@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MatrixJam.Team4
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : StartHelper
     {
         public GameState gameState = GameState.init;
         private IntroManager _introManager;
@@ -22,7 +22,6 @@ namespace MatrixJam.Team4
         public int InitialUnitsCount = 35;
         public bool ShowTutorial;
         private static bool _alreadyPlayedTheTutorial;//in case they end up in our game twice
-        private ExitReason _exitReason;
 
         void Awake()
         {
@@ -49,6 +48,12 @@ namespace MatrixJam.Team4
             }
         }
 
+        public override void StartHelp(int num_ent)
+        {
+            base.StartHelp(num_ent);
+            PlayRandom = num_ent == 0;
+        }
+
         private void HandleIntro()
         {
             EventManager.Singleton.IntroDone += OnIntroDone;     
@@ -71,7 +76,7 @@ namespace MatrixJam.Team4
             
             EventManager.Singleton.TurnOver += OnTurnOver;
             EventManager.Singleton.GameOver += OnGameOver;
-            _exitReason = ExitReason.GaveUp;
+
             OnTurnOver();
         }
         
@@ -100,29 +105,12 @@ namespace MatrixJam.Team4
             if (winner.playerSide == PlayerSide.Human)
             {
                 SoundManager.Instance.PlayVictory();
-                _exitReason = ExitReason.Won;
                 WinMessage.gameObject.SetActive(true);
             }
             else
             {
                 SoundManager.Instance.PlayDefeat();
-                _exitReason = ExitReason.Lost;
                 LoseMessage.gameObject.SetActive(true);
-            }
-        }
-
-        public void QuitThisGame()
-        {
-            //TODO
-            switch (_exitReason)
-            {
-                case ExitReason.Won:
-                    break;
-                case ExitReason.Lost:
-                    break;
-                default:
-                case ExitReason.GaveUp:
-                    break;
             }
         }
 
@@ -170,6 +158,7 @@ namespace MatrixJam.Team4
                     break;
             }
         }
+        public static bool PlayRandom { get; set; }
     }
 
     public enum GameState
@@ -179,11 +168,5 @@ namespace MatrixJam.Team4
         mainPlay,
         gameover
     }
-    
-    public enum ExitReason
-    {
-        Won,
-        Lost,
-        GaveUp
-    }
+
 }

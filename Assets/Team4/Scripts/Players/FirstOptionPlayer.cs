@@ -10,28 +10,19 @@ namespace MatrixJam.Team4
         public override void YourTurn(TurnData turnData)
         {
             base.YourTurn(turnData);
-            StartCoroutine(MakeDumbChoices(turnData));
+            var turnObject = CreateDecision(turnData);
+            StartCoroutine(UIManager.ChoiceManager.HandleAiChoice(ValidateTurnObject(turnObject)));
         }
 
-        private IEnumerator MakeDumbChoices(TurnData turnData)
+        public static TurnObject CreateDecision(TurnData turnData)
         {
-            yield return new WaitForSeconds(3);
             var unit = turnData._positionOptions.Keys.First(x => turnData._positionOptions[x].Count > 0);
-            
             var positions = turnData._positionOptions[unit];
             var position = positions[0];
-            TurnObject(unit);
-
-
-            
-        }
-
-        private void TurnObject(Unit unit)
-        {
             var turnObject = new TurnObject();
             turnObject.AttackDirection = AttackDirection.square;
             turnObject.ChosenUnit = unit;
-            UIManager.ChoiceManager.HandleAiChoice(ValidateTurnObject(turnObject));
+            return turnObject;
         }
     }
 }
