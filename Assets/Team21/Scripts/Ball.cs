@@ -11,13 +11,17 @@ namespace MatrixJam.Team21 {
 		public float strengthBoost = 5f;
 		public float restartDelay = 2f;
 		public float delaySeagullEffect = 2f;
+		public AudioClip hitSFX;
+		public AudioClip hitPipeSFX;
 
 		private Rigidbody rb;
 		private WindArea windArea;
 		private bool isHitBySeagull = false;
+		private AudioSource audio;
 
         // Start is called before the first frame update
         void Start() {
+			audio = GetComponent<AudioSource>();
 			rb = GetComponent<Rigidbody>();
 			// print("SceneManager.GetActiveScene(); " + SceneManager.GetActiveScene());
 			// StartCoroutine(DelayStartRoutine());
@@ -56,6 +60,13 @@ namespace MatrixJam.Team21 {
 		}
 
 		void OnCollisionEnter(Collision collision) {
+			if (collision.collider.tag != "Tag4") {// don't sound on boat
+				audio.clip = hitSFX;
+				audio.Play();
+			} else {
+				audio.clip = hitPipeSFX;
+				audio.Play();
+			}
 			if (collision.collider.tag == "Tag3") {// obstacle
 				inWindZone = false;
 			}
