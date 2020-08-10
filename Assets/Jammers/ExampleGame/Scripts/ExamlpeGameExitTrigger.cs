@@ -1,10 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ExamlpeGameExitTrigger : MonoBehaviour
+namespace MatrixJam.Team8
 {
+    public class ExamlpeGameExitTrigger : MonoBehaviour
+    {
     [SerializeField] private int exitNum;
 
     [SerializeField] private UnityEvent exitEvent;
@@ -26,4 +28,5 @@ public class ExamlpeGameExitTrigger : MonoBehaviour
         exitEvent.Invoke();
     }
     
+    }
 }
