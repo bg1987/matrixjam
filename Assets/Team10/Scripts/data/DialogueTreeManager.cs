@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace MatrixJam.Team10
 {
     public class RandomDialogueTree
     {
-        private int NUM_OF_ACTIONS = 22;
+        private int NUM_OF_ACTIONS = 36;
         private Dictionary<string, List<DialogueTree>> randomDialogues;
         private List<DialogueTree> dialogues;
         private Character n1; // Mika
@@ -27,16 +28,16 @@ namespace MatrixJam.Team10
             dialogues = contDialogues(playerName);
 
             switch(playerName){
-                case "Batman":
+                case "BATMAN":
                     FriendCall = getCallAlfredDialogue();
                     break;
-                case "Superman":
+                case "SUPERMAN":
                     FriendCall = getCallMarthaDialogue();
                     break;
-                case "Matrix":
+                case "MATRIX":
                     FriendCall = getCallMatrixDialogue();
                     break;
-                case "Corona":
+                case "CORONA":
                     FriendCall = getCallFBIDialogue();
                     break;
                 default:
@@ -64,7 +65,7 @@ namespace MatrixJam.Team10
         public DialogueTree getDialogueById(int dialogueId){
             return dialogues[dialogueId - 1];
         }
-
+        #region dialogs
         public List<DialogueTree> contDialogues(string playerName){
             List<DialogueTree> cd = new List<DialogueTree>();
             DialogueTree t1 = new DialogueTree(n1);
@@ -111,13 +112,16 @@ namespace MatrixJam.Team10
             t1.addDialogue(new Dialogue(n1.name, "i'm making some pasta. \ndo you want some?"));
             t1.addDialogue(new Dialogue(playerName, new int[] {0, 1}));
             hd.Add(t1);
-            // end dialog 1
             /// dialog 2
             DialogueTree t2 = new DialogueTree(n1);
             t2.addDialogue(new Dialogue(n1.name, "we have no food.... \nwe need to buy groceries"));
             t2.addDialogue(new Dialogue(playerName, new int[] {2, 3}));
             hd.Add(t2);
-            // end dialog 2
+            // dialog 3
+            DialogueTree t3 = new DialogueTree(n3);
+            t3.addDialogue(new Dialogue(n3.name, "i love turkish kebab so much!"));
+            hd.Add(t3);
+            // end dialog 3
             return hd;
         }
         public List<DialogueTree> getBathDialogues(string playerName){
@@ -150,6 +154,7 @@ namespace MatrixJam.Team10
             // end dialog 2
             return hd;
         }
+        #endregion
 
         private DialogueTree multipleSentences(string name, string[] sentences){
             DialogueTree f = new DialogueTree();
@@ -168,13 +173,17 @@ namespace MatrixJam.Team10
                 "i dont want to meet my roommates, though",
                 "let me tell you, they can be quite annoying sometimes",
                 "well what should i do today?"};
-            // if 42 - add full game explenation
-            // now listen 42, this is a secret, but this game is not as simple as it's seems
-            //...
+            if(playerName == "42"){
+                sentences = sentences.Concat(new string[]{"now listen 42! it's a secret however this game is not as simple as it's seems",
+                "it's 2020, the year of the virus \nleave the house and you will get infected (lose)",
+                "so remember! don't leave the house, dont forget to wash hands then eat, \nwork for at least 3 hours, swim twice and avoid talking to others"})
+                    .ToArray();
+            }
             return multipleSentences(playerName, sentences);
         }
 
         //get static dialogues
+        #region roommate dialogues
         public DialogueTree getRoommate1Dialogue(){
             DialogueTree roommate1 = new DialogueTree(n1);
             roommate1.addDialogue(new Dialogue(n1.name, "what do you want?? i'm taking a nap here\ngo away!!!!! -_-\nzzz"));
@@ -185,9 +194,17 @@ namespace MatrixJam.Team10
             roommate2.addDialogue(new Dialogue(n2.name, ""));
             return roommate2;
         }
+        public DialogueTree getRoommate3Dialogue(){
+            DialogueTree roommate2 = new DialogueTree(n3);
+            roommate2.addDialogue(new Dialogue(n3.name, "hey! i forgot my mask at my parents house.. do you know where to buy?"));
+            return roommate2;
+        }
+        #endregion
         public DialogueTree getCallFriendDialogue(){
             return FriendCall;
         }
+
+        #region friend call
         public DialogueTree getCallAlfredDialogue(){
             Character n4 = new Character("alfred");
             string[] sentences = new string[] {"Batman, i have the keys to you bat cave \nyou can't hide from me",
@@ -227,13 +244,13 @@ namespace MatrixJam.Team10
 
         public DialogueTree getCallPokeDialogue(string playerName){
             Character n4 = new Character("Prof. Oak");
-            string[] sentences = new string[] {"i just discovered a new cave filled with bat pokemons",
-            "also caugth \n",
-            "we will lock you in jail"};
+            string[] sentences = new string[] { playerName + "! i've got some great new!!",
+            "i just discovered a new cave filled with pokemons \ni already caught some bat ones....", "wanna go pokemon hunting?"};
             DialogueTree f = multipleSentences(n4.name, sentences);
-            //
-            f.addDialogue(new Dialogue(playerName, new int[] {}));
+            //yes, no
+            f.addDialogue(new Dialogue(playerName, new int[] {28 + NUM_OF_ACTIONS, 29 + NUM_OF_ACTIONS}));
             return f;
         }
+        #endregion
     }
 }

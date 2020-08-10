@@ -111,14 +111,11 @@ namespace MatrixJam.Team10
             // matrix - 2 pills
             a.Add(new string[] {"you died from pill overdose","just because it's still there",
                 "does not mean you should take it"});
-                //netflix (repeat)
-            // special ends - characters
-            // corona
+            // corona \ batman - special end
             a.Add(new string[] {"Boss corona", "we concoured the world", "everyone is infected and zombiefied",
                 "good luck in your next mission" });
-            // special ends -
-            a.Add(new string[] {});
-            a.Add(new string[] {});
+            // roomate - special end
+            a.Add(new string[] {"THIS IS A FARCE. you died but you got a clone in another rppm so in the end you did survive. minus one clone though"});
             return a;
         }
 
@@ -131,6 +128,14 @@ namespace MatrixJam.Team10
             }
             repeat += 1;
             if(repeat > 2){
+                if(playerName == "BATMAN" || playerName == "CORONA"){
+                    DeathScreen(12);
+                    return;
+                }
+                else if(isRoommate()){
+                    DeathScreen(13);
+                    return;
+                }
                 switch (lastActionID)
                 {
                     case "sleep":
@@ -149,9 +154,16 @@ namespace MatrixJam.Team10
                 }
             }
         }
-
+        public bool canCharacterAvoidDeath(){
+            string[] names = new string[] {"BATMAN", "CORONA", "SUPERMAN"};
+            return System.Array.IndexOf(names, playerName) != -1 || isRoommate();
+        }
+        public bool isRoommate(){
+            string[] names = new string[] {"MAYA", "MIKA", "RAUL"};
+            return System.Array.IndexOf(names, playerName) != -1;
+        }
         public void checkDeath(){
-            if(killFactor > 3){
+            if(canCharacterAvoidDeath() && killFactor > 3){
                 DeathScreen(3);
             }
         }
@@ -161,17 +173,40 @@ namespace MatrixJam.Team10
             //private int hungerFactor; // must eat 2 meals during the day if counter < 2 kill - end of day
             //private int workFactor;  // must reach 3 point by the end of the day to survive - end of day
             //private int killFactor; // 3 will kill 
-            if(cleanFactor < 5){
-                DeathScreen(0);
+            if(playerName == "BATMAN" || playerName == "CORONA"){
+                DeathScreen(12);
+            }
+            else if(cleanFactor < 5){
+                if(isRoommate()){
+                    DeathScreen(13);
+                }
+                else{
+                    DeathScreen(0);
+                }
             }
             else if(hungerFactor < 2){
-                DeathScreen(1);
+                if(isRoommate()){
+                    DeathScreen(13);
+                }
+                else{
+                    DeathScreen(1);
+                }
             }
             else if(workFactor < 3){
-                DeathScreen(2);
+                if(isRoommate()){
+                    DeathScreen(13);
+                }
+                else{
+                    DeathScreen(2);
+                }
             }
-            else if(killFactor > 3){
-                DeathScreen(3);
+            else if(canCharacterAvoidDeath() && killFactor > 3){
+                if(isRoommate()){
+                    DeathScreen(13);
+                }
+                else{
+                    DeathScreen(3);
+                }
             }
             else{
                 // survive
@@ -207,14 +242,14 @@ namespace MatrixJam.Team10
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
         }
         
-        #region Choices Defenitions
+        #region Choices Defenitions 
 
         public void declareChoices(){
             choices = generalActions(); //10
             choices.AddRange(RoomActions()); //11
             choices.AddRange(BathRoomActions()); //4
             choices.AddRange(KitchenActions());//5
-            choices.AddRange(LivingRoomActions());//5
+            choices.AddRange(LivingRoomActions());//6
             choices.AddRange(DialogueChoiceActions());//28
         }
 
@@ -246,7 +281,6 @@ namespace MatrixJam.Team10
                 lastActionID = "play";
             }));
             actions.Add(new Choice("netflix&chill", () => {
-                CheckRepeat("watch");
                 time = time.AddMinutes(60);
                 lastActionID = "watch";
             }));
@@ -603,6 +637,12 @@ namespace MatrixJam.Team10
                 DeathScreen(10);
             }));
             // more - 28+
+            actions.Add(new Choice("go catch pokemons", () => {
+                DeathScreen(10);
+            }));
+            actions.Add(new Choice("maybe later", () => {
+                lastActionID = "Talk";
+            }));
             return actions;
         }
         #endregion
