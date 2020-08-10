@@ -465,8 +465,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press (R)estart if you r stuck.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c20130f2fbc37ef3bad1dccaae925251, type: 2}
+  m_sharedMaterial: {fileID: 2547836876654808529, guid: c20130f2fbc37ef3bad1dccaae925251,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4104,8 +4105,9 @@ MonoBehaviour:
     teh slat neyreg cruseo rof hsit atelp,n sue oury gicma pkTeiaep . ti to a sfea
     ur.gdon
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c20130f2fbc37ef3bad1dccaae925251, type: 2}
+  m_sharedMaterial: {fileID: 2547836876654808529, guid: c20130f2fbc37ef3bad1dccaae925251,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4266,8 +4268,9 @@ MonoBehaviour:
     Take it to
     a safe ground. '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c20130f2fbc37ef3bad1dccaae925251, type: 2}
+  m_sharedMaterial: {fileID: 2547836876654808529, guid: c20130f2fbc37ef3bad1dccaae925251,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
