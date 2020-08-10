@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace MatrixJam.Team14
 {
-    using MatrixJam.Team;
 #if UNITY_EDITOR
     using UnityEditor;
 

@@ -3,7 +3,7 @@ using System.Linq;
 using MatrixJam.Team14;
 using UnityEngine;
 
-namespace MatrixJam.Team
+namespace MatrixJam.Team14.Team
 {
     public class CatAnimation : MonoBehaviour
     {
