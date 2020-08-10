@@ -32,6 +32,11 @@ namespace MatrixJam.Team14
         
         private void ExplodeSelf()
         {
+            if (exploded)
+            {
+                Debug.Log("Already Exploded");
+                return;
+            }
             oldposition = transform.localPosition;
             oldrotation = transform.localEulerAngles;
             exploded = true;
