@@ -88,19 +88,19 @@ namespace MatrixJam.Team2
 
         private float GetNewCamPosInBoundY(Vector2 newCamPos)
         {
+            RaycastHit2D downBoundHit = Physics2D.Raycast(newCamPos, Vector2.down, camHalfHeight, 1 << boundaryLayerMask);
+            if (IsHit(downBoundHit))
+            {
+                return downBoundHit.point.y + camHalfHeight;
+            }
+
             RaycastHit2D upBoundHit = Physics2D.Raycast(newCamPos, Vector2.up, camHalfHeight, 1 << boundaryLayerMask);
             if (IsHit(upBoundHit))
             {
                 return upBoundHit.point.y - camHalfHeight;
             }
 
-            // The down raycast is checked here in order to check AFTER the upbound tried repositioning the camera.
-            //      if the camera touches the ground AFTER the repositioning it will still be above ground.
-            RaycastHit2D downBoundHit = Physics2D.Raycast(newCamPos, Vector2.down, camHalfHeight, 1 << boundaryLayerMask);
-            if (IsHit(downBoundHit))
-            {
-                return downBoundHit.point.y + camHalfHeight;
-            }
+
 
             // Unchanged pos
             return newCamPos.y;

@@ -7,7 +7,17 @@ namespace MatrixJam.Team2
     [RequireComponent(typeof(BoxCollider2D))]
     public class Boundary : MonoBehaviour
     {
+        [SerializeField] private bool destroyBullets = false;
+
         private BoxCollider2D boxCollider;
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            if (destroyBullets && other.TryGetComponent(out BulletController bulletController))
+            {
+                Destroy(other.gameObject);
+            }
+        }
 
         void OnValidate()
         {
@@ -17,7 +27,7 @@ namespace MatrixJam.Team2
         void OnDrawGizmos()
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireCube(transform.position, Vector2.Scale(transform.localScale, boxCollider.size));
+            Gizmos.DrawWireSphere(transform.position, 0.5f);
         }
     }
 }
