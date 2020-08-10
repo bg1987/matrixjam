@@ -11,7 +11,8 @@ namespace MatrixJam.Team10
         private int deathCheck;
         private int repeat;
         private string lastActionID;
-        
+        private bool takenPill;
+
         private int cleanFactor;
         private int hungerFactor;
         private double workFactor;
@@ -52,6 +53,7 @@ namespace MatrixJam.Team10
             }
             else if((time.Hour > 23 || time.Hour < 4) && deathCheck == 2){ //passed to the next day
                 Debug.Log("end");
+                deathCheck += 1;
                 endOfDay();
             }
         }
@@ -80,10 +82,39 @@ namespace MatrixJam.Team10
             a.Add(new string[] { "congratulations!", "you made it till the end", "but just to make sure, you didn't cheat right?",
                 "i mean, we made it extremely difficult, you see...", "anyways, you won - you, your roommate, and ect.",
                 "we have other ending, you should check it out" });
-
-            // special ends - repeat
-
-            // special ends - 6+
+            //sleep (repeat)
+            a.Add(new string[] {"zzzzzz", "we love sleeping, don't we?", 
+                "it's such a lovely thing", "but guess what?",
+                "like in real life, you can also die here from oversleeping",
+                "like we said.... you died"});
+            //hide (repeat)
+            a.Add(new string[] {"life is such a mysterious thing", 
+                "you see... some things are necessary in life even if we think otherwise",
+                "one of them is the air we breathe",
+                "so you died... since you didn't want to come out of the closet...."});
+            //play (repeat)
+            a.Add(new string[] {"wow...", "even inside a game, you are totally binge gaming...",
+                "this is trully the case of a character taking after it's player",
+                "go on - move on to the next game", "we won't stop you"});
+            //world crash (instaDeath)
+            a.Add(new string[] {"we have an existentail crisis here",
+                "you have done something others wouldn't dare!!", 
+                "due to your thoughtless action, the entire worlds is now collapsing",
+                "way to go, bro... you just killed everyone else with you",
+                "are you happy?"});
+            // ---------------- 10 ---------------------
+            //leave house (instaDeath)
+            a.Add(new string[] {"excuse me?", "did you think it's 2019,",
+                "that you can just leave the house? no way!",
+                "you got corona now", "andd~ you died"});
+            // matrix - 2 pills
+            a.Add(new string[] {"you died from pill overdose","just because it's still there",
+                "does not mean you should take it"});
+            // special ends - characters
+            // corona
+            a.Add(new string[] {"Boss corona", "we concoured the world", "everyone is infected and zombiefied",
+                "good luck in your next mission" });
+            // special ends -
             a.Add(new string[] {});
             a.Add(new string[] {});
             return a;
@@ -92,17 +123,24 @@ namespace MatrixJam.Team10
         //called by all actions with action id - check if action repeated
         //and do reapeat stuff if true -  modifies the repeted varibles and calls to end if > num?
         public void CheckRepeat(string id){
-            if(lastActionID != id)
-            {
+            if(lastActionID != id){
                 repeat = 0;
                 return;
             }
             repeat += 1;
-            if(repeat > 3){
+            if(repeat > 2){
                 switch (lastActionID)
                 {
                     case "sleep":
+                    case "nap":
+                        DeathScreen(6);
+                        break;
                     case "hide":
+                        DeathScreen(7);
+                        break;
+                    case "play":
+                        DeathScreen(8);
+                        break;
                     default:
                         DeathScreen(4);
                         break;
@@ -112,7 +150,7 @@ namespace MatrixJam.Team10
 
         public void checkDeath(){
             if(killFactor > 3){
-                //death
+                DeathScreen(3);
             }
         }
 
@@ -122,13 +160,20 @@ namespace MatrixJam.Team10
             //private int workFactor;  // must reach 3 point by the end of the day to survive - end of day
             //private int killFactor; // 3 will kill 
             if(cleanFactor < 5){
-                // clean death
+                DeathScreen(0);
             }
-            else if(hungerFactor < 2){}
-            else if(workFactor < 3){}
-            else if(killFactor > 3){}
+            else if(hungerFactor < 2){
+                DeathScreen(1);
+            }
+            else if(workFactor < 3){
+                DeathScreen(2);
+            }
+            else if(killFactor > 3){
+                DeathScreen(3);
+            }
             else{
                 // survive
+                DeathScreen(5);
             }
         }
 
@@ -218,9 +263,9 @@ namespace MatrixJam.Team10
                 time = time.AddMinutes(45);
             }));
             actions.Add(new Choice("A day in life 2020", () => {
-                // insta death DEath
+                DeathScreen(9);
             }));
-            actions.Add(new Choice("3", () => {
+            actions.Add(new Choice("fart in a jar", () => {
                 time = time.AddMinutes(30);
             }));
             actions.Add(new Choice("4", () => {
@@ -274,7 +319,7 @@ namespace MatrixJam.Team10
             }));
             actions.Add(new Choice("call friend", () => {
                 CheckRepeat("call");
-                //open talk interaction
+                DialogueMenu(t.getCallFriendDialogue());
                 lastActionID = "call";
             }));
             //work-followup
@@ -334,13 +379,17 @@ namespace MatrixJam.Team10
             //ref
             actions.Add(new Choice("eat something", () => {
                 CheckRepeat("eat");
-                time.AddMinutes(30);
-                hungerFactor += 1;
                 if(playerName == "MATRIX"){
-                    Dialogue a = new Dialogue("", new int[] {});
+                    Dialogue a = new Dialogue("", new int[] {28, 29});
                     DialogueMenu(a);
                 }
-                //check for more data;
+                else{
+                    time.AddMinutes(30);
+                    hungerFactor += 1;
+                    if(lastActionID == "wash"){
+                        cleanFactor += 1;
+                    }
+                }
                 lastActionID = "eat";
             }));
             actions.Add(new Choice("drink something", () => {
@@ -356,15 +405,36 @@ namespace MatrixJam.Team10
             }));
             //ref-followup
             actions.Add(new Choice("blue pill", () => {
-                lastActionID = "blue";
+                if(takenPill){
+                    DeathScreen(11);
+                }
+                else{
+                    hungerFactor += 1;
+                    cleanFactor += 1;
+                    killFactor = 0;
+                    takenPill = true;
+                    lastActionID = "blue";
+                }
             }));
             actions.Add(new Choice("red pill", () => {
+                if(takenPill){
+                    DeathScreen(11);
+                    return;
+                }
+                Dialogue a = new Dialogue("Truth", "you need at least 3 clean, 3 work, 2 food and less then 3 angry roommates to survive");
+                Dialogue b = new Dialogue("Truth", "currently: " + cleanFactor +" clean, "
+                    + workFactor + " work, " + hungerFactor + " food and " + killFactor + " angry roommates");
+                DialogueTree t = new DialogueTree(new Character("Truth"));
+                t.addDialogue(a);
+                t.addDialogue(b);
+                DialogueMenu(t);
+                takenPill = true;
                 lastActionID = "red";
             }));
             return actions;
         } 
 
-        // total: 5
+        // total: 6
         private List<Choice> LivingRoomActions(){
             List<Choice> actions = new List<Choice>();
             //tv
@@ -394,6 +464,10 @@ namespace MatrixJam.Team10
             actions.Add(new Choice("solve puzzles", () => {
                 time.AddMinutes(40);
                 lastActionID = "puzzle";
+            }));
+            //door
+            actions.Add(new Choice("leave house", () => {
+                DeathScreen(10);
             }));
             return actions;
         } 
@@ -496,7 +570,7 @@ namespace MatrixJam.Team10
             }));
             //t4
             actions.Add(new Choice("goto supermarket", () => {
-                Debug.Log("Death - death");
+                DeathScreen(10);
             }));
             actions.Add(new Choice("buy online", () => {
                 time = time.AddMinutes(30);
@@ -517,14 +591,14 @@ namespace MatrixJam.Team10
             //calling friend choices - 25+
             //batman
             actions.Add(new Choice("save the world", () => {
-                Debug.Log("Death - death");
+                DeathScreen(10);
             }));
             actions.Add(new Choice("sing i'm not batman im spider-pigX3", () => {
                 lastActionID = "Talk";
             }));
             //superman
             actions.Add(new Choice("go back", () => {
-                Debug.Log("Death - death");
+                DeathScreen(10);
             }));
             // more - 28+
             return actions;

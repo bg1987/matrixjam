@@ -223,11 +223,6 @@ namespace MatrixJam.Team10
             DialogueTree f = multipleSentences(n4.name, sentences);
             f.addDialogue(new Dialogue("FBI2", "we dont want our prisoners to die"));
             return f;
-            //ending
-                // Boss corona
-                // we concoured the world
-                // everyone is infected and zombiefied
-                // good luck in your next mission
         }
 
         public DialogueTree getCallPokeDialogue(string playerName){
