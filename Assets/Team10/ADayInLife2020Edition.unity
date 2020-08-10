@@ -4084,7 +4084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &477276767
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5621,9 +5621,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 401871180}
-  MatrixPlayer: {fileID: 0}
-  BatmanPlayer: {fileID: 0}
+  MatrixPlayer: {fileID: 1317436634}
+  BatmanPlayer: {fileID: 452079508}
   SupermanPlayer: {fileID: 1044137138}
+  P42Player: {fileID: 2114121868}
+  CoronaPlayer: {fileID: 1608337737}
   Panel: {fileID: 477276766}
   textBox: {fileID: 1273285782}
 --- !u!114 &726427460
@@ -7851,7 +7853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgSound: {fileID: 251075517}
   RoomName: A
-  isInRoom: 0
+  isInRoom: 1
 --- !u!1001 &1149763929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9452,7 +9454,7 @@ MonoBehaviour:
   - {fileID: 808906036}
   - {fileID: 1360083543}
   - {fileID: 937908048}
-  typingSpeed: 0.05
+  typingSpeed: 0.02
 --- !u!1001 &1404859345
 PrefabInstance:
   m_ObjectHideFlags: 0
