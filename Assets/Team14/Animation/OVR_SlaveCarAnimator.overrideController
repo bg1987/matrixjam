@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OVR_SlaveCarAnimator
+  m_Controller: {fileID: 9100000, guid: cb35e6441c16675468b28606d9421f63, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -3882520949593734417, guid: 78af5d7325d88d549b1fbede209f3816,
+      type: 3}
+    m_OverrideClip: {fileID: -9008147681474954689, guid: 482fa62e1ff78f64bb78465795f13400,
+      type: 3}
+  - m_OriginalClip: {fileID: 2711728761598570583, guid: 78af5d7325d88d549b1fbede209f3816,
+      type: 3}
+    m_OverrideClip: {fileID: 8622733744696674324, guid: 482fa62e1ff78f64bb78465795f13400,
+      type: 3}
+  - m_OriginalClip: {fileID: -5823718319541213146, guid: 78af5d7325d88d549b1fbede209f3816,
+      type: 3}
+    m_OverrideClip: {fileID: -5127313630637784313, guid: 482fa62e1ff78f64bb78465795f13400,
+      type: 3}
+  - m_OriginalClip: {fileID: -7374582732520900357, guid: 482fa62e1ff78f64bb78465795f13400,
+      type: 3}
+    m_OverrideClip: {fileID: -7374582732520900357, guid: 482fa62e1ff78f64bb78465795f13400,
+      type: 3}
+  - m_OriginalClip: {fileID: 5553090402674037805, guid: 78af5d7325d88d549b1fbede209f3816,
+      type: 3}
+    m_OverrideClip: {fileID: -5127313630637784313, guid: 482fa62e1ff78f64bb78465795f13400,
+      type: 3}
