@@ -1285,7 +1285,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 1
     BGImage: {fileID: 0}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: a35fcb380e4e03346a4ee9725d6d8464, type: 3}
   - name: Fart.exe
     theObject: {fileID: 889245724}
     description: 
