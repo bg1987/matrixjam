@@ -48,6 +48,7 @@ namespace MatrixJam.Team8
         private void StartSpawningIngridients()
         {
             shopkeeper.StartSpawningIngridients = true;
+            shopkeeper.ResetLook();
         }
         public void StartGame()
         {

@@ -211,7 +211,7 @@ namespace MatrixJam.Team8
             Squashable = false;
             splatterParticles.Play();
             gooAnimator.enabled = false;
-            foreach (MeshRenderer mesh in meshesToKill)
+            foreach (Renderer mesh in meshesToKill)
             {
                 mesh.enabled = false;
             }

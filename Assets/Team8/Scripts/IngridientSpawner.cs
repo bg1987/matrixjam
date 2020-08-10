@@ -34,6 +34,8 @@ namespace MatrixJam.Team8
         private Transform ingridientLocation;
         [SerializeField]
         private Transform shadowParent;
+        [SerializeField]
+        private Animator animator;
         //helpers
         private Transform cacheTransform;
         private Transform selectedTarget;
@@ -46,6 +48,8 @@ namespace MatrixJam.Team8
         private float timeToCompleteSpin = 0.25f;
         private float spinTimeCounter = 0f;
         private float distanceMultiplier = 1f;
+        private float counterForAnimation = 0f;
+        private float maxTimeToLookAround = 1f;
         private int ingridientCounter = 0;
         private int randomCustomer = 0;
         private bool currentlySpawningIngridient = false;
@@ -79,6 +83,17 @@ namespace MatrixJam.Team8
                     timeToSpawnNextComponent = Random.Range(maxTimeBetweenIngridients / 2f, maxTimeBetweenIngridients);
                 }
             }
+            else
+            {
+                counterForAnimation += Time.deltaTime;
+                if(counterForAnimation >= maxTimeToLookAround)
+                {
+                    counterForAnimation = 0f;
+                    maxTimeToLookAround = Random.Range(10f, 15f);
+                    animator.SetBool("Look Around", true);
+                    Invoke("ResetLook", 1f);
+                }
+            }
         }
 
         private void SpawnIngridient(GameObject ingridient)
@@ -98,7 +113,7 @@ namespace MatrixJam.Team8
                 cacheTransform.eulerAngles = new Vector3(0, cacheTransform.eulerAngles.y, 0);
                 yield return null;
             }
-            TakeIngridient();
+            animator.SetBool("Take Ingridient", true);
         }
         IEnumerator RotateCharacterToThrowIngridient()
         {
@@ -113,9 +128,9 @@ namespace MatrixJam.Team8
                 cacheTransform.eulerAngles = new Vector3(0, cacheTransform.eulerAngles.y, 0);
                 yield return null;
             }
-            ThrowIngridient();
+            animator.SetBool("Throw Ingridient", true);
         }
-        private void ThrowIngridient()
+        public void ThrowIngridient()
         {
             ingridientPlaceHolder.GetComponent<Rigidbody>().isKinematic = false;
             ingridientPlaceHolder.transform.parent = null;
@@ -124,8 +139,9 @@ namespace MatrixJam.Team8
             distanceMultiplier = Mathf.Clamp(Vector3.Distance(cacheTransform.position, selectedTarget.position), 2.5f, 3f) - 2f;
             ingridientPlaceHolder.GetComponent<Rigidbody>().AddForce(ingridientDirection * (throwingForce * distanceMultiplier), ForceMode.Impulse);
             currentlySpawningIngridient = false;
+            Invoke("ResetThrow", 1f);
         }
-        private void TakeIngridient()
+        public void TakeIngridient()
         {
             ingridientPlaceHolder = Instantiate(ingridientToSpawn, spawners[Random.Range(0, spawners.Length)].position, Quaternion.identity);
             ingridientPlaceHolder.GetComponent<Rigidbody>().isKinematic = true;
@@ -133,6 +149,19 @@ namespace MatrixJam.Team8
             ingridientPlaceHolder.transform.parent = ingridientLocation;
 
             StartCoroutine("RotateCharacterToThrowIngridient");
+            Invoke("ResetTake", 1f);
+        }
+        private void ResetTake()
+        {
+            animator.SetBool("Take Ingridient", false);
+        }
+        private void ResetThrow()
+        {
+            animator.SetBool("Throw Ingridient", false);
+        }
+        public void ResetLook()
+        {
+            animator.SetBool("Look Around", false);
         }
         private GameObject ChooseRecipeIngridient()
         {

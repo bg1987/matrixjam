@@ -9912,7 +9912,9 @@ MonoBehaviour:
   - {fileID: 8850115757359123508, guid: 5bce57bfe9acb17479e71a7d5c22e729, type: 3}
   - {fileID: 5720059455423326065, guid: 2fda8fcf631f39148bc147b626961214, type: 3}
   splatterParticles: {fileID: 2731159364853507616}
-  meshesToKill: []
+  meshesToKill:
+  - {fileID: 303428159854302657}
+  - {fileID: 5176449157669747797}
   gooAnimator: {fileID: 8950084894279732644}
   foodChump: {fileID: 1357411527933788798}
 --- !u!95 &8950084894279732644
