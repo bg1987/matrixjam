@@ -8,6 +8,7 @@ namespace MatrixJam.Team14
     {
         [SerializeField] private TrackList trackList;
         [SerializeField] private AudioSource source;
+        [SerializeField] private AudioSource railwaySource;
 
         private int _trackIdx;
         
@@ -70,6 +71,9 @@ namespace MatrixJam.Team14
             source.Stop();
             source.clip = trackList.GetClip(_trackIdx);
             source.Play();
+            railwaySource.Stop();
+            railwaySource.clip = trackList.GetClip(_trackIdx);
+            railwaySource.Play();
         }
         
         private void NextTrack()
