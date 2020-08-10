@@ -11,11 +11,12 @@ namespace MatrixJam.Team
         [SerializeField] private GenericRandomSFX Honk;
         [SerializeField] private GenericRandomSFX DuckEnd;
 
-        [SerializeField] private GenericRandomSFX CatSqueals;
+        [SerializeField] public GenericRandomSFX CatSqueals;
 
         [SerializeField] private GenericRandomSFX Railways;
         [SerializeField] private GenericRandomSFX AwakeBells;
-        [SerializeField] private GenericRandomSFX TunnelBump;
+        [SerializeField] public GenericRandomSFX TunnelBump;
+        [SerializeField] public GenericRandomSFX Lose;
 
         private void Update()
         {
