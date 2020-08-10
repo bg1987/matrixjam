@@ -51,24 +51,45 @@ namespace MatrixJam.Team2
             {
                 checkpoint.GetComponent<Collider2D>().enabled = false;
                 this.checkpoint = checkpoint;
+                return;
             }
 
-            if (other.TryGetComponent(out GoThroughController goThroughController))
+            // Added this here too because sometimes theres trigger with the feet but bulletController doesn't detect it (because it's detecting collision not trigger)
+            if (other.gameObject.TryGetComponent(out BulletController bulletController))
             {
-                if (goThroughController.enabled) return;
+                ActivateCheckpoint();
+                Destroy(bulletController.gameObject);
+                return;
             }
 
             if (other.TryGetComponent(out BroniReceiverController broniReceiverController))
             {
                 return;
             }
-
-            isGrounded = true;
-            currentJumpsCount = 0;
         }
+
+        void OnTriggerStay2D(Collider2D other)
+        {
+            if (other.TryGetComponent(out Ground ground))
+            {
+                if (other.TryGetComponent(out GoThroughController goThroughController))
+                {
+                    // Make sure not to enable jump through "GoThrough" floopables
+                    if (goThroughController.enabled) return;
+                }
+                Debug.Log($"IsGround=True; Object = {other.gameObject.name}");
+                isGrounded = true;
+                currentJumpsCount = 0;
+            }
+        }
+
         void OnTriggerExit2D(Collider2D other)
         {
-            isGrounded = false;
+            if (other.TryGetComponent(out Ground ground))
+            {
+                Debug.Log("IsGround=False");
+                isGrounded = false;
+            }
         }
 
         public void ActivateCheckpoint()
@@ -87,11 +108,12 @@ namespace MatrixJam.Team2
         private void Jump(bool jumpInput)
         {
             if (!jumpInput || !CanJump) return;
+            Debug.Log("CanJump = " + CanJump);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             currentJumpsCount++;
         }
 
-        private bool CanJump => isGrounded || currentJumpsCount < maxJumps;
+        private bool CanJump => isGrounded || (1 < currentJumpsCount && currentJumpsCount < maxJumps);
 
         private void AnimWalk()
         {

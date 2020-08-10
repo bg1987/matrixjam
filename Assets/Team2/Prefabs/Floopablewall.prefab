@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8619740168416866681}
   - component: {fileID: 8619740168416866682}
   - component: {fileID: 7860295782261883535}
+  - component: {fileID: 7105617725475124998}
   m_Layer: 8
   m_Name: Floopablewall
   m_TagString: Untagged
@@ -152,3 +153,15 @@ MonoBehaviour:
   reflectiveSprite: {fileID: 21300000, guid: 29e01d2e3865fa440bd46937fdb6bcc9, type: 3}
   opaqueSprite: {fileID: 21300000, guid: 28018dba77d6df24db39baa19015cb26, type: 3}
   goThroughSprite: {fileID: 21300000, guid: 897dbeb117838e748a8aa271ea83dc2f, type: 3}
+--- !u!114 &7105617725475124998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619740168416866660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0cf835fd652d844a90be24af13b9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
