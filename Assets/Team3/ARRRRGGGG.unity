@@ -595,8 +595,8 @@ MonoBehaviour:
       pirates have one.<br><br>GAME OVER<br><br>Enter code : 6961<br>'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 21300000, guid: 5b1f2a2dc8a601d4797d83695080a6c4, type: 3}
-    BGmusic: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
+    BGmusic: {fileID: 8300000, guid: 9a77371ed22b9b14bb61f818f793cf72, type: 3}
   - name: 9116
     theObject: {fileID: 1772356371}
     description: 'Knowing there''s no way to win an argument with Lady Hawkins, you
@@ -632,7 +632,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: 9a77371ed22b9b14bb61f818f793cf72, type: 3}
   - name: 5678
     theObject: {fileID: 287428752}
     description: 'Good choice!<br><br>Attacking a pirate ship, with this tiny crew
@@ -649,7 +649,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: 9a77371ed22b9b14bb61f818f793cf72, type: 3}
   - name: AA4966
     theObject: {fileID: 875319767}
     description: '"Where the hell are your pants?" you try to ask politely, but when
@@ -693,7 +693,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: ba390299258d61946bcd362350960650, type: 3}
   - name: 18.333,-64.918
     theObject: {fileID: 389277963}
     description: 'Congrats! You beat the game! '
@@ -820,7 +820,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: 9a77371ed22b9b14bb61f818f793cf72, type: 3}
   - name: 6666
     theObject: {fileID: 1497380775}
     description: 'Holding the secret map and code to the treasure chest your father
@@ -834,7 +834,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: 9a77371ed22b9b14bb61f818f793cf72, type: 3}
   - name: 1199
     theObject: {fileID: 907139144}
     description: '"Where the hell are your pants, Captain?" Lady Hawkins yells angrily.<br><br>"This
@@ -872,7 +872,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: 9a77371ed22b9b14bb61f818f793cf72, type: 3}
   - name: 1617
     theObject: {fileID: 1548652921}
     description: You recall Jean Pierre always tells tales where about he keeps on
@@ -931,7 +931,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: 9a77371ed22b9b14bb61f818f793cf72, type: 3}
   - name: 9001
     theObject: {fileID: 328751117}
     description: 'Nothing but water in this direction.<br>This is a rather strange
@@ -1151,7 +1151,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 21300000, guid: a94032e272a18934a904d266d4f4ab2f, type: 3}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: 9a77371ed22b9b14bb61f818f793cf72, type: 3}
   - name: 9500
     theObject: {fileID: 1690089193}
     description: 'I''ll just stay here for a little bit. I''m too useless down there
@@ -1161,7 +1161,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 21300000, guid: e35bae8a1af479541b1a6db92c17242d, type: 3}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: 9a77371ed22b9b14bb61f818f793cf72, type: 3}
   - name: 0000
     theObject: {fileID: 174285234}
     description: Boom! Bang!<br><br>You hear the sound of cannons being fire.<br>"Captain
@@ -1276,7 +1276,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: 6570670432458c848af7af99894fc6b7, type: 3}
   - name: pppdlc.exe
     theObject: {fileID: 192549966}
     description: 
@@ -1409,7 +1409,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: 9a77371ed22b9b14bb61f818f793cf72, type: 3}
   - name: 7543
     theObject: {fileID: 149628997}
     description: OK. ok.. I'm leaving my kitchen and going outside. But only because
@@ -1478,7 +1478,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: 9a77371ed22b9b14bb61f818f793cf72, type: 3}
   - name: 7878
     theObject: {fileID: 149628997}
     description: 'On paper, this plans sounds really good. I''ll go grab some sweet
@@ -1503,7 +1503,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 21300000, guid: 5a822089e3562754596ea0ed656d7014, type: 3}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: 9a77371ed22b9b14bb61f818f793cf72, type: 3}
   - name: UUDDLRLBA
     theObject: {fileID: 1224105687}
     description: 
