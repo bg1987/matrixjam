@@ -23,6 +23,8 @@ namespace MatrixJam.Team20
         public SpriteRenderer spriteRenderer;
         public AudioSource doorAudio;
         public bool openedByPlayer;
+        public Material setMaterial;
+        Material originalMaterial;
 
         // Start is called before the first frame update
         void Start()
@@ -62,6 +64,12 @@ namespace MatrixJam.Team20
             door.gameObject.SetActive(false);
             door.currentPlace = null;
             spriteRenderer.enabled = true;
+
+            if (setMaterial)
+            {
+                door.gameObject.GetComponent<SpriteRenderer>().material = originalMaterial;
+            }
+
             return door;
         }
 
@@ -83,7 +91,13 @@ namespace MatrixJam.Team20
             if (wallCollider != null)
                 wallCollider.enabled = false;
 
-            //placedDoor.gameObject.GetComponent<SpriteRenderer>().material = spriteRenderer.material;
+            if(setMaterial)
+            {
+                var spr = placedDoor.gameObject.GetComponent<SpriteRenderer>();
+                originalMaterial = spr.material;
+                spr.material = setMaterial;
+            }
+
             spriteRenderer.enabled = false;
 
             placedDoor.transform.SetParent(this.transform);
