@@ -137,8 +137,11 @@ namespace MatrixJam.Team3
                 
                 if (audioClips.ContainsKey(item.ToLower()))
                 {
-                    musicPlayer.clip = audioClips[item.ToLower()];
-                    musicPlayer.Play();
+                    if (audioClips[item.ToLower()] != null)
+                    {
+                        musicPlayer.clip = audioClips[item.ToLower()];
+                        musicPlayer.Play();
+                    }
                 } 
                 
                 
