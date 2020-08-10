@@ -12,9 +12,7 @@ namespace MatrixJam.Team10
         public GameObject BatmanPlayer; // batman player
         public GameObject SupermanPlayer; // Superman player
         public GameObject P42Player; // 42 player
-        public GameObject CoronaPlayer; // Corona player
-        
-        
+        public GameObject CoronaPlayer; // Batman player
         public GameObject Panel;
         public Text textBox;
 
@@ -25,8 +23,8 @@ namespace MatrixJam.Team10
             MatrixPlayer.SetActive(false);
             BatmanPlayer.SetActive(false);
             SupermanPlayer.SetActive(false);
-            CoronaPlayer.SetActive(false);
             P42Player.SetActive(false);
+            CoronaPlayer.SetActive(false);
             Panel.SetActive(true);
         }
 
@@ -34,6 +32,7 @@ namespace MatrixJam.Team10
         public void OnSubmit()
         {
             string Name = textBox.text.ToUpper();
+            Debug.Log(Name);
             switch (Name)
             {
                 case "MATRIX":
