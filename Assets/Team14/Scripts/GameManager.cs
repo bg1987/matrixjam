@@ -129,6 +129,7 @@ namespace MatrixJam.Team14
 
         private void DoDeath()
         {
+            Debug.Log("StopExplosion");
             GameOverExplosive.StopExplosion();
             var livesRemaining = --TrainController.Instance.Lives;
             if (livesRemaining == 0) OnGameOver();
@@ -145,7 +146,7 @@ namespace MatrixJam.Team14
         private void Restart()
         {
             Debug.Log("RESTART!");
-            audioManager.Restart();
+            audioManager.RestartLastCheckpoint();
 
             ResetEvent?.Invoke();
         }

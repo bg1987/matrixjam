@@ -9,6 +9,7 @@ namespace MatrixJam.Team14
     public class MusicTrack
     {
         [SerializeField] private AudioClip clip;
+        [SerializeField] private bool checkpointAfterFinish;
         [SerializeField] private float zPerBeat = 7.5f;
         [SerializeField] private float bpm;
 
@@ -16,6 +17,7 @@ namespace MatrixJam.Team14
         public float BPM => bpm;
         public float BeatPerSec => bpm / 60;
 
+        public bool CheckpointAfterFinish => checkpointAfterFinish;
         public float ZPerBeat => zPerBeat;
         public float TotalBeats => BeatPerSec * clip.length;
         public float TotalSeconds => TotalBeats * BeatPerSec;

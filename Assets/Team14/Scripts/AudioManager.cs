@@ -43,6 +43,18 @@ namespace MatrixJam.Team14
             _trackIdx = -1;
             NextTrack();
         }
+        
+        public void RestartLastCheckpoint()
+        {
+            var lastTrackWithCheckpoint = trackList.Tracks
+                .Take(_trackIdx) // Check up until this index - was there "checkpoint after" prev tracks
+                .Select((track, i) => new {track, i})
+                .LastOrDefault(x => x.track.CheckpointAfterFinish);
+
+            var trackIdx = lastTrackWithCheckpoint?.i + 1 ?? 0;
+            Debug.Log($"RestartLastCheckpoint. Idx: {trackIdx}");
+            StartTrack(trackIdx);
+        }
 
         public Vector3[] GetAllBeatPositions(Transform startAndDirection) 
             => trackList.GetAllBeatPositions(startAndDirection).ToArray();
@@ -52,13 +64,19 @@ namespace MatrixJam.Team14
         public Vector3[] GetTrackStartPositions(Transform startAndDirection)
             => trackList.GetTrackStarts(startAndDirection).ToArray();
 
+        private void StartTrack(int track)
+        {
+            _trackIdx = track;
+            source.Stop();
+            source.clip = trackList.GetClip(_trackIdx);
+            source.Play();
+        }
+        
         private void NextTrack()
         {
             Debug.Log($"NextTrack ({_trackIdx} -> {_trackIdx+1})");
             _trackIdx++;
-            source.Stop();
-            source.clip = trackList.GetClip(_trackIdx);
-            source.Play();
+            StartTrack(_trackIdx);
         }
 
         // TODO: GameManager: handle Events

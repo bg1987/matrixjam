@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tracks:
   - clip: {fileID: 8300000, guid: 65fd99cdbc254a942b5e1218c9cd9b9e, type: 3}
+    checkpointAfterFinish: 1
     zPerBeat: 6.5
     bpm: 115
   - clip: {fileID: 8300000, guid: e7ab63752b3f77746ac9af6650f115cd, type: 3}
+    checkpointAfterFinish: 0
     zPerBeat: 6.5
     bpm: 125
   - clip: {fileID: 8300000, guid: affb88c6620750840b902d21c84179ca, type: 3}
+    checkpointAfterFinish: 0
     zPerBeat: 6.5
     bpm: 140
