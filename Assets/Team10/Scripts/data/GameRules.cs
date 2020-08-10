@@ -134,7 +134,8 @@ namespace MatrixJam.Team10
             a.Add(new string[] {"Boss corona", "we concoured the world", "everyone is infected and zombiefied",
                 "good luck in your next mission" });
             // roomate - special end
-            a.Add(new string[] {"THIS IS A FARCE. you died but you got a clone in another rppm so in the end you did survive. minus one clone though"});
+            a.Add(new string[] {"THIS IS A FARCE.",
+            "you died but you got a clone in another room so in the end you did survive.", "minus one clone though"});
             return a;
         }
 
@@ -317,7 +318,6 @@ namespace MatrixJam.Team10
             //game-followup
             actions.Add(new Choice("MatrixJam", () => {
                 time = time.AddMinutes(45);
-                vids[0].Play();
                 vidPanel.SetActive(true);
             }));
             actions.Add(new Choice("A day in life 2020", () => {
@@ -330,7 +330,6 @@ namespace MatrixJam.Team10
             }));
             actions.Add(new Choice("4", () => {
                 time = time.AddMinutes(15);
-                vids[2].Play();
                 vidPanel.SetActive(true);
             }));
             return actions;

@@ -21,7 +21,9 @@ namespace MatrixJam.Team10
             isInRoom = !isInRoom;
             if(isInRoom){
                 // bgSound.UnPause();
-                TriggerRandomDialogue();
+                if(RoomName == "LivingRoom" || RoomName == "Kitchen" || RoomName == "Bath"){
+                    TriggerRandomDialogue();
+                }
             }
             else{
                 bgSound.Pause();
