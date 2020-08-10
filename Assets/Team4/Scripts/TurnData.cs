@@ -6,12 +6,12 @@ namespace MatrixJam.Team4
 {
     public class TurnData
     {
-        private BoardData _boardData;
+        public BoardData boardData;
         public Dictionary<Unit, List<Position>> _positionOptions;
 
         public TurnData(BoardData boardData, Dictionary<Unit, List<Position>> positionOptions)
         {
-            _boardData = boardData;
+            this.boardData = boardData;
             _positionOptions = positionOptions;
         }
     }
