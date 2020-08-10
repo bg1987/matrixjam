@@ -6552,6 +6552,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2225761795455608974, guid: e4d2a181f0e7a93428f63764ff995033,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3334153132043043403, guid: b3d7199bad2eb264b84fb3e5a5063033,
+        type: 2}
     - target: {fileID: 7559569994394103242, guid: e4d2a181f0e7a93428f63764ff995033,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6624,6 +6630,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7559569995434450639, guid: e4d2a181f0e7a93428f63764ff995033,
         type: 3}
+      propertyPath: CatSqueals.clips.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559569995434450639, guid: e4d2a181f0e7a93428f63764ff995033,
+        type: 3}
       propertyPath: TunnelBump.source
       value: 
       objectReference: {fileID: 1313398604}
@@ -6642,6 +6653,26 @@ PrefabInstance:
       propertyPath: Death.clips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 1741c93480957fb4689bd2c8131e0922, type: 3}
+    - target: {fileID: 7559569995434450639, guid: e4d2a181f0e7a93428f63764ff995033,
+        type: 3}
+      propertyPath: CatSqueals.clips.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: c804234ecd31a1a49bbfac10cbb9a2a9, type: 3}
+    - target: {fileID: 7559569995434450639, guid: e4d2a181f0e7a93428f63764ff995033,
+        type: 3}
+      propertyPath: CatSqueals.clips.Array.data[10]
+      value: 
+      objectReference: {fileID: 8300000, guid: c804234ecd31a1a49bbfac10cbb9a2a9, type: 3}
+    - target: {fileID: 7559569995434450639, guid: e4d2a181f0e7a93428f63764ff995033,
+        type: 3}
+      propertyPath: CatSqueals.clips.Array.data[11]
+      value: 
+      objectReference: {fileID: 8300000, guid: c804234ecd31a1a49bbfac10cbb9a2a9, type: 3}
+    - target: {fileID: 7559569995434450639, guid: e4d2a181f0e7a93428f63764ff995033,
+        type: 3}
+      propertyPath: CatSqueals.clips.Array.data[12]
+      value: 
+      objectReference: {fileID: 8300000, guid: c804234ecd31a1a49bbfac10cbb9a2a9, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4d2a181f0e7a93428f63764ff995033, type: 3}
 --- !u!114 &421545693 stripped
