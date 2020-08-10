@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace MatrixJam.Team
+namespace MatrixJam.Team14
 {
     [Serializable]
     public class GenericRandomSFX 

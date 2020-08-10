@@ -1,7 +1,6 @@
-using MatrixJam.Team14;
 using UnityEngine;
 
-namespace MatrixJam.Team
+namespace MatrixJam.Team14
 {
     public class SFXmanager : MonoBehaviour
     {
