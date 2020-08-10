@@ -29,6 +29,11 @@ namespace MatrixJam.Team4
             ImageBox.sprite = Empty;
         }
 
+        public bool HasValue()
+        {
+            return _currentValue != 0;
+        }
+        
         public void SetValue(int current, PlayerSide playerSide)
         {
             _currentValue = current;
