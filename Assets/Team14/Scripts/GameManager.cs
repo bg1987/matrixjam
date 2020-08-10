@@ -13,7 +13,7 @@ namespace MatrixJam.Team14
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            var script = target as GameManager;
+            var script = targ>et as GameManager;
             
             GUILayout.Space(20);
             if (GUILayout.Button("Update"))
@@ -120,7 +120,7 @@ namespace MatrixJam.Team14
         public void OnDeath()
         {
             GameOverExplosive.Explode();
-            Invoke(nameof(DoDeath), 1f);
+            Invoke(nameof(DoDeath), 5f);
             sfxManager.TunnelBump.PlayRandomPitch();
 
         }
