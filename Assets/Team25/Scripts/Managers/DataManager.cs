@@ -40,11 +40,11 @@ namespace MatrixJam.Team25.Scripts.Managers
                 {
                     exit3.EndLevel();
                 }
-                else if (totalScore > 501 && totalScore <= 1000)
+                else if (totalScore > 500 && totalScore <= 1000)
                 {
                     exit4.EndLevel();
                 }
-                else if (totalScore > 1001)
+                else if (totalScore > 1000)
                 {
                     exit5.EndLevel();
                 }
