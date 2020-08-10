@@ -234,7 +234,8 @@ AudioSource:
   m_GameObject: {fileID: 9900201}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4260021687020752429, guid: b3d7199bad2eb264b84fb3e5a5063033,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 81540eb92f22fa34a920c144a585cd33, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -6552,6 +6553,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1300547367, guid: e4d2a181f0e7a93428f63764ff995033, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -135903279539426543, guid: b3d7199bad2eb264b84fb3e5a5063033,
+        type: 2}
+    - target: {fileID: 1787021244, guid: e4d2a181f0e7a93428f63764ff995033, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 333792358989443193, guid: b3d7199bad2eb264b84fb3e5a5063033,
+        type: 2}
+    - target: {fileID: 2048502171240294581, guid: e4d2a181f0e7a93428f63764ff995033,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 1826145888508376043, guid: b3d7199bad2eb264b84fb3e5a5063033,
+        type: 2}
     - target: {fileID: 2225761795455608974, guid: e4d2a181f0e7a93428f63764ff995033,
         type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -6618,6 +6635,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: SFXmanager
       objectReference: {fileID: 0}
+    - target: {fileID: 7559569994977954538, guid: e4d2a181f0e7a93428f63764ff995033,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 6422995533961736734, guid: b3d7199bad2eb264b84fb3e5a5063033,
+        type: 2}
     - target: {fileID: 7559569995090260553, guid: e4d2a181f0e7a93428f63764ff995033,
         type: 3}
       propertyPath: m_audioClip
@@ -6628,11 +6651,23 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7559569995162161784, guid: e4d2a181f0e7a93428f63764ff995033,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -6352350836138619104, guid: b3d7199bad2eb264b84fb3e5a5063033,
+        type: 2}
     - target: {fileID: 7559569995395189071, guid: e4d2a181f0e7a93428f63764ff995033,
         type: 3}
       propertyPath: m_PlayOnAwake
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7559569995395189071, guid: e4d2a181f0e7a93428f63764ff995033,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 6984452564612027813, guid: b3d7199bad2eb264b84fb3e5a5063033,
+        type: 2}
     - target: {fileID: 7559569995434450639, guid: e4d2a181f0e7a93428f63764ff995033,
         type: 3}
       propertyPath: TunnelBump.clips.Array.size
