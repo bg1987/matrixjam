@@ -22,6 +22,7 @@ namespace MatrixJam.Team3
         [SerializeField] private Dictionary<string, bool> forceTexts;
         [SerializeField] private Dictionary<string, bool> forceImages;
         [SerializeField] private Dictionary<string, Sprite> BGImages;
+        [SerializeField] private Dictionary<string, AudioClip> audioClips;
 
         [SerializeField] private Sprite loginScreenImage;
         
@@ -31,6 +32,7 @@ namespace MatrixJam.Team3
         
         [SerializeField] private UnityEvent [] exitEvent;
 
+        [SerializeField] private AudioSource musicPlayer;
         
         [Serializable]
         public struct StageItem {
@@ -40,6 +42,7 @@ namespace MatrixJam.Team3
             public bool forceText;
             public bool forceImage;
             public Sprite BGImage;
+            public AudioClip BGmusic;
         }
         
         [SerializeField] private List<StageItem> StagesList;
@@ -83,6 +86,7 @@ namespace MatrixJam.Team3
             forceTexts = new Dictionary<string, bool>();
             forceImages = new Dictionary<string, bool>();
             BGImages = new Dictionary<string, Sprite>();
+            audioClips= new Dictionary<string, AudioClip>();
             foreach ( StageItem item in StagesList)
             {
                 
@@ -91,6 +95,7 @@ namespace MatrixJam.Team3
                 forceTexts[item.name.ToLower()] = item.forceText;
                 forceImages[item.name.ToLower()] = item.forceImage;
                 BGImages[item.name.ToLower()] = item.BGImage;
+                audioClips[item.name.ToLower()] = item.BGmusic;
             }
             
             
@@ -130,6 +135,11 @@ namespace MatrixJam.Team3
                     currentlEnabled.SetActive(true);
                 }
                 
+                if (audioClips.ContainsKey(item.ToLower()))
+                {
+                    musicPlayer.clip = audioClips[item.ToLower()];
+                    musicPlayer.Play();
+                } 
                 
                 
             }

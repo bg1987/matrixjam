@@ -535,6 +535,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  musicPlayer: {fileID: 412119237}
   StagesList:
   - name: 7459
     theObject: {fileID: 324220892}
@@ -554,6 +555,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 3965
     theObject: {fileID: 875319767}
     description: 'You put on your pants and leave your cabin and head to the upper
@@ -574,6 +576,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 6119
     theObject: {fileID: 854810608}
     description: 'You decide to take a stand and fight for what''s the most important
@@ -593,6 +596,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9116
     theObject: {fileID: 1772356371}
     description: 'Knowing there''s no way to win an argument with Lady Hawkins, you
@@ -609,6 +613,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 8765
     theObject: {fileID: 190051549}
     description: '"Battle Station" you yell at the crew, "Load the cannons, get into
@@ -627,6 +632,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 5678
     theObject: {fileID: 287428752}
     description: 'Good choice!<br><br>Attacking a pirate ship, with this tiny crew
@@ -643,6 +649,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: AA4966
     theObject: {fileID: 875319767}
     description: '"Where the hell are your pants?" you try to ask politely, but when
@@ -657,6 +664,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: AA^($$
     theObject: {fileID: 875319767}
     description: From the upper deck of the ship you can see another ship on the
@@ -671,24 +679,28 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: Game Over
     theObject: {fileID: 358743457}
     description: 
     forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 121394
     theObject: {fileID: 187323594}
     description: 
     forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 18.333,-64.918
     theObject: {fileID: 389277963}
     description: 'Congrats! You beat the game! '
     forceText: 1
     forceImage: 1
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: LaRatte
     theObject: {fileID: 810570003}
     description: What is the Lat/Long location of the Pirates Treasure Museum in
@@ -696,6 +708,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 1
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 4966
     theObject: {fileID: 746870996}
     description: '"Where the hell are your pants?" you try to ask politely, but when
@@ -710,6 +723,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 6944
     theObject: {fileID: 2055173338}
     description: From the upper deck of the ship you can see another ship on the
@@ -724,6 +738,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 1235
     theObject: {fileID: 1590108241}
     description: You agree with the captain's choice who now gives the order to flee.
@@ -746,6 +761,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 1236
     theObject: {fileID: 688835917}
     description: 'You are about to disagree with the captain''s choice and order
@@ -770,6 +786,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 4444
     theObject: {fileID: 1447330892}
     description: '"Yellow beard is after my father''s journal" you announce. <br>
@@ -787,6 +804,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 5555
     theObject: {fileID: 676379522}
     description: 'You head toward the rope that hold the main sail, when you hear
@@ -803,6 +821,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 6666
     theObject: {fileID: 1497380775}
     description: 'Holding the secret map and code to the treasure chest your father
@@ -816,6 +835,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 1199
     theObject: {fileID: 907139144}
     description: '"Where the hell are your pants, Captain?" Lady Hawkins yells angrily.<br><br>"This
@@ -832,6 +852,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9911
     theObject: {fileID: 1061339452}
     description: 'You selfishly decide to use this argument about pants to be your
@@ -852,6 +873,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 1617
     theObject: {fileID: 1548652921}
     description: You recall Jean Pierre always tells tales where about he keeps on
@@ -864,6 +886,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 1716
     theObject: {fileID: 1922929276}
     description: '"Battle Stations" orders the captain, who comes back from his ready
@@ -885,6 +908,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 3344
     theObject: {fileID: 264415046}
     description: 'Jean Pierre "15 years ago I was just a lad," Jean Pierre starts
@@ -908,6 +932,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9001
     theObject: {fileID: 328751117}
     description: 'Nothing but water in this direction.<br>This is a rather strange
@@ -917,6 +942,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9002
     theObject: {fileID: 328751117}
     description: 'Nothing but water in this direction.<br>This is a rather strange
@@ -926,6 +952,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9003
     theObject: {fileID: 328751117}
     description: 'Nothing but water in this direction.<br>This is a rather strange
@@ -935,6 +962,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9004
     theObject: {fileID: 328751117}
     description: 'Nothing but water in this direction.<br>This is a rather strange
@@ -944,6 +972,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9131
     theObject: {fileID: 1106714547}
     description: 'More water. <br>I really like First Mate John Jenkins jr. What
@@ -953,6 +982,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9132
     theObject: {fileID: 1106714547}
     description: 'More water. <br>I really like First Mate John Jenkins jr. What
@@ -962,6 +992,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9133
     theObject: {fileID: 1106714547}
     description: 'More water. <br>I really like First Mate John Jenkins jr. What
@@ -971,6 +1002,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9134
     theObject: {fileID: 1106714547}
     description: 'More water. <br>I really like First Mate John Jenkins jr. What
@@ -980,6 +1012,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9016
     theObject: {fileID: 1273824718}
     description: 'Water. So much water. <br>Captain Harper is a bit odd. On one hand,
@@ -989,6 +1022,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9017
     theObject: {fileID: 1273824718}
     description: 'Water. So much water. <br>Captain Harper is a bit odd. On one hand,
@@ -998,6 +1032,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9018
     theObject: {fileID: 1273824718}
     description: 'Water. So much water. <br>Captain Harper is a bit odd. On one hand,
@@ -1007,6 +1042,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9019
     theObject: {fileID: 1273824718}
     description: 'Water. So much water. <br>Captain Harper is a bit odd. On one hand,
@@ -1016,6 +1052,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9221
     theObject: {fileID: 853401281}
     description: Wait? What's that! Oh. no. it's just water.<br>I'm getting hungry.
@@ -1025,6 +1062,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9223
     theObject: {fileID: 853401281}
     description: Wait? What's that! Oh. no. it's just water.<br>I'm getting hungry.
@@ -1034,6 +1072,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9224
     theObject: {fileID: 853401281}
     description: Wait? What's that! Oh. no. it's just water.<br>I'm getting hungry.
@@ -1043,6 +1082,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9225
     theObject: {fileID: 853401281}
     description: Wait? What's that! Oh. no. it's just water.<br>I'm getting hungry.
@@ -1052,6 +1092,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9050
     theObject: {fileID: 1685610549}
     description: Jenkins and the cook are all there on the upper deck. I think he
@@ -1061,6 +1102,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9021
     theObject: {fileID: 1685610549}
     description: Jenkins and the cook are all there on the upper deck. I think he
@@ -1070,6 +1112,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9052
     theObject: {fileID: 1685610549}
     description: Jenkins and the cook are all there on the upper deck. I think he
@@ -1079,6 +1122,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9033
     theObject: {fileID: 1685610549}
     description: Jenkins and the cook are all there on the upper deck. I think he
@@ -1088,6 +1132,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9300
     theObject: {fileID: 1343934904}
     description: 'Oh shit! It''s a pirate ship! how didn''t I notice that.  Jenkins
@@ -1097,6 +1142,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9400
     theObject: {fileID: 334371277}
     description: 'OH , why am I so clumsy...<br>I''ve slipped on the rope ladder
@@ -1106,6 +1152,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 9500
     theObject: {fileID: 1690089193}
     description: 'I''ll just stay here for a little bit. I''m too useless down there
@@ -1115,6 +1162,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 0000
     theObject: {fileID: 174285234}
     description: Boom! Bang!<br><br>You hear the sound of cannons being fire.<br>"Captain
@@ -1125,6 +1173,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 21300000, guid: b51744a5353786740a7d71e612c824c3, type: 3}
+    BGmusic: {fileID: 8300000, guid: caa8ab1b251b25542a906330c038895b, type: 3}
   - name: 0001
     theObject: {fileID: 2008582385}
     description: It has been a slow but stressful day on the ship. Lady Victoria
@@ -1147,6 +1196,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 21300000, guid: b61f7620b61725841b9b4d2410de1e1b, type: 3}
+    BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
   - name: 0002
     theObject: {fileID: 698438075}
     description: 'Ah, the view crow''s nest. Water as far as eyes can see. I like
@@ -1155,6 +1205,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
   - name: 0003
     theObject: {fileID: 1202287612}
     description: Potatoes! I love potatoes. There are so many things you can do with
@@ -1170,6 +1221,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: 46b0c8c5aff863749a732bcf7fd66553, type: 3}
   - name: 0004
     theObject: {fileID: 679065912}
     description: "It's been weeks since you left shore setting sail from London.
@@ -1183,42 +1235,49 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
   - name: 6961
     theObject: {fileID: 1130659749}
     description: 
     forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
   - name: 6962
     theObject: {fileID: 1985273418}
     description: 
     forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
   - name: 6963
     theObject: {fileID: 1106761432}
     description: 
     forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
   - name: 6964
     theObject: {fileID: 1146909139}
     description: 
     forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
   - name: 6965
     theObject: {fileID: 749636475}
     description: 
     forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
   - name: ppp.exe
     theObject: {fileID: 1516244572}
     description: 
     forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: pppdlc.exe
     theObject: {fileID: 192549966}
     description: The wrecked ship was named after the captain's favorite potato.<br>What
@@ -1226,18 +1285,21 @@ MonoBehaviour:
     forceText: 1
     forceImage: 1
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: Fart.exe
     theObject: {fileID: 889245724}
     description: 
     forceText: 1
     forceImage: 1
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: KongFood.EXE
     theObject: {fileID: 1487455544}
     description: 
     forceText: 1
     forceImage: 1
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 7123
     theObject: {fileID: 149628997}
     description: 'Yes, i''ll be here in the kitchen with my potatoes. <br>I guess
@@ -1252,6 +1314,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 7223
     theObject: {fileID: 149628997}
     description: Ah! Potato Salad sounds great!<br><br>Let's see.. What do I need
@@ -1269,6 +1332,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 7224
     theObject: {fileID: 149628997}
     description: Mashed Potatoes. A great side dish for almost everything I make
@@ -1284,6 +1348,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 7225
     theObject: {fileID: 149628997}
     description: Potato Soup! Now that's something I haven't made in a while.<br>It's
@@ -1301,6 +1366,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 7226
     theObject: {fileID: 149628997}
     description: Fried Potato Wedges are one of the simplest things I can make. 
@@ -1313,6 +1379,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 7599
     theObject: {fileID: 149628997}
     description: I'll need to peel a whole bunch, boil some water, and cook them.
@@ -1328,6 +1395,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 7598
     theObject: {fileID: 149628997}
     description: Ok. Yeah, sorry I got distracted. <br>Let's start peeling. <br>I
@@ -1343,6 +1411,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 7543
     theObject: {fileID: 149628997}
     description: OK. ok.. I'm leaving my kitchen and going outside. But only because
@@ -1359,6 +1428,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 7554
     theObject: {fileID: 149628997}
     description: 'I ask Jenkins "Jenkins, what''s going on ?" <br>and he tell''s
@@ -1377,6 +1447,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 7676
     theObject: {fileID: 149628997}
     description: '"I have a plan that can help us win against Orange Beard" I explain
@@ -1397,6 +1468,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 7474
     theObject: {fileID: 149628997}
     description: I  don't know if it's some sort of personality disorder, but it's
@@ -1408,6 +1480,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: 7878
     theObject: {fileID: 149628997}
     description: 'On paper, this plans sounds really good. I''ll go grab some sweet
@@ -1432,18 +1505,21 @@ MonoBehaviour:
     forceText: 1
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: UUDDLRLBA
     theObject: {fileID: 1224105687}
     description: 
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   - name: wwssadadba
     theObject: {fileID: 1224105687}
     description: 
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 0}
+    BGmusic: {fileID: 0}
   InitialObjects:
   - {fileID: 174285234}
   - {fileID: 2008582385}
@@ -3178,7 +3254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &412119237
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3189,7 +3265,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: caa8ab1b251b25542a906330c038895b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4262,7 +4338,7 @@ PrefabInstance:
     - target: {fileID: 4939990308935971524, guid: e0814737b15b5884db5f3cb41668a50c,
         type: 3}
       propertyPath: def_ent
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4939990308935971525, guid: e0814737b15b5884db5f3cb41668a50c,
         type: 3}
