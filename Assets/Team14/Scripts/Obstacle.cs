@@ -29,6 +29,7 @@ namespace MatrixJam.Team14
         [SerializeField] private Transform moveCue; // Where should actually do the move. Null = do when triggers
         [SerializeField] private BoxCollider trigger; // For Gizmos
 
+        public static IReadOnlyList<Obstacle> AllObstaclesSortedByZ;
         public static Dictionary<TrainMove, List<Obstacle>> CurrObstacles;
 
         private bool _succeeded;
@@ -48,6 +49,9 @@ namespace MatrixJam.Team14
                     move => move, 
                     move => new List<Obstacle>()
                 );
+
+            AllObstaclesSortedByZ = FindObjectsOfType<Obstacle>()
+                .OrderBy(obstacle => obstacle.transform.position.z).ToArray();
         }
 
         private void OnDrawGizmos()
@@ -118,6 +122,16 @@ namespace MatrixJam.Team14
         {
             Debug.Log($"Sending Obs Event ({Move}, {_succeeded})");
             OnObstacleEvent?.Invoke(new ObstaclePayload(this, _succeeded, Move, moveCue));
+        }
+
+        public static Obstacle GetNextObstacle(Vector3 pos)
+        {
+            foreach (var obs in AllObstaclesSortedByZ)
+            {
+                if (obs.transform.position.z > pos.z) return obs;
+            }
+
+            return null;
         }
     }
 }

@@ -33,9 +33,12 @@ namespace MatrixJam.Team14
         public enum LookAt
         {
             Cursor,
+            NextObstacleOrTarget,
             Target
         }
 
+        [Range(0.1f, 1f)]
+        [SerializeField] private float lookLerpSpeed = 0.6f;
         [SerializeField] private AnimateThomasAfter animationDelay; // Hold off animations so player isnt distracted
         [SerializeField] private Vector2 eyebrowsRandomDelta;
         [SerializeField] private Camera cam;
@@ -84,12 +87,29 @@ namespace MatrixJam.Team14
                         var screenPos = Input.mousePosition;
                         screenPos.z = Z;
                         return cam.ScreenToWorldPoint(screenPos);
+                    case LookAt.NextObstacleOrTarget:
+                        return GetPOsNextObstacleOrTarget(); 
                     case LookAt.Target:
                         return Target.position;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
             }
+        }
+
+        private Vector3 GetPOsNextObstacleOrTarget()
+        {
+            var pos = transform.position;
+            var nextObstacle = Obstacle.GetNextObstacle(pos);
+            if (!nextObstacle) return target.position;
+            
+            var nextObstaclePos = nextObstacle.transform.position;
+            var targetPos = target.position;
+
+            var isTargetCloser = Vector3.Distance(pos, targetPos) 
+                                 < Vector3.Distance(pos, nextObstaclePos);
+
+            return isTargetCloser ? targetPos : nextObstaclePos;
         }
 
         private Vector3 startScale;
@@ -223,7 +243,11 @@ namespace MatrixJam.Team14
         private void EyeLookAt(SpriteRenderer eyeSprite, Vector3 target)
         {
             var delta = transform.InverseTransformDirection(target - eyeSprite.transform.position);
-            eyeSprite.transform.localPosition = delta.normalized * localEyeRadius;
+
+            var oldPos = eyeSprite.transform.localPosition;
+            var targetPos = delta.normalized * localEyeRadius;
+
+            eyeSprite.transform.localPosition = Vector3.Lerp(oldPos, targetPos, lookLerpSpeed);
         }
     }
 }
