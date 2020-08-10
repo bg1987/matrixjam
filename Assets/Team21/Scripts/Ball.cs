@@ -91,6 +91,7 @@ namespace MatrixJam.Team21 {
 				inWindZone = false;
 			}
 			if (collision.collider.tag == "Tag6") {// seagull
+				animator.SetBool("IsHit", true);
 				isHitBySeagull = true;
 				StartCoroutine(DisableSeagullEffectRoutine());
 			}
@@ -98,7 +99,8 @@ namespace MatrixJam.Team21 {
 
 		IEnumerator DisableSeagullEffectRoutine() {
 			yield return new WaitForSeconds(delaySeagullEffect);
-			isHitBySeagull = true;
+			animator.SetBool("IsHit", false);
+			isHitBySeagull = false;
 			yield return null;
 		}
 

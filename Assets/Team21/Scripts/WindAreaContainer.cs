@@ -8,6 +8,7 @@ namespace MatrixJam.Team21 {
 		public float rotateSpeed = 1f;
 		public float maxRotationDeg = 45f;
 		public float rotationZ;
+		public ParticleSystem vfx;
 
 		private Vector3 mousePosition;
 		private bool isMove = true;
@@ -22,6 +23,13 @@ namespace MatrixJam.Team21 {
 				transform.position = Vector2.Lerp(transform.position, new Vector3(mousePosition.x, transform.position.y, transform.position.z), moveSpeed);
 				// rotationZ = Mathf.Clamp(Input.GetAxis("Mouse X") + 0.01f, -maxRotationDeg, maxRotationDeg);
 				// transform.Rotate(new Vector3(0, 0, rotationZ) * Time.deltaTime * rotateSpeed, Space.Self);
+				var colorOverLifetime = vfx.colorOverLifetime;
+				if (Input.GetMouseButtonDown(0)) {
+        			colorOverLifetime.enabled = true;
+				}
+				if (Input.GetMouseButtonUp(0)) {
+					colorOverLifetime.enabled = false;
+				}
 			}
         }
 
