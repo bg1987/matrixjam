@@ -4592,38 +4592,43 @@ PrefabInstance:
     - target: {fileID: 8532848060361992232, guid: 6e67f59df427cd04c9b3e222c0640b34,
         type: 3}
       propertyPath: LinesOfTexts.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8532848060361992232, guid: 6e67f59df427cd04c9b3e222c0640b34,
         type: 3}
       propertyPath: LinesOfTexts.Array.data[0]
-      value: Welcome to Ukodus
+      value: Welcome, weary traveller! Such tales of the matrix you must bring.
       objectReference: {fileID: 0}
     - target: {fileID: 8532848060361992232, guid: 6e67f59df427cd04c9b3e222c0640b34,
         type: 3}
       propertyPath: LinesOfTexts.Array.data[1]
-      value: Or sodukiri, not sure
+      value: Here, rest your feet and let's play a game of Sudokiri.
       objectReference: {fileID: 0}
     - target: {fileID: 8532848060361992232, guid: 6e67f59df427cd04c9b3e222c0640b34,
         type: 3}
       propertyPath: LinesOfTexts.Array.data[2]
-      value: In this game you score points by placing numbers on a sudoku board
+      value: Oh you don't know how? It's easy. I'll show ya
       objectReference: {fileID: 0}
     - target: {fileID: 8532848060361992232, guid: 6e67f59df427cd04c9b3e222c0640b34,
         type: 3}
       propertyPath: LinesOfTexts.Array.data[3]
-      value: The placement rules are similar to that of sudoku
+      value: In Sudokiri you score points by placing numbers on a sudoku board
       objectReference: {fileID: 0}
     - target: {fileID: 8532848060361992232, guid: 6e67f59df427cd04c9b3e222c0640b34,
         type: 3}
       propertyPath: LinesOfTexts.Array.data[4]
-      value: That means the same number can only appear once in every line, row,
-        or box
+      value: The placement rules are similar to that of sudoku
       objectReference: {fileID: 0}
     - target: {fileID: 8532848060361992232, guid: 6e67f59df427cd04c9b3e222c0640b34,
         type: 3}
       propertyPath: HighligtedObject
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532848060361992232, guid: 6e67f59df427cd04c9b3e222c0640b34,
+        type: 3}
+      propertyPath: LinesOfTexts.Array.data[5]
+      value: That means the same number can only appear once in every line, row,
+        or box
       objectReference: {fileID: 0}
     - target: {fileID: 8532848060361992238, guid: 6e67f59df427cd04c9b3e222c0640b34,
         type: 3}
@@ -4773,7 +4778,11 @@ PrefabInstance:
     - target: {fileID: 8532848061943203601, guid: 6e67f59df427cd04c9b3e222c0640b34,
         type: 3}
       propertyPath: m_Text
-      value: Welcome to Ukodus
+      value: 'Welome weary Traveller! What tales of the matrix you must have! Come,
+        rest your feet. Let''s play a game of Suokiri.
+
+        What do you mean
+        you don''t know how? It''s easy. Here, I''ll show ya.'
       objectReference: {fileID: 0}
     - target: {fileID: 8532848061943203601, guid: 6e67f59df427cd04c9b3e222c0640b34,
         type: 3}

@@ -16,6 +16,13 @@ namespace MatrixJam.Team4
             var randomUnit = player.MyUnits[randomIndex];
             var unitOptions = turnData._positionOptions[randomUnit];
 
+            while (unitOptions.Count == 0)
+            {
+                randomIndex = UnityEngine.Random.Range(0, player.MyUnits.Count);
+                randomUnit = player.MyUnits[randomIndex];
+                unitOptions = turnData._positionOptions[randomUnit];
+            }
+
             var turnObject = new TurnObject();
             turnObject.ChosenUnit = randomUnit;
 
