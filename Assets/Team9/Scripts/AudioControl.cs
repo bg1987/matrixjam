@@ -18,7 +18,7 @@ namespace MatrixJam.Team9
             _pitchDone = false;
             GameManageRef = GetComponent<GameManager>();
             MainGameMusic = this.gameObject.GetComponent<AudioSource>();
-            MainGameMusic.volume = 0.07f;
+            MainGameMusic.volume = 0.08f;
             PlayGameMusic();
         }
 

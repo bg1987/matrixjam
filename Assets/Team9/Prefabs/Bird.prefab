@@ -214,8 +214,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deathParticale: {fileID: 6412829062778085185, guid: c2ce18220446903429bcea174b78772c,
     type: 3}
-  _birdSpeed: 6
-  birdsStamina: 1
+  _birdSpeed: 7.5
+  birdsStamina: 0
   damageBird: 20
   abort: 0
   Birds:

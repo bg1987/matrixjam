@@ -73,12 +73,12 @@ namespace MatrixJam.Team9
 
                         _side = ShuffleBool();
 
-                        if (birdCounter == 5)
+                        if (birdCounter == 4)
                         {
                             FireAway();
                         }
 
-                        if (birdCounter == 10)
+                        if (birdCounter == 7)
                         {
                             FireAway();
                         }
@@ -110,10 +110,11 @@ namespace MatrixJam.Team9
 
         public void FireAway()
         {
-           
+
             //makes sure they match length              
             GameObject bird = Instantiate(_birdPrefab, new Vector3(startingPointLeft.position.x, startingPointLeft.position.y, startingPointLeft.position.z), Quaternion.Euler(new Vector3(0, 180f, 0)));
             new WaitForSeconds(0.4f);
+            GameObject bird3 = Instantiate(_birdPrefab, new Vector3(startingPointLeft.position.x, startingPointLeft.position.y, startingPointLeft.position.z), Quaternion.Euler(new Vector3(0, 180f, 0)));
             GameObject bird2 = Instantiate(_birdPrefab, new Vector3(startingPointRight.position.x, startingPointRight.position.y, startingPointRight.position.z), Quaternion.identity);
         }
     }

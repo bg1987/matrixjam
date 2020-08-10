@@ -133,7 +133,6 @@ namespace MatrixJam.Team9
                 {
                     AudioSourceEgg.PlayOneShot(Squeesh);
                     AudioSourceEgg.Play();
-                    Debug.Log("Finish" + playEndScreen);
                     _flagEnded = true;
                     this.playEndScreen = true;
                 }

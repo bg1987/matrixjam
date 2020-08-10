@@ -169,13 +169,11 @@ namespace MatrixJam.Team9
 
                 if(this._hitCounter < birdsStamina)
                 {
-                    Debug.Log("i'm Hit" + this.gameObject.name);
                     this._hitCounter++;
                     Instantiate(_deathParticale, transform.position, transform.rotation);
             }
             else if (this._hitCounter >= birdsStamina)
                 {
-                Debug.Log("i'm dead-bird" + this.gameObject.name);
                 isDead = true;
                 StartCoroutine(playDeath());
             }
