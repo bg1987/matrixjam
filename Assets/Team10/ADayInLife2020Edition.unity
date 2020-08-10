@@ -173,6 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 0000000001000000020000000a000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &6661334
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -327,6 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 0000000001000000020000000a000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &6895065
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -563,6 +565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 0b0000000c000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &21615931
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -769,6 +772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 0500000016000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &86871671
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -897,6 +901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 03000000040000000f00000010000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 0}
 --- !u!212 &134834369
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1094,6 +1099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 23000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &144858864
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1222,6 +1228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 190000001a000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &199770926
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1552,6 +1559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 03000000040000000f00000010000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &247296764
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2248,6 +2256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 15000000
   BlockPanel: {fileID: 1857069522}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &331684329
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2376,6 +2385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 03000000040000000f00000010000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &371540277
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2773,6 +2783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 0000000001000000020000001f000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &402417230
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3329,6 +3340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 03000000040000000f00000010000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 0}
 --- !u!212 &601940834
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3457,6 +3469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 03000000040000000f00000010000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 0}
 --- !u!212 &639736076
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3698,6 +3711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 05000000160000001b000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &671832799
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4081,6 +4095,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 0000000001000000020000001f000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &747532063
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4209,6 +4224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 200000002100000022000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &771854838
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4802,6 +4818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 03000000040000000f00000010000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 0}
 --- !u!212 &860155065
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5497,6 +5514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 0000000001000000020000000a000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &1030638227
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5927,6 +5945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 03000000040000000f00000010000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 0}
 --- !u!212 &1216793375
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6199,6 +6218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 03000000040000000f00000010000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 0}
 --- !u!212 &1258283835
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6405,6 +6425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 03000000040000000f00000010000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 0}
 --- !u!212 &1280412735
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6533,6 +6554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 03000000040000001e000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &1307781921
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7197,6 +7219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 0000000001000000020000000a000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &1430835987
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7904,6 +7927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 03000000040000000f00000010000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 0}
 --- !u!212 &1617941786
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8480,6 +8504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 05000000160000001700000018000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 1857069522}
 --- !u!212 &1752857149
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9151,6 +9176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choices: 03000000040000000f00000010000000
   BlockPanel: {fileID: 282731079}
+  DialoguePanelBlock: {fileID: 0}
 --- !u!212 &1895073016
 SpriteRenderer:
   m_ObjectHideFlags: 0

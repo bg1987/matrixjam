@@ -8,11 +8,12 @@ namespace MatrixJam.Team10
     {
         public int[] choices;
         public GameObject BlockPanel;
+        public GameObject DialoguePanelBlock;
         private RandomDialogueTree t = new RandomDialogueTree("player1");
         private bool isMouseOnMe = false;
 
         void OnMouseDown(){
-            if(!BlockPanel.activeSelf){
+            if(!BlockPanel.activeSelf && !DialoguePanelBlock.activeSelf){
                 TriggerDialogue();
             }
         }
@@ -28,7 +29,6 @@ namespace MatrixJam.Team10
             if(dialog){
                 FindObjectOfType<DialogueManager>().StartDialogue(a);
             }
-            // FindObjectOfType<DialogueManager>().StartDialogue(t.getCallAlfredDialogue());
         }
     }
 }
