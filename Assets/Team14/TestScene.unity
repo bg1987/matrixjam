@@ -15004,6 +15004,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1072988816}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1072988818 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 943902038834604446, guid: 52036dd18566e844f89bfbef2f1c8a91,
+    type: 3}
+  m_PrefabInstance: {fileID: 1072988816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1074545890 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7954470083774927496, guid: f0f53eeaeb2807a47a471d8bbdb96279,
@@ -20725,6 +20731,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1562941155}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1562941157 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 943902038834604446, guid: a9b4f5acf37742142a3319c9e95f8ad6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1562941155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1570710090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25687,11 +25699,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startLives: 3
   audioManager: {fileID: 1751603679}
+  sfxManager: {fileID: 0}
   startAndDirection: {fileID: 2007410411}
   character: {fileID: 651679344}
   thomasMoon: {fileID: 1788431400}
   winExit: {fileID: 1242467153}
   loseExit: {fileID: 182624815}
+  gameOver: {fileID: 1562941157}
+  youWin: {fileID: 1072988818}
 --- !u!4 &1907177324
 Transform:
   m_ObjectHideFlags: 0
