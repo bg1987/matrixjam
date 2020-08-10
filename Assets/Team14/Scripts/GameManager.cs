@@ -13,7 +13,7 @@ namespace MatrixJam.Team14
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            var script = targ>et as GameManager;
+            var script = target as GameManager;
             
             GUILayout.Space(20);
             if (GUILayout.Button("Update"))
@@ -42,6 +42,8 @@ namespace MatrixJam.Team14
         [SerializeField] private Exit loseExit;
 
         private bool reachedEnd;
+        [SerializeField] private GameObject gameOver;
+        [SerializeField] private GameObject youWin;
         
         public static GameManager Instance { get; private set; }
 
@@ -137,6 +139,7 @@ namespace MatrixJam.Team14
         {
             Debug.Log("GAME OVERRR");
             sfxManager.Lose.PlayRandom();
+            gameOver.SetActive(true);
         }
 
         private void Restart()
