@@ -13,14 +13,21 @@ namespace MatrixJam.Team21 {
 		public float delaySeagullEffect = 2f;
 		public AudioClip hitSFX;
 		public AudioClip hitPipeSFX;
+		public GameObject deathExplode;
+		public GameObject deathFX;
+		public GameObject manInBoat;
+		public AudioClip deathSFX;
+		public AudioClip winSFX;
 
 		private Rigidbody rb;
 		private WindArea windArea;
 		private bool isHitBySeagull = false;
 		private AudioSource audio;
+		private Animator animator;
 
         // Start is called before the first frame update
         void Start() {
+			animator = GetComponent<Animator>();
 			audio = GetComponent<AudioSource>();
 			rb = GetComponent<Rigidbody>();
 			// print("SceneManager.GetActiveScene(); " + SceneManager.GetActiveScene());
@@ -49,7 +56,20 @@ namespace MatrixJam.Team21 {
 
 			if (col.gameObject.tag == "Tag2") {// killzone
 				print("killed!");
+			 	GameObject deathExplodeInstance = Instantiate(deathExplode, manInBoat.transform);
+				deathExplodeInstance.transform.parent = manInBoat.transform;
+				GameObject deathFXInstance = Instantiate(deathFX, manInBoat.transform);
+				deathFXInstance.transform.parent = manInBoat.transform;
+				audio.clip = deathSFX;
+				audio.Play();
 				StartCoroutine(RestartLevel());
+			}
+
+			if (col.gameObject.tag == "Tag10") { // win
+				audio.clip = winSFX;
+				audio.Play();
+				rb.useGravity = false;
+				animator.SetBool("IsPlay", true);
 			}
 		}
 
