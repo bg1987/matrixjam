@@ -1195,7 +1195,7 @@ MonoBehaviour:
     forceText: 0
     forceImage: 0
     BGImage: {fileID: 21300000, guid: 66c1a310d3329b74c90d063acd600c1e, type: 3}
-    BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
+    BGmusic: {fileID: 8300000, guid: 5562460d4c3ef8944b5f268e7c99e747, type: 3}
   - name: 0002
     theObject: {fileID: 698438075}
     description: 'Ah, the view crow''s nest. Water as far as eyes can see. I like
@@ -1241,35 +1241,35 @@ MonoBehaviour:
     forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
-    BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
+    BGmusic: {fileID: 0}
   - name: 6962
     theObject: {fileID: 1985273418}
     description: 
     forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
-    BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
+    BGmusic: {fileID: 0}
   - name: 6963
     theObject: {fileID: 1106761432}
     description: 
     forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
-    BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
+    BGmusic: {fileID: 0}
   - name: 6964
     theObject: {fileID: 1146909139}
     description: 
     forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
-    BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
+    BGmusic: {fileID: 0}
   - name: 6965
     theObject: {fileID: 749636475}
     description: 
     forceText: 0
     forceImage: 1
     BGImage: {fileID: 0}
-    BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
+    BGmusic: {fileID: 0}
   - name: ppp.exe
     theObject: {fileID: 1516244572}
     description: 
