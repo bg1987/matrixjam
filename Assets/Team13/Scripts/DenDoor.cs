@@ -96,6 +96,7 @@ namespace MatrixJam.Team13
 		}
 
 		private IEnumerator CountTo10(){
+			yield return new WaitForSeconds(5);
 			_endScreen.SetActive(true);
 			yield return new WaitForSeconds(5);
 			_exit.EndLevel();
