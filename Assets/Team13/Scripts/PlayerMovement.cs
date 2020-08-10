@@ -36,8 +36,22 @@ namespace MatrixJam.Team13
 		}
         
         void Update(){
-            _x = Input.GetAxis("Horizontal");
-			_z = Input.GetAxis("Vertical");
+			_x = 0;
+			_z = 0;
+			if(Input.GetKey(KeyCode.W)){
+				_z += 1;
+			}
+			if(Input.GetKey(KeyCode.S)){
+				_z -= 1;
+			}
+			if(Input.GetKey(KeyCode.A)){
+				_x -= 1;
+			}
+			if(Input.GetKey(KeyCode.D)){
+				_x += 1;
+			}
+			//_x = Input.GetAxis("Horizontal");
+			//_z = Input.GetAxis("Vertical");
 
 			if(Input.GetKeyDown(KeyCode.LeftControl)){
 				if(_moveState == moveType.Sneaking){
@@ -62,7 +76,7 @@ namespace MatrixJam.Team13
 					_onRun.Invoke();
 				}
 			}
-
+			
 			_move = transform.right * _x + transform.forward * _z;
 
 			_controller.Move(_move * _speed * Time.deltaTime);
@@ -92,6 +106,10 @@ namespace MatrixJam.Team13
 
 		public void ShowUiInactive(Image img){
 			img.color = Color.gray;
+		}
+
+		public void MoveToPosition(Transform pos){
+			transform.position = pos.position;
 		}
     }
 }

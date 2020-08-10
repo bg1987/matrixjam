@@ -29,7 +29,6 @@ namespace MatrixJam.Team13{
 		[SerializeField] private UnityEvent _onMove;
 		[SerializeField] private UnityEvent _onMoveEnd;
 
-
 		void Awake(){
 			_animator = GetComponent<Animator>();
 			_agent = GetComponent<NavMeshAgent>();
@@ -73,6 +72,14 @@ namespace MatrixJam.Team13{
 			if(Application.isPlaying){
 				Gizmos.DrawLine(transform.position, _agent.destination);
 			}
+		}
+
+		public void Pause(){
+			_agent.isStopped = true;
+		}
+
+		public void Resume(){
+			_agent.isStopped = false;
 		}
 
 		void Update(){
