@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MatrixJam.Team13
 {
@@ -8,6 +9,7 @@ namespace MatrixJam.Team13
         private float _x;
 		private float _z;
 		private Vector3 _move;
+		private Vector3 _prevVelocity;
 
 		private enum moveType {Walking, Running, Sneaking};
 		private moveType _moveState = moveType.Walking;
@@ -18,8 +20,18 @@ namespace MatrixJam.Team13
 		[SerializeField] private float _sneakSpeed = 5f;
 		private float _speed;
 
+		[SerializeField] private UnityEvent _OnSneak;
+		[SerializeField] private UnityEvent _onWalk;
+		[SerializeField] private UnityEvent _onRun;
+
+		[SerializeField] private UnityEvent _onMoveStart;
+		[SerializeField] private UnityEvent _onMove;
+		[SerializeField] private UnityEvent _onMoveEnd;
+
 		void Start(){
 			_speed = _walkSpeed;
+			_onWalk.Invoke();
+			_prevVelocity = Vector3.zero;
 		}
         
         void Update(){
@@ -30,9 +42,11 @@ namespace MatrixJam.Team13
 				if(_moveState == moveType.Sneaking){
 					_moveState = moveType.Walking;
 					_speed = _walkSpeed;
+					_onWalk.Invoke();
 				}else{
 					_moveState = moveType.Sneaking;
-					_speed = _sneakSpeed;	
+					_speed = _sneakSpeed;
+					_OnSneak.Invoke();
 				}
 			}
 
@@ -40,19 +54,35 @@ namespace MatrixJam.Team13
 				if(_moveState == moveType.Running){
 					_moveState = moveType.Walking;
 					_speed = _walkSpeed;
+					_onWalk.Invoke();
 				}else{
 					_moveState = moveType.Running;
 					_speed = _runSpeed;
+					_onRun.Invoke();
 				}
 			}
-
-			_move.x = _x;
-			_move.z = _z;
 
 			_move = transform.right * _x + transform.forward * _z;
 
 			_controller.Move(_move * _speed * Time.deltaTime);
-			//Debug.Log(_moveState);
+
+			
+			if(_controller.velocity != Vector3.zero){
+				if(_prevVelocity == Vector3.zero){
+					//Debug.Log("Starting move");
+					_onMoveStart.Invoke();
+				}else{
+					//Debug.Log("Moving");
+					_onMove.Invoke();
+				}
+			}else{
+				if(_prevVelocity != Vector3.zero){
+					//Debug.Log("Ending Move");
+					_onMoveEnd.Invoke();
+				}
+			}
+
+			_prevVelocity = _controller.velocity;
         }
     }
 }
