@@ -72,6 +72,9 @@ namespace MatrixJam.Team20
                     UpdatePatrol();
                     break;
             }
+
+            if(Input.GetKeyDown(KeyCode.M))
+                SceneManagerComponent.instance.RestartScene();
         }
 
         void UpdatePatrol()
