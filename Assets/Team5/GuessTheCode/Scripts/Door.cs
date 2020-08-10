@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +7,7 @@ namespace MatrixJam.Team5
     {
         public Button button;
         public AudioSource audio;
+        public Sprite icon;
 
         public void Lock()
         {

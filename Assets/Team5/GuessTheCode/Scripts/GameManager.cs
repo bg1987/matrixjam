@@ -9,6 +9,7 @@ namespace MatrixJam.Team5
         public AudioSource audio;
         public CodeLetter[] letters;
         public Door[] doors;
+        public Sprite defaultIcon;
 
         private Data _data;
 
@@ -50,6 +51,7 @@ namespace MatrixJam.Team5
                     {
                         doors[i].audio.volume = _guess.Length / 5f;
                         audio.volume = (5f - _guess.Length) / 5;
+                        display[_guess.Length-1].button.image.sprite = doors[i].icon;
                     }
                     else
                     {
@@ -65,6 +67,7 @@ namespace MatrixJam.Team5
                     {
                         audio.volume = 0;
                         doors[i].Open();
+                        display[_guess.Length-1].button.image.sprite = doors[i].icon;
                     }
                 }
             }
@@ -86,6 +89,7 @@ namespace MatrixJam.Team5
             foreach (var letter in display)
             {
                 letter.Init(this, "");
+                letter.button.image.sprite = defaultIcon;
             }
 
             audio.volume = 1;
