@@ -13,12 +13,30 @@ namespace MatrixJam.Team19
 
         [SerializeField]
         private LayerMask _collectibleMask;
+        [SerializeField]
+        public GameObject pillview;
 
-        private bool _wasKeyPickedThisLevel = false;
+        static private bool _wasKeyPickedThisLevel = false;
 
+        static public bool WasKey
+        {
+            set
+            {
+                if(GameObject.FindObjectOfType<PlayerInteractions>()!=null)
+                {
+                    GameObject.FindObjectOfType<PlayerInteractions>().pillview.SetActive(value);
+                }
+                    _wasKeyPickedThisLevel = value;
+            }
+            get
+            {
+                return _wasKeyPickedThisLevel;
+            }
+        }
+        
         private void OnCollisionEnter(Collision collision)
         {
-            bool isCollidedLayerInLevelLostMask = _levelLostLayerMask.value == (_levelLostLayerMask.value | (1 << collision.gameObject.layer));
+            bool isCollidedLayerInLevelLostMask = (_levelLostLayerMask.value == (_levelLostLayerMask.value | (1 << collision.gameObject.layer)));
 
             if (isCollidedLayerInLevelLostMask)
             {
@@ -27,13 +45,13 @@ namespace MatrixJam.Team19
 
             if (_wasKeyPickedThisLevel)
             {
-                bool isCollidedLayerInLevelPassedMask = _levelPassedLayerMask.value == (_levelPassedLayerMask.value | (1 << collision.gameObject.layer));
+                bool isCollidedLayerInLevelPassedMask = (_levelPassedLayerMask.value == (_levelPassedLayerMask.value | (1 << collision.gameObject.layer)));
 
                 if (isCollidedLayerInLevelPassedMask)
                 {
+                    
                     LevelManager.Instance.NotifyLevelPassed();
-
-                    _wasKeyPickedThisLevel = false;
+                    WasKey = false;
                 }
             }
 
@@ -41,9 +59,9 @@ namespace MatrixJam.Team19
 
             if (isCollidedLayerInCollectibleMask)
             {
+               
                 Destroy(collision.gameObject);
-
-                _wasKeyPickedThisLevel = true;
+                WasKey = true;
             }
         }
     }

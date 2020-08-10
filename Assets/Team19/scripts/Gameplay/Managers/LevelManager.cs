@@ -62,11 +62,13 @@ namespace MatrixJam.Team19.Gameplay.Managers
             _modifiedContentManager.ModifyContentByProgress(_levelWinCount);
 
             _playerHandler.StartLevel(starter, entrance_number);
+            PlayerInteractions.WasKey = false;
+            
         }
 
         public void NotifyKeyPicked()
         {
-
+            
         }
 
         public void NotifyLevelLost()
@@ -107,8 +109,8 @@ namespace MatrixJam.Team19.Gameplay.Managers
 
         private void ActOnLevelLost()
         {
-            RespawnPlayer();
 
+            RespawnPlayer();
             _uiManager.UpdateHealth(_levelLossCount);
         }
 
@@ -128,6 +130,7 @@ namespace MatrixJam.Team19.Gameplay.Managers
         private void RespawnPlayer()
         {
             _playerHandler.StartLevel(_gameStarter, _startedEntranceNumber);
+            PlayerInteractions.WasKey = PlayerInteractions.WasKey;
         }
     }
 }

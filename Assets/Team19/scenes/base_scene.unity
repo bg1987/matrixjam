@@ -1281,8 +1281,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _winRequiredPassCount: 6
-  _failRequireLossCount: 3
-  _levelWinExit: {fileID: 500103681}
+  _failRequireLossCount: 1000
+  _levelWinExit: {fileID: 1548775644}
   _levelFailExit: {fileID: 500103681}
   _playerHandler:
     _playerPrefab: {fileID: 6358636239753144670, guid: b2598972ae4f27d4484d8522f83068c1,
@@ -1315,6 +1315,18 @@ MonoBehaviour:
     - {fileID: 8141493418231743767}
     - {fileID: 8141493418041490003}
     - {fileID: 8141493417475889735}
+--- !u!114 &1548775644 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1148892779484843485, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 640819072}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a17f5cb339b164a84713182ae1d7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1566404839
 GameObject:
   m_ObjectHideFlags: 0
