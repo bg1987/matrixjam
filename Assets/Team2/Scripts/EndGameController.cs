@@ -12,6 +12,7 @@ namespace MatrixJam.Team2
         {
             if (other.TryGetComponent(out PlayerController playerController))
             {
+                Debug.Log("Ended game");
                 exit.EndLevel();
             }
         }
