@@ -108,6 +108,10 @@ namespace MatrixJam.Team3
 
         public void ChangeItem(string item)
         {
+            if (item.ToLower() == "quit")
+            {
+                Application.Quit();
+            }
             /*foreach (GameObject go in InitialObjects)
             {
                 go.SetActive(false);
