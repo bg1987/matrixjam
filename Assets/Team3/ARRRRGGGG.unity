@@ -538,7 +538,7 @@ MonoBehaviour:
   musicPlayer: {fileID: 412119237}
   StagesList:
   - name: 7459
-    theObject: {fileID: 324220892}
+    theObject: {fileID: 875319767}
     description: You leave your cabin and head to the upper deck trying to figure
       out all of the commotion that's been going on. <br><br>Far on the horizon,
       you see another ship in the distance, rapidly closing in.. You can hear Timmy
@@ -554,10 +554,10 @@ MonoBehaviour:
       sake!" <br>Choose 9116
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: a4667d86340f01f47982551a7b5fe983, type: 3}
     BGmusic: {fileID: 0}
   - name: 3965
-    theObject: {fileID: 875319767}
+    theObject: {fileID: 324220892}
     description: 'You put on your pants and leave your cabin and head to the upper
       deck trying to figure out all of the commotion that''s been going on. <br><br>Far
       on the horizon, you see another ship in the distance, rapidly closing in..
@@ -575,7 +575,7 @@ MonoBehaviour:
       try to out run the the pirate ship and flee"<br>Choose 5678'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 0f309a4652fd34c4f991531b0f5cfa81, type: 3}
     BGmusic: {fileID: 0}
   - name: 6119
     theObject: {fileID: 854810608}
@@ -595,7 +595,7 @@ MonoBehaviour:
       pirates have one.<br><br>GAME OVER<br><br>Enter code : 6961<br>'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: d2a32bc72711de147af10d02fea49558, type: 3}
     BGmusic: {fileID: 0}
   - name: 9116
     theObject: {fileID: 1772356371}
@@ -612,7 +612,7 @@ MonoBehaviour:
       and flee"<br>Choose 5678"'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: bbc69e2f695c3794d86102901a86f6fb, type: 3}
     BGmusic: {fileID: 0}
   - name: 8765
     theObject: {fileID: 190051549}
@@ -631,7 +631,7 @@ MonoBehaviour:
       code : 6961'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: bbc69e2f695c3794d86102901a86f6fb, type: 3}
     BGmusic: {fileID: 0}
   - name: 5678
     theObject: {fileID: 287428752}
@@ -648,7 +648,7 @@ MonoBehaviour:
       : 6961'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 938512fdb2d6aac4986602d732c34e04, type: 3}
     BGmusic: {fileID: 0}
   - name: AA4966
     theObject: {fileID: 875319767}
@@ -722,7 +722,7 @@ MonoBehaviour:
       6944 '
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: a4667d86340f01f47982551a7b5fe983, type: 3}
     BGmusic: {fileID: 0}
   - name: 6944
     theObject: {fileID: 2055173338}
@@ -737,7 +737,7 @@ MonoBehaviour:
       the captain to battle these pirates? <br>Choose 1236 <br> <br>
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: d2a32bc72711de147af10d02fea49558, type: 3}
     BGmusic: {fileID: 0}
   - name: 1235
     theObject: {fileID: 1590108241}
@@ -760,7 +760,7 @@ MonoBehaviour:
       your precious father's journal? <br>Choose 6666  <br> <br>
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: d2a32bc72711de147af10d02fea49558, type: 3}
     BGmusic: {fileID: 0}
   - name: 1236
     theObject: {fileID: 688835917}
@@ -785,7 +785,7 @@ MonoBehaviour:
       journal? <br>Choose 6666  <br> '
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: d2a32bc72711de147af10d02fea49558, type: 3}
     BGmusic: {fileID: 0}
   - name: 4444
     theObject: {fileID: 1447330892}
@@ -803,7 +803,7 @@ MonoBehaviour:
       your cabin and hide your precious father''s journal? <br>Choose 6666  <br> '
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: d2a32bc72711de147af10d02fea49558, type: 3}
     BGmusic: {fileID: 0}
   - name: 5555
     theObject: {fileID: 676379522}
@@ -820,7 +820,7 @@ MonoBehaviour:
       have won...<br><br>GAME OVER.<br><br>Enter code:  6965'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 938512fdb2d6aac4986602d732c34e04, type: 3}
     BGmusic: {fileID: 0}
   - name: 6666
     theObject: {fileID: 1497380775}
@@ -834,7 +834,7 @@ MonoBehaviour:
       <br><br>GAME OVER. <br> <br>Enter code:  6965'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 938512fdb2d6aac4986602d732c34e04, type: 3}
     BGmusic: {fileID: 0}
   - name: 1199
     theObject: {fileID: 907139144}
@@ -851,7 +851,7 @@ MonoBehaviour:
       <br>Choose 1716'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 4d046d6c4b254bd4c9d9eb31b5ced9c3, type: 3}
     BGmusic: {fileID: 0}
   - name: 9911
     theObject: {fileID: 1061339452}
@@ -872,7 +872,7 @@ MonoBehaviour:
       6962'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 73b14e2f740054041bdf0dc40fcf5bde, type: 3}
     BGmusic: {fileID: 0}
   - name: 1617
     theObject: {fileID: 1548652921}
@@ -885,7 +885,7 @@ MonoBehaviour:
       <br>Choose 1716 <br>
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 4d046d6c4b254bd4c9d9eb31b5ced9c3, type: 3}
     BGmusic: {fileID: 0}
   - name: 1716
     theObject: {fileID: 1922929276}
@@ -907,7 +907,7 @@ MonoBehaviour:
       have won.<br><br> <br>GAME OVER <br> <br>Enter code : 6962'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: bbc69e2f695c3794d86102901a86f6fb, type: 3}
     BGmusic: {fileID: 0}
   - name: 3344
     theObject: {fileID: 264415046}
@@ -931,7 +931,7 @@ MonoBehaviour:
       <br>GAME OVER <br> <br>Enter code : 6962'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 4d046d6c4b254bd4c9d9eb31b5ced9c3, type: 3}
     BGmusic: {fileID: 0}
   - name: 9001
     theObject: {fileID: 328751117}
@@ -941,7 +941,7 @@ MonoBehaviour:
       9132: North: 9133. South 9134.'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: ca8d22ce82254794fbd32454a9f256f3, type: 3}
     BGmusic: {fileID: 0}
   - name: 9002
     theObject: {fileID: 328751117}
@@ -951,7 +951,7 @@ MonoBehaviour:
       9132: North: 9133. South 9134.'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: ca8d22ce82254794fbd32454a9f256f3, type: 3}
     BGmusic: {fileID: 0}
   - name: 9003
     theObject: {fileID: 328751117}
@@ -961,7 +961,7 @@ MonoBehaviour:
       9132: North: 9133. South 9134.'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: ca8d22ce82254794fbd32454a9f256f3, type: 3}
     BGmusic: {fileID: 0}
   - name: 9004
     theObject: {fileID: 328751117}
@@ -971,7 +971,7 @@ MonoBehaviour:
       9132: North: 9133. South 9134.'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: ca8d22ce82254794fbd32454a9f256f3, type: 3}
     BGmusic: {fileID: 0}
   - name: 9131
     theObject: {fileID: 1106714547}
@@ -981,7 +981,7 @@ MonoBehaviour:
       North: 9018: West: 9019'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: c0472584644467046b8c5721cdb2bf8f, type: 3}
     BGmusic: {fileID: 0}
   - name: 9132
     theObject: {fileID: 1106714547}
@@ -991,7 +991,7 @@ MonoBehaviour:
       North: 9018: West: 9019'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: c0472584644467046b8c5721cdb2bf8f, type: 3}
     BGmusic: {fileID: 0}
   - name: 9133
     theObject: {fileID: 1106714547}
@@ -1001,7 +1001,7 @@ MonoBehaviour:
       North: 9018: West: 9019'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: c0472584644467046b8c5721cdb2bf8f, type: 3}
     BGmusic: {fileID: 0}
   - name: 9134
     theObject: {fileID: 1106714547}
@@ -1011,7 +1011,7 @@ MonoBehaviour:
       North: 9018: West: 9019'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: c0472584644467046b8c5721cdb2bf8f, type: 3}
     BGmusic: {fileID: 0}
   - name: 9016
     theObject: {fileID: 1273824718}
@@ -1021,7 +1021,7 @@ MonoBehaviour:
       huh? <br><br>So... Where now?<br>East: 9225 West:9224 South:9223:North:9221'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 12678c44e49d96b4c83265962e5ed951, type: 3}
     BGmusic: {fileID: 0}
   - name: 9017
     theObject: {fileID: 1273824718}
@@ -1031,7 +1031,7 @@ MonoBehaviour:
       huh? <br><br>So... Where now?<br>East: 9225 West:9224 South:9223:North:9221'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 12678c44e49d96b4c83265962e5ed951, type: 3}
     BGmusic: {fileID: 0}
   - name: 9018
     theObject: {fileID: 1273824718}
@@ -1041,7 +1041,7 @@ MonoBehaviour:
       huh? <br><br>So... Where now?<br>East: 9225 West:9224 South:9223:North:9221'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 12678c44e49d96b4c83265962e5ed951, type: 3}
     BGmusic: {fileID: 0}
   - name: 9019
     theObject: {fileID: 1273824718}
@@ -1051,7 +1051,7 @@ MonoBehaviour:
       huh? <br><br>So... Where now?<br>East: 9225 West:9224 South:9223:North:9221'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 12678c44e49d96b4c83265962e5ed951, type: 3}
     BGmusic: {fileID: 0}
   - name: 9221
     theObject: {fileID: 853401281}
@@ -1061,7 +1061,7 @@ MonoBehaviour:
       yelling. Can't hear what.<br>So..<br>w:9050 E:9021 S:9052 N:9033<br>
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 6928bfe0c5835c144bdfa709b553ff33, type: 3}
     BGmusic: {fileID: 0}
   - name: 9223
     theObject: {fileID: 853401281}
@@ -1071,7 +1071,7 @@ MonoBehaviour:
       yelling. Can't hear what.<br>So..<br>w:9050 E:9021 S:9052 N:9033<br>
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 6928bfe0c5835c144bdfa709b553ff33, type: 3}
     BGmusic: {fileID: 0}
   - name: 9224
     theObject: {fileID: 853401281}
@@ -1081,7 +1081,7 @@ MonoBehaviour:
       yelling. Can't hear what.<br>So..<br>w:9050 E:9021 S:9052 N:9033<br>
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 6928bfe0c5835c144bdfa709b553ff33, type: 3}
     BGmusic: {fileID: 0}
   - name: 9225
     theObject: {fileID: 853401281}
@@ -1091,7 +1091,7 @@ MonoBehaviour:
       yelling. Can't hear what.<br>So..<br>w:9050 E:9021 S:9052 N:9033<br>
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 6928bfe0c5835c144bdfa709b553ff33, type: 3}
     BGmusic: {fileID: 0}
   - name: 9050
     theObject: {fileID: 1685610549}
@@ -1101,7 +1101,7 @@ MonoBehaviour:
       down (9400) ?<br>
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 4cfe2451812e00d49b3b865bae8070fe, type: 3}
     BGmusic: {fileID: 0}
   - name: 9021
     theObject: {fileID: 1685610549}
@@ -1111,7 +1111,7 @@ MonoBehaviour:
       down (9400) ?<br>
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 4cfe2451812e00d49b3b865bae8070fe, type: 3}
     BGmusic: {fileID: 0}
   - name: 9052
     theObject: {fileID: 1685610549}
@@ -1121,7 +1121,7 @@ MonoBehaviour:
       down (9400) ?<br>
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 4cfe2451812e00d49b3b865bae8070fe, type: 3}
     BGmusic: {fileID: 0}
   - name: 9033
     theObject: {fileID: 1685610549}
@@ -1131,7 +1131,7 @@ MonoBehaviour:
       down (9400) ?<br>
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 4cfe2451812e00d49b3b865bae8070fe, type: 3}
     BGmusic: {fileID: 0}
   - name: 9300
     theObject: {fileID: 1343934904}
@@ -1141,7 +1141,7 @@ MonoBehaviour:
       I get new orders. (9500) <br> '
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: a450133909dd6b745b108774d35460e2, type: 3}
     BGmusic: {fileID: 0}
   - name: 9400
     theObject: {fileID: 334371277}
@@ -1151,7 +1151,7 @@ MonoBehaviour:
       Well, it''s been a fun trip.  Bye!<br><br>GAME OVER.<br><br>Enter Code:  6964'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: a94032e272a18934a904d266d4f4ab2f, type: 3}
     BGmusic: {fileID: 0}
   - name: 9500
     theObject: {fileID: 1690089193}
@@ -1161,7 +1161,7 @@ MonoBehaviour:
       now it''s over. Bye!<br><br><br>GAME OVER.<br><br>Enter Code:  6964'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: e35bae8a1af479541b1a6db92c17242d, type: 3}
     BGmusic: {fileID: 0}
   - name: 0000
     theObject: {fileID: 174285234}
@@ -1204,7 +1204,7 @@ MonoBehaviour:
       should look next? <br>West: 9001 East: 9002: North: 9003. South 9004.'
     forceText: 0
     forceImage: 0
-    BGImage: {fileID: 0}
+    BGImage: {fileID: 21300000, guid: 304bbd95c2226b74087ab39848c188b7, type: 3}
     BGmusic: {fileID: 8300000, guid: cf4cee179d920d5449f85ce905719c26, type: 3}
   - name: 0003
     theObject: {fileID: 1202287612}
@@ -1285,7 +1285,7 @@ MonoBehaviour:
     forceText: 1
     forceImage: 1
     BGImage: {fileID: 0}
-    BGmusic: {fileID: 0}
+    BGmusic: {fileID: 8300000, guid: a35fcb380e4e03346a4ee9725d6d8464, type: 3}
   - name: Fart.exe
     theObject: {fileID: 889245724}
     description: 
@@ -2581,7 +2581,7 @@ GameObject:
   - component: {fileID: 324220895}
   - component: {fileID: 324220894}
   m_Layer: 5
-  m_Name: 5965 Pants First
+  m_Name: 3965 Pants First
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7179,8 +7179,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.9, y: 90.25}
-  m_SizeDelta: {x: 1606.3369, y: 727.4999}
+  m_AnchoredPosition: {x: -3.9, y: 61.7}
+  m_SizeDelta: {x: 1606.3369, y: 670.3662}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1086523659
 MonoBehaviour:
