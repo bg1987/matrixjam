@@ -5,10 +5,10 @@ namespace MatrixJam.Team5
 {
     public class GameManager : MonoBehaviour
     {
-        public Text display;
-        
+        public CodeLetter[] display;
+        public AudioSource audio;
         public CodeLetter[] letters;
-        public Button[] doors;
+        public Door[] doors;
 
         private Data _data;
 
@@ -29,23 +29,45 @@ namespace MatrixJam.Team5
         
         public void Clicked(CodeLetter letter)
         {
+            var text = letter.label.text;
+            _guess += text;
+            
+            if(letter.display || _guess.Length > 5)
+            {
+                Reset();
+                return;
+            }
+            
             letter.button.interactable = false;
-            _guess += letter.label.text;
-            if (_guess.Length == 5)
+            audio.volume = 1;
+            
+            display[_guess.Length-1].label.text = text;
+            if (_guess.Length < 5)
+            {
+                for (int i = 0; i < _data.codes.Length; i++)
+                {
+                    if (_guess == _data.codes[i].Substring(0, _guess.Length))
+                    {
+                        doors[i].audio.volume = _guess.Length / 5f;
+                        audio.volume = (5f - _guess.Length) / 5;
+                    }
+                    else
+                    {
+                        doors[i].audio.volume = 0;
+                    }
+                }
+            }
+            else if (_guess.Length == 5)
             {
                 for (int i = 0; i < _data.codes.Length; i++)
                 {
                     if (_guess == _data.codes[i])
                     {
-                        doors[i].interactable = true;
+                        audio.volume = 0;
+                        doors[i].Open();
                     }
                 }
             }
-            if (_guess.Length > 5)
-            {
-                Reset();
-            }
-            display.text = _guess;
         }
 
         public void Reset()
@@ -58,8 +80,15 @@ namespace MatrixJam.Team5
             
             foreach (var door in doors)
             {
-                door.interactable = false;
+                door.Lock();
             }
+
+            foreach (var letter in display)
+            {
+                letter.Init(this, "");
+            }
+
+            audio.volume = 1;
         }
     }
 

@@ -5,6 +5,7 @@ namespace MatrixJam.Team5
 {
     public class CodeLetter : MonoBehaviour
     {
+        public bool display;
         public Button button;
 
         public Text label;
