@@ -11,7 +11,8 @@ namespace MatrixJam.Team20
         GameObject currentLevel;
 
         public AudioSource introBGM, loopBGM;
-        public bool introFinished = false;        public static SceneManagerComponent instance;
+        public bool introFinished = false;
+        public static SceneManagerComponent instance;
 
         // Start is called before the first frame update
         void Start()

@@ -16,34 +16,33 @@ namespace MatrixJam.Team20
     {
         public bool goToNextLevel = false;
         public bool canBeConnected = true;
-        public bool canRemoveDoor = true; 
+        public bool canRemoveDoor = true;
+        public Exit gameExit = null;
         public DoorComponent placedDoor = null;
         public Collider2D wallCollider = null;
-        public PlaceDirection placeDirection = PlaceDirection.Right;
-        public Material[] materials = new Material[(int)PlaceDirection.Top + 1];
+        public SpriteRenderer spriteRenderer;
 
         // Start is called before the first frame update
         void Start()
         {
             if(placedDoor)
             {
+                spriteRenderer.enabled = false;
                 placedDoor.currentPlace = this;
-                placedDoor.gameObject.GetComponent<SpriteRenderer>().material = materials[(int)placeDirection];
+                //placedDoor.gameObject.GetComponent<SpriteRenderer>().material = spriteRenderer.material;
                 if (wallCollider != null)
                     wallCollider.enabled = false;
+                placedDoor.transform.position = this.transform.position;
+                placedDoor.transform.rotation = this.transform.rotation;
+                placedDoor.transform.parent = this.transform;
+                placedDoor.transform.localScale = Vector3.one;
             }
         }
 
         // Update is called once per frame
         void Update()
         {
-            //var material = placedDoor.GetComponent<SpriteRenderer>().material;
-            //var id = material.GetFloat("sc")
-            if(placedDoor)
-            {
-                placedDoor.transform.position = this.transform.position;
-                placedDoor.transform.rotation = this.transform.rotation;
-            }
+
         }
 
         public DoorComponent PickDoor()
@@ -59,6 +58,7 @@ namespace MatrixJam.Team20
 
             door.gameObject.SetActive(false);
             door.currentPlace = null;
+            spriteRenderer.enabled = true;
             return door;
         }
 
@@ -73,17 +73,31 @@ namespace MatrixJam.Team20
             door.gameObject.SetActive(true);
 
             placedDoor = door;
-            placedDoor.gameObject.GetComponent<SpriteRenderer>().material = materials[(int)placeDirection];
 
             if (!canBeConnected && placedDoor.Connected())
                 placedDoor.Disconnect();
 
             if (wallCollider != null)
                 wallCollider.enabled = false;
+
+            //placedDoor.gameObject.GetComponent<SpriteRenderer>().material = spriteRenderer.material;
+            spriteRenderer.enabled = false;
+
+            placedDoor.transform.SetParent(this.transform);
+            placedDoor.transform.localScale = Vector3.one;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (placedDoor)
+            {
+                var animator = placedDoor.gameObject.GetComponent<Animator>();
+                if (animator)
+                {
+                    animator.SetBool("IsOpen", true);
+                }
+            }
+
             var component = other.GetComponent<CurrentDoorPlaceComponent>();
             if (!component)
                 return;
@@ -94,12 +108,23 @@ namespace MatrixJam.Team20
 
         private void OnTriggerExit2D(Collider2D other)
         {
+            if (placedDoor)
+            {
+                var animator = placedDoor.gameObject.GetComponent<Animator>();
+                if (animator)
+                {
+                    animator.SetBool("IsOpen", false);
+                }
+            }
+
             var component = other.GetComponent<CurrentDoorPlaceComponent>();
             if (!component)
                 return;
 
-            if(component.currentDoorPlace == this)
-                component.currentDoorPlace = null;
+            if (component.currentDoorPlace != this)
+                return;
+
+            component.currentDoorPlace = null;
         }
     }
 }

@@ -65,7 +65,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LeftZ: 100
+    - _LeftZ: 5
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -73,16 +73,17 @@ Material:
     - _OffsetUVY: 0.01
     - _Parallax: 0.02
     - _PrespectiveShift: 0
-    - _RightZ: 100
+    - _RightZ: 5
     - _ScaleUV: 3.58
     - _ScaleUVX: 1
-    - _ScaleUVY: 3.74
+    - _ScaleUVY: 1
     - _ShiftY: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _TransparentZ: 0
     - _UVSec: 0
-    - _UseShaderZ: 0
+    - _UseShaderZ: 1
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

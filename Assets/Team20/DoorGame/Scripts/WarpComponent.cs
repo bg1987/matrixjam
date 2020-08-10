@@ -6,8 +6,16 @@ namespace MatrixJam.Team20
 {
     public class WarpComponent : MonoBehaviour
     {
-        DoorComponent currentDoor;
+        DoorPlaceComponent currentDoorPlace;
         bool isRightToDoor;
+
+        DoorComponent currentDoor
+        {
+            get
+            {
+                return currentDoorPlace ? currentDoorPlace.placedDoor : null;
+            }
+        }
 
         // Start is called before the first frame update
         void Start()
@@ -36,10 +44,15 @@ namespace MatrixJam.Team20
 
         void TryGoNextLevel()
         {
-            if (!currentDoor.currentPlace.goToNextLevel)
+            if (!GetComponent<PlayerComponent>())
                 return;
 
-            if (!GetComponent<PlayerComponent>())
+            if (currentDoor.currentPlace.gameExit)
+            {
+                currentDoor.currentPlace.gameExit.EndLevel();
+            }
+
+            if (!currentDoor.currentPlace.goToNextLevel)
                 return;
 
             SceneManagerComponent.instance.GoToNextLevel();
@@ -47,8 +60,10 @@ namespace MatrixJam.Team20
 
         void Warp()
         {
-            var doorToSelf = DoorToSelf();
             var doorToWarp = currentDoor.ConnectedDoor();
+            if (!doorToWarp.currentPlace)
+                return;
+            var doorToSelf = DoorToSelf();
             var angle = Vector2.Angle(currentDoor.Direction(), doorToWarp.Direction());
 
             var playerComponent = GetComponent<PlayerComponent>();
@@ -90,12 +105,12 @@ namespace MatrixJam.Team20
                 }
             }
 
-            currentDoor = null;
+            currentDoorPlace = null;
         }
 
         Vector2 DoorToSelf()
         {
-            Vector2 doorPosition = currentDoor.transform.position;
+            Vector2 doorPosition = currentDoorPlace.transform.position;
             Vector2 selfPosition = transform.position;
             return selfPosition - doorPosition;
         }
@@ -105,17 +120,17 @@ namespace MatrixJam.Team20
             return Vector2.Dot(DoorToSelf(), currentDoor.Direction()) > 0;
         }
 
-        public void OnEnterDoor(DoorComponent door)
+        public void OnEnterDoor(DoorPlaceComponent door)
         {
-            currentDoor = door;
+            currentDoorPlace = door;
             isRightToDoor = IsRightToDoor();
         }
 
-        public void OnExitDoor(DoorComponent door)
+        public void OnExitDoor(DoorPlaceComponent door)
         {
-            if (door == currentDoor)
+            if (currentDoorPlace == door)
             {
-                currentDoor = null;
+                currentDoorPlace = null;
             }
         }
     }

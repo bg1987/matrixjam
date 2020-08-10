@@ -46,6 +46,7 @@ namespace MatrixJam.Team20
 
             if (firstDoor == door)
             {
+                ConnectionColorManager.ReturnColor(color);
                 firstDoor.ResetColor();
                 firstDoor = null;
                 return;
@@ -145,14 +146,14 @@ namespace MatrixJam.Team20
         {
             var warp = collision.gameObject.GetComponent<WarpComponent>();
             if(warp)
-                warp.OnEnterDoor(this);
+                warp.OnEnterDoor(currentPlace);
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
             var warp = collision.gameObject.GetComponent<WarpComponent>();
             if (warp)
-                warp.OnExitDoor(this);
+                warp.OnExitDoor(currentPlace);
         }
     }
 }

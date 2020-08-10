@@ -14,7 +14,9 @@
 		_LeftZ("Left Z", Float) = 0
 		_RightZ("Right Z", Float) = 0
 		_TransparentZ("Transparent Z", Float) = 0
+		_UseTransparentZ("Use Transparent Z", int) = 0
 		_UseShaderZ("Use Shader Z", Int) = 1
+		_FlipDirection("Flip Direction", Int) = 0
 	}
 
 		SubShader
@@ -70,6 +72,8 @@
 				float _RightZ;
 				int _UseShaderZ;
 				float _TransparentZ;
+				bool _FlipDirection;
+				bool _UseTransparentZ;
 
 				v2f vert(appdata_t IN)
 				{
@@ -81,31 +85,42 @@
 						length(float3(unity_ObjectToWorld[0].z, unity_ObjectToWorld[1].z, unity_ObjectToWorld[2].z))  // scale z axis
 						);
 
+					float leftZ = _LeftZ;
+					float rightZ = _RightZ;
+					float perspetiveShift = _PrespectiveShift;
+					float aspect = worldScale.x / worldScale.y;
+					if (_FlipDirection)
+					{
+						rightZ = _LeftZ;
+						leftZ = _RightZ;
+						//perspetiveShift = -perspetiveShift;
+					}
+
 					uint vid = IN.vertexId % 4;
 					if (_ShiftY)
 					{
 						if (vid == 0 || vid == 2)
 						{
-							IN.vertex.y += _PrespectiveShift / worldScale.y;
-							if (_UseShaderZ) IN.vertex.z = _LeftZ;
+							IN.vertex.y += perspetiveShift * aspect;
+							if (_UseShaderZ) IN.vertex.z = leftZ;
 						}
 						else
 						{
-							IN.vertex.y -= _PrespectiveShift / worldScale.y;
-							if (_UseShaderZ) IN.vertex.z = _RightZ;
+							IN.vertex.y -= perspetiveShift * aspect;
+							if (_UseShaderZ) IN.vertex.z = rightZ;
 						}
 					}
 					else 
 					{
 						if (vid < 2)
 						{
-							IN.vertex.x += _PrespectiveShift / worldScale.x;
-							if (_UseShaderZ) IN.vertex.z = _LeftZ;
+							IN.vertex.x += perspetiveShift / aspect;
+							if (_UseShaderZ) IN.vertex.z = leftZ;
 						}
 						else
 						{
-							IN.vertex.x -= _PrespectiveShift / worldScale.x;
-							if (_UseShaderZ) IN.vertex.z = _RightZ;
+							IN.vertex.x -= perspetiveShift / aspect;
+							if (_UseShaderZ) IN.vertex.z = rightZ;
 						}
 					}
 
@@ -118,7 +133,7 @@
 					#endif
 
 					OUT.texcoord.x *= worldScale.x * _ScaleUVX;
-					OUT.texcoord.y *= -worldScale.y * _ScaleUVY;
+					OUT.texcoord.y *= _ScaleUVY;
 					OUT.texcoord.x += _OffsetUVX;
 					OUT.texcoord.y += _OffsetUVY;
 
@@ -145,7 +160,7 @@
 				{
 					c = SampleSpriteTexture(IN.texcoord) * IN.color;
 					c.rgb *= c.a;
-					if (c.a < 0.01)
+					if (_UseTransparentZ && c.a < 0.01)
 					{
 						depth = IN.opacityDepth;
 					}

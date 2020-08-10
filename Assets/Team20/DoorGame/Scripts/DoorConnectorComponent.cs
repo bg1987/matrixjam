@@ -91,19 +91,19 @@ namespace MatrixJam.Team20
         // Update is called once per frame
         void Update()
         {
-            if(Input.GetKeyUp(KeyCode.P))
+            if (Input.GetKeyUp(KeyCode.J))
+            {
+                PickPlaceDoor();
+            }
+
+            if (Input.GetKeyUp(KeyCode.K))
             {
                 ConnectDoor();
             }
 
-            if (Input.GetKeyUp(KeyCode.O))
+            if (Input.GetKeyUp(KeyCode.L))
             {
                 FlipConnectionDirection();
-            }
-
-            if (Input.GetKeyUp(KeyCode.I))
-            {
-                PickPlaceDoor();
             }
         }
     }
