@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcabcd8b9900166489ce1e9c15afe896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLevel: 2
+  startLevel: 1
   Levels:
   - {fileID: 4423785601300159434}
   - {fileID: 5318331053861311373}
@@ -1170,7 +1170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &413861243
 Transform:
   m_ObjectHideFlags: 0

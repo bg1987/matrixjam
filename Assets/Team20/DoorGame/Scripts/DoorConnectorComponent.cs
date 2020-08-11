@@ -66,7 +66,7 @@ namespace MatrixJam.Team20
         void FlipConnectionDirection()
         {
             var door = ClosestDoor();
-            if (door && door.Connected())
+            if (door)
                 door.FlipDirection();
         }
 
