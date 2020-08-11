@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace MatrixJam.Team14
 {
@@ -99,7 +96,8 @@ namespace MatrixJam.Team14
 
         private void RestartLevel()
         {
-            SceneManager.LoadScene(SceneManager.GetSceneAt(0).name);
+            var sceneName = UnityEngine.SceneManagement.SceneManager.GetSceneAt(0).name;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
         }
 
         private void OnDestroy()
