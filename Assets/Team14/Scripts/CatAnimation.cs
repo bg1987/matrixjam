@@ -18,6 +18,8 @@ namespace MatrixJam.Team14.Team
         private int FrameCount => _cats.Length;
         private float FramesPerSec => FrameCount / animTime;
 
+        private Transform animCue;
+
         private void Start()
         {
             SFXmanager = FindObjectOfType<SFXmanager>();
@@ -36,7 +38,32 @@ namespace MatrixJam.Team14.Team
             if (testOnStart) Animate();
         }
 
-        private void OnGameReset() => SetFrameActive(0);
+        private void Update()
+        {
+            if (!animCue) return;
+            var trainZ = TrainController.Instance.transform.position.z;
+            var animZ = animCue.position.z;
+            
+            if (trainZ >= animZ)
+            {
+                OnAnimCue();
+            }
+            
+        }
+
+        private void OnAnimCue()
+        {
+            Animate();
+            SFXmanager.CatSqueals.PlayRandom();
+            
+            animCue = null;
+        }
+
+        private void OnGameReset()
+        {
+            animCue = null;
+            SetFrameActive(0);
+        }
 
         private void OnDestroy()
         {
@@ -50,10 +77,12 @@ namespace MatrixJam.Team14.Team
             if (payload.Obstacle != _parentObstacle) return;
             Debug.Log($"ObsEvent 2");
             if (payload.Successful)
-            {
-                Animate();
-                SFXmanager.CatSqueals.PlayRandom();
-            }
+                CueAnimation(payload.MoveCue);
+        }
+
+        private void CueAnimation(Transform animCue)
+        {
+            this.animCue = animCue;
         }
 
         private void Animate()
@@ -83,7 +112,6 @@ namespace MatrixJam.Team14.Team
 
         private void SetFrameActive(int frameIdx)
         {
-            Debug.Log($"SetFrameActive({frameIdx})");
             if (frameIdx >= FrameCount) frameIdx = FrameCount - 1;
             for (var i = 0; i < FrameCount; i++)
             {
