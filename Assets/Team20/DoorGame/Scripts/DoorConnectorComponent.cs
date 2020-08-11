@@ -72,6 +72,8 @@ namespace MatrixJam.Team20
 
         DoorComponent currentDoor;
 
+        public bool HasDoor() { return currentDoor; }
+
         void PickPlaceDoor()
         {
             var doorPlace = ClosestDoorPlace();
