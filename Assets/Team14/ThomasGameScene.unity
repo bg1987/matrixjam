@@ -3357,18 +3357,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b81ffe1afa894f419d9876fa8ed57b8, type: 3}
---- !u!114 &182624815 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1148892779484843485, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
-    type: 3}
-  m_PrefabInstance: {fileID: 182624814}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3a17f5cb339b164a84713182ae1d7f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &183535864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16966,18 +16954,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b81ffe1afa894f419d9876fa8ed57b8, type: 3}
---- !u!114 &1242467153 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1148892779484843485, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1242467152}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3a17f5cb339b164a84713182ae1d7f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1248577826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6378052832229847593, guid: 5d8f9d64b727c1f41a56e771f1e90429,
@@ -26137,14 +26113,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2114c5f1413f354eb6ba2366d5f6b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugStartBeatsOffset: 112
   startLives: 3
   audioManager: {fileID: 1751603679}
   sfxManager: {fileID: 421545693}
   startAndDirection: {fileID: 2007410411}
   character: {fileID: 651679344}
   thomasMoon: {fileID: 1788431400}
-  winExit: {fileID: 1242467153}
-  loseExit: {fileID: 182624815}
   gameOver: {fileID: 1562941157}
   youWin: {fileID: 1072988818}
 --- !u!4 &1907177324
