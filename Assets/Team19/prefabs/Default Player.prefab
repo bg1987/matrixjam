@@ -229,7 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelLostLayerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   _levelPassedLayerMask:
     serializedVersion: 2
     m_Bits: 8388608
