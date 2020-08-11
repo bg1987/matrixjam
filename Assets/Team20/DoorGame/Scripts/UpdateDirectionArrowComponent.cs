@@ -21,7 +21,7 @@ namespace MatrixJam.Team20
         void Update()
         {
             var doorDirection = door.Direction();
-            if(doorDirection.x == -1)
+            if(doorDirection.x == -1 || doorDirection.y == -1)
             {
                 arrowRenderer.flipX = true;
             }
