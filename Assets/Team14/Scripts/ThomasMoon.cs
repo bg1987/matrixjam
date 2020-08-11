@@ -43,6 +43,7 @@ namespace MatrixJam.Team14
         [SerializeField] private bool eyebrowsAnim = true;
         [SerializeField] private bool weirdFaceAnim = true;
         [SerializeField] private bool happyAnim = true;
+        [SerializeField] private Transform lookaheadPos; // Used for eyes look
 
         [Space]
         [Range(0.1f, 1f)]
@@ -120,7 +121,7 @@ namespace MatrixJam.Team14
 
         private Vector3 GetPOsNextObstacleOrTarget()
         {
-            var pos = transform.position;
+            var pos = GetReferencePos();
             var nextObstacle = Obstacle.GetNextObstacle(pos);
             if (!nextObstacle) return target.position;
             
@@ -129,8 +130,14 @@ namespace MatrixJam.Team14
 
             var isTargetCloser = Vector3.Distance(pos, targetPos) 
                                  < Vector3.Distance(pos, nextObstaclePos);
-
+            
             return isTargetCloser ? targetPos : nextObstaclePos;
+        }
+
+        private Vector3 GetReferencePos()
+        {
+            if (lookaheadPos != null) return lookaheadPos.position;
+            return transform.position;
         }
 
         private Vector3 startScale;
@@ -267,12 +274,36 @@ namespace MatrixJam.Team14
              }
          }
 
+        private Vector3 _refPos;
+        private Vector3 _localLookAt;
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(_refPos, 0.3f);
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(_localLookAt, 0.3f);
+        }
+
         private bool HandleEyesLookAt()
         {
             var lookAtNullable = LookAtPos;
 
             if (!lookAtNullable.HasValue) return false;
             var lookAt = lookAtNullable.Value;
+
+            
+            if (lookaheadPos)
+            {
+                var localLookahead = lookaheadPos.InverseTransformPoint(lookAt);
+                lookAt = transform.TransformPoint(localLookahead);
+                _localLookAt = lookAt;
+            }
+            
+            // _refPos = refPos;
+            // var localLookAt = lookAt - refPos + transform.position;
+            // _localLookAt = localLookAt;
+            
             
             EyeLookAt(leftEye, lookAt);
             EyeLookAt(rightEye, lookAt);

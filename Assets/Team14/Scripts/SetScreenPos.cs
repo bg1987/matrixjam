@@ -26,6 +26,8 @@ namespace MatrixJam.Team14
     {
         [SerializeField] private Camera cam;
         [SerializeField] private Vector3 viewportPos;
+        [SerializeField] private bool setOnStart = true;
+        [SerializeField] private bool setOnUpdate;
 
         private void OnValidate()
         {
@@ -34,7 +36,14 @@ namespace MatrixJam.Team14
 
         private void Start()
         {
-            SetPos();
+            if (setOnStart)
+                SetPos();
+        }
+
+        private void Update()
+        {
+            if (setOnUpdate)
+                SetPos();
         }
 
         public void SetPos()
