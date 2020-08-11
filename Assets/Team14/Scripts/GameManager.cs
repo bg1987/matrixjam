@@ -27,6 +27,7 @@ namespace MatrixJam.Team14
     public class GameManager : MonoBehaviour
     {
         public static event Action ResetEvent;
+        public static event Action<bool> GameFinishedEvent;
         
         [SerializeField] private KeyCode[] secretRestartCombo;
         [SerializeField] private int debugStartBeatsOffset;
@@ -120,6 +121,7 @@ namespace MatrixJam.Team14
         {
             reachedEnd = true;
             youWin.SetActive(true);
+            GameFinishedEvent?.Invoke(true);
             
             MatrixExit(true, 8);
             Debug.Log("Success! Last Track Finished!");
@@ -172,6 +174,7 @@ namespace MatrixJam.Team14
             Debug.Log("GAME OVERRR");
             sfxManager.Lose.PlayRandom();
             gameOver.SetActive(true);
+            GameFinishedEvent?.Invoke(false);
             MatrixExit(false, 8f);
         }
 

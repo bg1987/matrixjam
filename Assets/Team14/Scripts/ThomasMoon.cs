@@ -138,6 +138,7 @@ namespace MatrixJam.Team14
         private IEnumerator Start()
         {
             GameManager.ResetEvent += OnRestart;
+            GameManager.GameFinishedEvent += OnGameFinish;
             
             if (eyebrowsAnim)
             {
@@ -152,6 +153,7 @@ namespace MatrixJam.Team14
         private void OnDestroy()
         {
             GameManager.ResetEvent -= OnRestart;
+            GameManager.GameFinishedEvent -= OnGameFinish;
         }
 
         private void Update()
@@ -159,6 +161,11 @@ namespace MatrixJam.Team14
             animationDelay.OnUpdate();
             transform.localScale += Vector3.one * Time.deltaTime * scalePerSec;
             HandleEyesLookAt();
+        }
+
+        private void OnGameFinish(bool obj)
+        {
+            HappyAnim(999);
         }
 
         public void WeirdAnim(float time)
