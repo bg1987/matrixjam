@@ -2485,11 +2485,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4939990308935971524, guid: e0814737b15b5884db5f3cb41668a50c,
-        type: 3}
-      propertyPath: def_ent
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4939990308935971525, guid: e0814737b15b5884db5f3cb41668a50c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3350,6 +3345,11 @@ PrefabInstance:
       propertyPath: num_exit
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1148892779484843485, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
+        type: 3}
+      propertyPath: num_portal
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1148892779484843490, guid: 4b81ffe1afa894f419d9876fa8ed57b8,
         type: 3}
       propertyPath: m_Name
@@ -4189,11 +4189,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1261067596733252590, guid: d0ceb8ddc48b0db45b466c53d02674ae,
-        type: 3}
-      propertyPath: num_portal
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4095606418010801868, guid: d0ceb8ddc48b0db45b466c53d02674ae,
         type: 3}
       propertyPath: m_Name
@@ -9660,8 +9655,8 @@ MonoBehaviour:
   - {fileID: 1578762812}
   - {fileID: 116969437}
   - {fileID: 689674223}
-  debugTrackTime: 1
-  debugStates: 1
+  debugTrackTime: 0
+  debugStates: 0
   debugObstacles: 0
   debugTrackColor: {r: 1, g: 0.5, b: 0, a: 1}
   debugStatesColor: {r: 1, g: 0, b: 0, a: 1}
