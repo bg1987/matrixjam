@@ -172,8 +172,8 @@ namespace MatrixJam.Team10
                 "should i get some coffee and work from my computer? \nor netflix & chill in the living room?",
                 "i dont want to meet my roommates, though",
                 "let me tell you, they can be quite annoying sometimes",
-                "well what should i do today?",
-                "player movement: arrow + WASD \ninteractions: moving randomly in hope something happen and clicking things"};
+                "well what should i do today?", 
+                "player movement: arrows + WASD \ninteractions: just move around in hope something happans or click stuff"};
             if(playerName == "42"){
                 sentences = sentences.Concat(new string[]{"now listen 42! it's a secret however this game is not as simple as it's seems",
                 "it's 2020, the year of the virus \nleave the house and you will get infected (lose)",

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MatrixJam.Team10
-    {
-        namespace MatrixJam.Team10
 {
     public class ItemTrigger : MonoBehaviour
         {
@@ -23,5 +21,4 @@ namespace MatrixJam.Team10
                 FindObjectOfType<DialogueManager>().StartActionChoice(dialogue);
             }
         }
-    }
 }
