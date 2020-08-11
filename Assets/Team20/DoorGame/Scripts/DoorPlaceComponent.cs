@@ -156,7 +156,7 @@ namespace MatrixJam.Team20
 
         public void PlayCurrentDoorSound()
         {
-            if(openedByPlayer)
+            if(openedByPlayer && doorAudio!=null)
                 doorAudio.Play();
         }
     }
