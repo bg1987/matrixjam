@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5b0ddb1a765473196bd357ece2a80f8, type: 3}
+  m_Name: TrackList
+  m_EditorClassIdentifier: 
+  tracks:
+  - clip: {fileID: 8300000, guid: 65fd99cdbc254a942b5e1218c9cd9b9e, type: 3}
+    railwaySFX: {fileID: 8300000, guid: 8f23436d74e91aa498b632b490716387, type: 3}
+    checkpointAfterFinish: 1
+    zPerBeat: 6.5
+    bpm: 115
+  - clip: {fileID: 8300000, guid: e7ab63752b3f77746ac9af6650f115cd, type: 3}
+    railwaySFX: {fileID: 8300000, guid: f20d6f3be8ed30f45a6b9bea0f82dff2, type: 3}
+    checkpointAfterFinish: 0
+    zPerBeat: 6.5
+    bpm: 125
+  - clip: {fileID: 8300000, guid: affb88c6620750840b902d21c84179ca, type: 3}
+    railwaySFX: {fileID: 8300000, guid: 7babf6830fbd5324688cbcd378e5f6c1, type: 3}
+    checkpointAfterFinish: 0
+    zPerBeat: 6.5
+    bpm: 140
