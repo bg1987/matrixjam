@@ -227,7 +227,6 @@ namespace MatrixJam.Team14
 
         public void PlaySFX(TrainMove move)
         {
-            Debug.Log("PlaySFX " + sfxManager);
             Debug.Log("PlaySFX " + move);
             
             if (sfxManager == null) return;
