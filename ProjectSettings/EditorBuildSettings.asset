@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Team25/Scenes/FartInAJar.unity
-    guid: 8469efc62f00afe4f80e4ed545e4f471
+    path: Assets/TeamMeta/Scenes/MainMenu.unity
+    guid: cc4e329e877635244b275c90f8227e4f
   m_configObjects: {}
