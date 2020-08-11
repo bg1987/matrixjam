@@ -35,9 +35,10 @@ namespace MatrixJam.Team1
 
         private void DelayExit()
         {
-            foreach (var exitObj in FindObjectsOfType<Exit>())
+            var exits = FindObjectsOfType<Exit>();
+            foreach (var exitObj in exits)
             {
-                if (exitObj.id == exit)
+                if (exitObj.num_portal == exit)
                 {
                     exitObj.EndLevel();
                     return;
