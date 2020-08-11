@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.Assertions;
 
 namespace MatrixJam.Team14
@@ -241,7 +242,7 @@ namespace MatrixJam.Team14
             // Handle failed only currently (success comes from TrainState)
             if (!payload.Successful)
             {
-                OnObstacleFailed();
+                OnObstacleFailed(payload);
                 return;
             }
             
@@ -250,12 +251,22 @@ namespace MatrixJam.Team14
             // TransitionState(nextState, payload.MoveCue);
         }
 
-        private void OnObstacleFailed()
+        private void OnObstacleFailed(ObstaclePayload payload)
         {
-            KillTrain();
+            var obstacleHolder = payload.ObstacleHolder; 
+            if (obstacleHolder)
+            {
+                // Add script to train that will kill it when it reaches the obstacle
+                const float approxObstacleWidth = 0.5f;
+                var targetZ = obstacleHolder.position.z;
+                var trainKiller = gameObject.AddComponent<TrainKiller>();
+                trainKiller.Init(this, trans => trans.position.z + approxObstacleWidth >= targetZ);
+            }
+            else
+                KillTrain();
         }
 
-        private void KillTrain()
+        public void KillTrain()
         {
             collider.enabled = false;
             GameManager.Instance.OnDeath();
