@@ -54,10 +54,12 @@ namespace MatrixJam.Team20
             {
                 if (door.Connected())
                 {
+                    _playerComponent.PlayDetach();
                     door.Disconnect();
                 }
                 else
                 {
+                    _playerComponent.PlayDetach();
                     connection.AddDoor(door);
                 }
             }
@@ -67,7 +69,11 @@ namespace MatrixJam.Team20
         {
             var door = ClosestDoor();
             if (door)
+            {
                 door.FlipDirection();
+                _playerComponent.PlayFlip();
+            }
+                
         }
 
         DoorComponent currentDoor;
@@ -82,12 +88,14 @@ namespace MatrixJam.Team20
 
             if(!currentDoor)
             {
+                _playerComponent.PlayDetach();
                 currentDoor = doorPlace.PickDoor();
             }
             else
             {
                 if(!doorPlace.placedDoor)
                 {
+                    _playerComponent.PlayDetach();
                     doorPlace.PlaceDoor(currentDoor);
                     currentDoor = null;
                 }
@@ -100,19 +108,18 @@ namespace MatrixJam.Team20
             if (Input.GetKeyUp(KeyCode.J))
             {
                 PickPlaceDoor();
-                _playerComponent.PlayDetach();
+
             }
 
             if (Input.GetKeyUp(KeyCode.K))
             {
                 ConnectDoor();
-                _playerComponent.PlayDetach();
+
             }
 
             if (Input.GetKeyUp(KeyCode.L))
             {
                 FlipConnectionDirection();
-                _playerComponent.PlayFlip();
             }
         }
     }
