@@ -35,7 +35,10 @@ namespace MatrixJam.Team19.Gameplay.Managers
             {
                 for (int healthBarIndex = _previousLosses; healthBarIndex < losses; ++healthBarIndex)
                 {
-                    _healthBars[healthBarIndex].CrossFadeAlpha(0.1f, 1f, true);
+                    if (healthBarIndex < _healthBars.Length && healthBarIndex >= 0)
+                    {
+                        _healthBars[healthBarIndex].CrossFadeAlpha(0.1f, 1f, true);
+                    }
                 }
             }
 

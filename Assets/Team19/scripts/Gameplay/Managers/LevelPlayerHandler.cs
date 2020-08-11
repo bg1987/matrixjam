@@ -19,6 +19,8 @@ namespace MatrixJam.Team19.Gameplay.Managers
             }
 
             _playerInstance = GameObject.Instantiate(_playerPrefab, starter.transform.position, starter.transform.rotation);
+
+            
         }
     }
 }
