@@ -7,17 +7,13 @@ namespace MatrixJam.Team11
 {
     public class SceneManager : MonoBehaviour
     {
-        // TODO: RestartCurrentScene();
-
-
-        [SerializeReference] protected GameScene InitialScenePrefab;
-        [SerializeReference] protected BlackoutFader Fader;
-        
-        
+        [SerializeReference] protected GameScene _initialScenePrefab;
+        [SerializeReference] protected BlackoutFader _fader;
+        [SerializeReference] protected GameObject _temporaryPresence;
 
         public GameScene CurrentScene { get; protected set; }
+        public GameScene CurrentScenePrefab { get; protected set; }
 
-        private GameScene _restartScenePrefab;
         private Queue<GameScene> _nextScenePrefab;
         private Coroutine _business;
         public bool IsBusy { get { return this._business != null; } }
@@ -30,7 +26,7 @@ namespace MatrixJam.Team11
 
         private void Start()
         {
-            this.GoToScene(this.InitialScenePrefab);
+            this.GoToScene(this._initialScenePrefab);
         }
 
         private void OnEnable()
@@ -44,7 +40,7 @@ namespace MatrixJam.Team11
         public void GoToScene(GameScene scenePrefab)
         {
             this._nextScenePrefab.Enqueue(scenePrefab);
-            this._restartScenePrefab = scenePrefab;
+            this.CurrentScenePrefab = scenePrefab;
 
             if (this.IsBusy == false)
             {
@@ -54,7 +50,7 @@ namespace MatrixJam.Team11
 
         public void RestartCurrentScene()
         {
-            this.GoToScene(this._restartScenePrefab);
+            this.GoToScene(this.CurrentScenePrefab);
         }
 
         protected virtual IEnumerator ProcessScenesQueueCoroutine()
@@ -64,25 +60,31 @@ namespace MatrixJam.Team11
                 /* black out */
                 if (this.CurrentScene != null)
                 {
-                    yield return this.StartCoroutine(this.Fader.FadeIn(1f, 0f, false));
+                    this._fader.FadeColor = this.CurrentScene.ExitColor;
+                    yield return this.StartCoroutine(this._fader.FadeIn(this.CurrentScene.BlackInTime, 0f, false));
                 }
 
                 while (this._nextScenePrefab.Count > 0)
                 {
                     if (this.CurrentScene != null)
                     {
+                        yield return new WaitForSeconds(this.CurrentScene.ExitDelayTime);
+
                         this.CurrentScene.Exit();
-                        Object.Destroy(this.CurrentScene);
+                        this._temporaryPresence.SetActive(true);
+
+                        SceneManager.Destroy(this.CurrentScene);
                     }
 
                     GameScene nextScenePrefab = this._nextScenePrefab.Peek();
                     if (nextScenePrefab != null)
                     {
-                        this.CurrentScene = Object.Instantiate<GameScene>(nextScenePrefab);
+                        this.CurrentScene = SceneManager.Instantiate<GameScene>(nextScenePrefab);
+
+                        this._temporaryPresence.SetActive(false);
                         this.CurrentScene.Enter();
 
                         yield return new WaitForSeconds(this.CurrentScene.EnterDelayTime);
-                        yield return new WaitUntil(() => this.CurrentScene.gameObject.activeInHierarchy);
                     }
                     else
                     {
@@ -95,7 +97,7 @@ namespace MatrixJam.Team11
                 /* black in */
                 if (this.CurrentScene != null)
                 {
-                    yield return this.StartCoroutine(this.Fader.FadeOut(1f));
+                    yield return this.StartCoroutine(this._fader.FadeOut(this.CurrentScene.BlackOutTime));
                 }
             }
 
