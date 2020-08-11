@@ -51,6 +51,9 @@ MonoBehaviour:
   placedDoor: {fileID: 0}
   wallCollider: {fileID: 0}
   spriteRenderer: {fileID: 241704539853054480}
+  doorAudio: {fileID: 0}
+  openedByPlayer: 0
+  setMaterial: {fileID: 0}
 --- !u!61 &11511757
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -89,7 +92,7 @@ GameObject:
   - component: {fileID: 241704539853054480}
   - component: {fileID: 241704539853054482}
   - component: {fileID: 241704539853054483}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DoorPlace
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -8,6 +8,7 @@ namespace MatrixJam.Team20
     {
         public Vector2 velocity = Vector2.zero;
         public float yAcceleration = 0f;
+        public float minYVelocity = -60f;
 
         // Start is called before the first frame update
         void Start()
@@ -25,7 +26,7 @@ namespace MatrixJam.Team20
         {
             velocity.y += yAcceleration * Time.fixedDeltaTime;
 
-            velocity.y = Mathf.Max(velocity.y, -90f);
+            velocity.y = Mathf.Max(velocity.y, minYVelocity);
 
             this.transform.Translate(velocity * Time.fixedDeltaTime);
         }
