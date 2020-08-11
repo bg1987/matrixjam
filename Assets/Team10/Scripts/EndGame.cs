@@ -2,18 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace MatrixJam.Team10
 {
     public class EndGame : MonoBehaviour
     {
+        [SerializeField] private int exitNum;
+
+        [SerializeField] private UnityEvent[] exitEvent;
+
         public GameObject Panel;
         public Text PanelTitle;
         public Text PanelMessage;
         public GameObject PanelInput;
+        public Text PlayerName;
         public Button PanelButton;
+        public Player[] players;
+        public float typingSpeed;
 
         private List<string[]> DeathList;
+        private string Name;
+        private string currDialogue;
+
+        void Start(){
+            DeathList = DeathListGen();
+        }
         
         public void cinema(string game){
             Panel.SetActive(true);
@@ -23,40 +37,114 @@ namespace MatrixJam.Team10
             Panel.SetActive(false);
         }
 
-        // public void startScene(){
-        //     Panel.SetActive(true);
-        //     PanelTitle.gameObject.SetActive(true);
-        //     PanelMessage.gameObject.SetActive(true);
-        //     PanelInput.SetActive(true);
-        //     PanelButton.gameObject.SetActive(true);
+        public void startScene(){
+            Panel.SetActive(true);
+            PanelTitle.gameObject.SetActive(true);
+            PanelMessage.gameObject.SetActive(true);
+            PanelInput.SetActive(true);
+            PanelButton.gameObject.SetActive(true);
 
-        //     PanelTitle.text = "a day in a life - 2020 edition";
-        //     // PanelButton.text = "start";
-        //     StartCoroutine(TypeMessegeAffect(new string[] {"just another day in life...",
-        //         "living with roommates", "and playing around", "waiting for 2021..", "hopefully it will be better then now..."}));
-        // }
+            PanelTitle.text = "a day in a life - 2020 edition";
+            PanelButton.GetComponentInChildren<Text>().text = "start";
+            PanelButton.onClick = new Button.ButtonClickedEvent();
+            PanelButton.onClick.AddListener(delegate { 
+                onStart();
+            });
+            StartCoroutine(TypeMessegeAffect(new string[] {"just another day in life...",
+                "living with roommates", "and playing around", "waiting for 2021..", "hopefully it will be better then now..."}));
+        }
 
-        // public void DeathScene(int deathId, bool isRoommate, bool isBossCorona){
-        //     Panel.SetActive(true);
-        //     PanelMessage.gameObject.SetActive(true);
-        //     PanelButton.gameObject.SetActive(true);
+        private bool isSpecialCharacter(string playerName){
+            string[] names = new string[] {"BATMAN", "CORONA", "SUPERMAN", "42", "MATRIX", "MAYA", "MIKA", "RAUL"};
+            return System.Array.IndexOf(names, playerName) != -1;
+        }
 
-        //     // exitNum = id;
-        //     PanelMessage.text = "";
-        //     // PanelButton.text = "move on";
-        //     // StartCoroutine(TypeMessegeAffect(deathList[id]));
-        // }
+        private void onStart(){
+            Name = PlayerName.text.ToUpper();
+            if(isSpecialCharacter(Name)){
+                System.Array.Find(players, (p) => p.name == Name).gameObject.SetActive(true);
+            }
+            else{
+                System.Array.Find(players, (p) => p.name == "PLAYER").gameObject.SetActive(true);
+            }
 
-        // // IEnumerator TypeMessegeAffect(string[] sentences){
-        // //     foreach(string sentence in sentences){
-        // //         foreach (char letter in sentence.ToCharArray())
-        // //         {
-        // //             PanelMessage.text += letter;
-        // //             // yield return new WaitForSeconds(typingSpeed);
-        // //         }
-        // //         PanelMessage.text += "\n";
-        // //     }
-        // // }
+            RandomDialogueTree tr = new RandomDialogueTree(Name);
+            GameRules g = FindObjectOfType<GameRules>();
+            g.t = tr;
+            g.playerName = Name;
+
+            //and activate startDialogue
+            Panel.SetActive(false);
+            PanelInput.gameObject.SetActive(false);
+            PanelTitle.gameObject.SetActive(false);
+            PanelButton.gameObject.SetActive(false);
+            PanelMessage.gameObject.SetActive(false);
+            // g.DialogueMenu(tr.getStarterDialogue(Name));
+        }
+
+        private bool isRoommate(){
+            string[] names = new string[] {"MAYA", "MIKA", "RAUL"};
+            return System.Array.IndexOf(names, Name) != -1;
+        }
+
+        private bool isBossCorona(){
+            string[] names = new string[] {"BATMAN", "CORONA"};
+            return System.Array.IndexOf(names, Name) != -1;
+        }
+
+        public void DeathScene(int deathId){
+            Panel.SetActive(true);
+            PanelMessage.gameObject.SetActive(true);
+            PanelButton.gameObject.SetActive(true);
+
+            exitNum = deathId;
+            DeathSceneDisplay(deathId);
+        }
+
+        private void DeathSceneDisplay(int deathId){
+            PanelButton.onClick = new Button.ButtonClickedEvent();
+            if((deathId < 4 || deathId > 9) && (deathId < 12) && (isBossCorona() || isRoommate())){
+                PanelButton.GetComponentInChildren<Text>().text = "Next";
+                PanelButton.onClick.AddListener(delegate { 
+                    Continue();
+                });
+            }
+            else{
+                PanelButton.GetComponentInChildren<Text>().text = "move on";
+                PanelButton.onClick.AddListener(delegate { 
+                    moveOn();
+                });
+            }
+            StartCoroutine(TypeMessegeAffect(DeathList[deathId]));
+        }
+
+        private void Continue(){
+            if(!currDialogue.Equals(PanelMessage.text)){
+                return;
+            }
+            if(isBossCorona()){
+                DeathSceneDisplay(12);
+                return;
+            }
+            DeathSceneDisplay(13);
+        }
+        private void moveOn(){
+            Debug.Log(exitNum);
+            exitEvent[exitNum].Invoke();
+        }
+
+        IEnumerator TypeMessegeAffect(string[] sentences){
+            PanelMessage.text = "";
+            currDialogue = System.String.Join("\n", sentences) + "\n";
+            foreach(string sentence in sentences){
+                foreach (char letter in sentence.ToCharArray())
+                {
+                    PanelMessage.text += letter;
+                    yield return new WaitForSeconds(typingSpeed);
+                }
+                PanelMessage.text += "\n";
+            }
+        }
 
         private List<string[]> DeathListGen(){
             List<string[]> a = new List<string[]>();
