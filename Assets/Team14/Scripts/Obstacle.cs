@@ -27,6 +27,7 @@ namespace MatrixJam.Team14
 
     public class Obstacle : MonoBehaviour
     {
+        [SerializeField] private bool isMoveHold;
         [SerializeField] private TrainMove trainMove;
         [SerializeField] private Transform moveCue; // Where should actually do the move. Null = do when triggers
         [SerializeField] private BoxCollider trigger; // For Gizmos
@@ -80,7 +81,7 @@ namespace MatrixJam.Team14
         public void OnPressedInZone()
         {
             if (_succeeded) return;
-            
+
             _succeeded = true;
             SendEventUsingFields();
         }
@@ -119,7 +120,12 @@ namespace MatrixJam.Team14
             
             CurrObstacles[trainMove].Remove(this);
 
-            if (!_succeeded) SendEventUsingFields();
+            if (isMoveHold)
+            {
+                if (TrainMoves.GetKeyHold(Move)) 
+                    OnPressedInZone();
+            }
+            else if (!_succeeded) SendEventUsingFields();
         }
 
         private void SendEventUsingFields()
