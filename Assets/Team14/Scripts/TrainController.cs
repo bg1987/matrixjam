@@ -25,7 +25,10 @@ namespace MatrixJam.Team14
     public class TrainController : MonoBehaviour
     {
         public static TrainController Instance { get; private set; }
-
+        
+        [SerializeField] private bool debugDontHonkOnStart;
+        [Space]
+        
         [SerializeField] private ThomasMoon thomas;
         [SerializeField] private SFXmanager sfxManager;
         [SerializeField] private float startHonkDelay;
@@ -106,8 +109,13 @@ namespace MatrixJam.Team14
 
         private IEnumerator Start()
         {
-            yield return new WaitForSeconds(startHonkDelay);
-            TransitionState(HonkState, null);
+            if (debugDontHonkOnStart)
+                TransitionState(DriveState, null);
+            else
+            {
+                yield return new WaitForSeconds(startHonkDelay);
+                TransitionState(HonkState, null);
+            }
         }
 
         private void OnValidate()
