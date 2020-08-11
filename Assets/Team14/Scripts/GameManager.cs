@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MatrixJam.Team14
 {
@@ -28,7 +30,8 @@ namespace MatrixJam.Team14
     public class GameManager : MonoBehaviour
     {
         public static event Action ResetEvent;
-
+        
+        [SerializeField] private KeyCode[] secretRestartCombo;
         [SerializeField] private int debugStartBeatsOffset;
         [Space]
         [SerializeField] private int startLives;
@@ -87,10 +90,16 @@ namespace MatrixJam.Team14
 
         private void Update()
         {
+            if (secretRestartCombo.Length > 0 && secretRestartCombo.All(Input.GetKey)) RestartLevel();
             if (reachedEnd) return;
             
             var pos = audioManager.GetCurrPosition(startAndDirection);
             character.position = pos;
+        }
+
+        private void RestartLevel()
+        {
+            SceneManager.LoadScene(SceneManager.GetSceneAt(0).name);
         }
 
         private void OnDestroy()

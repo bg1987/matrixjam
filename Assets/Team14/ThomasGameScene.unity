@@ -26642,7 +26642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2114c5f1413f354eb6ba2366d5f6b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugStartBeatsOffset: 196
+  secretRestartCombo: 3000000031000000
+  debugStartBeatsOffset: 0
   startLives: 3
   audioManager: {fileID: 1751603679}
   sfxManager: {fileID: 421545693}
