@@ -46,9 +46,9 @@ namespace MatrixJam.Team10
             t = new RandomDialogueTree("player1");
             declareChoices();
             deathList = DeathListGen();
-            Panel.SetActive(false);
-            PanelMessage.gameObject.SetActive(false);
-            PanelButton.gameObject.SetActive(false);
+            // Panel.SetActive(false);
+            // PanelMessage.gameObject.SetActive(false);
+            // PanelButton.gameObject.SetActive(false);
 
             foreach(VideoPlayer vd in vids){
                 vd.loopPointReached += (VideoPlayer v) => {

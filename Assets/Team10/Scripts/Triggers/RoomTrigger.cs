@@ -7,26 +7,25 @@ namespace MatrixJam.Team10
     // will be placed on doors
     public class RoomTrigger : MonoBehaviour
     {
-        public AudioSource bgSound;
         public string RoomName;
         public bool isInRoom = false;
 
         void Start(){
-            bgSound.loop = true;
-            bgSound.Play(0);
-            bgSound.Pause();
+            // bgSound.loop = true;
+            // bgSound.Play(0);
+            // bgSound.Pause();
         }
 
         void OnTriggerEnter2D(Collider2D c){
             isInRoom = !isInRoom;
-            if(isInRoom){
+            if(isInRoom && RoomName != ""){
                 // bgSound.UnPause();
                 if(RoomName == "LivingRoom" || RoomName == "Kitchen" || RoomName == "Bath"){
                     TriggerRandomDialogue();
                 }
             }
             else{
-                bgSound.Pause();
+                // bgSound.Pause();
             }
         }
 
