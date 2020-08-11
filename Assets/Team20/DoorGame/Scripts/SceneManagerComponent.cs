@@ -33,10 +33,11 @@ namespace MatrixJam.Team20
                 RestartScene();
             }
 
-            if (Input.GetKeyDown(KeyCode.N))
+            /*if (Input.GetKeyDown(KeyCode.N))
             {
                 GoToNextLevel();
-            }
+            }*/
+
             if (!introBGM.isPlaying && !introFinished)
             {
                 introFinished = true;

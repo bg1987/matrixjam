@@ -124,7 +124,7 @@ namespace MatrixJam.Team20
             if (!component)
                 return;
 
-            component.currentDoorPlace = this;
+            component.EnterDoorPlace(this);
         }
 
 
@@ -148,10 +148,7 @@ namespace MatrixJam.Team20
             if (!component)
                 return;
 
-            if (component.currentDoorPlace != this)
-                return;
-
-            component.currentDoorPlace = null;
+            component.LeaveDoorPlace(this);
         }
 
         public void PlayCurrentDoorSound()

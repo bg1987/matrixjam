@@ -58,6 +58,11 @@ namespace MatrixJam.Team20
             SceneManagerComponent.instance.GoToNextLevel();
         }
 
+        static void SetPosition2D(Transform dst, Vector2 src)
+        {
+            dst.position = new Vector3(src.x, src.y, dst.position.z);
+        }
+
         void Warp()
         {
             var doorToWarp = currentDoor.ConnectedDoor();
@@ -72,7 +77,8 @@ namespace MatrixJam.Team20
 
             if(movementComponent)
             {
-                transform.position = doorToWarp.transform.position + new Vector3(doorToSelf.x, doorToSelf.y);
+                var pos2D = (Vector2)doorToWarp.transform.position + new Vector2(doorToSelf.x, doorToSelf.y);
+                SetPosition2D(transform, pos2D);
                 var originalVelocity = new Vector2(movementComponent.velocity.x, movementComponent.velocity.y);
                 movementComponent.velocity = Quaternion.AngleAxis(angle, Vector3.forward) * movementComponent.velocity;
                 //this.transform.Translate(Time.deltaTime * movementComponent.velocity);
@@ -123,6 +129,11 @@ namespace MatrixJam.Team20
         public void OnEnterDoor(DoorPlaceComponent door)
         {
             currentDoorPlace = door;
+            isRightToDoor = IsRightToDoor();
+        }
+
+        public void ResetIsRight()
+        {
             isRightToDoor = IsRightToDoor();
         }
 

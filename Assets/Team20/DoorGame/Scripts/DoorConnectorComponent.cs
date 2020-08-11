@@ -16,7 +16,7 @@ namespace MatrixJam.Team20
 
         DoorPlaceComponent ClosestDoorPlace()
         {
-            return this.GetComponent<CurrentDoorPlaceComponent>().currentDoorPlace;
+            return this.GetComponent<CurrentDoorPlaceComponent>().GetDoorPlace();
         }
 
         DoorComponent ClosestDoor()
@@ -72,6 +72,11 @@ namespace MatrixJam.Team20
             {
                 door.FlipDirection();
                 _playerComponent.PlayFlip();
+                var warp = GetComponent<WarpComponent>();
+                if(warp)
+                {
+                    warp.ResetIsRight();
+                }
             }
                 
         }
