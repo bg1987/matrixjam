@@ -74,6 +74,7 @@ Material:
     - _Parallax: 0.02
     - _PrespectiveShift: 0
     - _RepeatBoth: 0
+    - _ReplaceOnlyWhite: 1
     - _RightZ: -4
     - _ScaleUVX: 2
     - _ScaleUVY: 1

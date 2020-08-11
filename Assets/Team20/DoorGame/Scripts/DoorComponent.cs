@@ -92,7 +92,9 @@ namespace MatrixJam.Team20
 
         public Vector2 Direction()
         {
-            if(currentPlace.setMaterial)
+            if (!currentPlace)
+                return this.transform.right;
+            if (currentPlace.setMaterial)
             {
                 return this.transform.up * (Flipped() ? -1f : 1f);
             }
