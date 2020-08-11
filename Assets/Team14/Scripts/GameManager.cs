@@ -28,7 +28,9 @@ namespace MatrixJam.Team14
     public class GameManager : MonoBehaviour
     {
         public static event Action ResetEvent;
-        
+
+        [SerializeField] private int debugStartBeatsOffset;
+        [Space]
         [SerializeField] private int startLives;
         [SerializeField] private AudioManager audioManager;
         [SerializeField] public SFXmanager sfxManager;
@@ -75,7 +77,7 @@ namespace MatrixJam.Team14
 
         private void Start()
         {
-            audioManager.Restart();     
+            audioManager.Restart(debugStartBeatsOffset);
         }
 
         public void OnValidate()
