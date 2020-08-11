@@ -120,10 +120,11 @@ namespace MatrixJam.Team14
             
             CurrObstacles[trainMove].Remove(this);
 
-            if (isMoveHold)
+            if (isMoveHold && TrainMoves.GetKeyHold(Move))
             {
-                if (TrainMoves.GetKeyHold(Move)) 
-                    OnPressedInZone();
+
+                Debug.Log($"KEY HOLD! ({Move})");
+                OnPressedInZone();
             }
             else if (!_succeeded) SendEventUsingFields();
         }
