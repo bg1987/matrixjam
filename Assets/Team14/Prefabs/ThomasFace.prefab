@@ -271,7 +271,7 @@ Transform:
   m_GameObject: {fileID: 8934581275170108580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.47, y: 7.8, z: 10.08}
-  m_LocalScale: {x: 0.29519263, y: 0.29519263, z: 0.29519263}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 295738675581244092}
   - {fileID: 8934581276843190935}
@@ -346,6 +346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a204d8858a01f2439fc40ab5e6c5f91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eyebrowsAnim: 1
+  weirdFaceAnim: 1
+  happyAnim: 1
   lookLerpSpeed: 0.3
   animationDelay:
     resetEveryRestart: 0
@@ -360,7 +363,7 @@ MonoBehaviour:
   rightEye: {fileID: 8934581276515223036}
   leftEyebrow: {fileID: 8934581274952456951}
   rightEyebrow: {fileID: 8934581275620946788}
-  lookMode: 1
+  lookMode: 2
   target: {fileID: 0}
 --- !u!95 &5858507754474127941
 Animator:

@@ -33,11 +33,18 @@ namespace MatrixJam.Team14
     {
         public enum LookAt
         {
+            None,
             Cursor,
             NextObstacleOrTarget,
             Target
         }
 
+        [Header("Config")]
+        [SerializeField] private bool eyebrowsAnim = true;
+        [SerializeField] private bool weirdFaceAnim = true;
+        [SerializeField] private bool happyAnim = true;
+
+        [Space]
         [Range(0.1f, 1f)]
         [SerializeField] private float lookLerpSpeed = 0.6f;
         [SerializeField] private AnimateThomasAfter animationDelay; // Hold off animations so player isnt distracted
@@ -95,6 +102,8 @@ namespace MatrixJam.Team14
                 
                 switch (LookMode)
                 {
+                    case LookAt.None:
+                        return null;
                     case LookAt.Cursor:
                         var screenPos = Input.mousePosition;
                         screenPos.z = Z;
@@ -128,10 +137,15 @@ namespace MatrixJam.Team14
 
         private IEnumerator Start()
         {
-            startScale = transform.localScale;
-            StartCoroutine(RandomEyebrows(eyebrowsRandomDelta[0], eyebrowsRandomDelta[1]));
-            yield return new WaitForSeconds(1);
             GameManager.ResetEvent += OnRestart;
+            
+            if (eyebrowsAnim)
+            {
+                startScale = transform.localScale;
+                StartCoroutine(RandomEyebrows(eyebrowsRandomDelta[0], eyebrowsRandomDelta[1]));
+                yield return new WaitForSeconds(1);
+            }
+            
             // HappyAnim(3f);
         }
 
@@ -149,6 +163,7 @@ namespace MatrixJam.Team14
 
         public void WeirdAnim(float time)
         {
+            if (!weirdFaceAnim) return;
             if (!animationDelay.ShouldAnimate) return;
 
             StartCoroutine(WierdRoutine());
@@ -162,6 +177,7 @@ namespace MatrixJam.Team14
 
         public void HappyAnim(float time)
         {
+            if (!happyAnim) return;
             if (!animationDelay.ShouldAnimate) return;
 
             StartCoroutine(HappyRoutine());
@@ -175,6 +191,7 @@ namespace MatrixJam.Team14
 
         public void EyebrowsAnim()
         {
+            if (!eyebrowsAnim) return;
             if (!animationDelay.ShouldAnimate) return;
 
             const float dur1 = 0.4f;
