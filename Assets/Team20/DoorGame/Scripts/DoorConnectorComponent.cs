@@ -86,8 +86,11 @@ namespace MatrixJam.Team20
             }
             else
             {
-                doorPlace.PlaceDoor(currentDoor);
-                currentDoor = null;
+                if(!doorPlace.placedDoor)
+                {
+                    doorPlace.PlaceDoor(currentDoor);
+                    currentDoor = null;
+                }
             }
         }
 
