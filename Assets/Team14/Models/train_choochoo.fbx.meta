@@ -1,0 +1,347 @@
+fileFormatVersion: 2
+guid: 78af5d7325d88d549b1fbede209f3816
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      74: -2646877686078930818
+    second: Armature|drive
+  - first:
+      74: 7238280004761517075
+    second: Armature|jump
+  - first:
+      74: 8122661947741112563
+    second: Armature|jump (1)
+  - first:
+      74: 5933775756367650741
+    second: Armature|duck-start
+  - first:
+      74: -5823718319541213146
+    second: TrainArmature|drive
+  - first:
+      74: -3882520949593734417
+    second: TrainArmature|jump
+  - first:
+      74: 2711728761598570583
+    second: TrainArmature|duck-start
+  - first:
+      74: 5553090402674037805
+    second: TrainArmature|honk
+  - first:
+      74: -5907000826165643825
+    second: TrainArmature|only-wheels
+  - first:
+      74: -4142020014561939689
+    second: TrainArmature|duck-start (1)
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _train_center_line
+    second: {fileID: 2100000, guid: 97adc6549df606b43b9bcd18343c1853, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _train_purple
+    second: {fileID: 2100000, guid: 97adc6549df606b43b9bcd18343c1853, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _train_torq
+    second: {fileID: 2100000, guid: 97adc6549df606b43b9bcd18343c1853, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _train_wheels
+    second: {fileID: 2100000, guid: 97adc6549df606b43b9bcd18343c1853, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _train_wheels_center
+    second: {fileID: 2100000, guid: 97adc6549df606b43b9bcd18343c1853, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: TrainArmature|drive
+      takeName: TrainArmature|drive
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 16
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: TrainArmature|jump
+      takeName: TrainArmature|jump
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: TrainArmature|duck-start
+      takeName: TrainArmature|duck-start
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: TrainArmature|honk
+      takeName: TrainArmature|honk
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 63
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: TrainArmature|only-wheels
+      takeName: TrainArmature|only-wheels
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 16
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Train
+        weight: 0
+      - path: TrainArmature
+        weight: 0
+      - path: TrainArmature/Root
+        weight: 0
+      - path: TrainArmature/Root/BackWheel
+        weight: 0
+      - path: TrainArmature/Root/BackWheel/BackWheelRot
+        weight: 1
+      - path: TrainArmature/Root/BackWheel/BackWheelRot/WheelStick
+        weight: 1
+      - path: TrainArmature/Root/BackWheel/BackWheelRot/WheelStick/WheelStick_end
+        weight: 0
+      - path: TrainArmature/Root/CenterSpine.001
+        weight: 0
+      - path: TrainArmature/Root/CenterSpine.001/CenterSpine.002
+        weight: 0
+      - path: TrainArmature/Root/CenterSpine.001/CenterSpine.002/CenterSpine.003
+        weight: 0
+      - path: TrainArmature/Root/CenterSpine.001/CenterSpine.002/CenterSpine.003/CenterSpine.004
+        weight: 0
+      - path: TrainArmature/Root/CenterSpine.001/CenterSpine.002/CenterSpine.003/CenterSpine.004/Chimn
+        weight: 0
+      - path: TrainArmature/Root/CenterSpine.001/CenterSpine.002/CenterSpine.003/CenterSpine.004/Chimn/Chimn_end
+        weight: 0
+      - path: TrainArmature/Root/CenterSpine.001/CenterSpine.002/CenterSpine.003/CenterSpine.004/Front
+        weight: 0
+      - path: TrainArmature/Root/CenterSpine.001/CenterSpine.002/CenterSpine.003/CenterSpine.004/Front/Front_end
+        weight: 0
+      - path: TrainArmature/Root/FrontWheel
+        weight: 0
+      - path: TrainArmature/Root/FrontWheel/FrontWheelRot
+        weight: 1
+      - path: TrainArmature/Root/FrontWheel/FrontWheelRot/FrontWheelRot_end
+        weight: 1
+      - path: TrainArmature/Root/Head.001
+        weight: 0
+      - path: TrainArmature/Root/Head.001/Head.002
+        weight: 0
+      - path: TrainArmature/Root/Head.001/Head.002/HeadBack
+        weight: 0
+      - path: TrainArmature/Root/Head.001/Head.002/HeadBack/HeadBack_end
+        weight: 0
+      - path: TrainArmature/Root/Head.001/Head.002/HeadFront
+        weight: 0
+      - path: TrainArmature/Root/Head.001/Head.002/HeadFront/HeadFront_end
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
