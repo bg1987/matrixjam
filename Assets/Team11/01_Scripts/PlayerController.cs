@@ -47,6 +47,7 @@ namespace MatrixJam.Team11
         public bool isDead = false;
         public bool wasHurt = false;
         public bool canMove = false;
+        bool levelFinished;
         protected HashSet<GameObject> _objectAwareness;
      //   public bool canMoveVertically;
 
@@ -132,7 +133,7 @@ namespace MatrixJam.Team11
 
                 }*/
         }
-            else
+            else if(!levelFinished)
             {
                 horizontalInput = 0;
                 verticalInput = 0;
@@ -287,6 +288,17 @@ namespace MatrixJam.Team11
         {
             Debug.DrawLine(this.transform.position, collision.transform.position, PlayerController._enterDebugColor, 3f);
             this._objectAwareness.Add(collision.gameObject);
+
+            if(collision.gameObject.tag.Equals("Tag12"))
+            {
+                canMove = false;
+                levelFinished = true;
+
+                horizontalInput = 0;
+                verticalInput = 1;
+                _rigidbody.velocity = Vector2.up * movementSpeed;
+
+            }
         }
         private void OnTriggerExit2D(Collider2D collision)
         {

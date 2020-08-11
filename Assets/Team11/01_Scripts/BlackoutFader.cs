@@ -23,7 +23,7 @@ namespace MatrixJam.Team11
             
         }
 
-        protected IEnumerator LerpOverTime(float duration, Color src, Color dst)
+        public IEnumerator LerpOverTime(float duration, Color src, Color dst)
         {
             float progress = 0f;
 
@@ -56,7 +56,7 @@ namespace MatrixJam.Team11
             yield return StartCoroutine(this.LerpOverTime(fadeOutTime, this.FadeColor, transparent));
         }
 
-        public IEnumerator FadeIn(float fadeInTime, float delayDuringBlack, bool callFadeOut)
+        public IEnumerator FadeIn(float fadeInTime, float delayDuringBlack = 0f, bool callFadeOut = false)
         {
             /*while (image.color.a < 1)
             {

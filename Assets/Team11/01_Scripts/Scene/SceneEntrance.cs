@@ -11,6 +11,7 @@ namespace MatrixJam.Team11
         [SerializeField] bool isBluePill;
 
         [SerializeReference] public GameScene TargetScene;
+        [SerializeField] public SceneTransition Transition = SceneTransition.Default;
 
         [SerializeField] protected UnityEvent OnEnter;
 
@@ -54,7 +55,7 @@ namespace MatrixJam.Team11
 
             if (this.TargetScene != null)
             {
-                this._manager.GoToScene(this.TargetScene);
+                this._manager.GoToScene(this.TargetScene, this.Transition);
             }
         }
     }
