@@ -1,7 +1,7 @@
 using UnityEngine;
 using MatrixJam.Team19.Gameplay.Managers;
 
-namespace MatrixJam.Team19
+namespace MatrixJam.Team19.Gameplay.General
 {
     public class PlayerInteractions : MonoBehaviour
     {
