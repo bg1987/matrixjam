@@ -7,7 +7,7 @@ namespace MatrixJam.Team24
     public static class Stats
     {
 
-        public static float playerHP = 30;
+        public static float playerHP = 120;
         public static int protesterHP = 10;
         public static int officerHP = 12;
                
