@@ -184,7 +184,7 @@ namespace MatrixJam.Team14
 
         private void OnGameReset()
         {
-            collider.gameObject.SetActive(true);
+            collider.enabled =true;
             TransitionState(DriveState, null);
         }
 
@@ -257,7 +257,7 @@ namespace MatrixJam.Team14
 
         private void KillTrain()
         {
-            collider.gameObject.SetActive(false);
+            collider.enabled = false;
             GameManager.Instance.OnDeath();
         }
 

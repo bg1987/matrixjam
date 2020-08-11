@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -62,6 +63,17 @@ namespace MatrixJam.Team14
         private const string TrigHappy = "happy";
         private const string TrigReset = "reset";
         private float _timeSinceRestart = 0f;
+
+        private IEnumerable<string> AllTriggers
+        {
+            get
+            {
+                yield return TrigWeird;
+                yield return TrigEyebrows;
+                yield return TrigHappy;
+                yield return TrigReset;
+            }
+        }
 
         public LookAt LookMode
         {
@@ -196,6 +208,15 @@ namespace MatrixJam.Team14
         {
             animationDelay.OnRestart();
             StopAllCoroutines();
+
+            ResetAnimations();
+        }
+
+        private void ResetAnimations()
+        {
+            foreach (var trig in AllTriggers)
+                anim.SetBool(trig, false);
+
             anim.SetTrigger(TrigReset);
         }
 
