@@ -83,6 +83,8 @@
 				void frag(v2f IN, out half4 c : COLOR)
 				{
 					c = SampleSpriteTexture(IN.texcoord) * IN.color;
+					if (c.a < 0.01)
+						discard;
 					c.rgb *= c.a;
 				}
 			ENDCG
