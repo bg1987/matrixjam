@@ -19,11 +19,12 @@ namespace MatrixJam.Team19.Gameplay.Authoring
         {
             if (_shouldSpawnOnStart)
             {
-                _lastSpawnTime = Time.time - _lastSpawnTime;
+                ForceSpawn();
             }
-
-            ResetSpawnTime();
-
+            else
+            {
+                ResetSpawnTime();
+            }
         }
 
         private void Update()
@@ -34,6 +35,11 @@ namespace MatrixJam.Team19.Gameplay.Authoring
 
                 ResetSpawnTime();
             }
+        }
+
+        private void ForceSpawn()
+        {
+            _lastSpawnTime = Time.time - _spawnIntervalSeconds;
         }
 
         private void ResetSpawnTime()
