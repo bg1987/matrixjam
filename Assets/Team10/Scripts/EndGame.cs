@@ -61,7 +61,11 @@ namespace MatrixJam.Team10
 
         private void onStart(){
             Name = PlayerName.text.ToUpper();
-            if(isSpecialCharacter(Name)){
+            if(Name == ""){
+                Name = "my parents didn't name me";
+                System.Array.Find(players, (p) => p.name == "PLAYER").gameObject.SetActive(true);
+            }
+            else if(isSpecialCharacter(Name)){
                 System.Array.Find(players, (p) => p.name == Name).gameObject.SetActive(true);
             }
             else{
@@ -80,6 +84,19 @@ namespace MatrixJam.Team10
             PanelButton.gameObject.SetActive(false);
             PanelMessage.gameObject.SetActive(false);
             g.DialogueMenu(tr.getStarterDialogue(Name));
+        }
+
+        public void testDeath(int id){
+            Panel.SetActive(true);
+            PanelMessage.gameObject.SetActive(true);
+            PanelButton.gameObject.SetActive(true);
+            PanelButton.onClick = new Button.ButtonClickedEvent();
+            PanelButton.GetComponentInChildren<Text>().text = "Next";
+            PanelButton.onClick.AddListener(delegate { 
+                testDeath(id+1);
+            });
+            DeathList = DeathListGen();
+            StartCoroutine(TypeMessegeAffect(DeathList[id]));
         }
 
         private bool isRoommate(){
@@ -155,18 +172,19 @@ namespace MatrixJam.Team10
             a.Add(new string[] { "just because it's a game,", "it does not mean you can starve your character.",
                 "poor <name>, it died of starvation...." , "and so young..." , "btw", "that's also means you died" });
             //work - getting fired
-            a.Add(new string[] { "you do realize you need to work in order to pay rent, rright???", "cause you got fired, couldn't pay your bills",
-                "and now you are homeless... with corona... and dead...", "obviously, since we gave up on you",
+            a.Add(new string[] { "you do realize you need to work in order to pay rent, rrigth???", 
+                "since you didn't work, you just got fired, couldn't pay your bills and now you are homeless... with corona... and dead...", 
+                "obviously, since we gave up on you",
                 "cause you don't work and we don't like that...", "welph, at least it didnt happen in real life, rightt?" });
             //killOrder - rommate dont like the way you talk
             a.Add(new string[] {"your roommates got annoyed with you", "and decieded to throw you out of the apartment...",
                 "welll.... you know the drill...", "you met a corona zombie, got infected and died.", "now go away...", "i'm trying to take a nap here....."});
             //paranoia - reapeting similar actions 6 times
             a.Add(new string[] { "you are seriously paranoid and should get that checked...",
-                "anyways, this paranoia of yours didn't help and you still got the corona virus.", "you died!" });
+                "the psychologist says repeated actions is a serious case of paranoia and in our world that's a good enough reason to die", "you died!" });
             //win
             a.Add(new string[] { "congratulations!", "you made it till the end", "but just to make sure, you didn't cheat right?",
-                "i mean, we made it extremely difficult, you see...", "anyways, you won - you, your roommate, and ect.",
+                "i mean, we made it extremely difficult, you see...", "anyways, you won - you, your roommate, and by default us as well",
                 "we have other ending, you should check it out" });
             //sleep (repeat)
             a.Add(new string[] {"zzzzzz", "we love sleeping, don't we?", 
@@ -177,7 +195,7 @@ namespace MatrixJam.Team10
             a.Add(new string[] {"life is such a mysterious thing", 
                 "you see... some things are necessary in life even if we think otherwise",
                 "one of them is the air we breathe",
-                "so you died... since you didn't want to come out of the closet...."});
+                "so you died (of suffocation) ... since you didn't want to come out of the closet...."});
             //play (repeat)
             a.Add(new string[] {"wow...", "even inside a game, you are totally binge gaming...",
                 "this is trully the case of a character taking after it's player",

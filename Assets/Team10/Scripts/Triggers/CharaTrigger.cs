@@ -16,17 +16,17 @@ namespace MatrixJam.Team10
             }
 
         void OnMouseDown(){
-            if(!BlockPanel.activeSelf && !Dialoguer.DialoguePanelBlock.activeSelf){
+            if(!BlockPanel.activeSelf && !Dialoguer.dialoguePanel.activeSelf){
                 TriggerDialogue();
             }
         }
 
         public void TriggerDialogue(){
             if(id == 1){
-                FindObjectOfType<DialogueManager>().StartDialogue(FindObjectOfType<GameRules>().t.getRoommate1Dialogue());
+                Dialoguer.StartDialogue(FindObjectOfType<GameRules>().t.getRoommate1Dialogue());
             }
             else if(id == 2){
-                FindObjectOfType<DialogueManager>().StartDialogue(FindObjectOfType<GameRules>().t.getRoommate3Dialogue());
+                Dialoguer.StartDialogue(FindObjectOfType<GameRules>().t.getRoommate3Dialogue());
             }
         }
     }

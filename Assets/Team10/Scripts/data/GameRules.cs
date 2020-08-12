@@ -100,7 +100,7 @@ namespace MatrixJam.Team10
             return System.Array.IndexOf(names, playerName) != -1;
         }
         public void checkDeath(){
-            if(canCharacterAvoidDeath() && killFactor > 3){
+            if(!canCharacterAvoidDeath() && killFactor > 2){
                 DeathScreen(3);
             }
         }
@@ -110,7 +110,7 @@ namespace MatrixJam.Team10
             //private int hungerFactor; // must eat 2 meals during the day if counter < 2 kill - end of day
             //private int workFactor;  // must reach 3 point by the end of the day to survive - end of day
             //private int killFactor; // 3 will kill 
-            if(cleanFactor < 5){
+            if(cleanFactor < 3){
                 DeathScreen(0);
             }
             else if(hungerFactor < 2){
@@ -119,7 +119,7 @@ namespace MatrixJam.Team10
             else if(workFactor < 3){
                 DeathScreen(2);
             }
-            else if(canCharacterAvoidDeath() && killFactor > 3){
+            else if(!canCharacterAvoidDeath() && killFactor > 2){
                 DeathScreen(3);
             }
             else{

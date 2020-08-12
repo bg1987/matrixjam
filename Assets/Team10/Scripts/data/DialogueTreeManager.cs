@@ -51,11 +51,11 @@ namespace MatrixJam.Team10
             dialogue = new DialogueTree();
             bool hasDialogues = randomDialogues.TryGetValue(room, out roomDialogues);
             System.Random rand = new System.Random();
-            int r = rand.Next(roomDialogues.Count*10);
+            int r = rand.Next(roomDialogues.Count*5);
             Debug.Log(r + "-" + roomDialogues.Count);
-            if(hasDialogues && roomDialogues.Count > 0 && r % 10 == 0){
-                dialogue = roomDialogues[r / 10];
-                roomDialogues.RemoveAt(r / 10);
+            if(hasDialogues && roomDialogues.Count > 0 && r % 5 == 0){
+                dialogue = roomDialogues[r / 5];
+                roomDialogues.RemoveAt(r / 5);
                 randomDialogues[room] = roomDialogues;
                 return true;
             }

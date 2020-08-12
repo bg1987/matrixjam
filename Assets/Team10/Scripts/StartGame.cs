@@ -12,6 +12,7 @@ namespace MatrixJam.Team10
         {
             base.StartHelp(num_ent);
             FindObjectOfType<EndGame>().startScene();
+            // FindObjectOfType<EndGame>().testDeath(6); //startScene();
         }
         
         // Start is called before the first frame update
