@@ -8,6 +8,7 @@ namespace MatrixJam.Team20
     {
         MovementComponent movement;
         ApplyGravityComponent applyGravity;
+        Animator animator;
         public float walkSpeed = 10f;
         public float jumpHeight = 10f;
         public bool resetHorizontal = false;
@@ -31,6 +32,7 @@ namespace MatrixJam.Team20
             _audio = gameObject.GetComponent<AudioSource>();
             movement = GetComponent<MovementComponent>();
             applyGravity = GetComponent<ApplyGravityComponent>();
+            animator = GetComponent<Animator>();
         }
 
         // Update is called once per frame
@@ -66,9 +68,14 @@ namespace MatrixJam.Team20
             }
         }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
-
+            if (animator)
+            {
+                animator.SetBool("grounded", applyGravity.grounded);
+                animator.SetFloat("xVelocity", movement.velocity.x);
+                animator.SetFloat("yVelocity", movement.velocity.y);
+            }
         }
 
         public void PlayDetach()

@@ -38,10 +38,10 @@ namespace MatrixJam.Team20
                 GoToNextLevel();
             }
 
-            /*if (Input.GetKeyDown(KeyCode.N))
+            if (Input.GetKeyDown(KeyCode.N))
             {
                 GoToNextLevel();
-            }*/
+            }
 
             if (!introBGM.isPlaying && !introFinished)
             {
