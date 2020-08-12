@@ -9008,7 +9008,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1059628321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19117,6 +19117,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4423785601300159437}
     m_Modifications:
+    - target: {fileID: 245667573, guid: 2979444957a6dc040a2f8ae1e7e69056, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -1874168057494300528, guid: dc955e3ddc4e5c04f8058efed583c8f1,
+        type: 2}
     - target: {fileID: 1117241635728749825, guid: 2979444957a6dc040a2f8ae1e7e69056,
         type: 3}
       propertyPath: m_LocalPosition.x
