@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcabcd8b9900166489ce1e9c15afe896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLevel: 3
+  startLevel: 2
   Levels:
   - {fileID: 4423785601300159434}
   - {fileID: 5318331053861311373}
@@ -278,7 +278,6 @@ MonoBehaviour:
   - {fileID: 707649354}
   - {fileID: 1837766794}
   - {fileID: 1048737016}
-  helperCanvas: {fileID: 1654413771}
   introBGM: {fileID: 697754791}
   loopBGM: {fileID: 1218566157}
   introFinished: 0
@@ -2340,7 +2339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &413861243
 Transform:
   m_ObjectHideFlags: 0
@@ -9277,12 +9276,12 @@ PrefabInstance:
     - target: {fileID: 4217871352124523154, guid: b08487510f359e148829ab20ffbf5e39,
         type: 3}
       propertyPath: m_Offset.x
-      value: -0.06209755
+      value: 0.10229921
       objectReference: {fileID: 0}
     - target: {fileID: 4217871352124523154, guid: b08487510f359e148829ab20ffbf5e39,
         type: 3}
       propertyPath: m_Size.x
-      value: 18.634106
+      value: 18.305313
       objectReference: {fileID: 0}
     - target: {fileID: 4217871352124523154, guid: b08487510f359e148829ab20ffbf5e39,
         type: 3}
@@ -9302,12 +9301,12 @@ PrefabInstance:
     - target: {fileID: 4217871352124523154, guid: b08487510f359e148829ab20ffbf5e39,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.88704324
+      value: -0.84129906
       objectReference: {fileID: 0}
     - target: {fileID: 4217871352124523154, guid: b08487510f359e148829ab20ffbf5e39,
         type: 3}
       propertyPath: m_Size.y
-      value: 7.5152535
+      value: 6.651119
       objectReference: {fileID: 0}
     - target: {fileID: 4217871352124523155, guid: b08487510f359e148829ab20ffbf5e39,
         type: 3}

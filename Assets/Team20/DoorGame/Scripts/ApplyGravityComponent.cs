@@ -9,6 +9,7 @@ namespace MatrixJam.Team20
         public bool grounded = false;
         public float gravity = 10f;
         public float distance = 0.1f;
+        public float xDist = 0.1f;
         public LayerMask groundLayer;
         MovementComponent movement;
 
@@ -24,19 +25,18 @@ namespace MatrixJam.Team20
             
         }
 
+        bool IsGoundedImpl(Vector2 position)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, distance, groundLayer);
+            return hit.collider;
+        }
+
         bool IsGrounded()
         {
             var bounds = this.GetComponent<CapsuleCollider2D>().bounds;
             Vector2 position = new Vector2(bounds.center.x, bounds.min.y);
-            Vector2 direction = Vector2.down;
-
-            RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer);
-            if (hit.collider != null)
-            {
-                return true;
-            }
-
-            return false;
+            Vector2 offset = new Vector2(xDist, 0f);
+            return IsGoundedImpl(position - offset) || IsGoundedImpl(position + offset);
         }
 
         private void FixedUpdate()
