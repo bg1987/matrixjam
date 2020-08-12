@@ -92,6 +92,18 @@ namespace MatrixJam.Team20
             _audio.PlayOneShot(attachDoor);
         }
 
+        public void PlayFootstep()
+        {
+            int i = Random.Range(0, 2);
+            if(i==0)
+                _audio.PlayOneShot(footstep1);
+            if (i == 1)
+                _audio.PlayOneShot(footstep2);
+            if (i == 2)
+                _audio.PlayOneShot(footstep3);
+
+        }
+
         public void PlayFlip()
         {
             _audio.PlayOneShot(flipDoor);
