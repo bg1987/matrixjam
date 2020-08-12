@@ -79,7 +79,7 @@ namespace MatrixJam.Team10
             PanelTitle.gameObject.SetActive(false);
             PanelButton.gameObject.SetActive(false);
             PanelMessage.gameObject.SetActive(false);
-            // g.DialogueMenu(tr.getStarterDialogue(Name));
+            g.DialogueMenu(tr.getStarterDialogue(Name));
         }
 
         private bool isRoommate(){
