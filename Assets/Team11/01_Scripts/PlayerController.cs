@@ -90,7 +90,7 @@ namespace MatrixJam.Team11
         private void Awake()
         {
             canMove = false;
-            Invoke("DisableMovementLock", 1f); // stops player from moving during fade out so he won't miss the bubble tutorial message.
+            Invoke("DisableMovementLock", 0.5f); // stops player from moving during fade out so he won't miss the bubble tutorial message.
         }
 
         // Update is called once per frame
