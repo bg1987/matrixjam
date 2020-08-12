@@ -32,7 +32,8 @@ namespace MatrixJam.Team20
             doorAudio = GameObject.Find("SFX_Manager").GetComponent<AudioSource>();
             if (placedDoor)
             {
-                spriteRenderer.enabled = false;
+                if (spriteRenderer)
+                    spriteRenderer.enabled = false;
                 placedDoor.currentPlace = this;
                 //placedDoor.gameObject.GetComponent<SpriteRenderer>().material = spriteRenderer.material;
                 if (wallCollider != null)
@@ -63,7 +64,8 @@ namespace MatrixJam.Team20
 
             door.gameObject.SetActive(false);
             door.currentPlace = null;
-            spriteRenderer.enabled = true;
+            if(spriteRenderer)
+                spriteRenderer.enabled = true;
 
             if (setMaterial)
             {
@@ -97,8 +99,8 @@ namespace MatrixJam.Team20
                 originalMaterial = spr.material;
                 spr.material = setMaterial;
             }
-
-            spriteRenderer.enabled = false;
+            if (spriteRenderer)
+                spriteRenderer.enabled = false;
 
             placedDoor.transform.SetParent(this.transform);
             placedDoor.transform.localScale = Vector3.one;
