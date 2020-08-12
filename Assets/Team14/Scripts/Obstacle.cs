@@ -10,24 +10,28 @@ namespace MatrixJam.Team14
     public class ObstaclePayload
     {
         public readonly Obstacle Obstacle;
-        public bool Successful;
-        public TrainMove Move;
-        public Transform MoveCue;
+        public readonly bool Successful;
+        public readonly TrainMove Move;
+        public readonly Transform MoveCue;
+        public readonly Transform ObstacleHolder;
 
-        public ObstaclePayload(Obstacle obstacle, bool successful, TrainMove move, Transform moveCue)
+        public ObstaclePayload(Obstacle obstacle, bool successful, TrainMove move, Transform moveCue, Transform obstacleHolder)
         {
             Obstacle = obstacle;
             Successful = successful;
             Move = move;
             MoveCue = moveCue;
+            ObstacleHolder = obstacleHolder;
         }
     }
 
     public class Obstacle : MonoBehaviour
     {
+        [SerializeField] private bool isMoveHold;
         [SerializeField] private TrainMove trainMove;
         [SerializeField] private Transform moveCue; // Where should actually do the move. Null = do when triggers
         [SerializeField] private BoxCollider trigger; // For Gizmos
+        [SerializeField] private Transform obstacleHolder;
 
         public static IReadOnlyList<Obstacle> AllObstaclesSortedByZ;
         public static Dictionary<TrainMove, List<Obstacle>> CurrObstacles;
@@ -36,6 +40,7 @@ namespace MatrixJam.Team14
 
         public TrainMove Move => trainMove;
         public Transform MoveCue => moveCue;
+        public Transform ObstacleHolder => obstacleHolder;
         
         public static event Action<ObstaclePayload> OnObstacleEvent;
         
@@ -76,7 +81,7 @@ namespace MatrixJam.Team14
         public void OnPressedInZone()
         {
             if (_succeeded) return;
-            
+
             _succeeded = true;
             SendEventUsingFields();
         }
@@ -115,13 +120,19 @@ namespace MatrixJam.Team14
             
             CurrObstacles[trainMove].Remove(this);
 
-            if (!_succeeded) SendEventUsingFields();
+            if (isMoveHold && TrainMoves.GetKeyHold(Move))
+            {
+
+                Debug.Log($"KEY HOLD! ({Move})");
+                OnPressedInZone();
+            }
+            else if (!_succeeded) SendEventUsingFields();
         }
 
         private void SendEventUsingFields()
         {
             Debug.Log($"Sending Obs Event ({Move}, {_succeeded})");
-            OnObstacleEvent?.Invoke(new ObstaclePayload(this, _succeeded, Move, moveCue));
+            OnObstacleEvent?.Invoke(new ObstaclePayload(this, _succeeded, Move, moveCue, obstacleHolder));
         }
 
         public static Obstacle GetNextObstacle(Vector3 pos)

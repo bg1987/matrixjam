@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -32,11 +33,19 @@ namespace MatrixJam.Team14
     {
         public enum LookAt
         {
+            None,
             Cursor,
             NextObstacleOrTarget,
             Target
         }
 
+        [Header("Config")]
+        [SerializeField] private bool eyebrowsAnim = true;
+        [SerializeField] private bool weirdFaceAnim = true;
+        [SerializeField] private bool happyAnim = true;
+        [SerializeField] private Transform lookaheadPos; // Used for eyes look
+
+        [Space]
         [Range(0.1f, 1f)]
         [SerializeField] private float lookLerpSpeed = 0.6f;
         [SerializeField] private AnimateThomasAfter animationDelay; // Hold off animations so player isnt distracted
@@ -63,6 +72,17 @@ namespace MatrixJam.Team14
         private const string TrigReset = "reset";
         private float _timeSinceRestart = 0f;
 
+        private IEnumerable<string> AllTriggers
+        {
+            get
+            {
+                yield return TrigWeird;
+                yield return TrigEyebrows;
+                yield return TrigHappy;
+                yield return TrigReset;
+            }
+        }
+
         public LookAt LookMode
         {
             get => lookMode;
@@ -83,6 +103,8 @@ namespace MatrixJam.Team14
                 
                 switch (LookMode)
                 {
+                    case LookAt.None:
+                        return null;
                     case LookAt.Cursor:
                         var screenPos = Input.mousePosition;
                         screenPos.z = Z;
@@ -99,7 +121,7 @@ namespace MatrixJam.Team14
 
         private Vector3 GetPOsNextObstacleOrTarget()
         {
-            var pos = transform.position;
+            var pos = GetReferencePos();
             var nextObstacle = Obstacle.GetNextObstacle(pos);
             if (!nextObstacle) return target.position;
             
@@ -108,24 +130,37 @@ namespace MatrixJam.Team14
 
             var isTargetCloser = Vector3.Distance(pos, targetPos) 
                                  < Vector3.Distance(pos, nextObstaclePos);
-
+            
             return isTargetCloser ? targetPos : nextObstaclePos;
+        }
+
+        private Vector3 GetReferencePos()
+        {
+            if (lookaheadPos != null) return lookaheadPos.position;
+            return transform.position;
         }
 
         private Vector3 startScale;
 
         private IEnumerator Start()
         {
-            startScale = transform.localScale;
-            StartCoroutine(RandomEyebrows(eyebrowsRandomDelta[0], eyebrowsRandomDelta[1]));
-            yield return new WaitForSeconds(1);
             GameManager.ResetEvent += OnRestart;
+            GameManager.GameFinishedEvent += OnGameFinish;
+            
+            if (eyebrowsAnim)
+            {
+                startScale = transform.localScale;
+                StartCoroutine(RandomEyebrows(eyebrowsRandomDelta[0], eyebrowsRandomDelta[1]));
+                yield return new WaitForSeconds(1);
+            }
+            
             // HappyAnim(3f);
         }
 
         private void OnDestroy()
         {
             GameManager.ResetEvent -= OnRestart;
+            GameManager.GameFinishedEvent -= OnGameFinish;
         }
 
         private void Update()
@@ -135,8 +170,14 @@ namespace MatrixJam.Team14
             HandleEyesLookAt();
         }
 
+        private void OnGameFinish(bool obj)
+        {
+            HappyAnim(999);
+        }
+
         public void WeirdAnim(float time)
         {
+            if (!weirdFaceAnim) return;
             if (!animationDelay.ShouldAnimate) return;
 
             StartCoroutine(WierdRoutine());
@@ -150,6 +191,7 @@ namespace MatrixJam.Team14
 
         public void HappyAnim(float time)
         {
+            if (!happyAnim) return;
             if (!animationDelay.ShouldAnimate) return;
 
             StartCoroutine(HappyRoutine());
@@ -163,6 +205,7 @@ namespace MatrixJam.Team14
 
         public void EyebrowsAnim()
         {
+            if (!eyebrowsAnim) return;
             if (!animationDelay.ShouldAnimate) return;
 
             const float dur1 = 0.4f;
@@ -196,6 +239,15 @@ namespace MatrixJam.Team14
         {
             animationDelay.OnRestart();
             StopAllCoroutines();
+
+            ResetAnimations();
+        }
+
+        private void ResetAnimations()
+        {
+            foreach (var trig in AllTriggers)
+                anim.SetBool(trig, false);
+
             anim.SetTrigger(TrigReset);
         }
 
@@ -222,12 +274,36 @@ namespace MatrixJam.Team14
              }
          }
 
+        private Vector3 _refPos;
+        private Vector3 _localLookAt;
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(_refPos, 0.3f);
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(_localLookAt, 0.3f);
+        }
+
         private bool HandleEyesLookAt()
         {
             var lookAtNullable = LookAtPos;
 
             if (!lookAtNullable.HasValue) return false;
             var lookAt = lookAtNullable.Value;
+
+            
+            if (lookaheadPos)
+            {
+                var localLookahead = lookaheadPos.InverseTransformPoint(lookAt);
+                lookAt = transform.TransformPoint(localLookahead);
+                _localLookAt = lookAt;
+            }
+            
+            // _refPos = refPos;
+            // var localLookAt = lookAt - refPos + transform.position;
+            // _localLookAt = localLookAt;
+            
             
             EyeLookAt(leftEye, lookAt);
             EyeLookAt(rightEye, lookAt);
