@@ -170,7 +170,7 @@ namespace MatrixJam.Team10
                 "now look, you got the corona virus. are you happy?","well, too bad, we dont care.","anyways, you died..."});
             //hunger - not eating
             a.Add(new string[] { "just because it's a game,", "it does not mean you can starve your character.",
-                "poor <name>, it died of starvation...." , "and so young..." , "btw", "that's also means you died" });
+                "poor <" + Name + ">, it died of starvation...." , "and so young..." , "btw", "that's also means you died" });
             //work - getting fired
             a.Add(new string[] { "you do realize you need to work in order to pay rent, rrigth???", 
                 "since you didn't work, you just got fired, couldn't pay your bills and now you are homeless... with corona... and dead...", 
