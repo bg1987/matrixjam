@@ -313,12 +313,12 @@ namespace MatrixJam.Team11
 
         public bool ShouldFocusOn(GameObject obj)
         {
-            Debug.DrawLine(this.transform.position, obj.transform.position, PlayerController._inRangeDebugColor, 1f);
+           // Debug.DrawLine(this.transform.position, obj.transform.position, PlayerController._inRangeDebugColor, 1f);
             if (this.hasObjectInHands || !this.IsRelevant(obj))
             {
                 return false;
             }
-            Debug.DrawLine(this.transform.position, obj.transform.position, PlayerController._relevantDebugColor, 0.5f);
+           // Debug.DrawLine(this.transform.position, obj.transform.position, PlayerController._relevantDebugColor, 0.5f);
 
             if (this.FocusedObject == null)
             {
@@ -500,6 +500,11 @@ namespace MatrixJam.Team11
         {
             SFXPlayer.instance.PlaySwimSFX();
         }
+
+        /*public void IceCubeCrushed(GameObject cube)
+        {
+            this._objectAwareness.Remove(cube);
+        }*/
 
 
 
