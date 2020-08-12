@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -92,6 +92,8 @@ namespace MatrixJam
         }
         public void LoadRandomScene()
         {
+            Debug.Log("Starting random scene");
+            Debug.Log($"PlayerData.Data.NumGames {PlayerData.Data.NumGames}");
             //choose a random scene and load it.
             //this also start the gameplay in that scene.
             int start_sce = 1 + Random.Range(0, PlayerData.Data.NumGames);
