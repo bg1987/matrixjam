@@ -33,6 +33,11 @@ namespace MatrixJam.Team20
                 RestartScene();
             }
 
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                GoToNextLevel();
+            }
+
             /*if (Input.GetKeyDown(KeyCode.N))
             {
                 GoToNextLevel();
