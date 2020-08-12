@@ -20,20 +20,18 @@ namespace MatrixJam.Team20
         // Update is called once per frame
         void Update()
         {
-            var doorDirection = door.Direction();
-            if(doorDirection.x == -1 || doorDirection.y == -1)
+            transform.right = door.ArrowDirection();
+            /*if (doorDirection.y * doorDirection.y == 1 || doorDirection.x == -1)
             {
                 arrowRenderer.flipX = true;
             }
             else
             {
                 arrowRenderer.flipX = false;
-                transform.right = door.Direction();
-            }
+            }*/
 
             //arrowRenderer.enabled = door.Connected();
-            arrowRenderer.color = doorRenderer.color;
-            arrowRenderer.flipX = door.Flipped();
+            //arrowRenderer.flipX = door.Flipped();
         }
     }
 }

@@ -80,12 +80,12 @@ namespace MatrixJam.Team20
             if (placedDoor != null)
                 return;
 
-            door.currentPlace = this;
-            door.transform.position = this.transform.position;
-            door.transform.rotation = this.transform.rotation;
-            door.gameObject.SetActive(true);
-
             placedDoor = door;
+
+            placedDoor.currentPlace = this;
+            placedDoor.transform.position = this.transform.position;
+            placedDoor.transform.rotation = this.transform.rotation;
+            placedDoor.gameObject.SetActive(true);
 
             if (!canBeConnected && placedDoor.Connected())
                 placedDoor.Disconnect();
@@ -104,6 +104,8 @@ namespace MatrixJam.Team20
 
             placedDoor.transform.SetParent(this.transform);
             placedDoor.transform.localScale = Vector3.one;
+            placedDoor.FlipDirection();
+            placedDoor.FlipDirection();
         }
 
         private void OnTriggerEnter2D(Collider2D other)

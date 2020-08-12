@@ -93,13 +93,27 @@ namespace MatrixJam.Team20
         public Vector2 Direction()
         {
             if (!currentPlace)
-                return this.transform.right;
+                return transform.right;
             if (currentPlace.setMaterial)
             {
-                return this.transform.up * (Flipped() ? -1f : 1f);
+                
+                return transform.up * (Flipped() ? -1f : 1f);
             }
             else
-                return this.transform.right * (Flipped() ? -1f : 1f);
+                return transform.right * (Flipped() ? -1f : 1f);
+        }
+
+        public Vector2 ArrowDirection()
+        {
+            if (!currentPlace)
+                return transform.TransformDirection(Vector3.right);
+            if (currentPlace.setMaterial)
+            {
+
+                return transform.TransformDirection(Vector3.up) * (Flipped() ? -1f : 1f);
+            }
+            else
+                return transform.TransformDirection(Vector3.right) * (Flipped() ? -1f : 1f);
         }
 
         Color GetColor()

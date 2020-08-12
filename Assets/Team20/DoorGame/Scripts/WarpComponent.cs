@@ -134,6 +134,8 @@ namespace MatrixJam.Team20
 
         public void ResetIsRight()
         {
+            if (!currentDoorPlace)
+                return;
             isRightToDoor = IsRightToDoor();
         }
 
