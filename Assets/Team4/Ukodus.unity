@@ -2642,7 +2642,7 @@ MonoBehaviour:
   audio: {fileID: 1436812567}
   startClip: {fileID: 8300000, guid: 566cd3dff06e47b4eaa98ed08f3b57e7, type: 3}
   loopClip: {fileID: 8300000, guid: 8e07478a66aaa794caaf33e11fa1b4af, type: 3}
-  mainLoopClip: {fileID: 0}
+  mainLoopClip: {fileID: 8300000, guid: 6c9ca79638ac5894f92bc724f189eae7, type: 3}
 --- !u!224 &1469512843 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8532848060361992239, guid: 6e67f59df427cd04c9b3e222c0640b34,
