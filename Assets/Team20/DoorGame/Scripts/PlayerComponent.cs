@@ -72,6 +72,15 @@ namespace MatrixJam.Team20
         {
             if (animator)
             {
+                if (applyGravity.grounded && Mathf.Abs(movement.velocity.x) > 0.001)
+                {
+                    animator.speed = Mathf.Abs(movement.velocity.x);
+                }
+                else
+                {
+                    animator.speed = 1f;
+                }
+                
                 animator.SetBool("grounded", applyGravity.grounded);
                 animator.SetFloat("xVelocity", movement.velocity.x);
                 animator.SetFloat("yVelocity", movement.velocity.y);

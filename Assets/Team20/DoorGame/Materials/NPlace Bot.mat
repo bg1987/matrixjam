@@ -75,17 +75,17 @@ Material:
     - _PrespectiveShift: 0
     - _RepeatBoth: 0
     - _ReplaceOnlyWhite: 1
-    - _RightZ: -4
+    - _RightZ: 0
     - _ScaleUVX: 2
     - _ScaleUVY: 1
     - _ShiftY: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TransparentZ: 100
+    - _TransparentZ: 0
     - _UVSec: 0
-    - _UseShaderZ: 1
-    - _UseTransparentZ: 1
+    - _UseShaderZ: 0
+    - _UseTransparentZ: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
