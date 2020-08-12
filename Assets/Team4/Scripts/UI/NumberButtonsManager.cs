@@ -89,7 +89,10 @@ namespace MatrixJam.Team4
         public static void SetNumberOnSquare(Vector2 index, int currentValue, PlayerSide playerColor)
         {
             var numberButtonScript = _allButtons[(int) index.x][(int) index.y];
-            numberButtonScript.SetValue(currentValue, playerColor);
+            if (!numberButtonScript.HasValue())
+            {
+                numberButtonScript.SetValue(currentValue, playerColor);
+            }
         }
     }
 }
