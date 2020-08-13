@@ -9,7 +9,17 @@ public class ExampleGameStartHelper : StartHelper
     public override void StartHelp(int num_ent)
     {
         // this is how the game starts
-        MatrixJam.Team17.Game.App.OnStart();
+    }
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }
