@@ -115,7 +115,7 @@ namespace MatrixJam.Team20
                 var animator = placedDoor.gameObject.GetComponent<Animator>();
                 if (animator)
                 {
-                    if (other.CompareTag("Tag0"))
+                    if (other.name == "Player")
                         openedByPlayer = true;
                     else
                         openedByPlayer = false;
@@ -139,7 +139,7 @@ namespace MatrixJam.Team20
                 var animator = placedDoor.gameObject.GetComponent<Animator>();
                 if (animator)
                 {
-                    if (other.CompareTag("Tag0"))
+                    if (other.name == "Player")
                         openedByPlayer = true;
                     else
                         openedByPlayer = false;

@@ -150,9 +150,9 @@ MonoBehaviour:
   _coinNumber: 0
   jumpSound: {fileID: 8300000, guid: 6b74a3915b9cf5641839e123c777b71a, type: 3}
   landingSound: {fileID: 8300000, guid: 6e91bd3f5e6570e4c948688ba3a20230, type: 3}
-  footstep1: {fileID: 8300000, guid: 3205534e6da493d41a06f4a2f81cf2da, type: 3}
-  footstep2: {fileID: 8300000, guid: 5c8f06c698ab98743ba838fe97f968bf, type: 3}
-  footstep3: {fileID: 8300000, guid: 6b0e2e822b01fa2458ccb9f24c851a90, type: 3}
+  footstep1: {fileID: 8300000, guid: 1e930631d27e5514c8495e31f9aafb43, type: 3}
+  footstep2: {fileID: 8300000, guid: 0a132888c8f1acf4096a6973873f6259, type: 3}
+  footstep3: {fileID: 8300000, guid: 6d8c96bc94b54a8498040450b63f4f32, type: 3}
   attachDoor: {fileID: 8300000, guid: ca2995ae27f30b14385016421b9c994f, type: 3}
   flipDoor: {fileID: 8300000, guid: 5f02c25866377a14b828ad97fffeffbf, type: 3}
   _lookDirection: 0
@@ -235,7 +235,7 @@ AudioSource:
   m_GameObject: {fileID: 1117241635728749834}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1874168057494300528, guid: dc955e3ddc4e5c04f8058efed583c8f1,
+  OutputAudioMixerGroup: {fileID: -6948819406288824768, guid: dc955e3ddc4e5c04f8058efed583c8f1,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
