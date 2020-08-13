@@ -75,7 +75,11 @@ namespace MatrixJam.Team3
                 }
             }
 
-            currentLevel = level;
+            //if (LevelHolder.PlayPlayed() > 0) {
+            // TextEnabled = true;
+            // }
+
+        currentLevel = level;
             ChangeItem("000" + currentLevel);
         }
         
@@ -104,6 +108,10 @@ namespace MatrixJam.Team3
 
         public void ChangeItem(string item)
         {
+            if (item.ToLower() == "quit")
+            {
+                Application.Quit();
+            }
             /*foreach (GameObject go in InitialObjects)
             {
                 go.SetActive(false);
@@ -137,8 +145,12 @@ namespace MatrixJam.Team3
                 
                 if (audioClips.ContainsKey(item.ToLower()))
                 {
-                    musicPlayer.clip = audioClips[item.ToLower()];
-                    musicPlayer.Play();
+                    if (audioClips[item.ToLower()] != null)
+                    {
+                        Debug.Log("Playing Clip " + audioClips[item.ToLower()] + " on " + Stages[item.ToLower()]);
+                        musicPlayer.clip = audioClips[item.ToLower()];
+                        musicPlayer.Play();
+                    }
                 } 
                 
                 
@@ -153,6 +165,7 @@ namespace MatrixJam.Team3
                 if (numLevels++ < MaxLevels -1)
                 {
                     currentLevel = (currentLevel + 1 ) % MaxLevels;
+                    TextEnabled = true;
                     ChangeItem("000" + currentLevel);
                     return;
                 }
@@ -172,6 +185,7 @@ namespace MatrixJam.Team3
 
         public void OpenWebsite(string URL)
         {
+            musicPlayer.Stop();
             currentlEnabled.GetComponent<Image>().sprite = loginScreenImage;
             Application.OpenURL(URL);
         }
