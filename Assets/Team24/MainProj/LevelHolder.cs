@@ -47,7 +47,7 @@ namespace MatrixJam.Team24
             }
             else
             {
-                EnterDefault(GameJamSetup._teamNumber);
+                //EnterDefault(GameJamSetup._teamNumber);
             }
         }
 
