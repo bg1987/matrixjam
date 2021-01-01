@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/TeamMeta/Scenes/MainMenu.unity
-    guid: cc4e329e877635244b275c90f8227e4f
+    path: Assets/Jammers/ExampleGame/ExampleGameScene.unity
+    guid: 7405e46bc710a0a45b96220bec85e862
   m_configObjects: {}
