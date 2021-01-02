@@ -64,7 +64,10 @@ namespace MatrixJam
             {
                 if (SceneManager.SceneMang.Numentrence >= 0 && SceneManager.SceneMang.Numentrence < entries.Length)
                 {
-                    EnterLevel(PlayerData.Data.current_level, SceneManager.SceneMang.Numentrence);
+                    if(SceneManager.SceneMang.Numentrence == -1)
+                        EnterDefault(PlayerData.Data.current_level);
+                    else
+                        EnterLevel(PlayerData.Data.current_level, SceneManager.SceneMang.Numentrence);
                     game_start = true;
                     return;
                 }

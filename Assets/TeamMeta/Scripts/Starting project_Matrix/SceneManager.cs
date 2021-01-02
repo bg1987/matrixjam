@@ -38,27 +38,34 @@ namespace MatrixJam
             switch (num_sce)
             {
                 case -1:
-                    {
-                        LoadSceneFromName("Start");
-                        break;
-                    }
+                {
+                    LoadSceneFromName("Start");
+                    break;
+                }
                 case -2:
-                    {
-                        LoadSceneFromName("End");
-                        break;
-                    }
-                default:
-                    {
-                        if (num_sce > 0 && num_sce <= play_scenes.Length)
-                        {
-                            num_entrence = num_port;
-                            PlayerData.Data.current_level = num_sce;
-                            LoadSceneFromNumber(num_sce);
-                        }
-                        break;
-                    }
-            }
+                {
+                    LoadSceneFromName("End");
+                    break;
+                }
+                case -3:
+                {
+                    //Signals the game to start from its default entrance
+                    num_entrence = -1;
 
+                    break;
+                }
+                default:
+                {
+                    num_entrence = num_port;
+
+                    break;
+                }
+            }
+            if (num_sce > 0 && num_sce <= play_scenes.Length)
+            {
+                PlayerData.Data.current_level = num_sce;
+                LoadSceneFromNumber(num_sce);
+            }
         }
         public void LoadSceneFromConnectionMem(Connection con)
         {
@@ -98,6 +105,15 @@ namespace MatrixJam
             //this also start the gameplay in that scene.
             int start_sce = 1 + Random.Range(0, PlayerData.Data.NumGames);
             LoadScene(start_sce, 0);
+        }
+        public void LoadFirstSceneRandomly()
+        {
+            Debug.Log("Starting first scene at random");
+            Debug.Log($"PlayerData.Data.NumGames {PlayerData.Data.NumGames}");
+            //choose a random scene and load it.
+            //this also start the gameplay in that scene.
+            int start_sce = 1 + Random.Range(0, PlayerData.Data.NumGames);
+            LoadScene(start_sce, -3);
         }
         public void ResetLevelScene()
         {

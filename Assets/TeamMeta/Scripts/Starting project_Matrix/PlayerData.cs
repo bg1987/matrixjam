@@ -73,6 +73,10 @@ namespace MatrixJam
             //get LastCon.scene_from for last level finished, LastCon.portal_from for entrence used, and Lastcon.portal_to for exit used.
             get
             {
+                LinkedListNode<Connection> lastConnectionNode = been_connections.Last;
+
+                if (lastConnectionNode == null)
+                    return new Connection(-1, -1, -1, -1);
                 return been_connections.Last.Value;
             }
         }

@@ -10,7 +10,7 @@ namespace MatrixJam.TeamMeta
         // Start is called before the first frame update
         void Start()
         {
-            sceneManager.LoadRandomScene();
+            sceneManager.LoadFirstSceneRandomly();
         }
     }
 }
