@@ -96,7 +96,7 @@ namespace MatrixJam
         public Connection FindConnectTo(int level, int exit)
         {
             //find the connection to the next scene of given exit
-            return all_connects[level].FindConnect(exit, true);
+            return all_connects[level].FindConnect(exit, false);
         }
         public void LoadRandomScene()
         {
