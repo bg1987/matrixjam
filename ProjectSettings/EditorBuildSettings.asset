@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TeamMeta/TestGames/TestGameOne/TestGameOne.unity
     guid: d72910284a7f23f4cb4847ef957faa5c
+  - enabled: 1
+    path: Assets/TeamMeta/Scenes/EndScene.unity
+    guid: f358af270e65cf54683dea16d33c8dfc
   m_configObjects: {}

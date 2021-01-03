@@ -9,6 +9,7 @@ namespace MatrixJam
 
         public LevelConnects[] all_connects;
         public Object[] play_scenes;
+        public Object endScene;
         private int num_entrence;
         private static SceneManager scenemg;
         public static SceneManager SceneMang
@@ -44,7 +45,7 @@ namespace MatrixJam
                 }
                 case -2:
                 {
-                    LoadSceneFromName("End");
+                    LoadSceneFromName(endScene.name);
                     break;
                 }
                 case -3:

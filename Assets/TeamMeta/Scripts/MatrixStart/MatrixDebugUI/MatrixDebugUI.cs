@@ -17,6 +17,8 @@ namespace MatrixJam.TeamMeta
         // Start is called before the first frame update
         void Start()
         {
+            playerData = PlayerData.Data;
+
             UnityEngine.SceneManagement.SceneManager.sceneLoaded += SceneChange;
         }
 
@@ -27,11 +29,12 @@ namespace MatrixJam.TeamMeta
 
         void Refresh()
         {
-            playerData = PlayerData.Data;
             Connection lastConnection = playerData.LastCon;
-            
             gameIndexText.SetText(playerData.current_level + "");
-            entranceUsedText.SetText(lastConnection.portal_to + "");
+            
+            // -3 means came from matrix start. Yes should be refactored to at least make numeric sense
+            entranceUsedText.SetText(SceneManager.SceneMang.Numentrence + "");
+
             EnteredFromGameText.SetText(lastConnection.scene_from + "");
             
         }

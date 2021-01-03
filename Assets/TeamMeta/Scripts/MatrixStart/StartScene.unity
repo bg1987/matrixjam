@@ -1160,6 +1160,7 @@ MonoBehaviour:
   all_connects: []
   play_scenes:
   - {fileID: 102900000, guid: d72910284a7f23f4cb4847ef957faa5c, type: 3}
+  endScene: {fileID: 102900000, guid: f358af270e65cf54683dea16d33c8dfc, type: 3}
 --- !u!4 &1107044196
 Transform:
   m_ObjectHideFlags: 0
