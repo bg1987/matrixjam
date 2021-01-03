@@ -35,6 +35,7 @@ namespace MatrixJam
             //add the level and the parh to memory
             if (!HaveLevel(finish_level))
             {
+                been_connections.AddLast(new Connection(finish_level, ent, finish_level, exit));
                 complete_levels++;
                 if (complete_levels + skip_levels_num >= SceneManager.SceneMang.play_scenes.Length)
                 {
@@ -45,6 +46,10 @@ namespace MatrixJam
                     return false;
                 }
             }
+            //ToDo Decide if
+            //1) there's a need to remember what connections have been visited
+            //2) there's a need for rememebering connections visit history
+            //For now going with 2)
             been_connections.AddLast(new Connection(finish_level, ent, finish_level, exit));
             return false;
         }
