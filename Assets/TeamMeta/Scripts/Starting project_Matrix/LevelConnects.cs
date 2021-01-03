@@ -10,6 +10,7 @@ namespace MatrixJam
         public Connection[] level_connects;
         public Connection FindConnect(int number, bool to)
         {
+            //Bugged. Will be looked at next commit
             foreach (Connection con in level_connects)
             {
                 if (to)

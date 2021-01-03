@@ -31,12 +31,28 @@ namespace MatrixJam.TeamMeta
         {
             Connection lastConnection = playerData.LastCon;
             gameIndexText.SetText(playerData.current_level + "");
-            
-            // -3 means came from matrix start. Yes should be refactored to at least make numeric sense
-            entranceUsedText.SetText(SceneManager.SceneMang.Numentrence + "");
+
+            RefreshEntranceUsedText();
 
             EnteredFromGameText.SetText(lastConnection.scene_from + "");
             
+        }
+        void RefreshEntranceUsedText()
+        {
+            var entranceUsedString = "";
+            // -3 means came from matrix start. Yes should be refactored to at least make numeric sense
+            if (SceneManager.SceneMang.Numentrence == -3)
+            {
+                var levelHolder = FindObjectOfType<LevelHolder>();
+                if (levelHolder)
+                    entranceUsedString = levelHolder.def_ent + "";
+                else
+                    Debug.Log("There should be a level holder in scene " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+            }
+            else
+                entranceUsedString = SceneManager.SceneMang.Numentrence + "";
+
+            entranceUsedText.SetText(entranceUsedString);
         }
     }
 }
