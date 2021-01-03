@@ -62,7 +62,7 @@ namespace MatrixJam
                     break;
                 }
             }
-            if (num_sce > 0 && num_sce <= play_scenes.Length)
+            if (num_sce >= 0 && num_sce < play_scenes.Length)
             {
                 PlayerData.Data.current_level = num_sce;
                 LoadSceneFromNumber(num_sce);
@@ -84,7 +84,7 @@ namespace MatrixJam
         {
             //load the scene of given number. 
             //This do not start the gameplay in the scene!
-            LoadSceneFromName(play_scenes[num_scn - 1].name);
+            LoadSceneFromName(play_scenes[num_scn].name);
         }
 
        void LoadSceneFromName(string name)
@@ -104,7 +104,7 @@ namespace MatrixJam
             Debug.Log($"PlayerData.Data.NumGames {PlayerData.Data.NumGames}");
             //choose a random scene and load it.
             //this also start the gameplay in that scene.
-            int start_sce = 1 + Random.Range(0, PlayerData.Data.NumGames);
+            int start_sce = Random.Range(0, PlayerData.Data.NumGames);
             LoadScene(start_sce, 0);
         }
         public void LoadFirstSceneRandomly()
@@ -113,7 +113,7 @@ namespace MatrixJam
             Debug.Log($"PlayerData.Data.NumGames {PlayerData.Data.NumGames}");
             //choose a random scene and load it.
             //this also start the gameplay in that scene.
-            int start_sce = 1 + Random.Range(0, PlayerData.Data.NumGames);
+            int start_sce = Random.Range(0, PlayerData.Data.NumGames);
             LoadScene(start_sce, -3);
         }
         public void ResetLevelScene()
