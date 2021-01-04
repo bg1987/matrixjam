@@ -1163,9 +1163,28 @@ MonoBehaviour:
       portal_from: 0
       scene_to: 1
       portal_to: 2
+    - scene_from: 0
+      portal_from: 0
+      scene_to: 2
+      portal_to: 0
+  - level_connects:
+    - scene_from: 1
+      portal_from: 0
+      scene_to: 0
+      portal_to: 0
+    - scene_from: 1
+      portal_from: 1
+      scene_to: 2
+      portal_to: 0
+  - level_connects:
+    - scene_from: 2
+      portal_from: 0
+      scene_to: 0
+      portal_to: 1
   play_scenes:
   - {fileID: 102900000, guid: d72910284a7f23f4cb4847ef957faa5c, type: 3}
   - {fileID: 102900000, guid: 3857f08d122635d48b5979407d881aeb, type: 3}
+  - {fileID: 102900000, guid: c1d057f48285ef941ac2bb08e2f1ebf7, type: 3}
   endScene: {fileID: 102900000, guid: f358af270e65cf54683dea16d33c8dfc, type: 3}
 --- !u!4 &1107044196
 Transform:
