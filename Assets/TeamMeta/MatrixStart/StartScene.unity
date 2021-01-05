@@ -2364,6 +2364,26 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1560032236049475792, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -545.36755
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560032236049475792, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 282.605
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560032236049475792, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1138.7351
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560032236049475792, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -613.21
+      objectReference: {fileID: 0}
     - target: {fileID: 1560032236313643225, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_Name
