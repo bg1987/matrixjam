@@ -10,9 +10,7 @@ namespace MatrixJam.TeamMeta
     {
         MatrixGraphView graphView;
 
-        [MenuItem("Matrix/Matrix Graph")]
-
-        public static void OpenMatrixGraphWindow()
+        public void OpenMatrixGraphWindow()
         {
             var window = GetWindow<MatrixGraphWindow>();
             window.Show();
