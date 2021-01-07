@@ -7,7 +7,7 @@ namespace MatrixJam.TeamMeta
 {
     public class MatrixNode : Node
     {
-        public string GUID;
+        public int index;
         public string levelName;
     }
 }

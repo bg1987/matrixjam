@@ -46,7 +46,7 @@ namespace MatrixJam.TeamMeta
         {
             var node = new MatrixNode();
             node.title = nodeName;
-            node.GUID = System.Guid.NewGuid().ToString();
+            
             node.SetPosition(new Rect(position, defaultNodeSize));
 
             for (int i = 0; i < inputPorts; i++)
@@ -70,6 +70,14 @@ namespace MatrixJam.TeamMeta
             //node.RefreshPorts();
 
             return node;
+        }
+        public List<Port> GetInputPortsFromNode(Node node)
+        {
+            return node.inputContainer.Query<Port>().ToList();
+        }
+        public List<Port> GetOutputPortsFromNode(Node node)
+        {
+            return node.outputContainer.Query<Port>().ToList();
         }
     }
 }
