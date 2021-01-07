@@ -17,8 +17,8 @@ namespace MatrixJam.TeamMeta
             string extension = Path.GetExtension(path);
             if (extension == ".matrixgraph")
             {
-                var matrixGraph = ScriptableObject.CreateInstance(typeof(MatrixGraphWindow)) as MatrixGraphWindow;
-                matrixGraph.OpenMatrixGraphWindow();
+                var matrixGraph = ScriptableObject.CreateInstance<MatrixGraphWindow>();
+                matrixGraph.OpenMatrixGraphWindow(path);
                 return true;
             }
             return false; // we did not handle the open
