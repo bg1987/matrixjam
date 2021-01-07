@@ -10,7 +10,8 @@ namespace MatrixJam.TeamMeta
     public class MatrixGraphWindow : EditorWindow
     {
         MatrixGraphView graphView;
-        string graphFilePath;
+        MatrixGraphSaver graphSaver;
+        public string graphFilePath;
 
         public void OpenMatrixGraphWindow(string graphFilePath)
         {
@@ -19,10 +20,20 @@ namespace MatrixJam.TeamMeta
             window.titleContent = new GUIContent("Matrix Graph");
 
             this.graphFilePath = graphFilePath;
+            //graphSaver = new MatrixGraphSaver(graphView, graphFilePath);
+            graphSaver = new MatrixGraphSaver(graphView, graphFilePath);
+
         }
         private void OnEnable()
         {
             ConstructGraphView();
+            if (graphSaver == null)
+            {
+                //The double initialization in OnEnable and OpenWindow takes into account
+                //the cases of recompilation and reopening of the window
+                graphSaver = new MatrixGraphSaver(graphView, graphFilePath);
+            }
+
             graphView.CreateNode("Matrix node 1", 1, 2, Vector2.zero);
             graphView.CreateNode("Matrix node 2", 2, 3, Vector2.one * 100);
             graphView.CreateNode("Matrix node 3", 2, 2, Vector2.one * 200);
@@ -46,7 +57,7 @@ namespace MatrixJam.TeamMeta
             rootVisualElement.Add(toolBar);
 
             var saveButton = new Button();
-            saveButton.clicked += () => {}; //ToDo something on click
+            saveButton.clicked += () => graphSaver.Save(); //ToDo something on click
             saveButton.name = "SaveButton";
             saveButton.text = "Save";
             toolBar.Add(saveButton);
