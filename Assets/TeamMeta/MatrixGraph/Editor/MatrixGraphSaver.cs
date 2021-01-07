@@ -34,6 +34,24 @@ namespace MatrixJam.TeamMeta
             }
             Debug.Log("Saved the following json to file\n" + graphDataJson);
         }
+        public void Load()
+        {
+            if (!File.Exists(path))
+                return;
+
+            string graphDataJson;
+            using (StreamReader reader = new StreamReader(path))
+            {
+                graphDataJson = reader.ReadLine();
+            }
+
+            var matrixGraphSO = ScriptableObject.CreateInstance<MatrixGraphSO>();
+            JsonUtility.FromJsonOverwrite(graphDataJson, matrixGraphSO);
+
+            graphView.ClearGraph();
+            List<MatrixNode> matrixNodes = ConstructGraphNodesFromData(matrixGraphSO);
+            ConstructGraphEdgesFromData(matrixGraphSO, matrixNodes);
+        }
         void RefreshGraphViewElements()
         {
             nodes.Clear();
@@ -119,6 +137,49 @@ namespace MatrixJam.TeamMeta
             }
 
             return edgesData;
+        }
+        private List<MatrixNode> ConstructGraphNodesFromData(MatrixGraphSO matrixGraphSO)
+        {
+            List<MatrixNode> matrixNodes = new List<MatrixNode>();
+            foreach (var nodeData in matrixGraphSO.nodes)
+            {
+                //ToDo give a real position to node
+                var node = graphView.CreateMatrixNode(nodeData, nodeData.index*100*Vector2.one); 
+                matrixNodes.Add(node);
+            }
+
+            return matrixNodes;
+        }
+        private void ConstructGraphEdgesFromData(MatrixGraphSO matrixGraphSO, List<MatrixNode> matrixNodes)
+        {
+            foreach (var edgeData in matrixGraphSO.edges)
+            {
+                var edge = new Edge();
+
+                //Edge output
+                Port startPort;
+
+                var startNode = matrixNodes[edgeData.startPort.nodeIndex];
+                var startNodeOutputPorts = graphView.GetOutputPortsFromNode(startNode);
+                startPort = startNodeOutputPorts.Find(port => int.Parse(port.portName) == edgeData.startPort.id);
+
+                edge.output = startPort;
+
+                //Edge input
+                Port endPort;
+
+                var endNode = matrixNodes[edgeData.endPort.nodeIndex];
+                var endNodeInputPorts = graphView.GetInputPortsFromNode(endNode);
+                endPort = endNodeInputPorts.Find(port => int.Parse(port.portName) == edgeData.endPort.id);
+
+                edge.input = endPort;
+
+                //Construct edge
+                edge.input.Connect(edge);
+                edge.output.Connect(edge);
+
+                graphView.AddElement(edge);
+            }
         }
     }
 }

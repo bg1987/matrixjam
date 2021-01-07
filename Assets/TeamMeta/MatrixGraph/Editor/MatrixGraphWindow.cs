@@ -80,10 +80,16 @@ namespace MatrixJam.TeamMeta
             rootVisualElement.Add(toolBar);
 
             var saveButton = new Button();
-            saveButton.clicked += () => graphSaver.Save(); //ToDo something on click
+            saveButton.clicked += () => graphSaver.Save();
             saveButton.name = "SaveButton";
             saveButton.text = "Save";
             toolBar.Add(saveButton);
+
+            var loadButton = new Button();
+            loadButton.clicked += () => graphSaver.Load();
+            loadButton.name = "loadButton";
+            loadButton.text = "Load";
+            toolBar.Add(loadButton);
 
         }
     }

@@ -29,6 +29,17 @@ namespace MatrixJam.TeamMeta
 
             return port;
         }
+        public void ClearGraph()
+        {
+            var edgesList = edges.ToList();
+            var nodesList = nodes.ToList();
+
+            foreach (var edge in edgesList)
+            {
+                this.RemoveElement(edge);
+            }
+            nodesList.ForEach(node => this.RemoveElement(node));
+        }
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
         {
             var compatiblePorts = new List<Port>();
