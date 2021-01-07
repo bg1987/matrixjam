@@ -9,7 +9,7 @@ namespace MatrixJam.TeamMeta
     public class MatrixGraphView : GraphView
     {
         Color backgroundColor = Color.gray;
-        Vector2 defaultNodeSize = new Vector2(100, 150);
+        Vector2 defaultNodeSize = new Vector2(10, 10);
 
         public MatrixGraphView()
         {
@@ -42,32 +42,35 @@ namespace MatrixJam.TeamMeta
             });
             return compatiblePorts;
         }
-        public MatrixNode CreateNode(string nodeName, int inputPorts, int outputPorts, Vector2 position)
+        public MatrixNode CreateMatrixNode(MatrixNodeData nodeData , Vector2 position)
         {
             var node = new MatrixNode();
-            node.title = nodeName;
+
+            node.index = nodeData.index;
+            node.levelName = nodeData.name;
+
+            node.title = nodeData.name;
+            node.name = nodeData.name;
             
             node.SetPosition(new Rect(position, defaultNodeSize));
 
-            for (int i = 0; i < inputPorts; i++)
+            foreach (var portData in nodeData.inputPorts)
             {
-                Port inputPort = GeneratePort(node, Direction.Input, Port.Capacity.Multi);
-                inputPort.portName = i + "";
-                node.inputContainer.Add(inputPort);
+                Port port = GeneratePort(node, Direction.Input, Port.Capacity.Multi);
+                port.portName = portData.id + "";
+                node.inputContainer.Add(port);
             }
-            for (int i = 0; i < outputPorts; i++)
+            foreach (var portData in nodeData.outputPorts)
             {
-                Port outputPort = GeneratePort(node, Direction.Output, Port.Capacity.Single);
-                outputPort.portName = i + "";
-                node.outputContainer.Add(outputPort);
+                Port port = GeneratePort(node, Direction.Output, Port.Capacity.Single);
+                port.portName = portData.id + "";
+                node.outputContainer.Add(port);
             }
-
-
 
             this.AddElement(node);
 
-            //node.RefreshExpandedState();
-            //node.RefreshPorts();
+            node.RefreshExpandedState();
+            node.RefreshPorts();
 
             return node;
         }
