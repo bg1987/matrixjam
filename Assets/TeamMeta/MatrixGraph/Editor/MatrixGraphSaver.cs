@@ -104,25 +104,20 @@ namespace MatrixJam.TeamMeta
 
         private void ArrangeNodesInCircle(List<MatrixNode> matrixNodes)
         {
-            Debug.Log(matrixNodes[0].levelName+" " +matrixNodes[0].GetGlobalCenter());
-            //matrixNodes[0].RefreshExpandedState();
-            //matrixNodes[0].RefreshPorts();
-            //Debug.Log(matrixNodes[0].contentRect.size);
             int count = matrixNodes.Count;
-            int radius = matrixNodes.Count*30;
+            int radius = 300;
             Vector2 centerPoint = graphView.contentRect.size;
+            centerPoint /= 2f;
             Vector2 nodeOffset = new Vector2(-85f, -50); //Trying to determine node's size only returns NaN
-            centerPoint.x /= 2f;
-            centerPoint.y /= 2f;
+
             float tau = Mathf.PI*2f;
             for (int i = 0; i < count; i++)
             {
                 float t = ((float)i) / count;
-                //t = t * 2 - 1f;
-                //Debug.Log(t);
+
                 Rect nodeRect = matrixNodes[i].GetPosition();
                 Vector2 nodePosition = centerPoint+ nodeOffset;
-                nodePosition.x += Mathf.Cos(t* tau) * radius;// i=0 cos = 1
+                nodePosition.x += Mathf.Cos(t* tau) * radius; // i = 0 cos = 1
                 nodePosition.y += Mathf.Sin(t* tau) * radius;
                 nodeRect.position = nodePosition;
 
