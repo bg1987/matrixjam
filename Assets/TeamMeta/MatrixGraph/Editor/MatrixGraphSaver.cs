@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -8,6 +10,8 @@ namespace MatrixJam.TeamMeta
 {
     public class MatrixGraphSaver
     {
+        static string lastSaveAsPath = "";
+
         MatrixGraphView graphView;
         string path;
         List<MatrixNode> nodes;
@@ -19,6 +23,10 @@ namespace MatrixJam.TeamMeta
 
             nodes = new List<MatrixNode>();
             edges = new List<Edge>();
+        }
+        public void SetPath(string path)
+        {
+            this.path = path;
         }
         public void Save()
         {
@@ -37,6 +45,29 @@ namespace MatrixJam.TeamMeta
                     writer.WriteLine(nodePositionsDataJson);
             }
             Debug.Log("Saved the following json to file\n" + graphDataJson+"\n"+ nodePositionsDataJson);
+        }
+        public void SaveAsScriptableObject()
+        {
+            RefreshGraphViewElements();
+
+            if (lastSaveAsPath == "")
+                lastSaveAsPath = Application.dataPath;
+            string path = EditorUtility.SaveFilePanel("Create a new Matrix Graph Scriptable Object", lastSaveAsPath, "MatrixGraphData", "asset");
+            if (path.Length != 0)
+            {
+                if (path.StartsWith(Application.dataPath))
+                {
+                    path = "Assets" + path.Substring(Application.dataPath.Length);
+                }
+                MatrixGraphSO matrixGraphData = CreateScriptableObjectFromGraph();
+                AssetDatabase.CreateAsset(matrixGraphData, path);
+                AssetDatabase.Refresh();
+                EditorUtility.FocusProjectWindow();
+                Selection.activeObject = matrixGraphData;
+                EditorGUIUtility.PingObject(Selection.activeObject);
+
+                lastSaveAsPath = Path.GetDirectoryName(path);
+            }
         }
         public void Load()
         {
@@ -64,7 +95,41 @@ namespace MatrixJam.TeamMeta
 
             if(nodePositions!=null)
                 SetNodePositions(nodePositions, matrixNodes);
+            else
+            {
+                ArrangeNodesInCircle(matrixNodes);
+            }
+            EventPropagation eventPropagation = graphView.FrameOrigin();
         }
+
+        private void ArrangeNodesInCircle(List<MatrixNode> matrixNodes)
+        {
+            Debug.Log(matrixNodes[0].levelName+" " +matrixNodes[0].GetGlobalCenter());
+            //matrixNodes[0].RefreshExpandedState();
+            //matrixNodes[0].RefreshPorts();
+            //Debug.Log(matrixNodes[0].contentRect.size);
+            int count = matrixNodes.Count;
+            int radius = matrixNodes.Count*30;
+            Vector2 centerPoint = graphView.contentRect.size;
+            Vector2 nodeOffset = new Vector2(-85f, -50); //Trying to determine node's size only returns NaN
+            centerPoint.x /= 2f;
+            centerPoint.y /= 2f;
+            float tau = Mathf.PI*2f;
+            for (int i = 0; i < count; i++)
+            {
+                float t = ((float)i) / count;
+                //t = t * 2 - 1f;
+                //Debug.Log(t);
+                Rect nodeRect = matrixNodes[i].GetPosition();
+                Vector2 nodePosition = centerPoint+ nodeOffset;
+                nodePosition.x += Mathf.Cos(t* tau) * radius;// i=0 cos = 1
+                nodePosition.y += Mathf.Sin(t* tau) * radius;
+                nodeRect.position = nodePosition;
+
+                matrixNodes[i].SetPosition(nodeRect);
+            }
+        }
+
         private void SetNodePositions(List<Vector2> nodePositions, List<MatrixNode> matrixNodes)
         {
             for (int i = 0; i < nodePositions.Count; i++)

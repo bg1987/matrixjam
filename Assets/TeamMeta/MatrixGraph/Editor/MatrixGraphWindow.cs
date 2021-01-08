@@ -91,6 +91,12 @@ namespace MatrixJam.TeamMeta
             loadButton.text = "Load";
             toolBar.Add(loadButton);
 
+            var saveAsButton = new Button();
+            saveAsButton.clicked += () => graphSaver.SaveAsScriptableObject();
+            saveAsButton.name = "saveAsButton";
+            saveAsButton.text = "Save As Scriptable Object";
+            toolBar.Add(saveAsButton);
+
         }
     }
 }
