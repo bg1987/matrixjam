@@ -25,14 +25,18 @@ namespace MatrixJam.TeamMeta
             RefreshGraphViewElements();
 
             var graphData = CreateScriptableObjectFromGraph();
+            string graphDataJson = JsonUtility.ToJson(graphData);
 
-            var graphDataJson = JsonUtility.ToJson(graphData);
+            var nodePositionsData = new List<Vector2>();
+            nodes.ForEach(node => nodePositionsData.Add(node.GetPosition().position));
+            string nodePositionsDataJson = SerializeWithDataContractJsonSerializer(nodePositionsData);
 
             using (StreamWriter writer = new StreamWriter(path, false))
             {
                     writer.WriteLine(graphDataJson);
+                    writer.WriteLine(nodePositionsDataJson);
             }
-            Debug.Log("Saved the following json to file\n" + graphDataJson);
+            Debug.Log("Saved the following json to file\n" + graphDataJson+"\n"+ nodePositionsDataJson);
         }
         public void Load()
         {
@@ -40,17 +44,35 @@ namespace MatrixJam.TeamMeta
                 return;
 
             string graphDataJson;
+            string nodePositionsJson;
+
             using (StreamReader reader = new StreamReader(path))
             {
-                graphDataJson = reader.ReadLine();
+                graphDataJson = reader.ReadLine()+"";
+                nodePositionsJson = reader.ReadLine() + "";
             }
 
             var matrixGraphSO = ScriptableObject.CreateInstance<MatrixGraphSO>();
             JsonUtility.FromJsonOverwrite(graphDataJson, matrixGraphSO);
 
+            List<Vector2> nodePositions;
+            nodePositions = DeserializeWithDataContractJsonSerializer<List<Vector2>>(nodePositionsJson);
+
             graphView.ClearGraph();
             List<MatrixNode> matrixNodes = ConstructGraphNodesFromData(matrixGraphSO);
             ConstructGraphEdgesFromData(matrixGraphSO, matrixNodes);
+
+            if(nodePositions!=null)
+                SetNodePositions(nodePositions, matrixNodes);
+        }
+        private void SetNodePositions(List<Vector2> nodePositions, List<MatrixNode> matrixNodes)
+        {
+            for (int i = 0; i < nodePositions.Count; i++)
+            {
+                Rect nodeRect = matrixNodes[i].GetPosition();
+                nodeRect.position = nodePositions[i];
+                matrixNodes[i].SetPosition(nodeRect);
+            }
         }
         void RefreshGraphViewElements()
         {
@@ -138,7 +160,7 @@ namespace MatrixJam.TeamMeta
 
             return edgesData;
         }
-        private List<MatrixNode> ConstructGraphNodesFromData(MatrixGraphSO matrixGraphSO)
+        List<MatrixNode> ConstructGraphNodesFromData(MatrixGraphSO matrixGraphSO)
         {
             List<MatrixNode> matrixNodes = new List<MatrixNode>();
             foreach (var nodeData in matrixGraphSO.nodes)
@@ -150,7 +172,7 @@ namespace MatrixJam.TeamMeta
 
             return matrixNodes;
         }
-        private void ConstructGraphEdgesFromData(MatrixGraphSO matrixGraphSO, List<MatrixNode> matrixNodes)
+        void ConstructGraphEdgesFromData(MatrixGraphSO matrixGraphSO, List<MatrixNode> matrixNodes)
         {
             foreach (var edgeData in matrixGraphSO.edges)
             {
@@ -180,6 +202,29 @@ namespace MatrixJam.TeamMeta
 
                 graphView.AddElement(edge);
             }
+        }
+        string SerializeWithDataContractJsonSerializer<T>(T obj)
+        {
+            string serializedObject;
+            var jsonSerializer = new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(T));
+            using (var memoryStream = new MemoryStream())
+            {
+                jsonSerializer.WriteObject(memoryStream, obj);
+                serializedObject = System.Text.Encoding.ASCII.GetString(memoryStream.ToArray());
+            }
+            return serializedObject;
+        }
+        T DeserializeWithDataContractJsonSerializer<T>(string jsonObject)
+        {
+            T DeserializedObject;
+            if (jsonObject.Length == 0)
+                return default(T);
+            var jsonSerializer = new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(T));
+            using (var memoryStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(jsonObject)))
+            {
+                DeserializedObject =(T)jsonSerializer.ReadObject(memoryStream);
+            }
+            return DeserializedObject;
         }
     }
 }
