@@ -85,7 +85,10 @@ namespace MatrixJam
             //load scene & entry that connects to given exit.
 
             MatrixPortData entryPort = FindConnectTo(num_sce, int_exit);
-            LoadScene(entryPort.nodeIndex, entryPort.id);
+            PlayerData.Data.current_level = entryPort.nodeIndex;
+            
+            LoadSceneFromName( matrixGraphData.nodes[entryPort.nodeIndex].scenePath);
+            //LoadScene(entryPort.nodeIndex, entryPort.id);
         }
         void LoadSceneFromNumber(int num_scn)
         {

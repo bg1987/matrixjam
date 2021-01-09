@@ -9,5 +9,6 @@ namespace MatrixJam.TeamMeta
     {
         public int index;
         public string levelName;
+        public string scenePath;
     }
 }

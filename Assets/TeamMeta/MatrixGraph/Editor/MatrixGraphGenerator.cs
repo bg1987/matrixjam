@@ -117,7 +117,7 @@ namespace MatrixJam.TeamMeta
                 string scenePath = AssetDatabase.GetAssetPath(scene);
                 Scene activeScene = EditorSceneManager.OpenScene(scenePath);
 
-                var node = new MatrixNodeData(i, scene.name);
+                var node = new MatrixNodeData(i, scene.name, scenePath);
 
                 foreach (var rootGameObject in activeScene.GetRootGameObjects())
                 {
@@ -147,13 +147,13 @@ namespace MatrixJam.TeamMeta
 
             var nodes = new List<MatrixNodeData>();
 
-            var node1 = new MatrixNodeData(0, "Level 1");
+            var node1 = new MatrixNodeData(0, "Level 1",null);
             node1 .AddInputPort(0);
             node1 .AddOutputPort(0);
             node1.AddOutputPort(3);
             nodes.Add(node1);
 
-            var node2 = new MatrixNodeData(1, "Level 2");
+            var node2 = new MatrixNodeData(1, "Level 2",null);
             node2.AddInputPort(0);
             node2.AddInputPort(1);
             node2.AddOutputPort(0);
@@ -161,14 +161,14 @@ namespace MatrixJam.TeamMeta
             node2.AddOutputPort(2);
             nodes.Add(node2);
 
-            var node3 = new MatrixNodeData(2, "Level 3");
+            var node3 = new MatrixNodeData(2, "Level 3",null);
             node3.AddInputPort(0);
             node3.AddInputPort(1);
             node3.AddOutputPort(4);
             node3.AddOutputPort(7);
             nodes.Add(node3);
 
-            var node4 = new MatrixNodeData(3, "Level 4");
+            var node4 = new MatrixNodeData(3, "Level 4",null);
             node4.AddInputPort(0);
             node4.AddOutputPort(0);
             nodes.Add(node4);

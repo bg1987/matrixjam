@@ -59,6 +59,7 @@ namespace MatrixJam.TeamMeta
 
             node.index = nodeData.index;
             node.levelName = nodeData.name;
+            node.scenePath = nodeData.scenePath;
 
             node.title = nodeData.name;
             node.name = nodeData.name;

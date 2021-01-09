@@ -9,14 +9,15 @@ namespace MatrixJam.TeamMeta
     {
         public int index;
         public string name;
+        public string scenePath;
         public List<MatrixPortData> inputPorts;
         public List<MatrixPortData> outputPorts;
 
-        public MatrixNodeData(int index, string name) : this()
+        public MatrixNodeData(int index, string name, string scenePath) : this()
         {
             this.index = index;
             this.name = name;
-
+            this.scenePath = scenePath;
             inputPorts = new List<MatrixPortData>();
             outputPorts = new List<MatrixPortData>();
         }

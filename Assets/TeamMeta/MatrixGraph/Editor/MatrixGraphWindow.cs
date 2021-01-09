@@ -43,19 +43,19 @@ namespace MatrixJam.TeamMeta
         private void PopulateWithDummyData()
         {
             //Dummy initial data for testing
-            var matrixNodeData1 = new MatrixNodeData(0, "Level 1");
+            var matrixNodeData1 = new MatrixNodeData(0, "Level 1", null);
             matrixNodeData1.AddInputPort(0);
             matrixNodeData1.AddOutputPort(0);
             matrixNodeData1.AddOutputPort(3);
 
-            var matrixNodeData2 = new MatrixNodeData(1, "Level 2");
+            var matrixNodeData2 = new MatrixNodeData(1, "Level 2",null);
             matrixNodeData2.AddInputPort(0);
             matrixNodeData2.AddInputPort(1);
             matrixNodeData2.AddOutputPort(0);
             matrixNodeData2.AddOutputPort(1);
             matrixNodeData2.AddOutputPort(2);
 
-            var matrixNodeData3 = new MatrixNodeData(2, "Level 3");
+            var matrixNodeData3 = new MatrixNodeData(2, "Level 3",null);
             matrixNodeData3.AddInputPort(0);
             matrixNodeData3.AddInputPort(1);
             matrixNodeData3.AddOutputPort(4);

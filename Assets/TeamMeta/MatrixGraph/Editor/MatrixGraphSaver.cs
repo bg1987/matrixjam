@@ -159,7 +159,7 @@ namespace MatrixJam.TeamMeta
             var nodesData = new List<MatrixNodeData>();
             foreach (MatrixNode node in nodes)
             {
-                var nodeData = new MatrixNodeData(node.index, node.name);
+                var nodeData = new MatrixNodeData(node.index, node.name,node.scenePath);
 
                 //Handle input ports
                 List<Port> inputPorts = graphView.GetInputPortsFromNode(node);
