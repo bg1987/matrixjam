@@ -5,12 +5,17 @@ using UnityEngine;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 using System.IO;
+using System;
 
 namespace MatrixJam.TeamMeta
 {
     public class MatrixGraphGenerator : EditorWindow
     {
+        public List<UnityEngine.Object> scenes;
+        private SerializedObject serializedObject;
+        ListView listView;
         static string lastUsedPath ="";
+
         [MenuItem("Matrix/Matrix Graph Generator")]
         public static void OpenMatrixGraphBuilderhWindow()
         {
@@ -22,18 +27,61 @@ namespace MatrixJam.TeamMeta
             if (lastUsedPath == "")
                 lastUsedPath = Application.dataPath;
 
+            scenes = new List<UnityEngine.Object>();
+            serializedObject = new SerializedObject(this);
+
+            GenerateScenesLabel();
+            GenerateScenesList();
+            GenerateCreateMatrixButton();
+        }
+
+        private Button GenerateCreateMatrixButton()
+        {
             Button button = new Button();
             button.text = "Create a Matrix Graph File";
             button.clicked += CreateMatrixGraphFile;
-            this.rootVisualElement.Add(button);
+            rootVisualElement.Add(button);
+
+            return button;
         }
-        
+
+        private ListView GenerateScenesList()
+        {
+            listView = new ListView();
+            listView.bindingPath = nameof(scenes);
+            listView.itemHeight = 20;
+
+            var listProperty = this.serializedObject.FindProperty(listView.bindingPath);
+            var listPropertySize = this.serializedObject.FindProperty(listView.bindingPath + ".Array.size");
+
+            listPropertySize.intValue = 1;
+            serializedObject.ApplyModifiedProperties();
+            listView.style.flexGrow = 1;
+
+            rootVisualElement.Add(listView);
+            listView.Bind(serializedObject);
+            rootVisualElement.Bind(serializedObject);
+
+            return listView;
+        }
+        private VisualElement GenerateScenesLabel()
+        {
+            var scenesListLabel = new Label("Scenes For Matrix Creation");
+            var scenesLabelStyle = scenesListLabel.style;
+            scenesLabelStyle.unityTextAlign = TextAnchor.MiddleCenter;
+            ColorUtility.TryParseHtmlString("#B0B8C2", out var labelColorBG);
+            scenesLabelStyle.backgroundColor = labelColorBG;
+
+            rootVisualElement.Add(scenesListLabel);
+
+            return scenesListLabel;
+        }
         private void CreateMatrixGraphFile()
         {
             string path = EditorUtility.SaveFilePanel("Create a new Matrix Graph", lastUsedPath, "NewMatrixGraph", "matrixgraph");
             if (path.Length != 0)
             {
-                MatrixGraphSO graphData = CreateDummyScriptableObject();
+                MatrixGraphSO graphData = CreateScriptableObjectOutOfScenes();
                 string graphDataJson = JsonUtility.ToJson(graphData);
 
                 using (FileStream fileStream = new FileStream(path, FileMode.Create))
@@ -47,6 +95,29 @@ namespace MatrixJam.TeamMeta
                 lastUsedPath = Path.GetDirectoryName(path);
             }
             return;
+        }
+        private MatrixGraphSO CreateScriptableObjectOutOfScenes()
+        {
+            MatrixGraphSO matrixGraphSO = CreateInstance<MatrixGraphSO>();
+
+            var nodes = new List<MatrixNodeData>();
+            for (int i = 0; i < scenes.Count; i++)
+            {
+                if (scenes[i] == null)
+                {
+                    Debug.Log("Scene at index " + i + " is null");
+                    continue;
+                }
+
+                var node = new MatrixNodeData(i, scenes[i].name);
+                node.AddInputPort(0);
+                node.AddOutputPort(0);
+                nodes.Add(node);
+            }
+
+            matrixGraphSO.nodes = nodes;
+
+            return matrixGraphSO;
         }
         private MatrixGraphSO CreateDummyScriptableObject()
         {
