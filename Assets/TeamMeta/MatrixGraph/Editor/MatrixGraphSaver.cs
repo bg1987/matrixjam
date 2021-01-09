@@ -16,6 +16,7 @@ namespace MatrixJam.TeamMeta
         string path;
         List<MatrixNode> nodes;
         List<Edge> edges;
+        MatrixGraphConverter matrixGraphConverter = new MatrixGraphConverter();
         public MatrixGraphSaver(MatrixGraphView graphView, string path)
         {
             this.graphView = graphView;
@@ -33,7 +34,8 @@ namespace MatrixJam.TeamMeta
             RefreshGraphViewElements();
 
             var graphData = CreateScriptableObjectFromGraph();
-            string graphDataJson = JsonUtility.ToJson(graphData);
+
+            string graphDataJson = matrixGraphConverter.ToJson(graphData);
 
             var nodePositionsData = new List<Vector2>();
             nodes.ForEach(node => nodePositionsData.Add(node.GetPosition().position));
@@ -82,9 +84,7 @@ namespace MatrixJam.TeamMeta
                 graphDataJson = reader.ReadLine()+"";
                 nodePositionsJson = reader.ReadLine() + "";
             }
-
-            var matrixGraphSO = ScriptableObject.CreateInstance<MatrixGraphSO>();
-            JsonUtility.FromJsonOverwrite(graphDataJson, matrixGraphSO);
+            MatrixGraphSO matrixGraphSO = matrixGraphConverter.ToScriptableObject(graphDataJson);
 
             List<Vector2> nodePositions;
             nodePositions = DeserializeWithDataContractJsonSerializer<List<Vector2>>(nodePositionsJson);
