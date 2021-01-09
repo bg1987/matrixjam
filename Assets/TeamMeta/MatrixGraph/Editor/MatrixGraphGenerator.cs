@@ -6,6 +6,8 @@ using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 using System.IO;
 using System;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 namespace MatrixJam.TeamMeta
 {
@@ -100,20 +102,40 @@ namespace MatrixJam.TeamMeta
         {
             MatrixGraphSO matrixGraphSO = CreateInstance<MatrixGraphSO>();
 
+            var initialScene = EditorSceneManager.GetActiveScene();
+            string initialScenePath = initialScene.path;
             var nodes = new List<MatrixNodeData>();
             for (int i = 0; i < scenes.Count; i++)
             {
-                if (scenes[i] == null)
+                UnityEngine.Object scene = scenes[i];
+                if (scene == null)
                 {
                     Debug.Log("Scene at index " + i + " is null");
                     continue;
                 }
 
-                var node = new MatrixNodeData(i, scenes[i].name);
-                node.AddInputPort(0);
-                node.AddOutputPort(0);
+                string scenePath = AssetDatabase.GetAssetPath(scene);
+                Scene activeScene = EditorSceneManager.OpenScene(scenePath);
+
+                var node = new MatrixNodeData(i, scene.name);
+
+                foreach (var rootGameObject in activeScene.GetRootGameObjects())
+                {
+                    Entrance[] entrances = rootGameObject.GetComponentsInChildren<Entrance>();
+                    foreach (var entrance in entrances)
+                    {
+                        node.AddInputPort(entrance.num_portal);
+                    }
+                   
+                    Exit[] exits = rootGameObject.GetComponentsInChildren<Exit>();
+                    foreach (var exit in exits)
+                    {
+                        node.AddOutputPort(exit.num_portal);
+                    }
+                }
                 nodes.Add(node);
             }
+            EditorSceneManager.OpenScene(initialScenePath);
 
             matrixGraphSO.nodes = nodes;
 
