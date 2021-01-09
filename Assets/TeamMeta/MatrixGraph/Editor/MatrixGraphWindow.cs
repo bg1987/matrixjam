@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,7 +14,7 @@ namespace MatrixJam.TeamMeta
     {
         MatrixGraphView graphView;
         MatrixGraphSaver graphSaver;
-        public string graphFilePath;
+        public string graphFilePath="";
 
         public void OpenMatrixGraphWindow(string graphFilePath)
         {
@@ -20,24 +23,23 @@ namespace MatrixJam.TeamMeta
             window.titleContent = new GUIContent("Matrix Graph");
 
             this.graphFilePath = graphFilePath;
-            //graphSaver = new MatrixGraphSaver(graphView, graphFilePath);
-            graphSaver = new MatrixGraphSaver(graphView, graphFilePath);
 
+            graphSaver.SetPath(graphFilePath);
+            LoadAfterGraphViewFinishInitialization();
         }
         private void OnEnable()
         {
             ConstructGraphView();
-            if (graphSaver == null)
-            {
-                //The double initialization in OnEnable and OpenWindow takes into account
-                //the cases of recompilation and reopening of the window
-                graphSaver = new MatrixGraphSaver(graphView, graphFilePath);
-            }
-
-            PopulateWithDummyData();
-
+            graphSaver = new MatrixGraphSaver(graphView, graphFilePath);
             GenerateToolBar();
+
+            if (graphFilePath.Length>0)
+            {
+                LoadAfterGraphViewFinishInitialization();
+            }
         }
+
+
         private void PopulateWithDummyData()
         {
             //Dummy initial data for testing
@@ -97,6 +99,22 @@ namespace MatrixJam.TeamMeta
             saveAsButton.text = "Save As Scriptable Object";
             toolBar.Add(saveAsButton);
 
+        }
+        async void LoadAfterGraphViewFinishInitialization()
+        {
+            //Hack to wait for graphView to finish resolving its width & height
+            //This function might be better inside graphSaver
+            //ToDo Test out element.RegisterCallback<GeometryChangedEvent>(myCallback);
+
+            var timeoutCount = 0;
+            var timeStep = 10;
+            while (float.IsNaN(graphView.contentRect.width) && timeoutCount< 5000f)
+            {
+                timeoutCount += timeStep;
+
+                await Task.Delay(timeStep);
+            }
+            graphSaver.Load();
         }
     }
 }
