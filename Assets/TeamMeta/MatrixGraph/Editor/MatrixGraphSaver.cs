@@ -46,6 +46,7 @@ namespace MatrixJam.TeamMeta
                     writer.WriteLine(graphDataJson);
                     writer.WriteLine(nodePositionsDataJson);
             }
+            AssetDatabase.Refresh();
             Debug.Log("Saved the following json to file\n" + graphDataJson+"\n"+ nodePositionsDataJson);
         }
         public void SaveAsScriptableObject()

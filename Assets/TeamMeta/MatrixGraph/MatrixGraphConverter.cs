@@ -12,7 +12,7 @@ namespace MatrixJam.TeamMeta
         {
             string matrixGraphJson = "";
 
-            string graphDataJson = JsonUtility.ToJson(matrixGraphSO);
+            matrixGraphJson = JsonUtility.ToJson(matrixGraphSO);
 
             return matrixGraphJson;
         }

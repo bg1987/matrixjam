@@ -1,3 +1,4 @@
+using MatrixJam.TeamMeta;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,9 @@ namespace MatrixJam
 {
     public class SceneManager : MonoBehaviour
     {
-
-        public LevelConnects[] all_connects;
+        [SerializeField] TextAsset matrixGraphAsset;
+        MatrixGraphSO matrixGraphData;
+        //public LevelConnects[] all_connects;
         public Object[] play_scenes;
         public Object endScene;
         private int num_entrence;
@@ -22,6 +24,11 @@ namespace MatrixJam
                 }
                 return scenemg;
             }
+        }
+        private void Awake()
+        {
+            MatrixGraphConverter matrixGraphConverter = new MatrixGraphConverter();
+            matrixGraphData = matrixGraphConverter.ToScriptableObject(matrixGraphAsset.text);
         }
         public int Numentrence
         {
@@ -76,9 +83,9 @@ namespace MatrixJam
         public void LoadSceneFromExit(int num_sce, int int_exit)
         {
             //load scene & entry that connects to given exit.
-            
-            Connection ent_point = FindConnectTo(num_sce, int_exit);
-            LoadScene(ent_point.scene_to, ent_point.portal_to);
+
+            MatrixPortData entryPort = FindConnectTo(num_sce, int_exit);
+            LoadScene(entryPort.nodeIndex, entryPort.id);
         }
         void LoadSceneFromNumber(int num_scn)
         {
@@ -93,10 +100,14 @@ namespace MatrixJam
             //This do not start the gameplay in the scene!
             UnityEngine.SceneManagement.SceneManager.LoadScene(name);
         }
-        public Connection FindConnectTo(int level, int exit)
+        public MatrixPortData FindConnectTo(int level, int exit)
         {
             //find the connection to the next scene of given exit
-            return all_connects[level].FindConnect(exit, false);
+            //matrixGraphData.nodes[level].outputPorts
+            MatrixEdgeData edgeData = matrixGraphData.edges.Find(edge => edge.startPort.nodeIndex == level && 
+                                                   edge.startPort.id == exit);
+            return edgeData.endPort;
+            //return all_connects[level].FindConnect(exit, false);
         }
         public void LoadRandomScene()
         {

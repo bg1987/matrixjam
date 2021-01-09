@@ -1157,30 +1157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99626aef3fea5c94a82681c8f6bb713d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  all_connects:
-  - level_connects:
-    - scene_from: 0
-      portal_from: 0
-      scene_to: 1
-      portal_to: 2
-    - scene_from: 0
-      portal_from: 0
-      scene_to: 2
-      portal_to: 0
-  - level_connects:
-    - scene_from: 1
-      portal_from: 0
-      scene_to: 0
-      portal_to: 0
-    - scene_from: 1
-      portal_from: 1
-      scene_to: 2
-      portal_to: 0
-  - level_connects:
-    - scene_from: 2
-      portal_from: 0
-      scene_to: 0
-      portal_to: 1
+  matrixGraphAsset: {fileID: 2811297602134710623, guid: 29d9486ff0eecda4cacbb857368f9bea,
+    type: 3}
   play_scenes:
   - {fileID: 102900000, guid: d72910284a7f23f4cb4847ef957faa5c, type: 3}
   - {fileID: 102900000, guid: 3857f08d122635d48b5979407d881aeb, type: 3}
