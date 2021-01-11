@@ -34,7 +34,7 @@ namespace MatrixJam
             
             ExitButton.onClick.AddListener(() =>
             {
-                SceneManager.SceneMang.LoadScene(-1,0);
+                SceneManager.SceneMang.LoadStartScene();
                 ToggleUI();
             });
 

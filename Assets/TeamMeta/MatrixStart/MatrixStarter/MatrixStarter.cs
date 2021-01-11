@@ -13,7 +13,7 @@ namespace MatrixJam.TeamMeta
         void Start()
         {
             if (startingSceneIndex == -1)
-                sceneManager.LoadFirstSceneRandomly();
+                sceneManager.LoadRandomScene();
             else
             {
                 //ToDo Change -3 into something that makes sense

@@ -11,6 +11,7 @@ namespace MatrixJam
         public MatrixGraphSO matrixGraphData { get; private set; }
         //public LevelConnects[] all_connects;
         //public Object[] play_scenes;
+        public Object startScene;
         public Object endScene;
         private int num_entrence;
         private static SceneManager scenemg;
@@ -75,10 +76,9 @@ namespace MatrixJam
                 LoadSceneFromNumber(num_sce);
             }
         }
-        public void LoadSceneFromConnectionMem(Connection con)
+        public void LoadStartScene()
         {
-            //load the scene & entry at the start of given connection
-            LoadScene(con.scene_from, con.portal_from);
+            LoadSceneFromName(startScene.name);
         }
         public void LoadSceneFromExit(int num_sce, int int_exit)
         {
@@ -107,21 +107,18 @@ namespace MatrixJam
         }
         public void LoadRandomScene()
         {
-            Debug.Log("Starting random scene");
-            Debug.Log($"PlayerData.Data.NumGames {PlayerData.Data.NumGames}");
-            //choose a random scene and load it.
-            //this also start the gameplay in that scene.
-            int start_sce = Random.Range(0, PlayerData.Data.NumGames);
-            LoadScene(start_sce, 0);
-        }
-        public void LoadFirstSceneRandomly()
-        {
             Debug.Log("Starting first scene at random");
             Debug.Log($"PlayerData.Data.NumGames {PlayerData.Data.NumGames}");
             //choose a random scene and load it.
             //this also start the gameplay in that scene.
             int start_sce = Random.Range(0, matrixGraphData.nodes.Count);
-            LoadScene(start_sce, -3);
+            string scenePath = matrixGraphData.nodes[start_sce].scenePath;
+
+            //-1 means default entrance
+            matrixGraphData.WrapTo(start_sce, -1);
+            num_entrence = matrixGraphData.portUsedForEntry.id;
+
+            LoadSceneFromName(scenePath);
         }
         public void ResetLevelScene()
         {
@@ -136,7 +133,8 @@ namespace MatrixJam
         {
             //end the matrix and start the end scene
             Debug.Log("MatrixOver!");
-            LoadScene(-2, 0);
+            LoadSceneFromName(endScene.name);
+
         }
     }
 }

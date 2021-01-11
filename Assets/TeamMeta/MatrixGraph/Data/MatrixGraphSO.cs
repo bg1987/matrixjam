@@ -21,10 +21,17 @@ namespace MatrixJam.TeamMeta
 
             return activeNode;
         }
+        /// <param name="portId">
+        /// -1 Means use default entrance
+        /// </param>
+        /// <returns></returns>
         public MatrixNodeData WrapTo(int nodeIndex,int portId)
         {
             activeNode = nodes[nodeIndex];
-            portUsedForEntry = activeNode.inputPorts.Find(port=>port.id==portId);
+            if (portId == -1)
+                portUsedForEntry = new MatrixPortData(-1, nodeIndex);
+            else
+                portUsedForEntry = activeNode.inputPorts.Find(port => port.id == portId);
 
             return activeNode;
         }
