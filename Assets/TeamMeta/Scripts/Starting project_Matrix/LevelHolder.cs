@@ -65,7 +65,7 @@ namespace MatrixJam
                 if (SceneManager.SceneMang.entranceId == -1)
                 {
                     SceneManager.SceneMang.matrixGraphData.SetEntrancePortIdInCaseOfDefault(def_ent);
-                    EnterDefault(PlayerData.Data.current_level);
+                    EnterDefault(SceneManager.SceneMang.matrixGraphData.activeNode.index);
                     game_start = true;
                 }
                 else if (SceneManager.SceneMang.entranceId >= 0 && SceneManager.SceneMang.entranceId < entries.Length)

@@ -90,14 +90,14 @@ namespace MatrixJam
 
             LoadSceneFromName(destinationNode.scenePath);
         }
-        public void LoadSceneFromNumber(int num_scn)
+        void LoadSceneFromNumber(int num_scn)
         {
             //load the scene of given number. 
             //This do not start the gameplay in the scene!
             LoadSceneFromName(matrixGraphData.nodes[num_scn].scenePath);
         }
 
-       void LoadSceneFromName(string name)
+        void LoadSceneFromName(string name)
         {
             //the scene from memory.
             //This do not start the gameplay in the scene!
