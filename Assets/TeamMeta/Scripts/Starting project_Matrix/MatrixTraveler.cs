@@ -38,26 +38,21 @@ namespace MatrixJam
 
         public void LoadStartScene()
         {
-            LoadSceneFromName(startScene.name);
+            SceneManager.LoadScene(startScene.name);
         }
-        public void LoadSceneFromExit(int num_sce, int int_exit)
+        public void TravelFromExit(int exitId)
         {
             //load scene & entry that connects to given exit.
 
-            MatrixNodeData destinationNode = matrixGraphData.AdvanceTo(int_exit);
+            MatrixNodeData destinationNode = matrixGraphData.AdvanceTo(exitId);
             MatrixPortData destinationPort = matrixGraphData.activeNodeEntrancePort;
 
             PlayerData.Data.current_level = destinationNode.index;
 
-            LoadSceneFromName(destinationNode.scenePath);
+            SceneManager.LoadScene(name);
         }
-        void LoadSceneFromName(string name)
-        {
-            //the scene from memory.
-            //This do not start the gameplay in the scene!
-            UnityEngine.SceneManagement.SceneManager.LoadScene(name);
-        }
-        public void LoadRandomScene()
+
+        public void WrapToRandomGame()
         {
             Debug.Log("Starting first scene at random");
             Debug.Log($"PlayerData.Data.NumGames {PlayerData.Data.NumGames}");
@@ -66,7 +61,7 @@ namespace MatrixJam
             int start_sce = Random.Range(0, matrixGraphData.nodes.Count);
             WrapTo(start_sce, -1);
         }
-        public void ResetLevelScene()
+        public void ReTravelToCurrentGame()
         {
             //restart the level from the start
             //this start the gameplay in the scene.
@@ -79,13 +74,12 @@ namespace MatrixJam
         {
             //end the matrix and start the end scene
             Debug.Log("MatrixOver!");
-            LoadSceneFromName(endScene.name);
-
+            SceneManager.LoadScene(endScene.name);
         }
         public void WrapTo(int nodeIndex,int entranceId)
         {
-            MatrixNodeData destinationNode= matrixGraphData.WrapTo(nodeIndex, entranceId);
-            LoadSceneFromName(destinationNode.scenePath);
+            MatrixNodeData destinationNode = matrixGraphData.WrapTo(nodeIndex, entranceId);
+            SceneManager.LoadScene(destinationNode.scenePath);
         }
     }
 }

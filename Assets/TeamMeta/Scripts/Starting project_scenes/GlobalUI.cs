@@ -40,7 +40,7 @@ namespace MatrixJam
 
             RestartButton.onClick.AddListener(() =>
             {
-                MatrixTraveler.Instance.ResetLevelScene();
+                MatrixTraveler.Instance.ReTravelToCurrentGame();
                 ToggleUI();
             });
             
