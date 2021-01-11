@@ -61,9 +61,22 @@ namespace MatrixJam.TeamMeta
             node.levelName = nodeData.name;
             node.scenePath = nodeData.scenePath;
 
-            node.title = nodeData.name;
+            node.title = nodeData.index+"";
+            node.titleContainer.style.unityTextAlign = TextAnchor.MiddleCenter;
             node.name = nodeData.name;
             
+            //var scenePathLabel = new Label("Scene Path");
+            ////scenePathLabelStyle = scenePathLabel.style
+            //scenePathLabel.style.unityTextAlign = TextAnchor.MiddleCenter;
+            //scenePathLabel.style.backgroundColor = Color.black;
+            //node.mainContainer.Add(scenePathLabel);
+
+            node.GenerateLevelNameLabel();
+            node.GenerateLevelNameInputField();
+
+            node.GenerateScenePathLabel();
+            node.GenerateScenePathInputField();
+
             node.SetPosition(new Rect(position, defaultNodeSize));
 
             foreach (var portData in nodeData.inputPorts)
@@ -85,6 +98,12 @@ namespace MatrixJam.TeamMeta
             node.RefreshPorts();
 
             return node;
+        }
+        public void ColorAsActive(MatrixNode node)
+        {
+            ColorUtility.TryParseHtmlString("#FF5E13", out var bgColor);
+            bgColor.a = 0.5f;
+            node.style.backgroundColor = bgColor;
         }
         public List<Port> GetInputPortsFromNode(Node node)
         {
