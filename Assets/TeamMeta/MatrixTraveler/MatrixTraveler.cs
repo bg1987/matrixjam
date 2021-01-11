@@ -9,6 +9,11 @@ namespace MatrixJam
     {
         [SerializeField] TextAsset matrixGraphAsset;
         public MatrixGraphSO matrixGraphData { get; private set; }
+        public MatrixTravelData matrixTravelData { get; private set; }
+
+        public MatrixNodeData currentGame { get=> matrixTravelData.currentGame;}
+        public MatrixPortData enteredAt { get => matrixTravelData.enteredAt;}
+
         public Object startScene;
         public Object endScene;
         public static MatrixTraveler Instance { get; private set; }
@@ -26,9 +31,10 @@ namespace MatrixJam
         }
         public int entranceId
         {
+            //ToDo Refactor out
             get
             {
-                return matrixGraphData.activeNodeEntrancePort.id;
+                return enteredAt.id;
             }
         }
 
@@ -36,16 +42,19 @@ namespace MatrixJam
         {
             SceneManager.LoadScene(startScene.name);
         }
+        /// <summary> Port Id = -1 means use default entrance</summary>
         public void TravelFromExit(int exitId)
         {
-            //load scene & entry that connects to given exit.
+            MatrixPortData startPort = currentGame.FindOutputPortById(exitId);
+            MatrixEdgeData edge = matrixGraphData.FindEdgeWithStartPort(startPort);
 
-            MatrixNodeData destinationNode = matrixGraphData.AdvanceTo(exitId);
-            MatrixPortData destinationPort = matrixGraphData.activeNodeEntrancePort;
+            MatrixPortData destinationPort = edge.endPort;
 
-            PlayerData.Data.current_level = destinationNode.index;
+            matrixTravelData.CountExit(startPort);
 
-            SceneManager.LoadScene(name);
+            WrapTo(destinationPort);
+            //ToDo Refactor PlayerData 
+            //PlayerData.Data.current_level = destinationNode.index;
         }
 
         public void WrapToRandomGame()
@@ -72,10 +81,36 @@ namespace MatrixJam
             Debug.Log("MatrixOver!");
             SceneManager.LoadScene(endScene.name);
         }
+
+        /// <summary> Port Id = -1 means use default entrance</summary>
         public void WrapTo(int nodeIndex,int entranceId)
         {
-            MatrixNodeData destinationNode = matrixGraphData.WrapTo(nodeIndex, entranceId);
+            MatrixNodeData destinationNode = matrixGraphData.nodes[nodeIndex];
+            MatrixPortData destinationPort = destinationNode.FindInputPortById(entranceId);
+
+            matrixTravelData.currentGame = matrixGraphData.nodes[nodeIndex];
+            matrixTravelData.enteredAt = destinationPort;
+
+            matrixTravelData.CountEntrance(destinationPort);
+            matrixTravelData.CountGame(destinationNode);
+
             SceneManager.LoadScene(destinationNode.scenePath);
+        }
+        /// <summary> Port Id = -1 means use default entrance</summary>
+        public void WrapTo(MatrixPortData portData)
+        {
+            WrapTo(portData.nodeIndex, portData.id);
+        }
+        public void SetEntranceUsedInCaseOfDefault(int id)
+        {
+            if (this.enteredAt.id != -1)
+            {
+                Debug.Log("Can only set activeNodeEntrancePort id if the node was entered from its default entrance, aka -1");
+                return;
+            }
+            var port = enteredAt;
+            port.id = id;
+            matrixTravelData.enteredAt = port;
         }
     }
 }

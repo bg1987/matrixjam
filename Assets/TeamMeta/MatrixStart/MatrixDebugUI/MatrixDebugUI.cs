@@ -36,7 +36,7 @@ namespace MatrixJam.TeamMeta
             yield return null;
             yield return null;
 
-            MatrixNodeData node = MatrixTraveler.Instance.matrixGraphData.activeNode;
+            MatrixNodeData node = MatrixTraveler.Instance.currentGame;
 
             gameIndexText.SetText(node.index+ "");
 
@@ -47,7 +47,7 @@ namespace MatrixJam.TeamMeta
         void RefreshEntranceUsedText()
         {
             var entranceUsedString = "";
-            MatrixPortData entrancePort = MatrixTraveler.Instance.matrixGraphData.activeNodeEntrancePort;
+            MatrixPortData entrancePort = MatrixTraveler.Instance.enteredAt;
             // -1 means came from matrix start.
             if (entrancePort.id == -1)
             {
