@@ -26,7 +26,7 @@ namespace MatrixJam
         {
             get
             {
-                return SceneManager.SceneMang.play_scenes.Length;
+                return SceneManager.SceneMang.matrixGraphData.nodes.Count;
             }
         }
         public bool AddLevel(int finish_level, int ent, int exit)
@@ -37,7 +37,7 @@ namespace MatrixJam
             {
                 been_connections.AddLast(new Connection(finish_level, ent, finish_level, exit));
                 complete_levels++;
-                if (complete_levels + skip_levels_num >= SceneManager.SceneMang.play_scenes.Length)
+                if (complete_levels + skip_levels_num >= SceneManager.SceneMang.matrixGraphData.nodes.Count)
                 {
                     return true;
                 }
