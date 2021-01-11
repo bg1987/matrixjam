@@ -9,5 +9,34 @@ namespace MatrixJam.TeamMeta
     {
         public List<MatrixNodeData> nodes;
         public List<MatrixEdgeData> edges;
+        public MatrixNodeData activeNode { get; private set; }
+        public MatrixPortData portUsedForEntry { get; private set; }
+
+        public MatrixNodeData AdvanceTo(int portId)
+        {
+            MatrixEdgeData edge = FindEdgeWithStartPort(activeNode.index, portId);
+
+            portUsedForEntry = edge.endPort;
+            activeNode = nodes[portUsedForEntry.nodeIndex];
+
+            return activeNode;
+        }
+        public MatrixNodeData WrapTo(int nodeIndex,int portId)
+        {
+            activeNode = nodes[nodeIndex];
+            portUsedForEntry = activeNode.inputPorts.Find(port=>port.id==portId);
+
+            return activeNode;
+        }
+        private MatrixEdgeData FindEdgeWithStartPort(MatrixPortData startPort)
+        {
+            return FindEdgeWithStartPort(startPort.nodeIndex, startPort.id);
+        }
+        private MatrixEdgeData FindEdgeWithStartPort(int nodeIndex, int portId)
+        {
+            MatrixEdgeData edgeData = edges.Find(edge => edge.startPort.nodeIndex == nodeIndex &&
+                                                         edge.startPort.id == portId);
+            return edgeData;
+        }
     }
 }

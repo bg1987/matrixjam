@@ -84,11 +84,13 @@ namespace MatrixJam
         {
             //load scene & entry that connects to given exit.
 
-            MatrixPortData entryPort = FindConnectTo(num_sce, int_exit);
-            PlayerData.Data.current_level = entryPort.nodeIndex;
-            
-            LoadSceneFromName( matrixGraphData.nodes[entryPort.nodeIndex].scenePath);
-            //LoadScene(entryPort.nodeIndex, entryPort.id);
+            MatrixNodeData destinationNode = matrixGraphData.AdvanceTo(int_exit);
+            MatrixPortData destinationPort = matrixGraphData.portUsedForEntry;
+
+            num_entrence = destinationPort.id;
+            PlayerData.Data.current_level = destinationNode.index;
+
+            LoadSceneFromName(destinationNode.scenePath);
         }
         void LoadSceneFromNumber(int num_scn)
         {
@@ -102,15 +104,6 @@ namespace MatrixJam
             //the scene from memory.
             //This do not start the gameplay in the scene!
             UnityEngine.SceneManagement.SceneManager.LoadScene(name);
-        }
-        public MatrixPortData FindConnectTo(int level, int exit)
-        {
-            //find the connection to the next scene of given exit
-            //matrixGraphData.nodes[level].outputPorts
-            MatrixEdgeData edgeData = matrixGraphData.edges.Find(edge => edge.startPort.nodeIndex == level && 
-                                                   edge.startPort.id == exit);
-            return edgeData.endPort;
-            //return all_connects[level].FindConnect(exit, false);
         }
         public void LoadRandomScene()
         {
