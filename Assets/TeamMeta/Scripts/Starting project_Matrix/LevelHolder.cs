@@ -62,15 +62,19 @@ namespace MatrixJam
             Organize();
             if (SceneManager.SceneMang != null)
             {
-                if (SceneManager.SceneMang.Numentrence >= 0 && SceneManager.SceneMang.Numentrence < entries.Length)
+                if (SceneManager.SceneMang.entranceId == -1)
                 {
-                    if(SceneManager.SceneMang.Numentrence == -1)
-                        EnterDefault(PlayerData.Data.current_level);
-                    else
-                        EnterLevel(PlayerData.Data.current_level, SceneManager.SceneMang.Numentrence);
+                    SceneManager.SceneMang.matrixGraphData.SetEntrancePortIdInCaseOfDefault(def_ent);
+                    EnterDefault(PlayerData.Data.current_level);
                     game_start = true;
-                    return;
                 }
+                else if (SceneManager.SceneMang.entranceId >= 0 && SceneManager.SceneMang.entranceId < entries.Length)
+                {
+                    
+                    EnterLevel(PlayerData.Data.current_level, SceneManager.SceneMang.entranceId);
+                    game_start = true;
+                }
+                return;
             }
 
             if (PlayerData.Data != null)

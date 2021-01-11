@@ -33,9 +33,9 @@ namespace MatrixJam.Team24
         {
             if (SceneManager.SceneMang != null)
             {
-                if (SceneManager.SceneMang.Numentrence >= 0)
+                if (SceneManager.SceneMang.entranceId >= 0)
                 {
-                    EnterLevel(PlayerData.Data.current_level, SceneManager.SceneMang.Numentrence);
+                    EnterLevel(PlayerData.Data.current_level, SceneManager.SceneMang.entranceId);
                     return;
                 }
 

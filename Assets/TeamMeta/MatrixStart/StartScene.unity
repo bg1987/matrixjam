@@ -1159,8 +1159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matrixGraphAsset: {fileID: 2811297602134710623, guid: f0134894f0eaba543a64af5d179df3c1,
     type: 3}
-  matrixGraphData: {fileID: 0}
-  play_scenes: []
+  startScene: {fileID: 0}
   endScene: {fileID: 102900000, guid: f358af270e65cf54683dea16d33c8dfc, type: 3}
 --- !u!4 &1107044196
 Transform:
@@ -1662,6 +1661,11 @@ PrefabInstance:
       propertyPath: sceneManager
       value: 
       objectReference: {fileID: 1107044195}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: startingSceneIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3524885435939293114, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2318,27 +2322,37 @@ PrefabInstance:
     - target: {fileID: 1228904794617157078, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1228904794617157078, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1228904794617157078, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1228904794617157078, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1228904794617157078, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228904794617157078, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228904794617157078, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1560032236049475792, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
@@ -2470,6 +2484,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1560032236369781793, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560032236369781793, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 1560032236864758040, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_Color.a
@@ -2478,86 +2502,141 @@ PrefabInstance:
     - target: {fileID: 2529028318169209581, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2529028318169209581, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2529028318169209581, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2529028318169209581, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529028318169209581, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529028318169209581, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529028318169209581, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_enableWordWrapping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3397787574913870303, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3397787574913870303, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3397787574913870303, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3397787574913870303, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397787574913870303, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397787574913870303, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397787574913870303, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_enableWordWrapping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4024631470463775484, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4024631470463775484, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4024631470463775484, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4024631470463775484, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4024631470463775484, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024631470463775484, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024631470463775484, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 6188582361069854349, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6188582361069854349, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6188582361069854349, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6188582361069854349, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188582361069854349, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188582361069854349, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188582361069854349, guid: fe94e5ace811f7744bdecadc862e9bb5,
+        type: 3}
+      propertyPath: m_enableWordWrapping
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

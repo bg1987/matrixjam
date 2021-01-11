@@ -13,7 +13,6 @@ namespace MatrixJam
         //public Object[] play_scenes;
         public Object startScene;
         public Object endScene;
-        private int num_entrence;
         private static SceneManager scenemg;
         public static SceneManager SceneMang
         {
@@ -31,11 +30,11 @@ namespace MatrixJam
             MatrixGraphConverter matrixGraphConverter = new MatrixGraphConverter();
             matrixGraphData = matrixGraphConverter.ToScriptableObject(matrixGraphAsset.text);
         }
-        public int Numentrence
+        public int entranceId
         {
             get
             {
-                return num_entrence;
+                return matrixGraphData.activeNodeEntrancePort.id;
             }
         }
         public void LoadScene(int num_sce, int num_port)
@@ -59,13 +58,13 @@ namespace MatrixJam
                 case -3:
                 {
                     //Signals the game to start from its default entrance
-                    num_entrence = -1;
+                    //num_entrence = -1;
 
                     break;
                 }
                 default:
                 {
-                    num_entrence = num_port;
+                    //num_entrence = num_port;
 
                     break;
                 }
@@ -85,14 +84,13 @@ namespace MatrixJam
             //load scene & entry that connects to given exit.
 
             MatrixNodeData destinationNode = matrixGraphData.AdvanceTo(int_exit);
-            MatrixPortData destinationPort = matrixGraphData.portUsedForEntry;
+            MatrixPortData destinationPort = matrixGraphData.activeNodeEntrancePort;
 
-            num_entrence = destinationPort.id;
             PlayerData.Data.current_level = destinationNode.index;
 
             LoadSceneFromName(destinationNode.scenePath);
         }
-        void LoadSceneFromNumber(int num_scn)
+        public void LoadSceneFromNumber(int num_scn)
         {
             //load the scene of given number. 
             //This do not start the gameplay in the scene!
@@ -112,13 +110,7 @@ namespace MatrixJam
             //choose a random scene and load it.
             //this also start the gameplay in that scene.
             int start_sce = Random.Range(0, matrixGraphData.nodes.Count);
-            string scenePath = matrixGraphData.nodes[start_sce].scenePath;
-
-            //-1 means default entrance
-            matrixGraphData.WrapTo(start_sce, -1);
-            num_entrence = matrixGraphData.portUsedForEntry.id;
-
-            LoadSceneFromName(scenePath);
+            WrapTo(start_sce, -1);
         }
         public void ResetLevelScene()
         {
@@ -135,6 +127,11 @@ namespace MatrixJam
             Debug.Log("MatrixOver!");
             LoadSceneFromName(endScene.name);
 
+        }
+        public void WrapTo(int nodeIndex,int entranceId)
+        {
+            MatrixNodeData destinationNode= matrixGraphData.WrapTo(nodeIndex, entranceId);
+            LoadSceneFromName(destinationNode.scenePath);
         }
     }
 }

@@ -10,14 +10,14 @@ namespace MatrixJam.TeamMeta
         public List<MatrixNodeData> nodes;
         public List<MatrixEdgeData> edges;
         public MatrixNodeData activeNode { get; private set; }
-        public MatrixPortData portUsedForEntry { get; private set; }
+        public MatrixPortData activeNodeEntrancePort { get; private set; }
 
         public MatrixNodeData AdvanceTo(int portId)
         {
             MatrixEdgeData edge = FindEdgeWithStartPort(activeNode.index, portId);
 
-            portUsedForEntry = edge.endPort;
-            activeNode = nodes[portUsedForEntry.nodeIndex];
+            activeNodeEntrancePort = edge.endPort;
+            activeNode = nodes[activeNodeEntrancePort.nodeIndex];
 
             return activeNode;
         }
@@ -29,11 +29,22 @@ namespace MatrixJam.TeamMeta
         {
             activeNode = nodes[nodeIndex];
             if (portId == -1)
-                portUsedForEntry = new MatrixPortData(-1, nodeIndex);
+                activeNodeEntrancePort = new MatrixPortData(-1, nodeIndex);
             else
-                portUsedForEntry = activeNode.inputPorts.Find(port => port.id == portId);
+                activeNodeEntrancePort = activeNode.inputPorts.Find(port => port.id == portId);
 
             return activeNode;
+        }
+        public void SetEntrancePortIdInCaseOfDefault(int id)
+        {
+            if (activeNodeEntrancePort.id != -1)
+            {
+                Debug.Log("Can only set activeNodeEntrancePort id if the node was entered from its default entrance, aka -1");
+                return;
+            }
+            var port = activeNodeEntrancePort;
+            port.id = id;
+            activeNodeEntrancePort = port;
         }
         private MatrixEdgeData FindEdgeWithStartPort(MatrixPortData startPort)
         {

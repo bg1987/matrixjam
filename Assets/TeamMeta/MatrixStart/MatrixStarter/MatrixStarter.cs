@@ -17,7 +17,7 @@ namespace MatrixJam.TeamMeta
             else
             {
                 //ToDo Change -3 into something that makes sense
-                sceneManager.LoadScene(startingSceneIndex, -3);
+                sceneManager.WrapTo(startingSceneIndex,-1);
             }
 
         }

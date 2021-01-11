@@ -29,19 +29,27 @@ namespace MatrixJam.TeamMeta
 
         void Refresh()
         {
-            Connection lastConnection = playerData.LastCon;
-            gameIndexText.SetText(playerData.current_level + "");
+            StartCoroutine(DelayedRefreshRoutine());
+        }
+        IEnumerator DelayedRefreshRoutine()
+        {
+            yield return null;
+            yield return null;
+
+            MatrixNodeData node = SceneManager.SceneMang.matrixGraphData.activeNode;
+
+            gameIndexText.SetText(node.index+ "");
 
             RefreshEntranceUsedText();
 
-            EnteredFromGameText.SetText(lastConnection.scene_from + "");
-            
+            EnteredFromGameText.SetText("Not implemented yet" + "");
         }
         void RefreshEntranceUsedText()
         {
             var entranceUsedString = "";
-            // -3 means came from matrix start. Yes should be refactored to at least make numeric sense
-            if (SceneManager.SceneMang.Numentrence == -3)
+            MatrixPortData entrancePort = SceneManager.SceneMang.matrixGraphData.activeNodeEntrancePort;
+            // -1 means came from matrix start.
+            if (entrancePort.id == -1)
             {
                 var levelHolder = FindObjectOfType<LevelHolder>();
                 if (levelHolder)
@@ -50,7 +58,7 @@ namespace MatrixJam.TeamMeta
                     Debug.Log("There should be a level holder in scene " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
             }
             else
-                entranceUsedString = SceneManager.SceneMang.Numentrence + "";
+                entranceUsedString = entrancePort.id + "";
 
             entranceUsedText.SetText(entranceUsedString);
         }
