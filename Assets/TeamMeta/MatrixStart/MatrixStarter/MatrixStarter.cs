@@ -6,7 +6,7 @@ namespace MatrixJam.TeamMeta
 {
     public class MatrixStarter : StartHelper
     {
-        [SerializeField] SceneManager sceneManager;
+        [SerializeField] MatrixTraveler sceneManager;
         [Header("-1 => Select Random Scene")]
         [SerializeField] int startingSceneIndex = 0;
         // Start is called before the first frame update

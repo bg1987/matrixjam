@@ -31,11 +31,11 @@ namespace MatrixJam.Team24
 
         private void Start()
         {
-            if (SceneManager.SceneMang != null)
+            if (MatrixTraveler.Instance != null)
             {
-                if (SceneManager.SceneMang.entranceId >= 0)
+                if (MatrixTraveler.Instance.entranceId >= 0)
                 {
-                    EnterLevel(PlayerData.Data.current_level, SceneManager.SceneMang.entranceId);
+                    EnterLevel(PlayerData.Data.current_level, MatrixTraveler.Instance.entranceId);
                     return;
                 }
 
@@ -68,10 +68,10 @@ namespace MatrixJam.Team24
         }
         public void ExitLevel(Exit exit_to)
         {
-            if (SceneManager.SceneMang != null)
+            if (MatrixTraveler.Instance != null)
             {
                 PlayerData.Data.AddLevel(num_lvel, ent_num, exit_to.Num);
-                SceneManager.SceneMang.LoadSceneFromExit(num_lvel, exit_to.Num);
+                MatrixTraveler.Instance.LoadSceneFromExit(num_lvel, exit_to.Num);
             }
             else
             {
@@ -116,7 +116,7 @@ namespace MatrixJam.Team24
         }
         public void Restart()
         {
-            if (SceneManager.SceneMang != null)
+            if (MatrixTraveler.Instance != null)
             {
                 //ToDo Implement Restart
                 //SceneManager.SceneMang.LoadScene(num_lvel, ent_num);

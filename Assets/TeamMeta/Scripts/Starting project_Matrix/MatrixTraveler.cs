@@ -5,22 +5,22 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 namespace MatrixJam
 {
-    public class SceneManager : MonoBehaviour
+    public class MatrixTraveler : MonoBehaviour
     {
         [SerializeField] TextAsset matrixGraphAsset;
         public MatrixGraphSO matrixGraphData { get; private set; }
         public Object startScene;
         public Object endScene;
-        private static SceneManager scenemg;
-        public static SceneManager SceneMang
+        private static MatrixTraveler instance;
+        public static MatrixTraveler Instance
         {
             get
             {
-                if (scenemg == null)
+                if (instance == null)
                 {
-                    scenemg = GameObject.FindObjectOfType<SceneManager>();
+                    instance = GameObject.FindObjectOfType<MatrixTraveler>();
                 }
-                return scenemg;
+                return instance;
             }
         }
         private void Awake()

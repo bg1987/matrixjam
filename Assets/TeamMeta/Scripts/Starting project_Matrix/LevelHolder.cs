@@ -60,18 +60,18 @@ namespace MatrixJam
         {
             //set up the game for the first time, then start the game from the entry choosen by scenemanger, or by the default entry.
             Organize();
-            if (SceneManager.SceneMang != null)
+            if (MatrixTraveler.Instance != null)
             {
-                if (SceneManager.SceneMang.entranceId == -1)
+                if (MatrixTraveler.Instance.entranceId == -1)
                 {
-                    SceneManager.SceneMang.matrixGraphData.SetEntrancePortIdInCaseOfDefault(def_ent);
-                    EnterDefault(SceneManager.SceneMang.matrixGraphData.activeNode.index);
+                    MatrixTraveler.Instance.matrixGraphData.SetEntrancePortIdInCaseOfDefault(def_ent);
+                    EnterDefault(MatrixTraveler.Instance.matrixGraphData.activeNode.index);
                     game_start = true;
                 }
-                else if (SceneManager.SceneMang.entranceId >= 0 && SceneManager.SceneMang.entranceId < entries.Length)
+                else if (MatrixTraveler.Instance.entranceId >= 0 && MatrixTraveler.Instance.entranceId < entries.Length)
                 {
                     
-                    EnterLevel(PlayerData.Data.current_level, SceneManager.SceneMang.entranceId);
+                    EnterLevel(PlayerData.Data.current_level, MatrixTraveler.Instance.entranceId);
                     game_start = true;
                 }
                 return;
@@ -93,15 +93,15 @@ namespace MatrixJam
         {
             //exit the game using the given exit.
             //do not call this directly, it should be called from the choosen exit.
-            if (SceneManager.SceneMang != null)
+            if (MatrixTraveler.Instance != null)
             {
                 if (PlayerData.Data.AddLevel(num_lvel, ent_num, exit_to.Num))
                 {
-                    SceneManager.SceneMang.MatrixOver();
+                    MatrixTraveler.Instance.MatrixOver();
                 }
                 else
                 {
-                    SceneManager.SceneMang.LoadSceneFromExit(num_lvel, exit_to.Num);
+                    MatrixTraveler.Instance.LoadSceneFromExit(num_lvel, exit_to.Num);
                 }
             }
             else

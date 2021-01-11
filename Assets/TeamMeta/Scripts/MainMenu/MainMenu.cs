@@ -79,7 +79,7 @@ namespace MatrixJam.TeamMeta
         
         public void ButtonHandler_PlayGame()
         {
-            FindObjectOfType<SceneManager>().LoadRandomScene();
+            FindObjectOfType<MatrixTraveler>().LoadRandomScene();
         }
         
         public void ButtonHandler_ShowRules()

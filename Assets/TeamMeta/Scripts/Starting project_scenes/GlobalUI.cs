@@ -34,13 +34,13 @@ namespace MatrixJam
             
             ExitButton.onClick.AddListener(() =>
             {
-                SceneManager.SceneMang.LoadStartScene();
+                MatrixTraveler.Instance.LoadStartScene();
                 ToggleUI();
             });
 
             RestartButton.onClick.AddListener(() =>
             {
-                SceneManager.SceneMang.ResetLevelScene();
+                MatrixTraveler.Instance.ResetLevelScene();
                 ToggleUI();
             });
             
