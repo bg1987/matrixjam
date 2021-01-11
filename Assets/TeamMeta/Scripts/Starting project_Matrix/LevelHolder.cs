@@ -101,7 +101,7 @@ namespace MatrixJam
                 }
                 else
                 {
-                    MatrixTraveler.Instance.TravelFromExit(num_lvel, exit_to.Num);
+                    MatrixTraveler.Instance.TravelFromExit(exit_to.Num);
                 }
             }
             else

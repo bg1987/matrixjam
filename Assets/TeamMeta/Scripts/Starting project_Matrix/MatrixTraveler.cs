@@ -11,20 +11,16 @@ namespace MatrixJam
         public MatrixGraphSO matrixGraphData { get; private set; }
         public Object startScene;
         public Object endScene;
-        private static MatrixTraveler instance;
-        public static MatrixTraveler Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = GameObject.FindObjectOfType<MatrixTraveler>();
-                }
-                return instance;
-            }
-        }
+        public static MatrixTraveler Instance { get; private set; }
         private void Awake()
         {
+            if (Instance != null)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+            Instance = this;
+
             MatrixGraphConverter matrixGraphConverter = new MatrixGraphConverter();
             matrixGraphData = matrixGraphConverter.ToScriptableObject(matrixGraphAsset.text);
         }

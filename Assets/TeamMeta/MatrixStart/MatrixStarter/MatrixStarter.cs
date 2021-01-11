@@ -6,18 +6,18 @@ namespace MatrixJam.TeamMeta
 {
     public class MatrixStarter : StartHelper
     {
-        [SerializeField] MatrixTraveler sceneManager;
-        [Header("-1 => Select Random Scene")]
-        [SerializeField] int startingSceneIndex = 0;
+        [SerializeField] MatrixTraveler matrixTraveler;
+        [Header("-1 => Select Random Game")]
+        [SerializeField] int startingGameIndex = 0;
         // Start is called before the first frame update
         void Start()
         {
-            if (startingSceneIndex == -1)
-                sceneManager.WrapToRandomGame();
+            if (startingGameIndex == -1)
+                matrixTraveler.WrapToRandomGame();
             else
             {
                 //ToDo Change -3 into something that makes sense
-                sceneManager.WrapTo(startingSceneIndex,-1);
+                matrixTraveler.WrapTo(startingGameIndex,-1);
             }
 
         }
