@@ -118,7 +118,8 @@ namespace MatrixJam.Team24
         {
             if (SceneManager.SceneMang != null)
             {
-                SceneManager.SceneMang.LoadScene(num_lvel, ent_num);
+                //ToDo Implement Restart
+                //SceneManager.SceneMang.LoadScene(num_lvel, ent_num);
             }
         }
     }
