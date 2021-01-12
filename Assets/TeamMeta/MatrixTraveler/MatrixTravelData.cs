@@ -9,7 +9,7 @@ namespace MatrixJam.TeamMeta
         Dictionary<MatrixNodeData, int> gameToVisits = new Dictionary<MatrixNodeData, int>();
         Dictionary<MatrixPortData,int> entrancesToVisits = new Dictionary<MatrixPortData, int>();
         Dictionary<MatrixPortData,int> exitsToVisits = new Dictionary<MatrixPortData, int>();
-
+        HashSet<int> completedGamesByIndex = new HashSet<int>();
         List<MatrixEdgeData> history = new List<MatrixEdgeData>();
 
         public bool TryGetLastTravel(out MatrixEdgeData matrixEdgeData)
@@ -62,8 +62,14 @@ namespace MatrixJam.TeamMeta
             {
                 CountExit(start);
             }
+            else
+            {
+                //ToDo See if this will be a necessary thing to check or if GetVisitedGamesCount() is enough
+                completedGamesByIndex.Add(start.nodeIndex);
+            }
             CountEntrance(destinationPort);
             CountGame(destinationGame);
+
 
             history.Add(new MatrixEdgeData(start, destinationPort));
         }
@@ -90,6 +96,10 @@ namespace MatrixJam.TeamMeta
             if (!exitsToVisits.ContainsKey(matrixPortData))
                 return 0;
             return exitsToVisits[matrixPortData];
+        }
+        public int GetVisitedGamesCount()
+        {
+            return gameToVisits.Count;
         }
     }
 }

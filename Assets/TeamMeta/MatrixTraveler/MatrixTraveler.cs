@@ -65,6 +65,11 @@ namespace MatrixJam
         /// <summary> Port Id = -1 means use default entrance</summary>
         public void TravelFromExit(int exitId)
         {
+            if (travelData.GetVisitedGamesCount() == matrixGraphData.nodes.Count)
+            {
+                MatrixOver();
+                return;
+            }
             MatrixPortData startPort = GetCurrentGame().FindOutputPortById(exitId);
             MatrixEdgeData edge = matrixGraphData.FindEdgeWithStartPort(startPort);
 
