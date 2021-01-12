@@ -47,8 +47,8 @@ namespace MatrixJam.TeamMeta
 
             MatrixTravelData travelData = MatrixTraveler.Instance.travelData;
             RefreshCurrentGame();
-
-            previousGameIndexText.SetText("Not implemented" + "");
+            RefreshPreviousGame();
+            //previousGameIndexText.SetText("Not implemented" + "");
         }
         void RefreshCurrentGame()
         {
@@ -59,8 +59,52 @@ namespace MatrixJam.TeamMeta
             gameNameText.SetText(currentGame.name);
             gameVisitsText.SetText(travelData.GetGameVisitCount(currentGame).ToString());
 
-            entranceUsedText.SetText(lastUsedEntrance.ToString());
+            entranceUsedText.SetText(lastUsedEntrance.id.ToString());
             entranceUseCountText.SetText(travelData.GetEntranceVisitCount(lastUsedEntrance).ToString());
+        }
+        void RefreshPreviousGame()
+        {
+            MatrixTravelData travelData = MatrixTraveler.Instance.travelData;
+            IReadOnlyList<MatrixEdgeData> history = travelData.GetHistory();
+            if(history.Count==0)
+            {
+                return;
+            }
+            MatrixEdgeData lastEdge = history[history.Count - 1];
+            MatrixPortData exitPort = lastEdge.startPort;
+
+            string previousGameIndexString;
+            string previousGameNameString;
+            string exitUsedString;
+            string exitUseCountString;
+
+            if (exitPort.nodeIndex == -1)
+            {
+                previousGameIndexString = "";
+                previousGameNameString = "";
+            }
+            else
+            {
+                MatrixNodeData previousGame = MatrixTraveler.Instance.matrixGraphData.nodes[lastEdge.startPort.nodeIndex];
+                previousGameIndexString = previousGame.index.ToString();
+                previousGameNameString = previousGame.name;
+            }
+            if(exitPort.id== -1)
+            {
+                exitUsedString = "";
+                exitUseCountString = "";
+            }
+            else
+            {
+                exitUsedString = exitPort.id.ToString();
+                exitUseCountString = travelData.GetExitVisitCount(exitPort).ToString();
+
+            }
+
+            previousGameIndexText.SetText(previousGameIndexString);
+            previousGameNameText.SetText(previousGameNameString);
+            exitUsedText.SetText(exitUsedString);
+            exitUseCountText.SetText(exitUseCountString);
         }
     }
 }

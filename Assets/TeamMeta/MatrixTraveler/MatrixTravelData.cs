@@ -25,8 +25,10 @@ namespace MatrixJam.TeamMeta
                 return true;
             }
         }
-
-
+        public IReadOnlyList<MatrixEdgeData> GetHistory()
+        {
+            return history.AsReadOnly();
+        }
         void CountGame(MatrixNodeData game)
         {
             if (gameToVisits.ContainsKey(game))
