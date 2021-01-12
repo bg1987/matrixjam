@@ -6,14 +6,28 @@ namespace MatrixJam.TeamMeta
 {
     public class MatrixTravelData
     {
-        public Dictionary<MatrixNodeData, int> gameToVisits = new Dictionary<MatrixNodeData, int>();
-        public Dictionary<MatrixPortData,int> entrancesToVisits = new Dictionary<MatrixPortData, int>();
-        public Dictionary<MatrixPortData,int> exitsToVisits = new Dictionary<MatrixPortData, int>();
+        Dictionary<MatrixNodeData, int> gameToVisits = new Dictionary<MatrixNodeData, int>();
+        Dictionary<MatrixPortData,int> entrancesToVisits = new Dictionary<MatrixPortData, int>();
+        Dictionary<MatrixPortData,int> exitsToVisits = new Dictionary<MatrixPortData, int>();
 
-        public MatrixNodeData currentGame;
-        public MatrixPortData enteredAt;
+        List<MatrixEdgeData> history = new List<MatrixEdgeData>();
 
-        public void CountGame(MatrixNodeData game)
+        public bool TryGetLastTravel(out MatrixEdgeData matrixEdgeData)
+        {
+            if (history.Count == 0)
+            {
+                matrixEdgeData = new MatrixEdgeData(new MatrixPortData(-1, -1), new MatrixPortData(-1, -1));
+                return false;
+            }
+            else
+            {
+                matrixEdgeData = history[history.Count - 1];
+                return true;
+            }
+        }
+
+
+        void CountGame(MatrixNodeData game)
         {
             if (gameToVisits.ContainsKey(game))
                 gameToVisits[game] += 1;
@@ -22,7 +36,7 @@ namespace MatrixJam.TeamMeta
                 gameToVisits.Add(game, 1);
             }
         }
-        public void CountEntrance(MatrixPortData port)
+        void CountEntrance(MatrixPortData port)
         {
             if (entrancesToVisits.ContainsKey(port))
                 entrancesToVisits[port] += 1;
@@ -31,7 +45,7 @@ namespace MatrixJam.TeamMeta
                 entrancesToVisits.Add(port, 1);
             }
         }
-        public void CountExit(MatrixPortData port)
+        void CountExit(MatrixPortData port)
         {
             if (exitsToVisits.ContainsKey(port))
                 exitsToVisits[port] += 1;
@@ -39,6 +53,41 @@ namespace MatrixJam.TeamMeta
             {
                 exitsToVisits.Add(port, 1);
             }
+        }
+        public void AddTravel(MatrixPortData start,  MatrixPortData destinationPort, MatrixNodeData destinationGame)
+        {
+            if (start.id != -1)
+            {
+                CountExit(start);
+            }
+            CountEntrance(destinationPort);
+            CountGame(destinationGame);
+
+            history.Add(new MatrixEdgeData(start, destinationPort));
+        }
+        public void AmendLastTravelDestinationPortId(int id)
+        {
+            MatrixEdgeData edge = history[history.Count - 1];
+            edge.endPort.id = id;
+            history[history.Count - 1] = edge;
+        }
+        public int GetGameVisitCount(MatrixNodeData matrixNodeData)
+        {
+            if (!gameToVisits.ContainsKey(matrixNodeData))
+                return 0;
+            return gameToVisits[matrixNodeData];
+        }
+        public int GetEntranceVisitCount(MatrixPortData matrixPortData)
+        {
+            if (!entrancesToVisits.ContainsKey(matrixPortData))
+                return 0;
+            return entrancesToVisits[matrixPortData];
+        }
+        public int GetExitVisitCount(MatrixPortData matrixPortData)
+        {
+            if (!exitsToVisits.ContainsKey(matrixPortData))
+                return 0;
+            return exitsToVisits[matrixPortData];
         }
     }
 }

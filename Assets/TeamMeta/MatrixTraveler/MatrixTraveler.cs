@@ -9,10 +9,7 @@ namespace MatrixJam
     {
         [SerializeField] TextAsset matrixGraphAsset;
         public MatrixGraphSO matrixGraphData { get; private set; }
-        public MatrixTravelData matrixTravelData { get; private set; }
-
-        public MatrixNodeData currentGame { get=> matrixTravelData.currentGame;}
-        public MatrixPortData enteredAt { get => matrixTravelData.enteredAt;}
+        public MatrixTravelData travelData { get; private set; }
 
         public Object startScene;
         public Object endScene;
@@ -28,16 +25,39 @@ namespace MatrixJam
 
             MatrixGraphConverter matrixGraphConverter = new MatrixGraphConverter();
             matrixGraphData = matrixGraphConverter.ToScriptableObject(matrixGraphAsset.text);
+
+            travelData = new MatrixTravelData();
         }
         public int entranceId
         {
             //ToDo Refactor out
             get
             {
-                return enteredAt.id;
+                return GetLastUsedEntrance().id;
             }
         }
-
+        public MatrixNodeData GetCurrentGame()
+        {
+            bool success = travelData.TryGetLastTravel(out MatrixEdgeData matrixEdgeData);
+            if (success)
+                return matrixGraphData.nodes[matrixEdgeData.endPort.nodeIndex];
+            else
+            {
+                Debug.Log("MatrixTraveler has not traveled to any game yet");
+                return new MatrixNodeData(-1,"Undefined Game","");
+            }
+        }
+        public MatrixPortData GetLastUsedEntrance()
+        {
+            bool success = travelData.TryGetLastTravel(out MatrixEdgeData matrixEdgeData);
+            if (success)
+                return matrixEdgeData.endPort;
+            else
+            {
+                Debug.Log("MatrixTraveler has not traveled to any game yet");
+                return new MatrixPortData(-1,-1);
+            }
+        }
         public void LoadStartScene()
         {
             SceneManager.LoadScene(startScene.name);
@@ -45,16 +65,17 @@ namespace MatrixJam
         /// <summary> Port Id = -1 means use default entrance</summary>
         public void TravelFromExit(int exitId)
         {
-            MatrixPortData startPort = currentGame.FindOutputPortById(exitId);
+            MatrixPortData startPort = GetCurrentGame().FindOutputPortById(exitId);
             MatrixEdgeData edge = matrixGraphData.FindEdgeWithStartPort(startPort);
 
             MatrixPortData destinationPort = edge.endPort;
+            MatrixNodeData destinationGame = matrixGraphData.nodes[destinationPort.nodeIndex];
 
-            matrixTravelData.CountExit(startPort);
-
-            WrapTo(destinationPort);
+            travelData.AddTravel(startPort, destinationPort, destinationGame);
             //ToDo Refactor PlayerData 
-            //PlayerData.Data.current_level = destinationNode.index;
+            //PlayerData.Data.current_level = destinationGame.index;
+
+            SceneManager.LoadScene(destinationGame.scenePath);
         }
 
         public void WrapToRandomGame()
@@ -88,11 +109,9 @@ namespace MatrixJam
             MatrixNodeData destinationNode = matrixGraphData.nodes[nodeIndex];
             MatrixPortData destinationPort = destinationNode.FindInputPortById(entranceId);
 
-            matrixTravelData.currentGame = matrixGraphData.nodes[nodeIndex];
-            matrixTravelData.enteredAt = destinationPort;
+            MatrixNodeData destinationGame = destinationNode;
 
-            matrixTravelData.CountEntrance(destinationPort);
-            matrixTravelData.CountGame(destinationNode);
+            travelData.AddTravel(new MatrixPortData(-1,-1), destinationPort, destinationGame);
 
             SceneManager.LoadScene(destinationNode.scenePath);
         }
@@ -103,14 +122,13 @@ namespace MatrixJam
         }
         public void SetEntranceUsedInCaseOfDefault(int id)
         {
-            if (this.enteredAt.id != -1)
+            MatrixPortData lastUsedEntrance = GetLastUsedEntrance();
+            if (lastUsedEntrance.id != -1)
             {
-                Debug.Log("Can only set activeNodeEntrancePort id if the node was entered from its default entrance, aka -1");
+                Debug.Log("Can only set last used entrance id if the game was entered from its default entrance, aka -1");
                 return;
             }
-            var port = enteredAt;
-            port.id = id;
-            matrixTravelData.enteredAt = port;
+            travelData.AmendLastTravelDestinationPortId(id);
         }
     }
 }

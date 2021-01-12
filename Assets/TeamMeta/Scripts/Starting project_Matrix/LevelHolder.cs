@@ -65,7 +65,7 @@ namespace MatrixJam
                 if (MatrixTraveler.Instance.entranceId == -1)
                 {
                     MatrixTraveler.Instance.SetEntranceUsedInCaseOfDefault(def_ent);
-                    EnterDefault(MatrixTraveler.Instance.currentGame.index);
+                    EnterDefault(MatrixTraveler.Instance.GetCurrentGame().index);
                     game_start = true;
                 }
                 else if (MatrixTraveler.Instance.entranceId >= 0 && MatrixTraveler.Instance.entranceId < entries.Length)

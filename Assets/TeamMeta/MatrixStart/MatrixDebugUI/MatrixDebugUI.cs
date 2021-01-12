@@ -11,9 +11,18 @@ namespace MatrixJam.TeamMeta
     {
         PlayerData playerData;
 
+        [Header("Current Game")]
         [SerializeField] TextMeshProUGUI gameIndexText;
+        [SerializeField] TextMeshProUGUI gameNameText;
+        [SerializeField] TextMeshProUGUI gameVisitsText;
         [SerializeField] TextMeshProUGUI entranceUsedText;
-        [SerializeField] TextMeshProUGUI EnteredFromGameText;
+        [SerializeField] TextMeshProUGUI entranceUseCountText;
+        [Header("Previous Game")]
+        [SerializeField] TextMeshProUGUI previousGameIndexText;
+        [SerializeField] TextMeshProUGUI previousGameNameText;
+        [SerializeField] TextMeshProUGUI exitUsedText;
+        [SerializeField] TextMeshProUGUI exitUseCountText;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -36,31 +45,22 @@ namespace MatrixJam.TeamMeta
             yield return null;
             yield return null;
 
-            MatrixNodeData node = MatrixTraveler.Instance.currentGame;
+            MatrixTravelData travelData = MatrixTraveler.Instance.travelData;
+            RefreshCurrentGame();
 
-            gameIndexText.SetText(node.index+ "");
-
-            RefreshEntranceUsedText();
-
-            EnteredFromGameText.SetText("Not implemented yet" + "");
+            previousGameIndexText.SetText("Not implemented" + "");
         }
-        void RefreshEntranceUsedText()
+        void RefreshCurrentGame()
         {
-            var entranceUsedString = "";
-            MatrixPortData entrancePort = MatrixTraveler.Instance.enteredAt;
-            // -1 means came from matrix start.
-            if (entrancePort.id == -1)
-            {
-                var levelHolder = FindObjectOfType<LevelHolder>();
-                if (levelHolder)
-                    entranceUsedString = levelHolder.def_ent + "";
-                else
-                    Debug.Log("There should be a level holder in scene " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-            }
-            else
-                entranceUsedString = entrancePort.id + "";
+            MatrixTravelData travelData = MatrixTraveler.Instance.travelData;
+            MatrixNodeData currentGame = MatrixTraveler.Instance.GetCurrentGame();
+            MatrixPortData lastUsedEntrance = MatrixTraveler.Instance.GetLastUsedEntrance();
+            gameIndexText.SetText(currentGame.index.ToString());
+            gameNameText.SetText(currentGame.name);
+            gameVisitsText.SetText(travelData.GetGameVisitCount(currentGame).ToString());
 
-            entranceUsedText.SetText(entranceUsedString);
+            entranceUsedText.SetText(lastUsedEntrance.ToString());
+            entranceUseCountText.SetText(travelData.GetEntranceVisitCount(lastUsedEntrance).ToString());
         }
     }
 }
