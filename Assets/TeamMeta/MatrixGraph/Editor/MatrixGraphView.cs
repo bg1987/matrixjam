@@ -113,5 +113,23 @@ namespace MatrixJam.TeamMeta
         {
             return node.outputContainer.Query<Port>().ToList();
         }
+        public void SyncWithPlayMode(string path)
+        {
+            MatrixTraveler matrixTraveler = Object.FindObjectOfType<MatrixTraveler>();
+            if (!matrixTraveler)
+            {
+                Debug.Log("No MatrixTraveler to sync with");
+                return;
+            }
+            var runtimeGraphPath = UnityEditor.AssetDatabase.GetAssetPath(matrixTraveler.MatrixGraphAsset);
+            if(path != runtimeGraphPath)
+            {
+                Debug.Log(path + " is incompatible with Matrix Traveler's " + runtimeGraphPath + ". Must be of same path");
+                return;
+            }
+            Debug.Log("Syncing with MatrixTraveler");
+
+            //matrixTraveler
+        }
     }
 }

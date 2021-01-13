@@ -16,6 +16,11 @@ namespace MatrixJam.TeamMeta
         MatrixGraphSaver graphSaver;
         public string graphFilePath="";
 
+        Action OnEnterPlayModeSetup;
+        Action OnEnterEditorModeSetup;
+
+        bool isInEditorMode = true;
+
         public void OpenMatrixGraphWindow(string graphFilePath)
         {
             var window = GetWindow<MatrixGraphWindow>();
@@ -37,8 +42,23 @@ namespace MatrixJam.TeamMeta
             {
                 LoadAfterGraphViewFinishInitialization();
             }
+
+            if (Application.isPlaying)
+                PlayModeSetup();
+            else
+                EditorModeSetup();
+            EditorApplication.playModeStateChanged += PlayModeChange;
         }
 
+        private void PlayModeChange(PlayModeStateChange playModeState)
+        {
+            if(playModeState == PlayModeStateChange.EnteredEditMode)
+            {
+                EditorModeSetup();
+            }
+            if (playModeState == PlayModeStateChange.EnteredPlayMode)
+                PlayModeSetup();
+        }
 
         private void PopulateWithDummyData()
         {
@@ -68,6 +88,7 @@ namespace MatrixJam.TeamMeta
         private void OnDisable()
         {
             rootVisualElement.Remove(graphView);
+            EditorApplication.playModeStateChanged -= PlayModeChange;
         }
         private void ConstructGraphView()
         {
@@ -99,7 +120,33 @@ namespace MatrixJam.TeamMeta
             saveAsButton.text = "Save As Scriptable Object";
             toolBar.Add(saveAsButton);
 
+            GenerateSyncWithPlayModeButton(toolBar);
+
         }
+
+        private void GenerateSyncWithPlayModeButton(Toolbar toolBar)
+        {
+            var syncWithPlayModeButton = new Button();
+            syncWithPlayModeButton.clicked += () => graphView.SyncWithPlayMode(graphFilePath);
+            syncWithPlayModeButton.name = "syncWithPlayModeButton";
+            syncWithPlayModeButton.text = "Sync With Play Mode";
+
+            //EnableButtonOnlyInPlayMode(syncWithPlayModeButton);
+
+            toolBar.Add(syncWithPlayModeButton);
+        }
+
+        private void EnableButtonOnlyInPlayMode(Button syncWithPlayModeButton)
+        {
+            if (isInEditorMode)
+                syncWithPlayModeButton.SetEnabled(false);
+            else
+                syncWithPlayModeButton.SetEnabled(true);
+
+            OnEnterEditorModeSetup += () => syncWithPlayModeButton.SetEnabled(false);
+            OnEnterPlayModeSetup += () => syncWithPlayModeButton.SetEnabled(true);
+        }
+
         async void LoadAfterGraphViewFinishInitialization()
         {
             //Hack to wait for graphView to finish resolving its width & height
@@ -115,6 +162,30 @@ namespace MatrixJam.TeamMeta
                 await Task.Delay(timeStep);
             }
             graphSaver.Load();
+        }
+        void PlayModeSetup()
+        {
+            var buttonsQuery = rootVisualElement.Query<Button>();
+             List<Button> buttons = buttonsQuery.ToList();
+            foreach (var button in buttons)
+            {
+                button.style.color = Color.white;
+            }
+            isInEditorMode = false;
+            OnEnterPlayModeSetup?.Invoke();
+        }
+        void EditorModeSetup()
+        {
+            var buttonsQuery = rootVisualElement.Query<Button>();
+             List<Button> buttons = buttonsQuery.ToList();
+            foreach (var button in buttons)
+            {
+                ColorUtility.TryParseHtmlString("#C4C4C4", out var color);
+                button.style.color = color;
+            }
+            isInEditorMode = true;
+            OnEnterEditorModeSetup?.Invoke();
+
         }
     }
 }

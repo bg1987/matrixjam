@@ -8,6 +8,7 @@ namespace MatrixJam
     public class MatrixTraveler : MonoBehaviour
     {
         [SerializeField] TextAsset matrixGraphAsset;
+        public TextAsset MatrixGraphAsset { get=> matrixGraphAsset; }
         public MatrixGraphSO matrixGraphData { get; private set; }
         public MatrixTravelData travelData { get; private set; }
 
