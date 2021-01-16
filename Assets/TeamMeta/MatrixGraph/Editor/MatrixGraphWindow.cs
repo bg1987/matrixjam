@@ -162,7 +162,16 @@ namespace MatrixJam.TeamMeta
                 await Task.Delay(timeStep);
             }
             graphSaver.Load();
+            if(isInEditorMode==false)
+                this.graphView.SyncWithPlayMode(graphFilePath);
+            OnEnterPlayModeSetup+= SyncWithPlayMode;
         }
+
+        private void SyncWithPlayMode()
+        {
+            this.graphView.SyncWithPlayMode(graphFilePath);
+        }
+
         void PlayModeSetup()
         {
             var buttonsQuery = rootVisualElement.Query<Button>();
@@ -172,6 +181,7 @@ namespace MatrixJam.TeamMeta
                 button.style.color = Color.white;
             }
             isInEditorMode = false;
+
             OnEnterPlayModeSetup?.Invoke();
         }
         void EditorModeSetup()
@@ -185,6 +195,16 @@ namespace MatrixJam.TeamMeta
             }
             isInEditorMode = true;
             OnEnterEditorModeSetup?.Invoke();
+
+        }
+        private void OnInspectorUpdate()
+        {
+            //ToDo This is a rough draft of syncing with playmode. Invest more thought into structuring this
+            if (isInEditorMode == false)
+            {
+                if(graphView.matrixTravelHistoryView!=null)
+                    graphView.matrixTravelHistoryView.SyncWithRuntimeHistory();
+            }
 
         }
     }

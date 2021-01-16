@@ -8,6 +8,7 @@ namespace MatrixJam.TeamMeta
 {
     public class MatrixTravelHistoryView
     {
+        IReadOnlyList<MatrixEdgeData> runtimeHistory;
         public void GenerateNodesHistoryProperties(List<MatrixNode> matrixNodes)
         {
             var bgColor = Color.black;
@@ -19,6 +20,16 @@ namespace MatrixJam.TeamMeta
 
                 GenerateOutputPortsProperties(bgColor, node);
             }
+        }
+        public void SetRuntimeHistory(IReadOnlyList<MatrixEdgeData> runtimeHistory)
+        {
+            this.runtimeHistory = runtimeHistory;
+        }
+        public void SyncWithRuntimeHistory()
+        {
+            if(runtimeHistory!=null)
+            Debug.Log(runtimeHistory.Count);
+
         }
         private void GenerateInputPortsProperties(Color bgColor, MatrixNode node)
         {

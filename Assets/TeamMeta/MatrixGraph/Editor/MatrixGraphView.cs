@@ -10,7 +10,7 @@ namespace MatrixJam.TeamMeta
     {
         Color backgroundColor = Color.gray;
         Vector2 defaultNodeSize = new Vector2(10, 10);
-        private MatrixTravelHistoryView matrixTravelHistoryView;
+        public MatrixTravelHistoryView matrixTravelHistoryView { get; private set; }
 
         public MatrixGraphView()
         {
@@ -140,6 +140,8 @@ namespace MatrixJam.TeamMeta
 
             matrixTravelHistoryView = new MatrixTravelHistoryView();
             matrixTravelHistoryView.GenerateNodesHistoryProperties(matrixNodes);
+
+            matrixTravelHistoryView.SetRuntimeHistory(matrixTraveler.travelData.GetHistory());
             return;
         }
     }
