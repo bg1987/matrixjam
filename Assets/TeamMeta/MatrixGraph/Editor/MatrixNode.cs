@@ -27,8 +27,12 @@ namespace MatrixJam.TeamMeta
                 this.levelName = evt.newValue;
             });
             textField.SetValueWithoutNotify(this.levelName);
-            var scenePathStyle = textField.style;
-            scenePathStyle.maxWidth = 126f;
+
+            var childrenEnumerator = textField.Children().GetEnumerator();
+            childrenEnumerator.MoveNext();
+            var inputField = childrenEnumerator.Current;
+            inputField.style.flexBasis = 1;
+
             this.mainContainer.Add(textField);
         }
         public void  GenerateScenePathLabel()
@@ -46,8 +50,12 @@ namespace MatrixJam.TeamMeta
                 this.scenePath = evt.newValue;
             });
             textField.SetValueWithoutNotify(this.scenePath);
-            var scenePathStyle = textField.style;
-            scenePathStyle.maxWidth = 126f;
+
+            var childrenEnumerator =  textField.Children().GetEnumerator();
+            childrenEnumerator.MoveNext();
+            var inputField = childrenEnumerator.Current;
+            inputField.style.flexBasis = 1;
+
             this.mainContainer.Add(textField);
         }
     }
