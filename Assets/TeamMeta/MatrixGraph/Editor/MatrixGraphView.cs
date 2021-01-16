@@ -10,6 +10,7 @@ namespace MatrixJam.TeamMeta
     {
         Color backgroundColor = Color.gray;
         Vector2 defaultNodeSize = new Vector2(10, 10);
+        private MatrixTravelHistoryView matrixTravelHistoryView;
 
         public MatrixGraphView()
         {
@@ -122,14 +123,24 @@ namespace MatrixJam.TeamMeta
                 return;
             }
             var runtimeGraphPath = UnityEditor.AssetDatabase.GetAssetPath(matrixTraveler.MatrixGraphAsset);
-            if(path != runtimeGraphPath)
+            if (path != runtimeGraphPath)
             {
                 Debug.Log(path + " is incompatible with Matrix Traveler's " + runtimeGraphPath + ". Must be of same path");
                 return;
             }
             Debug.Log("Syncing with MatrixTraveler");
+            //if (!Application.isPlaying)
+            //{
+            //    Debug.Log("Can't sync outside of play mode");
+            //    return;
+            //}
 
-            //matrixTraveler
+            List<MatrixNode> matrixNodes = nodes.ToList().ConvertAll(node => node as MatrixNode);
+            matrixNodes.Sort((nodeA, nodeB) => nodeA.index.CompareTo(nodeB.index));
+
+            matrixTravelHistoryView = new MatrixTravelHistoryView();
+            matrixTravelHistoryView.GenerateNodesHistoryProperties(matrixNodes);
+            return;
         }
     }
 }

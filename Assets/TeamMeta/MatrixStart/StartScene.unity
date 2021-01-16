@@ -1139,7 +1139,7 @@ GameObject:
   - component: {fileID: 1107044196}
   - component: {fileID: 1107044195}
   m_Layer: 0
-  m_Name: SceneManager
+  m_Name: MatrixTraveler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
