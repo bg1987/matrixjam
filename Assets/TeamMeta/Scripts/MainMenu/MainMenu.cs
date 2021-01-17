@@ -79,7 +79,7 @@ namespace MatrixJam.TeamMeta
         
         public void ButtonHandler_PlayGame()
         {
-            FindObjectOfType<MatrixTraveler>().WrapToRandomGame();
+            FindObjectOfType<MatrixTraveler>().WarpToRandomGame();
         }
         
         public void ButtonHandler_ShowRules()

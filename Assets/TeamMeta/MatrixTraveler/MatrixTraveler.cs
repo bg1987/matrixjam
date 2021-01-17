@@ -89,14 +89,14 @@ namespace MatrixJam
             SceneManager.LoadScene(destinationGame.scenePath);
         }
 
-        public void WrapToRandomGame()
+        public void WarpToRandomGame()
         {
             Debug.Log("Starting first scene at random");
             Debug.Log($"PlayerData.Data.NumGames {PlayerData.Data.NumGames}");
             //choose a random scene and load it.
             //this also start the gameplay in that scene.
             int start_sce = Random.Range(0, matrixGraphData.nodes.Count);
-            WrapTo(start_sce, -1);
+            WarpTo(start_sce, -1);
         }
         public void ReTravelToCurrentGame()
         {
@@ -115,7 +115,7 @@ namespace MatrixJam
         }
 
         /// <summary> Entrance Id = -1 means use default entrance</summary>
-        public void WrapTo(int nodeIndex,int entranceId)
+        public void WarpTo(int nodeIndex,int entranceId)
         {
             if(nodeIndex>=matrixGraphData.nodes.Count || nodeIndex<0)
             {
@@ -152,9 +152,9 @@ namespace MatrixJam
             SceneManager.LoadScene(destinationNode.scenePath);
         }
         /// <summary> Entrance Id = -1 means use default entrance</summary>
-        public void WrapTo(MatrixPortData portData)
+        public void WarpTo(MatrixPortData portData)
         {
-            WrapTo(portData.nodeIndex, portData.id);
+            WarpTo(portData.nodeIndex, portData.id);
         }
         public void SetEntranceUsedInCaseOfDefault(int id)
         {

@@ -13,11 +13,11 @@ namespace MatrixJam.TeamMeta
         void Start()
         {
             if (startingGameIndex == -1)
-                matrixTraveler.WrapToRandomGame();
+                matrixTraveler.WarpToRandomGame();
             else
             {
                 //ToDo Change -3 into something that makes sense
-                matrixTraveler.WrapTo(startingGameIndex,-1);
+                matrixTraveler.WarpTo(startingGameIndex,-1);
             }
 
         }
