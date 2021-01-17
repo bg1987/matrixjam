@@ -9,8 +9,12 @@ namespace MatrixJam.TeamMeta
     public class MatrixTravelHistoryView
     {
         IReadOnlyList<MatrixEdgeData> runtimeHistory;
+        List<MatrixEdgeData> history = new List<MatrixEdgeData>();
+        List<MatrixNode> matrixNodes;
+        MatrixNode activeMatrixNode;
         public void GenerateNodesHistoryProperties(List<MatrixNode> matrixNodes)
         {
+            this.matrixNodes = matrixNodes;
             var bgColor = Color.black;
             bgColor.a = 0.2f;
 
@@ -27,9 +31,104 @@ namespace MatrixJam.TeamMeta
         }
         public void SyncWithRuntimeHistory()
         {
-            if(runtimeHistory!=null)
-            Debug.Log(runtimeHistory.Count);
+            if (runtimeHistory == null)
+                return;
+            if (history.Count == runtimeHistory.Count)
+                return;
+            Color visitedColorBG = Color.blue;
+            visitedColorBG.a = 0.27f;
+            Color completedColorBG = Color.green;
+            completedColorBG.a = 0.27f;
 
+            while (history.Count < runtimeHistory.Count)
+            {
+                MatrixEdgeData edge = runtimeHistory[history.Count];
+                int startNodeIndex = edge.startPort.nodeIndex;
+
+                Port startPort=null;
+
+                if (startNodeIndex != -1)
+                {
+
+                    matrixNodes[startNodeIndex].style.backgroundColor = completedColorBG;
+                    if (edge.startPort.id != -1)
+                    {
+
+                        startPort = matrixNodes[startNodeIndex].outputContainer.Query<Port>().Where(p => int.Parse(p.portName) == edge.startPort.id);
+                        startPort.style.backgroundColor = completedColorBG;
+
+                        Label startPortVisitsCountText = startPort.Query<VisualElement>().Where(element => element.name == "visitsCountText").First() as Label;
+
+                        int startPortVisitsCount = int.Parse(startPortVisitsCountText.text);
+                        startPortVisitsCount++;
+                        startPortVisitsCountText.text = startPortVisitsCount.ToString();
+                    }
+
+                }
+                int endNodeIndex = edge.endPort.nodeIndex;
+                if(matrixNodes[endNodeIndex].style.backgroundColor!= completedColorBG)
+                    matrixNodes[endNodeIndex].style.backgroundColor = visitedColorBG;          
+
+                Port endPort = matrixNodes[endNodeIndex].inputContainer.Query<Port>().Where(p => int.Parse(p.portName) == edge.endPort.id);
+                Label endPortVisitsCountText = endPort.Query<VisualElement>().Where(element => element.name == "visitsCountText").First() as Label;
+
+                int visitsCount = int.Parse(endPortVisitsCountText.text);
+                visitsCount++;
+                endPortVisitsCountText.text = visitsCount.ToString();
+
+                endPort.style.backgroundColor = completedColorBG;
+
+                if(startPort!=null && endPort!=null)
+                {
+                    var usedEdgeColor = completedColorBG;
+                    usedEdgeColor.a = 1;
+                    startPort.portColor = usedEdgeColor;
+                    endPort.portColor = usedEdgeColor;
+
+                    var enumarator = startPort.connections.GetEnumerator();
+                    enumarator.MoveNext();
+                    enumarator.Current.UpdateEdgeControl();
+                }
+
+                history.Add(edge);
+            }
+
+            UpdateActiveNode();
+        }
+        private void UpdateActiveNode()
+        {
+            //Deactivate prev active node
+            if (activeMatrixNode != null)
+            {
+                activeMatrixNode.style.borderBottomColor = Color.black;
+                activeMatrixNode.style.borderLeftColor = Color.black;
+                activeMatrixNode.style.borderRightColor = Color.black;
+                activeMatrixNode.style.borderTopColor = Color.black;
+
+                activeMatrixNode.style.borderBottomWidth = 0;
+                activeMatrixNode.style.borderLeftWidth = 0;
+                activeMatrixNode.style.borderRightWidth = 0;
+                activeMatrixNode.style.borderTopWidth = 0;
+            }
+
+            //Find and set current Active node
+            var edge = history[history.Count - 1];
+
+            int endNodeIndex = edge.endPort.nodeIndex;
+            activeMatrixNode = matrixNodes[endNodeIndex];
+
+            ColorUtility.TryParseHtmlString("#FF6600", out var activeColor);
+
+            activeColor.a = 0.5f;
+            activeMatrixNode.style.borderBottomColor = activeColor;
+            activeMatrixNode.style.borderLeftColor = activeColor;
+            activeMatrixNode.style.borderRightColor = activeColor;
+            activeMatrixNode.style.borderTopColor = activeColor;
+
+            activeMatrixNode.style.borderBottomWidth = 2f;
+            activeMatrixNode.style.borderLeftWidth = 2f;
+            activeMatrixNode.style.borderRightWidth = 2f;
+            activeMatrixNode.style.borderTopWidth = 2f;
         }
         private void GenerateInputPortsProperties(Color bgColor, MatrixNode node)
         {
