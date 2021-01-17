@@ -10,7 +10,7 @@ namespace MatrixJam
         [SerializeField] TextAsset matrixGraphAsset;
         public TextAsset MatrixGraphAsset { get=> matrixGraphAsset; }
         public MatrixGraphSO matrixGraphData { get; private set; }
-        public MatrixTravelData travelData { get; private set; }
+        public MatrixTravelHistory travelData { get; private set; }
 
         public Object startScene;
         public Object endScene;
@@ -27,7 +27,7 @@ namespace MatrixJam
             MatrixGraphConverter matrixGraphConverter = new MatrixGraphConverter();
             matrixGraphData = matrixGraphConverter.ToScriptableObject(matrixGraphAsset.text);
 
-            travelData = new MatrixTravelData();
+            travelData = new MatrixTravelHistory();
         }
         public int entranceId
         {

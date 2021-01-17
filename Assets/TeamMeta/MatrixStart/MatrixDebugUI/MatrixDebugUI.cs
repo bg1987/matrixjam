@@ -45,14 +45,14 @@ namespace MatrixJam.TeamMeta
             yield return null;
             yield return null;
 
-            MatrixTravelData travelData = MatrixTraveler.Instance.travelData;
+            MatrixTravelHistory travelData = MatrixTraveler.Instance.travelData;
             RefreshCurrentGame();
             RefreshPreviousGame();
             //previousGameIndexText.SetText("Not implemented" + "");
         }
         void RefreshCurrentGame()
         {
-            MatrixTravelData travelData = MatrixTraveler.Instance.travelData;
+            MatrixTravelHistory travelData = MatrixTraveler.Instance.travelData;
             MatrixNodeData currentGame = MatrixTraveler.Instance.GetCurrentGame();
             MatrixPortData lastUsedEntrance = MatrixTraveler.Instance.GetLastUsedEntrance();
             gameIndexText.SetText(currentGame.index.ToString());
@@ -64,7 +64,7 @@ namespace MatrixJam.TeamMeta
         }
         void RefreshPreviousGame()
         {
-            MatrixTravelData travelData = MatrixTraveler.Instance.travelData;
+            MatrixTravelHistory travelData = MatrixTraveler.Instance.travelData;
             IReadOnlyList<MatrixEdgeData> history = travelData.GetHistory();
             if(history.Count==0)
             {
