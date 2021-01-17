@@ -63,11 +63,9 @@ namespace MatrixJam.TeamMeta
             {
                 CountExit(start);
             }
-            else
-            {
-                //ToDo See if this will be a necessary thing to check or if GetVisitedGamesCount() is enough
+            if (start.nodeIndex != -1)
                 completedGamesByIndex.Add(start.nodeIndex);
-            }
+
             CountEntrance(destinationPort);
             CountGame(destinationGame);
 
@@ -101,6 +99,10 @@ namespace MatrixJam.TeamMeta
         public int GetVisitedGamesCount()
         {
             return gameToVisits.Count;
+        }
+        public int GetCompletedGamesCount()
+        {
+            return completedGamesByIndex.Count;
         }
     }
 }

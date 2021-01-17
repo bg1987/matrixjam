@@ -66,11 +66,6 @@ namespace MatrixJam
 
         public void TravelFromExit(int exitId)
         {
-            if (travelData.GetVisitedGamesCount() == matrixGraphData.nodes.Count)
-            {
-                MatrixOver();
-                return;
-            }
             bool success = GetCurrentGame().FindOutputPortById(exitId,out MatrixPortData startPort);
             if(!success)
             {
@@ -85,7 +80,11 @@ namespace MatrixJam
             travelData.AddTravel(startPort, destinationPort, destinationGame);
             //ToDo Refactor PlayerData 
             //PlayerData.Data.current_level = destinationGame.index;
-
+            if (travelData.GetCompletedGamesCount() == matrixGraphData.nodes.Count)
+            {
+                MatrixOver();
+                return;
+            }
             SceneManager.LoadScene(destinationGame.scenePath);
         }
 
