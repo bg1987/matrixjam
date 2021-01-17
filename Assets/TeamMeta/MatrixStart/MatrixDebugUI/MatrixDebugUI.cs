@@ -9,8 +9,8 @@ namespace MatrixJam.TeamMeta
 {
     public class MatrixDebugUI : MonoBehaviour
     {
-        PlayerData playerData;
-
+        [SerializeField] bool ShowOnAwake = true;
+        [SerializeField] GameObject ContentContainer;
         [Header("Current Game")]
         [SerializeField] TextMeshProUGUI gameIndexText;
         [SerializeField] TextMeshProUGUI gameNameText;
@@ -22,15 +22,27 @@ namespace MatrixJam.TeamMeta
         [SerializeField] TextMeshProUGUI previousGameNameText;
         [SerializeField] TextMeshProUGUI exitUsedText;
         [SerializeField] TextMeshProUGUI exitUseCountText;
+        [Header("Completed Games")]
+        [SerializeField] TextMeshProUGUI completedGamesText;
+        [SerializeField] TextMeshProUGUI completedGamesCountText;
 
+        private void Awake()
+        {
+            ContentContainer.SetActive(ShowOnAwake);
+        }
         // Start is called before the first frame update
         void Start()
         {
-            playerData = PlayerData.Data;
 
             UnityEngine.SceneManagement.SceneManager.sceneLoaded += SceneChange;
         }
-
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.BackQuote))
+            {
+                ContentContainer.SetActive(!ContentContainer.activeSelf);
+            }
+        }
         private void SceneChange(Scene arg0, LoadSceneMode arg1)
         {
             Refresh();
@@ -45,11 +57,29 @@ namespace MatrixJam.TeamMeta
             yield return null;
             yield return null;
 
-            MatrixTravelHistory travelData = MatrixTraveler.Instance.travelData;
             RefreshCurrentGame();
             RefreshPreviousGame();
+            RefreshCompletedGames();
             //previousGameIndexText.SetText("Not implemented" + "");
         }
+        private void RefreshCompletedGames()
+        {
+            MatrixTravelHistory travelData = MatrixTraveler.Instance.travelData;
+
+            int[] completedGames = travelData.GetCompletedGamesCopy();
+            var completedGamesString = "";
+            foreach (var completedGame in completedGames)
+            {
+                completedGamesString += completedGame + ", ";
+            }
+            if (completedGamesString.Length > 2)
+            {
+                completedGamesString=completedGamesString.Remove(completedGamesString.Length - 2);
+            }
+            completedGamesText.text = completedGamesString;
+            completedGamesCountText.text = completedGames.Length + "/" + MatrixTraveler.Instance.matrixGraphData.nodes.Count;
+        }
+
         void RefreshCurrentGame()
         {
             MatrixTravelHistory travelData = MatrixTraveler.Instance.travelData;

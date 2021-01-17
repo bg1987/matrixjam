@@ -104,5 +104,12 @@ namespace MatrixJam.TeamMeta
         {
             return completedGamesByIndex.Count;
         }
+        public int[] GetCompletedGamesCopy()
+        {
+            int[] completedGames = new int[completedGamesByIndex.Count];
+            completedGamesByIndex.CopyTo(completedGames);
+
+            return completedGames;
+        }
     }
 }
