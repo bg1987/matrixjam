@@ -1159,7 +1159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matrixGraphAsset: {fileID: 2811297602134710623, guid: f0134894f0eaba543a64af5d179df3c1,
     type: 3}
-  startScene: {fileID: 0}
+  startScene: 
   endScene: EndScene
 --- !u!4 &1107044196
 Transform:
@@ -1658,24 +1658,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
-      propertyPath: sceneManager
-      value: 
-      objectReference: {fileID: 1107044195}
-    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
-        type: 3}
-      propertyPath: startingSceneIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
-        type: 3}
       propertyPath: matrixTraveler
       value: 
       objectReference: {fileID: 1107044195}
-    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
-        type: 3}
-      propertyPath: startingGameIndex
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3524885435939293114, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
       propertyPath: m_LocalPosition.x

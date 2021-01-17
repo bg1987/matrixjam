@@ -43,4 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3831efb0c5e3874c88a998217f8884f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneManager: {fileID: 0}
+  matrixTraveler: {fileID: 0}
+  startOnAwake: 1
+  startingGameIndex: 1

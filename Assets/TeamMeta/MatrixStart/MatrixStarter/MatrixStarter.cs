@@ -8,17 +8,31 @@ namespace MatrixJam.TeamMeta
     {
         [SerializeField] MatrixTraveler matrixTraveler;
         [Header("-1 => Select Random Game")]
+        [SerializeField] bool startOnAwake = true;
         [SerializeField] int startingGameIndex = 0;
         // Start is called before the first frame update
         void Start()
         {
-            if (startingGameIndex == -1)
-                matrixTraveler.WarpToRandomGame();
-            else
+            if (startOnAwake)
             {
-                //ToDo Change -3 into something that makes sense
-                matrixTraveler.WarpTo(startingGameIndex,-1);
+                if (startingGameIndex == -1)
+                    StartRandomGame();
+                else
+                {
+                    StartGame(startingGameIndex);
+                }
             }
+        }
+        public void StartRandomGame()
+        {
+            matrixTraveler.WarpToRandomGame();
+        }
+        public void StartGame(int gameIndex)
+        {
+            matrixTraveler.WarpTo(startingGameIndex, -1);
+        }
+        public void LoadGame()
+        {
 
         }
     }
