@@ -1160,7 +1160,7 @@ MonoBehaviour:
   matrixGraphAsset: {fileID: 2811297602134710623, guid: f0134894f0eaba543a64af5d179df3c1,
     type: 3}
   startScene: {fileID: 0}
-  endScene: {fileID: 102900000, guid: f358af270e65cf54683dea16d33c8dfc, type: 3}
+  endScene: EndScene
 --- !u!4 &1107044196
 Transform:
   m_ObjectHideFlags: 0

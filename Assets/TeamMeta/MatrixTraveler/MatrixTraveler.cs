@@ -12,8 +12,8 @@ namespace MatrixJam
         public MatrixGraphSO matrixGraphData { get; private set; }
         public MatrixTravelHistory travelData { get; private set; }
 
-        public Object startScene;
-        public Object endScene;
+        public string startScene;
+        public string endScene;
         public static MatrixTraveler Instance { get; private set; }
         private void Awake()
         {
@@ -61,7 +61,7 @@ namespace MatrixJam
         }
         public void LoadStartScene()
         {
-            SceneManager.LoadScene(startScene.name);
+            SceneManager.LoadScene(startScene);
         }
 
         public void TravelFromExit(int exitId)
@@ -110,7 +110,7 @@ namespace MatrixJam
         {
             //end the matrix and start the end scene
             Debug.Log("MatrixOver!");
-            SceneManager.LoadScene(endScene.name);
+            SceneManager.LoadScene(endScene);
         }
 
         /// <summary> Entrance Id = -1 means use default entrance</summary>
