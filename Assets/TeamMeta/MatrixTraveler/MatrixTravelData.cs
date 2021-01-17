@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace MatrixJam.TeamMeta
 {
+    [System.Serializable]
     public class MatrixTravelData
     {
         Dictionary<MatrixNodeData, int> gameToVisits = new Dictionary<MatrixNodeData, int>();

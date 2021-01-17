@@ -63,7 +63,7 @@ namespace MatrixJam
         {
             SceneManager.LoadScene(startScene.name);
         }
-        /// <summary> Port Id = -1 means use default entrance</summary>
+
         public void TravelFromExit(int exitId)
         {
             if (travelData.GetVisitedGamesCount() == matrixGraphData.nodes.Count)
@@ -71,7 +71,12 @@ namespace MatrixJam
                 MatrixOver();
                 return;
             }
-            MatrixPortData startPort = GetCurrentGame().FindOutputPortById(exitId);
+            bool success = GetCurrentGame().FindOutputPortById(exitId,out MatrixPortData startPort);
+            if(!success)
+            {
+                Debug.Log("Exit "+exitId+" of game "+GetCurrentGame().index+" doesn't exist");
+                return;
+            }
             MatrixEdgeData edge = matrixGraphData.FindEdgeWithStartPort(startPort);
 
             MatrixPortData destinationPort = edge.endPort;
@@ -109,11 +114,36 @@ namespace MatrixJam
             SceneManager.LoadScene(endScene.name);
         }
 
-        /// <summary> Port Id = -1 means use default entrance</summary>
+        /// <summary> Entrance Id = -1 means use default entrance</summary>
         public void WrapTo(int nodeIndex,int entranceId)
         {
+            if(nodeIndex>=matrixGraphData.nodes.Count || nodeIndex<0)
+            {
+                Debug.Log("There is no game with index " + nodeIndex);
+                return;
+            }
             MatrixNodeData destinationNode = matrixGraphData.nodes[nodeIndex];
-            MatrixPortData destinationPort = destinationNode.FindInputPortById(entranceId);
+            if (entranceId <-1)
+            {
+                Debug.Log("There is no entrance with id " + nodeIndex + "in game "+nodeIndex);
+                return;
+            }
+            MatrixPortData destinationPort;
+            if (entranceId == -1)
+            {
+                //Use default entrance
+                destinationPort = new MatrixPortData(entranceId, nodeIndex);
+            }
+            else
+            {
+                var success = destinationNode.FindInputPortById(entranceId, out destinationPort);
+                if(!success)
+                {
+                    Debug.Log("There is no entrance with id " + nodeIndex + "in game " + nodeIndex);
+                    return;
+                }
+
+            }
 
             MatrixNodeData destinationGame = destinationNode;
 
@@ -121,7 +151,7 @@ namespace MatrixJam
 
             SceneManager.LoadScene(destinationNode.scenePath);
         }
-        /// <summary> Port Id = -1 means use default entrance</summary>
+        /// <summary> Entrance Id = -1 means use default entrance</summary>
         public void WrapTo(MatrixPortData portData)
         {
             WrapTo(portData.nodeIndex, portData.id);
