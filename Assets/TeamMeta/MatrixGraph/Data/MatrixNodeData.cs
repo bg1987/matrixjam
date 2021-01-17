@@ -29,13 +29,31 @@ namespace MatrixJam.TeamMeta
         {
             outputPorts.Add(new MatrixPortData(portId, index));
         }
-        public MatrixPortData FindInputPortById(int id)
+        public bool FindInputPortById(int id, out MatrixPortData matrixPortData)
         {
-            return inputPorts.Find(port => port.id == id);
+            foreach (var port in inputPorts)
+            {
+                if (port.id == id)
+                {
+                    matrixPortData = port;
+                    return true;
+                }
+            }
+            matrixPortData = new MatrixPortData(-1, index);
+            return false;
         }
-        public MatrixPortData FindOutputPortById(int id)
+        public bool FindOutputPortById(int id,out MatrixPortData matrixPortData)
         {
-            return outputPorts.Find(port => port.id == id);
+            foreach (var port in outputPorts)
+            {
+                if (port.id == id)
+                {
+                    matrixPortData = port;
+                    return true;
+                }
+            }
+            matrixPortData = new MatrixPortData(-1, index);
+            return false;
         }
     }
 }
