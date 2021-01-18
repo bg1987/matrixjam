@@ -99,8 +99,8 @@ namespace MatrixJam.TeamMeta
             else
             {
                 ArrangeNodesInCircle(matrixNodes);
+                EventPropagation eventPropagation = graphView.FrameOrigin();
             }
-            EventPropagation eventPropagation = graphView.FrameOrigin();
         }
 
         private void ArrangeNodesInCircle(List<MatrixNode> matrixNodes)

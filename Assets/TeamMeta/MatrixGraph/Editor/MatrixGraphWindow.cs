@@ -107,21 +107,6 @@ namespace MatrixJam.TeamMeta
             saveButton.name = "SaveButton";
             saveButton.text = "Save";
             toolBar.Add(saveButton);
-
-            var loadButton = new Button();
-            loadButton.clicked += () => graphSaver.Load();
-            loadButton.name = "loadButton";
-            loadButton.text = "Load";
-            toolBar.Add(loadButton);
-
-            var saveAsButton = new Button();
-            saveAsButton.clicked += () => graphSaver.SaveAsScriptableObject();
-            saveAsButton.name = "saveAsButton";
-            saveAsButton.text = "Save As Scriptable Object";
-            toolBar.Add(saveAsButton);
-
-            GenerateSyncWithPlayModeButton(toolBar);
-
         }
 
         private void GenerateSyncWithPlayModeButton(Toolbar toolBar)
