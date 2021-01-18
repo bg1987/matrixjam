@@ -611,8 +611,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291415793
-  m_fontColor: {r: 0.9433962, g: 0.80977964, b: 0.78764683, a: 1}
+    rgba: 4292599273
+  m_fontColor: {r: 0.9150943, g: 0.86757827, b: 0.85898006, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2863,6 +2863,7 @@ GameObject:
   - component: {fileID: 1538035449}
   - component: {fileID: 1538035448}
   - component: {fileID: 1538035447}
+  - component: {fileID: 1538035450}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -2928,7 +2929,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 304709327}
   m_OnClick:
     m_PersistentCalls:
@@ -2981,6 +2982,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538035445}
   m_CullTransparentMesh: 0
+--- !u!114 &1538035450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538035445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3899075f86903f84cbd3aa2c8a449670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1538035447}
 --- !u!1 &1652939696
 GameObject:
   m_ObjectHideFlags: 0
@@ -3486,11 +3500,6 @@ PrefabInstance:
     - target: {fileID: 1560032236313643229, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1560032236313643230, guid: fe94e5ace811f7744bdecadc862e9bb5,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

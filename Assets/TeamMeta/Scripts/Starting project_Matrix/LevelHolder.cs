@@ -44,7 +44,10 @@ namespace MatrixJam
                 return ent_num;
             }
         }
-
+        private void Awake()
+        {
+            Organize();
+        }
         private void Start()
         {
             if (game_start)

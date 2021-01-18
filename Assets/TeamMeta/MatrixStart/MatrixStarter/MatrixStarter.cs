@@ -33,7 +33,7 @@ namespace MatrixJam.TeamMeta
         }
         public void LoadGame()
         {
-
+            matrixTraveler.LoadFromDisk();
         }
     }
 }

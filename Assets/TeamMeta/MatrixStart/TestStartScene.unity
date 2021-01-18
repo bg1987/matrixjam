@@ -1159,7 +1159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matrixGraphAsset: {fileID: 2811297602134710623, guid: f0134894f0eaba543a64af5d179df3c1,
     type: 3}
-  startScene: 
+  startScene: TestStartScene
   endScene: EndScene
 --- !u!4 &1107044196
 Transform:
@@ -1661,6 +1661,11 @@ PrefabInstance:
       propertyPath: matrixTraveler
       value: 
       objectReference: {fileID: 1107044195}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: startingGameIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3524885435939293114, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2012,7 +2017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1789836879
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2314,6 +2319,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1684095948, guid: fe94e5ace811f7744bdecadc862e9bb5, type: 3}
+      propertyPath: ShowOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 975791159536889597, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2397,7 +2406,7 @@ PrefabInstance:
     - target: {fileID: 1560032236049475792, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -545.36755
+      value: -664.5
       objectReference: {fileID: 0}
     - target: {fileID: 1560032236049475792, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
@@ -2407,7 +2416,7 @@ PrefabInstance:
     - target: {fileID: 1560032236049475792, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -1138.7351
+      value: -1377.0667
       objectReference: {fileID: 0}
     - target: {fileID: 1560032236049475792, guid: fe94e5ace811f7744bdecadc862e9bb5,
         type: 3}
