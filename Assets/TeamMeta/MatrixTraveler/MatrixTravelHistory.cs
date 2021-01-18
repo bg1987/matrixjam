@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace MatrixJam.TeamMeta
@@ -7,11 +8,13 @@ namespace MatrixJam.TeamMeta
     [System.Serializable]
     public class MatrixTravelHistory
     {
-        Dictionary<MatrixNodeData, int> gameToVisits = new Dictionary<MatrixNodeData, int>();
+        Dictionary<int, int> gamesIndexToVisits = new Dictionary<int, int>();
         Dictionary<MatrixPortData,int> entrancesToVisits = new Dictionary<MatrixPortData, int>();
         Dictionary<MatrixPortData,int> exitsToVisits = new Dictionary<MatrixPortData, int>();
         HashSet<int> completedGamesByIndex = new HashSet<int>();
         List<MatrixEdgeData> history = new List<MatrixEdgeData>();
+
+        MatrixTravelHistorySaver matrixTravelHistorySaver = new MatrixTravelHistorySaver();
 
         public bool TryGetLastTravel(out MatrixEdgeData matrixEdgeData)
         {
@@ -30,13 +33,13 @@ namespace MatrixJam.TeamMeta
         {
             return history.AsReadOnly();
         }
-        void CountGame(MatrixNodeData game)
+        void CountGame(int gameIndex)
         {
-            if (gameToVisits.ContainsKey(game))
-                gameToVisits[game] += 1;
+            if (gamesIndexToVisits.ContainsKey(gameIndex))
+                gamesIndexToVisits[gameIndex] += 1;
             else
             {
-                gameToVisits.Add(game, 1);
+                gamesIndexToVisits.Add(gameIndex, 1);
             }
         }
         void CountEntrance(MatrixPortData port)
@@ -57,32 +60,38 @@ namespace MatrixJam.TeamMeta
                 exitsToVisits.Add(port, 1);
             }
         }
-        public void AddTravel(MatrixPortData start,  MatrixPortData destinationPort, MatrixNodeData destinationGame)
+        public void AddTravel(MatrixPortData startPort,  MatrixPortData destinationPort)
         {
-            if (start.id != -1)
+            if (startPort.id != -1)
             {
-                CountExit(start);
+                CountExit(startPort);
             }
-            if (start.nodeIndex != -1)
-                completedGamesByIndex.Add(start.nodeIndex);
+            if (startPort.nodeIndex != -1)
+                completedGamesByIndex.Add(startPort.nodeIndex);
 
             CountEntrance(destinationPort);
-            CountGame(destinationGame);
+            CountGame(destinationPort.nodeIndex);
 
+            history.Add(new MatrixEdgeData(startPort, destinationPort));
 
-            history.Add(new MatrixEdgeData(start, destinationPort));
+            //matrixTravelHistorySaver.Save(history);
+        }
+        void AddTravel(MatrixEdgeData edge)
+        {
+            AddTravel(edge.startPort, edge.endPort);
         }
         public void AmendLastTravelDestinationPortId(int id)
         {
             MatrixEdgeData edge = history[history.Count - 1];
             edge.endPort.id = id;
             history[history.Count - 1] = edge;
+            //matrixTravelHistorySaver.Save(history);
         }
         public int GetGameVisitCount(MatrixNodeData matrixNodeData)
         {
-            if (!gameToVisits.ContainsKey(matrixNodeData))
+            if (!gamesIndexToVisits.ContainsKey(matrixNodeData.index))
                 return 0;
-            return gameToVisits[matrixNodeData];
+            return gamesIndexToVisits[matrixNodeData.index];
         }
         public int GetEntranceVisitCount(MatrixPortData matrixPortData)
         {
@@ -98,7 +107,7 @@ namespace MatrixJam.TeamMeta
         }
         public int GetVisitedGamesCount()
         {
-            return gameToVisits.Count;
+            return gamesIndexToVisits.Count;
         }
         public int GetCompletedGamesCount()
         {
@@ -110,6 +119,33 @@ namespace MatrixJam.TeamMeta
             completedGamesByIndex.CopyTo(completedGames);
 
             return completedGames;
+        }
+        public void LoadFromDisk()
+        {
+            List<MatrixEdgeData> loadedHistory = matrixTravelHistorySaver.Load();
+            if(loadedHistory == null)
+            {
+                Debug.Log("No saved history found");
+                return;
+            }
+            Clear();
+            foreach (var entry in loadedHistory)
+            {
+                history.Add(entry);
+                AddTravel(entry);
+            }
+        }
+        public bool IsPossibleToLoadFromDisk()
+        {
+            return matrixTravelHistorySaver.SaveDataExists();
+        }
+        void Clear()
+        {
+            gamesIndexToVisits.Clear();
+            entrancesToVisits.Clear();
+            exitsToVisits.Clear();
+            completedGamesByIndex.Clear();
+            history.Clear();
         }
     }
 }

@@ -1,4 +1,5 @@
 using MatrixJam.TeamMeta;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,13 @@ namespace MatrixJam
             matrixGraphData = matrixGraphConverter.ToScriptableObject(matrixGraphAsset.text);
 
             travelData = new MatrixTravelHistory();
+        }
+
+        public void LoadFromDisk()
+        {
+            travelData.LoadFromDisk();
+            ReTravelToCurrentGame();
+
         }
         public int entranceId
         {
@@ -77,7 +85,7 @@ namespace MatrixJam
             MatrixPortData destinationPort = edge.endPort;
             MatrixNodeData destinationGame = matrixGraphData.nodes[destinationPort.nodeIndex];
 
-            travelData.AddTravel(startPort, destinationPort, destinationGame);
+            travelData.AddTravel(startPort, destinationPort);
             //ToDo Refactor PlayerData 
             //PlayerData.Data.current_level = destinationGame.index;
             if (travelData.GetCompletedGamesCount() == matrixGraphData.nodes.Count)
@@ -94,17 +102,22 @@ namespace MatrixJam
             Debug.Log($"PlayerData.Data.NumGames {PlayerData.Data.NumGames}");
             //choose a random scene and load it.
             //this also start the gameplay in that scene.
-            int start_sce = Random.Range(0, matrixGraphData.nodes.Count);
+            int start_sce = UnityEngine.Random.Range(0, matrixGraphData.nodes.Count);
             WarpTo(start_sce, -1);
         }
         public void ReTravelToCurrentGame()
         {
             //restart the level from the start
             //this start the gameplay in the scene.
-            if (LevelHolder.Level != null)
-            {
-                LevelHolder.Level.Restart();
-            }
+            //if (LevelHolder.Level != null)
+            //{
+            //    LevelHolder.Level.Restart();
+            //}
+            MatrixNodeData game = GetCurrentGame();
+            if (game.index >= 0)
+                SceneManager.LoadScene(game.scenePath);
+            else
+                Debug.Log("Can't retravel to current game as current game's index is -1");
         }
         public void MatrixOver()
         {
@@ -146,7 +159,7 @@ namespace MatrixJam
 
             MatrixNodeData destinationGame = destinationNode;
 
-            travelData.AddTravel(new MatrixPortData(-1,-1), destinationPort, destinationGame);
+            travelData.AddTravel(new MatrixPortData(-1,-1), destinationPort);
 
             SceneManager.LoadScene(destinationNode.scenePath);
         }
