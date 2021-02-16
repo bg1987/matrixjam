@@ -60,7 +60,7 @@ namespace MatrixJam.TeamMeta
                 exitsToVisits.Add(port, 1);
             }
         }
-        public void AddTravel(MatrixPortData startPort,  MatrixPortData destinationPort)
+        public MatrixEdgeData AddTravel(MatrixPortData startPort,  MatrixPortData destinationPort)
         {
             if (startPort.id != -1)
             {
@@ -71,14 +71,15 @@ namespace MatrixJam.TeamMeta
 
             CountEntrance(destinationPort);
             CountGame(destinationPort.nodeIndex);
-
-            history.Add(new MatrixEdgeData(startPort, destinationPort));
+            MatrixEdgeData travelEdge = new MatrixEdgeData(startPort, destinationPort);
+            history.Add(travelEdge);
+            return travelEdge;
 
             //matrixTravelHistorySaver.Save(history);
         }
-        void AddTravel(MatrixEdgeData edge)
+        MatrixEdgeData AddTravel(MatrixEdgeData edge)
         {
-            AddTravel(edge.startPort, edge.endPort);
+            return AddTravel(edge.startPort, edge.endPort);
         }
         public void AmendLastTravelDestinationPortId(int id)
         {

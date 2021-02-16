@@ -16,6 +16,8 @@ namespace MatrixJam
         public string startScene;
         public string endScene;
         public static MatrixTraveler Instance { get; private set; }
+        [SerializeField] MatrixTravelTransitioner travelTransitioner;
+
         private void Awake()
         {
             if (Instance != null)
@@ -85,7 +87,7 @@ namespace MatrixJam
             MatrixPortData destinationPort = edge.endPort;
             MatrixNodeData destinationGame = matrixGraphData.nodes[destinationPort.nodeIndex];
 
-            travelData.AddTravel(startPort, destinationPort);
+            MatrixEdgeData lastTravel = travelData.AddTravel(startPort, destinationPort);
             //ToDo Refactor PlayerData 
             //PlayerData.Data.current_level = destinationGame.index;
             if (travelData.GetCompletedGamesCount() == matrixGraphData.nodes.Count)
@@ -93,7 +95,7 @@ namespace MatrixJam
                 MatrixOver();
                 return;
             }
-            SceneManager.LoadScene(destinationGame.scenePath);
+            travelTransitioner.Transition(lastTravel);
         }
 
         public void WarpToRandomGame()
@@ -159,9 +161,8 @@ namespace MatrixJam
 
             MatrixNodeData destinationGame = destinationNode;
 
-            travelData.AddTravel(new MatrixPortData(-1,-1), destinationPort);
-
-            SceneManager.LoadScene(destinationNode.scenePath);
+            MatrixEdgeData lastTravel = travelData.AddTravel(new MatrixPortData(-1,-1), destinationPort);
+            travelTransitioner.Transition(lastTravel);
         }
         /// <summary> Entrance Id = -1 means use default entrance</summary>
         public void WarpTo(MatrixPortData portData)
