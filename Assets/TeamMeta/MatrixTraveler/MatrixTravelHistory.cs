@@ -83,6 +83,8 @@ namespace MatrixJam.TeamMeta
         }
         public void AmendLastTravelDestinationPortId(int id)
         {
+            if (history.Count == 0)
+                return;
             MatrixEdgeData edge = history[history.Count - 1];
             edge.endPort.id = id;
             history[history.Count - 1] = edge;

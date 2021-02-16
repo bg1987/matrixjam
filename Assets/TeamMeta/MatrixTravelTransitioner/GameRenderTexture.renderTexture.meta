@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-guid: 391621543b193ad4ca23fd6b3241eef9
-labels:
-- Matrix
-DefaultImporter:
+guid: b0f96fb88ec60c143939e78b7fb087dc
+NativeFormatImporter:
   externalObjects: {}
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
