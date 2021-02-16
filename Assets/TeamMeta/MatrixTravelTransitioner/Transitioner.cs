@@ -1,12 +1,14 @@
+using MatrixJam;
+using MatrixJam.TeamMeta;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace MatrixJam.TeamMeta
+namespace Assets.TeamMeta.MatrixTravelTransition
 {
-    public class MatrixTravelTransitioner : MonoBehaviour
+    public class Transitioner : MonoBehaviour
     {
         [SerializeField] MatrixTraveler matrixTraveler;
         [SerializeField] float transitionDuration = 1;
@@ -26,19 +28,20 @@ namespace MatrixJam.TeamMeta
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.I)){
+            if (Input.GetKeyDown(KeyCode.I))
+            {
                 RenderGameAsBackground();
             }
         }
         public void Transition(MatrixEdgeData matrixEdgeData)
         {
-            
+
             StartCoroutine(TransitionRoutine());
         }
         IEnumerator TransitionRoutine()
         {
             bool success = matrixTraveler.travelData.TryGetLastTravel(out MatrixEdgeData lastTravel);
-            if(!success)
+            if (!success)
             {
                 Debug.Log("Travel history is blank");
                 yield break;
@@ -84,13 +87,13 @@ namespace MatrixJam.TeamMeta
                 canvasScaler.enabled = false;
             }
         }
-            int FirstSetLayer(LayerMask mask)
-            {
-                int value = mask.value;
-                if (value == 0) return 0;  // Early out
-                for (int l = 1; l < 32; l++)
-                    if ((value & (1 << l)) != 0) return l;  // Bitwise
-                return -1;  // This line won't ever be reached but the compiler needs it
-            }
+        int FirstSetLayer(LayerMask mask)
+        {
+            int value = mask.value;
+            if (value == 0) return 0;  // Early out
+            for (int l = 1; l < 32; l++)
+                if ((value & 1 << l) != 0) return l;  // Bitwise
+            return -1;  // This line won't ever be reached but the compiler needs it
+        }
     }
 }

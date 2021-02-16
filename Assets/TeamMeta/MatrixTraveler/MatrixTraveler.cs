@@ -1,3 +1,4 @@
+using Assets.TeamMeta.MatrixTravelTransition;
 using MatrixJam.TeamMeta;
 using System;
 using System.Collections;
@@ -16,7 +17,7 @@ namespace MatrixJam
         public string startScene;
         public string endScene;
         public static MatrixTraveler Instance { get; private set; }
-        [SerializeField] MatrixTravelTransitioner travelTransitioner;
+        [SerializeField] Transitioner travelTransitioner;
 
         private void Awake()
         {
