@@ -76,6 +76,11 @@ namespace MatrixJam
 
         public void TravelFromExit(int exitId)
         {
+            if (travelTransitioner.isTransitioning)
+            {
+                Debug.Log("A transition to a new game is already in progress");
+                return;
+            }
             bool success = GetCurrentGame().FindOutputPortById(exitId,out MatrixPortData startPort);
             if(!success)
             {
@@ -131,7 +136,12 @@ namespace MatrixJam
         /// <summary> Entrance Id = -1 means use default entrance</summary>
         public void WarpTo(int nodeIndex,int entranceId)
         {
-            if(nodeIndex>=matrixGraphData.nodes.Count || nodeIndex<0)
+            if (travelTransitioner.isTransitioning)
+            {
+                Debug.Log("A transition to a new game is already in progress");
+                return;
+            }
+            if (nodeIndex>=matrixGraphData.nodes.Count || nodeIndex<0)
             {
                 Debug.Log("There is no game with index " + nodeIndex);
                 return;

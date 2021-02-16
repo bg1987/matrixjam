@@ -8,6 +8,9 @@ namespace MatrixJam.TeamMeta
     public class MatrixTravelTransitioner : MonoBehaviour
     {
         [SerializeField] MatrixTraveler matrixTraveler;
+        [SerializeField] float transitionDuration = 1;
+        public bool isTransitioning = false;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -21,9 +24,25 @@ namespace MatrixJam.TeamMeta
         }
         public void Transition(MatrixEdgeData matrixEdgeData)
         {
-            MatrixNodeData destinationGame = matrixTraveler.matrixGraphData.nodes[matrixEdgeData.endPort.nodeIndex];
+            
+            StartCoroutine(TransitionRoutine());
+        }
+        IEnumerator TransitionRoutine()
+        {
+            bool success = matrixTraveler.travelData.TryGetLastTravel(out MatrixEdgeData lastTravel);
+            if(!success)
+            {
+                Debug.Log("Travel history is blank");
+                yield break;
+            }
+
+            isTransitioning = true;
+
+            yield return new WaitForSeconds(transitionDuration);
+            MatrixNodeData destinationGame = matrixTraveler.matrixGraphData.nodes[lastTravel.endPort.nodeIndex];
             SceneManager.LoadScene(destinationGame.scenePath);
 
+            isTransitioning = false;
         }
     }
 }
