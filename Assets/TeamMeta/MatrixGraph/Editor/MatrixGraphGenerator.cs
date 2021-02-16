@@ -121,13 +121,13 @@ namespace MatrixJam.TeamMeta
 
                 foreach (var rootGameObject in activeScene.GetRootGameObjects())
                 {
-                    Entrance[] entrances = rootGameObject.GetComponentsInChildren<Entrance>();
+                    Entrance[] entrances = rootGameObject.GetComponentsInChildren<Entrance>(true);
                     foreach (var entrance in entrances)
                     {
                         node.AddInputPort(entrance.num_portal);
                     }
                    
-                    Exit[] exits = rootGameObject.GetComponentsInChildren<Exit>();
+                    Exit[] exits = rootGameObject.GetComponentsInChildren<Exit>(true);
                     foreach (var exit in exits)
                     {
                         node.AddOutputPort(exit.num_portal);
