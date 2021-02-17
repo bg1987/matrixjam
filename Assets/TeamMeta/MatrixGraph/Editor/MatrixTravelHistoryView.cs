@@ -68,7 +68,10 @@ namespace MatrixJam.TeamMeta
                 int endNodeIndex = edge.endPort.nodeIndex;
                 if(matrixNodes[endNodeIndex].style.backgroundColor!= completedColorBG)
                     matrixNodes[endNodeIndex].style.backgroundColor = visitedColorBG;          
-
+                if(edge.endPort.id == -1)
+                {
+                    return;
+                }
                 Port endPort = matrixNodes[endNodeIndex].inputContainer.Query<Port>().Where(p => int.Parse(p.portName) == edge.endPort.id);
                 Label endPortVisitsCountText = endPort.Query<VisualElement>().Where(element => element.name == "visitsCountText").First() as Label;
 
@@ -87,7 +90,14 @@ namespace MatrixJam.TeamMeta
 
                     var enumarator = startPort.connections.GetEnumerator();
                     enumarator.MoveNext();
-                    enumarator.Current.UpdateEdgeControl();
+                    if (enumarator.Current != null)
+                    {
+                        enumarator.Current.UpdateEdgeControl();
+                    }
+                    else
+                    {
+                        Debug.Log("Port " + startPort.portName + " of game " + startNodeIndex +" is not connected to anything");
+                    }
                 }
 
                 history.Add(edge);
