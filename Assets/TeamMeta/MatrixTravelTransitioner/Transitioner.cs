@@ -61,7 +61,10 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             gameBackground.Grayout(gameBackgroundGrayoutDuration);
             foreground.Appear();
 
-            yield return new WaitForSeconds(Mathf.Max(gameBackgroundGrayoutDuration, transitionDuration));
+            float volumeBeforeMute = AudioListener.volume;
+
+            StartCoroutine(MuteAudioRoutine(gameBackgroundGrayoutDuration));
+            yield return new WaitForSeconds(gameBackgroundGrayoutDuration);
 
             MatrixNodeData destinationGame = matrixTraveler.matrixGraphData.nodes[lastTravel.endPort.nodeIndex];
             SceneManager.LoadScene(destinationGame.scenePath);
@@ -70,12 +73,38 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             yield return null;
             yield return new WaitForFixedUpdate();
 
+            StartCoroutine(RestoreAudioRoutine(ForegroundDisappearDuration, volumeBeforeMute));
             foreground.Disappear(ForegroundDisappearDuration);
             gameBackground.StopBlocking();
             yield return new WaitForSeconds(ForegroundDisappearDuration);
             
             gameBackground.Deactivate();
             isTransitioning = false;
+        }
+        IEnumerator MuteAudioRoutine(float duration)
+        {
+            float count = 0;
+            float originVolume = AudioListener.volume;
+            while (count<duration)
+            {
+                var t = count / duration;
+                AudioListener.volume = Mathf.Lerp(originVolume, 0, t);
+                yield return null;
+                count += Time.unscaledDeltaTime;
+            }
+            AudioListener.volume = 0;
+        }
+        IEnumerator RestoreAudioRoutine(float duration,float targetVolume)
+        {
+            float count = 0;
+            while (count < duration)
+            {
+                var t = count / duration;
+                AudioListener.volume = Mathf.Lerp(0, targetVolume, t);
+                yield return null;
+                count += Time.unscaledDeltaTime;
+            }
+            AudioListener.volume = targetVolume;
         }
     }
 }
