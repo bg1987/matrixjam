@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.TeamMeta.MatrixTravelTransitioner
+namespace Assets.TeamMeta.MatrixTravelTransition
 {
     public class GameBackground : MonoBehaviour
     {
         [SerializeField] GameObject container;
         [SerializeField] RenderTexture gameRenderTexture;
+        [SerializeField] Texture2D gameRenderTextureStatic;
         [SerializeField] LayerMask transitionLayer;
         [SerializeField] Camera transitionCamera;
         [SerializeField] Material material;
+        [SerializeField] RawImage gameBgRawImage;
         // Start is called before the first frame update
         void Awake()
         {
@@ -23,14 +25,19 @@ namespace Assets.TeamMeta.MatrixTravelTransitioner
         public void RenderGameAsBackground()
         {
             container.SetActive(true);
+            gameBgRawImage.texture = gameRenderTexture;
+
+            gameBgRawImage.raycastTarget = true;
 
             Camera[] allCameras = Camera.allCameras;
             Camera cameraInGameScene = Camera.main;
 
             foreach (var camera in allCameras)
             {
-                if (camera == transitionCamera)
+                if (transitionLayer ==(transitionLayer | 1 << camera.gameObject.layer)) 
+                {
                     continue;
+                }
                 camera.cullingMask = camera.cullingMask & ~transitionLayer;
                 camera.targetTexture = gameRenderTexture;
                 cameraInGameScene = camera;
@@ -39,7 +46,7 @@ namespace Assets.TeamMeta.MatrixTravelTransitioner
             Canvas[] canvases = FindObjectsOfType<Canvas>();
             foreach (var canvas in canvases)
             {
-                if (canvas.gameObject.layer == FirstSetLayer(transitionLayer))
+                if (transitionLayer == (transitionLayer | 1 << canvas.gameObject.layer))
                 {
                     continue;
                 }
@@ -64,11 +71,27 @@ namespace Assets.TeamMeta.MatrixTravelTransitioner
             {
                 float t = count / duration;
                 material.SetFloat("_Grayness", t);
-                count += Time.deltaTime;
+                count += Time.unscaledDeltaTime;
                 yield return null;
 
             }
             material.SetFloat("_Grayness", 1);
+        }
+        public void SetToStatic()
+        {
+            gameRenderTextureStatic = new Texture2D(gameRenderTexture.width, gameRenderTexture.height, textureFormat: TextureFormat.ARGB32, mipChain:false);
+            Graphics.CopyTexture(gameRenderTexture, gameRenderTextureStatic);
+
+            gameRenderTexture.Release();
+            gameBgRawImage.texture = gameRenderTextureStatic;
+        }
+        public void Deactivate()
+        {
+            container.SetActive(false);
+        }
+        public void StopBlocking()
+        {
+            gameBgRawImage.raycastTarget = false;
         }
         int FirstSetLayer(LayerMask mask)
         {

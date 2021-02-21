@@ -23,4 +23,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TeamMeta/TestGames/TestGameThree/TestGameThree.unity
     guid: c1d057f48285ef941ac2bb08e2f1ebf7
+  - enabled: 1
+    path: Assets/Team5/GuessTheCode/GuessTheCodeGameScene.unity
+    guid: bcdadfa36b4d5e0488bf1e9dbe5ce9fb
+  - enabled: 1
+    path: Assets/Team1/Scenes/Main.unity
+    guid: 9e2a19c57d630324893b1a6d7a16fe80
+  - enabled: 1
+    path: Assets/Team9/Scenes/FullSceneWithSound.unity
+    guid: 64a123e0dd64f2a4ba7e72ce57eed7be
   m_configObjects: {}

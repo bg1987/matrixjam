@@ -98,14 +98,14 @@ namespace MatrixJam
             //do not call this directly, it should be called from the choosen exit.
             if (MatrixTraveler.Instance != null)
             {
-                if (PlayerData.Data.AddLevel(num_lvel, ent_num, exit_to.Num))
-                {
-                    MatrixTraveler.Instance.MatrixOver();
-                }
-                else
-                {
+                //if (PlayerData.Data.AddLevel(num_lvel, ent_num, exit_to.Num))
+                //{
+                //    MatrixTraveler.Instance.MatrixOver();
+                //}
+                //else
+                //{
                     MatrixTraveler.Instance.TravelFromExit(exit_to.Num);
-                }
+                //}
             }
             else
             {

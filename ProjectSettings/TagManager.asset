@@ -50,8 +50,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - MatrixTransitionBG
+  - MatrixTransitionFG
   - MatrixTransition
   m_SortingLayers:
   - name: Default
