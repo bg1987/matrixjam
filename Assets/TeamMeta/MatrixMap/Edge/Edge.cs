@@ -70,7 +70,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             curvePoints[curvePoints.Count - 1] = p3;
             return curvePoints;
         }
-        public void Init(Vector3 p1, Vector3 p2, Vector3 p3)
+        void Init(Vector3 p1, Vector3 p2, Vector3 p3)
         {
             curvePoints = CalculateBezierDistributedPoints(p1, p2, p3, curveResolution);
 
@@ -98,7 +98,15 @@ namespace MatrixJam.TeamMeta.MatrixMap
             List<Vector3> pointsCopy = new List<Vector3>(curvePoints);
             return pointsCopy;
         }
+        public void UpdateMesh()
+        {
+            UpdateVertices(vertices);
+            UpdateUV();
 
+            meshFilter.mesh.vertices = vertices;
+            meshFilter.mesh.uv = uv;
+            meshCollider.sharedMesh = meshFilter.mesh;
+        }
         void CreateMesh()
         {
             vertices = new Vector3[curvePoints.Count * 2];
@@ -121,15 +129,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             //meshRenderer.material.SetFloat("_EdgeLength", edgeLength); //Property _EdgeLEngth ToDo
 
         }
-        void UpdateMesh()
-        {
-            UpdateVertices(vertices);
-            UpdateUV();
-
-            meshFilter.mesh.vertices = vertices;
-            meshFilter.mesh.uv = uv;
-            meshCollider.sharedMesh = meshFilter.mesh;
-        }
+        
         private void UpdateUV()
         {
             uv[0] = new Vector2(0, 0);
