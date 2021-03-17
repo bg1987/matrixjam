@@ -11,6 +11,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
     {
         private Edge edge;
         List<Vector3> anchorPoints;
+        IReadOnlyList<Vector3> anchorPointsReadOnly;
         List<Vector3> bezierCurvePoints;
 
         static float handlesSize = 0.2f;
@@ -57,7 +58,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 Vector3 point = Handles.FreeMoveHandle(anchorPoints[i] + edge.transform.position, Quaternion.identity, handlesSize, Vector3.zero, Handles.ConeHandleCap);
                 if (point != anchorPoints[i])
                 {
-
+                    Undo.RecordObject(edge, "Delete segment");
                     anchorPoints[i] = point - edge.transform.position;
                     edge.UpdateBezierCurve(anchorPoints[0], anchorPoints[1], anchorPoints[2]);
 
