@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c149b042fa1919d41bf88d2f6e711055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curveResolution: 40
+  curveResolution: 20
   curveWidth: 0.2
   anchorPoints:
   - {x: 0, y: 0, z: 0}
