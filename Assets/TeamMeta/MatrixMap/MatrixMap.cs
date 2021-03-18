@@ -13,6 +13,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] float radius = 1;
 
         List<Node> nodes = new List<Node>();
+        List<Node> visitedNodes = new List<Node>();
         List<Vector3> nodesPositions = new List<Vector3>();
 
         const float TAU = Mathf.PI * 2;
@@ -22,7 +23,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             InitMap();
         }
-
         // Update is called once per frame
         void Update()
         {
@@ -30,8 +30,13 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         void InitMap()
         {
+            if(MatrixTraveler.Instance)
+                CreateNodes(MatrixTraveler.Instance);
+            else
+                CreateNodes();
+
             CalculateNodesPositions();
-            CreateNodes();
+            UpdateNodesPositions();
             //UpdateNodesScale();
             //UpadteNodesRadius();
 
@@ -41,7 +46,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             nodesPositions.Clear();
 
-            float rotateOffset = -Mathf.PI / 2f; //90 degrees. For visual symmetery
+            float rotateOffset = -Mathf.PI / 2f; //90 degrees. For visual symmetry
 
             for (int i = 0; i < nodesCount; i++)
             {
@@ -51,17 +56,45 @@ namespace MatrixJam.TeamMeta.MatrixMap
             }
             return nodesPositions;
         }
+        void CreateNodes(MatrixTraveler matrixTraveler)
+        {
+            var nodesData = matrixTraveler.matrixGraphData.nodes;
+            nodes.Capacity = nodesData.Count;
+            foreach (var nodeData in nodesData)
+            {
+                int i = nodeData.index;
+
+                var node = CreateNode();
+                node.name += i;
+                nodes.Insert(i,node);
+            }
+            nodesCount = nodesData.Count;
+        }
+        void UpdateNodesPositions()
+        {
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                var node = nodes[i];
+                node.transform.position = nodesPositions[i];
+
+            }
+        }
         void CreateNodes()
         {
             for (int i = 0; i < nodesCount; i++)
             {
-                var node = Instantiate(nodePrefab, transform);
-                node.transform.position = nodesPositions[i];
-                node.name = "Node"+i;
-                node.transform.localScale = Vector3.one * nodesSize;
+                var node = CreateNode();
                 nodes.Add(node);
             }
 
+        }
+        Node CreateNode()
+        {
+            var node = Instantiate(nodePrefab, transform);
+            node.name = "Node";
+            node.transform.localScale = Vector3.one * nodesSize;
+
+            return node;
         }
     }
 }

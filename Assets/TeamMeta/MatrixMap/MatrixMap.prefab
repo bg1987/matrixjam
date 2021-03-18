@@ -43,3 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ee6aed78a3bcb4989793d034c9a1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nodePrefab: {fileID: 5750187723290876000, guid: 7004dd70022639c49a6fd2fc3e3e9e86,
+    type: 3}
+  nodesCount: 20
+  nodesSize: 1
+  radius: 4.71
