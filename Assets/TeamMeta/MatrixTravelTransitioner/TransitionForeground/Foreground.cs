@@ -7,7 +7,6 @@ namespace MatrixJam.TeamMeta.MatrixTravelTransition
 {
     public class Foreground : MonoBehaviour
     {
-        [SerializeField] LayerMask transitionLayer;
         [SerializeField] GameObject container;
         [SerializeField] RawImage rawImage;
 

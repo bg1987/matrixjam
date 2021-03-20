@@ -6,6 +6,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
 {
     public class MatrixMap : MonoBehaviour
     {
+        [SerializeField] GameObject container;
         [Header("Nodes")]
         [SerializeField] Node nodePrefab;
 
@@ -15,7 +16,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] float radius = 1;
 
         List<Node> nodes = new List<Node>();
-        HashSet<int> visitedNodesIndexes = new HashSet<int>();
+        SortedSet<int> visitedNodesIndexesSorted = new SortedSet<int>();
         List<Vector3> nodesPositions = new List<Vector3>();
 
         [Header("Edges")]
@@ -40,6 +41,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             if (Input.GetKeyDown(KeyCode.K))
             {
+                Appear();
                 //HandleNewTravelHistoryEntry();
             }
         }
@@ -50,9 +52,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 CreateNodes(MatrixTraveler.Instance);
             }
             else
+            {
                 CreateNodes();
+            }
 
-            CalculateNodesPositions();
+            CalculateNodesPositions(nodesCount);
             UpdateNodesPositions();
 
             if (MatrixTraveler.Instance)
@@ -65,11 +69,41 @@ namespace MatrixJam.TeamMeta.MatrixMap
             //UpadteNodesRadius();
 
             //DebugVisualizeFirstLastNodes();
+            foreach (var node in nodes)
+            {
+                node.gameObject.SetActive(false);
+            }
+            foreach (var edge in edges)
+            {
+                edge.gameObject.SetActive(false);
+            }
+            container.SetActive(false);
+
         }
         public void Appear()
         {
+            container.SetActive(true);
             HandleNewTravelHistoryEntry();
 
+            CalculateNodesPositions(visitedNodesIndexesSorted.Count);
+            
+            UpdateVisitedNodesPositions();
+            UpdateEdgesAnchors();
+            foreach (var index in visitedNodesIndexesSorted)
+            {
+                var node = nodes[index];
+                node.gameObject.SetActive(true);
+            }
+            foreach (var index in visitedEdgesIndexes)
+            {
+                var edge = edges[index];
+                edge.gameObject.SetActive(true);
+            }
+
+        }
+        public void Disappear()
+        {
+            container.SetActive(false);
         }
         public void HandleNewTravelHistoryEntry()
         {
@@ -77,9 +111,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
             var edgesData = MatrixTraveler.Instance.matrixGraphData.edges;
 
             int lastVisitedNodeIndex = travelEdgeData.endPort.nodeIndex;
-            if (visitedNodesIndexes.Contains(lastVisitedNodeIndex) == false)
+            if (visitedNodesIndexesSorted.Contains(lastVisitedNodeIndex) == false)
             {
-                visitedNodesIndexes.Add(lastVisitedNodeIndex);
+                visitedNodesIndexesSorted.Add(lastVisitedNodeIndex);
 
                 ActivateNewNodeVisitEffect(nodes[lastVisitedNodeIndex]);
             }
@@ -112,7 +146,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             travelHistory = MatrixTraveler.Instance.travelData.GetHistory();
 
-            visitedNodesIndexes.Clear();
+            visitedNodesIndexesSorted.Clear();
             visitedEdgesIndexes.Clear();
 
             foreach (var travelEdgeData in travelHistory)
@@ -124,7 +158,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             var edgesData = MatrixTraveler.Instance.matrixGraphData.edges;
 
-            visitedNodesIndexes.Add(travelEdgeData.endPort.nodeIndex);
+            visitedNodesIndexesSorted.Add(travelEdgeData.endPort.nodeIndex);
 
             var edgeIndex = edgesData.FindIndex((MatrixEdgeData edgeData) => edgeData == travelEdgeData);
 
@@ -133,7 +167,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 visitedEdgesIndexes.Add(edgeIndex);
             }
         }
-        private List<Vector3> CalculateNodesPositions()
+        private List<Vector3> CalculateNodesPositions(int nodesCount)
         {
             nodesPositions.Clear();
 
@@ -170,6 +204,17 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             }
         }
+        void UpdateVisitedNodesPositions()
+        {
+            int i = 0;
+            foreach (var index in visitedNodesIndexesSorted)
+            {
+                var node = nodes[index];
+                node.transform.position = nodesPositions[i];
+                i++;
+            }
+
+        }
         void CreateNodes()
         {
             for (int i = 0; i < nodesCount; i++)
@@ -181,10 +226,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         Node CreateNode()
         {
-            var node = Instantiate(nodePrefab, transform);
+            var node = Instantiate(nodePrefab, container.transform);
             node.name = "Node";
             node.transform.localScale = Vector3.one * nodesSize;
+            foreach (var childTransform in node.GetComponentsInChildren<Transform>())
+            {
+                childTransform.gameObject.layer = transform.gameObject.layer;
 
+            }
             return node;
         }
         void CreateEdges(MatrixTraveler matrixTraveler)
@@ -204,6 +253,12 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             edge.transform.localPosition = Vector3.zero;
 
+            foreach (var childTransform in edge.GetComponentsInChildren<Transform>())
+            {
+                childTransform.gameObject.layer = transform.gameObject.layer;
+
+            }
+
             startNode.AddToStartPortEdges(edge);
             endNode.AddToEndPortEdges(edge);
 
@@ -220,6 +275,24 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             Edge edge = CreateEdge(startNode, endNode);
             return edge;
+        }
+        void UpdateEdgesAnchors()
+        {
+            var matrixTraveler = MatrixTraveler.Instance;
+            var edgesData = matrixTraveler.matrixGraphData.edges;
+
+            
+            foreach (var index in visitedEdgesIndexes)
+            {
+                Edge edge = edges[index];
+                var edgeData = edgesData[index];
+                Node startNode = nodes[edgeData.startPort.nodeIndex];
+                Node endNode = nodes[edgeData.endPort.nodeIndex];
+
+                CalculateEdgeAnchors(index, startNode.transform.localPosition, endNode.transform.localPosition, mapCenter: Vector3.zero, out Vector3 p1, out Vector3 p2, out Vector3 p3, usePreviousNormalSign: false);
+                edge.UpdateBezierCurve(p1, p2, p3);
+                edge.UpdateMesh();
+            }
         }
         void CalculateEdgeAnchors(int edgeIndex, Vector3 startNodePosition, Vector3 endNodePosition, Vector3 mapCenter, out Vector3 anchorPoint1, out Vector3 anchorPoint2, out Vector3 anchorPoint3, bool usePreviousNormalSign)
         {

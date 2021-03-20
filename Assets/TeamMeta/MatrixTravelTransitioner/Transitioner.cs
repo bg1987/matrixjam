@@ -1,6 +1,7 @@
 using Assets.TeamMeta.MatrixTravelTransition;
 using MatrixJam;
 using MatrixJam.TeamMeta;
+using MatrixJam.TeamMeta.MatrixMap;
 using MatrixJam.TeamMeta.MatrixTravelTransition;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,9 +20,11 @@ namespace Assets.TeamMeta.MatrixTravelTransition
 
         [SerializeField] RenderTexture gameRenderTexture;
         [SerializeField] LayerMask transitionLayer;
+        [SerializeField] Camera transitionCameraBG;
         [SerializeField] Camera transitionCamera;
         [SerializeField] GameBackground gameBackground;
         [SerializeField] Foreground foreground;
+        [SerializeField] MatrixMap matrixMap;
 
         [Header("Effects Durations")]
         [SerializeField] float gameBackgroundGrayoutDuration=2f;
@@ -61,6 +64,8 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             gameBackground.Grayout(gameBackgroundGrayoutDuration);
             foreground.Appear();
 
+            matrixMap.Appear();
+
             float volumeBeforeMute = AudioListener.volume;
 
             StartCoroutine(MuteAudioRoutine(gameBackgroundGrayoutDuration));
@@ -72,14 +77,26 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             gameBackground.SetToStatic();
             yield return null;
             yield return new WaitForFixedUpdate();
-
+            DeselectCameraMatrixLayersInTransitionedScene();
             StartCoroutine(RestoreAudioRoutine(ForegroundDisappearDuration, volumeBeforeMute));
             foreground.Disappear(ForegroundDisappearDuration);
             gameBackground.StopBlocking();
             yield return new WaitForSeconds(ForegroundDisappearDuration);
             
             gameBackground.Deactivate();
+            matrixMap.Disappear();
             isTransitioning = false;
+        }
+        void DeselectCameraMatrixLayersInTransitionedScene()
+        {
+            Camera[] cameras = FindObjectsOfType<Camera>();
+
+            foreach (var camera in cameras)
+            {
+                if (camera == transitionCamera || camera == transitionCameraBG)
+                    continue;
+                camera.cullingMask = camera.cullingMask & ~transitionLayer;
+            }
         }
         IEnumerator MuteAudioRoutine(float duration)
         {
