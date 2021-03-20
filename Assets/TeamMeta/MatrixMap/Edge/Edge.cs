@@ -24,8 +24,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         // Start is called before the first frame update
         void Start()
         {
-            Init(anchorPoints[0], anchorPoints[1], anchorPoints[2]);
-            CreateMesh();
+            //Init(anchorPoints[0], anchorPoints[1], anchorPoints[2]);
         }
 
         // Update is called once per frame
@@ -70,7 +69,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             curvePoints[curvePoints.Count - 1] = p3;
             return curvePoints;
         }
-        void Init(Vector3 p1, Vector3 p2, Vector3 p3)
+        public void Init(Vector3 p1, Vector3 p2, Vector3 p3)
         {
             curvePoints = CalculateBezierDistributedPoints(p1, p2, p3, curveResolution);
 

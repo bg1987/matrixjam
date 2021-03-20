@@ -8,16 +8,24 @@ namespace MatrixJam.TeamMeta.MatrixMap
     {
         [SerializeField] GameObject model;
 
+        List<Edge> startPortEdges = new List<Edge>();
+        List<Edge> endPortEdges = new List<Edge>();
+
+        //Edge Creation
+        private List<int> EdgesNormalSign = new List<int>(); //1 positive, -1 negative
+
         // Start is called before the first frame update
         void Start()
         {
             
         }
-
-        // Update is called once per frame
-        void Update()
+        public void AddToStartPortEdges(Edge edge)
         {
-            
+            endPortEdges.Add(edge);
+        }
+        public void AddToEndPortEdges(Edge edge)
+        {
+            endPortEdges.Add(edge);
         }
     }
 }

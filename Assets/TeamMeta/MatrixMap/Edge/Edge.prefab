@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curveResolution: 20
-  curveWidth: 0.2
+  curveWidth: 0.05
   anchorPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 2.9967237, y: 3.7084596, z: 0}

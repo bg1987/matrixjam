@@ -45,6 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodePrefab: {fileID: 5750187723290876000, guid: 7004dd70022639c49a6fd2fc3e3e9e86,
     type: 3}
-  nodesCount: 20
+  nodesCount: 6
   nodesSize: 1
   radius: 4.71
+  edgePrefab: {fileID: 5441691238404772506, guid: 4fa7af7854af0bc4d9aa75769e4def74,
+    type: 3}
+  edges: []
+  EdgesNormalSign: 
