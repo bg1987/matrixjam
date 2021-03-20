@@ -66,12 +66,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             //DebugVisualizeFirstLastNodes();
         }
-        
-        void SyncWithLastTravelHistoryEntry()
-        {
-            MatrixEdgeData travelEntryEdge = travelHistory[travelHistory.Count];
-            SyncWithTravelHistoryEntry(travelEntryEdge);
-        }
         public void Appear()
         {
             HandleNewTravelHistoryEntry();
@@ -227,7 +221,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
             Edge edge = CreateEdge(startNode, endNode);
             return edge;
         }
-
         void CalculateEdgeAnchors(int edgeIndex, Vector3 startNodePosition, Vector3 endNodePosition, Vector3 mapCenter, out Vector3 anchorPoint1, out Vector3 anchorPoint2, out Vector3 anchorPoint3, bool usePreviousNormalSign)
         {
             Edge edge = edges[edgeIndex];
@@ -264,11 +257,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
             anchorPoint1 = point1;
             anchorPoint2 = point2;
             anchorPoint3 = point3;
-        }
-
-        void ShowVisitedElements()
-        {
-            MatrixTraveler.Instance.travelData.GetHistory();
         }
     }
 }
