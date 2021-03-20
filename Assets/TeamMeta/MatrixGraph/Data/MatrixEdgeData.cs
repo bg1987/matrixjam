@@ -15,5 +15,13 @@ namespace MatrixJam.TeamMeta
             this.startPort = startPort;
             this.endPort = endPort;
         }
+        public static bool operator ==(MatrixEdgeData edgeData, MatrixEdgeData otherEdgeData)
+        {
+            return edgeData.startPort == otherEdgeData.startPort && edgeData.endPort == otherEdgeData.endPort;
+        }
+        public static bool operator !=(MatrixEdgeData edgeData, MatrixEdgeData otherEdgeData)
+        {
+            return !(edgeData == otherEdgeData);
+        }
     }
 }

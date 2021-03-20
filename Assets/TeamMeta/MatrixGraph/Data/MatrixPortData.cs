@@ -15,5 +15,13 @@ namespace MatrixJam.TeamMeta
             this.id = id;
             this.nodeIndex = nodeIndex;
         }
+        public static bool operator ==(MatrixPortData portData, MatrixPortData otherPortData)
+        {
+            return portData.id == otherPortData.id && portData.nodeIndex == otherPortData.nodeIndex;
+        }
+        public static bool operator !=(MatrixPortData portData, MatrixPortData otherPortData)
+        {
+            return !(portData == otherPortData);
+        }
     }
 }
