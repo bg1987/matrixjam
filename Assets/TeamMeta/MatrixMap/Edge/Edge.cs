@@ -6,6 +6,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
 {
     public class Edge : MonoBehaviour
     {
+        public int index;
         [SerializeField] int curveResolution = 9;
         [SerializeField] private float curveWidth = 0.2f;
 

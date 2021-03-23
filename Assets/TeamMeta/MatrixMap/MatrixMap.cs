@@ -19,6 +19,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
         SortedSet<int> visitedNodesIndexesSorted = new SortedSet<int>();
         List<Vector3> nodesPositions = new List<Vector3>();
 
+        [Header("Nodes Appear")]
+        [SerializeField, Min(0)] float nodeAppearDuration = 0.2f;
+        [SerializeField, Min(0)] float delayBetweenNodeAppearances = 0;
+        [SerializeField, Min(0)] float totalTimeForAllNodeAppearances = 1;
+
         [Header("Edges")]
         [SerializeField] Edge edgePrefab;
         [SerializeField] List<Edge> edges = new List<Edge>();
@@ -80,6 +85,20 @@ namespace MatrixJam.TeamMeta.MatrixMap
             container.SetActive(false);
 
         }
+
+        internal float CalculateTotalAppearanceTime()
+        {
+            float TotalAppearanceTime = 0;
+
+            float delay = totalTimeForAllNodeAppearances / visitedNodesIndexesSorted.Count;
+            delay += delayBetweenNodeAppearances;
+
+            TotalAppearanceTime += (visitedNodesIndexesSorted.Count - 1) * delay;
+            TotalAppearanceTime += (visitedNodesIndexesSorted.Count - 1) * delayBetweenNodeAppearances;
+            TotalAppearanceTime += nodeAppearDuration;
+            return TotalAppearanceTime;
+        }
+
         public void Appear()
         {
             container.SetActive(true);
@@ -99,11 +118,35 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 var edge = edges[index];
                 edge.gameObject.SetActive(true);
             }
+            Disappear();
+            AppearGradually();
+        }
+        private void AppearGradually()
+        {
+            float delay = totalTimeForAllNodeAppearances / visitedNodesIndexesSorted.Count;
+            delay += delayBetweenNodeAppearances;
+            int indexCount = 0;
+            foreach (var index in visitedNodesIndexesSorted)
+            {
+                var node = nodes[index];
 
+                node.Appear(nodeAppearDuration, indexCount * delay);
+                //nodes[i].EdgesAppear(edgeAppearDuration, i * delay + edgeAppearDelay);
+                indexCount++;
+            }
+        }
+        public void Deactivate()
+        {
+            container.SetActive(false);
         }
         public void Disappear()
         {
-            container.SetActive(false);
+            foreach (var index in visitedNodesIndexesSorted)
+            {
+                Node node = nodes[index];
+                node.Disappear();
+                //node.EdgesDisappear(0, 0);
+            }
         }
         public void HandleNewTravelHistoryEntry()
         {
@@ -243,6 +286,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             for (int i = 0; i < edgesData.Count; i++)
             {
                 Edge edge = CreateEdge(edgesData[i]);
+                edge.index = i;
                 edge.name = "Edge: Node " + edgesData[i].startPort.nodeIndex + " To " + edgesData[i].endPort.nodeIndex+
                             ", Port " + edgesData[i].startPort.id + " To " + edgesData[i].endPort.id;
             }
@@ -303,8 +347,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             Vector3 edgeDirection = middlePoint.normalized;
             Vector3 normal = Vector3.Cross(edgeDirection, Vector3.back);
 
-            Vector3 centerOfMap = Vector3.zero;
-            bool isNormalTowardsCenter = Vector3.Dot(normal, centerOfMap - endNodePosition) > -0.01 ? true : false;
+            bool isNormalTowardsCenter = Vector3.Dot(normal, mapCenter - endNodePosition) > -0.01 ? true : false;
             
             if (usePreviousNormalSign)
             {

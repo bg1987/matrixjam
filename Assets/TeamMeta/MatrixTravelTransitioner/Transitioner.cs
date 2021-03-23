@@ -14,7 +14,6 @@ namespace Assets.TeamMeta.MatrixTravelTransition
     public class Transitioner : MonoBehaviour
     {
         [SerializeField] MatrixTraveler matrixTraveler;
-        [SerializeField] float transitionDuration = 1;
 
         public bool isTransitioning = false;
 
@@ -64,12 +63,16 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             gameBackground.Grayout(gameBackgroundGrayoutDuration);
             foreground.Appear();
 
-            matrixMap.Appear();
 
             float volumeBeforeMute = AudioListener.volume;
 
             StartCoroutine(MuteAudioRoutine(gameBackgroundGrayoutDuration));
             yield return new WaitForSeconds(gameBackgroundGrayoutDuration);
+
+            matrixMap.Appear();
+            float matrixMapAppearDuration = matrixMap.CalculateTotalAppearanceTime();
+
+            yield return new WaitForSeconds(matrixMapAppearDuration);
 
             MatrixNodeData destinationGame = matrixTraveler.matrixGraphData.nodes[lastTravel.endPort.nodeIndex];
             SceneManager.LoadScene(destinationGame.scenePath);
@@ -84,7 +87,7 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             yield return new WaitForSeconds(ForegroundDisappearDuration);
             
             gameBackground.Deactivate();
-            matrixMap.Disappear();
+            matrixMap.Deactivate();
             isTransitioning = false;
         }
         void DeselectCameraMatrixLayersInTransitionedScene()
