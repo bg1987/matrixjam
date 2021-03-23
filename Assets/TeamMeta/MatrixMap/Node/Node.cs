@@ -10,6 +10,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] GameObject model;
         Material modelMaterial;
 
+        public List<Edge> startPortActiveEdges = new List<Edge>();
+
         List<Edge> startPortEdges = new List<Edge>();
         List<Edge> endPortEdges = new List<Edge>();
 
@@ -23,7 +25,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         public void AddToStartPortEdges(Edge edge)
         {
-            endPortEdges.Add(edge);
+            startPortEdges.Add(edge);
+        }
+        public void AddToStartPortActiveEdges(Edge edge)
+        {
+            startPortActiveEdges.Add(edge);
         }
         public void AddToEndPortEdges(Edge edge)
         {

@@ -28,7 +28,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] Edge edgePrefab;
         [SerializeField] List<Edge> edges = new List<Edge>();
         HashSet<int> visitedEdgesIndexes = new HashSet<int>();
-        
+
+        [Header("Edges Appear")]
+        [SerializeField, Min(0)] float edgeAppearDelay = 0.1f;
+        [SerializeField, Min(0)] float edgeAppearDuration = 1;
+
         [SerializeField] float sameNodeEdgesOffset = 0.2f;
         [SerializeField] private List<int> EdgesNormalSign = new List<int>(); //1 positive, -1 negative
         
@@ -88,15 +92,23 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
         internal float CalculateTotalAppearanceTime()
         {
-            float TotalAppearanceTime = 0;
+            float totalAppearanceTime = 0;
 
             float delay = totalTimeForAllNodeAppearances / visitedNodesIndexesSorted.Count;
             delay += delayBetweenNodeAppearances;
 
-            TotalAppearanceTime += (visitedNodesIndexesSorted.Count - 1) * delay;
-            TotalAppearanceTime += (visitedNodesIndexesSorted.Count - 1) * delayBetweenNodeAppearances;
-            TotalAppearanceTime += nodeAppearDuration;
-            return TotalAppearanceTime;
+            float totalNodesAppearanceTime = 0;
+            totalNodesAppearanceTime += (visitedNodesIndexesSorted.Count - 1) * delay;
+            totalNodesAppearanceTime += (visitedNodesIndexesSorted.Count - 1) * delayBetweenNodeAppearances;
+            totalNodesAppearanceTime += nodeAppearDuration;
+            
+            float totalEdgesAppearanceTime = 0;
+            totalEdgesAppearanceTime += (visitedNodesIndexesSorted.Count - 1) * delay;
+            totalEdgesAppearanceTime += edgeAppearDelay;
+            totalEdgesAppearanceTime += edgeAppearDuration;
+
+            totalAppearanceTime = Mathf.Max( totalNodesAppearanceTime, totalEdgesAppearanceTime);
+            return totalAppearanceTime;
         }
 
         public void Appear()
@@ -126,12 +138,16 @@ namespace MatrixJam.TeamMeta.MatrixMap
             float delay = totalTimeForAllNodeAppearances / visitedNodesIndexesSorted.Count;
             delay += delayBetweenNodeAppearances;
             int indexCount = 0;
-            foreach (var index in visitedNodesIndexesSorted)
+            foreach (var nodeIndex in visitedNodesIndexesSorted)
             {
-                var node = nodes[index];
+                var node = nodes[nodeIndex];
 
                 node.Appear(nodeAppearDuration, indexCount * delay);
-                //nodes[i].EdgesAppear(edgeAppearDuration, i * delay + edgeAppearDelay);
+
+                foreach (var activeEdge in node.startPortActiveEdges)
+                {
+                    activeEdge.Appear(edgeAppearDuration, indexCount * delay + edgeAppearDelay);
+                } 
                 indexCount++;
             }
         }
@@ -145,7 +161,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
             {
                 Node node = nodes[index];
                 node.Disappear();
-                //node.EdgesDisappear(0, 0);
+            }
+            foreach (var index in visitedEdgesIndexes)
+            {
+                Edge edge = edges[index];
+                edge.Disappear();
             }
         }
         public void HandleNewTravelHistoryEntry()
@@ -153,12 +173,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
             MatrixEdgeData travelEdgeData = travelHistory[travelHistory.Count - 1];
             var edgesData = MatrixTraveler.Instance.matrixGraphData.edges;
 
-            int lastVisitedNodeIndex = travelEdgeData.endPort.nodeIndex;
-            if (visitedNodesIndexesSorted.Contains(lastVisitedNodeIndex) == false)
-            {
-                visitedNodesIndexesSorted.Add(lastVisitedNodeIndex);
+            int destinationNodeIndex = travelEdgeData.endPort.nodeIndex;
+            Node destinationNode = nodes[destinationNodeIndex];
 
-                ActivateNewNodeVisitEffect(nodes[lastVisitedNodeIndex]);
+            if (visitedNodesIndexesSorted.Contains(destinationNodeIndex) == false)
+            {
+                visitedNodesIndexesSorted.Add(destinationNodeIndex);
+
+                ActivateNewNodeVisitEffect(destinationNode);
             }
 
             var edgeIndex = edgesData.FindIndex((MatrixEdgeData edgeData) => edgeData == travelEdgeData);
@@ -170,10 +192,12 @@ namespace MatrixJam.TeamMeta.MatrixMap
                     {
                         visitedEdgesIndexes.Add(edgeIndex);
 
-                        ActivateNewEdgeVisitEffect(edges[edgeIndex]);
+                        Edge destinationEdge = edges[edgeIndex];
+                        destinationNode.AddToStartPortActiveEdges(destinationEdge);
+
+                        ActivateNewEdgeVisitEffect(destinationEdge);
                     }
                 }
-
             }
         }
         void ActivateNewNodeVisitEffect(Node node)

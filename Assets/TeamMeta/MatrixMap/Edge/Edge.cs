@@ -19,12 +19,15 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] MeshFilter meshFilter;
         [SerializeField] private MeshCollider meshCollider;
 
+        [SerializeField] Material material;
+
         Vector3[] vertices;
         int[] triangles;
         Vector2[] uv;
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
+            material = meshRenderer.material;
             //Init(anchorPoints[0], anchorPoints[1], anchorPoints[2]);
         }
 
@@ -106,6 +109,40 @@ namespace MatrixJam.TeamMeta.MatrixMap
             meshFilter.mesh.vertices = vertices;
             meshFilter.mesh.uv = uv;
             meshCollider.sharedMesh = meshFilter.mesh;
+        }
+        public void Appear(float duration, float delay)
+        {
+            StartCoroutine(AppearRoutine(duration, delay));
+        }
+        IEnumerator AppearRoutine(float duration, float delay)
+        {
+            float count = 0;
+            yield return new WaitForSeconds(delay);
+
+            //UpdateEdgesAnchors();
+
+            var materialColor = material.color;
+
+            while (count < duration)
+            {
+                materialColor.a = Mathf.Lerp(0, 1, count / duration);
+                material.color = materialColor;
+
+                //count += Time.fixedDeltaTime;
+                //yield return new WaitForFixedUpdate();
+
+                count += Time.unscaledDeltaTime;
+                yield return null;
+            }
+            materialColor = material.color;
+            materialColor.a = 1;
+            material.color = materialColor;
+        }
+        public void Disappear()
+        {
+            var materialColor = material.color;
+            materialColor.a = 0;
+            material.color = materialColor;
         }
         void CreateMesh()
         {
