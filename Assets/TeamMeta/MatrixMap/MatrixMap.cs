@@ -349,9 +349,31 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 float rotateBy = t * TAU + rotateOffset;
                 nodesPositions.Add(new Vector3(Mathf.Cos(rotateBy), Mathf.Sin(rotateBy), transform.position.z) * radius);
             }
-            if (nodesCount == 1)
-                nodesPositions[0] = Vector3.zero;
+            CenterPositions();
+
             return nodesPositions;
+        }
+        private void CenterPositions()
+        {
+            float minNodeHeight = nodesPositions[0].y;
+            float maxNodeHeight = minNodeHeight;
+
+            for (int i = 1; i < nodesPositions.Count; i++)
+            {
+                if (maxNodeHeight < nodesPositions[i].y)
+                {
+                    maxNodeHeight = nodesPositions[i].y;
+                }
+            }
+            float newMapHeight = (-minNodeHeight - maxNodeHeight) / 2f;
+
+            for (int i = 0; i < nodesPositions.Count; i++)
+            {
+                var nodesPosition = nodesPositions[i];
+                nodesPosition.y += newMapHeight;
+                nodesPositions[i] = nodesPosition;
+            }
+            //transform.position = new Vector3(0, newMapHeight, 0);
         }
         void CreateNodes(MatrixTraveler matrixTraveler)
         {
