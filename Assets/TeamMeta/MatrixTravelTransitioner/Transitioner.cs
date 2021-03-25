@@ -69,9 +69,8 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             StartCoroutine(MuteAudioRoutine(gameBackgroundGrayoutDuration));
             yield return new WaitForSeconds(gameBackgroundGrayoutDuration);
 
-            matrixMap.Appear();
             float matrixMapAppearDuration = matrixMap.CalculateTotalAppearanceTime();
-
+            matrixMap.Appear();
             yield return new WaitForSeconds(matrixMapAppearDuration);
 
             MatrixNodeData destinationGame = matrixTraveler.matrixGraphData.nodes[lastTravel.endPort.nodeIndex];

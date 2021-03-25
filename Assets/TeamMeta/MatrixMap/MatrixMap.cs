@@ -34,8 +34,16 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField, Min(0)] float edgeAppearDuration = 1;
 
         [SerializeField] float sameNodeEdgesOffset = 0.2f;
-        [SerializeField] private List<int> EdgesNormalSign = new List<int>(); //1 positive, -1 negative
-        
+        private List<int> EdgesNormalSign = new List<int>(); //1 positive, -1 negative
+
+        [Header("First Visit")]
+        [SerializeField, Min(0)] float nodesMovementDelay = 0;
+        [SerializeField, Min(0)] float nodesMovementDuration = 1;
+        [SerializeField, Min(0)] float firstVisitNodeAppearDelay = 0.9f;
+        [SerializeField, Min(0)] float firstVisitNodeAppearDuration = 0.8f;
+        [SerializeField, Min(0)] float firstVisitEdgeAppearDelay = 1f;
+        [SerializeField, Min(0)] float firstVisitEdgeAppearDuration = 0.8f;
+
         private IReadOnlyList<MatrixEdgeData> travelHistory; //1 positive, -1 negative
 
         const float TAU = Mathf.PI * 2;
@@ -89,37 +97,48 @@ namespace MatrixJam.TeamMeta.MatrixMap
             container.SetActive(false);
 
         }
-
         internal float CalculateTotalAppearanceTime()
         {
             float totalAppearanceTime = 0;
 
-            float delay = totalTimeForAllNodeAppearances / visitedNodesIndexesSorted.Count;
-            delay += delayBetweenNodeAppearances;
-
             float totalNodesAppearanceTime = 0;
-            totalNodesAppearanceTime += (visitedNodesIndexesSorted.Count - 1) * delay;
             totalNodesAppearanceTime += (visitedNodesIndexesSorted.Count - 1) * delayBetweenNodeAppearances;
             totalNodesAppearanceTime += nodeAppearDuration;
+            totalNodesAppearanceTime += totalNodesAppearanceTime;
             
             float totalEdgesAppearanceTime = 0;
-            totalEdgesAppearanceTime += (visitedNodesIndexesSorted.Count - 1) * delay;
+            totalEdgesAppearanceTime += (visitedNodesIndexesSorted.Count - 1) * delayBetweenNodeAppearances;
+            totalEdgesAppearanceTime += totalNodesAppearanceTime;
             totalEdgesAppearanceTime += edgeAppearDelay;
             totalEdgesAppearanceTime += edgeAppearDuration;
 
-            totalAppearanceTime = Mathf.Max( totalNodesAppearanceTime, totalEdgesAppearanceTime);
+            float nodeAdditionTime = 0;
+            bool isFirstVisitToNode = IsFirstVisitToNode(GetDestinationNodeIndex());
+            bool isFirstVisitToEdge = IsFirstVisitToEdge(GetDestinationEdgeIndex());
+            if (isFirstVisitToNode)
+            {
+                float nodeMovementTime = nodesMovementDelay + nodesMovementDuration;
+                float addedNodeTime = firstVisitNodeAppearDelay + firstVisitNodeAppearDuration;
+                float addedEdgeTime = firstVisitEdgeAppearDelay + firstVisitEdgeAppearDuration;
+
+                nodeAdditionTime = Mathf.Max(nodeMovementTime, addedNodeTime, addedEdgeTime);
+            }
+            else if (isFirstVisitToEdge)
+            {
+                float addedEdgeTime = firstVisitEdgeAppearDelay + firstVisitEdgeAppearDuration;
+
+                nodeAdditionTime = addedEdgeTime;
+            }
+
+            totalAppearanceTime = Mathf.Max( totalNodesAppearanceTime, totalEdgesAppearanceTime, nodeAdditionTime);
             return totalAppearanceTime;
         }
 
         public void Appear()
         {
             container.SetActive(true);
-            HandleNewTravelHistoryEntry();
 
-            CalculateNodesPositions(visitedNodesIndexesSorted.Count);
             
-            UpdateVisitedNodesPositions();
-            UpdateEdgesAnchors();
             foreach (var index in visitedNodesIndexesSorted)
             {
                 var node = nodes[index];
@@ -131,7 +150,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 edge.gameObject.SetActive(true);
             }
             Disappear();
+
+            UpdateVisitedNodesPositions();
+            UpdateEdgesAnchors();
+
             AppearGradually();
+
+            HandleDestinationNode();
+
         }
         private void AppearGradually()
         {
@@ -168,45 +194,122 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 edge.Disappear();
             }
         }
-        public void HandleNewTravelHistoryEntry()
+        
+        bool IsFirstVisitToNode(int nodeIndex)
+        {
+            bool isFirstVisit = !visitedNodesIndexesSorted.Contains(nodeIndex);
+            return isFirstVisit;
+        }
+        bool IsFirstVisitToEdge(int edgeIndex)
+        {
+            bool isFirstVisit = !visitedEdgesIndexes.Contains(edgeIndex);
+            return isFirstVisit;
+        }
+        int GetDestinationNodeIndex()
         {
             MatrixEdgeData travelEdgeData = travelHistory[travelHistory.Count - 1];
-            var edgesData = MatrixTraveler.Instance.matrixGraphData.edges;
 
             int destinationNodeIndex = travelEdgeData.endPort.nodeIndex;
+            return destinationNodeIndex;
+        }
+        int GetDestinationEdgeIndex()
+        {
+            MatrixEdgeData destinationEdgeData = travelHistory[travelHistory.Count - 1];
+            var edgesData = MatrixTraveler.Instance.matrixGraphData.edges;
+
+            var destinationIndex = edgesData.FindIndex((MatrixEdgeData edgeData) => edgeData == destinationEdgeData);
+            return destinationIndex;
+        }
+        private void HandleDestinationNode()
+        {
+            int destinationNodeIndex = GetDestinationNodeIndex();
             Node destinationNode = nodes[destinationNodeIndex];
 
-            if (visitedNodesIndexesSorted.Contains(destinationNodeIndex) == false)
+            if (IsFirstVisitToNode(destinationNodeIndex))
             {
                 visitedNodesIndexesSorted.Add(destinationNodeIndex);
 
                 ActivateNewNodeVisitEffect(destinationNode);
             }
 
-            var edgeIndex = edgesData.FindIndex((MatrixEdgeData edgeData) => edgeData == travelEdgeData);
-            if (visitedEdgesIndexes.Contains(edgeIndex) == false)
+            HandleDestinationEdge(destinationNode);
+        }
+
+        private void HandleDestinationEdge(Node destinationNode)
+        {
+            int edgeIndex = GetDestinationEdgeIndex();
+            if (edgeIndex != -1)
             {
-                if (edgeIndex != -1)
+                if (IsFirstVisitToEdge(edgeIndex))
                 {
-                    if (visitedEdgesIndexes.Contains(edgeIndex) == false)
-                    {
-                        visitedEdgesIndexes.Add(edgeIndex);
+                    visitedEdgesIndexes.Add(edgeIndex);
 
-                        Edge destinationEdge = edges[edgeIndex];
-                        destinationNode.AddToStartPortActiveEdges(destinationEdge);
+                    Edge destinationEdge = edges[edgeIndex];
+                    destinationNode.AddToStartPortActiveEdges(destinationEdge);
 
-                        ActivateNewEdgeVisitEffect(destinationEdge);
-                    }
+                    ActivateNewEdgeVisitEffect(destinationEdge);
                 }
             }
         }
+
         void ActivateNewNodeVisitEffect(Node node)
         {
-            Debug.Log("New node was added " + node.name+ ". Should active new node visit effect");
+            Debug.Log("ToDo: New node was added " + node.name+ ". Should active new node visit effect");
+
+            CalculateNodesPositions(visitedNodesIndexesSorted.Count);
+
+            node.gameObject.SetActive(true);
+            node.Disappear();
+            node.Appear(firstVisitNodeAppearDuration, firstVisitNodeAppearDelay);
+
+
+            MoveNodesToPositions();
+        }
+        void MoveNodesToPositions()
+        {
+            StartCoroutine(MoveNodesToPositionsRoutine());
+        }
+        IEnumerator MoveNodesToPositionsRoutine()
+        {
+            yield return new WaitForSeconds(nodesMovementDelay);
+            //UpdateEdgesAnchors(usePreviousNormalSign: false);
+
+            var i = 0;
+            foreach (var nodeIndex in visitedNodesIndexesSorted)
+            {
+                Node node = nodes[nodeIndex];
+                node.MoveTo(nodesPositions[i], nodesMovementDuration);
+                //node.transform.position = nodesPositions[i];
+
+                i++;
+            }
+            float t = 0;
+            while (t< nodesMovementDuration)
+            {
+                UpdateEdgesAnchors(usePreviousNormalSign:true);
+
+                t += Time.deltaTime;
+                yield return null;
+
+            }
+            //UpdateVisitedNodesPositions();
+            UpdateEdgesAnchors(usePreviousNormalSign: true);
         }
         void ActivateNewEdgeVisitEffect(Edge edge)
         {
-            Debug.Log("New edge was added " + edge.name + ". Should active new edge visit effect");
+
+            edge.gameObject.SetActive(true);
+
+            var matrixTraveler = MatrixTraveler.Instance;
+            var edgeData = matrixTraveler.matrixGraphData.edges[edge.index];
+            Node startNode = nodes[edgeData.startPort.nodeIndex];
+            Node endNode = nodes[edgeData.endPort.nodeIndex];
+
+            UpdateEdgeAnchors(edge,startNode,endNode, usePreviousNormalSign: false);
+
+            edge.Disappear();
+            edge.Appear(firstVisitEdgeAppearDuration, firstVisitEdgeAppearDelay);
+            Debug.Log("ToDo: New edge was added " + edge.name + ". Should active new edge visit effect");
 
         }
         void SyncWithTravelHistory()
@@ -246,6 +349,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 float rotateBy = t * TAU + rotateOffset;
                 nodesPositions.Add(new Vector3(Mathf.Cos(rotateBy), Mathf.Sin(rotateBy), transform.position.z) * radius);
             }
+            if (nodesCount == 1)
+                nodesPositions[0] = Vector3.zero;
             return nodesPositions;
         }
         void CreateNodes(MatrixTraveler matrixTraveler)
@@ -344,7 +449,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             Edge edge = CreateEdge(startNode, endNode);
             return edge;
         }
-        void UpdateEdgesAnchors()
+        void UpdateEdgesAnchors(bool usePreviousNormalSign = false)
         {
             var matrixTraveler = MatrixTraveler.Instance;
             var edgesData = matrixTraveler.matrixGraphData.edges;
@@ -357,10 +462,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 Node startNode = nodes[edgeData.startPort.nodeIndex];
                 Node endNode = nodes[edgeData.endPort.nodeIndex];
 
-                CalculateEdgeAnchors(index, startNode.transform.localPosition, endNode.transform.localPosition, mapCenter: Vector3.zero, out Vector3 p1, out Vector3 p2, out Vector3 p3, usePreviousNormalSign: false);
-                edge.UpdateBezierCurve(p1, p2, p3);
-                edge.UpdateMesh();
+                UpdateEdgeAnchors(edge, startNode, endNode, usePreviousNormalSign);
             }
+        }
+        void UpdateEdgeAnchors(Edge edge, Node startNode, Node endNode, bool usePreviousNormalSign = false)
+        {
+            CalculateEdgeAnchors(edge.index, startNode.transform.localPosition, endNode.transform.localPosition, mapCenter: Vector3.zero, out Vector3 p1, out Vector3 p2, out Vector3 p3, usePreviousNormalSign);
+            edge.UpdateBezierCurve(p1, p2, p3);
+            edge.UpdateMesh();
         }
         void CalculateEdgeAnchors(int edgeIndex, Vector3 startNodePosition, Vector3 endNodePosition, Vector3 mapCenter, out Vector3 anchorPoint1, out Vector3 anchorPoint2, out Vector3 anchorPoint3, bool usePreviousNormalSign)
         {

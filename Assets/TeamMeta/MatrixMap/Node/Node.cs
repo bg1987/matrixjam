@@ -15,8 +15,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
         List<Edge> startPortEdges = new List<Edge>();
         List<Edge> endPortEdges = new List<Edge>();
 
-        //Edge Creation
-        private List<int> EdgesNormalSign = new List<int>(); //1 positive, -1 negative
 
         // Start is called before the first frame update
         void Awake()
@@ -46,8 +44,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             yield return new WaitForSeconds(delay);
 
-            //UpdateEdgesAnchors();
-
             var materialColor = modelMaterial.color;
 
             while (count < duration)
@@ -70,6 +66,27 @@ namespace MatrixJam.TeamMeta.MatrixMap
             var materialColor = modelMaterial.color;
             materialColor.a = 0;
             modelMaterial.color = materialColor;
+        }
+        public void MoveTo(Vector3 target, float duration)
+        {
+            StartCoroutine(MoveToRoutine(target, duration));
+        }
+        IEnumerator MoveToRoutine(Vector3 target, float duration)
+        {
+            float count = 0;
+            Vector3 startingPosition = transform.position;
+            Vector3 targetPosition = target;
+
+            yield return null;
+
+            while (count < duration)
+            {
+                count += Time.deltaTime;
+                transform.position = Vector3.Slerp(startingPosition, targetPosition, count / duration);
+
+                yield return null;
+            }
+            transform.position = targetPosition;
         }
     }
 }
