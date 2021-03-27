@@ -13,7 +13,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] int nodesCount;
 
         [SerializeField] float nodesSize = 1;
+        [Header("Map Radius")]
         [SerializeField] float radius = 1;
+        [SerializeField] float minRadius = 3;
+        [SerializeField] float maxRadius = 5;
 
         List<Node> nodes = new List<Node>();
         SortedSet<int> visitedNodesIndexesSorted = new SortedSet<int>();
@@ -347,11 +350,21 @@ namespace MatrixJam.TeamMeta.MatrixMap
             {
                 float t = i / (float)nodesCount;
                 float rotateBy = t * TAU + rotateOffset;
-                nodesPositions.Add(new Vector3(Mathf.Cos(rotateBy), Mathf.Sin(rotateBy), transform.position.z) * radius);
+                nodesPositions.Add(new Vector3(Mathf.Cos(rotateBy), Mathf.Sin(rotateBy), transform.position.z));
             }
+
+            AddRadiusToPositions(nodesPositions);
             CenterPositions();
 
             return nodesPositions;
+        }
+        private void AddRadiusToPositions(List<Vector3> positions)
+        {
+            radius = Mathf.Lerp(minRadius, maxRadius, visitedNodesIndexesSorted.Count / (float)nodes.Count);
+            for (int i = 0; i < positions.Count; i++)
+            {
+                positions[i] *= radius;
+            }
         }
         private void CenterPositions()
         {
