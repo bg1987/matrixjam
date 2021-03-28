@@ -64,6 +64,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 Appear();
                 //HandleNewTravelHistoryEntry();
             }
+
+            Shader.SetGlobalFloat("_MatrixMapTime",Time.time);
+
         }
         void InitMap()
         {
@@ -398,6 +401,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
                 var node = CreateNode();
                 node.name += i;
+                node.SetIndex(i);
                 nodes.Insert(i,node);
             }
             nodesCount = nodesData.Count;
@@ -427,6 +431,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             for (int i = 0; i < nodesCount; i++)
             {
                 var node = CreateNode();
+                node.SetIndex(i);
                 nodes.Add(node);
             }
 
@@ -435,7 +440,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             var node = Instantiate(nodePrefab, container.transform);
             node.name = "Node";
-            node.transform.localScale = Vector3.one * nodesSize;
+            node.SetModelRadius(nodesSize);
             foreach (var childTransform in node.GetComponentsInChildren<Transform>())
             {
                 childTransform.gameObject.layer = transform.gameObject.layer;

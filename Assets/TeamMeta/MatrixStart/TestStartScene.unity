@@ -2582,6 +2582,16 @@ PrefabInstance:
       propertyPath: firstVisitEdgeAppearDelay
       value: 2.1
       objectReference: {fileID: 0}
+    - target: {fileID: 3982408222707808918, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: maxRadius
+      value: 4.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982408222707808918, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: nodesSize
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4eeefe47ba84a44c978d05ec2db3c64, type: 3}
 --- !u!114 &1128284729673487505 stripped

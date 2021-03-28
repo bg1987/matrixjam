@@ -69,15 +69,23 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             StartCoroutine(MuteAudioRoutine(gameBackgroundGrayoutDuration));
             yield return new WaitForSeconds(gameBackgroundGrayoutDuration);
 
+            gameBackground.SetToStatic();
+            yield return null;
+
+            MatrixNodeData destinationGame = matrixTraveler.matrixGraphData.nodes[lastTravel.endPort.nodeIndex];
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(destinationGame.scenePath);
+            asyncOperation.allowSceneActivation = false;
+            while (asyncOperation.progress < 0.9f)
+            {
+                yield return null;
+            }
+
             float matrixMapAppearDuration = matrixMap.CalculateTotalAppearanceTime();
             matrixMap.Appear();
             yield return new WaitForSeconds(matrixMapAppearDuration);
 
-            MatrixNodeData destinationGame = matrixTraveler.matrixGraphData.nodes[lastTravel.endPort.nodeIndex];
-            SceneManager.LoadScene(destinationGame.scenePath);
+            asyncOperation.allowSceneActivation = true;
 
-            gameBackground.SetToStatic();
-            yield return null;
             yield return new WaitForFixedUpdate();
             DeselectCameraMatrixLayersInTransitionedScene();
             StartCoroutine(RestoreAudioRoutine(ForegroundDisappearDuration, volumeBeforeMute));

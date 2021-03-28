@@ -8,6 +8,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
     public class Node : MonoBehaviour
     {
         [SerializeField] GameObject model;
+        [SerializeField] int index;
+
         Material modelMaterial;
 
         public List<Edge> startPortActiveEdges = new List<Edge>();
@@ -20,6 +22,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
         void Awake()
         {
             modelMaterial = model.GetComponent<Renderer>().material;
+            modelMaterial.SetFloat("_Seed", index);
+        }
+        public void SetIndex(int value)
+        {
+            index = value;
         }
         public void AddToStartPortEdges(Edge edge)
         {
@@ -33,7 +40,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             endPortEdges.Add(edge);
         }
-
+        public void SetModelRadius(float radius)
+        {
+            model.transform.localScale *= radius;
+        }
         public void Appear(float duration, float delay)
         {
             StartCoroutine(AppearRoutine(duration, delay));
@@ -88,5 +98,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             }
             transform.position = targetPosition;
         }
+
+        
     }
 }
