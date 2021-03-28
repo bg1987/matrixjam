@@ -530,6 +530,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1769332697}
   - component: {fileID: 1769332698}
+  - component: {fileID: 1515759097}
+  - component: {fileID: 1515759098}
   m_Layer: 31
   m_Name: TransitionCamera
   m_TagString: Untagged
@@ -594,6 +596,83 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1515759097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769332696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: ad01bdcf581cdb748b75b440c79df693, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!114 &1515759098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769332696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 1769332697}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &1976200055
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,6 +875,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MatrixMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101692762670319827, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
+        type: 3}
+      propertyPath: nodesSize
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101692762670319827, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
+        type: 3}
+      propertyPath: maxRadius
+      value: 4.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101692762670319827, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
+        type: 3}
+      propertyPath: nodesMovementDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101692762670319827, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
+        type: 3}
+      propertyPath: firstVisitNodeAppearDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101692762670319827, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
+        type: 3}
+      propertyPath: firstVisitEdgeAppearDelay
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 5262338389570508461, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
         type: 3}

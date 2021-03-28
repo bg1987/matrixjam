@@ -107,8 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c149b042fa1919d41bf88d2f6e711055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   curveResolution: 20
-  curveWidth: 0.05
+  curveWidth: 0.12
   anchorPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 2.9967237, y: 3.7084596, z: 0}
@@ -116,3 +117,4 @@ MonoBehaviour:
   meshRenderer: {fileID: 7722531049456079015}
   meshFilter: {fileID: 848970046564030516}
   meshCollider: {fileID: 4506149698693754970}
+  material: {fileID: 0}

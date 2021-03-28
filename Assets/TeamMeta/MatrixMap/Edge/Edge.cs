@@ -82,6 +82,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
             anchorPoints[2] = p3;
 
             CreateMesh();
+
+            UpdateShaderProperties();
         }
         public void UpdateBezierCurve(Vector3 p1, Vector3 p2, Vector3 p3)
         {
@@ -109,12 +111,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
             meshFilter.mesh.vertices = vertices;
             meshFilter.mesh.uv = uv;
             meshCollider.sharedMesh = meshFilter.mesh;
+
+            UpdateShaderProperties();
         }
         public void Appear(float duration, float delay)
         {
-            StartCoroutine(AppearRoutine(duration, delay));
+            StartCoroutine(DissolveAppear(duration, delay));
         }
-        IEnumerator AppearRoutine(float duration, float delay)
+        IEnumerator AppearFromAlphaRoutine(float duration, float delay)
         {
             float count = 0;
             yield return new WaitForSeconds(delay);
@@ -138,11 +142,44 @@ namespace MatrixJam.TeamMeta.MatrixMap
             materialColor.a = 1;
             material.color = materialColor;
         }
+        IEnumerator DissolveAppear(float duration, float delay)
+        {
+
+            float count = 0;
+            yield return new WaitForSeconds(delay);
+
+            //UpdateEdgesAnchors();
+
+            var materialColor = material.color;
+
+            while (count < duration)
+            {
+                float dissolveValue = Mathf.Lerp(1, 0, count / duration);
+                material.SetFloat("_Dissolve", dissolveValue);
+
+                //count += Time.fixedDeltaTime;
+                //yield return new WaitForFixedUpdate();
+
+                count += Time.deltaTime;
+                yield return null;
+            }
+            material.SetFloat("_Dissolve", 0);
+        }
         public void Disappear()
+        {
+            DissolveDisappear();
+
+        }
+        void DisappearFromAlpha()
         {
             var materialColor = material.color;
             materialColor.a = 0;
             material.color = materialColor;
+
+        }
+        void DissolveDisappear()
+        {
+            material.SetFloat("_Dissolve", 1);
         }
         void CreateMesh()
         {
@@ -238,6 +275,16 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 triangles[i * 3 + 5] = i + 3;
             }
             return triangles;
+        }
+        void UpdateShaderProperties()
+        {
+            meshRenderer.material.SetFloat("_EdgeLength", edgeLength);
+            UpdateShaderWorldPosition();
+        }
+        void UpdateShaderWorldPosition()
+        {
+            meshRenderer.material.SetVector("_StartWorldPosition", transform.position + anchorPoints[0]);
+            meshRenderer.material.SetVector("_EndWorldPosition", transform.position + anchorPoints[2]);
         }
     }
 }
