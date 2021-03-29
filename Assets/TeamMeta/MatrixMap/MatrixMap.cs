@@ -59,14 +59,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                Appear();
-                //HandleNewTravelHistoryEntry();
-            }
-
             Shader.SetGlobalFloat("_MatrixMapTime",Time.time);
-
         }
         void InitMap()
         {
@@ -402,6 +395,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 var node = CreateNode();
                 node.name += i;
                 node.SetIndex(i);
+
+                node.SetModelColors(nodeData.colorHdr1, nodeData.colorHdr2);
+
                 nodes.Insert(i,node);
             }
             nodesCount = nodesData.Count;

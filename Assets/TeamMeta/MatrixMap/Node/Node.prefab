@@ -45,6 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 4205430861388808194}
+  index: 0
+  colorHdr1:
+    color: {r: 0.18431373, g: 0.18431373, b: 0.7490196, a: 1}
+    intensity: 2.422571
+  colorHdr2:
+    color: {r: 0.11372549, g: 0.7490196, b: 0.5921569, a: 1}
+    intensity: 2.898304
+  startPortActiveEdges: []
 --- !u!1 &4205430861388808194
 GameObject:
   m_ObjectHideFlags: 0

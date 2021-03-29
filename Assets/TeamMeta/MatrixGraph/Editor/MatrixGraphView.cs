@@ -61,22 +61,19 @@ namespace MatrixJam.TeamMeta
             node.index = nodeData.index;
             node.levelName = nodeData.name;
             node.scenePath = nodeData.scenePath;
+            node.colorHdr1 = nodeData.colorHdr1;
+            node.colorHdr2 = nodeData.colorHdr2;
 
             node.title = nodeData.index+"";
             node.titleContainer.style.unityTextAlign = TextAnchor.MiddleCenter;
             node.name = nodeData.name;
-            
+
             //var scenePathLabel = new Label("Scene Path");
             ////scenePathLabelStyle = scenePathLabel.style
             //scenePathLabel.style.unityTextAlign = TextAnchor.MiddleCenter;
             //scenePathLabel.style.backgroundColor = Color.black;
             //node.mainContainer.Add(scenePathLabel);
-
-            node.GenerateLevelNameLabel();
-            node.GenerateLevelNameInputField();
-
-            node.GenerateScenePathLabel();
-            node.GenerateScenePathInputField();
+            node.GenerateFields();
 
             node.SetPosition(new Rect(position, defaultNodeSize));
 

@@ -3,10 +3,12 @@
     Properties
     {
         _Color ("Color", Color) = (1,1,1,1)
-        [hdr] _Color1 ("Color1", Color) = (0.12,0.12,0.5)
-        [hdr] _Color2 ("Color2", Color) = (0.1,0.7,0.55)
+        _Color1 ("Color1", Color) = (0.12,0.12,0.5)
+        _ColorIntensity1 ("ColorIntensity1", float) = 1
+        _Color2 ("Color2", Color) = (0.1,0.7,0.55)
+        _ColorIntensity2 ("ColorIntensity2", float) = 1
+
         _MainTex ("Texture", 2D) = "white" {}
-        _Noise ("Noise", 2D) = "white" {}
         _Radius ("Radius", Range(0,0.5)) = 0.5
         _P ("P", float) = 1.94
         _Z ("Z", float) = 3
@@ -41,7 +43,6 @@
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-            sampler2D _Noise;
             float _Radius;
             float _P;
             float _Z;
@@ -49,6 +50,8 @@
             float4 _Color;
             float4 _Color1;
             float4 _Color2;
+            float _ColorIntensity1;
+            float _ColorIntensity2;
 
             float _MatrixMapTime;
 
@@ -168,6 +171,9 @@
 
                 // sample the texture
                 fixed4 color = tex2D(_MainTex, i.uv);
+
+                _Color1 = _Color1 * pow(2,_ColorIntensity1);
+                _Color2 = _Color2 * pow(2,_ColorIntensity2);
 
                 bool isSphere = CalculateSphereMask(i.uv);
                 // clip(isSphere-0.1);

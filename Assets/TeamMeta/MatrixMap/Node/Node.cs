@@ -10,6 +10,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] GameObject model;
         [SerializeField] int index;
 
+        [SerializeField] ColorHdr colorHdr1;
+        [SerializeField] ColorHdr colorHdr2;
+
         Material modelMaterial;
 
         public List<Edge> startPortActiveEdges = new List<Edge>();
@@ -23,10 +26,23 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             modelMaterial = model.GetComponent<Renderer>().material;
             modelMaterial.SetFloat("_Seed", index);
+
+            SetModelColors(colorHdr1, colorHdr2);
         }
         public void SetIndex(int value)
         {
             index = value;
+        }
+        public void SetModelColors(ColorHdr colorHdr1, ColorHdr colorHdr2)
+        {
+            this.colorHdr1 = colorHdr1;
+            this.colorHdr2 = colorHdr2;
+            if (!modelMaterial)
+                return;
+            modelMaterial.SetColor("_Color1", colorHdr1.color);
+            modelMaterial.SetColor("_Color2", colorHdr2.color);
+            modelMaterial.SetFloat("_ColorIntensity1", colorHdr1.intensity);
+            modelMaterial.SetFloat("_ColorIntensity2", colorHdr2.intensity);
         }
         public void AddToStartPortEdges(Edge edge)
         {
