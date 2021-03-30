@@ -57,10 +57,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             InitMap();
         }
         // Update is called once per frame
-        void Update()
-        {
-            Shader.SetGlobalFloat("_MatrixMapTime",Time.time);
-        }
+        
         void InitMap()
         {
             if (MatrixTraveler.Instance)
