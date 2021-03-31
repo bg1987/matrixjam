@@ -24,17 +24,34 @@ namespace MatrixJam.TeamMeta.MatrixMap
         Vector3[] vertices;
         int[] triangles;
         Vector2[] uv;
+
+        [Header("Colors")]
+        [SerializeField] ColorHdr colorHdr1;
+        [SerializeField] ColorHdr colorHdr2;
         // Start is called before the first frame update
         void Awake()
         {
             material = meshRenderer.material;
             //Init(anchorPoints[0], anchorPoints[1], anchorPoints[2]);
+            SetModelColors(colorHdr1, colorHdr2);
         }
 
         // Update is called once per frame
         void Update()
         {
+            //Init(Vector3.zero, Vector3.right*8 + Vector3.up, Vector3.right * 16);
             //UpdateMesh();
+        }
+        public void SetModelColors(ColorHdr colorHdr1, ColorHdr colorHdr2)
+        {
+            this.colorHdr1 = colorHdr1;
+            this.colorHdr2 = colorHdr2;
+            if (!material)
+                return;
+            material.SetColor("_Color1", colorHdr1.color);
+            material.SetColor("_Color2", colorHdr2.color);
+            material.SetFloat("_ColorIntensity1", colorHdr1.intensity);
+            material.SetFloat("_ColorIntensity2", colorHdr2.intensity);
         }
         Vector3 QuadraticBezierCurve(Vector3 p1, Vector3 p2, Vector3 p3, float t)
         {

@@ -628,10 +628,10 @@ MonoBehaviour:
   volumeTrigger: {fileID: 1769332697}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3758096384
   stopNaNPropagation: 1
-  finalBlitToCameraTarget: 0
-  antialiasingMode: 0
+  finalBlitToCameraTarget: 1
+  antialiasingMode: 1
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25
@@ -641,7 +641,7 @@ MonoBehaviour:
     quality: 2
   fastApproximateAntialiasing:
     fastMode: 0
-    keepAlpha: 0
+    keepAlpha: 1
   fog:
     enabled: 1
     excludeSkybox: 1
@@ -875,31 +875,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MatrixMap
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101692762670319827, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
-        type: 3}
-      propertyPath: nodesSize
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101692762670319827, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
-        type: 3}
-      propertyPath: maxRadius
-      value: 4.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101692762670319827, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
-        type: 3}
-      propertyPath: nodesMovementDelay
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101692762670319827, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
-        type: 3}
-      propertyPath: firstVisitNodeAppearDelay
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101692762670319827, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
-        type: 3}
-      propertyPath: firstVisitEdgeAppearDelay
-      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 5262338389570508461, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
         type: 3}

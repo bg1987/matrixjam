@@ -39,16 +39,18 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] float sameNodeEdgesOffset = 0.2f;
         private List<int> EdgesNormalSign = new List<int>(); //1 positive, -1 negative
 
-        [Header("First Visit")]
+        [Header("Node First Visit")]
         [SerializeField, Min(0)] float nodesMovementDelay = 0;
         [SerializeField, Min(0)] float nodesMovementDuration = 1;
         [SerializeField, Min(0)] float firstVisitNodeAppearDelay = 0.9f;
         [SerializeField, Min(0)] float firstVisitNodeAppearDuration = 0.8f;
+        [SerializeField, Min(0)] float firstVisitNodeGlowDuration = 3f;
+
+        [Header("Edge First Visit")]
         [SerializeField, Min(0)] float firstVisitEdgeAppearDelay = 1f;
         [SerializeField, Min(0)] float firstVisitEdgeAppearDuration = 0.8f;
 
         private IReadOnlyList<MatrixEdgeData> travelHistory; //1 positive, -1 negative
-
         const float TAU = Mathf.PI * 2;
 
         // Start is called before the first frame update
@@ -216,6 +218,13 @@ namespace MatrixJam.TeamMeta.MatrixMap
             var destinationIndex = edgesData.FindIndex((MatrixEdgeData edgeData) => edgeData == destinationEdgeData);
             return destinationIndex;
         }
+        int GetPreviousNodeIndex()
+        {
+            MatrixEdgeData travelEdgeData = travelHistory[travelHistory.Count - 1];
+
+            int nodeIndex = travelEdgeData.startPort.nodeIndex;
+            return nodeIndex;
+        }
         private void HandleDestinationNode()
         {
             int destinationNodeIndex = GetDestinationNodeIndex();
@@ -227,11 +236,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
                 ActivateNewNodeVisitEffect(destinationNode);
             }
-
-            HandleDestinationEdge(destinationNode);
+            HandleDestinationEdge();
         }
 
-        private void HandleDestinationEdge(Node destinationNode)
+        private void HandleDestinationEdge()
         {
             int edgeIndex = GetDestinationEdgeIndex();
             if (edgeIndex != -1)
@@ -241,7 +249,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
                     visitedEdgesIndexes.Add(edgeIndex);
 
                     Edge destinationEdge = edges[edgeIndex];
-                    destinationNode.AddToStartPortActiveEdges(destinationEdge);
+
+                    int previousNodeIndex = GetPreviousNodeIndex();
+                    if(previousNodeIndex!=-1)
+                    {
+                        Node fromNode = nodes[previousNodeIndex];
+                        fromNode.AddToStartPortActiveEdges(destinationEdge);
+                    }
+
 
                     ActivateNewEdgeVisitEffect(destinationEdge);
                 }
@@ -257,7 +272,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             node.gameObject.SetActive(true);
             node.Disappear();
             node.Appear(firstVisitNodeAppearDuration, firstVisitNodeAppearDelay);
-
+            node.Glow(firstVisitNodeGlowDuration, firstVisitNodeAppearDelay);
 
             MoveNodesToPositions();
         }
@@ -472,14 +487,19 @@ namespace MatrixJam.TeamMeta.MatrixMap
             edges.Add(edge);
             CalculateEdgeAnchors(edges.Count - 1, startNode.transform.localPosition, endNode.transform.localPosition, mapCenter: Vector3.zero, out Vector3 p1, out Vector3 p2, out Vector3 p3, usePreviousNormalSign: false);
             edge.Init(p1, p2, p3);
+
+            edge.SetModelColors(startNode.ColorHdr1, startNode.ColorHdr2);
+
             return edge;
         }
         Edge CreateEdge(MatrixEdgeData matrixEdgeData)
         {
             Node startNode = nodes[matrixEdgeData.startPort.nodeIndex];
+            
             Node endNode = nodes[matrixEdgeData.endPort.nodeIndex];
 
             Edge edge = CreateEdge(startNode, endNode);
+
             return edge;
         }
         void UpdateEdgesAnchors(bool usePreviousNormalSign = false)

@@ -26,10 +26,54 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1415507909}
   m_Father: {fileID: 5262338389570508461}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1415507908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1415507909}
+  - component: {fileID: 1415507910}
+  m_Layer: 31
+  m_Name: TimeUpdater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1415507909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415507908}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 184984327}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1415507910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415507908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38891eefee8862f4bb7072a2d62e26f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1921901578402010646
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,10 +123,10 @@ MonoBehaviour:
   nodePrefab: {fileID: 5750187723290876000, guid: 7004dd70022639c49a6fd2fc3e3e9e86,
     type: 3}
   nodesCount: 6
-  nodesSize: 1
+  nodesSize: 1.5
   radius: 4.71
   minRadius: 3
-  maxRadius: 5
+  maxRadius: 4.7
   nodeAppearDuration: 0.5
   delayBetweenNodeAppearances: 0
   totalTimeForAllNodeAppearances: 1
@@ -92,11 +136,12 @@ MonoBehaviour:
   edgeAppearDelay: 0.1
   edgeAppearDuration: 1
   sameNodeEdgesOffset: 0.2
-  nodesMovementDelay: 0
+  nodesMovementDelay: 1
   nodesMovementDuration: 1
-  firstVisitNodeAppearDelay: 0.9
+  firstVisitNodeAppearDelay: 2
   firstVisitNodeAppearDuration: 0.8
-  firstVisitEdgeAppearDelay: 1
+  firstVisitNodeGlowDuration: 1.5
+  firstVisitEdgeAppearDelay: 2.1
   firstVisitEdgeAppearDuration: 0.8
 --- !u!114 &1684526059
 MonoBehaviour:
