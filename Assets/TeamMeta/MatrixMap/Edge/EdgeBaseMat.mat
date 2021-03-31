@@ -89,6 +89,7 @@ Material:
     - _SrcBlend: 1
     - _StartEdgeRadius: 0.85
     - _UVSec: 0
+    - _UseTwoColors: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.3512595, g: 0.87814873, b: 5.5908804, a: 1}
