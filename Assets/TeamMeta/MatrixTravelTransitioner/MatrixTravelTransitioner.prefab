@@ -864,34 +864,6 @@ MonoBehaviour:
   matrixMap: {fileID: 3982408222707808918}
   gameBackgroundGrayoutDuration: 0.75
   ForegroundDisappearDuration: 2
---- !u!114 &4238761666442527403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5538623407302091733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1392bc0e917b7e64da6c29d15ee02ea2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodePrefab: {fileID: 5750187723290876000, guid: 7004dd70022639c49a6fd2fc3e3e9e86,
-    type: 3}
-  nodesCount: 0
-  nodesSize: 1.5
-  nodes: []
-  nodeAppearDuration: 0.9
-  delayBetweenNodeAppearances: 0
-  totalTimeForAllNodeAppearances: 1
-  nodesMovementDelay: 0
-  nodesMovementDuration: 1
-  firstVisitNodeAppearDelay: 1.1
-  firstVisitNodeAppearDuration: 0.8
-  firstVisitNodeGlowDuration: 3
-  radius: 1
-  minRadius: 3
-  maxRadius: 5
 --- !u!1001 &1128284729474724421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -904,11 +876,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MatrixMap
       objectReference: {fileID: 0}
-    - target: {fileID: 4101692762670319827, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
-        type: 3}
-      propertyPath: nodesController
-      value: 
-      objectReference: {fileID: 4238761666442527403}
     - target: {fileID: 5262338389570508461, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -984,9 +951,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ee6aed78a3bcb4989793d034c9a1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &5538623407302091733 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4860892936599048592, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1128284729474724421}
-  m_PrefabAsset: {fileID: 0}

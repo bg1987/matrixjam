@@ -104,9 +104,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
             }
             UpdateVisitedNodesPositions();
 
-            AppearGradually();
         }
-        private void AppearGradually()
+        public void AppearGradually()
         {
             float delay = CalculateDelayBetweenNodeAppearances();
             int indexCount = 0;

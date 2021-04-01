@@ -29,6 +29,7 @@ Transform:
   m_Children:
   - {fileID: 1415507909}
   - {fileID: 5484809496860808847}
+  - {fileID: 7045521578170069855}
   m_Father: {fileID: 5262338389570508461}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -121,29 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   container: {fileID: 184984326}
-  nodePrefab: {fileID: 5750187723290876000, guid: 7004dd70022639c49a6fd2fc3e3e9e86,
-    type: 3}
-  nodesCount: 6
-  nodesSize: 1.5
-  radius: 4.71
-  minRadius: 3
-  maxRadius: 4.7
-  nodeAppearDuration: 0.5
-  delayBetweenNodeAppearances: 0
-  totalTimeForAllNodeAppearances: 1
-  edgePrefab: {fileID: 5441691238404772506, guid: 4fa7af7854af0bc4d9aa75769e4def74,
-    type: 3}
-  edges: []
-  edgeAppearDelay: 0.1
-  edgeAppearDuration: 1
-  sameNodeEdgesOffset: 0.2
-  nodesMovementDelay: 1
-  nodesMovementDuration: 1
-  firstVisitNodeAppearDelay: 2
-  firstVisitNodeAppearDuration: 0.8
-  firstVisitNodeGlowDuration: 1.5
-  firstVisitEdgeAppearDelay: 2.1
-  firstVisitEdgeAppearDuration: 0.8
+  nodesController: {fileID: 4238761666442527403}
+  edgesController: {fileID: 8658099193454075030}
 --- !u!114 &1684526059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +136,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a7f0c15b382f04cb8aabbb0f57b4a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4759665277650702436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7045521578170069855}
+  - component: {fileID: 8658099193454075030}
+  m_Layer: 31
+  m_Name: Edges
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7045521578170069855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4759665277650702436}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 184984327}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8658099193454075030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4759665277650702436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89eff17040935d144b1f88ec5a07255e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  edgePrefab: {fileID: 5441691238404772506, guid: 4fa7af7854af0bc4d9aa75769e4def74,
+    type: 3}
+  edges: []
+  edgeAppearDelay: 0.1
+  edgeAppearDuration: 1
+  sameNodeEdgesOffset: 0.2
+  firstVisitEdgeAppearDelay: 2.2
+  firstVisitEdgeAppearDuration: 0.8
 --- !u!1 &4860892936599048592
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5484809496860808847}
+  - component: {fileID: 4238761666442527403}
   m_Layer: 31
   m_Name: Nodes
   m_TagString: Untagged
@@ -186,3 +218,31 @@ Transform:
   m_Father: {fileID: 184984327}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4238761666442527403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4860892936599048592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1392bc0e917b7e64da6c29d15ee02ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodePrefab: {fileID: 5750187723290876000, guid: 7004dd70022639c49a6fd2fc3e3e9e86,
+    type: 3}
+  nodesCount: 0
+  nodesSize: 1.5
+  nodes: []
+  nodeAppearDuration: 0.9
+  delayBetweenNodeAppearances: 0
+  totalTimeForAllNodeAppearances: 1
+  nodesMovementDelay: 1
+  nodesMovementDuration: 1
+  firstVisitNodeAppearDelay: 2.3
+  firstVisitNodeAppearDuration: 0.8
+  firstVisitNodeGlowDuration: 3
+  radius: 1
+  minRadius: 3
+  maxRadius: 4
