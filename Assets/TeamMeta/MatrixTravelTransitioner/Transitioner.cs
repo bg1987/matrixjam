@@ -79,11 +79,13 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             {
                 yield return null;
             }
+            yield return null;
 
             float matrixMapAppearDuration = matrixMap.CalculateTotalAppearanceTime();
             matrixMap.Appear();
             yield return new WaitForSeconds(matrixMapAppearDuration);
-
+            //Debug.Log(matrixMapAppearDuration);
+            //Debug.Break();
             asyncOperation.allowSceneActivation = true;
 
             yield return new WaitForFixedUpdate();

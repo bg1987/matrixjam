@@ -27,6 +27,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField, Min(0)] float firstVisitNodeAppearDelay = 0.9f;
         [SerializeField, Min(0)] float firstVisitNodeAppearDuration = 0.8f;
         [SerializeField, Min(0)] float firstVisitNodeGlowDuration = 3f;
+        [SerializeField] NodeFirstVisitEffect nodeFirstVisitEffect;
 
         [Header("Radius")]
         [SerializeField] float radius = 1;
@@ -177,7 +178,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         void ActivateNewNodeVisitEffect(Node node)
         {
-            Debug.Log("ToDo: New node was added " + node.name + ". Should active new node visit effect");
+            Debug.Log("ToDo: New node was added " + node.name + ". Should activate new node visit effect");
 
             CalculateNodesPositions(visitedNodesIndexesSorted.Count);
 
@@ -187,6 +188,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
             node.Glow(firstVisitNodeGlowDuration, firstVisitNodeAppearDelay);
 
             MoveNodesToPositions();
+
+            nodeFirstVisitEffect.Play(node, firstVisitNodeAppearDelay);
         }
         //Node Creation
         public void CreateNodes(MatrixTraveler matrixTraveler)
