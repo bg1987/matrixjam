@@ -28,6 +28,68 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             
         }
+        public void Init(Nodes nodesController)
+        {
+            if (MatrixTraveler.Instance)
+            {
+                CreateEdges(MatrixTraveler.Instance, nodesController);
+            }
+            foreach (var edge in edges)
+            {
+                edge.gameObject.SetActive(false);
+            }
+        }
+        public List<Edge> GetVisitedEdges()
+        {
+            var visitedEdges = new List<Edge>();
+            foreach (var index in visitedEdgesIndexes)
+            {
+                var edge = edges[index];
+                visitedEdges.Add(edge);
+            }
+            return visitedEdges;
+        }
+        public void Appear()
+        {
+            foreach (var index in visitedEdgesIndexes)
+            {
+                var edge = edges[index];
+                edge.gameObject.SetActive(true);
+            }
+        }
+        internal void AppearGradually(Nodes nodesController)
+        {
+            float delay = nodesController.CalculateDelayBetweenNodeAppearances();
+            int indexCount = 0;
+
+            List<Node> visitedNodes = nodesController.GetVisitedNodes();
+            for (int i = 0; i < visitedNodes.Count; i++)
+            {
+                var node = visitedNodes[i];
+
+                foreach (var activeEdge in node.startPortActiveEdges)
+                {
+                    activeEdge.Appear(edgeAppearDuration, i * delay + edgeAppearDelay);
+                }
+                indexCount++;
+            }
+        }
+        public void Disappear()
+        {
+            foreach (var index in visitedEdgesIndexes)
+            {
+                Edge edge = edges[index];
+                edge.Disappear();
+            }
+        }
+        internal void ClearvisitedEdges()
+        {
+            visitedEdgesIndexes.Clear();
+        }
+        public void AddVisitedEdge(int index)
+        {
+            visitedEdgesIndexes.Add(index);
+        }
         public float CalculateEdgeAppearTime()
         {
             float EdgeAppearanceTime = 0;
@@ -40,17 +102,61 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             return firstVisitEdgeAppearDelay + firstVisitEdgeAppearDuration;
         }
-        public void Init(Nodes nodesController)
+        //Destination Edge related
+        public void HandleDestinationEdge(Nodes nodesController)
         {
-            if (MatrixTraveler.Instance)
+            int edgeIndex = GetDestinationEdgeIndex();
+            if (edgeIndex != -1)
             {
-                CreateEdges(MatrixTraveler.Instance, nodesController);
-            }
-            foreach (var edge in edges)
-            {
-                edge.gameObject.SetActive(false);
+                if (IsFirstVisitToEdge(edgeIndex))
+                {
+                    visitedEdgesIndexes.Add(edgeIndex);
+
+                    Edge destinationEdge = edges[edgeIndex];
+
+                    int previousNodeIndex = nodesController.GetPreviousNodeIndex();
+                    if (previousNodeIndex != -1)
+                    {
+                        Node fromNode = nodesController.nodes[previousNodeIndex];
+                        fromNode.AddToStartPortActiveEdges(destinationEdge);
+                    }
+
+
+                    ActivateNewEdgeVisitEffect(destinationEdge, nodesController);
+                }
             }
         }
+        public bool IsFirstVisitToEdge(int edgeIndex)
+        {
+            bool isFirstVisit = !visitedEdgesIndexes.Contains(edgeIndex);
+            return isFirstVisit;
+        }
+        public int GetDestinationEdgeIndex()
+        {
+            var travelHistory = MatrixTraveler.Instance.travelData.GetHistory();
+            MatrixEdgeData destinationEdgeData = travelHistory[travelHistory.Count - 1];
+            var edgesData = MatrixTraveler.Instance.matrixGraphData.edges;
+
+            var destinationIndex = edgesData.FindIndex((MatrixEdgeData edgeData) => edgeData == destinationEdgeData);
+            return destinationIndex;
+        }
+        void ActivateNewEdgeVisitEffect(Edge edge, Nodes nodesController)
+        {
+            edge.gameObject.SetActive(true);
+
+            var matrixTraveler = MatrixTraveler.Instance;
+            var edgeData = matrixTraveler.matrixGraphData.edges[edge.index];
+            Node startNode = nodesController.nodes[edgeData.startPort.nodeIndex];
+            Node endNode = nodesController.nodes[edgeData.endPort.nodeIndex];
+
+            UpdateEdgeAnchors(edge, startNode, endNode, usePreviousNormalSign: false);
+
+            edge.Disappear();
+            edge.Appear(firstVisitEdgeAppearDuration, firstVisitEdgeAppearDelay);
+            Debug.Log("ToDo: New edge was added " + edge.name + ". Should active new edge visit effect");
+
+        }
+        //Edge Creation
         void CreateEdges(MatrixTraveler matrixTraveler, Nodes nodesController)
         {
             var edgesData = matrixTraveler.matrixGraphData.edges;
@@ -97,6 +203,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             return edge;
         }
+        //Update Edge Position
         void CalculateEdgeAnchors(int edgeIndex, Vector3 startNodePosition, Vector3 endNodePosition, Vector3 mapCenter, out Vector3 anchorPoint1, out Vector3 anchorPoint2, out Vector3 anchorPoint3, bool usePreviousNormalSign)
         {
             Edge edge = edges[edgeIndex];
@@ -133,116 +240,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
             anchorPoint2 = point2;
             anchorPoint3 = point3;
         }
-
         internal void UpdateEdgesAnchors()
         {
             throw new NotImplementedException();
-        }
-
-        internal void AppearGradually(Nodes nodesController)
-        {
-            float delay = nodesController.CalculateDelayBetweenNodeAppearances();
-            int indexCount = 0;
-
-            List<Node> visitedNodes = nodesController.GetVisitedNodes();
-            for (int i = 0; i < visitedNodes.Count; i++)
-            {
-                var node = visitedNodes[i];
-
-                foreach (var activeEdge in node.startPortActiveEdges)
-                {
-                    activeEdge.Appear(edgeAppearDuration, i * delay + edgeAppearDelay);
-                }
-                indexCount++;
-            }
-        }
-
-        public void Appear()
-        {
-            foreach (var index in visitedEdgesIndexes)
-            {
-                var edge = edges[index];
-                edge.gameObject.SetActive(true);
-            }
-        }
-        public void Disappear()
-        {
-            foreach (var index in visitedEdgesIndexes)
-            {
-                Edge edge = edges[index];
-                edge.Disappear();
-            }
-        }
-        internal void ClearvisitedEdges()
-        {
-            visitedEdgesIndexes.Clear();
-        }
-        public List<Edge> GetVisitedEdges()
-        {
-            var visitedEdges = new List<Edge>();
-            foreach (var index in visitedEdgesIndexes)
-            {
-                var edge = edges[index];
-                visitedEdges.Add(edge);
-            }
-            return visitedEdges;
-        }
-        public void AddVisitedEdge(int index)
-        {
-            visitedEdgesIndexes.Add(index);
-        }
-        public bool IsFirstVisitToEdge(int edgeIndex)
-        {
-            bool isFirstVisit = !visitedEdgesIndexes.Contains(edgeIndex);
-            return isFirstVisit;
-        }
-        public int GetDestinationEdgeIndex()
-        {
-            var travelHistory = MatrixTraveler.Instance.travelData.GetHistory();
-            MatrixEdgeData destinationEdgeData = travelHistory[travelHistory.Count - 1];
-            var edgesData = MatrixTraveler.Instance.matrixGraphData.edges;
-
-            var destinationIndex = edgesData.FindIndex((MatrixEdgeData edgeData) => edgeData == destinationEdgeData);
-            return destinationIndex;
-        }
-        public void HandleDestinationEdge(Nodes nodesController)
-        {
-            int edgeIndex = GetDestinationEdgeIndex();
-            if (edgeIndex != -1)
-            {
-                if (IsFirstVisitToEdge(edgeIndex))
-                {
-                    visitedEdgesIndexes.Add(edgeIndex);
-
-                    Edge destinationEdge = edges[edgeIndex];
-
-                    int previousNodeIndex = nodesController.GetPreviousNodeIndex();
-                    if (previousNodeIndex != -1)
-                    {
-                        Node fromNode = nodesController.nodes[previousNodeIndex];
-                        fromNode.AddToStartPortActiveEdges(destinationEdge);
-                    }
-
-
-                    ActivateNewEdgeVisitEffect(destinationEdge, nodesController);
-                }
-            }
-        }
-        void ActivateNewEdgeVisitEffect(Edge edge, Nodes nodesController)
-        {
-            edge.gameObject.SetActive(true);
-
-            var matrixTraveler = MatrixTraveler.Instance;
-            var edgeData = matrixTraveler.matrixGraphData.edges[edge.index];
-            Node startNode = nodesController.nodes[edgeData.startPort.nodeIndex];
-            Node endNode = nodesController.nodes[edgeData.endPort.nodeIndex];
-
-            UpdateEdgeAnchors(edge, startNode, endNode, usePreviousNormalSign: false);
-
-            edge.Disappear();
-            edge.Appear(firstVisitEdgeAppearDuration, firstVisitEdgeAppearDelay);
-            Debug.Log("ToDo: New edge was added " + edge.name + ". Should active new edge visit effect");
-
         }
         public void UpdateEdgesAnchors(bool usePreviousNormalSign, Nodes nodesController)
         {
