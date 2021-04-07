@@ -20,7 +20,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] private MeshCollider meshCollider;
 
         [SerializeField] Material material;
-
         Vector3[] vertices;
         int[] triangles;
         Vector2[] uv;
@@ -28,19 +27,32 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [Header("Colors")]
         [SerializeField] ColorHdr colorHdr1;
         [SerializeField] ColorHdr colorHdr2;
+
+        private Color originalTintColor;
+
+        [SerializeField] ParticleSystem firstEdgeVisitStartSparksEffect;
+        private float dissolveInitialValue;
+
         // Start is called before the first frame update
         void Awake()
         {
             material = meshRenderer.material;
+            originalTintColor = material.GetColor("_Color");
             //Init(anchorPoints[0], anchorPoints[1], anchorPoints[2]);
             SetModelColors(colorHdr1, colorHdr2);
-        }
 
+            //Init(Vector3.zero, Vector3.right * 8 + Vector3.up, Vector3.right * 16);
+
+        }
+        private void Start()
+        {
+        }
         // Update is called once per frame
         void Update()
         {
-            //Init(Vector3.zero, Vector3.right*8 + Vector3.up, Vector3.right * 16);
             //UpdateMesh();
+
+            //DebugCalculateDirectionAndPositionClosestToEdgeStart();
         }
         public void SetModelColors(ColorHdr colorHdr1, ColorHdr colorHdr2)
         {
@@ -52,6 +64,81 @@ namespace MatrixJam.TeamMeta.MatrixMap
             material.SetColor("_Color2", colorHdr2.color);
             material.SetFloat("_ColorIntensity1", colorHdr1.intensity);
             material.SetFloat("_ColorIntensity2", colorHdr2.intensity);
+        }
+        public void SetTintColor(Color color)
+        {
+            material.SetColor("_Color",color);
+        }
+        public Vector3[] CalculateDirectionAndPositionClosestToEdgeStart()
+        {
+            var positionAndDirection = new Vector3[2];
+
+            for (int i = 0; i < curvePoints.Count; i++)
+            {
+                Vector3 curvePoint = curvePoints[i];
+                float distanceToOrigin = Vector3.Distance(curvePoints[0], curvePoint);
+                if (distanceToOrigin> material.GetFloat("_StartEdgeRadius"))
+                {
+                    Vector3 direction = curvePoint - curvePoints[i - 1];
+                    Vector3 closestPointToRadius = curvePoints[i - 1];
+
+                    direction.Normalize();
+
+                    Vector3.Lerp(curvePoints[i - 1], curvePoints[i], 0.5f);
+
+                    float closestPointToRadiusDistance = Vector3.Distance(curvePoints[0], curvePoints[i - 1]);
+                    float neededExtraDistance = material.GetFloat("_StartEdgeRadius") - closestPointToRadiusDistance;
+
+                    Vector3 position = closestPointToRadius + direction * neededExtraDistance;
+
+                    positionAndDirection[0] = position+transform.position;
+                    positionAndDirection[1] = direction;
+                    break;
+                }
+            }
+            return positionAndDirection;
+
+        }
+        void DebugCalculateDirectionAndPositionClosestToEdgeStart()
+        {
+            var positionAndDirection = CalculateDirectionAndPositionClosestToEdgeStart();
+            Debug.DrawRay(positionAndDirection[0], positionAndDirection[1], Color.red, 0.1f);
+        }
+        public void ResetTintColor()
+        {
+            material.SetColor("_Color",originalTintColor);
+        }
+        public void SetEndColor(Color color)
+        {
+            Debug.Log("called SetEndColor");
+            material.SetColor("_EndColor", color);
+        }
+        public void ResetEndColor()
+        {
+            material.SetColor("_EndColor", originalTintColor);
+        }
+        float CalculateDissolveStartValueOffset()
+        {
+            int curvePointOnEdgeStartIndex = 0;
+
+            for (int i = 0; i < curvePoints.Count; i++)
+            {
+                Vector3 curvePoint = curvePoints[i];
+                float distanceToOrigin = Vector3.Distance(curvePoints[0], curvePoint);
+                if (distanceToOrigin > material.GetFloat("_StartEdgeRadius"))
+                {
+                    curvePointOnEdgeStartIndex = i - 1;
+                    
+                    break;
+                }
+            }
+            float distanceToCurvePointOnEdgeStart = 0;
+            for (int i = 1; i <= curvePointOnEdgeStartIndex; i++)
+            {
+                distanceToCurvePointOnEdgeStart += Vector3.Distance(curvePoints[i-1], curvePoints[i]);
+            }
+            dissolveInitialValue = distanceToCurvePointOnEdgeStart / edgeLength;
+            return dissolveInitialValue;
         }
         Vector3 QuadraticBezierCurve(Vector3 p1, Vector3 p2, Vector3 p3, float t)
         {
@@ -168,10 +255,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
             //UpdateEdgesAnchors();
 
             var materialColor = material.color;
-
+            float dissolveStartValue = 1 - CalculateDissolveStartValueOffset();
             while (count < duration)
             {
-                float dissolveValue = Mathf.Lerp(1, 0, count / duration);
+                float dissolveValue = Mathf.Lerp(dissolveStartValue, 0, count / duration);
                 material.SetFloat("_Dissolve", dissolveValue);
 
                 //count += Time.fixedDeltaTime;
@@ -185,7 +272,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
         public void Disappear()
         {
             DissolveDisappear();
-
+            ResetTintColor();
+            ResetEndColor();
         }
         void DisappearFromAlpha()
         {

@@ -15,6 +15,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [Header("Edges Appear")]
         [SerializeField, Min(0)] float edgeAppearDelay = 0.1f;
         [SerializeField, Min(0)] float edgeAppearDuration = 1;
+        [SerializeField, ColorUsage(true,true)] Color activeEdgeEndColor = Color.yellow;
 
         [SerializeField] float sameNodeEdgesOffset = 0.2f;
         private List<int> EdgesNormalSign = new List<int>(); //1 positive, -1 negative
@@ -22,6 +23,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [Header("Edge First Visit")]
         [SerializeField, Min(0)] float firstVisitEdgeAppearDelay = 1f;
         [SerializeField, Min(0)] float firstVisitEdgeAppearDuration = 0.8f;
+        [SerializeField, ColorUsage(true,true)] Color firstVisitEdgeColor = Color.yellow;
+        [SerializeField] EdgeFirstVisitEffect edgeFirstVisitEffect;
 
         // Start is called before the first frame update
         void Start()
@@ -124,6 +127,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
                     ActivateNewEdgeVisitEffect(destinationEdge, nodesController);
                 }
+                edges[edgeIndex].SetEndColor(activeEdgeEndColor);
             }
         }
         public bool IsFirstVisitToEdge(int edgeIndex)
@@ -154,6 +158,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
             edge.Disappear();
             edge.Appear(firstVisitEdgeAppearDuration, firstVisitEdgeAppearDelay);
             Debug.Log("ToDo: New edge was added " + edge.name + ". Should active new edge visit effect");
+            edge.SetTintColor(firstVisitEdgeColor);
+
+            edgeFirstVisitEffect.Play(edge, firstVisitEdgeAppearDelay);
 
         }
         //Edge Creation

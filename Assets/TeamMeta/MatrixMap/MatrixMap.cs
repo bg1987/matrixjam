@@ -94,11 +94,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 nodesController.CalculateNodesMovementTime();
                 StartCoroutine(edgesController.UpdateEdgesAnchorsRoutine(nodesController.nodesMovementDelay, nodesController.nodesMovementDuration,nodesController));
             }
-            bool IsFirstVisitToDestinationEdge = edgesController.IsFirstVisitToEdge(edgesController.GetDestinationEdgeIndex());
-            if (IsFirstVisitToDestinationEdge)
-            {
-                edgesController.HandleDestinationEdge(nodesController);
-            }
+            edgesController.HandleDestinationEdge(nodesController);
         }
 
 

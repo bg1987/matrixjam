@@ -3,7 +3,7 @@
     Properties
     {
         [hdr] _Color ("Color", Color) = (1,1,1,1)
-        [hdr] _EndColor ("Color", Color) = (1,1,1,1)
+        [hdr] _EndColor ("EndColor", Color) = (1,1,1,1)
 
         _Color1 ("Color1", Color) = (0.12,0.12,0.5)
         _ColorIntensity1 ("ColorIntensity1", float) = 1
@@ -113,7 +113,7 @@
             float4 frag (Interpolators i) : SV_Target
             {
                 float time = _MatrixMapTime;
-                
+                // time = _Time.y;
                 clip((distance(_StartWorldPosition, i.worldPos) > _StartEdgeRadius) - 1);
 
                 // sample the texture
@@ -165,6 +165,34 @@
                 float endArrowMask = isEdge;
                 col*= lerp(1,_EndColor,endArrowMask);
                 // return endArrowMask + col;
+                // float lastRelevantTile = _EdgeLength - _EndEdgeSize - _EndEdgeOffset - 1;
+                float lastRelevantTile = _EdgeLength - _EdgeLength*i.uv.y - _EndEdgeSize - _EndEdgeOffset;
+                // float lastRelevantTileMask = _EdgeLength - _EdgeLength*i.uv.y - _EndEdgeSize - _EndEdgeOffset;
+                // lastRelevantTile+= frac(time+0.5);
+                float lastRelevantTileMask= lastRelevantTile<1?1:0;
+
+                // float3 lastRelevantTileColor = lerp(float3(1,1,1),float3(0,0,0),lastRelevantTile);
+
+                lastRelevantTile = saturate(lastRelevantTile);
+                // return float4(lastRelevantTile,lastRelevantTile,lastRelevantTile,1);
+                // return tile>0.5;
+                if(lastRelevantTileMask==1 ){
+                    float3 lastRelevantTileColor = _EndColor;
+                    lastRelevantTileColor = lerp(lastRelevantTileColor, col.rgb ,lastRelevantTile);
+
+                    col.rgb = lastRelevantTileColor;
+
+                }
+                    // col.rgb = float3(1,1,1);
+                    // return float4(1,1,1,1);
+                // if(tileCount+1>lastRelevantTile && lastRelevantTile<lastRelevantTile)
+                //     return float4(1,1,1,1);
+                // else
+                //     return float4(0,0,0,1);
+                float distanceToEdgeTileY = floor(distance(edgeStart.y,_EdgeLength*i.uv.y));
+                // float4 result = distanceToEdgeY - distanceToEdgeTileY;
+                // result.a = 1;
+                // return result;
                 return col;
             }
             ENDCG
