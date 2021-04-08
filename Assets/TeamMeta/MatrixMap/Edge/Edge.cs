@@ -199,8 +199,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         public List<Vector3> GetAnchorPoints()
         {
-            List<Vector3> anchorPointsCopy = new List<Vector3>(anchorPoints);
-            return anchorPointsCopy;
+            return anchorPoints;
         }
         public List<Vector3> GetCurvePoints()
         {
