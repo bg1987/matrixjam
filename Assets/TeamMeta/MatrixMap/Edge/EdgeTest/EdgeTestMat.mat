@@ -84,7 +84,7 @@ Material:
     - _SrcBlend: 1
     - _StartEdgeRadius: 0.85
     - _TravelHeight: 10.35
-    - _TravelT: 0.45
+    - _TravelT: 0
     - _UVSec: 0
     - _UseTwoColors: 0
     - _ZWrite: 1

@@ -24,7 +24,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField, Min(0)] float firstVisitEdgeAppearDelay = 1f;
         [SerializeField, Min(0)] float firstVisitEdgeAppearDuration = 0.8f;
         [SerializeField, ColorUsage(true,true)] Color firstVisitEdgeColor = Color.yellow;
-        [SerializeField] EdgeFirstVisitEffect edgeFirstVisitEffect;
+        [SerializeField] EdgeVisitEffect edgeVisitEffect;
 
         // Start is called before the first frame update
         void Start()
@@ -160,7 +160,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             Debug.Log("ToDo: New edge was added " + edge.name + ". Should active new edge visit effect");
             edge.SetTintColor(firstVisitEdgeColor);
 
-            edgeFirstVisitEffect.Play(edge, firstVisitEdgeAppearDelay);
+            edgeVisitEffect.Play(edge, firstVisitEdgeAppearDelay, isFirstVisit:true);
 
         }
         //Edge Creation
