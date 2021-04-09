@@ -18,10 +18,16 @@
         _StartWorldPosition ("StartWorldPosition(By Script)", vector) = (0,0,0) //Will be used by a script that has edge length calculated
         _EndWorldPosition ("EndWorldPosition(By Script)", vector) = (1,1,0) //Will be used by a script that has edge length calculated
         _EndEdgeSize ("EndEdgeSize", float) = 1 //Size here is the same as the one used in Unity's cube
+        _EndEdgeColorHeight ("EndEdgeColorHeight", float) = 1 //Size here is the same as the one used in Unity's cube
         _EndEdgeOffset ("EdgeOffset", float) = 0 //Size here is the same as the one used in Unity's cube
         _StartEdgeRadius ("StartEdgeRadius", float) = 2 //Size here is the same as the one used in Unity's cube
         
         _ScrollSpeed ("ScrollSpeed", Float) = 1
+        
+        _TravelT ("TravelT", range(0,1)) = 0
+        _TravelHeight ("TravelHeight", Float) = 1
+        [hdr] _TravelColor ("TravelColor", Color) = (1,1,1,1)
+
 
     }
     SubShader
@@ -74,12 +80,17 @@
             float _EdgeLength;
             float _EndEdgeSize;
             float _EndEdgeOffset;
+            float _EndEdgeColorHeight;
             float _StartEdgeRadius;
 
             float _ScrollSpeed;
 
             float _MatrixMapTime;
             bool _UseTwoColors;
+
+            float _TravelT;
+            float _TravelHeight;
+            float4 _TravelColor;
             Interpolators vert (MeshData v)
             {
                 Interpolators o;
@@ -163,32 +174,68 @@
                 clip(shouldDrawEdge - isEdge);
 
                 float endArrowMask = isEdge;
-                col*= lerp(1,_EndColor,endArrowMask);
+                // col*= lerp(1,_EndColor,endArrowMask);
                 // return endArrowMask + col;
                 // float lastRelevantTile = _EdgeLength - _EndEdgeSize - _EndEdgeOffset - 1;
-                float lastRelevantTile = _EdgeLength - _EdgeLength*i.uv.y - _EndEdgeSize - _EndEdgeOffset;
-                // float lastRelevantTileMask = _EdgeLength - _EdgeLength*i.uv.y - _EndEdgeSize - _EndEdgeOffset;
-                // lastRelevantTile+= frac(time+0.5);
-                float lastRelevantTileMask= lastRelevantTile<1?1:0;
 
-                // float3 lastRelevantTileColor = lerp(float3(1,1,1),float3(0,0,0),lastRelevantTile);
+                //--Travel-- 
+                _TravelHeight=_TravelHeight/_EdgeLength;
+                float travelHeightStart = _TravelT - _TravelHeight*(1-_TravelT);
+                float travelHeightEnd = _TravelT + _TravelHeight*(_TravelT);
 
+                float travelMask = travelHeightEnd> i.uv.y && travelHeightStart<i.uv.y && _TravelT!=0;
+                travelMask = saturate(travelMask);
+                // travelMask= travelMask==1;
+                //travelMask.a=1;
+
+                float travelFadeInGradient = Unity_InverseLerp_float(travelHeightEnd,travelHeightStart, _TravelT);
+                float travelMid = distance(travelHeightEnd, travelHeightStart);
+                float travelMidT = Unity_InverseLerp_float(travelHeightStart,travelHeightEnd, i.uv.y);
+
+                float travelMidOneZeroOne = abs((travelMidT*2)-1);
+
+                float travelGradient = 1-travelMidOneZeroOne;
+                travelGradient = saturate(travelGradient);
+                float4 travelColor = travelGradient*travelMask * _TravelColor;
+                travelColor.a = 1;
+                // return travelColor;
+
+                col.rgb = lerp(col.rgb,travelColor,travelGradient);
+
+
+                //--Last Tile Color--
+
+                // float lastRelevantTileStart = (-_EdgeLength*i.uv.y) - _EndEdgeSize - _EndEdgeOffset;
+                float lastRelevantTileStart = _EdgeLength - _EndEdgeSize - _EndEdgeOffset- _EndEdgeColorHeight;
+                float lastRelevantTile = _EdgeLength*i.uv.y - lastRelevantTileStart;
+
+                // float lastRelevantTile = _EdgeLength - _EdgeLength*i.uv.y - _EndEdgeSize - _EndEdgeOffset;
                 lastRelevantTile = saturate(lastRelevantTile);
+                // lastRelevantTile = 1-lastRelevantTile;
+
+                float lastRelevantTileMask= lastRelevantTile>0?1:0;
+
+                // && travelHeightEnd>=lastRelevantTile
+                //&& travelHeightEnd>=lastRelevantTile
+                // return float4(travelHeightEnd,travelHeightEnd,travelHeightEnd,1);
                 // return float4(lastRelevantTile,lastRelevantTile,lastRelevantTile,1);
-                // return tile>0.5;
-                if(lastRelevantTileMask==1 ){
+                float travelHeightAdditionToEnd = _TravelHeight*(_EdgeLength);
+                float endThresh = _EdgeLength*_TravelT -travelHeightAdditionToEnd;
+
+                float val = lastRelevantTileMask==1 && endThresh> lastRelevantTileStart* i.uv.y;
+                val = lastRelevantTileMask-0.5;
+                val += saturate(val);
+                val += (travelGradient)-0.5;
+                // return float4(val.xxx,1);
+
+                if(lastRelevantTileMask==1 && travelHeightEnd - (_TravelHeight/2)> i.uv.y ){
                     float3 lastRelevantTileColor = _EndColor;
-                    lastRelevantTileColor = lerp(lastRelevantTileColor, col.rgb ,lastRelevantTile);
+                    lastRelevantTileColor = lerp(col.rgb,lastRelevantTileColor ,lastRelevantTile);
 
                     col.rgb = lastRelevantTileColor;
 
                 }
-                    // col.rgb = float3(1,1,1);
-                    // return float4(1,1,1,1);
-                // if(tileCount+1>lastRelevantTile && lastRelevantTile<lastRelevantTile)
-                //     return float4(1,1,1,1);
-                // else
-                //     return float4(0,0,0,1);
+
                 float distanceToEdgeTileY = floor(distance(edgeStart.y,_EdgeLength*i.uv.y));
                 // float4 result = distanceToEdgeY - distanceToEdgeTileY;
                 // result.a = 1;
