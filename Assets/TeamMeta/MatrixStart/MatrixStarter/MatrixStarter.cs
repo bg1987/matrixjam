@@ -11,8 +11,9 @@ namespace MatrixJam.TeamMeta
         [SerializeField] bool startOnAwake = true;
         [SerializeField] int startingGameIndex = 0;
         // Start is called before the first frame update
-        void Start()
+        IEnumerator Start()
         {
+            yield return null;
             if (startOnAwake)
             {
                 if (startingGameIndex == -1)
