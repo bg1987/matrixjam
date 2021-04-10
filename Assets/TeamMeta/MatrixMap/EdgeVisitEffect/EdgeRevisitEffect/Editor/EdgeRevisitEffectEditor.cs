@@ -47,7 +47,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             {
                 effectTime = newEffectTime;
 
-                effect.Execute(effectTime, edge.Material);
+                effect.Execute(effectTime, edge.Material,edge);
             }
         }
     }

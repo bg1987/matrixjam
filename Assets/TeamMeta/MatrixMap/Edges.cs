@@ -84,6 +84,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 Edge edge = edges[index];
                 edge.Disappear();
             }
+            edgeVisitEffect.RevisitEffect.Stop();
         }
         internal void ClearvisitedEdges()
         {
