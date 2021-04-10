@@ -32,5 +32,21 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 ps.Play(true);
             }
         }
+        public float CalculateEffectDuration()
+        {
+            float longestPsDuration = 0;
+            foreach (var ps in particleSystems)
+            {
+                float psDuration = 0;
+                var main = ps.main;
+                psDuration += main.startDelay.constantMax;
+                psDuration += main.startLifetime.constantMax;
+
+                if (psDuration > longestPsDuration)
+                    longestPsDuration = psDuration;
+            }
+
+            return longestPsDuration;
+        }
     }
 }

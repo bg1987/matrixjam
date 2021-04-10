@@ -87,8 +87,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         public float CalculateNodeFirstVisitTime()
         {
-            float addedNodeTime = firstVisitNodeAppearDelay + firstVisitNodeAppearDuration;
-
+            float addedNodeTime = firstVisitNodeAppearDelay + firstVisitNodeAppearDuration + nodeFirstVisitEffect.CalculateEffectDuration();
             return addedNodeTime;
         }
         public float CalculateNodesMovementTime()

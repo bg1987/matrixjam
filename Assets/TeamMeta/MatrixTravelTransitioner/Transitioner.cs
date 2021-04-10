@@ -86,7 +86,7 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             yield return new WaitForSeconds(matrixMapAppearDuration);
             //Debug.Log(matrixMapAppearDuration);
             //Debug.Break();
-
+ 
             asyncOperation.allowSceneActivation = true;
             while (asyncOperation.isDone == false)
             {
