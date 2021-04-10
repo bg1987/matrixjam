@@ -51,25 +51,30 @@ namespace MatrixJam.TeamMeta.MatrixMap
             totalEdgesAppearanceTime += totalNodesAppearanceTime;
             totalEdgesAppearanceTime += edgesController.CalculateEdgeAppearTime();
 
-            float nodeAdditionTime = 0;
+            float nodeVisitTime = 0;
             bool isFirstVisitToNode = nodesController.IsFirstVisitToNode(nodesController.GetDestinationNodeIndex());
             bool isFirstVisitToEdge = edgesController.IsFirstVisitToEdge(edgesController.GetDestinationEdgeIndex());
             if (isFirstVisitToNode)
             {
                 float nodeMovementTime = nodesController.CalculateNodesMovementTime();
-                float addedNodeTime = nodesController.CalculateAddedNodeTime();
-                float addedEdgeTime = edgesController.CalculateEdgeFirstVisitTime();
+                float nodeFirstVisitTime = nodesController.CalculateNodeFirstVisitTime();
 
-                nodeAdditionTime = Mathf.Max(nodeMovementTime, addedNodeTime, addedEdgeTime);
+                nodeVisitTime = Mathf.Max(nodeMovementTime, nodeFirstVisitTime);
             }
-            else if (isFirstVisitToEdge)
+            float edgeVisitTime = 0;
+            if (isFirstVisitToEdge)
             {
-                float addedEdgeTime = edgesController.CalculateEdgeFirstVisitTime();
+                float edgeFirstVisitTime = edgesController.CalculateEdgeFirstVisitTime();
 
-                nodeAdditionTime = addedEdgeTime;
+                edgeVisitTime = edgeFirstVisitTime;
+            }
+            else
+            {
+                float edgeRevisitTime = edgesController.CalculateEdgeRevisitTime();
+                edgeVisitTime = edgeRevisitTime;
             }
 
-            totalAppearanceTime = Mathf.Max( totalNodesAppearanceTime, totalEdgesAppearanceTime, nodeAdditionTime);
+            totalAppearanceTime = Mathf.Max( totalNodesAppearanceTime, totalEdgesAppearanceTime, nodeVisitTime, edgeVisitTime);
             return totalAppearanceTime;
         }
 

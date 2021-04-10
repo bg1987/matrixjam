@@ -86,8 +86,12 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             yield return new WaitForSeconds(matrixMapAppearDuration);
             //Debug.Log(matrixMapAppearDuration);
             //Debug.Break();
-            asyncOperation.allowSceneActivation = true;
 
+            asyncOperation.allowSceneActivation = true;
+            while (asyncOperation.isDone == false)
+            {
+                yield return null;
+            }
             yield return new WaitForFixedUpdate();
             DeselectCameraMatrixLayersInTransitionedScene();
             StartCoroutine(RestoreAudioRoutine(ForegroundDisappearDuration, volumeBeforeMute));

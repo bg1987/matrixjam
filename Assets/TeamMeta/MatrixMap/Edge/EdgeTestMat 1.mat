@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EdgeTestMat
+  m_Name: EdgeTestMat 1
   m_Shader: {fileID: 4800000, guid: 910d6ccee9d999a46bd99fae47213578, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -69,8 +69,8 @@ Material:
     - _DstBlend: 0
     - _EdgeLength: 16.041454
     - _EndEdgeColorHeight: 0.87
-    - _EndEdgeOffset: 1.69
-    - _EndEdgeSize: 0.39
+    - _EndEdgeOffset: 0.75
+    - _EndEdgeSize: 0.25
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -95,7 +95,7 @@ Material:
     - _Color1: {r: 0, g: 0, b: 0, a: 0}
     - _Color2: {r: 1, g: 0.08376964, b: 0.52879584, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _EndColor: {r: 3.9533494, g: 1.9870238, b: 0.4139633, a: 1}
+    - _EndColor: {r: 11.984314, g: 3.3882353, b: 0.4392157, a: 1}
     - _EndWorldPosition: {r: 9.32, g: 2.89, b: 0, a: 0}
     - _StartWorldPosition: {r: -6.68, g: 2.89, b: 0, a: 0}
-    - _TravelColor: {r: 3.2111173, g: 1.6139647, b: 0.33624265, a: 1}
+    - _TravelColor: {r: 11.181761, g: 3.1613355, b: 0.40980276, a: 1}

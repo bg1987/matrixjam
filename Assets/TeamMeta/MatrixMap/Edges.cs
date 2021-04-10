@@ -105,29 +105,27 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             return firstVisitEdgeAppearDelay + firstVisitEdgeAppearDuration;
         }
+        public float CalculateEdgeRevisitTime()
+        {
+            return firstVisitEdgeAppearDelay + edgeVisitEffect.RevisitEffect.CalculateEffectDuration();
+        }
         //Destination Edge related
         public void HandleDestinationEdge(Nodes nodesController)
         {
             int edgeIndex = GetDestinationEdgeIndex();
             if (edgeIndex != -1)
             {
+                Edge destinationEdge = edges[edgeIndex];
+
                 if (IsFirstVisitToEdge(edgeIndex))
                 {
-                    visitedEdgesIndexes.Add(edgeIndex);
-
-                    Edge destinationEdge = edges[edgeIndex];
-
-                    int previousNodeIndex = nodesController.GetPreviousNodeIndex();
-                    if (previousNodeIndex != -1)
-                    {
-                        Node fromNode = nodesController.nodes[previousNodeIndex];
-                        fromNode.AddToStartPortActiveEdges(destinationEdge);
-                    }
-
-
-                    ActivateNewEdgeVisitEffect(destinationEdge, nodesController);
+                    
+                    FirstEdgeVisit(edgeIndex, nodesController);
                 }
-                edges[edgeIndex].SetEndColor(activeEdgeEndColor);
+                else
+                {
+                    edgeVisitEffect.RevisitEffect.Play(destinationEdge, firstVisitEdgeAppearDelay);
+                }
             }
         }
         public bool IsFirstVisitToEdge(int edgeIndex)
@@ -144,8 +142,18 @@ namespace MatrixJam.TeamMeta.MatrixMap
             var destinationIndex = edgesData.FindIndex((MatrixEdgeData edgeData) => edgeData == destinationEdgeData);
             return destinationIndex;
         }
-        void ActivateNewEdgeVisitEffect(Edge edge, Nodes nodesController)
+        void FirstEdgeVisit(int edgeIndex, Nodes nodesController)
         {
+            Edge edge = edges[edgeIndex];
+
+            visitedEdgesIndexes.Add(edgeIndex);
+
+            int previousNodeIndex = nodesController.GetPreviousNodeIndex();
+            if (previousNodeIndex != -1)
+            {
+                Node fromNode = nodesController.nodes[previousNodeIndex];
+                fromNode.AddToStartPortActiveEdges(edge);
+            }
             edge.gameObject.SetActive(true);
 
             var matrixTraveler = MatrixTraveler.Instance;
@@ -157,10 +165,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             edge.Disappear();
             edge.Appear(firstVisitEdgeAppearDuration, firstVisitEdgeAppearDelay);
-            Debug.Log("ToDo: New edge was added " + edge.name + ". Should active new edge visit effect");
+
             edge.SetTintColor(firstVisitEdgeColor);
 
-            edgeVisitEffect.Play(edge, firstVisitEdgeAppearDelay, isFirstVisit:true);
+            edgeVisitEffect.FirstVisitEffect.Play(edge, firstVisitEdgeAppearDelay);
 
         }
         //Edge Creation

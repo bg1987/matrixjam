@@ -20,6 +20,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] private MeshCollider meshCollider;
 
         [SerializeField] Material material;
+        public Material Material { get=> material; }
         Vector3[] vertices;
         int[] triangles;
         Vector2[] uv;
@@ -112,10 +113,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             Debug.Log("called SetEndColor");
             material.SetColor("_EndColor", color);
-        }
-        public void ResetEndColor()
-        {
-            material.SetColor("_EndColor", originalTintColor);
         }
         float CalculateDissolveStartValueOffset()
         {
@@ -272,7 +269,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             DissolveDisappear();
             ResetTintColor();
-            ResetEndColor();
+            material.SetFloat("_TravelProgress", 0);
+
         }
         void DisappearFromAlpha()
         {

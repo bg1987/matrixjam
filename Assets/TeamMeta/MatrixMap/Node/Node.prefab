@@ -53,8 +53,8 @@ MonoBehaviour:
     color: {r: 0.11372549, g: 0.7490196, b: 0.5921569, a: 1}
     intensity: 2.898304
   startPortActiveEdges: []
-  glowAddedIntensity1: 2.2
-  glowAddedIntensity2: 2.2
+  glowAddedIntensity1: 0.6
+  glowAddedIntensity2: 0.6
 --- !u!1 &4205430861388808194
 GameObject:
   m_ObjectHideFlags: 0

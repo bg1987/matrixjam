@@ -5396,6 +5396,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestEdge
       objectReference: {fileID: 0}
+    - target: {fileID: 6658052260836831168, guid: 9cef99c3f5354434aacc7c17868254f7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2963fcb5ca76b834fa2318c15fc45b1a, type: 2}
     - target: {fileID: 9098043698812731315, guid: 9cef99c3f5354434aacc7c17868254f7,
         type: 3}
       propertyPath: m_LocalPosition.x

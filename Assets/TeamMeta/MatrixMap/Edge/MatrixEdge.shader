@@ -24,8 +24,8 @@
         
         _ScrollSpeed ("ScrollSpeed", Float) = 1
         
-        _TravelT ("TravelT", range(0,1)) = 0
-        _TravelHeight ("TravelHeight", Float) = 1
+        _TravelProgress ("TravelProgress", range(0,1)) = 0
+        _TravelSize ("TravelSize", Float) = 1
         [hdr] _TravelColor ("TravelColor", Color) = (1,1,1,1)
 
 
@@ -88,8 +88,8 @@
             float _MatrixMapTime;
             bool _UseTwoColors;
 
-            float _TravelT;
-            float _TravelHeight;
+            float _TravelProgress;
+            float _TravelSize;
             float4 _TravelColor;
             Interpolators vert (MeshData v)
             {
@@ -124,7 +124,6 @@
             float4 frag (Interpolators i) : SV_Target
             {
                 float time = _MatrixMapTime;
-                // time = _Time.y;
                 clip((distance(_StartWorldPosition, i.worldPos) > _StartEdgeRadius) - 1);
 
                 // sample the texture
@@ -179,16 +178,16 @@
                 // float lastRelevantTile = _EdgeLength - _EndEdgeSize - _EndEdgeOffset - 1;
 
                 //--Travel-- 
-                _TravelHeight=_TravelHeight/_EdgeLength;
-                float travelHeightStart = _TravelT - _TravelHeight*(1-_TravelT);
-                float travelHeightEnd = _TravelT + _TravelHeight*(_TravelT);
+                _TravelSize=_TravelSize/_EdgeLength;
+                float travelHeightStart = _TravelProgress - _TravelSize*(1-_TravelProgress);
+                float travelHeightEnd = _TravelProgress + _TravelSize*(_TravelProgress);
 
-                float travelMask = travelHeightEnd> i.uv.y && travelHeightStart<i.uv.y && _TravelT!=0;
+                float travelMask = travelHeightEnd> i.uv.y && travelHeightStart<i.uv.y && _TravelProgress!=0;
                 travelMask = saturate(travelMask);
                 // travelMask= travelMask==1;
                 //travelMask.a=1;
 
-                float travelFadeInGradient = Unity_InverseLerp_float(travelHeightEnd,travelHeightStart, _TravelT);
+                float travelFadeInGradient = Unity_InverseLerp_float(travelHeightEnd,travelHeightStart, _TravelProgress);
                 float travelMid = distance(travelHeightEnd, travelHeightStart);
                 float travelMidT = Unity_InverseLerp_float(travelHeightStart,travelHeightEnd, i.uv.y);
 
@@ -219,8 +218,8 @@
                 //&& travelHeightEnd>=lastRelevantTile
                 // return float4(travelHeightEnd,travelHeightEnd,travelHeightEnd,1);
                 // return float4(lastRelevantTile,lastRelevantTile,lastRelevantTile,1);
-                float travelHeightAdditionToEnd = _TravelHeight*(_EdgeLength);
-                float endThresh = _EdgeLength*_TravelT -travelHeightAdditionToEnd;
+                float travelHeightAdditionToEnd = _TravelSize*(_EdgeLength);
+                float endThresh = _EdgeLength*_TravelProgress -travelHeightAdditionToEnd;
 
                 float val = lastRelevantTileMask==1 && endThresh> lastRelevantTileStart* i.uv.y;
                 val = lastRelevantTileMask-0.5;
@@ -228,7 +227,7 @@
                 val += (travelGradient)-0.5;
                 // return float4(val.xxx,1);
 
-                if(lastRelevantTileMask==1 && travelHeightEnd - (_TravelHeight/2)> i.uv.y ){
+                if(lastRelevantTileMask==1 && travelHeightEnd - (_TravelSize/2)> i.uv.y ){
                     float3 lastRelevantTileColor = _EndColor;
                     lastRelevantTileColor = lerp(col.rgb,lastRelevantTileColor ,lastRelevantTile);
 

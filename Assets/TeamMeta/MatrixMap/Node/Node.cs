@@ -84,7 +84,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 //count += Time.fixedDeltaTime;
                 //yield return new WaitForFixedUpdate();
 
-                count += Time.unscaledDeltaTime;
+                count += Time.deltaTime;
                 yield return null;
             }
             materialColor = modelMaterial.color;
@@ -116,7 +116,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 //count += Time.fixedDeltaTime;
                 //yield return new WaitForFixedUpdate();
 
-                count += Time.unscaledDeltaTime;
+                count += Time.deltaTime;
                 yield return null;
             }
             modelMaterial.SetFloat("_ColorIntensity1", originIntensity1 + glowAddedIntensity1);

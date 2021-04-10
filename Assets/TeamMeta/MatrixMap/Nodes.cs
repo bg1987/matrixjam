@@ -85,7 +85,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             return totalNodesAppearanceTime;
         }
-        public float CalculateAddedNodeTime()
+        public float CalculateNodeFirstVisitTime()
         {
             float addedNodeTime = firstVisitNodeAppearDelay + firstVisitNodeAppearDuration;
 
@@ -178,8 +178,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         void ActivateNewNodeVisitEffect(Node node)
         {
-            Debug.Log("ToDo: New node was added " + node.name + ". Should activate new node visit effect");
-
             CalculateNodesPositions(visitedNodesIndexesSorted.Count);
 
             node.gameObject.SetActive(true);
