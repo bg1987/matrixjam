@@ -19,6 +19,7 @@ namespace Assets.TeamMeta.MatrixTravelTransition
 
         [SerializeField] RenderTexture gameRenderTexture;
         [SerializeField] LayerMask transitionLayer;
+        [SerializeField] Camera transitionCameraFG;
         [SerializeField] Camera transitionCameraBG;
         [SerializeField] Camera transitionCamera;
         [SerializeField] GameBackground gameBackground;
@@ -95,7 +96,8 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             yield return new WaitForFixedUpdate();
             DeselectCameraMatrixLayersInTransitionedScene();
             StartCoroutine(RestoreAudioRoutine(ForegroundDisappearDuration, volumeBeforeMute));
-            foreground.Disappear(ForegroundDisappearDuration);
+
+            foreground.Disappear(ForegroundDisappearDuration, destinationGame.colorHdr1, destinationGame.colorHdr2);
             gameBackground.StopBlocking();
             yield return new WaitForSeconds(ForegroundDisappearDuration);
             
@@ -109,7 +111,7 @@ namespace Assets.TeamMeta.MatrixTravelTransition
 
             foreach (var camera in cameras)
             {
-                if (camera == transitionCamera || camera == transitionCameraBG)
+                if (camera == transitionCamera || camera == transitionCameraBG || camera == transitionCameraFG)
                     continue;
                 camera.cullingMask = camera.cullingMask & ~transitionLayer;
             }

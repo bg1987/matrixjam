@@ -24,9 +24,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
             {
                 var main = ps.main;
                 var startColor = main.startColor;
-                startColor.colorMin = node.ColorHdr1.color;
-                startColor.colorMax = node.ColorHdr2.color;
-
+                
+                if(main.startColor.mode==ParticleSystemGradientMode.Color)
+                    startColor.color = node.ColorHdr1.color;
+                else
+                {
+                    startColor.colorMin = node.ColorHdr1.color;
+                    startColor.colorMax = node.ColorHdr2.color;
+                }
                 main.startColor = startColor;
 
                 ps.Play(true);

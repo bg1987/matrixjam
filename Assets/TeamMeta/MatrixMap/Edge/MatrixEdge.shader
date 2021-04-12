@@ -124,6 +124,7 @@
             float4 frag (Interpolators i) : SV_Target
             {
                 float time = _MatrixMapTime;
+                // float time = 0;
                 clip((distance(_StartWorldPosition, i.worldPos) > _StartEdgeRadius) - 1);
 
                 // sample the texture
