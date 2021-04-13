@@ -29,6 +29,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField, Min(0)] float firstVisitNodeGlowDuration = 3f;
         [SerializeField] NodeFirstVisitEffect nodeFirstVisitEffect;
 
+        [Header("Previous Active Node Marker")]
+        [SerializeField] PreviousActiveNodeMarker previousActiveNodeMarker;
+        [SerializeField] float previousActiveNodeMarkerDisaapearDelay = 1;
+
         [Header("Radius")]
         [SerializeField] float radius = 1;
         [SerializeField] float minRadius = 3;
@@ -65,6 +69,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             {
                 node.gameObject.SetActive(false);
             }
+            previousActiveNodeMarker.Init();
         }
         public List<Node> GetVisitedNodes()
         {
@@ -117,6 +122,31 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
                 indexCount++;
             }
+
+            //previousActiveNodeMarker Appearance
+            if (visitedNodesIndexesSorted.Count > 1)
+            {
+                previousActiveNodeMarkerAppearance(indexCount * delay);
+            }
+            
+        }
+        public void previousActiveNodeMarkerAppearance(float delay)
+        {
+            var previousNodeIndex = GetPreviousNodeIndex();
+
+            var indexCount = 0;
+            foreach (var nodeIndex in visitedNodesIndexesSorted)
+            {
+                if (previousNodeIndex == nodeIndex)
+                {
+                    var node = nodes[nodeIndex];
+                    previousActiveNodeMarker.MarkNode(node, mapCenter: Vector3.zero);
+                    previousActiveNodeMarker.Appear(nodeAppearDuration, indexCount * delay);
+                    break;
+                }
+                indexCount++;
+            }
+            previousActiveNodeMarker.Disappear(nodeAppearDuration, indexCount * delay + nodeAppearDuration + previousActiveNodeMarkerDisaapearDelay);
         }
         public void Disappear()
         {
@@ -125,9 +155,13 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 Node node = nodes[index];
                 node.Disappear();
             }
+            previousActiveNodeMarker.Disappear(0, 0);
+            previousActiveNodeMarker.UnmarkNode();
         }
         public float CalculateDelayBetweenNodeAppearances()
         {
+            if (visitedNodesIndexesSorted.Count == 0)
+                return 0;
             float delay = totalTimeForAllNodeAppearances / visitedNodesIndexesSorted.Count;
             delay += delayBetweenNodeAppearances;
 

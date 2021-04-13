@@ -191,7 +191,7 @@ PrefabInstance:
     - target: {fileID: 5576793782384799266, guid: 75c13bfa22ef12147a3d8afd9a89aea7,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7807524848381589957, guid: 75c13bfa22ef12147a3d8afd9a89aea7,
         type: 3}
@@ -2727,26 +2727,6 @@ PrefabInstance:
       propertyPath: matrixTraveler
       value: 
       objectReference: {fileID: 1107044195}
-    - target: {fileID: 1128284730248202642, guid: e4eeefe47ba84a44c978d05ec2db3c64,
-        type: 3}
-      propertyPath: InitialModule.startColor.minMaxState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1128284730248202642, guid: e4eeefe47ba84a44c978d05ec2db3c64,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1128284730248202642, guid: e4eeefe47ba84a44c978d05ec2db3c64,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1128284730248202642, guid: e4eeefe47ba84a44c978d05ec2db3c64,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4eeefe47ba84a44c978d05ec2db3c64, type: 3}
 --- !u!114 &1128284729673487505 stripped
