@@ -24,6 +24,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [Header("Node First Visit")]
         [SerializeField, Min(0)] public float nodesMovementDelay = 0;
         [SerializeField, Min(0)] public float nodesMovementDuration = 1;
+        [SerializeField] AnimationCurve nodesMovementCurve;
         [SerializeField, Min(0)] float firstVisitNodeAppearDelay = 0.9f;
         [SerializeField, Min(0)] float firstVisitNodeAppearDuration = 0.8f;
         [SerializeField, Min(0)] float firstVisitNodeGlowDuration = 3f;
@@ -346,7 +347,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             foreach (var nodeIndex in visitedNodesIndexesSorted)
             {
                 Node node = nodes[nodeIndex];
-                node.MoveTo(nodesPositions[i], nodesMovementDuration);
+                node.MoveTo(nodesPositions[i], nodesMovementDuration, nodesMovementCurve);
 
                 i++;
             }

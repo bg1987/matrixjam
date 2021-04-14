@@ -133,22 +133,22 @@ namespace MatrixJam.TeamMeta.MatrixMap
             modelMaterial.SetFloat("_ColorIntensity1", colorHdr1.intensity);
             modelMaterial.SetFloat("_ColorIntensity2", colorHdr2.intensity);
         }
-        public void MoveTo(Vector3 target, float duration)
+        public void MoveTo(Vector3 target, float duration, AnimationCurve curve)
         {
-            StartCoroutine(MoveToRoutine(target, duration));
+            StartCoroutine(MoveToRoutine(target, duration,curve));
         }
-        IEnumerator MoveToRoutine(Vector3 target, float duration)
+        IEnumerator MoveToRoutine(Vector3 target, float duration, AnimationCurve curve)
         {
-            float count = 0;
             Vector3 startingPosition = transform.position;
             Vector3 targetPosition = target;
 
             yield return null;
-
-            while (count < duration)
+            float t = 0;
+            while (t<1)
             {
-                count += Time.deltaTime;
-                transform.position = Vector3.Slerp(startingPosition, targetPosition, count / duration);
+                t += Time.deltaTime / duration;
+                float movementT = curve.Evaluate(t);
+                transform.position = Vector3.Slerp(startingPosition, targetPosition, movementT);
 
                 yield return null;
             }

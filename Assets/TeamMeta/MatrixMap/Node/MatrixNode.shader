@@ -185,7 +185,8 @@
 
                 float3 rd = float3(inputPoint- ro ,_Radius*-(ro.z+0.1));
                 rd = normalize(rd);
-                float t = _MatrixMapTime;
+                float t = _MatrixMapTime+100;
+                // t = _Time.y;
                 t+=_Seed*24.35;
 
                 float2x2 mx = mm2(t*0.4);
