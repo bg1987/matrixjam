@@ -25,7 +25,8 @@ namespace Assets.TeamMeta.MatrixTravelTransition
         [SerializeField] GameBackground gameBackground;
         [SerializeField] Foreground foreground;
         [SerializeField] MatrixMap matrixMap;
-
+        [SerializeField] string TransitionSceneName;
+        AsyncOperation nextNodeAsyncOperation;
         [Header("Effects Durations")]
         [SerializeField] float gameBackgroundGrayoutDuration=2f;
         [SerializeField] float ForegroundDisappearDuration=2f;
@@ -57,50 +58,53 @@ namespace Assets.TeamMeta.MatrixTravelTransition
                 Debug.Log("Travel history is blank");
                 yield break;
             }
+            float volumeBeforeMute = AudioListener.volume;
 
+            //Start transition
+            yield return StartCoroutine(StartTransitionRoutine());
+
+            MatrixNodeData destinationGame = matrixTraveler.matrixGraphData.nodes[lastTravel.endPort.nodeIndex];
+            
+            //Preload next scene
+            yield return StartCoroutine(PreloadNextNodeScene(destinationGame.scenePath));
+
+            //Show Matrix Map
+            float matrixMapAppearDuration = matrixMap.CalculateTotalAppearanceTime();
+            matrixMap.Appear();
+            yield return new WaitForSeconds(matrixMapAppearDuration);
+
+            //End transition
+            yield return StartCoroutine(EndTransitionRoutine(volumeBeforeMute, destinationGame));
+            
+        }
+        IEnumerator StartTransitionRoutine()
+        {
             isTransitioning = true;
 
             gameBackground.RenderGameAsBackground();
             gameBackground.Grayout(gameBackgroundGrayoutDuration);
             foreground.Appear();
 
-
-            float volumeBeforeMute = AudioListener.volume;
-
             StartCoroutine(MuteAudioRoutine(gameBackgroundGrayoutDuration));
             yield return new WaitForSeconds(gameBackgroundGrayoutDuration);
 
             gameBackground.SetToStatic();
             yield return null;
-
-            MatrixNodeData destinationGame = matrixTraveler.matrixGraphData.nodes[lastTravel.endPort.nodeIndex];
-            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(destinationGame.scenePath);
-            asyncOperation.allowSceneActivation = false;
-            while (asyncOperation.progress < 0.9f)
-            {
-                yield return null;
-            }
+            SceneManager.LoadScene(TransitionSceneName);
             yield return null;
+        }
+        IEnumerator EndTransitionRoutine(float volumeBeforeMute, MatrixNodeData destinationGame)
+        {
+            yield return StartCoroutine(LoadNextNodeScene());
 
-            float matrixMapAppearDuration = matrixMap.CalculateTotalAppearanceTime();
-            matrixMap.Appear();
-            yield return new WaitForSeconds(matrixMapAppearDuration);
-            //Debug.Log(matrixMapAppearDuration);
-            //Debug.Break();
- 
-            asyncOperation.allowSceneActivation = true;
-            while (asyncOperation.isDone == false)
-            {
-                yield return null;
-            }
-            yield return new WaitForFixedUpdate();
+            yield return null;
             DeselectCameraMatrixLayersInTransitionedScene();
             StartCoroutine(RestoreAudioRoutine(ForegroundDisappearDuration, volumeBeforeMute));
 
             foreground.Disappear(ForegroundDisappearDuration, destinationGame.colorHdr1, destinationGame.colorHdr2);
             gameBackground.StopBlocking();
             yield return new WaitForSeconds(ForegroundDisappearDuration);
-            
+
             gameBackground.Deactivate();
             matrixMap.Deactivate();
             isTransitioning = false;
@@ -140,6 +144,25 @@ namespace Assets.TeamMeta.MatrixTravelTransition
                 count += Time.unscaledDeltaTime;
             }
             AudioListener.volume = targetVolume;
+        }
+        IEnumerator PreloadNextNodeScene(string sceneName)
+        {
+            
+            nextNodeAsyncOperation = SceneManager.LoadSceneAsync(sceneName);
+            
+            nextNodeAsyncOperation.allowSceneActivation = false;
+            while (nextNodeAsyncOperation.progress < 0.9f)
+            {
+                yield return null;
+            }
+        }
+        IEnumerator LoadNextNodeScene()
+        {
+            nextNodeAsyncOperation.allowSceneActivation = true;
+            while (nextNodeAsyncOperation.isDone == false)
+            {
+                yield return null;
+            }
         }
     }
 }
