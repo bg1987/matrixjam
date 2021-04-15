@@ -1124,8 +1124,10 @@ MonoBehaviour:
   gameBackground: {fileID: 1148968713}
   foreground: {fileID: 176052230}
   matrixMap: {fileID: 3982408222707808918}
+  TransitionSceneName: MatrixTravelTransition
   gameBackgroundGrayoutDuration: 0.75
   ForegroundDisappearDuration: 1.76
+  continueKey: 32
 --- !u!1001 &1128284729474724421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1347,6 +1349,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4238761666442527403, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
         type: 3}
+      propertyPath: nodesMovementCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238761666442527403, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
+        type: 3}
       propertyPath: firstVisitNodeGlowDuration
       value: 0.6
       objectReference: {fileID: 0}
@@ -1359,6 +1366,16 @@ PrefabInstance:
         type: 3}
       propertyPath: previousActiveNodeMarkerDisaapearDelay
       value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238761666442527403, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
+        type: 3}
+      propertyPath: nodesMovementCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238761666442527403, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
+        type: 3}
+      propertyPath: nodesMovementCurve.m_Curve.Array.data[1].value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5262338389570508461, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
         type: 3}

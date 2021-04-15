@@ -31,6 +31,9 @@ namespace Assets.TeamMeta.MatrixTravelTransition
         [SerializeField] float gameBackgroundGrayoutDuration=2f;
         [SerializeField] float ForegroundDisappearDuration=2f;
 
+        [Header("Continue Transition Input")]
+        [SerializeField] PressContinueKey pressContinueKey;
+        [SerializeField, Min(0)] int minimumVisitedGamesToEnablePressContinue = 1;
         // Start is called before the first frame update
         void Awake()
         {
@@ -39,12 +42,7 @@ namespace Assets.TeamMeta.MatrixTravelTransition
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                gameBackground.RenderGameAsBackground();
-                gameBackground.Grayout(gameBackgroundGrayoutDuration);
-                foreground.Appear();
-            }
+            
         }
         public void Transition(MatrixEdgeData matrixEdgeData)
         {
@@ -64,7 +62,7 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             yield return StartCoroutine(StartTransitionRoutine());
 
             MatrixNodeData destinationGame = matrixTraveler.matrixGraphData.nodes[lastTravel.endPort.nodeIndex];
-            
+
             //Preload next scene
             yield return StartCoroutine(PreloadNextNodeScene(destinationGame.scenePath));
 
@@ -72,6 +70,16 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             float matrixMapAppearDuration = matrixMap.CalculateTotalAppearanceTime();
             matrixMap.Appear();
             yield return new WaitForSeconds(matrixMapAppearDuration);
+
+            //Wait for key press before continuing the transition
+            int visitedGamesCount = matrixTraveler.travelData.GetVisitedGamesCount();
+            if (visitedGamesCount > minimumVisitedGamesToEnablePressContinue)
+            {
+                pressContinueKey.Activate();
+                WaitUntil waitUntilContinueKeyIsHeld = new WaitUntil(() => pressContinueKey.WasContinueKeyPressed() == true);
+                yield return waitUntilContinueKeyIsHeld;
+                pressContinueKey.Deactivate();
+            }
 
             //End transition
             yield return StartCoroutine(EndTransitionRoutine(volumeBeforeMute, destinationGame));
