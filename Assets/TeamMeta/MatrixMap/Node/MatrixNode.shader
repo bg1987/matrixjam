@@ -217,7 +217,13 @@
 
                     float len = lerp(0,1, length(col)*2);
                     len =saturate(len);
-                    return float4(col,len)*_Color;
+                    col.rgb *= _Color.rgb;
+                    float alphaMask = len>= (1-_Color.a);
+                    float alphaGradient = len*_Color.a;
+                    // if(alpha<0)
+                    //     alpha = 0;
+                    float alpha = alphaGradient*alphaMask;
+                    return float4(col.rgb,alpha);
                 }
                 else
                     return float4(0,0,0,0);
