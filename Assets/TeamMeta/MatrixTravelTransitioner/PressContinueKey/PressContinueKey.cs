@@ -58,19 +58,19 @@ namespace MatrixJam.TeamMeta.MatrixTravelTransition
         {
             Reset();
             isActive = true;
-                
-            //gameObject.SetActive(true);
         }
         public void Deactivate()
         {
             pressContinueKey.Disappear();
             isActive = false;
-
-            //gameObject.SetActive(false);
         }
         public bool WasContinueKeyPressed()
         {
             return wasContinueKeyPressed;
+        }
+        private void OnDisable()
+        {
+            pressContinueKey.DisappearInstantly();
         }
     }
 }

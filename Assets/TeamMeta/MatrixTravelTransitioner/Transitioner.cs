@@ -75,6 +75,7 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             int visitedGamesCount = matrixTraveler.travelData.GetVisitedGamesCount();
             if (visitedGamesCount > minimumVisitedGamesToEnablePressContinue)
             {
+                pressContinueKey.gameObject.SetActive(true);
                 pressContinueKey.Activate();
                 WaitUntil waitUntilContinueKeyIsHeld = new WaitUntil(() => pressContinueKey.WasContinueKeyPressed() == true);
                 yield return waitUntilContinueKeyIsHeld;
@@ -83,7 +84,7 @@ namespace Assets.TeamMeta.MatrixTravelTransition
 
             //End transition
             yield return StartCoroutine(EndTransitionRoutine(volumeBeforeMute, destinationGame));
-            
+
         }
         IEnumerator StartTransitionRoutine()
         {
@@ -115,6 +116,8 @@ namespace Assets.TeamMeta.MatrixTravelTransition
 
             gameBackground.Deactivate();
             matrixMap.Deactivate();
+            pressContinueKey.gameObject.SetActive(false);
+
             isTransitioning = false;
         }
         void DeselectCameraMatrixLayersInTransitionedScene()

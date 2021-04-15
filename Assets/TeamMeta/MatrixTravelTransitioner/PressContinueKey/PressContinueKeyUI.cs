@@ -94,7 +94,7 @@ namespace MatrixJam.TeamMeta.MatrixTravelTransition
                 ExecuteDisappear(t);
                 yield return null;
             }
-            ExecuteDisappear(t);
+            ExecuteDisappear(1);
 
             disappearRoutine = null;
         }
