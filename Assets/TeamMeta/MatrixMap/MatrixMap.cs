@@ -15,7 +15,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
         private IReadOnlyList<MatrixEdgeData> travelHistory; //1 positive, -1 negative
         const float TAU = Mathf.PI * 2;
-
+        [Header("Selector")]
+        [SerializeField] Selector selector;
+        public Selector Selector { get => selector; }
+        public bool interactable{set { if (value) selector.Activate(); else selector.Deactivate(); } }
         // Start is called before the first frame update
         void Start()
         {

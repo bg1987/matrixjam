@@ -62,7 +62,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         public void SetModelRadius(float radius)
         {
-            model.transform.localScale *= radius;
+            model.transform.localScale = Vector3.one* radius;
         }
         public void Appear(float duration, float delay)
         {

@@ -34,6 +34,8 @@ namespace Assets.TeamMeta.MatrixTravelTransition
         [Header("Continue Transition Input")]
         [SerializeField] PressContinueKey pressContinueKey;
         [SerializeField, Min(0)] int minimumVisitedGamesToEnablePressContinue = 1;
+        [SerializeField, Min(0)] int minimumVisitedGamesToEnableMatrixMapInteraction = 1;
+
         // Start is called before the first frame update
         void Awake()
         {
@@ -70,9 +72,15 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             float matrixMapAppearDuration = matrixMap.CalculateTotalAppearanceTime();
             matrixMap.Appear();
             yield return new WaitForSeconds(matrixMapAppearDuration);
-
-            //Wait for key press before continuing the transition
+            
             int visitedGamesCount = matrixTraveler.travelData.GetVisitedGamesCount();
+            
+            //Make MatrixMap interactable
+            if (visitedGamesCount > minimumVisitedGamesToEnableMatrixMapInteraction)
+            {
+                matrixMap.interactable = true;
+            }
+            //Wait for key press before continuing the transition
             if (visitedGamesCount > minimumVisitedGamesToEnablePressContinue)
             {
                 pressContinueKey.gameObject.SetActive(true);
@@ -117,6 +125,7 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             gameBackground.Deactivate();
             matrixMap.Deactivate();
             pressContinueKey.gameObject.SetActive(false);
+            matrixMap.interactable = false;
 
             isTransitioning = false;
         }
