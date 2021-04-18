@@ -16,6 +16,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         public ColorHdr ColorHdr2 { get=> colorHdr2; }
 
         Material modelMaterial;
+        public Material ModelMaterial { get => modelMaterial; }
 
         public List<Edge> startPortActiveEdges = new List<Edge>();
 
@@ -47,6 +48,12 @@ namespace MatrixJam.TeamMeta.MatrixMap
             modelMaterial.SetColor("_Color2", colorHdr2.color);
             modelMaterial.SetFloat("_ColorIntensity1", colorHdr1.intensity);
             modelMaterial.SetFloat("_ColorIntensity2", colorHdr2.intensity);
+
+            Color outlineColor = colorHdr1.color;
+            outlineColor.a = modelMaterial.GetColor("_OutlineColor").a;
+            modelMaterial.SetColor("_OutlineColor", outlineColor);
+            //modelMaterial.SetColor("_ColorOutlineIntensity", outlineColor);
+
         }
         public void AddToStartPortEdges(Edge edge)
         {

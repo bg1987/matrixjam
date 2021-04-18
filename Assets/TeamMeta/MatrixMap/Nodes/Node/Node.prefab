@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 8704998869996755666}
   - component: {fileID: 2442851221125809035}
   - component: {fileID: 4924820423794232312}
-  - component: {fileID: 3243322023857352105}
+  - component: {fileID: 8622594964326080253}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -149,7 +149,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3243322023857352105
+--- !u!114 &8622594964326080253
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,3 +162,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   node: {fileID: 5750187723290876000}
+  idleColorAlpha: 0.19
+  idleColorIntensity: 0
+  hoverColorAlpha: 0.19
+  hoverColorIntensity: 3
+  selectedColorAlpha: 0.63
+  selectedColorIntensity: 4

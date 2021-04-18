@@ -13,6 +13,11 @@
         _P ("P", float) = 1.94
         _Z ("Z", float) = 3
         _Seed ("Seed", float) = 1
+
+        _OutlineColor ("OutlineColor", Color) = (0.1,0.7,0.55)
+        _OutlineColorIntensity ("OutlineColorIntensity", float) = 1
+        _OutlineWidth ("OutlineWidth", range(0,0.5)) = 0.5
+
     }
     SubShader
     {
@@ -53,6 +58,10 @@
             float _ColorIntensity1;
             float _ColorIntensity2;
 
+            float4 _OutlineColor;
+            float _OutlineColorIntensity;
+            float _OutlineWidth;
+
             float _MatrixMapTime;
 
             float2x2 mm2(float a)
@@ -68,13 +77,13 @@
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 return o;
             }
-            float CalculateSphereMask(float2 uv)
+            float CalculateSphereMask(float2 uv,float radius)
             {
 
                 float2 origin = float2(0.5,0.5);
                 
                 
-                return distance(origin,uv)<_Radius;
+                return distance(origin,uv)<radius;
             }
             float2 SphereIntersection(float3 spherePos, float3 ro, float3 rd)
             {
@@ -166,17 +175,23 @@
                 }
                 return rz;	
             }
+            float CalculateOutlineMask(float2 uv){
+                float outlineMask = 1-CalculateSphereMask(uv, _OutlineWidth);
+                float radiusMask = CalculateSphereMask(uv, _Radius);
+                outlineMask = outlineMask && radiusMask;
+                return outlineMask;
+            }
             float4 frag (v2f i) : SV_Target
             {
-
+                
                 // sample the texture
                 fixed4 color = tex2D(_MainTex, i.uv);
 
                 _Color1 = _Color1 * pow(2,_ColorIntensity1);
                 _Color2 = _Color2 * pow(2,_ColorIntensity2);
 
-                bool isSphere = CalculateSphereMask(i.uv);
-                // clip(isSphere-0.1);
+                bool isSphere = CalculateSphereMask(i.uv,_Radius);
+                clip(isSphere-0.1);
                 float3 origin = float3(0.5,0.5,0);
 
                 float2 inputPoint = float2(i.uv.xy)-origin;
@@ -223,6 +238,14 @@
                     // if(alpha<0)
                     //     alpha = 0;
                     float alpha = alphaGradient*alphaMask;
+
+                    float outlineMask = CalculateOutlineMask(i.uv);
+                    float4 outlineColor = _OutlineColor * pow(2,_OutlineColorIntensity);
+                    float4 _Outline =float4(outlineMask*outlineColor.rgb,_OutlineColor.a*alpha);
+                    if(outlineMask)
+                        return _Outline;
+
+
                     return float4(col.rgb,alpha);
                 }
                 else

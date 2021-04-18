@@ -91,6 +91,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         private void Reset()
         {
+            hoveredSelectable = null;
+            selectedSelectable = null;
             nodeSelector.Reset();
         }
     }

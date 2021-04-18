@@ -7,17 +7,28 @@ namespace MatrixJam.TeamMeta.MatrixMap
     public class NodeSelectable : MonoBehaviour,ISelectable
     {
         [SerializeField] Node node;
+
+        [SerializeField] float idleColorAlpha = 0.19f;
+        [SerializeField] float idleColorIntensity = 0;
+
+        [SerializeField] float hoverColorAlpha = 0.19f;
+        [SerializeField] float hoverColorIntensity = 3;
+
+        [SerializeField] float selectedColorAlpha = 0.63f;
+        [SerializeField] float selectedColorIntensity = 4;
+        [Header("---")]
+        [SerializeField] float maxColorValue = 0.4f;
         bool isSelected = false;
         bool isHovered = false;
-        private void Awake()
-        {
-            node = GetComponent<Node>();
-        }
+
         public void Select()
         {
             if (isSelected)
                 return;
-            Debug.Log("Select " + name);
+
+            SelectEffect();
+
+            Debug.Log("Select " + node.name);
             isSelected = true;
         }
         public void Unselect()
@@ -25,16 +36,22 @@ namespace MatrixJam.TeamMeta.MatrixMap
             if (isSelected == false)
                 return;
 
-            Debug.Log("Unselect " + name);
+            Debug.Log("Unselect " + node.name);
             isSelected = false;
+
+            if (isHovered)
+                HoverEffect();
+            else
+                IdleEffect();
         }
         public void HoverEnter()
         {
-            if (isSelected)
-                return;
             if (isHovered)
                 return;
-            Debug.Log("Hover " + name);
+            Debug.Log("Hover " + node.name);
+            if (!isSelected)
+                HoverEffect();
+
             isHovered = true;
         }
 
@@ -42,10 +59,44 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             if (!isHovered)
                 return;
-            Debug.Log("Unhover " + name);
+            Debug.Log("Unhover " + node.name);
+            if (!isSelected)
+                IdleEffect();
+
             isHovered = false;
         }
-
+        void IdleEffect()
+        {
+            ChangeAlpha(idleColorAlpha);
+            ChangeIntensity(idleColorIntensity);
+        }
+        void HoverEffect()
+        {
+            ChangeAlpha(hoverColorAlpha);
+            ChangeIntensity(hoverColorIntensity);
+        }
         
+        void SelectEffect()
+        {
+            ChangeAlpha(selectedColorAlpha);
+            ChangeIntensity(selectedColorIntensity);
+        }
+        void ChangeAlpha(float targetAlpha)
+        {
+            Color outlineColor = node.ModelMaterial.GetColor("_OutlineColor");
+            Color.RGBToHSV(outlineColor, out float h, out float s, out float v);
+            if(v> maxColorValue)
+            {
+                v = maxColorValue;
+            }
+            outlineColor = Color.HSVToRGB(h, s, v);
+            outlineColor.a = targetAlpha;
+            node.ModelMaterial.SetColor("_OutlineColor", outlineColor);
+        }
+        void ChangeIntensity(float targetIntensity)
+        {
+            node.ModelMaterial.SetFloat("_OutlineColorIntensity", targetIntensity);
+        }
+
     }
 }
