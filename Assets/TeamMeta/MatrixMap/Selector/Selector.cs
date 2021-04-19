@@ -22,6 +22,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
             raycaster.OnClickDown += HandleSelect;
             raycaster.OnHoverEnter += HandleHoverEnter;
             raycaster.OnHoverExit += HandleHoverExit;
+        }
+        private void Start()
+        {
             Deactivate();
         }
 

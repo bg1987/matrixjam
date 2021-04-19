@@ -125,7 +125,7 @@
             {
                 float time = _MatrixMapTime;
                 // float time = 0;
-                clip((distance(_StartWorldPosition, i.worldPos) > _StartEdgeRadius) - 1);
+                clip((distance(_StartWorldPosition.xy, i.worldPos.xy) > _StartEdgeRadius) - 1);
 
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.noiseUV);

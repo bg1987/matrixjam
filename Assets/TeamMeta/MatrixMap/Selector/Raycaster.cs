@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,12 +16,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
         public System.Action<GameObject> OnClickDown;
 
         GameObject hoveredObject;
+        private void Awake()
+        {
+        }
         // Update is called once per frame
         void Update()
         {
 
             GameObject hitObject = ShootRay();
-
             if (Input.GetMouseButtonDown(0))
             {
                 OnClickDown?.Invoke(hitObject);
@@ -53,6 +56,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
             }
 
             return hitObject;
+        }
+        private void OnDisable()
+        {
+            hoveredObject = null;
         }
     }
 }
