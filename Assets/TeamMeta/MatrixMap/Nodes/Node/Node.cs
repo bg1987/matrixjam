@@ -9,6 +9,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
     {
         [SerializeField] GameObject model;
         [SerializeField] int index;
+        public int Index { get => index; }
 
         [SerializeField] ColorHdr colorHdr1;
         [SerializeField] ColorHdr colorHdr2;
@@ -33,6 +34,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
             modelMaterial.SetFloat("_Seed", index);
 
             SetModelColors(colorHdr1, colorHdr2);
+        }
+        public int GetTotalPortsCount()
+        {
+            return startPortEdges.Count;
+        }
+        public int GetTotalVisitedPortsCount()
+        {
+            return startPortActiveEdges.Count;
         }
         public void SetIndex(int value)
         {

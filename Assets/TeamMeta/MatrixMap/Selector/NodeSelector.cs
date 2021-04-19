@@ -12,6 +12,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
         [SerializeField] Overlay overlay;
         [SerializeField] SelectedNodeUI nodeUI;
+        [SerializeField] MatrixTraveler matrixTraveler;
         // Start is called before the first frame update
         void Start()
         {
@@ -65,7 +66,20 @@ namespace MatrixJam.TeamMeta.MatrixMap
             overlay.Activate();
 
             nodeUI.Activate();
-            nodeUI.SetNodeData("Hello", 2, 5, 9);
+            if (matrixTraveler != null)
+            {
+                Node node = selectedNode.GetNode();
+
+                MatrixNodeData nodeData = matrixTraveler.matrixGraphData.nodes[node.Index];
+                string name = nodeData.name;
+                int visitsCount = matrixTraveler.travelData.GetGameVisitCount(nodeData);
+                int DiscoveredEdgesCount = matrixTraveler.travelData.GetGameVisitedEdgesCount(nodeData.index);
+                int totalEdgesCount = nodeData.outputPorts.Count;
+
+                nodeUI.SetNodeData(name, visitsCount, DiscoveredEdgesCount, totalEdgesCount);
+            }
+            else
+                nodeUI.SetNodeData("Test Game Name", 2, 5, 9);
         }
         void DeactivateUI()
         {

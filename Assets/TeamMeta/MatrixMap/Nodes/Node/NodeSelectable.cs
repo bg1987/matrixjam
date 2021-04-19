@@ -65,6 +65,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             isHovered = false;
         }
+        public Node GetNode()
+        {
+            return node;
+        }
         void IdleEffect()
         {
             ChangeAlpha(idleColorAlpha);

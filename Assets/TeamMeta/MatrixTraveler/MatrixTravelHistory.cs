@@ -9,6 +9,7 @@ namespace MatrixJam.TeamMeta
     public class MatrixTravelHistory
     {
         Dictionary<int, int> gamesIndexToVisits = new Dictionary<int, int>();
+        Dictionary<int, int> gamesIndexToVisitedEdgesCount = new Dictionary<int, int>();
         Dictionary<MatrixPortData,int> entrancesToVisits = new Dictionary<MatrixPortData, int>();
         Dictionary<MatrixPortData,int> exitsToVisits = new Dictionary<MatrixPortData, int>();
         HashSet<int> completedGamesByIndex = new HashSet<int>();
@@ -60,10 +61,21 @@ namespace MatrixJam.TeamMeta
                 exitsToVisits.Add(port, 1);
             }
         }
+        void CountGameVisitedEdges(MatrixPortData port)
+        {
+            if (GetExitVisitCount(port) == 0)
+            {
+                if (gamesIndexToVisitedEdgesCount.ContainsKey(port.nodeIndex))
+                    gamesIndexToVisitedEdgesCount[port.nodeIndex] += 1;
+                else
+                    gamesIndexToVisitedEdgesCount.Add(port.nodeIndex, 1);
+            }
+        }
         public MatrixEdgeData AddTravel(MatrixPortData startPort,  MatrixPortData destinationPort)
         {
             if (startPort.id != -1)
             {
+                CountGameVisitedEdges(startPort);
                 CountExit(startPort);
             }
             if (startPort.nodeIndex != -1)
@@ -115,6 +127,15 @@ namespace MatrixJam.TeamMeta
         public int GetCompletedGamesCount()
         {
             return completedGamesByIndex.Count;
+        }
+        public int GetGameVisitedEdgesCount(int gameIndex)
+        {
+            int count = 0;
+            if (gamesIndexToVisitedEdgesCount.ContainsKey(gameIndex))
+            {
+                count = gamesIndexToVisitedEdgesCount[gameIndex];
+            }
+            return count;
         }
         public int[] GetCompletedGamesCopy()
         {

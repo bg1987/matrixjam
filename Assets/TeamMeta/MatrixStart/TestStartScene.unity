@@ -2952,6 +2952,10 @@ PrefabInstance:
       propertyPath: overlay
       value: 
       objectReference: {fileID: 1352346709}
+    - target: {fileID: 1150098465, guid: e4eeefe47ba84a44c978d05ec2db3c64, type: 3}
+      propertyPath: matrixTraveler
+      value: 
+      objectReference: {fileID: 1107044195}
     - target: {fileID: 1973847409, guid: e4eeefe47ba84a44c978d05ec2db3c64, type: 3}
       propertyPath: canvas
       value: 
