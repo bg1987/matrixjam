@@ -275,7 +275,12 @@ namespace MatrixJam.TeamMeta.MatrixMap
             {
                 float t = i / (float)nodesCount;
                 float rotateBy = t * TAU + rotateOffset;
-                nodesPositions.Add(new Vector3(Mathf.Cos(rotateBy), Mathf.Sin(rotateBy), transform.position.z));
+                var position = new Vector3(Mathf.Cos(rotateBy), Mathf.Sin(rotateBy), transform.position.z);
+                if(Mathf.Abs(position.x)<0.00001f)
+                    position.x = 0;
+                if (Mathf.Abs(position.y) < 0.00001f)
+                    position.y = 0;
+                nodesPositions.Add(position);
             }
 
             AddRadiusToPositions(nodesPositions);
