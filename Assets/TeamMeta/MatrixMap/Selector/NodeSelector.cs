@@ -65,8 +65,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             overlay.Activate();
 
-            nodeUI.Activate();
             Node node = selectedNode.GetNode();
+
+            nodeUI.Activate();
 
             if (matrixTraveler != null)
             {
@@ -82,7 +83,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             else
                 nodeUI.SetNodeData("Test Game Name", 2, 5, 9);
 
-            nodeUI.PositionAroundNode(mapCenter:Vector3.zero, node);
+            nodeUI.PositionAroundNode(mapCenter: Vector3.zero, node);
         }
         void DeactivateUI()
         {

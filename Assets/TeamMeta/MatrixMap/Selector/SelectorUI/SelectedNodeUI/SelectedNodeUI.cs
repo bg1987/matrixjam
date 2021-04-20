@@ -90,9 +90,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
             }
             position += targetDirection * distanceFromNode;
             position.z = transform.position.z;
-            RotateAndPositionLine(position,-targetDirection, distanceFromNode);
-
-
 
             float scaleX = textContainer.transform.localScale.x;
             float scaleOffsetX = scaleX/2f;
@@ -101,6 +98,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
             }
             position.x += scaleOffsetX;
             transform.position = position;
+
+            Vector3 linePosition = position;
+            linePosition.x -= scaleOffsetX;
+            RotateAndPositionLine(linePosition, -targetDirection, distanceFromNode);
         }
         void RotateAndPositionLine(Vector3 startPosition, Vector3 targetDirection, float targetDistance)
         {
