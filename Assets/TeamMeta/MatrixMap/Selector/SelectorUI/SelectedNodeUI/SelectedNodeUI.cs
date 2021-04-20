@@ -45,8 +45,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
             textString += "Visits: "+ visitsCount;
             textString += "\n";
 
-            textString += "Paths: "+DiscoveredEdgesCount+"\\"+totalEdgesCount;
-
+            textString += "Paths: "+DiscoveredEdgesCount+"/"+totalEdgesCount;
+            
             text.text = textString;
 
             textSizer.UpdateTextSize();

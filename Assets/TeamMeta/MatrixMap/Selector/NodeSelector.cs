@@ -73,8 +73,20 @@ namespace MatrixJam.TeamMeta.MatrixMap
             {
 
                 MatrixNodeData nodeData = matrixTraveler.matrixGraphData.nodes[node.Index];
+                MatrixTravelHistory travelData = matrixTraveler.travelData;
+                travelData.TryGetLastTravel(out var lastTravelData);
+                bool isSelectedNodeDestinationNode = false;
+                if (lastTravelData.endPort.nodeIndex > -1)
+                {
+                    if (lastTravelData.endPort.nodeIndex == node.Index)
+                        isSelectedNodeDestinationNode = true;
+                }
+
                 string name = nodeData.name;
                 int visitsCount = matrixTraveler.travelData.GetGameVisitCount(nodeData);
+                if (isSelectedNodeDestinationNode)
+                    visitsCount -= 1;
+
                 int DiscoveredEdgesCount = matrixTraveler.travelData.GetGameVisitedEdgesCount(nodeData.index);
                 int totalEdgesCount = nodeData.outputPorts.Count;
 

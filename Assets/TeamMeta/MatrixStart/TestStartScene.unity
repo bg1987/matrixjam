@@ -2683,70 +2683,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 414803247}
     m_Modifications:
-    - target: {fileID: 1425704888, guid: 91babc5820e081140ae00d33dd9bb6fd, type: 3}
-      propertyPath: m_Layer
-      value: 31
-      objectReference: {fileID: 0}
-    - target: {fileID: 1425704889, guid: 91babc5820e081140ae00d33dd9bb6fd, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1425704889, guid: 91babc5820e081140ae00d33dd9bb6fd, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 2041345074, guid: 91babc5820e081140ae00d33dd9bb6fd, type: 3}
-      propertyPath: m_Layer
-      value: 31
-      objectReference: {fileID: 0}
-    - target: {fileID: 2041345077, guid: 91babc5820e081140ae00d33dd9bb6fd, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e36f21c748b8369418080166eb094a49, type: 2}
-    - target: {fileID: 4638982611040451936, guid: 91babc5820e081140ae00d33dd9bb6fd,
-        type: 3}
-      propertyPath: m_enableExtraPadding
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4638982611040451936, guid: 91babc5820e081140ae00d33dd9bb6fd,
-        type: 3}
-      propertyPath: checkPaddingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4638982611040451936, guid: 91babc5820e081140ae00d33dd9bb6fd,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4638982611040451936, guid: 91babc5820e081140ae00d33dd9bb6fd,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4638982611040451940, guid: 91babc5820e081140ae00d33dd9bb6fd,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 824789353fea4064486119e462a68c42, type: 2}
-    - target: {fileID: 4638982611040451967, guid: 91babc5820e081140ae00d33dd9bb6fd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 31
-      objectReference: {fileID: 0}
-    - target: {fileID: 4638982611205626031, guid: 91babc5820e081140ae00d33dd9bb6fd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 31
-      objectReference: {fileID: 0}
     - target: {fileID: 4638982611977029110, guid: 91babc5820e081140ae00d33dd9bb6fd,
         type: 3}
       propertyPath: m_Name
       value: SelectedNodeUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 4638982611977029110, guid: 91babc5820e081140ae00d33dd9bb6fd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 4638982611977029111, guid: 91babc5820e081140ae00d33dd9bb6fd,
         type: 3}
@@ -2802,11 +2742,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753448138489582821, guid: 91babc5820e081140ae00d33dd9bb6fd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91babc5820e081140ae00d33dd9bb6fd, type: 3}

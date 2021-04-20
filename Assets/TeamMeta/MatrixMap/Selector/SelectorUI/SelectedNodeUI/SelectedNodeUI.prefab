@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1425704889}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1425704888}
   m_LocalRotation: {x: 0, y: 0, z: -0.5663265, w: 0.82418096}
   m_LocalPosition: {x: 1.1869001, y: 0, z: 0}
-  m_LocalScale: {x: 0.02, y: 1, z: 1}
+  m_LocalScale: {x: 0.033, y: 1.6, z: 1}
   m_Children:
   - {fileID: 2041345075}
   m_Father: {fileID: 3196140535758671079}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2041345078}
   - component: {fileID: 2041345077}
   - component: {fileID: 2041345076}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e36f21c748b8369418080166eb094a49, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 4638982611040451939}
   - component: {fileID: 4638982611040451938}
   - component: {fileID: 4638982611040451936}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 824789353fea4064486119e462a68c42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -284,13 +284,13 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 8
+  m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_textAlignment: 513
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -306,8 +306,8 @@ MonoBehaviour:
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
   m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
+  m_enableExtraPadding: 1
+  checkPaddingRequired: 1
   m_isRichText: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 4638982611205625939}
   - component: {fileID: 4638982611205625938}
   - component: {fileID: 4638982611205625937}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4638982611977029111}
   - component: {fileID: 4638982611977029112}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: SelectedNodeUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3196140535758671079}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
