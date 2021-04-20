@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SelectedNodeBG
-  m_Shader: {fileID: 4800000, guid: cedcb33cb00b5de4c90dc4f3e6df6c79, type: 3}
-  m_ShaderKeywords: _REVERSE_ON
+  m_Name: PreviousToPowerEdgeBaseMat
+  m_Shader: {fileID: 4800000, guid: 910d6ccee9d999a46bd99fae47213578, type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -26,6 +26,10 @@ Material:
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ColorsBlendMap:
+        m_Texture: {fileID: 2800000, guid: 97b59d46e2155e849b908f5a3275a2f7, type: 3}
+        m_Scale: {x: 0.02, y: 0.02}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
@@ -44,7 +48,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6221f0b7066f3da419272613d8a4448e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -62,28 +66,45 @@ Material:
     m_Floats:
     - PixelSnap: 0
     - _BumpScale: 1
+    - _ColorIntensity1: 2.9
+    - _ColorIntensity2: 2.4
+    - _ColorPower: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _Dissolve: 0
     - _DstBlend: 0
+    - _EdgeLength: 1
     - _EnableExternalAlpha: 0
+    - _EndEdgeColorHeight: 0.87
+    - _EndEdgeOffset: 0.75
+    - _EndEdgeSize: 0.25
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LineHeight: 0.21
-    - _LineLength: 0.3
-    - _LineWidth: 0.03
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Reverse: 1
+    - _ScrollSpeed: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _StartEdgeRadius: 0.85
+    - _TravelHeight: 1
+    - _TravelProgress: 0
+    - _TravelSize: 1
+    - _TravelT: 0
     - _UVSec: 0
+    - _UseTwoColors: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 3.333478, g: 3.3514967, b: 3.4415908, a: 1}
+    - _Color: {r: 0.3512595, g: 0.87814873, b: 5.5908804, a: 1}
+    - _Color1: {r: 0.047058824, g: 0.11764706, b: 0.7490196, a: 1}
+    - _Color2: {r: 0.1, g: 0.7, b: 0.55, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EndColor: {r: 6.5571804, g: 2.2315013, b: 0.44630024, a: 1}
+    - _EndWorldPosition: {r: 1, g: 1, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _StartWorldPosition: {r: 0, g: 0, b: 0, a: 1}
+    - _TravelColor: {r: 5.7880425, g: 1.9394488, b: 0.39395052, a: 1}

@@ -4,7 +4,8 @@
     {
         [hdr] _Color ("Color", Color) = (1,1,1,1)
         [hdr] _EndColor ("EndColor", Color) = (1,1,1,1)
-
+        _ColorPower ("ColorPower", float) = 1
+         
         _Color1 ("Color1", Color) = (0.12,0.12,0.5)
         _ColorIntensity1 ("ColorIntensity1", float) = 1
         _Color2 ("Color2", Color) = (0.1,0.7,0.55)
@@ -63,7 +64,7 @@
 
             float4 _Color;
             float4 _EndColor;
-
+            float _ColorPower;
             float4 _Color1;
             float4 _Color2;
             float _ColorIntensity1;
@@ -151,9 +152,17 @@
                     _Color = lerp(colorHdr1,colorHdr2,evenTile);
                     _Color.a = 1;
                 }
+                
+                float poweredTile = pow(tile,_ColorPower);
+                // poweredTile = saturate(poweredTile);
+                
+                // float circularEaseIn  = 1 - sqrt(1 - tile*tile);
+                // float loggedTile = 1-log(poweredTile);
+                float tileGradient = poweredTile;
+                tileGradient= saturate(tileGradient);
 
-                col = _Color*tile;
-
+                col = _Color*tileGradient;
+                col.a = _Color.a*tileGradient;
                 float2 edgeStart = float2(0.5, (_EdgeLength - _EndEdgeSize - _EndEdgeOffset));
                 float2 edgeEnd = float2(0.5, _EdgeLength);
                 bool isEdge = _EdgeLength * i.uv.y  >= _EdgeLength - _EndEdgeSize - _EndEdgeOffset;

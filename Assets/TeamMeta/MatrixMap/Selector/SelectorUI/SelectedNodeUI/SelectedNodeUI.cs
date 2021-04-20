@@ -89,7 +89,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 targetDirection = Vector3.Lerp(startDirection, endDirection, 1 + directionFromMap.y).normalized;
             }
             position += targetDirection * distanceFromNode;
-
+            position.z = transform.position.z;
             RotateAndPositionLine(position,-targetDirection, distanceFromNode);
 
 
