@@ -75,7 +75,7 @@ Material:
     - _DstBlend: 0
     - _EdgeLength: 1
     - _EnableExternalAlpha: 0
-    - _EndEdgeColorHeight: 0.87
+    - _EndEdgeColorHeight: 1.2
     - _EndEdgeOffset: 0.75
     - _EndEdgeSize: 0.25
     - _GlossMapScale: 1
@@ -84,6 +84,8 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _OutlineColorIntensity: 1.42
+    - _OutlineWidth: 0.2
     - _Parallax: 0.02
     - _ScrollSpeed: 1
     - _SmoothnessTextureChannel: 0
@@ -102,9 +104,10 @@ Material:
     - _Color1: {r: 0.047058824, g: 0.11764706, b: 0.7490196, a: 1}
     - _Color2: {r: 0.1, g: 0.7, b: 0.55, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _EndColor: {r: 6.5571804, g: 2.2315013, b: 0.44630024, a: 1}
+    - _EndColor: {r: 2.79544, g: 0.9659636, b: 0.19026555, a: 1}
     - _EndWorldPosition: {r: 1, g: 1, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 0.34031418, b: 0.06806283, a: 0.2}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _StartWorldPosition: {r: 0, g: 0, b: 0, a: 1}
     - _TravelColor: {r: 5.7880425, g: 1.9394488, b: 0.39395052, a: 1}

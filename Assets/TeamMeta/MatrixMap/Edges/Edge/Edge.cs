@@ -39,6 +39,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             material = meshRenderer.material;
             originalTintColor = material.GetColor("_Color");
+            SetTintColor(originalTintColor);
             //Init(anchorPoints[0], anchorPoints[1], anchorPoints[2]);
             SetModelColors(colorHdr1, colorHdr2);
 
@@ -69,6 +70,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
         public void SetTintColor(Color color)
         {
             material.SetColor("_Color",color);
+
+            var outlineColor = color;
+            outlineColor.a = material.GetColor("_OutlineColor").a;
+            material.SetColor("_OutlineColor", outlineColor);
         }
         public Vector3[] CalculateDirectionAndPositionClosestToEdgeStart()
         {
@@ -107,7 +112,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         public void ResetTintColor()
         {
-            material.SetColor("_Color",originalTintColor);
+            SetTintColor(originalTintColor);
         }
         public void SetEndColor(Color color)
         {

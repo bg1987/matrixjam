@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   curveResolution: 20
-  curveWidth: 0.12
+  curveWidth: 0.2
   anchorPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 2.9967237, y: 3.7084596, z: 0}
@@ -118,3 +118,10 @@ MonoBehaviour:
   meshFilter: {fileID: 848970046564030516}
   meshCollider: {fileID: 4506149698693754970}
   material: {fileID: 0}
+  colorHdr1:
+    color: {r: 0, g: 0, b: 0, a: 0}
+    intensity: 0
+  colorHdr2:
+    color: {r: 0, g: 0, b: 0, a: 0}
+    intensity: 0
+  firstEdgeVisitStartSparksEffect: {fileID: 0}

@@ -63,6 +63,7 @@ Material:
     - _BumpScale: 1
     - _ColorIntensity1: 0
     - _ColorIntensity2: 0
+    - _ColorPower: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _Dissolve: 0
@@ -77,6 +78,8 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _OutlineColorIntensity: 2.55
+    - _OutlineWidth: 0
     - _Parallax: 0.02
     - _ScrollSpeed: 1
     - _SmoothnessTextureChannel: 0
@@ -97,5 +100,6 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EndColor: {r: 11.984314, g: 3.3882353, b: 0.4392157, a: 1}
     - _EndWorldPosition: {r: 9.32, g: 2.89, b: 0, a: 0}
+    - _OutlineColor: {r: 0.06282722, g: 0.15706806, b: 1, a: 1}
     - _StartWorldPosition: {r: -6.68, g: 2.89, b: 0, a: 0}
     - _TravelColor: {r: 11.181761, g: 3.1613355, b: 0.40980276, a: 1}

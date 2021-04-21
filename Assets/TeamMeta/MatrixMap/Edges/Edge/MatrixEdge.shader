@@ -29,7 +29,9 @@
         _TravelSize ("TravelSize", Float) = 1
         [hdr] _TravelColor ("TravelColor", Color) = (1,1,1,1)
 
-
+        _OutlineColor ("OutlineColor", Color) = (0.1,0.7,0.55)
+        _OutlineColorIntensity ("OutlineColorIntensity", float) = 1
+        _OutlineWidth ("OutlineWidth", range(0,0.5)) = 0.0
     }
     SubShader
     {
@@ -92,6 +94,11 @@
             float _TravelProgress;
             float _TravelSize;
             float4 _TravelColor;
+
+            float4 _OutlineColor;
+            float _OutlineColorIntensity;
+            float _OutlineWidth;
+
             Interpolators vert (MeshData v)
             {
                 Interpolators o;
@@ -180,8 +187,9 @@
 
                 float distanceFromEdgeX = abs(i.uv.x*2 - 1); //Distance in x axis that goes:  UV: 0, 0.5, 1 <=> 1, 0, 1
                 bool shouldDrawEdge = distanceFromEdgeX<=edgeStartToEndT; //
+                bool EdgeOutlineMask = distanceFromEdgeX>=(edgeStartToEndT-(_OutlineWidth*2)); //
+                EdgeOutlineMask = EdgeOutlineMask && shouldDrawEdge && isEdge;
                 clip(shouldDrawEdge - isEdge);
-
                 float endArrowMask = isEdge;
                 // col*= lerp(1,_EndColor,endArrowMask);
                 // return endArrowMask + col;
@@ -249,6 +257,16 @@
                 // float4 result = distanceToEdgeY - distanceToEdgeTileY;
                 // result.a = 1;
                 // return result;
+                bool SidesOutlineMask = i.uv.x<_OutlineWidth;
+                SidesOutlineMask = SidesOutlineMask || (1-i.uv.x)<_OutlineWidth;
+                SidesOutlineMask = SidesOutlineMask && _OutlineWidth!=0;
+
+                bool outlineMask = SidesOutlineMask || EdgeOutlineMask;
+
+                float4 outlineColor = _OutlineColor*pow(2, _OutlineColorIntensity);
+                outlineColor.a = _OutlineColor.a;
+                col= lerp(col,outlineColor,outlineMask); 
+
                 return col;
             }
             ENDCG
