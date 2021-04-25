@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 848970046564030516}
   - component: {fileID: 4506149698693754970}
   - component: {fileID: 5441691238404772506}
+  - component: {fileID: 6632272663623547014}
   m_Layer: 0
   m_Name: Edge
   m_TagString: Untagged
@@ -124,4 +125,26 @@ MonoBehaviour:
   colorHdr2:
     color: {r: 0, g: 0, b: 0, a: 0}
     intensity: 0
-  firstEdgeVisitStartSparksEffect: {fileID: 0}
+  edgeSelectable: {fileID: 6632272663623547014}
+--- !u!114 &6632272663623547014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7071921074182071230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 976fc871c4ac19844a278c4208a9c3ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  edge: {fileID: 5441691238404772506}
+  nonInteractableColorAlpha: 0
+  nonInteractableColorIntensity: 0
+  interactableColorAlpha: 0.4
+  interactableColorIntensity: 1.9
+  hoverColorAlpha: 0.9
+  hoverColorIntensity: 4.1
+  hoverColorIntensityRelativeLuminanceWeight: 9.5
+  maxColorValue: 0.37
+  maxColorInHoverValue: 0.37

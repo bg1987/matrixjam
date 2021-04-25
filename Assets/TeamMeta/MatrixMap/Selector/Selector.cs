@@ -14,6 +14,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         ISelectable selectedSelectable;
 
         [SerializeField] NodeSelector nodeSelector;
+        [SerializeField] EdgeSelector edgeSelector;
 
         // Start is called before the first frame update
         void Awake()
@@ -40,6 +41,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
             {
                 nodeSelector.HandleHoverEnter(hoverTarget as NodeSelectable);
             }
+            else if (hoverTarget is EdgeSelectable)
+            {
+                edgeSelector.HandleHoverEnter(hoverTarget as EdgeSelectable);
+            }
         }
         private void HandleHoverExit(GameObject target)
         {
@@ -52,6 +57,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
             if (hoverTarget is NodeSelectable)
             {
                 nodeSelector.HandleHoverExit(hoverTarget as NodeSelectable);
+            }
+            else if (hoverTarget is EdgeSelectable)
+            {
+                edgeSelector.HandleHoverExit(hoverTarget as EdgeSelectable);
             }
         }
 

@@ -30,6 +30,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             Debug.Log("Select " + node.name);
             isSelected = true;
+
+            NodeEdgesInteractable(node, isInteractable: true);
+
         }
         public void Unselect()
         {
@@ -43,6 +46,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 HoverEffect();
             else
                 IdleEffect();
+            NodeEdgesInteractable(node, isInteractable: false);
+
         }
         public void HoverEnter()
         {
@@ -101,6 +106,13 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             node.ModelMaterial.SetFloat("_OutlineColorIntensity", targetIntensity);
         }
-
+        void NodeEdgesInteractable(Node node, bool isInteractable)
+        {
+            List<Edge> edges = node.startPortActiveEdges;
+            foreach (var edge in edges)
+            {
+                edge.EdgeSelectable.interactable = isInteractable;
+            }
+        }
     }
 }

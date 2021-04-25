@@ -18,6 +18,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] MeshRenderer meshRenderer;
         [SerializeField] MeshFilter meshFilter;
         [SerializeField] private MeshCollider meshCollider;
+        public MeshCollider MeshCollider { get => meshCollider; }
 
         [SerializeField] Material material;
         public Material Material { get=> material; }
@@ -31,9 +32,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
         private Color originalTintColor;
 
-        [SerializeField] ParticleSystem firstEdgeVisitStartSparksEffect;
         private float dissolveInitialValue;
-
+        [Header("Selectable")]
+        [SerializeField] EdgeSelectable edgeSelectable;
+        public EdgeSelectable EdgeSelectable { get => edgeSelectable; }
         // Start is called before the first frame update
         void Awake()
         {

@@ -107,7 +107,7 @@ Material:
     - _EndColor: {r: 2.79544, g: 0.9659636, b: 0.19026555, a: 1}
     - _EndWorldPosition: {r: 1, g: 1, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 1, g: 0.34031418, b: 0.06806283, a: 0.2}
+    - _OutlineColor: {r: 1, g: 0.34031418, b: 0.06806283, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _StartWorldPosition: {r: 0, g: 0, b: 0, a: 1}
     - _TravelColor: {r: 5.7880425, g: 1.9394488, b: 0.39395052, a: 1}
