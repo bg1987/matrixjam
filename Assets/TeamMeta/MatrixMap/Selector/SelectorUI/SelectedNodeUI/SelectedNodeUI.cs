@@ -13,7 +13,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] TextMeshContainer textContainer;
         [SerializeField] GameObject container;
         [SerializeField] private float distanceFromNode;
-        [SerializeField] float verticalDistanceFactorInfluence = 1;
+        [SerializeField] float diagonalDistanceFactorInfluence = 1;
         [SerializeField] Transform line;
         [Header("For Debug")]
         [SerializeField] Node node;
@@ -62,7 +62,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             Vector3 targetDirection = Vector3.zero;
             if (directionFromMap.x <= 0 && directionFromMap.y<0)
             {
-                var startDirection = (Vector3.left+Vector3.up* verticalDistanceFactorInfluence).normalized;
+                var startDirection = (Vector3.left+Vector3.up* diagonalDistanceFactorInfluence).normalized;
                 var endDirection = Vector3.left;
               
                 targetDirection = Vector3.Lerp(startDirection, endDirection, 1 + directionFromMap.y).normalized;
@@ -70,20 +70,20 @@ namespace MatrixJam.TeamMeta.MatrixMap
             else if (directionFromMap.x < 0 && directionFromMap.y >= 0)
             {
                 var startDirection = Vector3.left;
-                var endDirection = (Vector3.left + Vector3.down* verticalDistanceFactorInfluence).normalized;
+                var endDirection = (Vector3.left + Vector3.down* diagonalDistanceFactorInfluence).normalized;
 
                 targetDirection = Vector3.Lerp(startDirection, endDirection, directionFromMap.y).normalized;
             }
             else if (directionFromMap.x >= 0 && directionFromMap.y >= 0)
             {
                 var startDirection = Vector3.right;
-                var endDirection = (Vector3.right + Vector3.down* verticalDistanceFactorInfluence).normalized;
+                var endDirection = (Vector3.right + Vector3.down* diagonalDistanceFactorInfluence).normalized;
 
                 targetDirection = Vector3.Lerp(startDirection, endDirection, directionFromMap.y).normalized;
             }
             else if (directionFromMap.x > 0 && directionFromMap.y <= 0)
             {
-                var startDirection = (Vector3.right + Vector3.up* verticalDistanceFactorInfluence).normalized;
+                var startDirection = (Vector3.right + Vector3.up* diagonalDistanceFactorInfluence).normalized;
                 var endDirection = Vector3.right;
 
                 targetDirection = Vector3.Lerp(startDirection, endDirection, 1 + directionFromMap.y).normalized;

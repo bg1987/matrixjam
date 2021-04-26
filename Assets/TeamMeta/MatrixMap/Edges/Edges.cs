@@ -40,6 +40,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             foreach (var edge in edges)
             {
                 edge.gameObject.SetActive(false);
+                edge.MeshCollider.enabled = false;
             }
         }
         public List<Edge> GetVisitedEdges()

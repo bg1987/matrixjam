@@ -106,6 +106,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             hoveredSelectable = null;
             selectedSelectable = null;
             nodeSelector.Reset();
+            edgeSelector.Reset();
         }
     }
 }

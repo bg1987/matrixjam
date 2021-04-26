@@ -50,6 +50,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             
         }
+        public Edge GetEdge()
+        {
+            return edge;
+        }
         public void HoverEnter()
         {
             if (isHovered)
