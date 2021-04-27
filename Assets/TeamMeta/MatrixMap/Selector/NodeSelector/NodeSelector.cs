@@ -11,7 +11,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         NodeSelectable hoveredNode;
 
         [SerializeField] Overlay overlay;
-        [SerializeField] SelectedNodeUI nodeUI;
+        [SerializeField] NodeUI nodeUI;
         [SerializeField] MatrixTraveler matrixTraveler;
         // Start is called before the first frame update
         void Start()

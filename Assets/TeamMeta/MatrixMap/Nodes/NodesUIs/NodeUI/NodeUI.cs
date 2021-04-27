@@ -6,7 +6,7 @@ using UnityEngine;
 namespace MatrixJam.TeamMeta.MatrixMap
 {
     [ExecuteInEditMode]
-    public class SelectedNodeUI : MonoBehaviour
+    public class NodeUI : MonoBehaviour
     {
         [SerializeField] TextMeshPro text;
         [SerializeField] TextMeshSizer textSizer;
