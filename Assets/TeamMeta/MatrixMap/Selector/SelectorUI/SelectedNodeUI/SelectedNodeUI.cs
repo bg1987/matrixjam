@@ -15,11 +15,23 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] private float distanceFromNode;
         [SerializeField] float diagonalDistanceFactorInfluence = 1;
         [SerializeField] Transform line;
+
+        [Header("Appearance")]
+        [SerializeField] TmpFader tmpFader;
+        [SerializeField] float linesFadeInDuration = 0.34f;
+        [SerializeField] float characterFadeInDuration = 0;
+        [SerializeField] float overallAlphaFadeInDuration = 0.4f;
+
         [Header("For Debug")]
         [SerializeField] Node node;
         // Start is called before the first frame update
-        void Start()
+        IEnumerator Start()
         {
+            yield return null;
+            //yield return new WaitForSeconds(1);
+            //Disappear(true);
+            //yield return new WaitForSeconds(1);
+            //Appear(true);
         }
         private void Update()
         {
@@ -30,6 +42,28 @@ namespace MatrixJam.TeamMeta.MatrixMap
         public void Activate()
         {
             container.SetActive(true);
+        }
+        public void Appear(bool shouldFadeOverallAlpha)
+        {
+            tmpFader.FadeInLines(linesFadeInDuration, characterFadeInDuration);
+            if (shouldFadeOverallAlpha)
+                tmpFader.FadeInOverallAlpha(overallAlphaFadeInDuration);
+        }
+        public void AppearInstantly()
+        {
+            tmpFader.FadeInLines(0f, 0f);
+            tmpFader.FadeInOverallAlpha(0.0f);
+        }
+        public void Disappear(bool shouldFadeOverallAlpha)
+        {
+            tmpFader.FadeOutLines(0.23f, 0.2f);
+            if (shouldFadeOverallAlpha)
+                tmpFader.FadeOutOverallAlpha(0.0f);
+        }
+        public void DisappearInstantly()
+        {
+            tmpFader.FadeOutLines(0f, 0f);
+            tmpFader.FadeOutOverallAlpha(0.0f);
         }
         public void deactivate()
         {

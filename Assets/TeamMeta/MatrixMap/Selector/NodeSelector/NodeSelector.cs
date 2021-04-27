@@ -96,12 +96,18 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 nodeUI.SetNodeData("Test Game Name", 2, 5, 9);
 
             nodeUI.PositionAroundNode(mapCenter: Vector3.zero, node);
+
+            nodeUI.DisappearInstantly();
+            nodeUI.Appear(true);
         }
         void DeactivateUI()
         {
             overlay.Deactivate();
 
             nodeUI.deactivate();
+            nodeUI.DisappearInstantly();
+
+            //nodeUI.Disappear(true);
         }
         void FocusNode()
         {

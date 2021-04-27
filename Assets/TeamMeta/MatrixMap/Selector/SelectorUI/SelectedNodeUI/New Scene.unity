@@ -1042,14 +1042,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11d2c0c371289347894304910941b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 1495039651}
-  padding: {x: 0, y: 0}
-  maxSize: {x: 1000, y: 40}
-  minSize: {x: 0.1, y: 0.1}
-  controlAxes: 1
-  lastText: 
-  lastSize: {x: 0, y: 0}
-  forceRefresh: 0
 --- !u!1 &1787535545
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,14 +1202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11d2c0c371289347894304910941b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 1787535546}
-  padding: {x: 0, y: 0}
-  maxSize: {x: 1000, y: Infinity}
-  minSize: {x: 1, y: 1}
-  controlAxes: 3
-  lastText: 
-  lastSize: {x: 0, y: 0}
-  forceRefresh: 0
 --- !u!23 &1787535550
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1391,35 +1375,44 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4638982611040451936, guid: 91babc5820e081140ae00d33dd9bb6fd,
+        type: 3}
+      propertyPath: m_text
+      value: 'GuessTheCodeGameScene
+
+        Visits: 0
+
+        Paths: 0/4'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638982611040451936, guid: 91babc5820e081140ae00d33dd9bb6fd,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638982611040451936, guid: 91babc5820e081140ae00d33dd9bb6fd,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638982611040451936, guid: 91babc5820e081140ae00d33dd9bb6fd,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4638982611040451939, guid: 91babc5820e081140ae00d33dd9bb6fd,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 4638982611040451940, guid: 91babc5820e081140ae00d33dd9bb6fd,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4638982611040451941, guid: 91babc5820e081140ae00d33dd9bb6fd,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 48.66
-      objectReference: {fileID: 0}
-    - target: {fileID: 4638982611040451941, guid: 91babc5820e081140ae00d33dd9bb6fd,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 27.34
+      value: 117.77
       objectReference: {fileID: 0}
     - target: {fileID: 4638982611205625936, guid: 91babc5820e081140ae00d33dd9bb6fd,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2832
-      objectReference: {fileID: 0}
-    - target: {fileID: 4638982611205625936, guid: 91babc5820e081140ae00d33dd9bb6fd,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8568
+      value: 2.6653998
       objectReference: {fileID: 0}
     - target: {fileID: 4638982611977029110, guid: 91babc5820e081140ae00d33dd9bb6fd,
         type: 3}
