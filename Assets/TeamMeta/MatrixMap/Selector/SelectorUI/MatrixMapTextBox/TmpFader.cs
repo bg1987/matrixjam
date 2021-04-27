@@ -9,20 +9,25 @@ namespace MatrixJam.TeamMeta
     {
         [SerializeField] TextMeshPro text;
         private Color32[] newVertexColors;
-        private Color32[] newVertexColorsCopy;
-        private Coroutine[] characterFadeRoutines;
+        private Color32[] newVertexColorsCopy = new Color32[0];
+        private Coroutine[] characterFadeRoutines= new Coroutine[0];
+        private Coroutine FadeOverallAlpha;
+        Material fontMaterial;
         // Start is called before the first frame update
-        IEnumerator Start()
+        void Awake()
         {
             text.ForceMeshUpdate(true);
-            newVertexColors = text.textInfo.meshInfo[0].colors32;
-            newVertexColorsCopy = new Color32[newVertexColors.Length];
-            for (int i = 0; i < newVertexColors.Length; i++)
-                newVertexColorsCopy[i] = newVertexColors[i];
-            characterFadeRoutines = new Coroutine[text.textInfo.characterCount];
+            fontMaterial = text.fontMaterial;
+            RestoreVertexColors();
+            //newVertexColors = text.textInfo.meshInfo[0].colors32;
+            //string name = gameObject.name;
+            //newVertexColorsCopy = new Color32[newVertexColors.Length];
+            //for (int i = 0; i < newVertexColors.Length; i++)
+            //    newVertexColorsCopy[i] = newVertexColors[i];
+            //characterFadeRoutines = new Coroutine[text.textInfo.characterCount];
             //FadeOut(0f, 0f);
             //FadeOutOverallAlpha(0f);
-            yield return new WaitForSeconds(1);
+            //yield return new WaitForSeconds(1);
             //FadeIn(0.5f, 0.1f);
             //FadeInOverallAlpha(0.1f);
             //FadeIn(0.1f, 0.1f);
@@ -38,32 +43,45 @@ namespace MatrixJam.TeamMeta
                 RestoreVertexColors();
             }
         }
-        public void FadeOutInstantly()
-        {
-            FadeOut(0, 0);
-        }
+
         public void FadeOut(float totalDuration, float characterDuration)
         {
             if(totalDuration == 0)
+            {
                 StopAllCoroutines();
+                FadeOutInstantly();
+                return;
+            }
             StartCoroutine(AlphaChangeRoutine(0, totalDuration, characterDuration));
         }
         public void FadeOutLines(float totalDuration, float characterDuration)
         {
             if (totalDuration == 0)
+            {
                 StopAllCoroutines();
+                FadeOutInstantly();
+                return;
+            }
             StartCoroutine(LinesAlphaChangeRoutine(0, totalDuration, characterDuration));
         }
         public void FadeIn(float totalDuration, float characterDuration)
         {
             if (totalDuration == 0)
+            {
                 StopAllCoroutines();
+                FadeInInstantly();
+                return;
+            }
             StartCoroutine(AlphaChangeRoutine(1, totalDuration, characterDuration));
         }
         public void FadeInLines(float totalDuration, float characterDuration)
         {
             if (totalDuration == 0)
+            {
                 StopAllCoroutines();
+                FadeInInstantly();
+                return;
+            }
             StartCoroutine(LinesAlphaChangeRoutine(1, totalDuration, characterDuration));
         }
         IEnumerator AlphaChangeRoutine(float targetAlpha, float duration, float characterDuration)
@@ -293,23 +311,40 @@ namespace MatrixJam.TeamMeta
             newVertexColorsCopy[vertexIndex2] = newVertexColors[vertexIndex2];
             newVertexColorsCopy[vertexIndex3] = newVertexColors[vertexIndex3];
 
+            characterFadeRoutines[vertexIndex/4] = null;
             yield return null;
         }
         public void FadeInOverallAlpha(float totalDuration)
         {
-            StartCoroutine(ChangeOverallAlpha(totalDuration, 1));
+            if (FadeOverallAlpha != null)
+                StopCoroutine(FadeOverallAlpha);
+
+            if (totalDuration == 0)
+            {
+                FadeInOverallAlphaInstantly();
+                return;
+            }
+            FadeOverallAlpha = StartCoroutine(ChangeOverallAlpha(totalDuration, 1));
         }
         public void FadeOutOverallAlpha(float totalDuration)
         {
-            StartCoroutine(ChangeOverallAlpha(totalDuration, 0));
+            if (FadeOverallAlpha != null)
+                StopCoroutine(FadeOverallAlpha);
+
+            if (totalDuration == 0)
+            {
+                
+                FadeOutOverallAlphaInstantly();
+                return;
+            }
+            FadeOverallAlpha = StartCoroutine(ChangeOverallAlpha(totalDuration, 0));
         }
         IEnumerator ChangeOverallAlpha(float duration, float targetAlpha)
         {
 
             float t = 0;
-
-            Color startColor = text.fontMaterial.GetColor("_FaceColor");
-            Color glowColor = text.fontMaterial.GetColor("_GlowColor");
+            Color startColor = fontMaterial.GetColor("_FaceColor");
+            Color glowColor = fontMaterial.GetColor("_GlowColor");
 
             float startAlpha = startColor.a;
             t = 1 - Mathf.Abs(targetAlpha - startColor.a);
@@ -322,16 +357,16 @@ namespace MatrixJam.TeamMeta
                 color.a = alpha;
                 glowColor.a = alpha;
 
-                text.fontMaterial.SetColor("_FaceColor", color);
-                text.fontMaterial.SetColor("_GlowColor", color);
+                fontMaterial.SetColor("_FaceColor", color);
+                fontMaterial.SetColor("_GlowColor", color);
                 yield return null;
                 t += Time.deltaTime / duration;
             }
             color.a = targetAlpha;
             glowColor.a = targetAlpha;
 
-            text.fontMaterial.SetColor("_FaceColor", color);
-            text.fontMaterial.SetColor("_GlowColor", color);
+            fontMaterial.SetColor("_FaceColor", color);
+            fontMaterial.SetColor("_GlowColor", color);
 
             yield return null;
 
@@ -356,6 +391,60 @@ namespace MatrixJam.TeamMeta
             text.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
             if (text.textInfo.characterCount != characterFadeRoutines.Length)
                 System.Array.Resize(ref characterFadeRoutines, text.textInfo.characterCount);
+        }
+        void FadeOutInstantly()
+        {
+            ChangeCharactersAlphaInstantly(0);
+        }
+        void FadeInInstantly()
+        {
+            ChangeCharactersAlphaInstantly(255);
+        }
+        void ChangeCharactersAlphaInstantly(byte alpha)
+        {
+            for (int i = 0; i < text.textInfo.characterCount; i++)
+            {
+                var characterInfo = text.textInfo.characterInfo[i];
+                if (characterInfo.isVisible)
+                {
+                    int vertexIndex = text.textInfo.characterInfo[i].vertexIndex;
+
+                    int vertexIndex0 = vertexIndex + 0;
+                    int vertexIndex1 = vertexIndex + 1;
+                    int vertexIndex2 = vertexIndex + 2;
+                    int vertexIndex3 = vertexIndex + 3;
+
+                    newVertexColors[vertexIndex0].a = alpha;
+                    newVertexColors[vertexIndex1].a = alpha;
+                    newVertexColors[vertexIndex2].a = alpha;
+                    newVertexColors[vertexIndex3].a = alpha;
+
+                    newVertexColorsCopy[vertexIndex0] = newVertexColors[vertexIndex0];
+                    newVertexColorsCopy[vertexIndex1] = newVertexColors[vertexIndex1];
+                    newVertexColorsCopy[vertexIndex2] = newVertexColors[vertexIndex2];
+                    newVertexColorsCopy[vertexIndex3] = newVertexColors[vertexIndex3];
+                }
+            }
+            text.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
+        }
+        void FadeOutOverallAlphaInstantly()
+        {
+            ChangeOverallAlphaInstantly(0);
+        }
+        void FadeInOverallAlphaInstantly()
+        {
+            ChangeOverallAlphaInstantly(1);
+        }
+        void ChangeOverallAlphaInstantly(float alpha)
+        {
+            Color faceColor = fontMaterial.GetColor("_FaceColor");
+            Color glowColor = fontMaterial.GetColor("_GlowColor");
+
+            faceColor.a = alpha;
+            glowColor.a = alpha;
+
+            fontMaterial.SetColor("_FaceColor", faceColor);
+            fontMaterial.SetColor("_GlowColor", glowColor);
         }
     }
 }

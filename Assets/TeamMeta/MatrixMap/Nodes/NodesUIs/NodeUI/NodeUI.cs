@@ -22,6 +22,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] float characterFadeInDuration = 0;
         [SerializeField] float overallAlphaFadeInDuration = 0.4f;
 
+        [Header("Disappearance")]
+        [SerializeField] float linesFadeOutDuration = 0.23f;
+        [SerializeField] float characterFadeOutDuration = 0.2f;
+        [SerializeField] float overallAlphaFadeOutDuration = 0.3f;
+
         [Header("For Debug")]
         [SerializeField] Node node;
         // Start is called before the first frame update
@@ -56,9 +61,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         public void Disappear(bool shouldFadeOverallAlpha)
         {
-            tmpFader.FadeOutLines(0.23f, 0.2f);
+            tmpFader.FadeOutLines(linesFadeOutDuration, characterFadeOutDuration);
             if (shouldFadeOverallAlpha)
-                tmpFader.FadeOutOverallAlpha(0.0f);
+                tmpFader.FadeOutOverallAlpha(overallAlphaFadeOutDuration);
         }
         public void DisappearInstantly()
         {
@@ -67,6 +72,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         public void deactivate()
         {
+            DisappearInstantly();
             container.SetActive(false);
         }
         public void SetNodeData(string name, int visitsCount, int DiscoveredEdgesCount, int totalEdgesCount)

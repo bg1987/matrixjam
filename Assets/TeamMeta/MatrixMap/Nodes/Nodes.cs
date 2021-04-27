@@ -38,6 +38,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] float radius = 1;
         [SerializeField] float minRadius = 3;
         [SerializeField] float maxRadius = 5;
+        [Header("NodeUIs")]
+        [SerializeField] NodesUIs nodeUis;
 
         const float TAU = Mathf.PI * 2;
 
@@ -71,6 +73,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 node.gameObject.SetActive(false);
             }
             previousActiveNodeMarker.Init();
+
+            nodeUis.Init(nodes);
         }
         public List<Node> GetVisitedNodes()
         {

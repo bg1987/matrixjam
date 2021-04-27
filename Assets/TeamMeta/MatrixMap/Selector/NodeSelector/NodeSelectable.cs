@@ -28,7 +28,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             SelectEffect();
 
-            Debug.Log("Select " + node.name);
+            //Debug.Log("Select " + node.name);
             isSelected = true;
 
             NodeEdgesInteractable(node, isInteractable: true);
@@ -39,7 +39,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             if (isSelected == false)
                 return;
 
-            Debug.Log("Unselect " + node.name);
+            //Debug.Log("Unselect " + node.name);
             isSelected = false;
 
             if (isHovered)
@@ -53,7 +53,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             if (isHovered)
                 return;
-            Debug.Log("Hover " + node.name);
+            //Debug.Log("Hover " + node.name);
             if (!isSelected)
                 HoverEffect();
 
@@ -64,7 +64,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             if (!isHovered)
                 return;
-            Debug.Log("Unhover " + node.name);
+            //Debug.Log("Unhover " + node.name);
             if (!isSelected)
                 IdleEffect();
 

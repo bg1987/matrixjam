@@ -98,5 +98,9 @@ namespace MatrixJam.TeamMeta.MatrixTravelTransition
 
             disappearRoutine = null;
         }
+        public bool IsVisible()
+        {
+            return text.alpha == 0 ? false : true;
+        }
     }
 }

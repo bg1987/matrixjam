@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,18 +12,26 @@ namespace MatrixJam.TeamMeta.MatrixMap
         NodeSelectable hoveredNode;
 
         [SerializeField] Overlay overlay;
-        [SerializeField] NodeUI nodeUI;
+        [SerializeField] NodeUI selectedNodeUI;
+        [SerializeField] NodesUIs nodeUis;
         [SerializeField] MatrixTraveler matrixTraveler;
         // Start is called before the first frame update
         void Start()
         {
-            DeactivateUI();
         }
         public void Reset()
         {
-            DeactivateUI();
-            HandleUnselect();
-            if(hoveredNode)
+
+            selectedNodeUI = null;
+            overlay.Deactivate();
+            if (selectedNode)
+            {
+                selectedNode.Unselect();
+                selectedNode = null;
+            }
+            nodeUis.Deactivate();
+
+            if (hoveredNode)
                 hoveredNode.HoverExit();
             if (selectedNode)
                 UnfocusNode();
@@ -40,38 +49,72 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         public void HandleSelect(NodeSelectable target)
         {
-            HandleUnselect();
-            if (target != null)
+            if(selectedNode == null)
             {
-                selectedNode = target;
-                target.Select();
-                ActivateUI();
-                FocusNode();
+                if (target != null)
+                    Select(target);
             }
-            else
+            else if(selectedNode == target)
             {
-                DeactivateUI();
+
+            }
+            else if (target!=null)
+            {
+                ReplaceSelectedNode(target);
+            }
+            else if (target == null)
+            {
+                Unselect();
             }
         }
-        void HandleUnselect()
+
+        private void Unselect()
         {
-            if (selectedNode == null)
-                return;
             UnfocusNode();
             selectedNode.Unselect();
             selectedNode = null;
+            overlay.Deactivate();
+            selectedNodeUI.Disappear(true);
+            selectedNodeUI = null;
         }
-        void ActivateUI()
-        {
-            overlay.Activate();
 
+        private void Select(NodeSelectable target)
+        {
+            selectedNode = target;
+            target.Select();
+            FocusNode();
+
+            //UI
+            overlay.Activate(); //Todo Make into a fade
+            selectedNodeUI = nodeUis.uis[selectedNode.GetNode().Index];
+            UpdateNodeUiTextAndPosition();
+            selectedNodeUI.Appear(true);
+        }
+        void ReplaceSelectedNode(NodeSelectable target)
+        {
+            UnfocusNode();
+            selectedNode.Unselect();
+            selectedNodeUI.Disappear(false);
+         
+            selectedNode = target;
+            selectedNode.Select();
+            FocusNode();
+
+            selectedNodeUI = nodeUis.uis[selectedNode.GetNode().Index];
+            UpdateNodeUiTextAndPosition();
+            selectedNodeUI.Appear(false);
+        }
+        void UpdateNodeUiTextAndPosition()
+        {
             Node node = selectedNode.GetNode();
 
-            nodeUI.Activate();
+            var nodeUI = nodeUis.uis[node.Index];
+
+            selectedNodeUI = nodeUI;
+            selectedNodeUI.Activate();
 
             if (matrixTraveler != null)
             {
-
                 MatrixNodeData nodeData = matrixTraveler.matrixGraphData.nodes[node.Index];
                 MatrixTravelHistory travelData = matrixTraveler.travelData;
                 travelData.TryGetLastTravel(out var lastTravelData);
@@ -90,25 +133,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 int DiscoveredEdgesCount = matrixTraveler.travelData.GetGameVisitedEdgesCount(nodeData.index);
                 int totalEdgesCount = nodeData.outputPorts.Count;
 
-                nodeUI.SetNodeData(name, visitsCount, DiscoveredEdgesCount, totalEdgesCount);
+                selectedNodeUI.SetNodeData(name, visitsCount, DiscoveredEdgesCount, totalEdgesCount);
             }
             else
-                nodeUI.SetNodeData("Test Game Name", 2, 5, 9);
+                selectedNodeUI.SetNodeData("Test Game Name", 2, 5, 9);
 
-            nodeUI.PositionAroundNode(mapCenter: Vector3.zero, node);
-
-            nodeUI.DisappearInstantly();
-            nodeUI.Appear(true);
+            selectedNodeUI.PositionAroundNode(mapCenter: Vector3.zero, node);
         }
-        void DeactivateUI()
-        {
-            overlay.Deactivate();
 
-            nodeUI.deactivate();
-            nodeUI.DisappearInstantly();
-
-            //nodeUI.Disappear(true);
-        }
         void FocusNode()
         {
             var localPos = selectedNode.transform.parent.localPosition;

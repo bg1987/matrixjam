@@ -44,7 +44,8 @@ namespace MatrixJam.TeamMeta.MatrixTravelTransition
             }
             else
             {
-                pressContinueKey.Disappear();
+                if(pressContinueKey.IsVisible())
+                    pressContinueKey.Disappear();
             }
 
         }
