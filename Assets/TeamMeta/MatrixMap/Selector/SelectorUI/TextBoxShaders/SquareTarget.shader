@@ -1,11 +1,11 @@
-﻿Shader "Unlit/TextBoxShader"
+﻿Shader "Unlit/SquareTarget"
 {
     Properties
     {
         [hdr] _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Texture", 2D) = "white" {}
         _LineWidth ("LineWidth", float) = 0.1
-        _LineHeight ("LineLength", float) = 0.3
+        _LineLength ("LineLength", float) = 0.3
         
 
     }
@@ -42,7 +42,7 @@
             float4 _MainTex_ST;
 
             float _LineWidth;
-            float _LineHeight;
+            float _LineLength;
 
             Interpolators vert (MeshData v)
             {
@@ -75,7 +75,7 @@
                 float lineWidth = _LineWidth;
                 float lineWidthScaledX = lineWidth/i.scale.x;
                 float lineWidthScaledY = lineWidth/i.scale.y;
-                float lineHeight = _LineHeight;
+                float lineHeight = _LineLength;
                 float lineHeightScaledX = lineHeight/i.scale.x;
                 float lineHeightScaledY = lineHeight/i.scale.y;
 

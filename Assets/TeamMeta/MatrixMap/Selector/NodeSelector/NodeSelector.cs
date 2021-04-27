@@ -102,6 +102,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             selectedNodeUI = nodeUis.uis[selectedNode.GetNode().Index];
             UpdateNodeUiTextAndPosition();
+            selectedNodeUI.OverallAlphaAppearInstantly();
             selectedNodeUI.Appear(false);
         }
         void UpdateNodeUiTextAndPosition()

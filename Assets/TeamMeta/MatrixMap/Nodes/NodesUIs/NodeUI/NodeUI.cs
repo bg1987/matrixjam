@@ -16,17 +16,22 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] float diagonalDistanceFactorInfluence = 1;
         [SerializeField] Transform line;
 
-        [Header("Appearance")]
+        [SerializeField] SquareTarget squareTarget;
+        [Header("Square Target Appearance")]
+        [SerializeField] float squareTargetFadeInDuration = 0.34f;
+        [SerializeField] float squareTargetFadeOutDuration = 0.23f;
+
+        [Header("Text Appearance")]
         [SerializeField] TmpFader tmpFader;
         [SerializeField] float linesFadeInDuration = 0.34f;
         [SerializeField] float characterFadeInDuration = 0;
         [SerializeField] float overallAlphaFadeInDuration = 0.4f;
 
-        [Header("Disappearance")]
+        [Header("Text Disappearance")]
         [SerializeField] float linesFadeOutDuration = 0.23f;
         [SerializeField] float characterFadeOutDuration = 0.2f;
         [SerializeField] float overallAlphaFadeOutDuration = 0.3f;
-
+        
         [Header("For Debug")]
         [SerializeField] Node node;
         // Start is called before the first frame update
@@ -53,22 +58,35 @@ namespace MatrixJam.TeamMeta.MatrixMap
             tmpFader.FadeInLines(linesFadeInDuration, characterFadeInDuration);
             if (shouldFadeOverallAlpha)
                 tmpFader.FadeInOverallAlpha(overallAlphaFadeInDuration);
+
+            squareTarget.Appear(squareTargetFadeInDuration);
+
         }
         public void AppearInstantly()
         {
             tmpFader.FadeInLines(0f, 0f);
             tmpFader.FadeInOverallAlpha(0.0f);
+
+            squareTarget.Appear(0);
+        }
+        public void OverallAlphaAppearInstantly()
+        {
+            tmpFader.FadeInOverallAlpha(0);
         }
         public void Disappear(bool shouldFadeOverallAlpha)
         {
             tmpFader.FadeOutLines(linesFadeOutDuration, characterFadeOutDuration);
             if (shouldFadeOverallAlpha)
                 tmpFader.FadeOutOverallAlpha(overallAlphaFadeOutDuration);
+
+            squareTarget.Disappear(squareTargetFadeOutDuration);
         }
         public void DisappearInstantly()
         {
             tmpFader.FadeOutLines(0f, 0f);
             tmpFader.FadeOutOverallAlpha(0.0f);
+
+            squareTarget.Disappear(0);
         }
         public void deactivate()
         {

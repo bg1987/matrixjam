@@ -361,6 +361,7 @@ GameObject:
   - component: {fileID: 4638982611205625939}
   - component: {fileID: 4638982611205625938}
   - component: {fileID: 4638982611205625937}
+  - component: {fileID: 6576841586522261482}
   m_Layer: 31
   m_Name: BG
   m_TagString: Untagged
@@ -457,6 +458,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textSizer: {fileID: 4638982611040451942}
   padding: {x: 0.31, y: 0.31, z: 0}
+--- !u!114 &6576841586522261482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4638982611205626031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cfc2e70c1eb8854cae46720cf8a3caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4638982611977029110
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,9 +522,16 @@ MonoBehaviour:
   distanceFromNode: 2.42
   diagonalDistanceFactorInfluence: 1
   line: {fileID: 1425704889}
+  squareTarget: {fileID: 6576841586522261482}
+  squareTargetFadeInDuration: 0.14
+  squareTargetFadeOutDuration: 0.18
   tmpFader: {fileID: 974151590}
-  appearanceDuration: 0
+  linesFadeInDuration: 0.34
   characterFadeInDuration: 0
+  overallAlphaFadeInDuration: 0.4
+  linesFadeOutDuration: 0.23
+  characterFadeOutDuration: 0.2
+  overallAlphaFadeOutDuration: 0.3
   node: {fileID: 0}
 --- !u!114 &974151590
 MonoBehaviour:
