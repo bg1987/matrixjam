@@ -8,7 +8,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
     {
         EdgeSelectable hoveredEdge;
 
-        [SerializeField] HoveredEdgeUI edgeUI;
+        [SerializeField] EdgeUI edgeUI;
         [SerializeField] MatrixTraveler matrixTraveler;
 
         // Start is called before the first frame update

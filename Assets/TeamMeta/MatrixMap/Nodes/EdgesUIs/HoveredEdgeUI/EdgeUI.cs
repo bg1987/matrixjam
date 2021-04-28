@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MatrixJam.TeamMeta.MatrixMap
 {
-    public class HoveredEdgeUI : MonoBehaviour
+    public class EdgeUI : MonoBehaviour
     {
         [SerializeField] TextMeshPro text;
         [SerializeField] TextMeshSizer textSizer;
