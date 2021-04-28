@@ -79,6 +79,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 edgeUI.SetEdgeData(-999);
             edgeUI.PositionAtEdgeCenter(edge);
             //edgeUI.DisappearInstantly();
+            edgeUI.SetLineStartColor(edge.Material.color);
             edgeUI.Appear();
         }
         void DeactivateUI()

@@ -27,6 +27,12 @@ namespace MatrixJam.TeamMeta
             startColor.a = 1;
             material.SetColor("_Color", startColor);
         }
+        public void SetStartColor(Color color)
+        {
+            if (material == null)
+                Init();
+            material.SetColor("_Color", color);
+        }
         public void Appear(float duration)
         {
             if (fadeRoutine != null)

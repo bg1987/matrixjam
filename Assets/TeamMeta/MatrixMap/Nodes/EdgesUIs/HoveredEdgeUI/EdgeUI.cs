@@ -11,10 +11,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] TextMeshSizer textSizer;
         [SerializeField] TextMeshContainer textContainer;
         [SerializeField] GameObject container;
-        [SerializeField] Transform line;
-
         [SerializeField] private float distanceFromEdge = 1;
+        [SerializeField] Transform line;
+        [SerializeField] LineShader lineShader;
+        [SerializeField] private float lineDistanceFromEdgeRadius = 1;
         [SerializeField] private bool reverseDirection;
+        [Header("Line Appearance")]
+        [SerializeField] float lineFadeInDuration = 0.34f;
+        [SerializeField] float lineFadeOutDuration = 0.23f;
 
         [SerializeField] Brackets brackets;
         [Header("brackets Appearance")]
@@ -60,16 +64,22 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             tmpFader.FadeInOverallAlpha(overallAlphaFadeInDuration);
             brackets.Appear(bracketsFadeInDuration);
+            lineShader.Appear(lineFadeInDuration);
+
         }
         public void Disappear()
         {
             tmpFader.FadeOutOverallAlpha(overallAlphaFadeOutDuration);
             brackets.Disappear(bracketsFadeOutDuration);
+            lineShader.Disappear(lineFadeOutDuration);
+
         }
         public void DisappearInstantly()
         {
             tmpFader.FadeOutOverallAlpha(0.0f);
             brackets.Disappear(0);
+            lineShader.Disappear(0);
+
         }
         public void SetEdgeData(int visitsCount)
         {
@@ -151,7 +161,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             var lineDirection = textContainer.transform.position - centerPointWorldSpace;
             lineDirection.Normalize();
-            RotateAndPositionLine(centerPointWorldSpace, lineDirection, distanceFromEdge);
+            var lineStart = centerPointWorldSpace + (lineDirection * distanceFromEdge);
+            RotateAndPositionLine(lineStart, -lineDirection, distanceFromEdge - lineDistanceFromEdgeRadius);
 
         }
 
@@ -162,7 +173,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
         internal void SetLineStartColor(Color color)
         {
             //Todo implement when adding line appearance
-            //lineShader.SetStartColor(colorHdr);
+            color = color / Mathf.Pow(2, 1.2f);
+            lineShader.SetStartColor(color);
         }
     }
 }

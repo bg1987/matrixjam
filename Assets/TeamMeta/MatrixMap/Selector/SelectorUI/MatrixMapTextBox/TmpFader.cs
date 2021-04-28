@@ -361,7 +361,7 @@ namespace MatrixJam.TeamMeta
                 startColor.a = alpha;
 
                 fontMaterial.SetColor("_FaceColor", faceColor);
-                fontMaterial.SetColor("_GlowColor", faceColor);
+                fontMaterial.SetColor("_GlowColor", glowColor);
 
                 text.color = startColor;
 
@@ -373,7 +373,7 @@ namespace MatrixJam.TeamMeta
             startColor.a = targetAlpha;
 
             fontMaterial.SetColor("_FaceColor", faceColor);
-            fontMaterial.SetColor("_GlowColor", faceColor);
+            fontMaterial.SetColor("_GlowColor", glowColor);
             text.color = startColor;
 
             yield return null;
