@@ -21,9 +21,19 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             //raycaster.OnHover += HandleHover;
             raycaster.OnClickDown += HandleSelect;
+            raycaster.OnRightClickDown += HandleRightClick;
             raycaster.OnHoverEnter += HandleHoverEnter;
             raycaster.OnHoverExit += HandleHoverExit;
         }
+
+        private void HandleRightClick(GameObject obj)
+        {
+            HandleSelect(null);
+
+            if(obj)
+                HandleHoverExit(obj);
+        }
+
         private void Start()
         {
             Deactivate();

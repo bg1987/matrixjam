@@ -68,8 +68,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
             if (!isHovered)
                 return;
             Debug.Log("Unhover " + edge.name);
-
-            InteractableEffect();
+            if(interactable)
+                InteractableEffect();
 
             isHovered = false;
         }

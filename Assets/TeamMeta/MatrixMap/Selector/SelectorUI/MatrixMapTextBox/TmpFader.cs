@@ -219,6 +219,8 @@ namespace MatrixJam.TeamMeta
             {
                 StopCoroutine(characterFadeRoutines[index]);
             }
+            if (targetAlpha == newVertexColors[vertexIndex].a)
+                return;
             characterFadeRoutines[index] = StartCoroutine(CharacterAlphaChangeRoutine(targetAlpha, vertexIndex, duration, 0));
         }
         IEnumerator LineAlphaChangeRoutine(byte targetAlpha, float duration, float characterDuration, int lineIndex, double delayBetweenCharacters)
@@ -312,8 +314,6 @@ namespace MatrixJam.TeamMeta
             newVertexColorsCopy[vertexIndex2] = newVertexColors[vertexIndex2];
             newVertexColorsCopy[vertexIndex3] = newVertexColors[vertexIndex3];
 
-            characterFadeRoutines[vertexIndex/4] = null;
-            yield return null;
         }
         public void FadeInOverallAlpha(float totalDuration)
         {

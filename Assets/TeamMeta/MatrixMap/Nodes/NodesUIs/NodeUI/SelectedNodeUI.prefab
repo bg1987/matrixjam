@@ -55,7 +55,6 @@ GameObject:
   - component: {fileID: 2041345075}
   - component: {fileID: 2041345078}
   - component: {fileID: 2041345077}
-  - component: {fileID: 2041345076}
   m_Layer: 31
   m_Name: Quad
   m_TagString: Untagged
@@ -124,20 +123,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2041345076
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041345074}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &4638982611040451967
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,9 +530,9 @@ MonoBehaviour:
   linesFadeInDuration: 0.34
   characterFadeInDuration: 0
   overallAlphaFadeInDuration: 0.4
-  linesFadeOutDuration: 0.27
-  characterFadeOutDuration: 0.2
-  overallAlphaFadeOutDuration: 0.36
+  linesFadeOutDuration: 0.28
+  characterFadeOutDuration: 0.12
+  overallAlphaFadeOutDuration: 0.45
   node: {fileID: 0}
 --- !u!114 &974151590
 MonoBehaviour:

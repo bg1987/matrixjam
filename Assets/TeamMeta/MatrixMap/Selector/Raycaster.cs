@@ -14,6 +14,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         public System.Action<GameObject> OnHoverEnter;
         public System.Action<GameObject> OnHoverExit;
         public System.Action<GameObject> OnClickDown;
+        public System.Action<GameObject> OnRightClickDown;
 
         GameObject hoveredObject;
         private void Awake()
@@ -28,7 +29,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
             {
                 OnClickDown?.Invoke(hitObject);
             }
-
+            else if (Input.GetMouseButtonDown(1))
+            {
+                OnRightClickDown?.Invoke(hitObject);
+            }
             OnHover?.Invoke(hitObject);
 
             if (hoveredObject != hitObject)

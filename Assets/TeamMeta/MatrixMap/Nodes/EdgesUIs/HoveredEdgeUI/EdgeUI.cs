@@ -173,7 +173,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         internal void SetLineStartColor(Color color)
         {
             //Todo implement when adding line appearance
-            color = color / Mathf.Pow(2, 1.2f);
+            color = color / Mathf.Pow(2, 0.8f);
             lineShader.SetStartColor(color);
         }
     }
