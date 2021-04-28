@@ -3,6 +3,7 @@
     Properties
     {
         [hdr] _Color ("Color", Color) = (1,1,1,1)
+        [hdr] _EndColor ("EndColor", Color) = (1,1,1,1)
         _MainTex ("Texture", 2D) = "white" {}
         _Fill ("Fill", Range(0,1)) = 1
 
@@ -37,6 +38,7 @@
             };
 
             float4 _Color;
+            float4 _EndColor;
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
@@ -54,8 +56,7 @@
             {
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
-                col*=_Color;
-                
+                col*=lerp(_Color,_EndColor,1-i.uv.y);
                 // if(i.uv.y<0.01)
                 //     i.uv.y = 0;
                 bool fillMask = 1-i.uv.y<_Fill && _Fill!=0;

@@ -18,6 +18,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             for (int i = 0; i < nodes.Count; i++)
             {
                 var nodeUI = Instantiate(nodeUiPrefab, transform);
+                nodeUI.SetLineStartColor(nodes[i].ColorHdr1);
                 uis.Add(nodeUI);
             }
         }

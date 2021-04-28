@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1425704889}
+  - component: {fileID: 1541838530151792198}
   m_Layer: 31
   m_Name: Line
   m_TagString: Untagged
@@ -31,6 +32,18 @@ Transform:
   m_Father: {fileID: 3196140535758671079}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1541838530151792198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425704888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d16d1c7e7aefa04ca272261ead47399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2041345074
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,9 +535,12 @@ MonoBehaviour:
   distanceFromNode: 2.42
   diagonalDistanceFactorInfluence: 1
   line: {fileID: 1425704889}
+  lineShader: {fileID: 1541838530151792198}
   squareTarget: {fileID: 6576841586522261482}
   squareTargetFadeInDuration: 0.14
   squareTargetFadeOutDuration: 0.18
+  lineFadeInDuration: 0.11
+  lineFadeOutDuration: 0.09
   tmpFader: {fileID: 974151590}
   linesFadeInDuration: 0.34
   characterFadeInDuration: 0

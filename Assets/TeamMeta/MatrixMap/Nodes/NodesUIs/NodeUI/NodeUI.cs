@@ -15,12 +15,15 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] private float distanceFromNode;
         [SerializeField] float diagonalDistanceFactorInfluence = 1;
         [SerializeField] Transform line;
+        [SerializeField] LineShader lineShader;
 
         [SerializeField] SquareTarget squareTarget;
         [Header("Square Target Appearance")]
         [SerializeField] float squareTargetFadeInDuration = 0.34f;
         [SerializeField] float squareTargetFadeOutDuration = 0.23f;
-
+        [Header("Line Appearance")]
+        [SerializeField] float lineFadeInDuration = 0.34f;
+        [SerializeField] float lineFadeOutDuration = 0.23f;
         [Header("Text Appearance")]
         [SerializeField] TmpFader tmpFader;
         [SerializeField] float linesFadeInDuration = 0.34f;
@@ -60,7 +63,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 tmpFader.FadeInOverallAlpha(overallAlphaFadeInDuration);
 
             squareTarget.Appear(squareTargetFadeInDuration);
-
+            lineShader.Appear(lineFadeInDuration);
         }
         public void AppearInstantly()
         {
@@ -80,6 +83,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 tmpFader.FadeOutOverallAlpha(overallAlphaFadeOutDuration);
 
             squareTarget.Disappear(squareTargetFadeOutDuration);
+            lineShader.Disappear(lineFadeOutDuration);
+
         }
         public void DisappearInstantly()
         {
@@ -87,6 +92,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             tmpFader.FadeOutOverallAlpha(0.0f);
 
             squareTarget.Disappear(0);
+            lineShader.Disappear(0);
         }
         public void deactivate()
         {
@@ -174,6 +180,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
             var degrees = Mathf.Atan2(lineTargetDirection.y, lineTargetDirection.x) - Mathf.Atan2(lineLookDirection.y, lineLookDirection.x);
             degrees *= Mathf.Rad2Deg;
             line.Rotate(0, 0, degrees);
+        }
+        public void SetLineStartColor(ColorHdr colorHdr)
+        {
+            lineShader.SetStartColor(colorHdr);
         }
     }
 }

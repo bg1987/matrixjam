@@ -38,10 +38,10 @@ namespace MatrixJam.TeamMeta
             float t = startAlpha;
             while (t < 1)
             {
-                color.a = Mathf.Lerp(startAlpha, 1, t);
+                color.a = Mathf.Lerp(0, 1, t);
                 material.SetColor("_Color", color);
 
-                var lineLength = Mathf.Lerp(startLineLength, baseLineLength, t);
+                var lineLength = Mathf.Lerp(0, baseLineLength, t);
                 material.SetFloat("_LineLength", lineLength);
                 
                 //var lineWidth = Mathf.Lerp(startLineWidth, baseLineWidth, t);
@@ -78,10 +78,10 @@ namespace MatrixJam.TeamMeta
             float t = 1 - startAlpha;
             while (t < 1)
             {
-                color.a = Mathf.Lerp(startAlpha, 0, t);
+                color.a = Mathf.Lerp(1, 0, t);
                 material.SetColor("_Color", color);
 
-                var lineLength = Mathf.Lerp(startLineLength, 0, t);
+                var lineLength = Mathf.Lerp(baseLineLength, 0, t);
                 material.SetFloat("_LineLength", lineLength);
 
                 //var lineWidth = Mathf.Lerp(startLineWidth, 0, t);
