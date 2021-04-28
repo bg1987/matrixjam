@@ -1623,7 +1623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99626aef3fea5c94a82681c8f6bb713d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matrixGraphAsset: {fileID: 2811297602134710623, guid: 60a5549428e4e864cb6202b3cc3999bb,
+  matrixGraphAsset: {fileID: 2811297602134710623, guid: f0134894f0eaba543a64af5d179df3c1,
     type: 3}
   startScene: TestStartScene
   endScene: EndScene

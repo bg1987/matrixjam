@@ -46,7 +46,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             Edge edge = hoveredEdge.GetEdge();
 
             edgeUI.Activate();
-
+            
             if (matrixTraveler != null)
             {
 
@@ -68,6 +68,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
             else
                 edgeUI.SetEdgeData(-999);
             edgeUI.PositionAtEdgeCenter(edge);
+            edgeUI.DisappearInstantly();
+            edgeUI.Appear();
         }
         void DeactivateUI()
         {

@@ -256,13 +256,14 @@ namespace MatrixJam.TeamMeta
                 {
                     delayBetweenCharactersT--;
                     i++;
+                    if (i > endIndex)
+                        break;
                     if (textInfo.characterInfo[i].isVisible)
                     {
                         int vertexIndex = textInfo.characterInfo[i].vertexIndex;
                         CharacterAlphaChange(i, vertexIndex, targetAlpha, characterDuration);
                     }
-                    if (i > endIndex)
-                        break;
+                    
                 }
             }
 

@@ -6,6 +6,7 @@
         [hdr] _EndColor ("EndColor", Color) = (1,1,1,1)
         _MainTex ("Texture", 2D) = "white" {}
         _Fill ("Fill", Range(0,1)) = 1
+        _Width ("Width", Range(0,1)) = 1
 
     }
     SubShader
@@ -44,6 +45,7 @@
             float4 _MainTex_ST;
 
             float _Fill;
+            float _Width;
             v2f vert (appdata v)
             {
                 v2f o;
@@ -59,10 +61,24 @@
                 col*=lerp(_Color,_EndColor,1-i.uv.y);
                 // if(i.uv.y<0.01)
                 //     i.uv.y = 0;
+                float x = abs(i.uv.x*2 -1);
+                // x = 1-distance(x, 1);
+                // return float4(x.xxxx);
+                // x = x * (x>=0.8);
+                float pd = 1-( saturate (x-_Width)/(fwidth(i.uv)));
+                float yo = length(float2(ddx(x),ddy(x)));
+                // pd = 1-smoothstep(_Width-yo,_Width,x);
+
+                pd = saturate(pd);
+                // float mask = saturate(x/pd);
+                // if(x>0.5)
+                    // return float4(pd.xxx,1);
+                    // return float4(pd.xxxx);
+                bool widthMask = x<=_Width;
                 bool fillMask = 1-i.uv.y<_Fill && _Fill!=0;
                 // bool fillMask = !(1-i.uv.y)==_Fill;
 
-                float alpha = _Color.a* fillMask;
+                float alpha = _Color.a* fillMask * (pd);
                 return float4(col.rgb,alpha);
             }
             ENDCG

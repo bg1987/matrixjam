@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SelectedNodeLineUI
+  m_Name: HoveredEdgeLineUI
   m_Shader: {fileID: 4800000, guid: db4e1aa41efb32648a3151f743f030fb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -79,7 +79,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _Width: 0.03
+    - _Width: 0.025
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 2.143547, g: 2.143547, b: 2.143547, a: 1}

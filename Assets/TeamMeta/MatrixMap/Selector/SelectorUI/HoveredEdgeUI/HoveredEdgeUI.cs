@@ -15,8 +15,17 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
         [SerializeField] private float distanceFromEdge = 1;
         [SerializeField] private bool reverseDirection;
+
+        [Header("Text Appearance")]
+        [SerializeField] TmpFader tmpFader;
+        [SerializeField] float overallAlphaFadeInDuration = 0.4f;
+
+        [Header("Text Disappearance")]
+        [SerializeField] float overallAlphaFadeOutDuration = 0.3f;
+
         [Header("For Debug")]
         [SerializeField] Edge edge;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -37,6 +46,18 @@ namespace MatrixJam.TeamMeta.MatrixMap
         public void deactivate()
         {
             container.SetActive(false);
+        }
+        public void Appear()
+        {
+            tmpFader.FadeInOverallAlpha(overallAlphaFadeInDuration);
+        }
+        public void Disappear()
+        {
+            tmpFader.FadeOutOverallAlpha(overallAlphaFadeOutDuration);
+        }
+        public void DisappearInstantly()
+        {
+            tmpFader.FadeOutOverallAlpha(0.0f);
         }
         public void SetEdgeData(int visitsCount)
         {
