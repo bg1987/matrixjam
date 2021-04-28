@@ -9,6 +9,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
         EdgeSelectable hoveredEdge;
 
         [SerializeField] EdgeUI edgeUI;
+        [SerializeField] EdgesUIs edgeUis;
+
         [SerializeField] MatrixTraveler matrixTraveler;
 
         // Start is called before the first frame update
@@ -23,7 +25,12 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 hoveredEdge.HoverExit();
                 hoveredEdge.interactable = false;
             }
-            DeactivateUI();
+            if (edgeUI)
+            {
+                edgeUI.DisappearInstantly();
+                edgeUI = null;
+            }
+            edgeUis.Deactivate();
         }
         public void HandleHoverEnter(EdgeSelectable target)
         {
@@ -38,15 +45,18 @@ namespace MatrixJam.TeamMeta.MatrixMap
             if (hoveredEdge == target)
             {
                 hoveredEdge = null;
-                DeactivateUI();
+                edgeUI.Disappear();
+                edgeUI = null;
             }
         }
         void ActivateUI()
         {
             Edge edge = hoveredEdge.GetEdge();
-
+            if (edgeUI)
+                edgeUI.Disappear();
+            edgeUI = edgeUis.uis[edge.index];
             edgeUI.Activate();
-            
+
             if (matrixTraveler != null)
             {
 
@@ -68,7 +78,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             else
                 edgeUI.SetEdgeData(-999);
             edgeUI.PositionAtEdgeCenter(edge);
-            edgeUI.DisappearInstantly();
+            //edgeUI.DisappearInstantly();
             edgeUI.Appear();
         }
         void DeactivateUI()

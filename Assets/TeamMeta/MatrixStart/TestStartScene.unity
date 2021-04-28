@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   edgeUI: {fileID: 321631044}
+  edgeUis: {fileID: 779765637}
   matrixTraveler: {fileID: 1107044195}
 --- !u!4 &268905255 stripped
 Transform:
@@ -1083,6 +1084,18 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 1128284729673487503}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &779765637 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8138364964629024218, guid: b00cecc22cf2d08469526908b2af28a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1738829209251851572}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87ca5fd8308f1d4d9ef17e5e7616fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &781156456
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,6 +1529,12 @@ MonoBehaviour:
   RestartButton: {fileID: 293123376}
   ExitButton: {fileID: 1436040183}
   XButton: {fileID: 781156458}
+--- !u!4 &1022176306 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7957509179516354842, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+    type: 3}
+  m_PrefabInstance: {fileID: 1128284729673487503}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1090703381
 GameObject:
   m_ObjectHideFlags: 0
@@ -3275,6 +3294,11 @@ PrefabInstance:
       propertyPath: firstVisitEdgeColor.b
       value: 0.2672175
       objectReference: {fileID: 0}
+    - target: {fileID: 8615324118536662739, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: edgeUis
+      value: 
+      objectReference: {fileID: 779765637}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4eeefe47ba84a44c978d05ec2db3c64, type: 3}
 --- !u!114 &1128284729673487505 stripped
@@ -4389,6 +4413,81 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe94e5ace811f7744bdecadc862e9bb5, type: 3}
+--- !u!1001 &1738829209251851572
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1022176306}
+    m_Modifications:
+    - target: {fileID: 6046194602061692659, guid: b00cecc22cf2d08469526908b2af28a7,
+        type: 3}
+      propertyPath: m_Name
+      value: EdgesUIs
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580522557852764660, guid: b00cecc22cf2d08469526908b2af28a7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580522557852764660, guid: b00cecc22cf2d08469526908b2af28a7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580522557852764660, guid: b00cecc22cf2d08469526908b2af28a7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580522557852764660, guid: b00cecc22cf2d08469526908b2af28a7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580522557852764660, guid: b00cecc22cf2d08469526908b2af28a7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580522557852764660, guid: b00cecc22cf2d08469526908b2af28a7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580522557852764660, guid: b00cecc22cf2d08469526908b2af28a7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580522557852764660, guid: b00cecc22cf2d08469526908b2af28a7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580522557852764660, guid: b00cecc22cf2d08469526908b2af28a7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580522557852764660, guid: b00cecc22cf2d08469526908b2af28a7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580522557852764660, guid: b00cecc22cf2d08469526908b2af28a7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138364964629024218, guid: b00cecc22cf2d08469526908b2af28a7,
+        type: 3}
+      propertyPath: edgeUiPrefab
+      value: 
+      objectReference: {fileID: 946308322283695693, guid: ca0d54a14abe3a4479faa98de6e0e790,
+        type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b00cecc22cf2d08469526908b2af28a7, type: 3}
 --- !u!1001 &5111419932966999716
 PrefabInstance:
   m_ObjectHideFlags: 0

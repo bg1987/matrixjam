@@ -6,18 +6,28 @@ namespace MatrixJam.TeamMeta.MatrixMap
 {
     public class EdgesUIs : MonoBehaviour
     {
-        [SerializeField] NodeUI nodeUiPrefab;
-        public List<NodeUI> uis { get; private set; } = new List<NodeUI>();
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] EdgeUI edgeUiPrefab;
+        public List<EdgeUI> uis { get; private set; } = new List<EdgeUI>();
+        private void Start()
         {
-            
+            Deactivate();
         }
 
-        // Update is called once per frame
-        void Update()
+        public void Init(List<Edge> edges)
         {
-            
+            for (int i = 0; i < edges.Count; i++)
+            {
+                var edgeUI = Instantiate(edgeUiPrefab, transform);
+                edgeUI.SetLineStartColor(edges[i].Material.GetColor("_Color"));
+                uis.Add(edgeUI);
+            }
+        }
+        public void Deactivate()
+        {
+            foreach (var ui in uis)
+            {
+                ui.deactivate();
+            }
         }
     }
 }

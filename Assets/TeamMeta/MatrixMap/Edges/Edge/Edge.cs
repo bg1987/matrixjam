@@ -39,17 +39,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
         // Start is called before the first frame update
         void Awake()
         {
-            material = meshRenderer.material;
-            originalTintColor = material.GetColor("_Color");
-            SetTintColor(originalTintColor);
+            InitMaterial();
             //Init(anchorPoints[0], anchorPoints[1], anchorPoints[2]);
-            SetModelColors(colorHdr1, colorHdr2);
 
             //Init(Vector3.zero, Vector3.right * 8 + Vector3.up, Vector3.right * 16);
 
-        }
-        private void Start()
-        {
         }
         // Update is called once per frame
         void Update()
@@ -183,6 +177,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         public void Init(Vector3 p1, Vector3 p2, Vector3 p3)
         {
+            InitMaterial();
             curvePoints = CalculateBezierDistributedPoints(p1, p2, p3, curveResolution);
 
             anchorPoints[0] = p1;
@@ -192,6 +187,16 @@ namespace MatrixJam.TeamMeta.MatrixMap
             CreateMesh();
 
             UpdateShaderProperties();
+        }
+        void InitMaterial()
+        {
+            if (material)
+                return;
+            material = meshRenderer.material;
+            originalTintColor = material.GetColor("_Color");
+            SetTintColor(originalTintColor);
+            //Init(anchorPoints[0], anchorPoints[1], anchorPoints[2]);
+            SetModelColors(colorHdr1, colorHdr2);
         }
         public void UpdateBezierCurve(Vector3 p1, Vector3 p2, Vector3 p3)
         {

@@ -18,6 +18,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
         [Header("Text Appearance")]
         [SerializeField] TmpFader tmpFader;
+
+        
+
         [SerializeField] float overallAlphaFadeInDuration = 0.4f;
 
         [Header("Text Disappearance")]
@@ -141,6 +144,16 @@ namespace MatrixJam.TeamMeta.MatrixMap
             lineDirection.Normalize();
             RotateAndPositionLine(centerPointWorldSpace, lineDirection, distanceFromEdge);
 
+        }
+
+        internal void SetLineStartColor(ColorHdr colorHdr1)
+        {
+            throw new System.NotImplementedException();
+        }
+        internal void SetLineStartColor(Color color)
+        {
+            //Todo implement when adding line appearance
+            //lineShader.SetStartColor(colorHdr);
         }
     }
 }

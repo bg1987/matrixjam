@@ -25,7 +25,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField, Min(0)] float firstVisitEdgeAppearDuration = 0.8f;
         [SerializeField, ColorUsage(true,true)] Color firstVisitEdgeColor = Color.yellow;
         [SerializeField] EdgeVisitEffect edgeVisitEffect;
-
+        [Header("EdgesUIs")]
+        [SerializeField] EdgesUIs edgeUis;
         // Start is called before the first frame update
         void Start()
         {
@@ -42,6 +43,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 edge.gameObject.SetActive(false);
                 edge.MeshCollider.enabled = false;
             }
+            edgeUis.Init(edges);
         }
         public List<Edge> GetVisitedEdges()
         {
