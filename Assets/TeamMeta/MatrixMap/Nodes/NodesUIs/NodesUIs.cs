@@ -26,7 +26,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             foreach (var ui in uis)
             {
-                ui.deactivate();
+                ui.Deactivate();
             }
         }
     }

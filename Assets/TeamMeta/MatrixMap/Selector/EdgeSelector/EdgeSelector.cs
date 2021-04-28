@@ -83,7 +83,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         void DeactivateUI()
         {
-            edgeUI.deactivate();
+            edgeUI.Deactivate();
         }
     }
 }

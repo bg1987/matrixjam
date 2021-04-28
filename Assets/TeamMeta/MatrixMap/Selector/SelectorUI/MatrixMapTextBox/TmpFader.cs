@@ -344,30 +344,37 @@ namespace MatrixJam.TeamMeta
         {
 
             float t = 0;
-            Color startColor = fontMaterial.GetColor("_FaceColor");
+            Color startColor = text.color;
+            Color startFaceColor = fontMaterial.GetColor("_FaceColor");
             Color glowColor = fontMaterial.GetColor("_GlowColor");
 
-            float currentAlpha = startColor.a;
+            float currentAlpha = startFaceColor.a;
             t = 1 - Mathf.Abs(targetAlpha - currentAlpha);
             if (duration == 0)
                 t = 1;
-            var color = startColor;
+            var faceColor = startFaceColor;
             while (t < 1)
             {
                 var alpha = Mathf.SmoothStep(startAlpha, targetAlpha, t);
-                color.a = alpha;
+                faceColor.a = alpha;
                 glowColor.a = alpha;
+                startColor.a = alpha;
 
-                fontMaterial.SetColor("_FaceColor", color);
-                fontMaterial.SetColor("_GlowColor", color);
+                fontMaterial.SetColor("_FaceColor", faceColor);
+                fontMaterial.SetColor("_GlowColor", faceColor);
+
+                text.color = startColor;
+
                 yield return null;
                 t += Time.deltaTime / duration;
             }
-            color.a = targetAlpha;
+            faceColor.a = targetAlpha;
             glowColor.a = targetAlpha;
+            startColor.a = targetAlpha;
 
-            fontMaterial.SetColor("_FaceColor", color);
-            fontMaterial.SetColor("_GlowColor", color);
+            fontMaterial.SetColor("_FaceColor", faceColor);
+            fontMaterial.SetColor("_GlowColor", faceColor);
+            text.color = startColor;
 
             yield return null;
 
@@ -438,12 +445,15 @@ namespace MatrixJam.TeamMeta
         }
         void ChangeOverallAlphaInstantly(float alpha)
         {
+            Color startColor = text.color;
             Color faceColor = fontMaterial.GetColor("_FaceColor");
             Color glowColor = fontMaterial.GetColor("_GlowColor");
 
+            startColor.a = alpha;
             faceColor.a = alpha;
             glowColor.a = alpha;
 
+            text.color = faceColor;
             fontMaterial.SetColor("_FaceColor", faceColor);
             fontMaterial.SetColor("_GlowColor", glowColor);
         }

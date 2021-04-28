@@ -16,6 +16,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] private float distanceFromEdge = 1;
         [SerializeField] private bool reverseDirection;
 
+        [SerializeField] Brackets brackets;
+        [Header("brackets Appearance")]
+        [SerializeField] float bracketsFadeInDuration = 0.34f;
+        [SerializeField] float bracketsFadeOutDuration = 0.23f;
+
         [Header("Text Appearance")]
         [SerializeField] TmpFader tmpFader;
 
@@ -46,21 +51,25 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             container.SetActive(true);
         }
-        public void deactivate()
+        public void Deactivate()
         {
+            DisappearInstantly();
             container.SetActive(false);
         }
         public void Appear()
         {
             tmpFader.FadeInOverallAlpha(overallAlphaFadeInDuration);
+            brackets.Appear(bracketsFadeInDuration);
         }
         public void Disappear()
         {
             tmpFader.FadeOutOverallAlpha(overallAlphaFadeOutDuration);
+            brackets.Disappear(bracketsFadeOutDuration);
         }
         public void DisappearInstantly()
         {
             tmpFader.FadeOutOverallAlpha(0.0f);
+            brackets.Disappear(0);
         }
         public void SetEdgeData(int visitsCount)
         {

@@ -94,7 +94,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             squareTarget.Disappear(0);
             lineShader.Disappear(0);
         }
-        public void deactivate()
+        public void Deactivate()
         {
             DisappearInstantly();
             container.SetActive(false);
