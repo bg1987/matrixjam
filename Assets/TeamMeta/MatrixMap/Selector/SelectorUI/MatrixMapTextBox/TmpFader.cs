@@ -324,7 +324,7 @@ namespace MatrixJam.TeamMeta
                 FadeInOverallAlphaInstantly();
                 return;
             }
-            FadeOverallAlpha = StartCoroutine(ChangeOverallAlpha(totalDuration, 1));
+            FadeOverallAlpha = StartCoroutine(ChangeOverallAlpha(totalDuration, 0, 1));
         }
         public void FadeOutOverallAlpha(float totalDuration)
         {
@@ -337,23 +337,23 @@ namespace MatrixJam.TeamMeta
                 FadeOutOverallAlphaInstantly();
                 return;
             }
-            FadeOverallAlpha = StartCoroutine(ChangeOverallAlpha(totalDuration, 0));
+            FadeOverallAlpha = StartCoroutine(ChangeOverallAlpha(totalDuration,1, 0));
         }
-        IEnumerator ChangeOverallAlpha(float duration, float targetAlpha)
+        IEnumerator ChangeOverallAlpha(float duration, float startAlpha, float targetAlpha)
         {
 
             float t = 0;
             Color startColor = fontMaterial.GetColor("_FaceColor");
             Color glowColor = fontMaterial.GetColor("_GlowColor");
 
-            float startAlpha = startColor.a;
-            t = 1 - Mathf.Abs(targetAlpha - startColor.a);
+            float currentAlpha = startColor.a;
+            t = 1 - Mathf.Abs(targetAlpha - currentAlpha);
             if (duration == 0)
                 t = 1;
             var color = startColor;
             while (t < 1)
             {
-                var alpha = Mathf.Lerp(startAlpha, targetAlpha, t);
+                var alpha = Mathf.SmoothStep(startAlpha, targetAlpha, t);
                 color.a = alpha;
                 glowColor.a = alpha;
 

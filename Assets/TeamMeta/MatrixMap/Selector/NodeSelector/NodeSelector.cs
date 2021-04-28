@@ -15,6 +15,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] NodeUI selectedNodeUI;
         [SerializeField] NodesUIs nodeUis;
         [SerializeField] MatrixTraveler matrixTraveler;
+        [Header("Overlay Appearance")]
+        [SerializeField] private float overlayFadeOutDuration = 0.2f;
+        [SerializeField] private float overlayFadeInDuration = 0.2f;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -30,7 +34,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 selectedNode = null;
             }
             nodeUis.Deactivate();
-
+            overlay.Deactivate();
             if (hoveredNode)
                 hoveredNode.HoverExit();
             if (selectedNode)
@@ -73,9 +77,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
             UnfocusNode();
             selectedNode.Unselect();
             selectedNode = null;
-            overlay.Deactivate();
             selectedNodeUI.Disappear(true);
             selectedNodeUI = null;
+
+            overlay.Disappear(overlayFadeOutDuration);
+
         }
 
         private void Select(NodeSelectable target)
@@ -85,7 +91,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
             FocusNode();
 
             //UI
-            overlay.Activate(); //Todo Make into a fade
+            //overlay.Activate(); //Todo Make into a fade
+            overlay.Appear(overlayFadeInDuration);
+
             selectedNodeUI = nodeUis.uis[selectedNode.GetNode().Index];
             UpdateNodeUiTextAndPosition();
             selectedNodeUI.Appear(true);

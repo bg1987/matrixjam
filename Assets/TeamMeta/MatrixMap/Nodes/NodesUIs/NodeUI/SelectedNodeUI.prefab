@@ -545,9 +545,9 @@ MonoBehaviour:
   linesFadeInDuration: 0.34
   characterFadeInDuration: 0
   overallAlphaFadeInDuration: 0.4
-  linesFadeOutDuration: 0.23
+  linesFadeOutDuration: 0.27
   characterFadeOutDuration: 0.2
-  overallAlphaFadeOutDuration: 0.3
+  overallAlphaFadeOutDuration: 0.36
   node: {fileID: 0}
 --- !u!114 &974151590
 MonoBehaviour:

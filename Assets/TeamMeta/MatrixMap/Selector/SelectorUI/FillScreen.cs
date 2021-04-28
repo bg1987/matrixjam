@@ -7,6 +7,10 @@ namespace MatrixJam.TeamMeta
         public Camera cam;
         void Update()
         {
+            Fill();
+        }
+        public void Fill()
+        {
             float worldScreenHeight = cam.orthographicSize * 2f;
             float worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
             Vector3 scale = transform.localScale;

@@ -3146,6 +3146,14 @@ PrefabInstance:
       propertyPath: nodeUis
       value: 
       objectReference: {fileID: 5111419932966999718}
+    - target: {fileID: 1150098465, guid: e4eeefe47ba84a44c978d05ec2db3c64, type: 3}
+      propertyPath: overlayFadeOutDuration
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150098465, guid: e4eeefe47ba84a44c978d05ec2db3c64, type: 3}
+      propertyPath: overlayFadeInDuration
+      value: 0.22
+      objectReference: {fileID: 0}
     - target: {fileID: 1515759098, guid: e4eeefe47ba84a44c978d05ec2db3c64, type: 3}
       propertyPath: antialiasingMode
       value: 2
