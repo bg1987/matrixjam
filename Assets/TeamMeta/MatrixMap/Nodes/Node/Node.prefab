@@ -55,6 +55,7 @@ MonoBehaviour:
   startPortActiveEdges: []
   glowAddedIntensity1: 0.6
   glowAddedIntensity2: 0.6
+  nodeSelectable: {fileID: 8622594964326080253}
 --- !u!1 &4205430861388808194
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,9 +163,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   node: {fileID: 5750187723290876000}
-  idleColorAlpha: 0.19
+  idleColorAlpha: 0.2
   idleColorIntensity: 0
-  hoverColorAlpha: 0.19
+  hoverColorAlpha: 0.25
   hoverColorIntensity: 3
   selectedColorAlpha: 0.63
   selectedColorIntensity: 4

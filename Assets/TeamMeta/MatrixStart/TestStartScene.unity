@@ -3279,6 +3279,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3982408222707808918, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: nodesInteractableFlashDuration
+      value: 0.95
+      objectReference: {fileID: 0}
     - target: {fileID: 8615324118536662739, guid: e4eeefe47ba84a44c978d05ec2db3c64,
         type: 3}
       propertyPath: firstVisitEdgeColor.r

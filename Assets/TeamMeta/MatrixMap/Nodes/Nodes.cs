@@ -361,5 +361,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 i++;
             }
         }
+
+        public void FlashNodesInteractableEffect(float duration,float selectedColorMark,float hoverColorMark,float idleColorMark)
+        {
+            foreach (var index in visitedNodesIndexesSorted)
+            {
+
+                nodes[index].NodeSelectable.FlashInteractable(duration, selectedColorMark,hoverColorMark,idleColorMark);
+            }
+        }
     }
 }

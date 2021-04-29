@@ -27,6 +27,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [Header("Glow")]
         [SerializeField] float glowAddedIntensity1 = 1f;
         [SerializeField] float glowAddedIntensity2 = 1f;
+
+        [Header("NodeSelectable")]
+        [SerializeField] NodeSelectable nodeSelectable;
+        public NodeSelectable NodeSelectable { get => nodeSelectable; }
         // Start is called before the first frame update
         void Awake()
         {

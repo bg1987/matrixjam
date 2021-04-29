@@ -18,14 +18,33 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [Header("Selector")]
         [SerializeField] Selector selector;
         public Selector Selector { get => selector; }
-        public bool interactable{set { if (value) selector.Activate(); else selector.Deactivate(); } }
+        [Header("Interactable")]
+        [SerializeField] float nodesInteractableFlashDuration = 0.8f;
+        public bool interactable{set { SetInteractable(value); } }
         // Start is called before the first frame update
         void Start()
         {
             InitMap();
         }
         // Update is called once per frame
-        
+        void SetInteractable(bool isInteractable)
+        {
+            if (isInteractable)
+                StartCoroutine(InteractableRoutine());
+            else
+                selector.Deactivate();
+
+        }
+        IEnumerator InteractableRoutine()
+        {
+            float selectedColorMark = 38 / 100f;
+            float hoverColorMark = 24 / 100f;
+            float idleColorMark = 38 / 100f;
+            nodesController.FlashNodesInteractableEffect(nodesInteractableFlashDuration, selectedColorMark, hoverColorMark, idleColorMark);
+
+            yield return new WaitForSeconds(nodesInteractableFlashDuration * (selectedColorMark+hoverColorMark));
+            selector.Activate();
+        }
         void InitMap()
         {
             nodesController.Init();

@@ -114,5 +114,48 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 edge.EdgeSelectable.interactable = isInteractable;
             }
         }
+        public void FlashInteractable(float duration, float selectedColorMark, float hoverColorMark, float idleColorMark)
+        {
+            StartCoroutine(FlashInteractableRoutine(duration, selectedColorMark, hoverColorMark, idleColorMark));
+        }
+        IEnumerator FlashInteractableRoutine(float duration, float selectedColorMark, float hoverColorMark, float idleColorMark)
+        {
+            float t = 0;
+            float selectedDuration = duration * selectedColorMark;
+            float hoverDuration = duration * hoverColorMark;
+            float idleDuration = duration * idleColorMark;
+
+            yield return StartCoroutine(ChangeColorRoutine(selectedDuration, idleColorAlpha, selectedColorAlpha, idleColorIntensity, selectedColorIntensity,smoothStep:true));
+            yield return StartCoroutine(ChangeColorRoutine(hoverDuration, selectedColorAlpha, hoverColorAlpha, selectedColorIntensity, hoverColorIntensity,false));
+            yield return StartCoroutine(ChangeColorRoutine(idleDuration, hoverColorAlpha, idleColorAlpha, hoverColorIntensity, idleColorIntensity,false));
+        }
+        IEnumerator ChangeColorRoutine(float duration, float startAlpha, float targetAlpha, float startIntensity, float targetIntensity, bool smoothStep)
+        {
+            float t = 0;
+            while (t < 1)
+            {
+                if (isSelected || isHovered)
+                    yield break;
+
+                float alpha;
+                if (smoothStep)
+                    alpha = Mathf.SmoothStep(startAlpha, targetAlpha, t);
+                else
+                    alpha = Mathf.Lerp(startAlpha, targetAlpha, t);
+                ChangeAlpha(alpha);
+
+                float intensity;
+                if (smoothStep)
+                    intensity = Mathf.SmoothStep(startIntensity, targetIntensity, t);
+                else
+                    intensity = Mathf.Lerp(startIntensity, targetIntensity, t);
+                ChangeIntensity(intensity);
+
+                yield return null;
+                t += Time.deltaTime / duration;
+            }
+            ChangeAlpha(targetAlpha);
+            ChangeIntensity(targetIntensity);
+        }
     }
 }
