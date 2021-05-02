@@ -3264,6 +3264,11 @@ PrefabInstance:
       propertyPath: minimumVisitedGamesToEnableMatrixMapInteraction
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2947487065549499691, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
     - target: {fileID: 3853783568976130286, guid: e4eeefe47ba84a44c978d05ec2db3c64,
         type: 3}
       propertyPath: nodeUIs
@@ -3284,6 +3289,17 @@ PrefabInstance:
       propertyPath: nodesInteractableFlashDuration
       value: 0.95
       objectReference: {fileID: 0}
+    - target: {fileID: 5612826778775974496, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4,
+        type: 2}
+    - target: {fileID: 5612826778775974496, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
     - target: {fileID: 8615324118536662739, guid: e4eeefe47ba84a44c978d05ec2db3c64,
         type: 3}
       propertyPath: firstVisitEdgeColor.r

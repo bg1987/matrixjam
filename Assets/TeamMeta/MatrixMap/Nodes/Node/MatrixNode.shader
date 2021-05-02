@@ -163,7 +163,7 @@
                 // noiseTexture
                 for (float i= 1;i < 5.;i++ )
                 {
-                    p += t*0.1;
+                    // p += t*0.1;
                     //float2 noiseValue = tex2D( _MainTex,_SinTime.w*p.xz+199.5 ).yx;
                     float2 noiseValue = tex2D( _MainTex,cos(p.xz+(t)*0.8)+199.5 ).yx;
 

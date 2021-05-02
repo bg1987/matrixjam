@@ -6,6 +6,7 @@
         _InvertColorWeight("InvertColorWeight",range(0,1)) = 0.2
         _MainTex ("Texture", 2D) = "white" {}
         _InvertBlackThreshold ("InvertBlackThreshold", range(0,1)) = 0.1
+        _DarknessFactor ("DarknessFactor", float) = 0.1
     }
     SubShader
     {
@@ -44,6 +45,7 @@
             float _Grayness;
             float _InvertColorWeight;
             float _InvertBlackThreshold;
+            float _DarknessFactor;
 
             fixed4 frag (v2f i) : SV_Target
             {
@@ -52,8 +54,13 @@
                 float3 withInvertColorWeight = lerp(col.rgb, 1 - col.rgb, -_Grayness* _InvertColorWeight);
                 col.rgb = dot(col.rgb, float3(0.3, 0.59, 0.11))<_InvertBlackThreshold?col.rgb:withInvertColorWeight;
                 // col.rgb = lerp(col.rgb, 1 - col.rgb, -_Grayness* _InvertColorWeight);
-                col.rgb = lerp(col.rgb, dot(col.rgb, float3(0.3, 0.59, 0.11)), _Grayness);
-                
+                float3 grayedOutColor = dot(col.rgb, float3(0.3, 0.59, 0.11));
+                // float3 darkenedGrayoutColor = pow(grayedOutColor,_DarknessFactor);
+                float3 darkenedGrayoutColor = pow(grayedOutColor-((_DarknessFactor/10)*grayedOutColor),_DarknessFactor);
+
+                darkenedGrayoutColor = saturate(darkenedGrayoutColor);
+                // darkenedGrayoutColor = lerp(col.rgb, grayedOutColor, _Grayness);
+                col.rgb = lerp(col.rgb, darkenedGrayoutColor , _Grayness);
                 return col;
             }
             ENDCG
