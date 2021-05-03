@@ -15,6 +15,7 @@ namespace MatrixJam.TeamMeta
         Color originColor;
 
         private Coroutine fadeRoutine;
+        private Coroutine bringToFrontRoutine;
 
         // Start is called before the first frame update
         void Awake()
@@ -45,6 +46,15 @@ namespace MatrixJam.TeamMeta
                 StopCoroutine(fadeRoutine);
 
             fadeRoutine = StartCoroutine(FadeRoutine(duration, 0, originColor.a));
+
+            var startPosition = transform.position;
+            startPosition.z = 0;
+            var endPosition = transform.position;
+            endPosition.z = zPositionWhenActivated;
+            if (bringToFrontRoutine != null)
+                StopCoroutine(bringToFrontRoutine);
+
+            bringToFrontRoutine = StartCoroutine( BringToFrontRoutine(duration, startPosition, endPosition));
         }
         public void Disappear(float duration)
         {
@@ -56,10 +66,27 @@ namespace MatrixJam.TeamMeta
                 return;
             }
             fadeRoutine = StartCoroutine(FadeRoutine(duration, originColor.a, 0));
+
+            var startPosition = transform.position;
+            startPosition.z = zPositionWhenActivated;
+            var endPosition = transform.position;
+            endPosition.z = 0;
+
+            if (bringToFrontRoutine != null)
+                StopCoroutine(bringToFrontRoutine);
+
+            bringToFrontRoutine = StartCoroutine(BringToFrontRoutine(duration, startPosition, endPosition));
         }
         void DisappearInstantly()
         {
             FadeExecute(1, originColor.a, 0);
+
+            var startPosition = transform.position;
+            startPosition.z = zPositionWhenActivated;
+            var endPosition = transform.position;
+            endPosition.z = 0;
+
+            BringToFrontExecute(1, startPosition, endPosition);
         }
         IEnumerator FadeRoutine(float duration, float startAlpha, float targetAlpha)
         {
@@ -86,6 +113,24 @@ namespace MatrixJam.TeamMeta
             var color = originColor;
             color.a = Mathf.SmoothStep(startAlpha, targetAlpha, t);
             material.SetColor("_Color", color);
+        }
+        IEnumerator BringToFrontRoutine(float duration, Vector3 startPosition,Vector3 targetPosition)
+        {
+
+            float t = 0;
+            while (t<1)
+            {
+                BringToFrontExecute(t,startPosition,targetPosition);
+                t += Time.deltaTime / duration;
+                yield return null;
+            }
+            BringToFrontExecute(1, startPosition, targetPosition);
+        }
+        void BringToFrontExecute(float t, Vector3 start, Vector3 end)
+        {
+            var position = Vector3.Lerp(start, end, t);
+            transform.position = position;
+
         }
         void BringToFront()
         {

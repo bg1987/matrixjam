@@ -38,7 +38,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             if (hoveredNode)
                 hoveredNode.HoverExit();
             if (selectedNode)
-                UnfocusNode();
+                UnfocusNode(0);
         }
         public void HandleHoverEnter(NodeSelectable target)
         {
@@ -74,7 +74,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
         private void Unselect()
         {
-            UnfocusNode();
+            UnfocusNode(overlayFadeOutDuration);
             selectedNode.Unselect();
             selectedNode = null;
             selectedNodeUI.Disappear(true);
@@ -100,7 +100,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         void ReplaceSelectedNode(NodeSelectable target)
         {
-            UnfocusNode();
+            UnfocusNode(0);
             selectedNode.Unselect();
             selectedNodeUI.Disappear(false);
          
@@ -156,11 +156,40 @@ namespace MatrixJam.TeamMeta.MatrixMap
             localPos.z = -1;
             selectedNode.transform.parent.localPosition = localPos;
         }
-        void UnfocusNode()
+        void UnfocusNode(float duration)
         {
             var localPos = selectedNode.transform.parent.localPosition;
-            localPos.z = 0;
-            selectedNode.transform.parent.localPosition= localPos;
+            var startPos = localPos;
+            startPos.z = -1;
+            var endPos = localPos;
+            endPos.z = 0;
+
+            if(duration == 0)
+            {
+                UnfocusNodeExecute(1, startPos, endPos, selectedNode.transform.parent);
+                return;
+            }
+            StartCoroutine(UnfocusNodeRoutine(duration, startPos, endPos, selectedNode.transform.parent));
+        }
+        IEnumerator UnfocusNodeRoutine(float duration, Vector3 startPosition, Vector3 targetPosition, Transform nodeTransform)
+        {
+            float t = 0;
+            while (t < 1)
+            {
+                t += Time.deltaTime / duration;
+
+                UnfocusNodeExecute(t, startPosition, targetPosition, nodeTransform);
+                yield return null;
+
+                if (nodeTransform.localPosition == startPosition)
+                    yield break;
+            }
+            UnfocusNodeExecute(1, startPosition,targetPosition, nodeTransform);
+        }
+        void UnfocusNodeExecute(float t, Vector3 start, Vector3 end, Transform nodeTransform)
+        {
+            var position = Vector3.Lerp(start, end, t);
+            nodeTransform.localPosition = position;
         }
     }
 }
