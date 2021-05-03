@@ -43,6 +43,12 @@ namespace MatrixJam.TeamMeta
                 RestoreVertexColors();
             }
         }
+        private void OnEnable()
+        {
+            //Debug.Log("On enable was called");
+            text.ForceMeshUpdate(true);
+            RestoreVertexColors();
+        }
 
         public void FadeOut(float totalDuration, float characterDuration)
         {

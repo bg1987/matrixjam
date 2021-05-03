@@ -528,7 +528,7 @@ MonoBehaviour:
   lineFadeOutDuration: 0.09
   tmpFader: {fileID: 974151590}
   linesFadeInDuration: 0.34
-  characterFadeInDuration: 0
+  characterFadeInDuration: 0.16
   overallAlphaFadeInDuration: 0.4
   linesFadeOutDuration: 0.28
   characterFadeOutDuration: 0.12
