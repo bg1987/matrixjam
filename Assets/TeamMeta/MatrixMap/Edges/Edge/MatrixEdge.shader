@@ -5,6 +5,7 @@
         [hdr] _Color ("Color", Color) = (1,1,1,1)
         [hdr] _EndColor ("EndColor", Color) = (1,1,1,1)
         _ColorPower ("ColorPower", float) = 1
+        _ColorPowerX ("ColorPower", float) = 1
          
         _Color1 ("Color1", Color) = (0.12,0.12,0.5)
         _ColorIntensity1 ("ColorIntensity1", float) = 1
@@ -67,6 +68,7 @@
             float4 _Color;
             float4 _EndColor;
             float _ColorPower;
+            float _ColorPowerX;
             float4 _Color1;
             float4 _Color2;
             float _ColorIntensity1;
@@ -143,7 +145,7 @@
                 clip(shouldDissolve-1);
 
                 // col = dissolveMask;
-
+                float xOneToOne = abs(i.uv.x*2-1);
                 // col.a = 1;
                 float tileCount = floor(_EdgeLength*i.uv.y-time+0.5);
                 float tile = frac((_EdgeLength*i.uv.y)-time);
@@ -161,11 +163,14 @@
                 }
                 
                 float poweredTile = pow(tile,_ColorPower);
-                // poweredTile = saturate(poweredTile);
+                poweredTile = saturate(poweredTile);
                 
                 // float circularEaseIn  = 1 - sqrt(1 - tile*tile);
                 // float loggedTile = 1-log(poweredTile);
-                float tileGradient = poweredTile;
+                xOneToOne = 1-xOneToOne;
+                float poweredX = pow(xOneToOne,_ColorPowerX);
+                
+                float tileGradient = poweredTile*poweredX;
                 tileGradient= saturate(tileGradient);
 
                 col = _Color*tileGradient;

@@ -8,7 +8,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
     {
         EdgeSelectable hoveredEdge;
 
-        [SerializeField] EdgeUI edgeUI;
+         EdgeUI edgeUI;
         [SerializeField] EdgesUIs edgeUis;
 
         [SerializeField] MatrixTraveler matrixTraveler;
@@ -59,7 +59,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             if (matrixTraveler != null)
             {
-
                 MatrixEdgeData edgeData = matrixTraveler.matrixGraphData.edges[edge.index];
                 MatrixTravelHistory travelData = matrixTraveler.travelData;
                 travelData.TryGetLastTravel(out var lastTravelData);
@@ -84,7 +83,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         void DeactivateUI()
         {
-            edgeUI.Deactivate();
+            if(edgeUI)
+                edgeUI.Deactivate();
         }
     }
 }

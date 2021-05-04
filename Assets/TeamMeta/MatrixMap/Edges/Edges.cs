@@ -27,6 +27,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] EdgeVisitEffect edgeVisitEffect;
         [Header("EdgesUIs")]
         [SerializeField] EdgesUIs edgeUis;
+        [SerializeField] private int[] endNormalSigns;
+        [SerializeField] private int[] startNormalSigns;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -44,6 +47,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 edge.MeshCollider.enabled = false;
             }
             edgeUis.Init(edges);
+
+            endNormalSigns = new int[edges.Count];
+            startNormalSigns = new int[edges.Count];
         }
         public List<Edge> GetVisitedEdges()
         {
@@ -259,15 +265,43 @@ namespace MatrixJam.TeamMeta.MatrixMap
             anchorPoint2 = point2;
             anchorPoint3 = point3;
         }
-        internal void UpdateEdgesAnchors()
+        void CalculateEdgeAnchors(int edgeIndex, Vector3 startNodePosition, Vector3 endNodePosition, Vector3 mapCenter, out Vector3 anchorPoint1, out Vector3 anchorPoint2, out Vector3 anchorPoint3, int normalSign, float distanceScaleP2)
         {
-            throw new NotImplementedException();
+            Edge edge = edges[edgeIndex];
+            edge.transform.localPosition = Vector3.zero;
+
+            Vector3 middlePoint = (endNodePosition - startNodePosition) / 2f;
+            Vector3 edgeDirection = middlePoint.normalized;
+            Vector3 normal = Vector3.Cross(edgeDirection, Vector3.back);
+
+            bool isNormalTowardsCenter = Vector3.Dot(normal, mapCenter - endNodePosition) > -0.01 ? true : false;
+
+            if (isNormalTowardsCenter == false)
+            {
+                EdgesNormalSign[edgeIndex] = -1;
+            }
+            else
+                EdgesNormalSign[edgeIndex] = 1;
+
+            normal *= normalSign;
+
+            Vector3 point2;
+            float extraOffsetPoint2 = (1 + edgeIndex * sameNodeEdgesOffset); // takes care of the initial offset and maybe normal too
+            point2 = middlePoint + (normal * ((startNodePosition + middlePoint).magnitude + extraOffsetPoint2)*distanceScaleP2);
+
+            Vector3 point3 = endNodePosition - startNodePosition;
+            Vector3 point1 = Vector3.zero;
+            point1.z += 0.01f;
+            point3.z += -0.01f;
+
+            anchorPoint1 = point1;
+            anchorPoint2 = point2;
+            anchorPoint3 = point3;
         }
         public void UpdateEdgesAnchors(bool usePreviousNormalSign, Nodes nodesController)
         {
             var matrixTraveler = MatrixTraveler.Instance;
             var edgesData = matrixTraveler.matrixGraphData.edges;
-
 
             foreach (var index in visitedEdgesIndexes)
             {
@@ -279,26 +313,105 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 UpdateEdgeAnchors(edge, startNode, endNode, usePreviousNormalSign);
             }
         }
+        public void UpdateEdgesAnchors(Nodes nodesController, float normalT)
+        {
+            var matrixTraveler = MatrixTraveler.Instance;
+            var edgesData = matrixTraveler.matrixGraphData.edges;
+
+            foreach (var index in visitedEdgesIndexes)
+            {
+
+                Edge edge = edges[index];
+                var edgeData = edgesData[index];
+                Node startNode = nodesController.nodes[edgeData.startPort.nodeIndex];
+                Node endNode = nodesController.nodes[edgeData.endPort.nodeIndex];
+                int previousNormalSign = startNormalSigns[index];
+                int endNormalSign = endNormalSigns[index];
+
+                int normalSign = normalT > 0.5 ? endNormalSign : previousNormalSign;
+                float distanceScale = Mathf.Abs(Mathf.SmoothStep(previousNormalSign, endNormalSign, normalT));
+
+                UpdateEdgeAnchors(edge, startNode, endNode, normalSign, distanceScale);
+            }
+        }
         public IEnumerator UpdateEdgesAnchorsRoutine(float delay, float duration, Nodes nodesController)
         {
             yield return new WaitForSeconds(delay);
             //UpdateEdgesAnchors(usePreviousNormalSign: false);
 
+            CalculateNodesStartAndEndNormalSigns(nodesController);
             float t = 0;
-            while (t < duration)
+            while (t < 1)
             {
-                UpdateEdgesAnchors(usePreviousNormalSign: true, nodesController);
+                //UpdateEdgesAnchors(usePreviousNormalSign: true, nodesController);
+                UpdateEdgesAnchors(nodesController, t);
 
-                t += Time.deltaTime;
+                t += Time.deltaTime/duration;
                 yield return null;
 
             }
-            //UpdateVisitedNodesPositions();
-            UpdateEdgesAnchors(usePreviousNormalSign: true, nodesController);
+            UpdateEdgesAnchors(nodesController, 1);
+            //UpdateEdgesAnchors(usePreviousNormalSign: true, nodesController);
+        }
+
+        private void CalculateNodesStartAndEndNormalSigns(Nodes nodesController)
+        {
+            var matrixTraveler = MatrixTraveler.Instance;
+            var edgesData = matrixTraveler.matrixGraphData.edges;
+
+            var visitedNodes = nodesController.GetVisitedNodes();
+
+            foreach (var index in visitedEdgesIndexes)
+            {
+                Edge edge = edges[index];
+                var edgeData = edgesData[index];
+                Node startNode = nodesController.nodes[edgeData.startPort.nodeIndex];
+                Node endNode = nodesController.nodes[edgeData.endPort.nodeIndex];
+                
+                int startNodePositionIndex = visitedNodes.FindIndex(node => node.Index == startNode.Index);
+                Vector3 startNodeEndPosition = nodesController.NodesPositions[startNodePositionIndex];
+                
+                int endNodePositionIndex = visitedNodes.FindIndex(node => node.Index == endNode.Index);
+                Vector3 endNodeEndPosition = nodesController.NodesPositions[endNodePositionIndex];
+
+                int endNormalSign = CalculateEdgeAnchorNormal(startNodeEndPosition, endNodeEndPosition, mapCenter: Vector3.zero);
+                endNormalSigns[index]= endNormalSign;
+
+                Vector3 startNodeStartPosition = startNode.transform.position;
+                Vector3 endNodeStartPosition = endNode.transform.position;
+
+                int startNormalSign = CalculateEdgeAnchorNormal(startNodeStartPosition, endNodeStartPosition, mapCenter: Vector3.zero);
+                startNormalSigns[index] = startNormalSign;
+            }
+        }
+        int CalculateEdgeAnchorNormal(Vector3 startPosition, Vector3 endPosition, Vector3 mapCenter)
+        {
+            Vector3 middlePoint = (endPosition - startPosition) / 2f;
+            Vector3 edgeDirection = middlePoint.normalized;
+            Vector3 normal = Vector3.Cross(edgeDirection, Vector3.back);
+
+            bool isNormalTowardsCenter = Vector3.Dot(normal, mapCenter - endPosition) > -0.01 ? true : false;
+
+            int normalSign;
+            if (isNormalTowardsCenter == false)
+            {
+                normalSign = -1;
+            }
+            else
+                normalSign = 1;
+
+            return normalSign;
         }
         void UpdateEdgeAnchors(Edge edge, Node startNode, Node endNode, bool usePreviousNormalSign = false)
         {
             CalculateEdgeAnchors(edge.index, startNode.transform.localPosition, endNode.transform.localPosition, mapCenter: Vector3.zero, out Vector3 p1, out Vector3 p2, out Vector3 p3, usePreviousNormalSign);
+            edge.UpdateBezierCurve(p1, p2, p3);
+            edge.UpdateMesh();
+        }
+        void UpdateEdgeAnchors(Edge edge, Node startNode, Node endNode, int normalSign, float distanceScaleP2)
+        {
+            CalculateEdgeAnchors(edge.index, startNode.transform.localPosition, endNode.transform.localPosition,mapCenter: Vector3.zero,
+                                 out Vector3 p1, out Vector3 p2, out Vector3 p3, normalSign, distanceScaleP2);
             edge.UpdateBezierCurve(p1, p2, p3);
             edge.UpdateMesh();
         }

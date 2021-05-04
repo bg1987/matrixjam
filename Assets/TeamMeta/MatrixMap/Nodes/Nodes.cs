@@ -14,6 +14,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         public List<Node> nodes = new List<Node>();
         SortedSet<int> visitedNodesIndexesSorted = new SortedSet<int>();
         List<Vector3> nodesPositions = new List<Vector3>();
+        public List<Vector3> NodesPositions { get => nodesPositions; }
 
 
         [Header("Nodes Appear")]
