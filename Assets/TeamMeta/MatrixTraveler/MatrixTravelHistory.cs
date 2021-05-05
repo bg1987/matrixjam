@@ -104,9 +104,13 @@ namespace MatrixJam.TeamMeta
         }
         public int GetGameVisitCount(MatrixNodeData matrixNodeData)
         {
-            if (!gamesIndexToVisits.ContainsKey(matrixNodeData.index))
+            return GetGameVisitCount(matrixNodeData.index);
+        }
+        public int GetGameVisitCount(int nodeIndex)
+        {
+            if (!gamesIndexToVisits.ContainsKey(nodeIndex))
                 return 0;
-            return gamesIndexToVisits[matrixNodeData.index];
+            return gamesIndexToVisits[nodeIndex];
         }
         public int GetEntranceVisitCount(MatrixPortData matrixPortData)
         {

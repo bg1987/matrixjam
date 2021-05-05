@@ -5,7 +5,15 @@ namespace MatrixJam
 {
     public class PlayerData : MonoBehaviour
     {
-        public int current_level;
+        public int current_level { 
+            get 
+            {
+                bool success = MatrixTraveler.Instance.travelData.TryGetLastTravel(out var matrixEdgeData);
+                if (!success)
+                    return -1;
+                return matrixEdgeData.endPort.nodeIndex;
+            } 
+        }
         int complete_levels = 0;
         int skip_levels_num = 0;
         LinkedList<Connection> been_connections = new LinkedList<Connection>();
@@ -88,16 +96,8 @@ namespace MatrixJam
         public int PastBeen(int lvl)
         {
             //return the number of times this level have been completed before
-            int ans = 0;
-            foreach(Connection con in been_connections)
-            {
-                if(con.scene_from == lvl)
-                {
-                    ans++;
-                }
-               
-            }
-            return ans;
+            return MatrixTraveler.Instance.travelData.GetGameVisitCount(lvl) - 1;
+
         }
     }
 }
