@@ -30,7 +30,35 @@ namespace MatrixJam.TeamMeta
 
             JsonUtility.FromJsonOverwrite(matrixGraphDataJson, matrixGraphSO);
 
+            RemoveUnusedExits(matrixGraphSO);
+
             return matrixGraphSO;
+        }
+        void RemoveUnusedExits(MatrixGraphSO matrixGraphSO)
+        {
+            var nodes = matrixGraphSO.nodes;
+            var edges = matrixGraphSO.edges;
+
+            var outputPortsToRemoveIndexes = new List<int>();
+
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                outputPortsToRemoveIndexes.Clear();
+
+                var outputPorts = nodes[i].outputPorts;
+
+                for (int j = 0; j < outputPorts.Count; j++)
+                {
+                    int foundIndex = edges.FindIndex(edgeData => edgeData.startPort == outputPorts[j]);
+                    if (foundIndex < 0)
+                        outputPortsToRemoveIndexes.Add(j);  
+                }
+                for (int j = outputPortsToRemoveIndexes.Count-1; j >= 0; j--)
+                {
+                    int index = outputPortsToRemoveIndexes[j];
+                    outputPorts.RemoveAt(index);
+                }
+            } 
         }
     }
 }
