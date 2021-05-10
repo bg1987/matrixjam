@@ -463,5 +463,9 @@ namespace MatrixJam.TeamMeta
             fontMaterial.SetColor("_OutlineColor", outlineColor);
 
         }
+        public void StopOngoingFades()
+        {
+            StopAllCoroutines();
+        }
     }
 }

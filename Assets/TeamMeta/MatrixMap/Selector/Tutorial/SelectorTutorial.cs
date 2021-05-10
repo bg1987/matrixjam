@@ -58,8 +58,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             isActive = false;
 
-            nodeTutorialStep.Disappear(0,0);
-            edgeTutorialStep.Disappear(0,0);
+            nodeTutorialStep.DisappearImmediately();
+            edgeTutorialStep.DisappearImmediately();
 
             nodeTutorialStep.gameObject.SetActive(false);
             edgeTutorialStep.gameObject.SetActive(false);

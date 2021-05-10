@@ -267,3 +267,4 @@ MonoBehaviour:
   textFader: {fileID: 3839825944980698274}
   isCompleted: 0
   isInProgress: 0
+  completeFadeColor: {r: 0.10457456, g: 0.23141558, b: 0.8867924, a: 1}

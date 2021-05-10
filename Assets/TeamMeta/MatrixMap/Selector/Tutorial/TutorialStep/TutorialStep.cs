@@ -11,6 +11,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] TmpFader textFader;
         public bool isCompleted = false;
         public bool isInProgress = false;
+        [SerializeField] private Color completeFadeColor = Color.blue;
         private Coroutine appearRoutine;
 
         // Start is called before the first frame update
@@ -20,34 +21,70 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         public void Appear(float duration, float characterDuration,float delay)
         {
-            if (isInProgress)
+            if (isInProgress || isCompleted)
                 return;
             isInProgress = true;
-
-            StopAllCoroutines();
 
             appearRoutine = StartCoroutine(AppearRoutine(duration,characterDuration,delay));
         }
         IEnumerator AppearRoutine(float duration, float characterDuration, float delay)
         {
             yield return new WaitForSeconds(delay);
+            if (isCompleted)
+                yield break;
             textFader.FadeInLines(duration, characterDuration);
+            
+            yield return new WaitForSeconds(duration+ characterDuration);
+            appearRoutine = null;
+
+        }
+        public void DisappearImmediately()
+        {
+            isInProgress = false;
+            StopAllCoroutines();
+            appearRoutine = null;
+            textFader.FadeOutLines(0, 0);
+
         }
 
         public void Disappear(float duration, float characterDuration)
         {
+            if (isCompleted)
+                return;
             isInProgress = false;
-
-            StopAllCoroutines();
+            if (appearRoutine!=null)
+            {
+                StopCoroutine(appearRoutine);
+                appearRoutine = null;
+            }
             textFader.FadeOutLines(duration,characterDuration);
         }
         public void Complete(float duration, float characterDuration)
         {
             if(isInProgress)
-                Disappear(duration, characterDuration);
-
-            isInProgress = false;
+            {
+                StartCoroutine(CompleteRoutine(duration, characterDuration));
+            }
             isCompleted = true;
         }
+        IEnumerator CompleteRoutine(float duration, float characterDuration)
+        {
+            while (appearRoutine!=null)
+                yield return null;
+            textFader.FadeOutLines(duration, characterDuration);
+
+            float t = 0;
+            float colorChangeDuration = (duration+ characterDuration) / 2f;
+            while (t<1)
+            {
+                text.color = Color.Lerp(Color.white, completeFadeColor, t);
+
+
+                t += Time.deltaTime / colorChangeDuration;
+                yield return null;
+            }
+
+        }
+
     }
 }
