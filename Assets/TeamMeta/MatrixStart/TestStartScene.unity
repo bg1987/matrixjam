@@ -1646,7 +1646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99626aef3fea5c94a82681c8f6bb713d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matrixGraphAsset: {fileID: 2811297602134710623, guid: 60a5549428e4e864cb6202b3cc3999bb,
+  matrixGraphAsset: {fileID: 2811297602134710623, guid: d66480412332be14890bd04b67b761d6,
     type: 3}
   startScene: TestStartScene
   endScene: EndScene
@@ -1787,7 +1787,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e49729ba8d89aa04dacede3a3b687316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  current_level: -1
 --- !u!1001 &1252304315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2316,7 +2315,7 @@ PrefabInstance:
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
       propertyPath: startingGameIndex
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
@@ -3333,6 +3332,11 @@ PrefabInstance:
       propertyPath: edgeUis
       value: 
       objectReference: {fileID: 779765637}
+    - target: {fileID: 8615324118536662739, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: sameNodeEdgesOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4eeefe47ba84a44c978d05ec2db3c64, type: 3}
 --- !u!114 &1128284729673487505 stripped
@@ -4699,6 +4703,21 @@ PrefabInstance:
         type: 3}
       propertyPath: stepAppearDelay
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870245493274700427, guid: 57f4a93b26715004daadf37e53b8af5e,
+        type: 3}
+      propertyPath: completeFadeColor.r
+      value: 0.10457456
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870245493274700427, guid: 57f4a93b26715004daadf37e53b8af5e,
+        type: 3}
+      propertyPath: completeFadeColor.g
+      value: 0.23141558
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870245493274700427, guid: 57f4a93b26715004daadf37e53b8af5e,
+        type: 3}
+      propertyPath: completeFadeColor.b
+      value: 0.8867924
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57f4a93b26715004daadf37e53b8af5e, type: 3}

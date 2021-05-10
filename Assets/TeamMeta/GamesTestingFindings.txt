@@ -1,0 +1,100 @@
+-1- Tested and works
+Need to adjust exits and enemy names based on the finalized games list
+Each exit connected to the game by its name
+
+-2- Tested and works
+Exit 0 - At the top
+Exit 1 - At the bottom
+
+-3- Works with some unreachable exits
+Missing Exit.EndLevel for Tomash
+Exits 0,1,2,3,4 and 8 arent usable. Can't be reached from the game
+
+-4- Tested Playable
+All starts/exits are working
+Sometimes bugs out
+Exit 0 - "Press a Back to the matrix button"
+Exit 1 - Lose
+Exit 2 - Win
+
+-5- Tested and works
+Exit 0 - Magic door
+Exit 1 - Space/Tech door
+Exit 2 - Death door
+Exit 3 - Industry door
+
+-8- Tested and works partially
+Exits have the same index
+Exit 0 - Should be reached when finishing feeding Panda
+Exit 1 - Should be reached when finishing feeding dragon
+
+-9- Tested and works
+First exit - needs to have full hp
+Second exit - if took damage
+
+-10- Most likely not all exits are reachable
+All Exits have the same index, 0, need to give them 1,2,3...
+Exit 1 - Didn't wash hands and died, triggered randomly?
+Exit 2 - Dead because did not work
+Exit 4 - You jumped and died
+Also Exit 4 - Repeated actions caused you to die
+Exit 6 - Died from oversleep
+Exit 7 - Suffocated in the closet
+Exit 10 - Gone outside to catch pokemon and died to corona 
+Also Exit 10 - Just gone outside the door, and died to corona
+
+-11- Tested and works
+Exit 1 - Diffculty Normal
+Exit 2 - Diffculty Hard
+
+-13- Tested and works
+Where can the player find the secret code for Exit 2?
+Exit 0 - Reach a light door out of the maze
+Exit 1 - caught by minotaur
+Exit 2 - Got into secret room. No idea where the player can find the code 
+
+-14- Tested
+Missing references for Win/Lose exits, if fixed works
+Two entrances with the same index
+Team Probably intended for a single entry to exist
+Exit 0 - Win. Get to final station
+Exit 1 - Lose. Train crushed and wrecked
+
+-17- Tested Broken - two problems
+Win game's MeetingPoint isn't reachable - should be two of these but only one exists
+GameOver won't happen as the water supposed to cause it arent rising
+colliders are so sensitive that finding yourself stuck in them is incredibly easy
+Same index for the two existing Exits
+
+-19- Tested, works partially
+Can't reach exit 1
+Adjusting Managers\LevelManager.FailRequireLossCount from 1000 to 3 will let the game reach exit 1 when all hearts are lost
+Exit 0 - Level Won
+Exit 1 - Level Lost
+
+-20- Tested, partially works
+Exits 0 and 1 have the same indexes
+Exit 0 - Birthday Party Win
+Exit 1 - Escape this simulation Win
+
+-21- 
+Automatically transitions out of the game
+Uses past lives
+Can unbreak by slightly moving a few colliders
+
+-22-
+Exit 0 - Suicide. Not hitting any of panda's throws. The panda is angry at the player and wants revenge
+Exit 1 - A so-so result.
+Exit 2 - Close to perfect score. Happy panda
+-24- Seems totally broken
+Animation of dead cop is missing a reference
+Can put an empty sprite for that
+Exit 0 is unreachable
+Exit 1 - Progress through the level to the right
+
+-25- Tested and works
+Exit 0 - 3 poops, zero money
+Exit 1 - 0 money
+Exit 2 - More money than 1
+Exit 3 - More money than 2
+Exit 4 - More money than 3

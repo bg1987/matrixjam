@@ -30,12 +30,60 @@ EditorBuildSettings:
     path: Assets/TeamMeta/TestGames/TestGameThree/TestGameThree.unity
     guid: c1d057f48285ef941ac2bb08e2f1ebf7
   - enabled: 1
-    path: Assets/Team5/GuessTheCode/GuessTheCodeGameScene.unity
-    guid: bcdadfa36b4d5e0488bf1e9dbe5ce9fb
+    path: Assets/TeamMeta/TestGames/TestGameTour/TestGameFour.unity
+    guid: 0abe78c2c779a5744895115a3f1e2f01
   - enabled: 1
     path: Assets/Team1/Scenes/Main.unity
     guid: 9e2a19c57d630324893b1a6d7a16fe80
   - enabled: 1
+    path: Assets/Team2/Scenes/MainGame.unity
+    guid: ed877f568758d024e8bc619af3761043
+  - enabled: 1
+    path: Assets/Team3/ARRRRGGGG.unity
+    guid: f8dac6e14a5c57045b8f2027702c7e0f
+  - enabled: 1
+    path: Assets/Team4/Ukodus.unity
+    guid: 4f83016c132b07d4fb845beb7e71e848
+  - enabled: 1
+    path: Assets/Team5/GuessTheCode/GuessTheCodeGameScene.unity
+    guid: bcdadfa36b4d5e0488bf1e9dbe5ce9fb
+  - enabled: 1
+    path: Assets/Team8/Scenes/GameScene.unity
+    guid: 1a3df4cc1e22eb4468cfbafade9ca624
+  - enabled: 1
     path: Assets/Team9/Scenes/FullSceneWithSound.unity
     guid: 64a123e0dd64f2a4ba7e72ce57eed7be
+  - enabled: 1
+    path: Assets/Team10/ADayInLife2020Edition.unity
+    guid: 885f7aba03d0b5e4fb18cc4e37a47464
+  - enabled: 1
+    path: Assets/Team11/Game.unity
+    guid: d8ce35bd9468a1c4ba01aaa667161d74
+  - enabled: 1
+    path: Assets/Team13/Labyrinth.unity
+    guid: 9216e784564f8d6488134461b4d1507c
+  - enabled: 1
+    path: Assets/Team14/ThomasGameScene.unity
+    guid: 132e59a1a7174a745b3eb361fe446d59
+  - enabled: 1
+    path: Assets/Team17/TheFlyingDragons.unity
+    guid: 31273684cbd354787809fc58ff106241
+  - enabled: 1
+    path: Assets/Team19/scenes/base_scene.unity
+    guid: f272e86d1be011343a89f991135f02ec
+  - enabled: 1
+    path: Assets/Team20/DoorGame/CarryDoor.unity
+    guid: 294cf440728d4514ba5cbcdf6153aeb0
+  - enabled: 1
+    path: Assets/Team21/Team21.unity
+    guid: b40e78a387cc050a880c34fb69e81698
+  - enabled: 1
+    path: Assets/Team22/Rhythm Main.unity
+    guid: 178da1cc3a8aabc4090339d24669a708
+  - enabled: 1
+    path: Assets/Team24/MainProj/Level24.unity
+    guid: 152ffff496912aa41901f2a636d98409
+  - enabled: 1
+    path: Assets/Team25/Scenes/FartInAJar.unity
+    guid: 8469efc62f00afe4f80e4ed545e4f471
   m_configObjects: {}
