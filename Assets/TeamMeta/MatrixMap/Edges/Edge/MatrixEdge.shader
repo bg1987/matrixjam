@@ -6,6 +6,8 @@
         [hdr] _EndColor ("EndColor", Color) = (1,1,1,1)
         _ColorPower ("ColorPower", float) = 1
         _ColorPowerX ("ColorPower", float) = 1
+        _TileScale ("TileScale", float) = 1
+        _TimeScale ("TimeScale", float) = 1
          
         _Color1 ("Color1", Color) = (0.12,0.12,0.5)
         _ColorIntensity1 ("ColorIntensity1", float) = 1
@@ -69,6 +71,9 @@
             float4 _EndColor;
             float _ColorPower;
             float _ColorPowerX;
+            float _TileScale;
+            float _TimeScale;
+
             float4 _Color1;
             float4 _Color2;
             float _ColorIntensity1;
@@ -134,6 +139,7 @@
             float4 frag (Interpolators i) : SV_Target
             {
                 float time = _MatrixMapTime;
+                time *= _TimeScale;
                 // float time = 0;
                 clip((distance(_StartWorldPosition.xy, i.worldPos.xy) > _StartEdgeRadius) - 1);
 
@@ -148,7 +154,7 @@
                 float xOneToOne = abs(i.uv.x*2-1);
                 // col.a = 1;
                 float tileCount = floor(_EdgeLength*i.uv.y-time+0.5);
-                float tile = frac((_EdgeLength*i.uv.y)-time);
+                float tile = frac((_EdgeLength*i.uv.y*_TileScale)-time);
                 tile = tile*2 -1;
                 tile = abs(tile);
 
