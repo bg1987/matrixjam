@@ -1,3 +1,4 @@
+using MatrixJam.TeamMeta;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,24 +25,34 @@ namespace Assets.TeamMeta.MatrixTravelTransition
         }
         public void RenderGameAsBackground()
         {
+            Camera[] allCameras = Camera.allCameras;
+            Camera cameraInGameScene = Camera.main;
+            UpdateCamerasRenderTexture(allCameras);
+
+            UpdateGameCanvasesToCameraThatUsesRenderTexture(cameraInGameScene);
+
             container.SetActive(true);
             gameBgRawImage.texture = gameRenderTexture;
 
             gameBgRawImage.raycastTarget = true;
-
-            Camera[] allCameras = Camera.allCameras;
-            Camera cameraInGameScene = Camera.main;
-
+        }
+        void UpdateCamerasRenderTexture(Camera[] allCameras)
+        {
             foreach (var camera in allCameras)
             {
-                if (transitionLayer ==(transitionLayer | 1 << camera.gameObject.layer)) 
+                if (transitionLayer == (transitionLayer | 1 << camera.gameObject.layer))
                 {
                     continue;
                 }
                 camera.cullingMask = camera.cullingMask & ~transitionLayer;
                 camera.targetTexture = gameRenderTexture;
-                cameraInGameScene = camera;
             }
+        }
+        void UpdateGameCanvasesToCameraThatUsesRenderTexture(Camera cameraInGameScene)
+        {
+            //Unity's CanvasScaler uses screen size to determine its scaling.
+            //With a renderTexture the desired size for scaling is the texture's size
+            //For that there's a need to destroy current CanvasScaler and replace it with the custom ResolutionCanvasScaler
 
             Canvas[] canvases = FindObjectsOfType<Canvas>();
             foreach (var canvas in canvases)
@@ -50,14 +61,36 @@ namespace Assets.TeamMeta.MatrixTravelTransition
                 {
                     continue;
                 }
+                var canvasScaler = canvas.GetComponent<CanvasScaler>();
+
+                //Destroy CanvasScaler and replace with ResolutionCanvasScaler
+                if (canvasScaler!=null && canvasScaler.uiScaleMode == CanvasScaler.ScaleMode.ScaleWithScreenSize)
+                {
+                    var uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+                    var matchWidthOrHeight = canvasScaler.matchWidthOrHeight;
+                    var referenceResolution = canvasScaler.referenceResolution;
+                    var screenMatchMode = canvasScaler.screenMatchMode;
+
+                    DestroyImmediate(canvasScaler, false);
+
+                    var resolutionCanvasScaler = canvas.gameObject.AddComponent<ResolutionCanvasScaler>();
+                    resolutionCanvasScaler.uiScaleMode = uiScaleMode;
+                    resolutionCanvasScaler.matchWidthOrHeight = matchWidthOrHeight;
+                    resolutionCanvasScaler.referenceResolution = referenceResolution;
+                    resolutionCanvasScaler.screenMatchMode = screenMatchMode;
+                    resolutionCanvasScaler.SetScreenResolution(new Vector2(gameRenderTexture.width, gameRenderTexture.height));
+
+                    resolutionCanvasScaler.UpdateThisFrame();
+
+                }
+                //Change canvas to camera space
                 if (canvas.renderMode != RenderMode.ScreenSpaceCamera)
                 {
                     canvas.renderMode = RenderMode.ScreenSpaceCamera;
                     canvas.worldCamera = cameraInGameScene;
                     canvas.planeDistance = cameraInGameScene.nearClipPlane + 0.1f;
+                    canvas.sortingOrder = 100;
                 }
-                var canvasScaler = canvas.GetComponent<CanvasScaler>();
-                canvasScaler.enabled = false;
             }
         }
         public void Grayout(float duration)
@@ -80,6 +113,8 @@ namespace Assets.TeamMeta.MatrixTravelTransition
         public void SetToStatic()
         {
             gameRenderTextureStatic = new Texture2D(gameRenderTexture.width, gameRenderTexture.height, textureFormat: TextureFormat.ARGB32, mipChain:false);
+            gameRenderTextureStatic.filterMode = FilterMode.Point;
+
             Graphics.CopyTexture(gameRenderTexture, gameRenderTextureStatic);
 
             gameRenderTexture.Release();

@@ -1646,7 +1646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99626aef3fea5c94a82681c8f6bb713d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matrixGraphAsset: {fileID: 2811297602134710623, guid: d66480412332be14890bd04b67b761d6,
+  matrixGraphAsset: {fileID: 2811297602134710623, guid: 60a5549428e4e864cb6202b3cc3999bb,
     type: 3}
   startScene: TestStartScene
   endScene: EndScene
@@ -2315,7 +2315,7 @@ PrefabInstance:
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
       propertyPath: startingGameIndex
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
