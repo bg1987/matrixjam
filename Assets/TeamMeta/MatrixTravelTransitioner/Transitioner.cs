@@ -106,6 +106,10 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             yield return new WaitForSeconds(gameBackgroundGrayoutDuration);
 
             gameBackground.SetToStatic();
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
             yield return null;
             SceneManager.LoadScene(TransitionSceneName);
             yield return null;

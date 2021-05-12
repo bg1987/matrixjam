@@ -165,7 +165,9 @@
                 {
                     // p += t*0.1;
                     //float2 noiseValue = tex2D( _MainTex,_SinTime.w*p.xz+199.5 ).yx;
-                    float2 noiseValue = tex2D( _MainTex,cos(p.xz+(t)*0.8)+199.5 ).yx;
+                    //float2 noiseUV = float2((cos(t+p.y)+1)/2,(sin(t+p.x)+1)/2); Not a very exciting look
+                    float2 noiseUV = (cos((t+p.x))+1)/2;
+                    float2 noiseValue = tex2D( _MainTex,noiseUV ).yx;
 
                     rz+= (sin((ProNoise(p+noiseValue.xyx+t*0.8))*6.0)*0.5+0.5) /z;
                     p = lerp(bp,p,0.6);
