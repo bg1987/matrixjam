@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MatrixJam.TeamMeta
+namespace MatrixJam.TeamMeta.IngameMenu
 {
-    public class IngameMenu : MonoBehaviour
+    public class Activator : MonoBehaviour
     {
         [SerializeField] IngameMenuBG IngameMenuBG;
         [SerializeField] List<GameObject> ingameMenuSelections;
@@ -37,7 +37,7 @@ namespace MatrixJam.TeamMeta
         {
             isListeningToActivationKey = shouldListen;
         }
-        void Deactivate()
+        public void Deactivate()
         {
             IngameMenuBG.Disappear(bgDisappearDuration);
 
@@ -54,6 +54,11 @@ namespace MatrixJam.TeamMeta
         {
             IngameMenuBG.Disappear(0);
             IngameMenuBG.SetInteractable(false);
+
+            foreach (var ingameMenuSelection in ingameMenuSelections)
+            {
+                ingameMenuSelection.SetActive(false);
+            }
 
             isActivated = false;
         }
