@@ -7,7 +7,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
     public class Activator : MonoBehaviour
     {
         [SerializeField] IngameMenuBG IngameMenuBG;
-        [SerializeField] List<GameObject> ingameMenuSelections;
+        [SerializeField] List<Selection> selections;
         [SerializeField] bool isListeningToActivationKey = false;
         bool isActivated = false;
 
@@ -40,14 +40,14 @@ namespace MatrixJam.TeamMeta.IngameMenu
         public void Deactivate()
         {
             IngameMenuBG.Disappear(bgDisappearDuration);
+            IngameMenuBG.SetInteractable(false);
 
-            //Probably to factor out into IngameMenuSelections class
-            foreach (var ingameMenuSelection in ingameMenuSelections)
+            foreach (var selection in selections)
             {
-                ingameMenuSelection.SetActive(false);
+                selection.Disappear(bgDisappearDuration);
+                selection.SetInteractable(false);
             }
 
-            IngameMenuBG.SetInteractable(false);
             isActivated = false;
         }
         void DeactivateImmediately()
@@ -55,9 +55,10 @@ namespace MatrixJam.TeamMeta.IngameMenu
             IngameMenuBG.Disappear(0);
             IngameMenuBG.SetInteractable(false);
 
-            foreach (var ingameMenuSelection in ingameMenuSelections)
+            foreach (var selection in selections)
             {
-                ingameMenuSelection.SetActive(false);
+                selection.Disappear(0);
+                selection.SetInteractable(false);
             }
 
             isActivated = false;
@@ -65,14 +66,13 @@ namespace MatrixJam.TeamMeta.IngameMenu
         void Activate()
         {
             IngameMenuBG.Appear(bgAppearDuration);
-
-            //Probably to factor out into IngameMenuSelections class
-            foreach (var ingameMenuSelection in ingameMenuSelections)
-            {
-                ingameMenuSelection.SetActive(true);
-            }
-
             IngameMenuBG.SetInteractable(true);
+
+            foreach (var selection in selections)
+            {
+                selection.Appear(bgAppearDuration);
+                selection.SetInteractable(true);
+            }
             
             isActivated = true;
         }
