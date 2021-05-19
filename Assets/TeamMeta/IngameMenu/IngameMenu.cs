@@ -7,6 +7,7 @@ namespace MatrixJam.TeamMeta
     public class IngameMenu : MonoBehaviour
     {
         [SerializeField] IngameMenuBG IngameMenuBG;
+        [SerializeField] List<GameObject> ingameMenuSelections;
         [SerializeField] bool isListeningToActivationKey = false;
         bool isActivated = false;
 
@@ -39,6 +40,13 @@ namespace MatrixJam.TeamMeta
         void Deactivate()
         {
             IngameMenuBG.Disappear(bgDisappearDuration);
+
+            //Probably to factor out into IngameMenuSelections class
+            foreach (var ingameMenuSelection in ingameMenuSelections)
+            {
+                ingameMenuSelection.SetActive(false);
+            }
+
             IngameMenuBG.SetInteractable(false);
             isActivated = false;
         }
@@ -52,6 +60,13 @@ namespace MatrixJam.TeamMeta
         void Activate()
         {
             IngameMenuBG.Appear(bgAppearDuration);
+
+            //Probably to factor out into IngameMenuSelections class
+            foreach (var ingameMenuSelection in ingameMenuSelections)
+            {
+                ingameMenuSelection.SetActive(true);
+            }
+
             IngameMenuBG.SetInteractable(true);
             
             isActivated = true;
