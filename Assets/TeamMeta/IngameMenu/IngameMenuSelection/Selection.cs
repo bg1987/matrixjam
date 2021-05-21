@@ -36,6 +36,11 @@ namespace MatrixJam.TeamMeta.IngameMenu
         private bool isHovered = false;
         private Coroutine changeHoverStateRoutine;
 
+        [Header("Flash")]
+        [SerializeField] private float flashDuration = 0.1f;
+        [SerializeField] private Color originalColor = Color.black;
+        [SerializeField] private Color flashColor = Color.blue;
+
         private void Awake()
         {
             material = image.material;
@@ -122,7 +127,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
             {
                 if (!isHovered && changeHoverStateRoutine==null)
                 {
-                    borderColor.a = Mathf.Lerp(blubBorderColor.a, 0, Mathf.InverseLerp(blubBorderFadeColorThreshold, 1, t));
+                    borderColor.a = Mathf.Lerp(flavorColor.a, 0, Mathf.InverseLerp(blubBorderFadeColorThreshold, 1, t));
                     material.SetColor("_BlubBorderColor", borderColor);
                 }
             }
@@ -154,6 +159,31 @@ namespace MatrixJam.TeamMeta.IngameMenu
         public void Unhover(float duration)
         {
             ChangeHoverState(duration, 1, 0);
+        }
+        public void Flash()
+        {
+            if (button.interactable == false)
+                return;
+
+            StartCoroutine(FlashRoutine(flashDuration));
+        }
+        IEnumerator FlashRoutine(float duration)
+        {
+            float t = 0;
+            while (t < 1)
+            {
+                ExecuteFlash(t);
+
+                t += Time.deltaTime / duration;
+                yield return null;
+            }
+            ExecuteFlash(1);
+        }
+        void ExecuteFlash(float t)
+        {
+            float flashT = Mathf.Abs(Mathf.Abs((t * 2) - 1)-1);
+            var targetColor = Color.Lerp(originalColor, flashColor, flashT);
+            material.SetColor("_Color", targetColor);
         }
         void ChangeHoverState(float duration, float start, float end)
         {

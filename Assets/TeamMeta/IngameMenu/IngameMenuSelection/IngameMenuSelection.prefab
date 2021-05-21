@@ -331,6 +331,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8933891471159333918}
+          m_MethodName: Flash
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8593344337548853191
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +479,9 @@ MonoBehaviour:
   blubBorderNoiseScroll: 0.5
   hoverBorderAlphaEnd: 0.9
   hoverAppearDuration: 0.2
+  flashDuration: 0.23
+  originalColor: {r: 0, g: 0, b: 0, a: 0.6}
+  flashColor: {r: 0.1137255, g: 0.15294118, b: 0.3254902, a: 0.4}
 --- !u!1001 &9189345737176297916
 PrefabInstance:
   m_ObjectHideFlags: 0
