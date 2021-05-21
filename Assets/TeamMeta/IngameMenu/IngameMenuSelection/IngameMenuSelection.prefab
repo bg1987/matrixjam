@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 2022276086}
   - component: {fileID: 2022276085}
   - component: {fileID: 2022276084}
+  - component: {fileID: 415459472}
   m_Layer: 28
   m_Name: Button
   m_TagString: Untagged
@@ -251,7 +252,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -276,7 +277,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1077914986}
+      - m_Target: {fileID: 0}
         m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
@@ -287,6 +288,49 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &415459472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022276082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8933891471159333918}
+          m_MethodName: EnterHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8933891471159333918}
+          m_MethodName: ExitHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8593344337548853191
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +341,6 @@ GameObject:
   m_Component:
   - component: {fileID: 968879591171615064}
   - component: {fileID: 8933891471159333918}
-  - component: {fileID: 1077914986}
   m_Layer: 28
   m_Name: IngameMenuSelection
   m_TagString: Untagged
@@ -341,9 +384,11 @@ MonoBehaviour:
   triangleSpriteUI: {fileID: 6304122485532135255}
   button: {fileID: 2022276084}
   text: {fileID: 505014019}
-  flavorColor: {r: 0, g: 0, b: 0, a: 0}
+  eventTrigger: {fileID: 415459472}
+  flavorColor: {r: 0.9725491, g: 0.8941177, b: 0.41960788, a: 1}
   blubBorderAppearValue: 0.03
   blubBorderDisappearValue: 0.25
+  blubBorderFadeColorThreshold: 0.9
   blubBorderAppearCurve:
     serializedVersion: 2
     m_Curve:
@@ -357,7 +402,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
+      time: 0.9
       value: 1
       inSlope: 1
       outSlope: 1
@@ -382,7 +427,7 @@ MonoBehaviour:
       outWeight: 0.18181819
     - serializedVersion: 3
       time: 1
-      value: 0.19
+      value: 0.6
       inSlope: 0.2731148
       outSlope: 0.2731148
       tangentMode: 0
@@ -416,20 +461,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  blubBorderNoiseScroll: 2.5
---- !u!114 &1077914986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8593344337548853191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92654d8bfe6b663468cdb7a7b7b593d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ingameMenuActivator: {fileID: 0}
+  blubBorderNoiseScroll: 0.5
+  hoverBorderAlphaEnd: 0.9
+  hoverAppearDuration: 0.2
 --- !u!1001 &9189345737176297916
 PrefabInstance:
   m_ObjectHideFlags: 0

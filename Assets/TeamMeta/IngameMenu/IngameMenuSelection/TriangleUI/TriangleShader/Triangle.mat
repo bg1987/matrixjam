@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BlubBorderWidth: 0.03
+    - _BlubBorderWidth: 0.0305
     - _BlubBorderWidthHighValueDuctTapeFixForTriangleInCenterArtifact: 0.55
     - _BorderWidth: 0.05
     - _BumpScale: 1
@@ -75,7 +75,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _TriangleSmooth: 0.99
-    - _TriangleSmoothBlubBorderOffset: 0.02
+    - _TriangleSmoothBlubBorderOffset: 0.025
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:

@@ -44,7 +44,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
 
             foreach (var selection in selections)
             {
-                selection.Disappear(bgDisappearDuration);
+                selection.Disappear(bgDisappearDuration, DeactivateSelection);
                 selection.SetInteractable(false);
             }
 
@@ -57,7 +57,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
 
             foreach (var selection in selections)
             {
-                selection.Disappear(0);
+                selection.Disappear(0, DeactivateSelection);
                 selection.SetInteractable(false);
             }
 
@@ -70,11 +70,16 @@ namespace MatrixJam.TeamMeta.IngameMenu
 
             foreach (var selection in selections)
             {
+                selection.gameObject.SetActive(true);
                 selection.Appear(bgAppearDuration);
                 selection.SetInteractable(true);
             }
             
             isActivated = true;
+        }
+        void DeactivateSelection(Selection selection)
+        {
+            selection.gameObject.SetActive(false);
         }
     }
 }
