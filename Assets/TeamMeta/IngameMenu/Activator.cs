@@ -6,6 +6,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
 {
     public class Activator : MonoBehaviour
     {
+        [SerializeField] GameObject container;
         [SerializeField] IngameMenuOverlay IngameMenuBG;
         [SerializeField] MenuActivator ingameMenuActivator;
         [SerializeField] bool isListeningToActivationKey = false;
@@ -14,6 +15,10 @@ namespace MatrixJam.TeamMeta.IngameMenu
         [Header("Appearance")]
         [SerializeField] float bgAppearDuration = 0.5f;
         [SerializeField] float bgDisappearDuration = 0.5f;
+        void Awake()
+        {
+            container.SetActive(true);
+        }
         // Start is called before the first frame update
         void Start()
         {

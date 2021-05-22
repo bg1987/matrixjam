@@ -24,12 +24,12 @@ namespace MatrixJam.TeamMeta.IngameMenu
         [SerializeField] float blubBorderAppearValue = 0.03f;
         [SerializeField] float blubBorderDisappearValue = 0.25f;
         [SerializeField] float blubBorderFadeColorThreshold = 0.9f;
-        [SerializeField] AnimationCurve blubBorderAppearCurve = AnimationCurve.Linear( 0,0,1,1);
-        [SerializeField] AnimationCurve blubBorderNoiseStrengthCurve = AnimationCurve.Linear( 0,0,1,1);
-        [SerializeField] AnimationCurve textAppearCurve = AnimationCurve.Linear( 0,0,1,1);
+        [SerializeField] AnimationCurve blubBorderAppearCurve = AnimationCurve.Linear(0, 0, 1, 1);
+        [SerializeField] AnimationCurve blubBorderNoiseStrengthCurve = AnimationCurve.Linear(0, 0, 1, 1);
+        [SerializeField] AnimationCurve textAppearCurve = AnimationCurve.Linear(0, 0, 1, 1);
         [SerializeField] float blubBorderNoiseScroll = 1f;
         private Coroutine changeAppearStateRoutine;
-        
+
         [Header("Hover")]
         [SerializeField] float hoverBorderAlphaEnd = 0.7f;
         [SerializeField] float hoverAppearDuration = 0.2f;
@@ -40,14 +40,22 @@ namespace MatrixJam.TeamMeta.IngameMenu
         [SerializeField] private float flashDuration = 0.1f;
         [SerializeField] private Color originalColor = Color.black;
         [SerializeField] private Color flashColor = Color.blue;
-
         private void Awake()
+        {
+            material = image.material;
+        }
+        private void Start()
+        {
+            Init();
+        }
+        public void Init()
         {
             material = image.material;
             Color borderColor = flavorColor;
             material.SetColor("_BlubBorderColor", borderColor);
-
-            text.color = flavorColor;
+            var textColor = flavorColor;
+            textColor.a = text.color.a;
+            text.color = textColor;
             randomSeed = Random.value;
             newRandomSeed = randomSeed;
 
