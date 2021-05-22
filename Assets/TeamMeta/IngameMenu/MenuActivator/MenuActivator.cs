@@ -6,7 +6,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
 {
     public class MenuActivator : MonoBehaviour
     {
-        [SerializeField] List<Selection> selections;
+        [SerializeField] MenuSelections menuSelections;
 
         bool isActivated = false;
 
@@ -18,7 +18,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
             if (!isActivated)
                 return;
 
-            foreach (var selection in selections)
+            foreach (var selection in menuSelections.Selections)
             {
                 selection.Disappear(disappearDuration, DeactivateSelection);
                 selection.SetInteractable(false);
@@ -28,7 +28,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
         }
         public void DeactivateImmediately()
         {
-            foreach (var selection in selections)
+            foreach (var selection in menuSelections.Selections)
             {
                 selection.Disappear(0, DeactivateSelection);
                 selection.SetInteractable(false);
@@ -40,7 +40,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
             if (isActivated)
                 return;
 
-            foreach (var selection in selections)
+            foreach (var selection in menuSelections.Selections)
             {
                 selection.gameObject.SetActive(true);
                 selection.Appear(appearDuration);

@@ -40,6 +40,10 @@ namespace MatrixJam.TeamMeta.IngameMenu
         [SerializeField] private float flashDuration = 0.1f;
         [SerializeField] private Color originalColor = Color.black;
         [SerializeField] private Color flashColor = Color.blue;
+
+        //[Header("Select")]
+        private bool isSelected = false;
+
         private void Awake()
         {
             material = image.material;
@@ -59,7 +63,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
             randomSeed = Random.value;
             newRandomSeed = randomSeed;
 
-            Unhover(0);
+            DisappearBorder(0);
         }
         public void SetInteractable(bool isInteractable)
         {
@@ -72,6 +76,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
         }
         public void Disappear(float duration, System.Action<Selection> onComplete)
         {
+            ExitSelect();
             ChangeAppearState(duration, 1, 0, onComplete);
         }
         void ChangeAppearState(float duration, float start, float end, System.Action<Selection> onComplete = null)
@@ -160,14 +165,15 @@ namespace MatrixJam.TeamMeta.IngameMenu
             c.y += (Mathf.PerlinNoise(noiseScroll * c.y, 0) * 2 - 1) * noiseStrength;
             material.SetVector("_C", c);
         }
-        public void Hover(float duration)
+        public void AppearBorder(float duration)
         {
-            ChangeHoverState(duration, 0, 1);
+            ChangeBorderColor(duration, 0, 1);
         }
-        public void Unhover(float duration)
+        public void DisappearBorder(float duration)
         {
-            ChangeHoverState(duration, 1, 0);
+            ChangeBorderColor(duration, 1, 0);
         }
+
         public void Flash()
         {
             if (button.interactable == false)
@@ -193,7 +199,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
             var targetColor = Color.Lerp(originalColor, flashColor, flashT);
             material.SetColor("_Color", targetColor);
         }
-        void ChangeHoverState(float duration, float start, float end)
+        void ChangeBorderColor(float duration, float start, float end)
         {
             if (changeHoverStateRoutine != null)
                 StopCoroutine(changeHoverStateRoutine);
@@ -202,9 +208,9 @@ namespace MatrixJam.TeamMeta.IngameMenu
                 ExecuteHover(end);
                 return;
             }
-            changeHoverStateRoutine = StartCoroutine(ChangeHoverStateRoutine(duration, start, end));
+            changeHoverStateRoutine = StartCoroutine(ChangeBorderColorRoutine(duration, start, end));
         }
-        IEnumerator ChangeHoverStateRoutine(float duration, float start, float end)
+        IEnumerator ChangeBorderColorRoutine(float duration, float start, float end)
         {
             float effectProgress = material.GetColor("_BlubBorderColor").a;
 
@@ -232,21 +238,59 @@ namespace MatrixJam.TeamMeta.IngameMenu
         public void EnterHover()
         {
             Debug.Log("Enter hover");
-            if (isHovered)
-                return;
+
             isHovered = true;
 
-            Hover(hoverAppearDuration);
+            if (isSelected)
+                return;
+
+            AppearBorder(hoverAppearDuration);
         }
         public void ExitHover()
         {
             Debug.Log("Exit hover");
-
-            if (!isHovered)
-                return;
+            
             isHovered = false;
 
-            Unhover(hoverAppearDuration);
+            if (isSelected)
+                return;
+
+            DisappearBorder(hoverAppearDuration);
+        }
+        public void EnterSelect()
+        {
+            Debug.Log("Enter hover");
+            if (isSelected)
+                return;
+            isSelected = true;
+
+            AppearBorder(hoverAppearDuration);
+        }
+        public void ExitSelect()
+        {
+            Debug.Log("Exit hover");
+
+            if (!isSelected)
+                return;
+            isSelected = false;
+
+            DisappearBorder(hoverAppearDuration);
+
+            if(isHovered)
+            {
+                EnterHover();
+            }
+        }
+        public void Select()
+        {
+
+        }
+        public void ToggleSelect()
+        {
+            if (isSelected)
+                ExitSelect();
+            else
+                EnterSelect();
         }
     }
 }
