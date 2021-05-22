@@ -4,7 +4,7 @@
     {
         _Color("Color", Color) = (0,1,0,1)
         _Speed ("Speed", float) = 0.1
-        _AppearProgress ("AppearProgress", Range(0,1)) = 1
+        _AppearProgress ("AppearProgress", Range(0,2)) = 1
 
         _Progress ("Progress", float) = 0
 

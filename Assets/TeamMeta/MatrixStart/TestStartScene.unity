@@ -1539,6 +1539,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1128284729673487503}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1073524446 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 990638135878055701, guid: 7ff5212fac9c7184ba67cfa3ae5cd317,
+    type: 3}
+  m_PrefabInstance: {fileID: 4744391066202131548}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7a1750728efeb4e8b23d993a72e858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1090703381
 GameObject:
   m_ObjectHideFlags: 0
@@ -3280,6 +3292,16 @@ PrefabInstance:
       propertyPath: transitionLayer.m_Bits
       value: 3758096384
       objectReference: {fileID: 0}
+    - target: {fileID: 1128284729673487505, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: IngameMenuActivator
+      value: 
+      objectReference: {fileID: 1073524446}
+    - target: {fileID: 1128284729673487505, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: ingameMenuActivator
+      value: 
+      objectReference: {fileID: 1073524446}
     - target: {fileID: 2947487065549499691, guid: e4eeefe47ba84a44c978d05ec2db3c64,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

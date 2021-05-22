@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
 namespace Assets.TeamMeta.MatrixTravelTransition
 {
     public class Transitioner : MonoBehaviour
@@ -36,6 +35,8 @@ namespace Assets.TeamMeta.MatrixTravelTransition
         [SerializeField, Min(0)] int minimumVisitedGamesToEnablePressContinue = 1;
         [SerializeField, Min(0)] int minimumVisitedGamesToEnableMatrixMapInteraction = 1;
 
+        [Header("IngameMenu")]
+        [SerializeField] MatrixJam.TeamMeta.IngameMenu.Activator ingameMenuActivator;
         // Start is called before the first frame update
         void Awake()
         {
@@ -97,6 +98,11 @@ namespace Assets.TeamMeta.MatrixTravelTransition
         IEnumerator StartTransitionRoutine()
         {
             isTransitioning = true;
+            if (ingameMenuActivator)
+            {
+                ingameMenuActivator.Deactivate();
+                ingameMenuActivator.ListenToActivationKey(false);
+            }
 
             gameBackground.RenderGameAsBackground();
             gameBackground.Grayout(gameBackgroundGrayoutDuration);
@@ -130,6 +136,9 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             matrixMap.Deactivate();
             pressContinueKey.gameObject.SetActive(false);
             matrixMap.interactable = false;
+
+            if(ingameMenuActivator)
+                ingameMenuActivator.ListenToActivationKey(true);
 
             isTransitioning = false;
         }
