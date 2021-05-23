@@ -15,7 +15,8 @@ namespace MatrixJam.TeamMeta.IngameMenu
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] EventTrigger eventTrigger;
         [SerializeField] Color flavorColor;
-        [SerializeField] List<Object> selectionSelectListeners;
+        [SerializeField] List<Object> selectionSelectListeners = new List<Object>();
+        [SerializeField] List<Object> selectionAppearListeners = new List<Object>();
         Material material;
 
         float randomSeed = 1;
@@ -73,10 +74,23 @@ namespace MatrixJam.TeamMeta.IngameMenu
         }
         public void Appear(float duration)
         {
+            foreach (var listenerObject in selectionAppearListeners)
+            {
+                var listener = listenerObject as ISelectionAppearListener;
+                listener.Appear(duration);
+            }
             ChangeAppearState(duration, 0, 1);
         }
         public void Disappear(float duration, System.Action<Selection> onComplete)
         {
+            foreach (var listenerObject in selectionAppearListeners)
+            {
+                var listener = listenerObject as ISelectionAppearListener;
+                if(duration == 0)
+                    listener.DisappearImmediately();
+                else
+                    listener.Disappear(duration);
+            }
             ExitSelect();
             ChangeAppearState(duration, 1, 0, onComplete);
         }
