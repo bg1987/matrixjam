@@ -24,7 +24,8 @@ namespace MatrixJam.TeamMeta.IngameMenu
         private void Awake()
         {
             backgroundImage.color = appearBackgroundColor;
-            
+
+            RefreshSliderFill();
             UpdateFillColor();
             //slider.value
             //DisappearImmediately();
@@ -92,6 +93,15 @@ namespace MatrixJam.TeamMeta.IngameMenu
 
             fillImageColor.a = handleImage.color.a;
             handleImage.color = fillImageColor;
+        }
+        public void UpdateVolume()
+        {
+            AudioListener.volume = slider.value;
+            UpdateFillColor();
+        }
+        public void RefreshSliderFill()
+        {
+            slider.value = AudioListener.volume;
         }
         Color CalculateMatrixColorBasedOnFill(float value)
         {
