@@ -15,6 +15,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] EventTrigger eventTrigger;
         [SerializeField] Color flavorColor;
+        [SerializeField] List<Object> selectionSelectListeners;
         Material material;
 
         float randomSeed = 1;
@@ -263,16 +264,24 @@ namespace MatrixJam.TeamMeta.IngameMenu
             if (isSelected)
                 return;
             isSelected = true;
-
+            foreach (var listenerObject in selectionSelectListeners)
+            {
+                var listener = listenerObject as ISelectionSelectListener;
+                listener.Select();
+            }
             AppearBorder(hoverAppearDuration);
         }
         public void ExitSelect()
         {
-            Debug.Log("Exit hover");
-
             if (!isSelected)
                 return;
             isSelected = false;
+
+            foreach (var listenerObject in selectionSelectListeners)
+            {
+                var listener = listenerObject as ISelectionSelectListener;
+                listener.Unselect();
+            }
 
             DisappearBorder(hoverAppearDuration);
 
@@ -281,6 +290,24 @@ namespace MatrixJam.TeamMeta.IngameMenu
                 EnterHover();
             }
         }
+        public void ExitSelectImmediately()
+        {
+            if (!isSelected)
+                return;
+            isSelected = false;
+
+            foreach (var listenerObject in selectionSelectListeners)
+            {
+                var listener = listenerObject as ISelectionSelectListener;
+                listener.UnselectImmediately();
+            }
+            DisappearBorder(0);
+            if (isHovered)
+            {
+                EnterHover();
+            }
+        }
+
         public void Select()
         {
 

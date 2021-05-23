@@ -6,7 +6,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
 {
     public class MenuActiveSelection : MonoBehaviour
     {
-        [SerializeField] MenuSelections menuSelections; 
+        [SerializeField] MenuSelections menuSelections;
         [SerializeField] Selection activeSelection;
 
         public void SelectSelection(Selection selection)
@@ -17,14 +17,25 @@ namespace MatrixJam.TeamMeta.IngameMenu
                 activeSelection = null;
                 return;
             }
-            if(activeSelection != null)
+            if (activeSelection != null)
                 activeSelection.ExitSelect();
 
             activeSelection = selection;
             activeSelection.EnterSelect();
         }
-        
-
-
+        public void UnselectImmediately()
+        {
+            if (!activeSelection)
+                return;
+            activeSelection.ExitSelectImmediately();
+            activeSelection = null;
+        }
+        public void Unselect()
+        {
+            if (!activeSelection)
+                return;
+            activeSelection.ExitSelect();
+            activeSelection = null;
+        }
     }
 }

@@ -401,6 +401,7 @@ MonoBehaviour:
   text: {fileID: 505014019}
   eventTrigger: {fileID: 415459472}
   flavorColor: {r: 0.9725491, g: 0.8941177, b: 0.41960788, a: 1}
+  selectionSelectListeners: []
   blubBorderAppearValue: 0.03
   blubBorderDisappearValue: 0.25
   blubBorderFadeColorThreshold: 0.9

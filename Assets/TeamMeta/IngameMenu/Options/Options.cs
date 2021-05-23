@@ -4,11 +4,28 @@ using UnityEngine;
 
 namespace MatrixJam.TeamMeta.IngameMenu
 {
-    public class Options : MonoBehaviour
+    public class Options : MonoBehaviour,ISelectionSelectListener
     {
-        public void ShowOptionsMenu()
+        [SerializeField] MenuActivator optionsMenuActivator;
+
+        public void ToggleOptionsMenu()
         {
-            Debug.Log("Options menu should appear now");
+            if (optionsMenuActivator.IsActivated)
+                optionsMenuActivator.Deactivate();
+            else
+                optionsMenuActivator.Activate();
+        }
+        public void Select()
+        {
+            optionsMenuActivator.Activate();
+        }
+        public void Unselect()
+        {
+            optionsMenuActivator.Deactivate();
+        }
+        public void UnselectImmediately()
+        {
+            optionsMenuActivator.DeactivateImmediately();
         }
     }
 }
