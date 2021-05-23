@@ -27,13 +27,10 @@ namespace MatrixJam.TeamMeta.IngameMenu
 
             RefreshSliderFill();
             UpdateFillColor();
-            //slider.value
-            //DisappearImmediately();
         }
         public void Appear(float duration)
         {
             ChangeAppearState(duration, 0, 1);
-
         }
         public void Disappear(float duration)
         {
