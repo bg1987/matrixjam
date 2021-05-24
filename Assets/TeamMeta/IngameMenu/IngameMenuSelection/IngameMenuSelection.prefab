@@ -402,6 +402,7 @@ MonoBehaviour:
   eventTrigger: {fileID: 415459472}
   flavorColor: {r: 0.9725491, g: 0.8941177, b: 0.41960788, a: 1}
   selectionSelectListeners: []
+  selectionAppearListeners: []
   blubBorderAppearValue: 0.03
   blubBorderDisappearValue: 0.25
   blubBorderFadeColorThreshold: 0.9
@@ -478,10 +479,13 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   blubBorderNoiseScroll: 0.5
+  EndDisappear:
+    m_PersistentCalls:
+      m_Calls: []
   hoverBorderAlphaEnd: 0.9
   hoverAppearDuration: 0.2
   flashDuration: 0.23
-  originalColor: {r: 0, g: 0, b: 0, a: 0.6}
+  originalColor: {r: 0, g: 0, b: 0, a: 0.8}
   flashColor: {r: 0.1137255, g: 0.15294118, b: 0.3254902, a: 0.4}
 --- !u!1001 &9189345737176297916
 PrefabInstance:

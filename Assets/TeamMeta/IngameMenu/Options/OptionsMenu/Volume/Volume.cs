@@ -16,7 +16,8 @@ namespace MatrixJam.TeamMeta.IngameMenu
         [SerializeField] Color appearBackgroundColor = Color.blue;
         [SerializeField] Color appearHandleColor = Color.blue;
         [SerializeField] List<Color> matrixColors = new List<Color>();
-        [SerializeField] private AnimationCurve appearCurve = AnimationCurve.Linear(0, 0, 1, 1);
+        [SerializeField] private AnimationCurve sliderAppearCurve = AnimationCurve.Linear(0, 0, 1, 1);
+        [SerializeField] private AnimationCurve selectionAppearCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
         float appearProgress = 0f;
         private Coroutine changeAppearStateRoutine;
@@ -51,11 +52,13 @@ namespace MatrixJam.TeamMeta.IngameMenu
         IEnumerator ChangeAppearStateRoutine(float duration, float start, float end)
         {
 
-            float t = appearProgress;
-
+            //float t = Mathf.Lerp(start, end, backgroundImage.color.a);
+            float t = Mathf.InverseLerp(start, end, appearProgress);
             while (t < 1)
             {
-                ExecuteAppear(t);
+                float appearT = Mathf.Lerp(start, end, t);
+
+                ExecuteAppear(appearT);
 
                 float timeStep = Time.deltaTime / duration;
                 t += timeStep;
@@ -67,13 +70,14 @@ namespace MatrixJam.TeamMeta.IngameMenu
         }
         void ExecuteAppear(float t)
         {
-            t = appearCurve.Evaluate(t);
+            appearProgress = selectionAppearCurve.Evaluate(t);
+            //Debug.Log(appearProgress);
+            t = sliderAppearCurve.Evaluate(t);
 
             backgroundImage.color = CalculateImageAppearColor(t, 0, appearBackgroundColor.a, backgroundImage);
             fillImage.color = CalculateImageAppearColor(t, 0, 1, fillImage);
             handleImage.color = CalculateImageAppearColor(t, 0, appearHandleColor.a, handleImage);
 
-            appearProgress = t;
         }
         Color CalculateImageAppearColor(float t, float start, float end, Image image)
         {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -30,6 +31,9 @@ namespace MatrixJam.TeamMeta.IngameMenu
         [SerializeField] AnimationCurve blubBorderNoiseStrengthCurve = AnimationCurve.Linear(0, 0, 1, 1);
         [SerializeField] AnimationCurve textAppearCurve = AnimationCurve.Linear(0, 0, 1, 1);
         [SerializeField] float blubBorderNoiseScroll = 1f;
+
+        [SerializeField] UnityEvent EndDisappear;
+
         private Coroutine changeAppearStateRoutine;
 
         [Header("Hover")]
@@ -40,8 +44,8 @@ namespace MatrixJam.TeamMeta.IngameMenu
 
         [Header("Flash")]
         [SerializeField] private float flashDuration = 0.1f;
-        [SerializeField] private Color originalColor = Color.black;
         [SerializeField] private Color flashColor = Color.blue;
+        private Color originalFillColor = Color.black;
 
         //[Header("Select")]
         private bool isSelected = false;
@@ -59,6 +63,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
             material = image.material;
             Color borderColor = flavorColor;
             material.SetColor("_BlubBorderColor", borderColor);
+            originalFillColor = material.GetColor("_Color");
             var textColor = flavorColor;
             textColor.a = text.color.a;
             text.color = textColor;
@@ -128,6 +133,8 @@ namespace MatrixJam.TeamMeta.IngameMenu
                 yield return null;
             }
             ExecuteAppear(end);
+            if (end == 0)
+                EndDisappear.Invoke();
             changeAppearStateRoutine = null;
             if (onComplete != null)
                 onComplete.Invoke(this);
@@ -211,7 +218,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
         void ExecuteFlash(float t)
         {
             float flashT = Mathf.Abs(Mathf.Abs((t * 2) - 1)-1);
-            var targetColor = Color.Lerp(originalColor, flashColor, flashT);
+            var targetColor = Color.Lerp(originalFillColor, flashColor, flashT);
             material.SetColor("_Color", targetColor);
         }
         void ChangeBorderColor(float duration, float start, float end)
