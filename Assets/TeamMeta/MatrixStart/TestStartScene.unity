@@ -4650,6 +4650,51 @@ PrefabInstance:
       propertyPath: nodeUis
       value: 
       objectReference: {fileID: 5111419932966999718}
+    - target: {fileID: 3853783568976130286, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: singleNodeAppearNodeUiDelay
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853783568976130286, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: singleNodeAppearNodeUiCharacterDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853783568976130286, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: singleNodeAppearNodeUiLinesDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853783568976130286, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: singleNodeAppearNodeUiOverallAlphaDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853783568976130286, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: singleNodeAppearNodeUiParameters.linesFadeDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853783568976130286, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: singleNodeAppearNodeUiParameters.characterFadeDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853783568976130286, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: singleNodeAppearNodeUiParameters.overallAlphaFadeDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853783568976130286, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: singleNodeAppearNodeUiParameters.squareTargetFadeDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853783568976130286, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: singleNodeAppearNodeUiParameters.lineFadeDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3943074280425242104, guid: e4eeefe47ba84a44c978d05ec2db3c64,
         type: 3}
       propertyPath: m_Mesh
@@ -6486,6 +6531,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NodesUIs
       objectReference: {fileID: 0}
+    - target: {fileID: 5111419932966999718, guid: b2878da66a3d9de4cb18ce5bef2737d3,
+        type: 3}
+      propertyPath: matrixTraveler
+      value: 
+      objectReference: {fileID: 1107044195}
     - target: {fileID: 5908920619511302949, guid: b2878da66a3d9de4cb18ce5bef2737d3,
         type: 3}
       propertyPath: m_LocalPosition.x

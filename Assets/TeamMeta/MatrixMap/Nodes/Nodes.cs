@@ -16,11 +16,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
         List<Vector3> nodesPositions = new List<Vector3>();
         public List<Vector3> NodesPositions { get => nodesPositions; }
 
-
+        
         [Header("Nodes Appear")]
         [SerializeField, Min(0)] float nodeAppearDuration = 0.2f;
         [SerializeField, Min(0)] float delayBetweenNodeAppearances = 0;
         [SerializeField, Min(0)] float totalTimeForAllNodeAppearances = 1;
+        [Header("Single Node Appear Case")]
+        [SerializeField] float singleNodeAppearNodeUiDelay = 1;
+        [SerializeField] NodeUiAppearParameters singleNodeAppearNodeUiParameters;
 
         [Header("Node First Visit")]
         [SerializeField, Min(0)] public float nodesMovementDelay = 0;
@@ -54,6 +57,13 @@ namespace MatrixJam.TeamMeta.MatrixMap
         void Update()
         {
             
+        }
+        void SingleNodeAppearCase()
+        {
+            foreach (var index in visitedNodesIndexesSorted)
+            {
+                nodeUis.NodeUiActivateAndAppear(nodes[index], singleNodeAppearNodeUiDelay, shouldFadeOverallAlpha: true, singleNodeAppearNodeUiParameters);
+            }
         }
         public void Init()
         {
@@ -114,7 +124,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 node.gameObject.SetActive(true);
             }
             UpdateVisitedNodesPositions();
-
         }
         public void AppearGradually()
         {
@@ -227,6 +236,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
             MoveNodesToPositions();
 
             nodeFirstVisitEffect.Play(node, firstVisitNodeAppearDelay);
+
+            if (visitedNodesIndexesSorted.Count == 1)
+            {
+                SingleNodeAppearCase();
+            }
         }
         //Node Creation
         public void CreateNodes(MatrixTraveler matrixTraveler)

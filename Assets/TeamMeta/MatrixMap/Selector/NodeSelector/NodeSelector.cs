@@ -116,38 +116,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         void UpdateNodeUiTextAndPosition()
         {
             Node node = selectedNode.GetNode();
-
-            var nodeUI = nodeUis.uis[node.Index];
-
-            selectedNodeUI = nodeUI;
-            selectedNodeUI.Activate();
-
-            if (matrixTraveler != null)
-            {
-                MatrixNodeData nodeData = matrixTraveler.matrixGraphData.nodes[node.Index];
-                MatrixTravelHistory travelData = matrixTraveler.travelData;
-                travelData.TryGetLastTravel(out var lastTravelData);
-                bool isSelectedNodeDestinationNode = false;
-                if (lastTravelData.endPort.nodeIndex > -1)
-                {
-                    if (lastTravelData.endPort.nodeIndex == node.Index)
-                        isSelectedNodeDestinationNode = true;
-                }
-
-                string name = nodeData.name;
-                int visitsCount = matrixTraveler.travelData.GetGameVisitCount(nodeData);
-                if (isSelectedNodeDestinationNode)
-                    visitsCount -= 1;
-
-                int DiscoveredEdgesCount = matrixTraveler.travelData.GetGameVisitedEdgesCount(nodeData.index);
-                int totalEdgesCount = nodeData.outputPorts.Count;
-
-                selectedNodeUI.SetNodeData(name, visitsCount, DiscoveredEdgesCount, totalEdgesCount);
-            }
-            else
-                selectedNodeUI.SetNodeData("Test Game Name", 2, 5, 9);
-
-            selectedNodeUI.PositionAroundNode(mapCenter: Vector3.zero, node);
+            selectedNodeUI = nodeUis.ActivateNodeUI(node);
         }
 
         void FocusNode()

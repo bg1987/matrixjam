@@ -5,6 +5,15 @@ using UnityEngine;
 
 namespace MatrixJam.TeamMeta.MatrixMap
 {
+    [System.Serializable]
+    public struct NodeUiAppearParameters
+    {
+        public float linesFadeDuration;
+        public float characterFadeDuration;
+        public float overallAlphaFadeDuration;
+        public float squareTargetFadeDuration;
+        public float lineFadeDuration;
+    }
     [ExecuteInEditMode]
     public class NodeUI : MonoBehaviour
     {
@@ -34,7 +43,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] float linesFadeOutDuration = 0.23f;
         [SerializeField] float characterFadeOutDuration = 0.2f;
         [SerializeField] float overallAlphaFadeOutDuration = 0.3f;
-        
+
         [Header("For Debug")]
         [SerializeField] Node node;
         // Start is called before the first frame update
@@ -58,12 +67,25 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         public void Appear(bool shouldFadeOverallAlpha)
         {
-            tmpFader.FadeInLines(linesFadeInDuration, characterFadeInDuration);
-            if (shouldFadeOverallAlpha)
-                tmpFader.FadeInOverallAlpha(overallAlphaFadeInDuration);
+            var appearParameters = new NodeUiAppearParameters() 
+            {
+                linesFadeDuration = linesFadeInDuration,
+                characterFadeDuration = characterFadeInDuration,
+                lineFadeDuration = lineFadeInDuration,
+                overallAlphaFadeDuration = overallAlphaFadeInDuration,
+                squareTargetFadeDuration = squareTargetFadeInDuration 
+            };
 
-            squareTarget.Appear(squareTargetFadeInDuration);
-            lineShader.Appear(lineFadeInDuration);
+            Appear(shouldFadeOverallAlpha, appearParameters);
+        }
+        public void Appear(bool shouldFadeOverallAlpha, NodeUiAppearParameters appearParameters)
+        {
+            tmpFader.FadeInLines(appearParameters.linesFadeDuration, appearParameters.characterFadeDuration);
+            if (shouldFadeOverallAlpha)
+                tmpFader.FadeInOverallAlpha(appearParameters.overallAlphaFadeDuration);
+
+            squareTarget.Appear(appearParameters.squareTargetFadeDuration);
+            lineShader.Appear(appearParameters.lineFadeDuration);
         }
         public void AppearInstantly()
         {

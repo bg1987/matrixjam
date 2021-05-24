@@ -21,6 +21,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [Header("Interactable")]
         [SerializeField] float nodesInteractableFlashDuration = 0.8f;
         public bool interactable{set { SetInteractable(value); } }
+        private void Awake()
+        {
+            container.SetActive(true);
+        }
         // Start is called before the first frame update
         void Start()
         {
@@ -123,8 +127,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
             }
             edgesController.HandleDestinationEdge(nodesController);
         }
-
-
         public void Deactivate()
         {
             container.SetActive(false);

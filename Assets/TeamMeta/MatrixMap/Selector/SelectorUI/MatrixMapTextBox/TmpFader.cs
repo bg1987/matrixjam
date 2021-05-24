@@ -417,6 +417,9 @@ namespace MatrixJam.TeamMeta
         }
         void ChangeCharactersAlphaInstantly(byte alpha)
         {
+            text.ForceMeshUpdate(true);
+            RestoreVertexColors();
+
             for (int i = 0; i < text.textInfo.characterCount; i++)
             {
                 var characterInfo = text.textInfo.characterInfo[i];
