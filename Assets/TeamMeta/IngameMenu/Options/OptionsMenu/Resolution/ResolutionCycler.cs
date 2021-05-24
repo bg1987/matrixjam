@@ -10,39 +10,57 @@ namespace MatrixJam.TeamMeta.IngameMenu
         [SerializeField] TextMeshProUGUI resolutionText;
         [SerializeField] Resolution[] resolutions;
         [SerializeField] int resolutionIndex;
+        [SerializeField] int appliedResolutionIndex;
+        [SerializeField] MenuActivator applyMenu;
         private void Awake()
         {
             Resolution[] resolutions = Screen.resolutions;
             resolutionIndex = FindCurrentResolutionIndex(resolutions);
+            appliedResolutionIndex = resolutionIndex;
+
             UpdateResolutionText(Screen.currentResolution);
         }
+        
         public void SwitchToNextResolution()
         {
-            Resolution[] resolutions = Screen.resolutions;
-            this.resolutions = resolutions;
-
-            resolutionIndex = (resolutionIndex + 1) % resolutions.Length;
-            var targetResolution = resolutions[resolutionIndex];
-
-            Screen.SetResolution(targetResolution.width, targetResolution.height,true, targetResolution.refreshRate);
-            UpdateResolutionText(targetResolution);
+            SwitchResolution(1);
         }
+        
         public void SwitchToPreviousResolution()
+        {
+            SwitchResolution(-1);
+
+        }
+        void SwitchResolution(int indexOffset)
         {
             Resolution[] resolutions = Screen.resolutions;
             this.resolutions = resolutions;
-            resolutionIndex =  (resolutionIndex + resolutions.Length - 1) % resolutions.Length;
+            resolutionIndex = (resolutionIndex + resolutions.Length + indexOffset) % resolutions.Length;
 
             var targetResolution = resolutions[resolutionIndex];
 
-            Screen.SetResolution(targetResolution.width, targetResolution.height, true, targetResolution.refreshRate);
             UpdateResolutionText(targetResolution);
+
+            if (resolutionIndex != appliedResolutionIndex)
+                ActivateApplyMenu();
+            else
+                DeactivateApplyMenu();
         }
         public void UpdateResolutionText(Resolution resolution)
         {
             resolutionText.SetText(resolution.width + ":" + resolution.height);
         }
-        public int FindCurrentResolutionIndex(Resolution[] resolutions)
+        
+        public void ApplyResolution()
+        {
+            var resolution = resolutions[resolutionIndex];
+            appliedResolutionIndex = resolutionIndex;
+
+            Screen.SetResolution(resolution.width, resolution.height, true, resolution.refreshRate);
+
+            DeactivateApplyMenu();
+        }
+        int FindCurrentResolutionIndex(Resolution[] resolutions)
         {
             int targetIndex = 0;
             var currentResolution = Screen.currentResolution;
@@ -59,6 +77,15 @@ namespace MatrixJam.TeamMeta.IngameMenu
                 }
             }
             return targetIndex;
+        }
+        void ActivateApplyMenu()
+        {
+            if (applyMenu.IsActivated == false)
+                applyMenu.Activate();
+        }
+        void DeactivateApplyMenu()
+        {
+            applyMenu.Deactivate();
         }
     }
 }

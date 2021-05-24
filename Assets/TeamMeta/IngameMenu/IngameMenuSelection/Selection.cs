@@ -252,8 +252,6 @@ namespace MatrixJam.TeamMeta.IngameMenu
         }
         public void EnterHover()
         {
-            Debug.Log("Enter hover");
-
             isHovered = true;
 
             if (isSelected)
@@ -263,8 +261,6 @@ namespace MatrixJam.TeamMeta.IngameMenu
         }
         public void ExitHover()
         {
-            Debug.Log("Exit hover");
-            
             isHovered = false;
 
             if (isSelected)
@@ -274,7 +270,6 @@ namespace MatrixJam.TeamMeta.IngameMenu
         }
         public void EnterSelect()
         {
-            Debug.Log("Enter hover");
             if (isSelected)
                 return;
             isSelected = true;
@@ -320,11 +315,6 @@ namespace MatrixJam.TeamMeta.IngameMenu
             {
                 EnterHover();
             }
-        }
-
-        public void Select()
-        {
-
         }
         public void ToggleSelect()
         {

@@ -8,6 +8,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
     {
         [SerializeField] MenuSelections menuSelections;
         [SerializeField] MenuActiveSelection menuActiveSelection;
+        [SerializeField] private List<MenuActivator> subMenus;
 
         bool isActivated = false;
         public bool IsActivated { get => isActivated; }
@@ -32,7 +33,10 @@ namespace MatrixJam.TeamMeta.IngameMenu
                 selection.Disappear(disappearDuration, DeactivateSelection);
                 selection.SetInteractable(false);
             }
-            
+            foreach (var subMenu in subMenus)
+            {
+                subMenu.Deactivate();
+            }
             isActivated = false;
         }
         public void DeactivateImmediately()
@@ -44,6 +48,10 @@ namespace MatrixJam.TeamMeta.IngameMenu
             {
                 selection.Disappear(0, DeactivateSelection);
                 selection.SetInteractable(false);
+            }
+            foreach (var subMenu in subMenus)
+            {
+                subMenu.DeactivateImmediately();
             }
             isActivated = false;
         }
