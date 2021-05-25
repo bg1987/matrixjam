@@ -5,6 +5,9 @@ using System.IO;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using Newtonsoft;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace MatrixJam.TeamMeta
 {
@@ -39,7 +42,9 @@ namespace MatrixJam.TeamMeta
 
             var nodePositionsData = new List<Vector2>();
             nodes.ForEach(node => nodePositionsData.Add(node.GetPosition().position));
-            string nodePositionsDataJson = SerializeWithDataContractJsonSerializer(nodePositionsData);
+
+            //string nodePositionsDataJson = SerializeWithDataContractJsonSerializer(nodePositionsData);
+            string nodePositionsDataJson = SerializeWithJsonConvert(nodePositionsData);
 
             using (StreamWriter writer = new StreamWriter(path, false))
             {
@@ -88,7 +93,8 @@ namespace MatrixJam.TeamMeta
             MatrixGraphSO matrixGraphSO = matrixGraphConverter.ToScriptableObject(graphDataJson);
 
             List<Vector2> nodePositions;
-            nodePositions = DeserializeWithDataContractJsonSerializer<List<Vector2>>(nodePositionsJson);
+            //nodePositions = DeserializeWithDataContractJsonSerializer<List<Vector2>>(nodePositionsJson);
+            nodePositions = DeserializeWithJsonConvert<List<Vector2>>(nodePositionsJson);
 
             graphView.ClearGraph();
             List<MatrixNode> matrixNodes = ConstructGraphNodesFromData(matrixGraphSO);
@@ -264,6 +270,18 @@ namespace MatrixJam.TeamMeta
 
                 graphView.AddElement(edge);
             }
+        }
+        string SerializeWithJsonConvert(object obj)
+        {
+            var settings = new JsonSerializerSettings();
+            settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            //settings.Converters.Add(new StringEnumConverter());
+            return JsonConvert.SerializeObject(obj, settings);
+        }
+        T DeserializeWithJsonConvert<T>(string jsonString)
+        {
+            T deserializedObject = JsonConvert.DeserializeObject<T>(jsonString);
+            return deserializedObject;
         }
         string SerializeWithDataContractJsonSerializer<T>(T obj)
         {
