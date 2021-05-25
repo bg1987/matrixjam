@@ -17,68 +17,59 @@ namespace MatrixJam.TeamMeta
 
         public void GenerateFields()
         {
-            GenerateLevelNameLabel();
+            GenerateLabel("Level Name");
+            
             GenerateLevelNameInputField();
 
-            GenerateScenePathLabel();
+            GenerateLabel("Scene Path");
             GenerateScenePathInputField();
 
-            GenerateColorsLabel();
+            GenerateLabel("Colors");
             GenerateColorsFields();
-            
+
+            GenerateLabel("Credits (json)");
+            GenerateCreditsInputField();
+
         }
-        void GenerateLevelNameLabel()
+        void GenerateLabel(string text)
         {
-            var label = new Label("Level Name");
+            var label = new Label(text);
             label.style.unityTextAlign = TextAnchor.MiddleCenter;
             label.style.backgroundColor = Color.black;
             this.mainContainer.Add(label);
         }
-        void GenerateLevelNameInputField()
+        TextField GenerateTextField()
         {
             var textField = new TextField("");
-            textField.RegisterValueChangedCallback(evt =>
-            {
-                this.levelName = evt.newValue;
-            });
-            textField.SetValueWithoutNotify(this.levelName);
 
             var childrenEnumerator = textField.Children().GetEnumerator();
             childrenEnumerator.MoveNext();
             var inputField = childrenEnumerator.Current;
             inputField.style.flexBasis = 1;
 
-            this.mainContainer.Add(textField);
+            return textField;
         }
-        void  GenerateScenePathLabel()
+        void GenerateLevelNameInputField()
         {
-            var label = new Label("Scene Path");
-            label.style.unityTextAlign = TextAnchor.MiddleCenter;
-            label.style.backgroundColor = Color.black;
-            this.mainContainer.Add(label);
+            TextField textField = GenerateTextField();
+            textField.SetValueWithoutNotify(this.levelName);
+            textField.RegisterValueChangedCallback(evt =>
+            {
+                this.levelName = evt.newValue;
+            });
+
+            this.mainContainer.Add(textField);
         }
         void GenerateScenePathInputField()
         {
-            var textField = new TextField("");
+            var textField = GenerateTextField();
+            textField.SetValueWithoutNotify(this.scenePath);
             textField.RegisterValueChangedCallback(evt =>
             {
                 this.scenePath = evt.newValue;
             });
-            textField.SetValueWithoutNotify(this.scenePath);
-
-            var childrenEnumerator =  textField.Children().GetEnumerator();
-            childrenEnumerator.MoveNext();
-            var inputField = childrenEnumerator.Current;
-            inputField.style.flexBasis = 1;
 
             this.mainContainer.Add(textField);
-        }
-        void GenerateColorsLabel()
-        {
-            var label = new Label("Colors");
-            label.style.unityTextAlign = TextAnchor.MiddleCenter;
-            label.style.backgroundColor = Color.black;
-            this.mainContainer.Add(label);
         }
         void GenerateColorsFields()
         {
@@ -141,6 +132,17 @@ namespace MatrixJam.TeamMeta
             FloatField floatField = new FloatField();
 
             return floatField;
+        }
+        void GenerateCreditsInputField()
+        {
+            var textField = GenerateTextField();
+            textField.SetValueWithoutNotify("Placeholder");
+            textField.RegisterValueChangedCallback(evt =>
+            {
+                //this.scenePath = evt.newValue;
+            });
+
+            this.mainContainer.Add(textField);
         }
     }
 }

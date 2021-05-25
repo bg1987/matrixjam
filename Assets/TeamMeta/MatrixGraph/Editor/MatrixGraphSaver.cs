@@ -165,7 +165,7 @@ namespace MatrixJam.TeamMeta
             var nodesData = new List<MatrixNodeData>();
             foreach (MatrixNode node in nodes)
             {
-                var nodeData = new MatrixNodeData(node.index, node.name,node.scenePath);
+                var nodeData = new MatrixNodeData(node.index, node.levelName,node.scenePath);
                 nodeData.colorHdr1 = node.colorHdr1;
                 nodeData.colorHdr2 = node.colorHdr2;
                 //Handle input ports
