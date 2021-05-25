@@ -12,6 +12,7 @@ namespace MatrixJam.TeamMeta
         public int index;
         public string levelName;
         public string scenePath;
+        public string teamMembersJson;
         public ColorHdr colorHdr1 = new ColorHdr() {color = new Color(0.184f, 0.184f, 0.749f, 1),intensity = 2.4f };
         public ColorHdr colorHdr2 = new ColorHdr() {color = new Color(0.11f, 0.75f, 0.6f, 1),intensity = 2.9f };
 
@@ -27,8 +28,8 @@ namespace MatrixJam.TeamMeta
             GenerateLabel("Colors");
             GenerateColorsFields();
 
-            GenerateLabel("Credits (json)");
-            GenerateCreditsInputField();
+            GenerateLabel("Team Members(json)");
+            GenerateTeamMembersInputField();
 
         }
         void GenerateLabel(string text)
@@ -133,13 +134,13 @@ namespace MatrixJam.TeamMeta
 
             return floatField;
         }
-        void GenerateCreditsInputField()
+        void GenerateTeamMembersInputField()
         {
             var textField = GenerateTextField();
-            textField.SetValueWithoutNotify("Placeholder");
+            textField.SetValueWithoutNotify(this.teamMembersJson);
             textField.RegisterValueChangedCallback(evt =>
             {
-                //this.scenePath = evt.newValue;
+                this.teamMembersJson = evt.newValue;
             });
 
             this.mainContainer.Add(textField);

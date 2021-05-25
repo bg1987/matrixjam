@@ -12,6 +12,7 @@ namespace MatrixJam.TeamMeta
         public string scenePath;
         public ColorHdr colorHdr1;
         public ColorHdr colorHdr2;
+        public List<TeamMemberData> teamMembers;
 
         public List<MatrixPortData> inputPorts;
         public List<MatrixPortData> outputPorts;

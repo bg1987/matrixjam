@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
@@ -64,6 +65,8 @@ namespace MatrixJam.TeamMeta
             node.colorHdr1 = nodeData.colorHdr1;
             node.colorHdr2 = nodeData.colorHdr2;
 
+            node.teamMembersJson = ConvertTeamMembersDataToJson(nodeData);
+
             node.title = nodeData.index+"";
             node.titleContainer.style.unityTextAlign = TextAnchor.MiddleCenter;
             node.name = nodeData.name;
@@ -97,6 +100,7 @@ namespace MatrixJam.TeamMeta
 
             return node;
         }
+        
         public void ColorAsActive(MatrixNode node)
         {
             ColorUtility.TryParseHtmlString("#FF5E13", out var bgColor);
@@ -140,6 +144,24 @@ namespace MatrixJam.TeamMeta
 
             matrixTravelHistoryView.SetRuntimeHistory(matrixTraveler.travelData.GetHistory());
             return;
+        }
+        private string ConvertTeamMembersDataToJson(MatrixNodeData nodeData)
+        {
+            var teamMembersDict = new Dictionary<string, string[]>();
+            for (int i = 0; i < nodeData.teamMembers.Count; i++)
+            {
+                var teamMemberData = nodeData.teamMembers[i];
+
+                teamMembersDict.Add(teamMemberData.name, teamMemberData.roles);
+            }
+            var teamMembersDictJson = SerializeWithJsonConvert(teamMembersDict);
+            return teamMembersDictJson;
+        }
+        string SerializeWithJsonConvert(object obj)
+        {
+            var settings = new JsonSerializerSettings();
+            settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            return JsonConvert.SerializeObject(obj, settings);
         }
     }
 }

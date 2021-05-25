@@ -165,9 +165,12 @@ namespace MatrixJam.TeamMeta
             var nodesData = new List<MatrixNodeData>();
             foreach (MatrixNode node in nodes)
             {
-                var nodeData = new MatrixNodeData(node.index, node.levelName,node.scenePath);
+                var nodeData = new MatrixNodeData(node.index, node.levelName, node.scenePath);
                 nodeData.colorHdr1 = node.colorHdr1;
                 nodeData.colorHdr2 = node.colorHdr2;
+                List<TeamMemberData> teamMembersData = ConvertTeamMembersDataFromJson(node);
+                nodeData.teamMembers = teamMembersData;
+
                 //Handle input ports
                 List<Port> inputPorts = graphView.GetInputPortsFromNode(node);
                 foreach (var port in inputPorts)
@@ -192,6 +195,20 @@ namespace MatrixJam.TeamMeta
                 nodesData.Add(nodeData);
             }
             return nodesData;
+        }
+        private List<TeamMemberData> ConvertTeamMembersDataFromJson(MatrixNode node)
+        {
+            var teamMembersDict = DeserializeWithJsonConvert<Dictionary<string, string[]>>(node.teamMembersJson);
+            var teamMembersData = new List<TeamMemberData>();
+            foreach (var keyValuePair in teamMembersDict)
+            {
+                string name = keyValuePair.Key;
+                string[] roles = keyValuePair.Value;
+                TeamMemberData teamMemberData = new TeamMemberData(name, roles); //name, roles
+                teamMembersData.Add(teamMemberData);
+
+            }
+            return teamMembersData;
         }
         List<MatrixEdgeData> CreateEdgesData(List<MatrixNodeData> nodesData)
         {
