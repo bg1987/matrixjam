@@ -51,6 +51,29 @@ namespace Assets.TeamMeta.MatrixTravelTransition
         {
             StartCoroutine(TransitionRoutine());
         }
+        public void TransitionMatrixOver()
+        {
+            StartCoroutine(TransitionMatrixOverRoutine());
+        }
+        IEnumerator TransitionMatrixOverRoutine()
+        {
+            bool success = matrixTraveler.travelData.TryGetLastTravel(out MatrixEdgeData lastTravel);
+            if (!success)
+            {
+                Debug.Log("Travel history is blank");
+                yield break;
+            }
+            float volumeBeforeMute = AudioListener.volume;
+            yield return StartCoroutine(StartTransitionRoutine());
+
+            //ToDo Put MatrixMap credits appearance here after implementing it
+
+            MatrixNodeData destinationGame = matrixTraveler.matrixGraphData.nodes[lastTravel.endPort.nodeIndex];
+            yield return StartCoroutine(PreloadNextNodeScene(destinationGame.scenePath));
+
+
+            yield return StartCoroutine(EndTransitionRoutine(volumeBeforeMute, destinationGame));
+        }
         IEnumerator TransitionRoutine()
         {
             bool success = matrixTraveler.travelData.TryGetLastTravel(out MatrixEdgeData lastTravel);

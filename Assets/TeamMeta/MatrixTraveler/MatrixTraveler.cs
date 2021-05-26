@@ -18,7 +18,7 @@ namespace MatrixJam
         public string endScene;
         public static MatrixTraveler Instance { get; private set; }
         [SerializeField] Transitioner travelTransitioner;
-
+        [SerializeField] MatrixOver matrixOver;
         private void Awake()
         {
             if (Instance != null)
@@ -127,11 +127,11 @@ namespace MatrixJam
             else
                 Debug.Log("Can't retravel to current game as current game's index is -1");
         }
-        public void MatrixOver()
+        void MatrixOver()
         {
             //end the matrix and start the end scene
             Debug.Log("MatrixOver!");
-            SceneManager.LoadScene(endScene);
+            matrixOver.Execute();
         }
 
         /// <summary> Entrance Id = -1 means use default entrance</summary>
