@@ -26,9 +26,15 @@ namespace MatrixJam.TeamMeta.MatrixMap
             container.SetActive(true);
         }
         // Start is called before the first frame update
-        void Start()
+        IEnumerator Start()
         {
             InitMap();
+            yield return null;
+
+            if (MatrixTraveler.Instance)
+            {
+                SyncWithTravelHistory();
+            }
         }
         // Update is called once per frame
         void SetInteractable(bool isInteractable)
@@ -53,10 +59,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             nodesController.Init();
             edgesController.Init(nodesController);
-            if (MatrixTraveler.Instance)
-            {
-                SyncWithTravelHistory();
-            }
             //UpdateNodesScale();
             //UpadteNodesRadius();
 
@@ -127,6 +129,27 @@ namespace MatrixJam.TeamMeta.MatrixMap
             }
             edgesController.HandleDestinationEdge(nodesController);
         }
+        public void CreditsAppear()
+        {
+            StartCoroutine(CreditsAppearRoutine());
+        }
+        IEnumerator CreditsAppearRoutine()
+        {
+
+            container.SetActive(true);
+            //Disappear();
+            nodesController.Appear();
+            nodesController.Disappear();
+            nodesController.AppearByHistorySequence(travelHistory);
+            //for (int i = 0; i < travelHistory.Count; i++)
+            //{
+            //    var edge = travelHistory[i];
+            //    travelHistory.
+            //    nodesController.Appear
+
+            //}
+            yield return null;
+        }
         public void Deactivate()
         {
             container.SetActive(false);
@@ -153,12 +176,12 @@ namespace MatrixJam.TeamMeta.MatrixMap
             var edgesData = MatrixTraveler.Instance.matrixGraphData.edges;
 
             nodesController.AddVisitedNode(travelEdgeData.endPort.nodeIndex);
-
+            var node = nodesController.nodes[travelEdgeData.endPort.nodeIndex];
             var edgeIndex = edgesData.FindIndex((MatrixEdgeData edgeData) => edgeData == travelEdgeData);
 
             if (edgeIndex != -1)
             {
-                edgesController.AddVisitedEdge(edgeIndex);
+                edgesController.AddVisitedEdge(edgeIndex, node);
             }
         }
     }

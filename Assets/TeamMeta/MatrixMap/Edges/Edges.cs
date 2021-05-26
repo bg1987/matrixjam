@@ -99,9 +99,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             visitedEdgesIndexes.Clear();
         }
-        public void AddVisitedEdge(int index)
+        public void AddVisitedEdge(int index, Node node)
         {
             visitedEdgesIndexes.Add(index);
+            node.AddToStartPortActiveEdges(edges[index]);
         }
         public float CalculateEdgeAppearTime()
         {

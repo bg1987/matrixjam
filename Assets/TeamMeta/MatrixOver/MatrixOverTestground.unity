@@ -304,7 +304,7 @@ PrefabInstance:
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
       propertyPath: customHistory.Array.size
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
@@ -359,27 +359,102 @@ PrefabInstance:
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
       propertyPath: customHistory.Array.data[0].endPort.nodeIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
-        type: 3}
-      propertyPath: customHistory.Array.data[1].endPort.nodeIndex
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
-      propertyPath: customHistory.Array.data[1].startPort.nodeIndex
+      propertyPath: customHistory.Array.data[1].endPort.nodeIndex
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
+      propertyPath: customHistory.Array.data[1].startPort.nodeIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
       propertyPath: customHistory.Array.data[1].startPort.id
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
       propertyPath: shouldUseCustomHistory
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[0].startPort.nodeIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[2].endPort.nodeIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[2].startPort.nodeIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[3].endPort.nodeIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[4].endPort.nodeIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[5].endPort.nodeIndex
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[6].endPort.nodeIndex
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[7].endPort.nodeIndex
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[8].endPort.nodeIndex
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[3].startPort.nodeIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[4].startPort.nodeIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[5].startPort.nodeIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[6].startPort.nodeIndex
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[7].startPort.nodeIndex
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[8].startPort.nodeIndex
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3524885435939293114, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
@@ -503,6 +578,12 @@ PrefabInstance:
       propertyPath: ingameMenuActivator
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4883445329298673177, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: matrixGraphAsset
+      value: 
+      objectReference: {fileID: 2811297602134710623, guid: 9a341a9a5ebc6e2469de14e75a477256,
+        type: 3}
     - target: {fileID: 4883445329298673179, guid: df300fc022a101048906ee2ac4bcfa28,
         type: 3}
       propertyPath: m_Name

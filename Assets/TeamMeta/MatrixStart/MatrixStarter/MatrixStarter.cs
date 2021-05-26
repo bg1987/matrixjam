@@ -17,13 +17,13 @@ namespace MatrixJam.TeamMeta
         // Start is called before the first frame update
         IEnumerator Start()
         {
+            if (shouldUseCustomHistory && customHistory.Count > 0)
+                LoadWithCustomHistory();
             yield return null;
             if (!startOnAwake)
                 yield break;
             if(shouldUseCustomHistory && customHistory.Count>0)
-            {
-                LoadWithCustomHistory();
-            }
+                matrixTraveler.ReTravelToCurrentGame();
             else if (startingGameIndex == -1)
                 StartRandomGame();
             else
@@ -47,7 +47,6 @@ namespace MatrixJam.TeamMeta
         public void LoadWithCustomHistory()
         {
             matrixTraveler.travelData.Load(customHistory);
-            matrixTraveler.ReTravelToCurrentGame();
         }
     }
 }

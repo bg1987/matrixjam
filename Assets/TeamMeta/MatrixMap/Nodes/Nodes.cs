@@ -16,7 +16,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         List<Vector3> nodesPositions = new List<Vector3>();
         public List<Vector3> NodesPositions { get => nodesPositions; }
 
-        
+
         [Header("Nodes Appear")]
         [SerializeField, Min(0)] float nodeAppearDuration = 0.2f;
         [SerializeField, Min(0)] float delayBetweenNodeAppearances = 0;
@@ -50,13 +50,13 @@ namespace MatrixJam.TeamMeta.MatrixMap
         // Start is called before the first frame update
         void Start()
         {
-            
+
         }
 
         // Update is called once per frame
         void Update()
         {
-            
+
         }
         void SingleNodeAppearCase()
         {
@@ -123,7 +123,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 var node = nodes[index];
                 node.gameObject.SetActive(true);
             }
-            UpdateVisitedNodesPositions();
+            UpdateVisitedNodesPositions(visitedNodesIndexesSorted);
         }
         public void AppearGradually()
         {
@@ -143,7 +143,64 @@ namespace MatrixJam.TeamMeta.MatrixMap
             {
                 previousActiveNodeMarkerAppearance(indexCount * delay);
             }
-            
+
+        }
+        public void AppearByHistorySequence(IReadOnlyList<MatrixEdgeData> history)
+        {
+            StartCoroutine(AppearByHistorySequenceRoutine(history));
+        }
+        IEnumerator AppearByHistorySequenceRoutine(IReadOnlyList<MatrixEdgeData> history)
+        {
+            //foreach (var nodeElement in nodes)
+            //{
+            //    nodeElement.transform.localPosition = Vector3.zero;
+            //}
+            SortedSet<int> alreadyAppearedNodesIndexes = new SortedSet<int>();
+            var edge = history[0];
+            var node = nodes[edge.endPort.nodeIndex];
+
+            float delayBetweenHistoryEntries = 0.5f;
+            float nodeSequenceAppearDuration = 0.5f;
+            float nodeSequenceAppearDelay = 1f;
+
+            node.gameObject.SetActive(true);
+            //node.Disappear();
+            node.Appear(nodeSequenceAppearDuration, 0);
+            alreadyAppearedNodesIndexes.Add(node.Index);
+
+            //UpdateVisitedNodesPositions(alreadyAppearedNodesIndexes);
+            nodesPositions = CalculateNodesPositions(visitedNodesIndexesSorted.Count);
+            UpdateVisitedNodesPositions(visitedNodesIndexesSorted);
+            //MoveNodesToPositions(alreadyAppearedNodesIndexes,1,0);
+            for (int i = 1; i < history.Count; i++)
+            {
+                edge = history[i];
+                node = nodes[edge.endPort.nodeIndex];
+
+
+                if (alreadyAppearedNodesIndexes.Contains(node.Index))
+                {
+                    continue;
+                }
+                
+                node.gameObject.SetActive(true);
+                //node.Disappear();
+                node.Appear(nodeSequenceAppearDuration, nodeSequenceAppearDelay);
+                alreadyAppearedNodesIndexes.Add(node.Index);
+
+                //nodesPositions = CalculateNodesPositions(alreadyAppearedNodesIndexes.Count);
+                //MoveNodesToPositions(alreadyAppearedNodesIndexes,1,0);
+
+                yield return new WaitForSeconds(delayBetweenHistoryEntries);
+
+            }
+
+            float delay = CalculateDelayBetweenNodeAppearances();
+            //previousActiveNodeMarker Appearance
+            //if (visitedNodesIndexesSorted.Count > 1)
+            //{
+            //    previousActiveNodeMarkerAppearance(indexCount * delay);
+            //}
         }
         public void previousActiveNodeMarkerAppearance(float delay)
         {
@@ -233,7 +290,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             node.Appear(firstVisitNodeAppearDuration, firstVisitNodeAppearDelay);
             node.Glow(firstVisitNodeGlowDuration, firstVisitNodeAppearDelay);
 
-            MoveNodesToPositions();
+            MoveNodesToPositions(visitedNodesIndexesSorted, nodesMovementDuration, nodesMovementDelay);
 
             nodeFirstVisitEffect.Play(node, firstVisitNodeAppearDelay);
 
@@ -316,7 +373,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             }
         }
-        void UpdateVisitedNodesPositions()
+        void UpdateVisitedNodesPositions(SortedSet<int> visitedNodesIndexesSorted)
         {
             int i = 0;
             foreach (var index in visitedNodesIndexesSorted)
@@ -359,11 +416,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
 
         //Movement
-        void MoveNodesToPositions()
+        void MoveNodesToPositions(SortedSet<int> visitedNodesIndexesSorted, float nodesMovementDuration, float nodesMovementDelay)
         {
-            StartCoroutine(MoveNodesToPositionsRoutine());
+            StartCoroutine(MoveNodesToPositionsRoutine(visitedNodesIndexesSorted, nodesMovementDuration, nodesMovementDelay));
         }
-        IEnumerator MoveNodesToPositionsRoutine()
+        IEnumerator MoveNodesToPositionsRoutine(SortedSet<int> visitedNodesIndexesSorted, float nodesMovementDuration, float nodesMovementDelay)
         {
             yield return new WaitForSeconds(nodesMovementDelay);
 

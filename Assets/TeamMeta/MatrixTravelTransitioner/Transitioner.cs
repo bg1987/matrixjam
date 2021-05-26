@@ -67,11 +67,12 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             yield return StartCoroutine(StartTransitionRoutine());
 
             //ToDo Put MatrixMap credits appearance here after implementing it
-
+            matrixMap.CreditsAppear();
             MatrixNodeData destinationGame = matrixTraveler.matrixGraphData.nodes[lastTravel.endPort.nodeIndex];
             yield return StartCoroutine(PreloadNextNodeScene(destinationGame.scenePath));
 
-
+            //ToDo Have this wait for MatrixMap CreditsDuration when implemented
+            yield return new WaitForSeconds(10);
             yield return StartCoroutine(EndTransitionRoutine(volumeBeforeMute, destinationGame));
         }
         IEnumerator TransitionRoutine()
