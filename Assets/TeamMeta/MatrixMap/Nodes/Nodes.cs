@@ -145,57 +145,40 @@ namespace MatrixJam.TeamMeta.MatrixMap
             }
 
         }
-        public void AppearByHistorySequence(IReadOnlyList<MatrixEdgeData> history)
+        public void AppearByHistorySequence(List<int> history)
         {
             StartCoroutine(AppearByHistorySequenceRoutine(history));
         }
-        IEnumerator AppearByHistorySequenceRoutine(IReadOnlyList<MatrixEdgeData> history)
+        IEnumerator AppearByHistorySequenceRoutine(List<int> nodesSequence)
         {
-            //foreach (var nodeElement in nodes)
-            //{
-            //    nodeElement.transform.localPosition = Vector3.zero;
-            //}
             SortedSet<int> alreadyAppearedNodesIndexes = new SortedSet<int>();
-            var edge = history[0];
-            var node = nodes[edge.endPort.nodeIndex];
 
             float delayBetweenHistoryEntries = 0.5f;
             float nodeSequenceAppearDuration = 0.5f;
             float nodeSequenceAppearDelay = 1f;
 
-            node.gameObject.SetActive(true);
-            //node.Disappear();
-            node.Appear(nodeSequenceAppearDuration, 0);
-            alreadyAppearedNodesIndexes.Add(node.Index);
-
-            //UpdateVisitedNodesPositions(alreadyAppearedNodesIndexes);
             nodesPositions = CalculateNodesPositions(visitedNodesIndexesSorted.Count);
             UpdateVisitedNodesPositions(visitedNodesIndexesSorted);
-            //MoveNodesToPositions(alreadyAppearedNodesIndexes,1,0);
-            for (int i = 1; i < history.Count; i++)
-            {
-                edge = history[i];
-                node = nodes[edge.endPort.nodeIndex];
 
+            for (int i = 1; i < nodesSequence.Count; i++)
+            {
+                var node = nodes[nodesSequence[i]];
 
                 if (alreadyAppearedNodesIndexes.Contains(node.Index))
                 {
                     continue;
                 }
-                
                 node.gameObject.SetActive(true);
-                //node.Disappear();
+
                 node.Appear(nodeSequenceAppearDuration, nodeSequenceAppearDelay);
                 alreadyAppearedNodesIndexes.Add(node.Index);
 
-                //nodesPositions = CalculateNodesPositions(alreadyAppearedNodesIndexes.Count);
-                //MoveNodesToPositions(alreadyAppearedNodesIndexes,1,0);
-
                 yield return new WaitForSeconds(delayBetweenHistoryEntries);
-
             }
 
-            float delay = CalculateDelayBetweenNodeAppearances();
+            //Might make use of the following v
+
+            //float delay = CalculateDelayBetweenNodeAppearances();
             //previousActiveNodeMarker Appearance
             //if (visitedNodesIndexesSorted.Count > 1)
             //{

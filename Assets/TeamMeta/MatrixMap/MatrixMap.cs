@@ -140,14 +140,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
             //Disappear();
             nodesController.Appear();
             nodesController.Disappear();
-            nodesController.AppearByHistorySequence(travelHistory);
-            //for (int i = 0; i < travelHistory.Count; i++)
-            //{
-            //    var edge = travelHistory[i];
-            //    travelHistory.
-            //    nodesController.Appear
+            var nodesSequence = new List<int>();
 
-            //}
+            foreach (var edge in travelHistory)
+            {
+                nodesSequence.Add(edge.endPort.nodeIndex);
+            }
+            nodesController.AppearByHistorySequence(nodesSequence);
+
             yield return null;
         }
         public void Deactivate()
