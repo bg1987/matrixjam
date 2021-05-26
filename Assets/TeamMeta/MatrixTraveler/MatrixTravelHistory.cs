@@ -151,7 +151,11 @@ namespace MatrixJam.TeamMeta
         public void LoadFromDisk()
         {
             List<MatrixEdgeData> loadedHistory = matrixTravelHistorySaver.Load();
-            if(loadedHistory == null)
+            Load(loadedHistory);
+        }
+        public void Load(List<MatrixEdgeData> loadedHistory)
+        {
+            if (loadedHistory == null)
             {
                 Debug.Log("No saved history found");
                 return;

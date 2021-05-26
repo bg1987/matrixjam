@@ -10,19 +10,27 @@ namespace MatrixJam.TeamMeta
         [Header("-1 => Select Random Game")]
         [SerializeField] bool startOnAwake = true;
         [SerializeField] int startingGameIndex = 0;
+
+        [Header("Start with custom history")]
+        [SerializeField] bool shouldUseCustomHistory = false;
+        [SerializeField] List<MatrixEdgeData> customHistory;
         // Start is called before the first frame update
         IEnumerator Start()
         {
             yield return null;
-            if (startOnAwake)
+            if (!startOnAwake)
+                yield break;
+            if(shouldUseCustomHistory && customHistory.Count>0)
             {
-                if (startingGameIndex == -1)
-                    StartRandomGame();
-                else
-                {
-                    StartGame(startingGameIndex);
-                }
+                LoadWithCustomHistory();
             }
+            else if (startingGameIndex == -1)
+                StartRandomGame();
+            else
+            {
+                StartGame(startingGameIndex);
+            }
+            
         }
         public void StartRandomGame()
         {
@@ -35,6 +43,11 @@ namespace MatrixJam.TeamMeta
         public void LoadGame()
         {
             matrixTraveler.LoadFromDisk();
+        }
+        public void LoadWithCustomHistory()
+        {
+            matrixTraveler.travelData.Load(customHistory);
+            matrixTraveler.ReTravelToCurrentGame();
         }
     }
 }

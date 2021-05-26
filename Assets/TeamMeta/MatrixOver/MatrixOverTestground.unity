@@ -298,6 +298,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
+      propertyPath: testHistory.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
       propertyPath: matrixTraveler
       value: 
       objectReference: {fileID: 1097402414}
@@ -309,6 +319,66 @@ PrefabInstance:
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
       propertyPath: startOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: shouldLoadTestHistory
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: testHistory.Array.data[0].startPort.nodeIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: testHistory.Array.data[0].endPort.nodeIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: testHistory.Array.data[1].endPort.nodeIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: testHistory.Array.data[1].startPort.nodeIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: testHistory.Array.data[1].startPort.id
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: testHistory.Array.data[1].endPort.id
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[0].endPort.nodeIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[1].endPort.nodeIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[1].startPort.nodeIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: customHistory.Array.data[1].startPort.id
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
+        type: 3}
+      propertyPath: shouldUseCustomHistory
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3524885435939293114, guid: d2a6368e13d87d34e8c04fb72a505eab,
