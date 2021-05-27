@@ -138,15 +138,31 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             container.SetActive(true);
             //Disappear();
-            nodesController.Appear();
-            nodesController.Disappear();
-            var nodesSequence = new List<int>();
+            
+            var nodesIdsSequence = new List<int>();
+            var edgesSequence = new List<MatrixEdgeData>();
 
             foreach (var edge in travelHistory)
             {
-                nodesSequence.Add(edge.endPort.nodeIndex);
+                nodesIdsSequence.Add(edge.endPort.nodeIndex);
+                edgesSequence.Add(edge);
             }
-            nodesController.AppearByHistorySequence(nodesSequence);
+            edgesSequence.RemoveAt(0); //First edge is a blank
+
+            nodesController.Appear();
+            nodesController.Disappear();
+
+            nodesController.AppearByHistorySequence(nodesIdsSequence);
+
+            edgesController.Appear();
+            edgesController.Disappear();
+            edgesController.UpdateEdgesAnchors(false, nodesController);
+
+            edgesController.AppearByHistorySequence(edgesSequence);
+
+            yield return new WaitForSeconds(8f);
+
+            edgesController.HandleDestinationEdge(nodesController);
 
             yield return null;
         }

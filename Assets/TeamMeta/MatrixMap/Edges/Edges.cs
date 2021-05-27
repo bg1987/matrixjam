@@ -29,6 +29,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] EdgesUIs edgeUis;
         [SerializeField] private int[] endNormalSigns;
         [SerializeField] private int[] startNormalSigns;
+        [Header("Edge History Sequence Appearance")]
+        [SerializeField] private float delayBetweenEdgesHistoryEntriesSequenceAppear = 0.5f;
+        [SerializeField] private float edgeSequenceAppearDuration = 0.5f;
+        [SerializeField] private float sequenceAppearDelay = 1.5f;
 
         // Start is called before the first frame update
         void Start()
@@ -148,9 +152,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
         {
             var travelHistory = MatrixTraveler.Instance.travelData.GetHistory();
             MatrixEdgeData destinationEdgeData = travelHistory[travelHistory.Count - 1];
-            var edgesData = MatrixTraveler.Instance.matrixGraphData.edges;
 
-            var destinationIndex = edgesData.FindIndex((MatrixEdgeData edgeData) => edgeData == destinationEdgeData);
+            var destinationIndex = FindEdgeIndexByEdgeData(destinationEdgeData);
+            return destinationIndex;
+        }
+        public int FindEdgeIndexByEdgeData(MatrixEdgeData targetEdgeData)
+        {
+            var edgesData = MatrixTraveler.Instance.matrixGraphData.edges;
+            var destinationIndex = edgesData.FindIndex((MatrixEdgeData edgeData) => edgeData == targetEdgeData);
             return destinationIndex;
         }
         void FirstEdgeVisit(int edgeIndex, Nodes nodesController)
@@ -182,6 +191,52 @@ namespace MatrixJam.TeamMeta.MatrixMap
             edgeVisitEffect.FirstVisitEffect.Play(edge, firstVisitEdgeAppearDelay);
 
         }
+        public void AppearByHistorySequence(List<MatrixEdgeData> edgesSequence)
+        {
+            StartCoroutine(AppearByHistorySequenceRoutine(edgesSequence));
+        }
+        IEnumerator AppearByHistorySequenceRoutine(List<MatrixEdgeData> edgesSequence)
+        {
+            yield return new WaitForSeconds(sequenceAppearDelay);
+            SortedSet<int> alreadyAppearedEdgesIndexes = new SortedSet<int>();
+
+            List<int> edgesIdsSequence = new List<int>();
+            foreach (var edgeData in edgesSequence)
+            {
+                edgesIdsSequence.Add(FindEdgeIndexByEdgeData(edgeData));
+            }
+
+
+
+            for (int i = 0; i < edgesIdsSequence.Count-1; i++)
+            {
+                if (edgesIdsSequence[i] == -1)
+                {
+                    yield return new WaitForSeconds(delayBetweenEdgesHistoryEntriesSequenceAppear);
+                    continue;
+                }
+                var edge = edges[edgesIdsSequence[i]];
+                if (alreadyAppearedEdgesIndexes.Contains(edge.index))
+                {
+                    continue;
+                }
+                edge.gameObject.SetActive(true);
+
+                edge.Appear(edgeSequenceAppearDuration, 0);
+                alreadyAppearedEdgesIndexes.Add(edge.index);
+
+                yield return new WaitForSeconds(delayBetweenEdgesHistoryEntriesSequenceAppear);
+            }
+            //Might make use of the following v
+
+            //float delay = CalculateDelayBetweenNodeAppearances();
+            //previousActiveNodeMarker Appearance
+            //if (visitedNodesIndexesSorted.Count > 1)
+            //{
+            //    previousActiveNodeMarkerAppearance(indexCount * delay);
+            //}
+        }
+
         //Edge Creation
         void CreateEdges(MatrixTraveler matrixTraveler, Nodes nodesController)
         {

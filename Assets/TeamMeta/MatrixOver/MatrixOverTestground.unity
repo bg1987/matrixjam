@@ -429,7 +429,7 @@ PrefabInstance:
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
       propertyPath: customHistory.Array.data[3].startPort.nodeIndex
-      value: 2
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
@@ -573,6 +573,16 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4315227992982508326, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: sequenceAppearDelay
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4315227992982508326, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: delayBetweenEdgesHistoryEntriesSequenceAppear
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4883445328228870500, guid: df300fc022a101048906ee2ac4bcfa28,
         type: 3}
       propertyPath: ingameMenuActivator
@@ -643,6 +653,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725267843513306395, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: delayBetweenNodesHistorySequenceAppear
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8851154874441220109, guid: df300fc022a101048906ee2ac4bcfa28,
         type: 3}
