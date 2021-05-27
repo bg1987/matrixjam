@@ -163,7 +163,6 @@ namespace MatrixJam.TeamMeta
             Clear();
             foreach (var entry in loadedHistory)
             {
-                history.Add(entry);
                 AddTravel(entry);
             }
         }

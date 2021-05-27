@@ -92,11 +92,12 @@ namespace MatrixJam
 
             MatrixPortData destinationPort = edge.endPort;
             MatrixNodeData destinationGame = matrixGraphData.nodes[destinationPort.nodeIndex];
-
+            
+            var visitedGamesCountBeforeNewTravel = travelData.GetVisitedGamesCount();
             MatrixEdgeData lastTravel = travelData.AddTravel(startPort, destinationPort);
             //ToDo Refactor PlayerData 
             //PlayerData.Data.current_level = destinationGame.index;
-            if (travelData.GetCompletedGamesCount() == matrixGraphData.nodes.Count)
+            if (visitedGamesCountBeforeNewTravel == matrixGraphData.nodes.Count)
             {
                 MatrixOver();
                 return;
