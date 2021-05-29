@@ -45,8 +45,13 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [Header("NodeUIs")]
         [SerializeField] NodesUIs nodeUis;
         [Header("Node History Sequence Appearance")]
-        [SerializeField] private float nodeHistorySequenceAppearDuration = 0.5f;
-        [SerializeField] private float delayBetweenNodesHistorySequenceAppear = 0.5f;
+        [SerializeField] private float historySequenceAppearNodeAppearDuration = 0.5f;
+        [SerializeField] private float historySequenceAppearDelayBetweenNodes = 0.5f;
+        [SerializeField] private NodeUiAppearParameters historySequenceAppearNodeUisAppearParameters;
+        [SerializeField] private float historySequenceAppearNodeUisDelay = 0.5f;
+        [SerializeField] private float historySequenceNodeUisDistanceFromNodeStart = 0.0f;
+        [SerializeField] private float historySequenceNodeUisDistanceFromNodeEnd = 1.6f;
+        [SerializeField] private float historySequenceNodeUisMinDistanceFromNode = 0.8f;
         const float TAU = Mathf.PI * 2;
 
         // Start is called before the first frame update
@@ -121,8 +126,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
         public float CalculateNodesHistorySequenceAppearanceTime()
         {
             float totalNodesAppearanceTime = 0;
-            totalNodesAppearanceTime += (visitedNodesIndexesSorted.Count - 1) * delayBetweenNodesHistorySequenceAppear;
-            totalNodesAppearanceTime += nodeHistorySequenceAppearDuration;
+            totalNodesAppearanceTime += (visitedNodesIndexesSorted.Count - 1) * historySequenceAppearDelayBetweenNodes;
+            totalNodesAppearanceTime += historySequenceAppearNodeAppearDuration;
             //totalNodesAppearanceTime += totalNodesAppearanceTime;
 
             return totalNodesAppearanceTime;
@@ -167,6 +172,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             SortedSet<int> uniqueNodeIdsInSequenceSet = new SortedSet<int>();
             nodeIdsSequence.ForEach((int i) => uniqueNodeIdsInSequenceSet.Add(i));
             nodesPositions = CalculateNodesPositions(uniqueNodeIdsInSequenceSet.Count);
+            UpdateNodesPositions();
             UpdateVisitedNodesPositions(visitedNodesIndexesSorted);
 
             for (int i = 0; i < nodeIdsSequence.Count; i++)
@@ -179,10 +185,27 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 }
                 node.gameObject.SetActive(true);
 
-                node.Appear(nodeHistorySequenceAppearDuration, 0);
+                node.Appear(historySequenceAppearNodeAppearDuration, 0);
                 alreadyAppearedNodesIndexes.Add(node.Index);
 
-                yield return new WaitForSeconds(delayBetweenNodesHistorySequenceAppear);
+                var nodeUI = nodeUis.uis[node.Index];
+                nodeUI.Activate();
+
+                var nodeData = MatrixTraveler.Instance.matrixGraphData.nodes[node.Index];
+               
+                nodeUI.SetNodeCreditData(nodeData.teamMembers);
+                nodeUI.DisappearInstantly();
+
+                float distanceFromNodeT = 1- (Mathf.Cos(node.transform.position.x / radius * Mathf.PI)+1)/2f;
+
+                float distanceFromNode = Mathf.Lerp(historySequenceNodeUisDistanceFromNodeStart, historySequenceNodeUisDistanceFromNodeEnd, distanceFromNodeT);
+                if (distanceFromNode < historySequenceNodeUisMinDistanceFromNode)
+                    distanceFromNode = historySequenceNodeUisMinDistanceFromNode;
+                nodeUI.PositionAroundNode(Vector3.zero, node, distanceFromNode);
+
+                nodeUI.Appear(true, historySequenceAppearNodeUisAppearParameters);
+
+                yield return new WaitForSeconds(historySequenceAppearDelayBetweenNodes);
             }
 
             //Might make use of the following v

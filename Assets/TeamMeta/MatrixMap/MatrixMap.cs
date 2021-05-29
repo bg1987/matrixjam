@@ -135,7 +135,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         IEnumerator CreditsAppearRoutine()
         {
-
+            interactable = false;
             container.SetActive(true);
             //Disappear();
             

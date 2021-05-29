@@ -521,6 +521,7 @@ MonoBehaviour:
   diagonalDistanceFactorInfluence: 1
   line: {fileID: 1425704889}
   lineShader: {fileID: 1541838530151792198}
+  lineDistanceFromNode: 0.73
   squareTarget: {fileID: 6576841586522261482}
   squareTargetFadeInDuration: 0.14
   squareTargetFadeOutDuration: 0.18

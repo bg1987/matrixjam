@@ -37,7 +37,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
         private void Start()
         {
-            Deactivate();
+            //Deactivate();
         }
 
         private void HandleHoverEnter(GameObject target)

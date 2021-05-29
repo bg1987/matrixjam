@@ -25,6 +25,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] float diagonalDistanceFactorInfluence = 1;
         [SerializeField] Transform line;
         [SerializeField] LineShader lineShader;
+        [SerializeField] private float lineDistanceFromNode = 0.5f;
 
         [SerializeField] SquareTarget squareTarget;
         [Header("Square Target Appearance")]
@@ -132,13 +133,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
             textString += "\n";
 
             textString += "Paths: "+DiscoveredEdgesCount+"/"+totalEdgesCount;
-            
-            text.text = textString;
 
-            textSizer.UpdateTextSize();
-            textContainer.UpdateSize();
+            PopulateNodeText(textString);
         }
-        public void PositionAroundNode(Vector3 mapCenter,Node node)
+        public void PositionAroundNode(Vector3 mapCenter, Node node)
+        {
+            PositionAroundNode(mapCenter, node, distanceFromNode);
+        }
+        public void PositionAroundNode(Vector3 mapCenter,Node node, float distanceFromNode)
         {
             Vector3 position = node.transform.position;
 
@@ -189,14 +191,45 @@ namespace MatrixJam.TeamMeta.MatrixMap
             linePosition.x -= scaleOffsetX;
             RotateAndPositionLine(linePosition, -targetDirection, distanceFromNode);
         }
+        internal void SetNodeCreditData(List<TeamMemberData> teamMembers)
+        {
+            string textString = "";
+            foreach (var teamMember in teamMembers)
+            {
+
+                var memberName = teamMember.name;
+
+                if (teamMember.roles.Length == 0)
+                {
+                    textString += memberName + "\n";
+                }
+                //else
+                foreach (var role in teamMember.roles)
+                {
+                    textString += role + ": " + memberName+"\n";
+                }
+            }
+            textString.TrimEnd();
+
+            PopulateNodeText(textString);
+        }
+        internal void PopulateNodeText(string textString)
+        {
+            text.text = textString;
+
+            textSizer.UpdateTextSize();
+            textContainer.UpdateSize();
+        }
         void RotateAndPositionLine(Vector3 startPosition, Vector3 targetDirection, float targetDistance)
         {
             line.rotation = Quaternion.identity;
             Vector3 linePosition = startPosition;
             line.position = linePosition;
             Vector3 lineScale = line.localScale;
-            lineScale.y = targetDistance;
-
+            lineScale.y = targetDistance - lineDistanceFromNode;
+            if (lineScale.y < 0)
+                lineScale.y = 0;
+            line.localScale = lineScale;
             Vector3 lineLookDirection = line.transform.up;
             Vector3 lineTargetDirection = targetDirection;
             var degrees = Mathf.Atan2(lineTargetDirection.y, lineTargetDirection.x) - Mathf.Atan2(lineLookDirection.y, lineLookDirection.x);

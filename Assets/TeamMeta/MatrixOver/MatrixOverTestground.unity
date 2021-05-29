@@ -304,7 +304,7 @@ PrefabInstance:
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
       propertyPath: customHistory.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
@@ -658,6 +658,76 @@ PrefabInstance:
         type: 3}
       propertyPath: delayBetweenNodesHistorySequenceAppear
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725267843513306395, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: nodeUisHistorySequenceAppearParameters.squareTargetFadeDuration
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725267843513306395, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: nodeUisHistorySequenceAppearParameters.lineFadeDuration
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725267843513306395, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: nodeUisHistorySequenceAppearParameters.linesFadeDuration
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725267843513306395, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: nodeUisHistorySequenceAppearParameters.characterFadeDuration
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725267843513306395, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: nodeUisHistorySequenceAppearParameters.overallAlphaFadeDuration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725267843513306395, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: nodeUisHistorySequenceAppearDelay
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725267843513306395, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: historySequenceAppearDelayBetweenNodes
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725267843513306395, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: historySequenceAppearNodeUisAppearParameters.linesFadeDuration
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725267843513306395, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: historySequenceAppearNodeUisAppearParameters.characterFadeDuration
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725267843513306395, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: historySequenceAppearNodeUisAppearParameters.overallAlphaFadeDuration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725267843513306395, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: historySequenceAppearNodeUisAppearParameters.squareTargetFadeDuration
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725267843513306395, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: historySequenceAppearNodeUisAppearParameters.lineFadeDuration
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725267843513306395, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: historySequenceAppearNodeUisDelay
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725267843513306395, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: historySequenceNodeUisMinDistanceFromNode
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 8851154874441220109, guid: df300fc022a101048906ee2ac4bcfa28,
         type: 3}
