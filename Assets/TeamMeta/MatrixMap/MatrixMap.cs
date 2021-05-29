@@ -152,7 +152,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             nodesController.Appear();
             nodesController.Disappear();
 
-            nodesController.AppearByHistorySequence(nodesIdsSequence);
+            nodesController.AppearCredits(nodesIdsSequence);
 
             edgesController.Appear();
             edgesController.Disappear();

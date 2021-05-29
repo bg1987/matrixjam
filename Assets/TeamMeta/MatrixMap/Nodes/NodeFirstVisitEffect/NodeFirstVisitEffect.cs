@@ -47,6 +47,17 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 psDuration += main.startDelay.constantMax;
                 psDuration += main.startLifetime.constantMax;
 
+                var emission = ps.emission;
+                float longestBurstDuration = 0;
+                for (int i = 0; i < emission.burstCount; i++)
+                {
+                    var burst = emission.GetBurst(i);
+                    float burstDuration = burst.time;
+                    burstDuration += burst.repeatInterval * burst.cycleCount;
+                    longestBurstDuration = Mathf.Max(longestBurstDuration, burstDuration);
+                }
+                psDuration += longestBurstDuration;
+
                 if (psDuration > longestPsDuration)
                     longestPsDuration = psDuration;
             }

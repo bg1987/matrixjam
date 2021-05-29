@@ -40,18 +40,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
         [Header("Radius")]
         [SerializeField] float radius = 1;
+        public float Radius { get => radius; }
         [SerializeField] float minRadius = 3;
         [SerializeField] float maxRadius = 5;
         [Header("NodeUIs")]
         [SerializeField] NodesUIs nodeUis;
-        [Header("Node History Sequence Appearance")]
-        [SerializeField] private float historySequenceAppearNodeAppearDuration = 0.5f;
-        [SerializeField] private float historySequenceAppearDelayBetweenNodes = 0.5f;
-        [SerializeField] private NodeUiAppearParameters historySequenceAppearNodeUisAppearParameters;
-        [SerializeField] private float historySequenceAppearNodeUisDelay = 0.5f;
-        [SerializeField] private float historySequenceNodeUisDistanceFromNodeStart = 0.0f;
-        [SerializeField] private float historySequenceNodeUisDistanceFromNodeEnd = 1.6f;
-        [SerializeField] private float historySequenceNodeUisMinDistanceFromNode = 0.8f;
+        [Header("Nodes Credits Appearance")]
+        [SerializeField] private NodesCreditsAppearance nodesCreditsAppearance;
+
         const float TAU = Mathf.PI * 2;
 
         // Start is called before the first frame update
@@ -123,14 +119,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
             float nodeMovementTime = nodesMovementDelay + nodesMovementDuration;
             return nodeMovementTime;
         }
-        public float CalculateNodesHistorySequenceAppearanceTime()
+        public float CalculateCreditsAppearanceTime()
         {
-            float totalNodesAppearanceTime = 0;
-            totalNodesAppearanceTime += (visitedNodesIndexesSorted.Count - 1) * historySequenceAppearDelayBetweenNodes;
-            totalNodesAppearanceTime += historySequenceAppearNodeAppearDuration;
-            //totalNodesAppearanceTime += totalNodesAppearanceTime;
-
-            return totalNodesAppearanceTime;
+            return nodesCreditsAppearance.CalculateAppearanceTime(visitedNodesIndexesSorted.Count);
         }
         public void Appear()
         {
@@ -161,61 +152,15 @@ namespace MatrixJam.TeamMeta.MatrixMap
             }
 
         }
-        public void AppearByHistorySequence(List<int> nodeIdsSequence)
+        public void AppearCredits(List<int> nodeIdsSequence)
         {
-            StartCoroutine(AppearByHistorySequenceRoutine(nodeIdsSequence));
-        }
-        IEnumerator AppearByHistorySequenceRoutine(List<int> nodeIdsSequence)
-        {
-            SortedSet<int> alreadyAppearedNodesIndexes = new SortedSet<int>();
-
             SortedSet<int> uniqueNodeIdsInSequenceSet = new SortedSet<int>();
             nodeIdsSequence.ForEach((int i) => uniqueNodeIdsInSequenceSet.Add(i));
             nodesPositions = CalculateNodesPositions(uniqueNodeIdsInSequenceSet.Count);
             UpdateNodesPositions();
             UpdateVisitedNodesPositions(visitedNodesIndexesSorted);
 
-            for (int i = 0; i < nodeIdsSequence.Count; i++)
-            {
-                var node = nodes[nodeIdsSequence[i]];
-
-                if (alreadyAppearedNodesIndexes.Contains(node.Index))
-                {
-                    continue;
-                }
-                node.gameObject.SetActive(true);
-
-                node.Appear(historySequenceAppearNodeAppearDuration, 0);
-                alreadyAppearedNodesIndexes.Add(node.Index);
-
-                var nodeUI = nodeUis.uis[node.Index];
-                nodeUI.Activate();
-
-                var nodeData = MatrixTraveler.Instance.matrixGraphData.nodes[node.Index];
-               
-                nodeUI.SetNodeCreditData(nodeData.teamMembers);
-                nodeUI.DisappearInstantly();
-
-                float distanceFromNodeT = 1- (Mathf.Cos(node.transform.position.x / radius * Mathf.PI)+1)/2f;
-
-                float distanceFromNode = Mathf.Lerp(historySequenceNodeUisDistanceFromNodeStart, historySequenceNodeUisDistanceFromNodeEnd, distanceFromNodeT);
-                if (distanceFromNode < historySequenceNodeUisMinDistanceFromNode)
-                    distanceFromNode = historySequenceNodeUisMinDistanceFromNode;
-                nodeUI.PositionAroundNode(Vector3.zero, node, distanceFromNode);
-
-                nodeUI.Appear(true, historySequenceAppearNodeUisAppearParameters);
-
-                yield return new WaitForSeconds(historySequenceAppearDelayBetweenNodes);
-            }
-
-            //Might make use of the following v
-
-            //float delay = CalculateDelayBetweenNodeAppearances();
-            //previousActiveNodeMarker Appearance
-            //if (visitedNodesIndexesSorted.Count > 1)
-            //{
-            //    previousActiveNodeMarkerAppearance(indexCount * delay);
-            //}
+            nodesCreditsAppearance.Appear(nodeIdsSequence, this, nodeUis);
         }
         public void previousActiveNodeMarkerAppearance(float delay)
         {
