@@ -129,13 +129,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
             yield return StartCoroutine(ChangeColorRoutine(hoverDuration, selectedColorAlpha, hoverColorAlpha, selectedColorIntensity, hoverColorIntensity,false));
             yield return StartCoroutine(ChangeColorRoutine(idleDuration, hoverColorAlpha, idleColorAlpha, hoverColorIntensity, idleColorIntensity,false));
         }
-        IEnumerator ChangeColorRoutine(float duration, float startAlpha, float targetAlpha, float startIntensity, float targetIntensity, bool smoothStep)
+        IEnumerator ChangeColorRoutine(float duration, float startAlpha, float targetAlpha, float startIntensity, float targetIntensity, bool smoothStep, bool ignoreNodeState = false)
         {
             float t = 0;
             while (t < 1)
             {
-                if (isSelected || isHovered)
-                    yield break;
+                if(ignoreNodeState==false)
+                    if (isSelected || isHovered)
+                        yield break;
 
                 float alpha;
                 if (smoothStep)
@@ -156,6 +157,22 @@ namespace MatrixJam.TeamMeta.MatrixMap
             }
             ChangeAlpha(targetAlpha);
             ChangeIntensity(targetIntensity);
+        }
+        public void Flash(float duration)
+        {
+            StartCoroutine(FlashRoutine(duration));
+        }
+        IEnumerator FlashRoutine(float duration)
+        {
+            Color outlineColor = node.ModelMaterial.GetColor("_OutlineColor");
+            float startAlpha = outlineColor.a;
+            float targetAlpha = selectedColorAlpha;
+
+            float startIntensity = node.ModelMaterial.GetFloat("_OutlineColorIntensity");
+            float targetIntensity = selectedColorIntensity;
+
+            yield return StartCoroutine(ChangeColorRoutine(duration/2f, startAlpha, targetAlpha, startIntensity, targetIntensity, true, true));
+            yield return StartCoroutine(ChangeColorRoutine(duration/2f, targetAlpha, startAlpha, targetIntensity, startIntensity, true, true));
         }
     }
 }

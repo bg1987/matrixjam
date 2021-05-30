@@ -30,6 +30,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 var node = nodes[nodeIdsSequence[i]];
                 if (alreadyAppearedNodesIndexes.Contains(node.Index))
                 {
+                    if (i != nodeIdsSequence.Count-1)
+                    {
+                        node.NodeSelectable.Flash(duration: 0.5f);
+                    }
+                    yield return new WaitForSeconds(delayBetweenNodes);
                     continue;
                 }
                 node.gameObject.SetActive(true);
