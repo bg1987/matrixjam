@@ -66,13 +66,19 @@ namespace Assets.TeamMeta.MatrixTravelTransition
             float volumeBeforeMute = AudioListener.volume;
             yield return StartCoroutine(StartTransitionRoutine());
 
-            //ToDo Put MatrixMap credits appearance here after implementing it
-            matrixMap.CreditsAppear();
             MatrixNodeData destinationGame = matrixTraveler.matrixGraphData.nodes[lastTravel.endPort.nodeIndex];
             yield return StartCoroutine(PreloadNextNodeScene(destinationGame.scenePath));
 
-            //ToDo Have this wait for MatrixMap CreditsDuration when implemented
-            yield return new WaitForSeconds(10);
+            yield return matrixMap.CreditsAppear();
+
+            pressContinueKey.gameObject.SetActive(true);
+            pressContinueKey.Activate();
+            WaitUntil waitUntilContinueKeyIsHeld = new WaitUntil(() => pressContinueKey.WasContinueKeyPressed() == true);
+            yield return waitUntilContinueKeyIsHeld;
+            pressContinueKey.Deactivate();
+
+            yield return matrixMap.CreditsFinish();
+
             yield return StartCoroutine(EndTransitionRoutine(volumeBeforeMute, destinationGame));
         }
         IEnumerator TransitionRoutine()

@@ -129,15 +129,14 @@ namespace MatrixJam.TeamMeta.MatrixMap
             }
             edgesController.HandleDestinationEdge(nodesController);
         }
-        public void CreditsAppear()
+        public Coroutine CreditsAppear()
         {
-            StartCoroutine(CreditsAppearRoutine());
+            return StartCoroutine(CreditsAppearRoutine());
         }
         IEnumerator CreditsAppearRoutine()
         {
             interactable = false;
             container.SetActive(true);
-            //Disappear();
             
             var nodesIdsSequence = new List<int>();
             var edgesSequence = new List<MatrixEdgeData>();
@@ -160,11 +159,19 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             edgesController.AppearCredits(edgesSequence);
 
-            yield return new WaitForSeconds(8f);
+            float nodesCreditsAppearanceTime = nodesController.CalculateCreditsAppearanceTime(nodesIdsSequence.Count-1);
+            yield return new WaitForSeconds(nodesCreditsAppearanceTime);
+        }
+        public Coroutine CreditsFinish()
+        {
+            return StartCoroutine(CreditsFinishRoutine());
+        }
+        IEnumerator CreditsFinishRoutine()
+        {
+            edgesController.HandleDestinationEdge(nodesController, delay: 0);
+            float edgeFirstVisitTime = edgesController.CalculateEdgeFirstVisitTime();
 
-            edgesController.HandleDestinationEdge(nodesController);
-
-            yield return null;
+            yield return new WaitForSeconds(edgeFirstVisitTime);
         }
         public void Deactivate()
         {

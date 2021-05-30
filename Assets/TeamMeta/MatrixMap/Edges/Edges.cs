@@ -131,8 +131,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
             return firstVisitEdgeAppearDelay + edgeVisitEffect.RevisitEffect.CalculateEffectDuration();
         }
         //Destination Edge related
-        public void HandleDestinationEdge(Nodes nodesController)
+        public void HandleDestinationEdge(Nodes nodesController, float delay = -1)
         {
+            if (delay == -1)
+                delay = firstVisitEdgeAppearDelay;
+
             int edgeIndex = GetDestinationEdgeIndex();
             if (edgeIndex != -1)
             {
@@ -141,11 +144,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 if (IsFirstVisitToEdge(edgeIndex))
                 {
                     
-                    FirstEdgeVisit(edgeIndex, nodesController);
+                    FirstEdgeVisit(edgeIndex, nodesController, delay);
                 }
                 else
                 {
-                    edgeVisitEffect.RevisitEffect.Play(destinationEdge, firstVisitEdgeAppearDelay);
+                    edgeVisitEffect.RevisitEffect.Play(destinationEdge, delay);
                 }
             }
         }
@@ -168,7 +171,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             var destinationIndex = edgesData.FindIndex((MatrixEdgeData edgeData) => edgeData == targetEdgeData);
             return destinationIndex;
         }
-        void FirstEdgeVisit(int edgeIndex, Nodes nodesController)
+        void FirstEdgeVisit(int edgeIndex, Nodes nodesController, float delay)
         {
             Edge edge = edges[edgeIndex];
 
@@ -190,11 +193,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
             UpdateEdgeAnchors(edge, startNode, endNode, usePreviousNormalSign: false);
 
             edge.Disappear();
-            edge.Appear(firstVisitEdgeAppearDuration, firstVisitEdgeAppearDelay);
+            edge.Appear(firstVisitEdgeAppearDuration, delay);
 
             edge.SetTintColor(firstVisitEdgeColor);
 
-            edgeVisitEffect.FirstVisitEffect.Play(edge, firstVisitEdgeAppearDelay);
+            edgeVisitEffect.FirstVisitEffect.Play(edge, delay);
 
         }
         public void AppearCredits(List<MatrixEdgeData> edgesSequence)

@@ -119,9 +119,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
             float nodeMovementTime = nodesMovementDelay + nodesMovementDuration;
             return nodeMovementTime;
         }
-        public float CalculateCreditsAppearanceTime()
+        public float CalculateCreditsAppearanceTime(int nodesSequenceCount)
         {
-            return nodesCreditsAppearance.CalculateAppearanceTime(visitedNodesIndexesSorted.Count);
+            return nodesCreditsAppearance.CalculateAppearanceTime(nodesSequenceCount);
         }
         public void Appear()
         {

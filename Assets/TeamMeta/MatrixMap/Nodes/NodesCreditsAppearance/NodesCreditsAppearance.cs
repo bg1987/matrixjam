@@ -79,10 +79,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
             //    previousActiveNodeMarkerAppearance(indexCount * delay);
             //}
         }
-        public float CalculateAppearanceTime(int nodesCount)
+        public float CalculateAppearanceTime(int nodesSequenceCount)
         {
             float totalNodesAppearanceTime = 0;
-            totalNodesAppearanceTime += (nodesCount - 1) * delayBetweenNodes;
+            totalNodesAppearanceTime += (nodesSequenceCount - 1) * delayBetweenNodes;
             totalNodesAppearanceTime += nodeAppearDuration;
             //totalNodesAppearanceTime += totalNodesAppearanceTime;
 
