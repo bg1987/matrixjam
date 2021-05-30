@@ -192,11 +192,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
             var edgesData = MatrixTraveler.Instance.matrixGraphData.edges;
 
             nodesController.AddVisitedNode(travelEdgeData.endPort.nodeIndex);
-            var node = nodesController.nodes[travelEdgeData.endPort.nodeIndex];
             var edgeIndex = edgesData.FindIndex((MatrixEdgeData edgeData) => edgeData == travelEdgeData);
 
             if (edgeIndex != -1)
             {
+                var node = nodesController.nodes[travelEdgeData.startPort.nodeIndex];
                 edgesController.AddVisitedEdge(edgeIndex, node);
             }
         }
