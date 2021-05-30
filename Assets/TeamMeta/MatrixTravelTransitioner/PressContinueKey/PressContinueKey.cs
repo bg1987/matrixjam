@@ -62,6 +62,7 @@ namespace MatrixJam.TeamMeta.MatrixTravelTransition
         }
         public void Deactivate()
         {
+            pressContinueKey.StopLingering();
             pressContinueKey.Disappear();
             isActive = false;
         }

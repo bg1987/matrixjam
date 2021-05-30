@@ -68,6 +68,15 @@ namespace MatrixJam.TeamMeta.MatrixTravelTransition
             lingerRoutine = null;
 
         }
+        public void StopLingering()
+        {
+            if (lingerRoutine!= null)
+            {
+                StopCoroutine(lingerRoutine);
+                lingerRoutine = null;
+                isTextLingering = false;
+            }
+        }
         public void Disappear()
         {
             if (isTextLingering)
