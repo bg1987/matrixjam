@@ -158,7 +158,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             edgesController.Disappear();
             edgesController.UpdateEdgesAnchors(false, nodesController);
 
-            edgesController.AppearByHistorySequence(edgesSequence);
+            edgesController.AppearCredits(edgesSequence);
 
             yield return new WaitForSeconds(8f);
 

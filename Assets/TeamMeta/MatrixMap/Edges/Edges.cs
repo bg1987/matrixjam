@@ -33,6 +33,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] private float delayBetweenEdgesHistoryEntriesSequenceAppear = 0.5f;
         [SerializeField] private float edgeSequenceAppearDuration = 0.5f;
         [SerializeField] private float sequenceAppearDelay = 1.5f;
+        [SerializeField] private EdgeRevisitEffect creditsEffect;
+        [SerializeField] private EdgesCreditsAppearance edgesCreditsAppearance;
 
         // Start is called before the first frame update
         void Start()
@@ -64,6 +66,10 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 visitedEdges.Add(edge);
             }
             return visitedEdges;
+        }
+        public List<Edge> GetEdges()
+        {
+            return edges;
         }
         public void Appear()
         {
@@ -191,50 +197,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
             edgeVisitEffect.FirstVisitEffect.Play(edge, firstVisitEdgeAppearDelay);
 
         }
-        public void AppearByHistorySequence(List<MatrixEdgeData> edgesSequence)
+        public void AppearCredits(List<MatrixEdgeData> edgesSequence)
         {
-            StartCoroutine(AppearByHistorySequenceRoutine(edgesSequence));
-        }
-        IEnumerator AppearByHistorySequenceRoutine(List<MatrixEdgeData> edgesSequence)
-        {
-            yield return new WaitForSeconds(sequenceAppearDelay);
-            SortedSet<int> alreadyAppearedEdgesIndexes = new SortedSet<int>();
-
-            List<int> edgesIdsSequence = new List<int>();
-            foreach (var edgeData in edgesSequence)
-            {
-                edgesIdsSequence.Add(FindEdgeIndexByEdgeData(edgeData));
-            }
-
-
-
-            for (int i = 0; i < edgesIdsSequence.Count-1; i++)
-            {
-                if (edgesIdsSequence[i] == -1)
-                {
-                    yield return new WaitForSeconds(delayBetweenEdgesHistoryEntriesSequenceAppear);
-                    continue;
-                }
-                var edge = edges[edgesIdsSequence[i]];
-                if (alreadyAppearedEdgesIndexes.Contains(edge.index))
-                {
-                    continue;
-                }
-                edge.gameObject.SetActive(true);
-
-                edge.Appear(edgeSequenceAppearDuration, 0);
-                alreadyAppearedEdgesIndexes.Add(edge.index);
-
-                yield return new WaitForSeconds(delayBetweenEdgesHistoryEntriesSequenceAppear);
-            }
-            //Might make use of the following v
-
-            //float delay = CalculateDelayBetweenNodeAppearances();
-            //previousActiveNodeMarker Appearance
-            //if (visitedNodesIndexesSorted.Count > 1)
-            //{
-            //    previousActiveNodeMarkerAppearance(indexCount * delay);
-            //}
+            edgesCreditsAppearance.Appear(edgesSequence, this);
         }
 
         //Edge Creation
