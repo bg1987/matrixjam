@@ -9,27 +9,44 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField, Min(0)] float colorTravelDuration = 1;
         [SerializeField] AnimationCurve colorTravelDurationCurve;
         [SerializeField] AnimationCurve colorTravelSizeCurve;
-
+        [SerializeField] float endEdgeColorHeight = 1.2f;
         [Header("Sparks Effect")]
         [SerializeField] ParticleSystem sparksEffect;
+        [SerializeField] bool shouldSparksStopAtEnd = false;
         float sparksDistanceAlongEdge;
         int sparksEdgePointIndex;
         List<Vector3> edgePoints;
+        Edge latestEdgeSubmitted;
         // Start is called before the first frame update
         void Start()
         {
 
         }
+        public void SetTravelDuration(float duration)
+        {
+            colorTravelDuration = duration;
+        }
+        public void SetEndEdgeColorHeight(float value)
+        {
+            endEdgeColorHeight = value;
+        }
+        public void SetSparksStopAtEnd(bool value)
+        {
+            shouldSparksStopAtEnd = value;
+        }
         public void Play(Edge edge, float delay)
         {
-            StopAllCoroutines();
+            //StopAllCoroutines();
             StartCoroutine(PlayRoutine(edge, delay));
         }
         IEnumerator PlayRoutine(Edge edge, float delay)
         {
-            yield return new WaitForSeconds(delay);
+            latestEdgeSubmitted = edge;
+            if(delay>0)
+                yield return new WaitForSeconds(delay);
 
             Material material = edge.Material;
+            material.SetFloat("_EndEdgeColorHeight", endEdgeColorHeight);
 
             sparksEffect.Play(true);
             edgePoints = edge.GetCurvePoints();
@@ -49,17 +66,29 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 t += Time.deltaTime / colorTravelDuration;
             }
             Execute(1, material, edge);
-            //sparksEffect.Stop();
+            if(latestEdgeSubmitted.index == edge.index)
+                if(shouldSparksStopAtEnd)
+                    sparksEffect.Stop(true);
         }
         public void Execute(float t, Material material, Edge edge)
         {
-            float travelProgress = colorTravelDurationCurve.Evaluate(t);
+            float colorTravelCurveT = colorTravelDurationCurve.Evaluate(t);
+
+            float edgeLength = material.GetFloat("_EdgeLength");
+            float edgeOffset = material.GetFloat("_EndEdgeOffset");
+            float travelProgressEnd = (edgeLength - edgeOffset)/edgeLength;
+
+            float startEdgeRadius = material.GetFloat("_StartEdgeRadius");
+            float travelProgressStart = 1-(edgeLength - startEdgeRadius) / edgeLength;
+
+            float travelProgress = Mathf.Lerp(travelProgressStart, travelProgressEnd, colorTravelCurveT);
             material.SetFloat("_TravelProgress", travelProgress);
 
             float travelSize = colorTravelSizeCurve.Evaluate(t);
             material.SetFloat("_TravelSize", travelSize);
 
-            MoveSparksEffect(travelProgress, material, edge.transform.position);
+            if (latestEdgeSubmitted.index == edge.index)
+                MoveSparksEffect(travelProgress, material, edge.transform.position);
         }
         void MoveSparksEffect(float travelDistance, Material material, Vector3 originPosition)
         {
