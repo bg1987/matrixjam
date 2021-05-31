@@ -148,7 +148,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             //previousActiveNodeMarker Appearance
             if (visitedNodesIndexesSorted.Count > 1)
             {
-                previousActiveNodeMarkerAppearance(indexCount * delay);
+                previousActiveNodeMarkerAppearance(delay);
             }
 
         }
