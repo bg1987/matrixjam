@@ -195,9 +195,11 @@ namespace MatrixJam.TeamMeta.MatrixMap
             edge.Disappear();
             edge.Appear(firstVisitEdgeAppearDuration, delay);
 
-            edge.SetTintColor(firstVisitEdgeColor);
+            //edge.SetTintColor(firstVisitEdgeColor);
 
             edgeVisitEffect.FirstVisitEffect.Play(edge, delay);
+            edgeVisitEffect.RevisitEffect.SetTravelDuration(firstVisitEdgeAppearDuration);
+            edgeVisitEffect.RevisitEffect.Play(edge, delay);
 
         }
         public void AppearCredits(List<MatrixEdgeData> edgesSequence)

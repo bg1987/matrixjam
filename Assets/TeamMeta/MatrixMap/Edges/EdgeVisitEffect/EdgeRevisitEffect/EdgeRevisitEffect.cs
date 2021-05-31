@@ -132,17 +132,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
                     }
                 }
             }
-            if(travelDistance > 0.9f)
-            {
-                float targetPositionOffsetZ = -1f;
-                float targetPositionOffsetX = -0.2f;
-                float offsetT = Mathf.InverseLerp(0.9f, 1, travelDistance);
-                float positionOffsetZ = Mathf.Lerp(0, targetPositionOffsetZ, offsetT);
-                float positionOffset = Mathf.Lerp(0, targetPositionOffsetX, offsetT);
-                var localPos = sparksEffect.transform.localPosition;
-                localPos.z = targetPositionOffsetZ;
-                sparksEffect.transform.localPosition = localPos;
-            }
         }
         public float CalculateEffectDuration()
         {
