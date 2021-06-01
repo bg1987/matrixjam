@@ -50,6 +50,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         public void SetIndex(int value)
         {
             index = value;
+            modelMaterial.SetFloat("_Seed", index);
         }
         public void SetModelColors(ColorHdr colorHdr1, ColorHdr colorHdr2)
         {

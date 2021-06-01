@@ -15,7 +15,8 @@ namespace MatrixJam.TeamMeta.IngameMenu
         [SerializeField] MenuActivator applyMenu;
         private void Awake()
         {
-            Resolution[] resolutions = GetHighestRefreshRateResolutions();
+            resolutions = GetHighestRefreshRateResolutions();
+
             resolutionIndex = FindCurrentResolutionIndex(resolutions);
             appliedResolutionIndex = resolutionIndex;
 

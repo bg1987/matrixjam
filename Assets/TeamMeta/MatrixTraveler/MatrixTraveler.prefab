@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99626aef3fea5c94a82681c8f6bb713d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matrixGraphAsset: {fileID: 2811297602134710623, guid: dcd3cbac2754d9c408568b3b67007679,
+  matrixGraphAsset: {fileID: 2811297602134710623, guid: 9a341a9a5ebc6e2469de14e75a477256,
     type: 3}
   startScene: TestStartScene
   endScene: EndScene
@@ -1001,16 +1001,16 @@ PrefabInstance:
       propertyPath: IngameMenuActivator
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1128284729673487505, guid: e4eeefe47ba84a44c978d05ec2db3c64,
-        type: 3}
-      propertyPath: ingameMenuActivator
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2947487065549499691, guid: e4eeefe47ba84a44c978d05ec2db3c64,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 3288266041118909922, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3853783568976130286, guid: e4eeefe47ba84a44c978d05ec2db3c64,
         type: 3}
       propertyPath: nodeUIs
@@ -1076,6 +1076,11 @@ PrefabInstance:
       propertyPath: nodesInteractableFlashDuration
       value: 0.95
       objectReference: {fileID: 0}
+    - target: {fileID: 5550310680897025900, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5612826778775974496, guid: e4eeefe47ba84a44c978d05ec2db3c64,
         type: 3}
       propertyPath: m_fontAsset
@@ -1087,6 +1092,11 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 5644306240026710778, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+        type: 3}
+      propertyPath: edgeFirstVisitEffect
+      value: 
+      objectReference: {fileID: 6910004285687226401}
     - target: {fileID: 8398612935482576182, guid: e4eeefe47ba84a44c978d05ec2db3c64,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1161,6 +1171,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5507061616517119477}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6910004285687226401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1407453041965178324, guid: e4eeefe47ba84a44c978d05ec2db3c64,
+    type: 3}
+  m_PrefabInstance: {fileID: 5507061616517119477}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f93f4af617599f7458ccc31878cb3c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2451017220081024239 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7957509179516354842, guid: e4eeefe47ba84a44c978d05ec2db3c64,

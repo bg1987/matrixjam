@@ -20,20 +20,17 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] float sameNodeEdgesOffset = 0.2f;
         private List<int> EdgesNormalSign = new List<int>(); //1 positive, -1 negative
 
-        [Header("Edge First Visit")]
+        [Header("Edge Visit")]
         [SerializeField, Min(0)] float firstVisitEdgeAppearDelay = 1f;
         [SerializeField, Min(0)] float firstVisitEdgeAppearDuration = 0.8f;
+        [SerializeField, Min(0)] float revisitEdgeColorTravelDuration = 0.8f;
         [SerializeField, ColorUsage(true,true)] Color firstVisitEdgeColor = Color.yellow;
         [SerializeField] EdgeVisitEffect edgeVisitEffect;
         [Header("EdgesUIs")]
         [SerializeField] EdgesUIs edgeUis;
         [SerializeField] private int[] endNormalSigns;
         [SerializeField] private int[] startNormalSigns;
-        [Header("Edge History Sequence Appearance")]
-        [SerializeField] private float delayBetweenEdgesHistoryEntriesSequenceAppear = 0.5f;
-        [SerializeField] private float edgeSequenceAppearDuration = 0.5f;
-        [SerializeField] private float sequenceAppearDelay = 1.5f;
-        [SerializeField] private EdgeRevisitEffect creditsEffect;
+        [Header("Edge Credits Appearance")]
         [SerializeField] private EdgesCreditsAppearance edgesCreditsAppearance;
 
         // Start is called before the first frame update
@@ -148,6 +145,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 }
                 else
                 {
+                    edgeVisitEffect.RevisitEffect.SetTravelDuration(revisitEdgeColorTravelDuration);
                     edgeVisitEffect.RevisitEffect.Play(destinationEdge, delay);
                 }
             }
@@ -237,7 +235,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
 
             EdgesNormalSign.Add(1);
             edges.Add(edge);
-            CalculateEdgeAnchors(edges.Count - 1, startNode.transform.localPosition, endNode.transform.localPosition, mapCenter: Vector3.zero, out Vector3 p1, out Vector3 p2, out Vector3 p3, usePreviousNormalSign: false);
+            float edgeOffset = CalculateEdgeMiddlePointOffset(edge, startNode, endNode);
+            CalculateEdgeAnchors(edges.Count - 1, edgeOffset, startNode.transform.localPosition, endNode.transform.localPosition, mapCenter: Vector3.zero, out Vector3 p1, out Vector3 p2, out Vector3 p3, usePreviousNormalSign: false);
             edge.Init(p1, p2, p3);
 
             edge.SetModelColors(startNode.ColorHdr1, startNode.ColorHdr2);
@@ -255,7 +254,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             return edge;
         }
         //Update Edge Position
-        void CalculateEdgeAnchors(int edgeIndex, Vector3 startNodePosition, Vector3 endNodePosition, Vector3 mapCenter, out Vector3 anchorPoint1, out Vector3 anchorPoint2, out Vector3 anchorPoint3, bool usePreviousNormalSign)
+        void CalculateEdgeAnchors(int edgeIndex, float edgeOffset, Vector3 startNodePosition, Vector3 endNodePosition, Vector3 mapCenter, out Vector3 anchorPoint1, out Vector3 anchorPoint2, out Vector3 anchorPoint3, bool usePreviousNormalSign)
         {
             Edge edge = edges[edgeIndex];
             edge.transform.localPosition = Vector3.zero;
@@ -279,7 +278,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 EdgesNormalSign[edgeIndex] = 1;
 
             Vector3 point2;
-            float extraOffsetPoint2 = (1 + edgeIndex * sameNodeEdgesOffset); // takes care of the initial offset and maybe normal too
+            float extraOffsetPoint2 = (1 + edgeOffset * sameNodeEdgesOffset); // takes care of the initial offset and maybe normal too
             point2 = middlePoint + normal * ((startNodePosition + middlePoint).magnitude + extraOffsetPoint2);
 
             Vector3 point3 = endNodePosition - startNodePosition;
@@ -291,7 +290,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             anchorPoint2 = point2;
             anchorPoint3 = point3;
         }
-        void CalculateEdgeAnchors(int edgeIndex, Vector3 startNodePosition, Vector3 endNodePosition, Vector3 mapCenter, out Vector3 anchorPoint1, out Vector3 anchorPoint2, out Vector3 anchorPoint3, int normalSign, float distanceScaleP2)
+        void CalculateEdgeAnchors(int edgeIndex, float edgeOffset, Vector3 startNodePosition, Vector3 endNodePosition, Vector3 mapCenter, out Vector3 anchorPoint1, out Vector3 anchorPoint2, out Vector3 anchorPoint3, int normalSign, float distanceScaleP2)
         {
             Edge edge = edges[edgeIndex];
             edge.transform.localPosition = Vector3.zero;
@@ -312,7 +311,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             normal *= normalSign;
 
             Vector3 point2;
-            float extraOffsetPoint2 = (1 + edgeIndex * sameNodeEdgesOffset); // takes care of the initial offset and maybe normal too
+            float extraOffsetPoint2 = (1 + edgeOffset * sameNodeEdgesOffset); // takes care of the initial offset and maybe normal too
             point2 = middlePoint + (normal * ((startNodePosition + middlePoint).magnitude + extraOffsetPoint2)*distanceScaleP2);
 
             Vector3 point3 = endNodePosition - startNodePosition;
@@ -430,16 +429,42 @@ namespace MatrixJam.TeamMeta.MatrixMap
         }
         void UpdateEdgeAnchors(Edge edge, Node startNode, Node endNode, bool usePreviousNormalSign = false)
         {
-            CalculateEdgeAnchors(edge.index, startNode.transform.localPosition, endNode.transform.localPosition, mapCenter: Vector3.zero, out Vector3 p1, out Vector3 p2, out Vector3 p3, usePreviousNormalSign);
+            float edgeOffset = CalculateEdgeMiddlePointOffset(edge, startNode, endNode);
+            CalculateEdgeAnchors(edge.index, edgeOffset, startNode.transform.localPosition, endNode.transform.localPosition, mapCenter: Vector3.zero, out Vector3 p1, out Vector3 p2, out Vector3 p3, usePreviousNormalSign);
             edge.UpdateBezierCurve(p1, p2, p3);
             edge.UpdateMesh();
         }
         void UpdateEdgeAnchors(Edge edge, Node startNode, Node endNode, int normalSign, float distanceScaleP2)
         {
-            CalculateEdgeAnchors(edge.index, startNode.transform.localPosition, endNode.transform.localPosition,mapCenter: Vector3.zero,
+            float edgeOffset = CalculateEdgeMiddlePointOffset(edge, startNode, endNode);
+            CalculateEdgeAnchors(edge.index, edgeOffset, startNode.transform.localPosition, endNode.transform.localPosition,mapCenter: Vector3.zero,
                                  out Vector3 p1, out Vector3 p2, out Vector3 p3, normalSign, distanceScaleP2);
             edge.UpdateBezierCurve(p1, p2, p3);
             edge.UpdateMesh();
+        }
+        float CalculateEdgeMiddlePointOffset(Edge edge, Node startNode, Node endNode)
+        {
+            int activeEdgeIndex = startNode.startPortActiveEdges.FindIndex((activeEdge) => activeEdge.index == edge.index);
+
+            float middlePointOffset = activeEdgeIndex;
+            if (activeEdgeIndex == -1)
+                return middlePointOffset;
+            if (startNode.Index >= endNode.Index)
+                return middlePointOffset;
+
+            var matrixTraveler = MatrixTraveler.Instance;
+            var edgesData = matrixTraveler.matrixGraphData.edges;
+            var edgeData = edgesData[edge.index];
+
+            if(activeEdgeIndex< endNode.startPortActiveEdges.Count)
+            {
+                var endNodeEdgesData = edgesData[endNode.startPortActiveEdges[activeEdgeIndex].index];
+                if(endNodeEdgesData.endPort.nodeIndex == startNode.Index)
+                {
+                    middlePointOffset += 0.5f;
+                }
+            }
+            return middlePointOffset;
         }
     }
 }

@@ -2769,7 +2769,7 @@ PrefabInstance:
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
       propertyPath: startingGameIndex
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
@@ -3998,6 +3998,12 @@ PrefabInstance:
       propertyPath: ingameMenuActivator
       value: 
       objectReference: {fileID: 1073524446}
+    - target: {fileID: 4883445329298673177, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: matrixGraphAsset
+      value: 
+      objectReference: {fileID: 2811297602134710623, guid: 60a5549428e4e864cb6202b3cc3999bb,
+        type: 3}
     - target: {fileID: 4883445329298673179, guid: df300fc022a101048906ee2ac4bcfa28,
         type: 3}
       propertyPath: m_Name

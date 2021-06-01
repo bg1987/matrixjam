@@ -437,7 +437,7 @@ MeshCollider:
   m_GameObject: {fileID: 4638982611205626031}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -521,7 +521,7 @@ MonoBehaviour:
   diagonalDistanceFactorInfluence: 1
   line: {fileID: 1425704889}
   lineShader: {fileID: 1541838530151792198}
-  lineDistanceFromNode: 0.73
+  lineDistanceFromNode: 0.825
   squareTarget: {fileID: 6576841586522261482}
   squareTargetFadeInDuration: 0.14
   squareTargetFadeOutDuration: 0.18
@@ -530,7 +530,7 @@ MonoBehaviour:
   tmpFader: {fileID: 974151590}
   linesFadeInDuration: 0.34
   characterFadeInDuration: 0.16
-  overallAlphaFadeInDuration: 0.4
+  overallAlphaFadeInDuration: 0.07
   linesFadeOutDuration: 0.28
   characterFadeOutDuration: 0.12
   overallAlphaFadeOutDuration: 0.45

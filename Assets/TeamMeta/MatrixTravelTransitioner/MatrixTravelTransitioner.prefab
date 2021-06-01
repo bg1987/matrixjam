@@ -491,6 +491,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561792b9119d7e4499087b9ff306bcd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overlay: {fileID: 0}
+  selectedNodeUI: {fileID: 0}
+  nodeUis: {fileID: 0}
+  matrixTraveler: {fileID: 0}
+  overlayFadeOutDuration: 0.2
+  overlayFadeInDuration: 0.2
 --- !u!1 &1422874339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,6 +1033,8 @@ MonoBehaviour:
     m_Bits: 2147483648
   raycaster: {fileID: 1973847410}
   nodeSelector: {fileID: 1150098465}
+  edgeSelector: {fileID: 0}
+  selectorTutorial: {fileID: 0}
 --- !u!114 &1973847410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1241,6 +1249,7 @@ MonoBehaviour:
   pressContinueKey: {fileID: 1725847142438558176}
   minimumVisitedGamesToEnablePressContinue: 1
   minimumVisitedGamesToEnableMatrixMapInteraction: 1
+  ingameMenuActivator: {fileID: 0}
 --- !u!114 &1725847142438558176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1293,36 +1302,6 @@ PrefabInstance:
         type: 3}
       propertyPath: colorTravelDuration
       value: 3.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 4133495140904379972, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
-        type: 3}
-      propertyPath: colorTravelDurationCurve.m_Curve.Array.data[0].inSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4133495140904379972, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
-        type: 3}
-      propertyPath: colorTravelDurationCurve.m_Curve.Array.data[0].outSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4133495140904379972, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
-        type: 3}
-      propertyPath: colorTravelDurationCurve.m_Curve.Array.data[0].outWeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4133495140904379972, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
-        type: 3}
-      propertyPath: colorTravelDurationCurve.m_Curve.Array.data[1].inSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4133495140904379972, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
-        type: 3}
-      propertyPath: colorTravelDurationCurve.m_Curve.Array.data[1].outSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4133495140904379972, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
-        type: 3}
-      propertyPath: colorTravelDurationCurve.m_Curve.Array.data[1].inWeight
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4133495140904379972, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
         type: 3}
@@ -1508,6 +1487,11 @@ PrefabInstance:
         type: 3}
       propertyPath: nodesMovementCurve.m_Curve.Array.data[1].value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805009658382828841, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5262338389570508461, guid: 899e4e4e4f9c5ea458447c0fecfac8d0,
         type: 3}

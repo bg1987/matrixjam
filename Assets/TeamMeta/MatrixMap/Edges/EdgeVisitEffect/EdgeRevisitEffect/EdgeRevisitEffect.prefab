@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61e6969ae45581642bba20462808b403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sparksEffect: {fileID: 6872723004198341189}
   colorTravelDuration: 3.6
   colorTravelDurationCurve:
     serializedVersion: 2
@@ -52,20 +51,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 3.4690366
-      outSlope: 3.4690366
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.043636363
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0.20068806
-      outSlope: 0.20068806
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0.16000003
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -112,6 +111,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  endEdgeColorHeight: 1.2
+  sparksEffect: {fileID: 6872723004198341189}
+  shouldSparksStopAtEnd: 0
 --- !u!1001 &3211376658089167501
 PrefabInstance:
   m_ObjectHideFlags: 0
