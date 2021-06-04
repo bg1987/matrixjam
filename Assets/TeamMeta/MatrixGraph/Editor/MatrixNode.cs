@@ -28,7 +28,7 @@ namespace MatrixJam.TeamMeta
             GenerateLabel("Colors");
             GenerateColorsFields();
 
-            GenerateLabel("Team Members(json)");
+            GenerateLabel("Team Members<json>");
             GenerateTeamMembersInputField();
 
         }

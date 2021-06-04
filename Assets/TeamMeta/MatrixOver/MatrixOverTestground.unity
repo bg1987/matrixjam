@@ -385,7 +385,7 @@ PrefabInstance:
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
       propertyPath: customHistory.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
@@ -510,7 +510,7 @@ PrefabInstance:
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}
       propertyPath: customHistory.Array.data[3].startPort.nodeIndex
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1794006973203746415, guid: d2a6368e13d87d34e8c04fb72a505eab,
         type: 3}

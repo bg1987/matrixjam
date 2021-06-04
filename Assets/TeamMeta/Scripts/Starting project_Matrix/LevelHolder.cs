@@ -52,7 +52,7 @@ namespace MatrixJam
         {
             if (game_start)
             {
-                entries[ent_num].Enter();
+                //entries[ent_num].Enter();
             }
             else
             {

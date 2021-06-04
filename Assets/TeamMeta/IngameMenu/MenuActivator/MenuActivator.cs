@@ -62,6 +62,8 @@ namespace MatrixJam.TeamMeta.IngameMenu
 
             foreach (var selection in menuSelections.Selections)
             {
+                if (selection.IsHidden)
+                    continue;
                 selection.gameObject.SetActive(true);
                 selection.Appear(appearDuration);
                 selection.SetInteractable(true);

@@ -92,11 +92,16 @@ namespace MatrixJam
 
             MatrixPortData destinationPort = edge.endPort;
             MatrixNodeData destinationGame = matrixGraphData.nodes[destinationPort.nodeIndex];
-            
-            var visitedGamesCountBeforeNewTravel = travelData.GetVisitedGamesCount();
+
+            int visitedGamesCountBeforeNewTravel = travelData.GetVisitedGamesCount();
             MatrixEdgeData lastTravel = travelData.AddTravel(startPort, destinationPort);
             //ToDo Refactor PlayerData 
             //PlayerData.Data.current_level = destinationGame.index;
+            ActivateTransition(lastTravel, visitedGamesCountBeforeNewTravel);
+        }
+        void ActivateTransition(MatrixEdgeData lastTravel, int visitedGamesCountBeforeNewTravel)
+        {
+
             if (visitedGamesCountBeforeNewTravel == matrixGraphData.nodes.Count)
             {
                 MatrixOver();
@@ -104,7 +109,6 @@ namespace MatrixJam
             }
             travelTransitioner.Transition(lastTravel);
         }
-
         public void WarpToRandomGame()
         {
             Debug.Log("Starting first scene at random");
@@ -113,6 +117,23 @@ namespace MatrixJam
             //this also start the gameplay in that scene.
             int start_sce = UnityEngine.Random.Range(0, matrixGraphData.nodes.Count);
             WarpTo(start_sce, -1);
+        }
+        public bool TryWarpToRandomUnvisitedGame()
+        {
+            List<int> unvisitedGamesIndexes = new List<int>();
+            for (int i = 0; i < matrixGraphData.nodes.Count; i++)
+            {
+                int nodeIndex = matrixGraphData.nodes[i].index;
+                int visitCount = travelData.GetGameVisitCount(matrixGraphData.nodes[i].index);
+                if (visitCount <= 0)
+                    unvisitedGamesIndexes.Add(nodeIndex);
+            }
+            if (unvisitedGamesIndexes.Count == 0)
+                return false;
+
+            int randomUnvisitedGameIndex = unvisitedGamesIndexes[UnityEngine.Random.Range(0, unvisitedGamesIndexes.Count)];
+            WarpTo(randomUnvisitedGameIndex, -1);
+            return true;
         }
         public void ReTravelToCurrentGame()
         {
@@ -173,8 +194,9 @@ namespace MatrixJam
 
             MatrixNodeData destinationGame = destinationNode;
 
+            int visitedGamesCountBeforeNewTravel = travelData.GetVisitedGamesCount();
             MatrixEdgeData lastTravel = travelData.AddTravel(new MatrixPortData(-1,-1), destinationPort);
-            travelTransitioner.Transition(lastTravel);
+            ActivateTransition(lastTravel, visitedGamesCountBeforeNewTravel);
         }
         /// <summary> Entrance Id = -1 means use default entrance</summary>
         public void WarpTo(MatrixPortData portData)

@@ -18,6 +18,10 @@ namespace MatrixJam.TeamMeta.IngameMenu
         [SerializeField] Color flavorColor;
         [SerializeField] List<Object> selectionSelectListeners = new List<Object>();
         [SerializeField] List<Object> selectionAppearListeners = new List<Object>();
+
+        bool isHidden = false;
+        public bool IsHidden { get => isHidden; }
+
         Material material;
 
         float randomSeed = 1;
@@ -77,6 +81,10 @@ namespace MatrixJam.TeamMeta.IngameMenu
             button.interactable = isInteractable;
             image.raycastTarget = isInteractable;
         }
+        public void SetHidden(bool isHidden)
+        {
+            this.isHidden = isHidden;
+        }
         public void Appear(float duration)
         {
             foreach (var listenerObject in selectionAppearListeners)
@@ -103,7 +111,9 @@ namespace MatrixJam.TeamMeta.IngameMenu
         {
             if (changeAppearStateRoutine != null)
                 StopCoroutine(changeAppearStateRoutine);
-            if (duration == 0)
+
+            float appearProgress = image.color.a;
+            if (duration == 0 || GetAppearProgress() == end)
             {
                 ExecuteAppear(end);
                 if (onComplete!=null)
@@ -115,7 +125,7 @@ namespace MatrixJam.TeamMeta.IngameMenu
         IEnumerator ChangeAppearStateRoutine(float duration, float start, float end, System.Action<Selection> onComplete = null)
         {
             newRandomSeed = Random.value;
-            float appearProgress = image.color.a;
+            float appearProgress = GetAppearProgress();
 
             float t = Mathf.InverseLerp(start, end, appearProgress);
             float randomSeedT = 0;
@@ -186,6 +196,11 @@ namespace MatrixJam.TeamMeta.IngameMenu
             c.x += (Mathf.PerlinNoise(noiseScroll * c.x, 0) * 2 - 1) * noiseStrength;
             c.y += (Mathf.PerlinNoise(noiseScroll * c.y, 0) * 2 - 1) * noiseStrength;
             material.SetVector("_C", c);
+        }
+        float GetAppearProgress()
+        {
+            float appearProgress = image.color.a;
+            return appearProgress;
         }
         public void AppearBorder(float duration)
         {
