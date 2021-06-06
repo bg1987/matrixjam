@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7612141fba81d0b4fbdfdab1c5c6c26b, type: 2}
+  - {fileID: -6081309377643521603, guid: efc7711a530ea3a4bb561e935d328f0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -116,8 +116,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Click on a <i>World</i> to find out more about it
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c475fbab355f65d4583346dabfc41495, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 7612141fba81d0b4fbdfdab1c5c6c26b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: efc7711a530ea3a4bb561e935d328f0d, type: 2}
+  m_sharedMaterial: {fileID: -6081309377643521603, guid: efc7711a530ea3a4bb561e935d328f0d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -142,13 +143,13 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 33
   m_textAlignment: 513
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -267,4 +268,5 @@ MonoBehaviour:
   textFader: {fileID: 3839825944980698274}
   isCompleted: 0
   isInProgress: 0
-  completeFadeColor: {r: 0.10457456, g: 0.23141558, b: 0.8867924, a: 1}
+  halfwayCompleteFadeColor: {r: 1, g: 0.3921569, b: 0.03529412, a: 1}
+  completeFadeColor: {r: 0.10457456, g: 0.23141558, b: 0.8867924, a: 0}

@@ -2665,12 +2665,6 @@ PrefabInstance:
       propertyPath: ingameMenuActivator
       value: 
       objectReference: {fileID: 1073524446}
-    - target: {fileID: 4883445329298673177, guid: df300fc022a101048906ee2ac4bcfa28,
-        type: 3}
-      propertyPath: matrixGraphAsset
-      value: 
-      objectReference: {fileID: 2811297602134710623, guid: f0134894f0eaba543a64af5d179df3c1,
-        type: 3}
     - target: {fileID: 4883445329298673179, guid: df300fc022a101048906ee2ac4bcfa28,
         type: 3}
       propertyPath: m_Name

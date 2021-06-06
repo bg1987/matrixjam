@@ -66,8 +66,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Resume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 90fa293f1677dfc4cb109f80f38254fc, type: 2}
+  m_sharedMaterial: {fileID: 6361247624162858227, guid: 90fa293f1677dfc4cb109f80f38254fc,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -485,7 +486,6 @@ MonoBehaviour:
   hoverBorderAlphaEnd: 0.9
   hoverAppearDuration: 0.2
   flashDuration: 0.23
-  originalColor: {r: 0, g: 0, b: 0, a: 0.8}
   flashColor: {r: 0.1137255, g: 0.15294118, b: 0.3254902, a: 0.4}
 --- !u!1001 &9189345737176297916
 PrefabInstance:

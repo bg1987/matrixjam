@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99626aef3fea5c94a82681c8f6bb713d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matrixGraphAsset: {fileID: 2811297602134710623, guid: 9a341a9a5ebc6e2469de14e75a477256,
+  matrixGraphAsset: {fileID: 2811297602134710623, guid: 60a5549428e4e864cb6202b3cc3999bb,
     type: 3}
   startScene: TestStartScene
   endScene: EndScene
@@ -611,51 +611,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6405259598464541645, guid: 57f4a93b26715004daadf37e53b8af5e,
-        type: 3}
-      propertyPath: minimumVisitedGamesToAllowActivation
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6405259598464541645, guid: 57f4a93b26715004daadf37e53b8af5e,
-        type: 3}
-      propertyPath: stepAppearDuration
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6405259598464541645, guid: 57f4a93b26715004daadf37e53b8af5e,
-        type: 3}
-      propertyPath: stepDisappearDuration
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6405259598464541645, guid: 57f4a93b26715004daadf37e53b8af5e,
-        type: 3}
-      propertyPath: stepAppearCharacterDuration
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6405259598464541645, guid: 57f4a93b26715004daadf37e53b8af5e,
-        type: 3}
-      propertyPath: stepDisappearCharacterDuration
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6405259598464541645, guid: 57f4a93b26715004daadf37e53b8af5e,
-        type: 3}
-      propertyPath: stepAppearDelay
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7870245493274700427, guid: 57f4a93b26715004daadf37e53b8af5e,
-        type: 3}
-      propertyPath: completeFadeColor.r
-      value: 0.10457456
-      objectReference: {fileID: 0}
-    - target: {fileID: 7870245493274700427, guid: 57f4a93b26715004daadf37e53b8af5e,
-        type: 3}
-      propertyPath: completeFadeColor.g
-      value: 0.23141558
-      objectReference: {fileID: 0}
-    - target: {fileID: 7870245493274700427, guid: 57f4a93b26715004daadf37e53b8af5e,
-        type: 3}
-      propertyPath: completeFadeColor.b
-      value: 0.8867924
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57f4a93b26715004daadf37e53b8af5e, type: 3}

@@ -48,6 +48,13 @@ MonoBehaviour:
   nodeTutorialStep: {fileID: 6405259599535093822}
   edgeTutorialStep: {fileID: 7870245493274700427}
   minimumVisitedGamesToAllowActivation: 2
+  stepAppearDuration: 0.35
+  stepAppearCharacterDuration: 0.5
+  stepAppearDelay: 1
+  stepDisappearDuration: 0.35
+  stepDisappearCharacterDuration: 0.35
+  stepCompleteDuration: 0.02
+  stepCompleteCharacterDuration: 0.5
 --- !u!1001 &6405259598203941020
 PrefabInstance:
   m_ObjectHideFlags: 0

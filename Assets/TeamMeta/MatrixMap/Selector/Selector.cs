@@ -30,9 +30,6 @@ namespace MatrixJam.TeamMeta.MatrixMap
         private void HandleRightClick(GameObject obj)
         {
             HandleSelect(null);
-
-            if(obj)
-                HandleHoverExit(obj);
         }
 
         private void Start()

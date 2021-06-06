@@ -11,6 +11,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
         [SerializeField] TmpFader textFader;
         public bool isCompleted = false;
         public bool isInProgress = false;
+        [SerializeField] private Color halfwayCompleteFadeColor = Color.blue;
         [SerializeField] private Color completeFadeColor = Color.blue;
         private Coroutine appearRoutine;
 
@@ -77,13 +78,21 @@ namespace MatrixJam.TeamMeta.MatrixMap
             float colorChangeDuration = (duration+ characterDuration) / 2f;
             while (t<1)
             {
-                text.color = Color.Lerp(Color.white, completeFadeColor, t);
-
+                text.color = Color.Lerp(Color.white, halfwayCompleteFadeColor, t);
 
                 t += Time.deltaTime / colorChangeDuration;
                 yield return null;
             }
+            text.color = halfwayCompleteFadeColor;
+            t = 0;
+            while (t < 1)
+            {
+                text.color = Color.Lerp(halfwayCompleteFadeColor, completeFadeColor, t);
 
+                t += Time.deltaTime / colorChangeDuration;
+                yield return null;
+            }
+            text.color = completeFadeColor;
         }
 
     }
