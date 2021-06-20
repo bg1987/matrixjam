@@ -9,6 +9,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
     {
         [SerializeField] TextMeshPro text;
         [SerializeField] TmpFader textFader;
+        [SerializeField] private BulletPoint bulletPoint;
         public bool isCompleted = false;
         public bool isInProgress = false;
         [SerializeField] private Color halfwayCompleteFadeColor = Color.blue;
@@ -34,7 +35,8 @@ namespace MatrixJam.TeamMeta.MatrixMap
             if (isCompleted)
                 yield break;
             textFader.FadeInLines(duration, characterDuration);
-            
+            bulletPoint.Appear(duration);
+
             yield return new WaitForSeconds(duration+ characterDuration);
             appearRoutine = null;
 
@@ -45,7 +47,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             StopAllCoroutines();
             appearRoutine = null;
             textFader.FadeOutLines(0, 0);
-
+            bulletPoint.Disappear(0);
         }
 
         public void Disappear(float duration, float characterDuration)
@@ -59,6 +61,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
                 appearRoutine = null;
             }
             textFader.FadeOutLines(duration,characterDuration);
+            bulletPoint.Disappear(duration);
         }
         public void Complete(float duration, float characterDuration)
         {
@@ -73,9 +76,13 @@ namespace MatrixJam.TeamMeta.MatrixMap
             while (appearRoutine!=null)
                 yield return null;
             textFader.FadeOutLines(duration, characterDuration);
+            bulletPoint.Disappear(duration+ characterDuration);
 
             float t = 0;
             float colorChangeDuration = (duration+ characterDuration) / 2f;
+
+            bulletPoint.ChangeColor(colorChangeDuration, halfwayCompleteFadeColor);
+
             while (t<1)
             {
                 text.color = Color.Lerp(Color.white, halfwayCompleteFadeColor, t);
@@ -85,6 +92,9 @@ namespace MatrixJam.TeamMeta.MatrixMap
             }
             text.color = halfwayCompleteFadeColor;
             t = 0;
+
+            bulletPoint.ChangeColor(colorChangeDuration, completeFadeColor);
+
             while (t < 1)
             {
                 text.color = Color.Lerp(halfwayCompleteFadeColor, completeFadeColor, t);

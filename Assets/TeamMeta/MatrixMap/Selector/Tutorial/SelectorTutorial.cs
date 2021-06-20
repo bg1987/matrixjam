@@ -28,14 +28,19 @@ namespace MatrixJam.TeamMeta.MatrixMap
             Deactivate();
 
         }
-        public void NodeSelected()
+        public void NodeSelected(Node node)
         {
             if (!nodeTutorialStep.isCompleted)
                 nodeTutorialStep.Complete(stepCompleteDuration, stepCompleteCharacterDuration);
 
             if (edgeTutorialStep.isCompleted)
                 return;
-            if(edgeTutorialStep.isInProgress)
+            if (node.startPortActiveEdges.Count == 0)
+            {
+                NodeDeselected();
+                return;
+            }
+            if (edgeTutorialStep.isInProgress)
                 return;
             if (isActive)
             {
@@ -76,7 +81,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             edgeTutorialStep.gameObject.SetActive(true);
 
             if (!nodeTutorialStep.isCompleted)
-                nodeTutorialStep.Appear(stepAppearDuration, stepAppearCharacterDuration, stepAppearDelay);
+                nodeTutorialStep.Appear(stepAppearDuration, stepAppearCharacterDuration, 0);
         }
     }
 }

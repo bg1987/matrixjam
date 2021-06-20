@@ -103,7 +103,7 @@ namespace MatrixJam.TeamMeta.MatrixMap
             if (selectTarget is NodeSelectable)
             {
                 nodeSelector.HandleSelect(selectTarget as NodeSelectable);
-                selectorTutorial.NodeSelected();
+                selectorTutorial.NodeSelected((selectTarget as NodeSelectable).GetNode());
             }
         }
         public void Activate()

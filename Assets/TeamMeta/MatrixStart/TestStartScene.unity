@@ -2665,6 +2665,12 @@ PrefabInstance:
       propertyPath: ingameMenuActivator
       value: 
       objectReference: {fileID: 1073524446}
+    - target: {fileID: 4883445329298673177, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: matrixGraphAsset
+      value: 
+      objectReference: {fileID: 2811297602134710623, guid: de03951c5556e3145b8cd5210b4f0edb,
+        type: 3}
     - target: {fileID: 4883445329298673179, guid: df300fc022a101048906ee2ac4bcfa28,
         type: 3}
       propertyPath: m_Name
@@ -2724,6 +2730,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8063724680651077139, guid: df300fc022a101048906ee2ac4bcfa28,
+        type: 3}
+      propertyPath: stepAppearDelay
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8851154874441220109, guid: df300fc022a101048906ee2ac4bcfa28,
         type: 3}

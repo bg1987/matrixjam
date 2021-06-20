@@ -161,7 +161,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50.57, y: 32.74}
+  m_SizeDelta: {x: 52.43, y: 34.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &4638982611040451940
 MeshRenderer:
@@ -377,7 +377,7 @@ Transform:
   m_GameObject: {fileID: 4638982611205626031}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3213999, y: 0.9648, z: 1}
+  m_LocalScale: {x: 1.3585999, y: 1.0058, z: 1}
   m_Children: []
   m_Father: {fileID: 3196140535758671079}
   m_RootOrder: 0
